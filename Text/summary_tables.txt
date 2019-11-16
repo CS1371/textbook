@@ -1,0 +1,176 @@
+Ch 02: Special Characters, Reserved Words, and Functions
+
+Special  Characters, Reserved Words,
+and Functions	Description
+ 
+
+Discussed in Section
+'abc'	Single quotes enclose a literal character string	2.2.3
+%	A percent sign indicates a comment in an M-file	2.4.2
+ 
+;	A semicolon suppresses output from assignment statements
+ 
+2.4.5
+ 
+...	Ellipses continue a MATLAB command to the next line	2.4.5
+ 
+=	The assignment operator assigns a value to a variable; this is not the same as an equality test
+ans	The default variable name for results of MATLAB calculations
+ 
+2.2.2
+2.3.1
+ 
+clc	Clears the Command window	2.3.2
+clear	Clears the Workspace window	2.4.2
+sqrt(x)	Calculates the square root of x	2.4.2
+
+Table 3.1  Operator precedence
+Operators	Description
+
+.', .^	Scalar transpose and power
+
+', ^	Matrix transpose and power
+
++, −, ~	Unary operators
+
+.*,./,.\,*,/,\	Multiplication, division, left division
+
++, −	Addition and subtraction
+
+:	Colon operator
+
+<, <=, >=, >, ==, ~=	Comparison
+
+&	Element-wise AND
+
+|	Element-wise OR
+
+&&	Logical AND
+
+||	Logical OR
+
+Ch 03: Special Characters, Reserved Words, and Functions
+Special Characters, Reserved Words, and Functions
+
+Special  Characters, Reserved Words,
+and Functions	Description
+ 
+
+
+
+
+Discussed in This Section
+
+[]	The empty vector	3.3.4
+[...]	Concatenates data, vectors, and arrays	3.2.1
+:	Specifies a vector as from:incr:to	3.2.1
+:	Used in slicing vectors and arrays	3.3.5
+( )	Used with an array name to identify specific elements	3.3.3
+'	Transposes an array	3.5.1
+;	Separates rows in an array definition	3.5.2
++	Scalar and array addition	3.3.5
+-	Scalar and array subtraction or unary negation	3.3.5
+
+.*	
+Array multiplication	
+3.3.5
+./	Array division	3.3.5
+.^	Array exponentiation	3.3.5
+<	Less than	3.3.5
+<=	Less than or equal to	3.3.5
+>	Greater than	3.3.5
+>=	Greater than or equal to	3.3.5
+==	Equal to	3.3.5
+
+>	Not equal to	3.3.5
+&	Element-wise logical AND (vectors)	3.3.5
+&&	Short-circuit logical AND (scalar)	3.3.5
+|	Element-wise logical OR (vectors)	3.3.5
+||	Short-circuit logical OR (scalar)	3.3.5
+~	Unary not	3.3.5
+end	Last element in a vector	3.3.5
+false	Logical false	3.2.2
+true	Logical true	3.2.2
+ceil(x)	Rounds x to the nearest integer toward positive infinity	3.3.5
+cross(a, b)	Vector cross product	3.3
+diag(a)	Extracts the diagonal from an array or, if provided with a vector, constructs an array with the given	3.5.2
+	diagonal	
+disp(value)	Displays an array or text	3.3.5
+find()	Computes a vector of the locations of the true values in a logical array	3.3.5, 3.5.5
+[rows cols] =	Computes vectors of row and column locations of	3.5.5
+find()	the true values in a logical array	
+fix(x)	Rounds x to the nearest integer toward zero	3.3.5
+floor(x)	Rounds x to the nearest integer toward minus infinity	3.3.5
+length(a)	Determines the largest dimension of an array	3.2.2, 3.5.1
+linspace(fr,to,n)	Defines a linearly spaced vector	3.2.1
+
+.*	
+Array multiplication	
+3.3.5
+./	Array division	3.3.5
+.^	Array exponentiation	3.3.5
+<	Less than	3.3.5
+<=	Less than or equal to	3.3.5
+>	Greater than	3.3.5
+>=	Greater than or equal to	3.3.5
+==	Equal to	3.3.5
+
+>	Not equal to	3.3.5
+&	Element-wise logical AND (vectors)	3.3.5
+&&	Short-circuit logical AND (scalar)	3.3.5
+|	Element-wise logical OR (vectors)	3.3.5
+||	Short-circuit logical OR (scalar)	3.3.5
+~	Unary not	3.3.5
+end	Last element in a vector	3.3.5
+false	Logical false	3.2.2
+true	Logical true	3.2.2
+ceil(x)	Rounds x to the nearest integer toward positive infinity	3.3.5
+cross(a, b)	Vector cross product	3.3
+diag(a)	Extracts the diagonal from an array or, if provided with a vector, constructs an array with the given	3.5.2
+	diagonal	
+disp(value)	Displays an array or text	3.3.5
+find()	Computes a vector of the locations of the true values in a logical array	3.3.5, 3.5.5
+[rows cols] =	Computes vectors of row and column locations of	3.5.5
+find()	the true values in a logical array	
+fix(x)	Rounds x to the nearest integer toward zero	3.3.5
+floor(x)	Rounds x to the nearest integer toward minus infinity	3.3.5
+length(a)	Determines the largest dimension of an array	3.2.2, 3.5.1
+linspace(fr,to,n)	Defines a linearly spaced vector	3.2.1
+
+Ch 04: Special Characters, Reserved Words, and Functions
+
+Special Characters, Reserved Words, and Functions
+
+Special  Characters, Reserved Words, and Functions	
+
+Description	
+Discussed in This Section
+
+false	Logical false	4.2
+true	Logical true	4.2
+break	A command within a loop module that forces	4.6.4, 4.7.4
+	control to the statement following the	
+	innermost loop	
+case	A specific value within a switch statement	4.1, 4.4.1
+continue	Skips to the end of the innermost loop, but	4.6.4, 4.7.4
+	remains inside it	
+else	Within an if statement, begins the code block executed when the condition is false	4.1, 4.3.2
+elseif	Within an if statement, begins a second test when the first condition is false	4.1, 4.3.2
+end	Terminates an if, switch, for, or while module	4.1, 4.3.2
+for var = v	A code module repeats as many times as there are elements in the vector v	4.1, 4.6
+if <exp>	Begins a conditional module; the following code block is executed if the logical expression	4.1, 4.3.2
+	<exp> is true	
+input(str)	Requests and parses input from the user	4.3.2
+otherwise	Catch-all code block at the end of a switch
+statement	4.1, 4.4.1
+switch(variable)	Begins a code module selecting specific values of the variable (must be countable)	4.1, 4.4.1
+while <exp>	A code module repeats as long as the logical	4.1
+	expression <exp> is true	
+all(a)	True if all the values in a, a logical vector, a, are true	4.3.3
+and(a, b)	True if both a and b are true (can be vectors)	4.3.3
+any(a)	True if any of the values in a, a logical vector, is true	4.3.3
+not(a)	True if a is false; false if a is true (can be vectors)	4.3.3
+
+or(a, b)	
+True if either a or b is true (can be vectors)	
+4.3.3

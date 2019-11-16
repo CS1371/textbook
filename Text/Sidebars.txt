@@ -1,0 +1,1636 @@
+				/*
+				*   Template for inserting a sidebar 
+				*      put this at the beginning of the text you want wrapped
+				*/
+<div class="container">
+  <div class="sidebar_R">
+
+				/*
+				 *  put content of the sidebar
+				 */
+<h4> ... </h4>
+
+<p> ... </p>
+
+				/*
+				*  put this between sidebar and wrapped text
+				*/
+  </div>
+  <div class="content">
+				/*
+				*  then put wrapped text
+				*/
+<h3> ... </h3>
+
+<p> ... </p>
+				/*
+				 * then put this at the end of the wrapped text
+				 */
+</div>
+				/*
+				* that's all
+				*/
+
+<h4>Style Points 2.1</h4>
+
+<p>1. Some early versions of the FORTRAN and Basic languages severely restricted the number of characters you could use for variable names. It is no longer necessary to program as if you were still in the &ldquo;bad old days.&rdquo; Choose names for variables that describe their content. For example, a variable used to store the velocity of an object should be named <code>velocity_in_feet_per_second</code> rather than <code>v</code>.</p>
+
+<p>2. Since the space character is not permitted in variable names, there are two conventions for joining multiple words together to make a single variable name. One uses the underscore character to separate the words (<code>file_size</code>), and the other capitalizes the first letter of additional words (<code>fileSize</code>).You should choose one convention and be consistent with it. You cannot use a hyphen to concatenate words&mdash;MATLAB treats the name <code>file-size</code> as the arithmetic operation subtracting the value of the variable <code>size</code> from the value of the variable <code>file</code>.</p>
+
+
+<h4>Exercise 2.1 Assigning variables</h4>
+<p>When you start MATLAB, you should see the prompt <code>'>> '</code> in the Command window. This is your invitation to type something. Text that you should type will be shown like this throughout this book:</p>
+<code>>> radius = 49</code>
+
+<p>Note that all entries in the Command window terminate with the <code>Enter</code> key. The system response will be shown like this:</p>
+
+<code>radius =
+<br>49
+<br>
+>></code>
+
+<p>This response indicates that the value <code>49</code> has been stored in a variable named <code>radius</code>. To retrieve the value of <code>radius</code>, you just type its name and press <code>Enter</code>.</p>
+<code>>> radius<br><br>
+>> ans =
+<br>
+49</code>
+
+<p>This response shows that the value <code>49</code> has been retrieved. Since you didn’t specify where to put this result, it was stored in a default variable named <code>ans</code>.</p>
+
+<h4>Style Points 2.1</h4>
+
+<p>1. Some early versions of the FORTRAN and Basic languages severely restricted the number of characters you could use for variable names. It is no longer necessary to program as if you were still in the &ldquo;bad old days.&rdquo; Choose names for variables that describe their content. For example, a variable used to store the velocity of an object should be named <code>velocity_in_feet_per_second</code> rather than <code>v</code>.</p>
+
+<p>2. Since the space character is not permitted in variable names, there are two conventions for joining multiple words together to make a single variable name. One uses the underscore character to separate the words (<code>file_size</code>), and the other capitalizes the first letter of additional words (<code>fileSize</code>).You should choose one convention and be consistent with it. You cannot use a hyphen to concatenate words&mdash;MATLAB treats the name <code>file-size</code> as the arithmetic operation subtracting the value of the variable <code>size</code> from the value of the variable <code>file</code>.</p>
+
+Exercise 2.2  Performing basic mathematical operations
+
+Make the following entries in the Interactions window. You should see the responses as shown here:
+
+>> radius = 49 radius =
+49
+>> radius + 1 ans =
+50
+>> radius = 'radius of a circle' radius =
+radius of a circle
+>> radius + 1 ans =
+115 98 101 106 118 116 33 112 103 ...
+
+Hint 2.1
+
+If you are using MATLAB, you can customize how your initial window will display. If you make a mistake and close an essential window, you can always restore the default configuration by choosing Desktop > Desktop Layout > Default.
+
+Hint 2.2
+
+When you make a mistake, you cannot easily correct it as you would in a word processor. The Interactions window really is functioning like a calculator, performing one instruction at a time exactly as you specify them. When you enter the command, it is immediately executed, regardless of whether that is what you intended. MATLAB offers several ways to correct erroneous commands. One way is to use the arrow keys on your keyboard. The up and down arrows let you move through the list of commands you have executed. Once you find the appropriate command, you can edit it and then press [Enter] to execute your new version.
+
+Exercise 2.3  Using the Command window
+To compute the value of 52, type this command:
+
+>> 5^2
+The following output will be displayed:
+
+ans =
+25
+To find the cosine of p, type:
+
+>> cos(pi)
+which results in the following output:
+
+ans =
+-1
+
+Hint 2.3
+As a security precaution, if you use MATLAB on a
+public computer, you can set its defaults to clear the Command History window when you exit MATLAB or when you log off the computer.
+
+Exercise 2.5  Using the Command History window
+In the Interactions window, type:
+
+>> clc
+
+This should clear the Interactions window but leave the data in the Command History window intact. You can transfer any command from the Command History window to the Interactions window by double-clicking it (which also executes the command) or by clicking and dragging the line of code into the Interactions window. Try double-clicking:
+
+cos(pi)
+This should result in the following display in the Interactions window:
+
+ans =
+-1
+
+Now click and drag 5^2 from the Command History window into the Interactions window. The command won’t execute until you press the [Enter] key, and then you’ll get the following result:
+
+ans =
+25
+
+Exercise 2.6  Showing more details in the Workspace window
+
+Set the Variables window to show more about the variable ans by right-clicking on the bar with the column labels. On the drop-down menu, check the boxes next to Size and Bytes, so that these will display in addition to Name,Value, and Class. Your Variables window should now look like Figure 2.3.
+
+
+Exercise 2.7 Defining other variables
+
+You can define additional variables in the Interactions window, and they will be listed in the Variables window. For example, type:
+
+>> A = 5
+This returns:
+
+A =
+5
+
+Exercise 2.8 Creating a vector
+
+Entering matrices is not discussed in detail in this section. However, you can enter a simple one-dimensional matrix by typing:
+
+>> B = [1, 2, 3, 4]
+This returns:
+
+B =
+1 2 3 4
+The commas are optional. You would see the same result from:
+
+>> B = [1 2 3 4]
+
+Note: [after Exercise 2.8]
+MATLAB  presents  numerical  results  in  the
+following default format: if the value is an integer,
+there are no decimal places presented; but if there
+is a fractional part, four decimal places appear.
+You  can  change  this  by  using  the  format
+command. See MATLAB help for details.
+
+Exercise 2.9 Creating a 3x4 matrix
+
+>> C = [ 1 2 3 4; 10 20 30 40; 5 10 15 20]
+returns:
+
+C =
+1	2	3	4
+10	20	30	40
+5	10	15	20
+Now, enter
+
+>> C = [1 2 3 4; 10 20 30 40];
+
+You will see the value of C change in the Variables window, but not echoed in the Interactions window. The semicolon on the end of the line suppresses presentation of the result.
+
+Exercise 2.10 Recalling values for variables
+
+>> A
+returns:
+
+ans = 5
+
+Exercise 2.11 Using the whos command
+
+>> whos
+You should see the following display in the Command window:
+
+Name	Size	Bytes	Class	
+A	1x1	8	double	array
+B	1x4	32	double	array
+C	3x4	96	double	array
+ans	1x1	8	double	array
+Grand total is 18 elements using 144 bytes
+
+Hint 2.4
+It is generally considered to be poor practice to edit
+the values of data by hand. A more rigorous approach would be to change the script that generated the data, thereby making the data changes repeatable.
+
+Exercise 2.12 Creating a graph
+
+>> x = [ 1 2 3 4 5];
+A new variable, x, appears in the Workspace window.
+
+>> y = (x-3).^2;
+To create a graph, use the plot command:
+
+>> plot(x,y)
+
+Hint 2.5
+We began this first script with two commands: clear and clc. Every script should have these two commands (and later, also 'close all') before its first executable instruction. However, to avoid repetition, we will not include these commands in subsequent listings in this test.
+
+Note: [after Hint 2.5]
+Because MATLAB treats the names of .m files much like variable names, the names of your files must follow the same rules as those for variables in Section 2.2.2 above.
+
+Exercise 2.13 Creating a script
+
+In this exercise, you will create a script derived from the Pythagorean theorem to compute the hypotenuse of a right triangle:
+
+H2 = A2 + B2
+
+where A and B are the sides adjacent to the right angle, and H is the hypotenuse opposite. Open a new script file and type the commands shown in Listing 2.1 (don’t type the accompanying line numbers—they will be automatically displayed).
+
+Style Points 2.2
+1.	When writing scripts, you should invest some time to add comments. Comments make the scripts easier to understand as you are developing them, and make it more likely that you will be able to reuse the script later. Note: The listings included in this text will not have an appropriate level of commenting a. to save space and b. because they are explained in detail in the text.
+2.	Scripts should be written incrementally—build a little, test a little—rather than writing a whole script and then trying to find out where in that pile of code you made the mistake(s).
+
+Common Pitfalls 2.1
+You will quickly become accustomed to understanding the general flow of your script by observing the assignment statements reported in the Interactions window. However, especially if you have programmed in a language that requires semicolons at the end of a command, you may inadvertently put semicolons in your script. These will suppress the presentation of results and could mislead you into believing that a specific set of instructions has not been executed.
+
+Style Points 2.3
+
+Notice that when presented in this manner, the “inner values” like cm and inch cancel to ensure that the conversions are consistent.
+
+Exercise 3.1 Working with vectors
+
+>> A = [2 5 7 1 3] A =
+2 5 7 1 3
+>> B = 1:3:20 B =
+1 4 7 10 13 16 19
+>> C = linspace(0, 20, 11) C =
+0 2 4	6 8 10 12 14 16 18 20
+>> D = [4] D =
+4
+>> E = zeros(1,4) E =
+0	0	0	0
+Now, open the Variables tab and study the contents.
+
+Exercise 3.2 Changing elements of a vector
+Extending the exercise above:
+
+>> A(5) = 42 A =
+2	5	7	1	42
+
+Exercise 3.3 Extending a vector
+Again extending the exercises above:
+
+>> A(8) = 3 A =
+2	5	7	1	42	0	0	3
+
+Exercise 3.4 Shortening a vector
+Using the vector A from Exercise 3.3:
+
+>> A(4) = [] A =
+2	5	7	42	0	0	3
+
+Common Pitfalls 3.1
+
+Shortening a vector is very rarely the right solution to a problem and can lead to logical difficulties. Wherever possible, you should use indexing to copy the elements you want to keep rather than using [ ] to erase elements you want to remove.
+
+Exercise 3.5 Using vector mathematics
+
+>> A = [2	5 7	1	3];	
+>> A + 5				
+ans =					
+7		10		12	6	8
+>> A .*	2					
+ans =						
+4		10		14	2	6
+>> B = -1:1:3				
+B =
+-1	0	1	2	3
+>> A .* B % element-by-element multiplication
+ans =
+-2	0	7	2	9
+>> A * B % matrix multiplication!!
+??? Error using ==> mtimes
+Inner matrix dimensions must agree.
+>> C = [1 2 3] C =
+1	2	3
+>> A .* C % A and C must have the same length
+??? Error using ==> times Matrix dimensions must agree.
+
+Exercise 3.6 Working with vector logical expressions
+
+>> A = [2 5 7 1 3];
+>> B = [0 6 5 3 2];
+>> A >= 5
+ans =
+0	1	1	0	0
+>> A >= B
+ans =
+1	0	1	0
+>> C = [1 2 3]
+>> A > C
+??? Error using ==> gt
+Matrix dimensions must agree.
+
+Exercise 3.7 Working with logical vectors
+
+>> A = [true true false false];
+>> B = [true false true false];
+>> A & B
+ans =
+1	0	0	0
+>> A | B
+ans =
+1	1	1	0
+>> C = [1 0 0]
+>> A & C
+??? Error using ==> and Matrix dimensions must agree.
+
+Exercise 3.8 Using the find(…) function
+
+>> A = [2 5 7 1 3];
+>> A > 4
+ans =
+0 1 1 0 0
+>> find(A > 4)
+ans =
+2 3
+
+Exercise 3.9 Concatenating vectors
+
+>> A = [2 5 7];
+>> B = [1 3];
+>> [A B]
+ans =
+2 5 7 1 3
+
+Notice that the resulting vector is not nested like [[2 5 7], [1 3]] but is completely “flat.”
+
+Exercise 3.10 Running the vector indexing script
+Execute the script in Listing 3.1.You should see the following output:
+
+odd values of A using predefined indices ans =
+2	7	3
+odd values of A using anonymous indices ans =
+2	7	3
+put even values into odd values in a new array B =
+5	0	1	0	4
+set the even values in B to 99 B =
+5	99	1	99	4
+find the small values in A small =
+1	0	0	1	1	0
+add 10 to the small values A =
+12	5	7	11	13	4
+this can be done in one ugly operation A =
+12	5	7	11	13	4
+>>
+
+Common Pitfalls 3.2
+After any nontrivial computation, a good engineer will always perform a sanity check on the answers. When you run the code for this problem, the answers returned are:
+PC = [ 1 2 1]
+unit_vector = [0.4082	0.8165	0.4082]
+moment = [ 1	2	-5]
+To check the moment result, visualize the rotation of PC about M and apply the right-hand rule to find the axis of rotation of the moment. Roughly speaking, the right-hand rule states that the direction of the moment is the direction in which a normal, right-handed screw at point M would turn under the influence of this force. Without being too accurate, we can conclude that the axis of the moment is approximately along the negative z-axis, an estimate confirmed by the result shown.
+
+Exercise 3.11 Creating arrays
+>> A = [2, 5, 7; 1, 3, 42] A =
+2	5	7
+1	3	42
+>> z = zeros(3,2) z =
+0	0
+0	0
+0	0
+>> [z ones(3, 4)] % concatenating arrays
+ans =
+
+
+
+>> rand(3,4) ans =
+
+
+
+>> rand(size(A)) ans =
+
+
+>> diag(A) ans =
+2
+3
+>> diag(diag(A)) ans =
+2	0
+0	3
+>> magic(4) ans =
+	16	2	3	13
+	5	11	10	8
+	9	7	6	12
+	4	14	15	1
+>>				
+
+Common Pitfalls 3.3
+Removing rows or columns from an array is very rarely the right solution to a problem and can lead to logical difficulties. Wherever possible, use indexing to copy the rows and columns you want to keep.
+
+Common Pitfalls 3.4
+Performing array multiplication, division, or exponentiation without appending a dot operator requests one of the specialized matrix operations that will be covered in Chapter 12. The error message when this occurs is quite obscure if you are not expecting it:
+??? Error using ==> mtimes
+Inner matrix dimensions must agree.
+Even more obscure is the case where the dimensions of the arrays happen to be consistent (when multiplying square arrays), but the results are not the scalar products of the two arrays.
+
+Exercise 3.12 Working with array mathematics
+>> A = [2 5 7
+
+
+
+
+
+ans =
+
+
+B = ones(2, 3) B =
+
+
+
+
+
+
+>> A.*B % scalar multiplication
+ans =
+
+
+>> A*B % matrix multiplication does not work here
+??? Error using ==> mtimes
+Inner matrix dimensions must agree.
+
+Exercise 3.13  Working with array logical operations
+
+>> A = [2 5; 1 3]
+A =
+2	5
+1	3
+>> B = [0 6; 3 2];
+>> A >= 4
+ans =
+0	1
+0	0
+>> A >= B
+ans =
+1	0
+0	1
+>> C = [1 2 3 4]
+>> A > C
+??? Error using ==> gt
+Matrix dimensions must agree.
+
+Exercise 3.14  Concatenating an array
+
+>> A = [2 5; 1 7];
+>> B = [1 3]';	% makes a column vector
+>> [A B]
+ans =
+2 5 1
+1 7 3
+
+Style Points 3.1
+The MATLAB language does not encourage concatenating data of different classes. However, it tolerates such concatenation with sometimes odd results. If you really want to achieve this in an unambiguous manner, you should explicitly cast the data to the same class.
+
+Exercise 3.15 Reshaping an array
+
+>> A = 1:10 A =
+1	2	3	4	5	6	7	8	9	10
+>> reshape(A, 4, 3)
+??? Error using ==> reshape
+To RESHAPE the number of elements must not change.
+>> reshape([A 0 0], 4, 3) ans =
+1	5	9
+2	6	10
+3	7	0
+4	8	0
+
+Style Points 3.2
+1.	It is best not to expose the detailed steps of finding logical results in arrays, but to use an integrated approach:
+A(A>5) = A(A>5) + 3
+This produces the expected answers without exposing the nasty secrets underneath.
+2.	Never use an array linearization as part of your program logic. It makes the code hideous to look at and/or understand, and it is never the “only way to do” anything.
+
+Exercise 3.16 Linearizing an array
+
+>> A	=	[2	5	7	3	
+		8	0	9	42	
+		1	3	4	2]	
+A =						
+	2		5		7	3
+	8		0		9	42
+	1		3		4	2
+>> A	>	5				
+ans =
+0		0		1	0
+1		0		1	1
+0		0		0	0
+>> ix = find(A > 5)
+ix =
+2	7	8	11
+>> A(ix) = A(ix) + 3
+A =
+2	5	10	3
+11	0	12	45
+1	3	4	2
+>> A(11)
+ans =
+42	% (sigh!)
+
+
+Exercise 3.17  Running the array manipulation script
+Run the script in Listing 3.3 and observe the results:
+odds =
+1	3
+odd columns of A using predefined indices ans = 2	7
+1	4
+odd columns of A using anonymous indices ans =
+1	4
+put evens into odd values in a new array B =
+5	0	3
+3	0	2
+set the even values in B to 99 B =
+5	99	3
+3	0	2
+find the small values in A small =
+1 0 0 1
+1 1 0 1
+add 10 to the small values A =
+12	5	7	13
+11	13	4	12
+this can be done in one ugly operation A =
+12	5	7	13
+11	13	4	12
+do the same thing with indices small_index =
+1
+2
+4
+7
+8
+A =
+112	5	7	113
+111	113	4	112
+
+Style Points 3.3
+1.	Do not forget to begin all scripts with the two commands
+clear and clc.
+a.	clear empties the current Workspace window of all variables and prevents the values of old variables from causing strange behavior in this script.
+b.	clc clears the Command window to prevent confusion about whether a display was caused by this script or some earlier activity.
+2.	It is better to enter a few lines at a time and run each version of the script incrementally, rather than editing one huge script and running the whole thing for the first time. When you have added only a few lines to a previously working script, it is easy to locate the source of logic problems that arise.
+3.	It is very tempting to build large, complex vector operation expressions that solve messy problems “in one line of code.” While this might be an interesting mental exercise, the code is much more maintainable if the solution is expressed one step at a time using intermediate variables.
+
+Template 4.1 General template for the if statement
+if <logical expression 1>
+<code block 1>
+elseif <logical expression 2>
+<code block 2>
+.
+.
+.
+elseif <logical expression n>
+<code block n>
+else
+<default code block>
+End
+
+Exercise 4.1 Using if statements
+Write a script that uses input(...) to request a numerical grade in percentage
+and uses if statements to convert that grade to a letter grade according to the
+following table:
+90% and better: A
+80%–90%: B
+70%–80%: C
+60%–70%: D
+Below 60%: F
+Test your script by running it repeatedly for legal and illegal values of the
+grade percentage.
+Check your work against the script shown in Listing 4 . 2 .
+
+Common Pitfalls 4.1
+The MATLAB Command window echoes logical
+results as 1 (true) or 0 (false). In spite of this
+appearance, logical values are not numeric and should
+never be treated as if they were.
+
+Template 4.2 General template for the switch statement
+switch <parameter>
+case <case specification 1>
+<code block 1>
+case <case specification 2>
+<code block 2>
+.
+.
+case <case specification n>
+<code block n>
+otherwise
+<default code block>
+end
+
+Style Points 4.1
+The usual description of the logic suggests that the last case
+in Listing 4 . 4 could be the otherwise clause. However, that
+would prevent you from being able to detect bad month
+number values, as this code does.
+
+Hint 4.1
+The second parameter to the input(...) statement
+prevents MATLAB from attempting to parse the data
+provided, returning a string instead. Without that activity
+suppressed, if you enter the string 'yes', MATLAB will rush
+off looking for a variable by that name.
+
+Style Points 4.2
+The use of indentation is not required in the MATLAB
+language, and it has no significance with regard to syntax.
+However, the appropriate use of indentation greatly
+improves the legibility of code and you should use it. You
+have probably already noted that in addition to colorizing
+control statements, the text editor automatically places the
+control statements in the indented positions illustrated in
+Listings 4.3 and 4.4.
+
+Exercise 4.2 Using the switch statement
+Write and test the script in Listing 4 . 4 using input(...) to request a numerical
+month value.
+You will need to preset a value for leapYear .
+Test your script by running it repeatedly for legal and illegal values of the
+month.
+Modify your script to ask whether the current year is a leap year. (It’s best to
+ask only for February.) You could use code like the following:
+ans = input('leap year (yes/no)', 's');
+leapYear = (ans(1) == 'y');
+Test this new script thoroughly.
+Try this script without the second parameter to input(...) . Can you explain
+what is happening?
+Modify the script again to accept the year rather than yes/no, and implement
+the logic to determine whether that year is a leap year.
+
+Template 4.3 General template for the for statement
+for <variable specification>
+<code block>
+end
+
+Common Pitfalls 4.2
+By setting the default answer to the first value, we avoid the
+problem of seeding the result with a value that could be
+already outside the range of the vector values. For example,
+we might think that theMax = 0; would be a satisfactory
+seed. However, this would not do well if all the elements of
+A were negative.
+
+Exercise 4.3 Producing for statement results
+Enter and run the scripts in Listings 4.5 and 4.6. They should each produce the
+following results:
+A =
+6 12 6 91 13 61 26 22 71 54
+the max value in A is 91 at 4
+>>
+
+Template 4.4 General template for the while statement
+<initialization>
+while <logical expression>
+<code block> % must make some changes
+% to enable the loop to terminate
+end
+
+Exercise 4.4 Producing while statement results
+Enter and run the script in Listing 4 . 7 . It should produce the following results:
+A =
+6 12 6 91 13 61 26 22 71 54
+the max value in A is 91 at 4
+>>
+
+Style Points 4.3
+We wrote the for loop examples in two styles: the
+direct access style and the indexing style. Many people
+code in the indexing style even when the index value
+is not explicitly required. This is slightly tacky and
+demonstrates a lack of appreciation for the full power
+of the MATLAB language.
+
+Style Points 4.4
+The use of break and continue statements is
+frowned upon in programming circles for the same
+reason that the goto statement has fallen into
+disrepute—they make it more difficult to understand
+the flow of control through a complex program. It is
+preferable to express the logic for remaining in a
+while loop explicitly in its controlling logical
+expression, combined with if statements inside the
+loop to skip blocks of code. However, sometimes this
+latter approach causes code to be more complex than
+would be the case with judicious use of break or
+continue.
+
+Exercise 4.5 Producing loop-and-a-half test results
+Enter and run the script in Listing 4 . 8 . It should produce the following results:
+Enter a radius: 4
+area = 50.265482; circum = 25.132741
+Enter a radius: 3
+area = 28.274334; circum = 18.849556
+Enter a radius: 100
+area = 31415.926536; circum = 628.318531
+Enter a radius: 0
+>>
+
+Style Point 5.1 Parameter Passing
+Some languages provide an alternative technique—“passing by reference”—whereby the memory location for the parameters is passed to the function while the values remain in the caller’s workspace. Syntactically, this is usually a bad thing, allowing deliberate or accidental assignments to “reach back” into the scope of the calling code and thereby perhaps causing undesirable side effects. However, restricting parameter access to passing by value can result in poor program performance. When a function needs access to large sets of data, consider improving the efficiency by using global variables.
+
+Exercise 5.2 Testing multiple returns
+Adapt the original cylinder function as shown in Listing 5.2 and perform the following tests in the Command window:
+>> [a, v] = cylinder(1, 1) a =
+6.2832
+v =
+3.1416
+>> cylinder(1, 1) ans =
+6.2832
+>> a = cylinder(1, 1) a =
+6.2832
+>> v = cylinder(1, 1) v =
+6.2832
+>>
+
+Style Points 5.2
+1.	Before you include a function in a complex algorithm, you should always test its behavior in isolation in a script. This test script should validate not only the normal operation of the function, but also its response to erroneous input data it might receive.
+2.	Although any legal MATLAB instruction is permitted within the code body of a function, it is considered bad form (except temporarily for debugging purposes) to display values in the Interactions window.
+3.	We also actively discourage the use of the input(...) function within the code body. If you need to input some values to test a function, do so from the Interactions window or a test script
+
+Exercise 5.3  Observing variable scoping
+
+Put a break point at Line 6 of your version of the code in Listing 5.2, and then rerun the function by entering:
+
+>> [a, v] = cylinder(1, 1)
+
+Notice that the logic stops at that break point and the Text Editor displays an arrow. The Workspace window shows you the values of height, radius, and base but none of the variables you left in the workspace for the Interactions window. The function has no access to other workspaces.
+Observe that as you step through the function, the variables appear in the Variables window and are updated. When you return from the cylinder function to display the results, the workspace for the function disappears. The calling environment has no access to the variables within the function
+
+Hint 5.1
+If you experiment with this script a little, you will discover the power of vector processing for rapidly determining the sensitivity of results to different parameters. The mathematics may not work if you provide vectors for more than one of the given data items. However, vectors supplied for each of them in turn provide insight into the sensitivity of the results to each parameter.
+
+Exercise 6.1 Character casting
+Enter the following in the Command window and study the results:
+
+>> uint8('A') % uint8 is an integer data type
+% with values 0 - 255
+ans =
+65
+>> char(100) % char is the character class ans =
+d
+>> char([97 98 99 100 101])
+ans = abcde
+>> double('fred') ans =
+102 114 101 100
+>> fred = 'Fred' fred =
+Fred
+>> next = fred + 1 next =
+71 115 102 101
+>> a = uint8(fred) a =
+70 114 101 100
+>> name = char(a + 1) name =
+Gsfe
+
+Exercise 6.2 Character strings
+
+>> first = 'Fred' first =
+Fred
+>> last = 'Jones' last =
+Jones
+>> name = [first, ' ', last] name =
+Fred Jones
+>> name(1:2:end) ans =
+Fe oe
+>> name(end:-1:1) ans =
+senoJ derF
+
+Exercise 6.3 Character string logic
+
+>> n = 'fred' n =
+fred
+>> n > 'g'
+ans =
+0 1  0 0
+
+
+Exercise 6.4  The input(...) function
+
+>> fred = 'Fred';
+>> n = input('Enter a number: ') Enter a number: 5
+n =
+5
+>> n = input('Enter a number: ') Enter a number: fred
+n = Fred
+>> n = input('Enter a number: ') Enter a number: 1sdf
+??? 1sdf
+Error: Missing MATLAB operator. Enter a number: s1df
+??? Error using ==> input
+Undefined function or variable 's1df'. Enter a number: char(fred - 2)
+n = Dpcb
+>> n = input('Enter a number: ') Enter a number: 'ABCD'
+n = ABCD
+>> n = input('Enter a number: ', 's' ) Enter a number: ABCD
+n = ABCD
+
+
+Exercise 6.5 Converting strings to numbers
+
+>> value = str2num('3.14159') value =
+3.1416
+Now, to check the class of the variable value, either look in the Variables window or enter the whos command:
+>> whos
+Name	Size	Bytes Class	Attributes value	1x1		8 double
+>>
+
+We observe that the function has indeed interpreted the string as its numerical value.
+
+
+Exercise 6.6  The disp(...) function
+
+>> a = 4;
+>> disp(a) 4
+>> disp(['the answer is ', a]) the answer is
+>> disp(['the answer is ', int2str(a)]) the answer is 4
+
+Exercise 6.7  fprintf(...) and sprintf(. . .)
+
+>> a = 42;
+>> b = 'fried okra';
+>> n = fprintf('the answer is %d\n cooking %s', ...
+a,	b);
+the answer is 42 cooking fried okra n =
+37
+>> s = sprintf('the answer is %d\n cooking %s\n', ...
+a,	b)
+s =
+the answer is 42 cooking fried Okra
+>> str = input('Enter the data: ', 's'); Enter the data: 42 3.14159 -1
+A = sscanf( str,'%f') A =
+42.0000
+3.1416
+-1.0000
+>>
+
+Exercise 6.8  Character string comparison
+
+>> 'abcd' == 'abcd'
+1	1	1	1
+>> 'abcd' == 'abcde'
+??? Error using ==> eq
+Array dimensions must match for binary array op.
+>> strcmp('abcd', 'abcde') ans =
+0
+>> strcmp('abcd', 'abcd') ans =
+1
+>> 'abc' == 'a' ans =
+1	0	0
+>> strcmpi('ABcd', 'abcd') ans =
+1
+
+Common Pitfalls 6.1
+The if statement uses a logical expression as its controlling test; therefore, it is bound by the same comparison rules as those applied to vectors. Two strings being compared must be of the same length, and all of the comparisons must match to result in a logical true. Frequently, we expect the if statement to compare strings of unequal length. However, this will cause an error whenever two strings of unequal length are compared (unless one string is just one character). You should use the switch statement, which will correctly compare strings of unequal length in the case tests.
+
+Exercise 6.9 Character string arrays
+
+>> v = ['Character strings having more than' 'one row must have the same number ' 'of columns just like arrays!	']
+v =
+Character strings having more than one row must have the same number of columns just like arrays!
+>> v = ['MATLAB gets upset' 'when rows have' 'different lengths']
+??? Error using ==> vertcat
+All rows in the bracketed expression must have the same number of columns.
+
+>>eng=char('Timoshenko','Maxwell','Mach','von Braun') eng =
+Timoshenko Maxwell Mach
+von Braun
+>> size(eng) ans =
+4	10
+
+
+Common Pitfalls 6.2
+Trying to concatenate strings of unequal length vertically into column arrays of strings will cause errors because the vertical concatenation must use rows of equal length. Use the version of the char(...) function that pads the strings with spaces.
+
+
+Exercise 7.1 Cell arrays
+>> A = { 3, [1,2,3] 'abcde'}
+A =
+[3] [1x3 double] 'abcde'
+>> A{1:2}
+ans =
+3
+ans =
+1 2 3
+>> [x y] = A{1:2}
+x =
+3
+y =
+1 2 3
+>> B = A{1:2}
+??? Illegal right-hand side in assignment.
+Too many elements.
+>> B([1 3]) = A([1 2])
+B =
+[3] [] [1x3 double]
+>> B{[1 3]} = A{[1 2]}
+??? Illegal right-hand side in assignment.
+Too many elements.
+>> [a, b, c] = deal(A{:})
+a =
+3
+b =
+1 2 3
+c =
+abcde
+>> [a, b] = deal(A)
+a =
+[3] [1x3 double] 'abcde'
+b =
+[3] [1x3 double] 'abcde'
+>> B = A(1:2)
+B =
+[3] [1x3 double]
+>> for i = 1:2
+s(i) = sum(A{i})
+end
+s =
+3
+s =
+3 6
+>> F{2} = 42
+F =
+[] [42]
+>> F{3} = {42}
+F =
+[] [42] {1x1 cell}
+
+Template 7 . 1 General template for processing cell arrays
+<initialize result>
+for <index specification>
+<extract an element>
+<check the element accordingly>
+<process the element accordingly>
+end
+<finalize result>
+
+Common Pitfalls 7.1
+Be careful. rmfield(...) returns a new structure with the
+requested field removed. It does not remove that field from
+your original structure. If you want the field removed from
+the original, you must assign the result from rmfield(...)
+to replace the original structure:
+>> A = rmfield(A, 'item1')
+A =
+item2: 21
+
+Exercise 7.2 Building structures
+Suppose that you want to use structures to maintain your address book. In the
+Command window, enter the following commands:
+>> entry.first = 'Fred'
+entry =
+first: 'Fred'
+>> entry.last = 'Jones';
+>> entry.phone = '(123) 555-1212'
+entry =
+first: 'Fred”
+last: 'Jones'
+phone: '(123) 555-1212'
+>> entry.phone
+ans =
+(123) 555-1212
+>> date.day = 31;
+>> date.month = 'February';
+>> date.year = 1965
+date =
+day: 31
+month:'February'
+year: 1965
+>> entry.birth = date
+entry =
+first: 'Fred'
+last: 'Jones'
+phone: '(123) 555-1212'
+birth: [1x1 struct]
+>> entry.birth
+ans =
+day: 31
+month: 'February'
+year: '1965'
+>> entry.birth.year
+ans =
+1965
+
+
+Exercise 7.3 A CD structure
+Create one entry of CD information:
+>> CD = makeCD('Blues', 'Charles, Ray', ...
+'Genius Loves Company', 2004, 4.5, 15.35 )
+CD =
+genre: 'Blues'
+artist: 'Charles, Ray'
+title: 'Genius Loves Company'
+year: 2004
+stars: 4.5000
+price: 15.3500
+>> flds = fieldnames(CD)
+flds =
+'genre'
+'artist'
+'title'
+'year'
+'stars'
+'price'
+>> field = flds{2}
+field =
+artist
+>> CD.(field)
+ans =
+Charles, Ray
+
+Exercise 7.4 Building a structure array “by hand”
+>> entry(1).first = 'Fred';
+>> entry(1).last = 'Jones';
+>> entry(1).age = 37;
+>> entry(1).phone = ' (123) 555-1212';
+>> entry(2).first = 'Sally';
+>> entry(2).last = 'Smith';
+>> entry(2).age = 29;
+>> entry(2).phone = '(000) 555-1212'
+entry =
+1x2 structure array with fields:
+first
+last
+age
+phone
+
+Common Pitfalls 7.2
+A few very understandable but sneaky errors occur when
+adding structures that have been created “manually” rather
+than by means of a standardized constructor function. If the
+new structure has fields not in the original structure, or extra
+fields, you see a slightly obscure error: "Subscripted
+assignment between dissimilar structures."
+Perhaps more puzzling, if you are using an older version of
+MATLAB, this same error occurs if all the fields are present,
+but are in the wrong order.
+
+Exercise 7.5 The CD collection
+Retrieve and run the script named buildCDs.m from the Companion Web site.
+Then, in the Interactions window, enter the following commands to create
+your collection of CD information:
+>> cds(5)
+ans =
+genre: 'Rock/Pop'
+artist: 'Ludacris'
+title: 'The Red Light District'
+year: 2004
+stars: 4
+price: 13.49
+>> flds = fieldnames(collection)
+flds =
+'genre'
+'artist'
+'title'
+'year'
+'stars'
+'price'
+cds(5).strs = 0.5;
+>> cds(5)
+ans =
+genre: 'Rock/Pop'
+artist: 'Ludacris'
+title: 'The Red Light District'
+year: 2004
+stars: 4
+price: 13.4900
+strs: 0.5
+>> cds(1)
+ans =
+genre: 'Blues'
+artist: 'Clapton, Eric'
+title: 'Sessions For Robert J'
+year: 2004
+stars: 2
+price: 18.9500
+strs: []
+>> cds = rmfield(cds, 'strs');
+>> cds(1)
+ans =
+genre: 'Blues'
+artist: 'Clapton, Eric'
+title: 'Sessions For Robert J'
+year: 2004
+stars: 2
+price: 18.9500
+>> sum([cds.price])
+ans =
+409.1100
+
+
+Style Points 8.1
+In a practical sense, saving workspace data is very rarely an appropriate approach to saving work because it saves the results but not the code that generated the results. It is almost always better to save the scripts and raw data that created the workspace. For example, this is a good idea when you have a lengthy computation (perhaps one run overnight) to prepare data for a display. You could split that script into two halves. The first half would do the overnight calculation and save the workspace. The second part can then read the workspace quickly, and you can develop sophisticated ways to display the data without having to re-run the lengthy calculations.
+
+Exercise 8.1 Reading Excel data
+
+>> [nums txt raw] = csvread('grades.csv')
+% or xlsread('grades.xls') with MATLAB nums =
+19	78
+22	83
+98	99
+21	56
+23	89
+19	51
+txt	=	
+	'name'	'age'	'grade'
+	'fred'	"	"
+	'joe'	"	"
+	'sally'	"	"
+	'charlie'	"	"
+	'mary'	"	"
+	'ann'	"	"
+raw	=		
+	'name'	'age'	'grade'
+	'fred'	[ 19]	[	78]
+	'joe'	[ 22]	[	83]
+	'sally'	[ 98]	[	99]
+	'charlie'	[ 21]	[	56]
+	'mary'	[ 23]	[	89]
+	'ann'	[ 19]	[	51]
+	'ann'	[ 19]	[	51]
+
+
+Exercise 8.2 Reading delimited files
+>> A = dlmread('nums.txt') A =
+19	78	42
+22	83	100
+98	99	34
+21	56	12
+23	89	0
+19	51	0
+
+Common Pitfalls 8.1
+It is best not to provide the delimiter unless you have to. Without it, MATLAB will assume that repeated delimiters— like tabs and spaces—are single delimiters. If you do specify a delimiter, it will assume that repeated delimiter characters are separating different, absent field values.
+
+
+Technical Insight 9.1
+In most computer languages, user programs and functions
+are compiled before they can be run. Part of that compilation
+process is defining the variable names and data types. This
+allows the system processes to compute the exact size of
+each stack frame before the program begins to run. Since the
+MATLAB language is interpreted and interactive, this
+information is not available. Consequently, every stack frame
+must be dynamically sized to allow for the “surprises”
+inherent in this style of programming.
+
+Template 9 . 1 General template for a recursive function
+function <result> = <function_name> (<formal_params>)
+<documentation>
+if <terminating condition 1>
+<result> = <initial value 1>
+elseif <terminating condition 2>
+<result> = <initial value 2>
+...
+else
+<result> = <operation> ...
+(<formal_params>, ...
+<function_name> (<new_params>))
+end
+
+Exercise 9.1 Analyzing recursive behavior
+1. Create the fact(...) function from Listing 9 . 1 , remove the first ‘%’ from
+Line 3 to enable the printout, and run it from the Command window:
+>> fact(4)
+fact( 4 )
+fact( 3 )
+fact( 2 )
+fact( 1 )
+fact( 0 )
+ans =
+24
+2. Put a break point at Line 4 and run fact(2) . The function should pause in
+the first stack frame. Notice that the only variable in the workspace is N
+with a value 2 .
+3. Find the “step into” button and click it. Since N is not 0 , the arrow should
+move to Line 7.
+4. Click again, and the workspace should change to a new workspace with
+the value N = 1 — you just called a clone of the original function with its
+own stack frame. There should be a second, transparent arrow at Line 7
+to indicate that some clone of this function is waiting at that point for a
+result.
+5. Continue stepping into functions until you return from the copy where
+N = 0 . When this return happens, you return to the frame with N = 1 , the
+frame “underneath,”at Line 7, and are then able to compute the first
+result.
+6. Further stepping will return from each stack frame until you finally return
+to your script’s workspace with the final answer.
+
+Template 9 . 2 General template for processing exceptions
+successful = false
+while <not successful>
+try
+<request data from the user>
+<process the data>
+successful = true
+catch
+<announce the error to the user>
+end
+end
+
+Style Points 9.1
+1. You should allow the exception-processing mechanism to
+simplify the structure of your code. Rather than attempting
+to detect every possible data error and return error
+condition, perhaps from deeply nested function calls, allow
+the exception mechanism to return control directly to the
+code that can deal with the problem.
+2. Exception processing is for processing events that occur
+outside the normal thread of execution. It may be tempting
+at times to use the exception mechanism as a clever means
+of changing the normal flow of program control, but resist
+that temptation. It produces ugly, untraceable code and
+should be avoided.
+
+Exercise 9.2 Processing exceptions
+Put the code from Listing 9 . 2 in a script and execute it, using the following data:
+enter a triangle: [3 4 8]
+bad triangle - try again
+enter a triangle: [3 4 6]
+the angle is 62.720387
+Then, edit the script to remove the try statement and the catch block and
+repeat the test.
+
+Exercise 9.2 Processing exceptions
+Put the code from Listing 9 . 2 in a script and execute it, using the following data:
+enter a triangle: [3 4 8]
+bad triangle - try again
+enter a triangle: [3 4 6]
+the angle is 62.720387
+Then, edit the script to remove the try statement and the catch block and
+repeat the test.
+
+Exercise 9.3 Writing the protected factorial
+Write the fact(...) function as shown in Listing 9 . 3 , and test it in the
+Command window:
+>> fact(-1)
+??? Error using ==> fact
+bad parameter for fact
+>> fact(.5)
+??? Error using ==> fact
+bad parameter for fact
+>> fact(4)
+ans =
+24
+
+Technical Insight 9.2	
+Truthfulness requires pointing out that while computing the
+Fibonacci series recursively is a very nice, conceptually simple
+approach, it is a nightmare as far as the computational load
+on your processor. Do not try to compute beyond about 27
+numbers in the series. An iterative solution, while less
+elegant, runs in linear time rather than exponential.
+
+Style Points 10.1
+It is conceivable—and in fact, a common practice—to
+combine multiple operations into one computing module,
+but it is poor abstraction and leads to code that is hard to
+understand and/or debug.
+
+Table 10.1 Taxonomy of solution steps
+Operation Description Consequence
+Insert Inserts one item into a collection Collection with one more item
+Build Creates a collection from a data source
+(external file or traversing another collection);
+usually accomplished by starting with an empty
+collection and inserting one item at a time
+A new collection of data
+Traverse Touches each item of data in the collection—
+frequently used to display or copy a collection
+The collection is unchanged
+Map Changes the content of some or all of the items
+in the collection
+A new collection of the same
+length, but the content of some
+or all items is changed
+Filter Removes some items from the collection A new collection with reduced
+length, but the content of the
+items remains unchanged
+Fold Traverses the collection, summarizing the contents
+with a single result (e.g., sum, max, or mean)
+A single result summarizing the
+collection in some way; the
+collection is unchanged
+Search Traverses the collection until an item matches a
+given search criterion and then stops, returning
+the result
+A single result or the indication that
+the desired match was not achieved;
+the collection is unchanged
+Sort Puts the collection in order by some specific
+criterion
+A new collection of the same
+length
+
+Template 10 . 2 Template for traversing
+<initialize the result>
+for item <across the whole collection>
+<operate on the item>
+<end of the loop>
+<finalize the result>
+
+Template 10 . 3 Template for building
+<initialize the new collection>
+for item <across the data source>
+<extract the item>
+<insert item in new collection>
+<end of the loop>
+<finalize the new collection>
+
+Template 10 . 4 Template for mapping
+<initialize the result>
+for item <across the whole collection>
+<extract the item>
+<modify the item>
+<insert modified item in the result>
+<end of the loop>
+<finalize the result>
+
+Style Points 10.2
+A simpler example of collection building occurred when we
+built the CD collection initially by repeated calls to the
+makeCD method, as shown in Chapter 7 when we were
+inserting each item at the end of the collection. However,
+while that example seems to simplify the process of building
+the collection, it really did not. The data for the function
+calls had to be extracted from a CD listing and edited to
+construct the function calls—normally not an efficient or
+effective way to compose a collection. Such hard-wiring
+should generally be avoided.
+
+Template 10.5 Template for Filtering
+<initialize the new collection>
+for item <across the whole collection>
+<extract the item>
+if <keep the item>
+<insert item in new collection>
+<end if>
+<end for>
+<finalize the new collection>
+
+Template 10 . 6 Template for folding
+<initialize the summary value>
+for item <across the whole collection>
+<extract the item>
+<update the summary value>
+<end for>
+<finalize the summary value>
+
+Template 10 . 7 Template for searching
+<initialize result to not succeeded>
+for <item in the collection>
+if <found criteria>
+<set result to succeeded>
+<break the loop>
+<end if>
+<end for>
+<check for failure>
+
+Style Points 11.1
+All of these capabilities are also available to the script that
+creates the plots, and you are very likely to want to generate
+a plot more than once. Therefore, it is unwise to put a
+significant amount of manual effort into adjusting a plot. It is
+better to experiment with the manual adjustments and then
+find out how to make the same adjustments in the script that
+creates the plots. This also leaves you a permanent record of
+how the plot was generated.
+
+Style Points 11.2
+By convention, good engineers are expected to represent
+the data with appropriate line styles to avoid misleading the
+reader. For example, if you have some raw data that is only
+valid at the measurement points, it should be plotted with
+symbols only. Connecting the data with a line would imply
+that the data have some interpolated values, which may not
+be the case. On the other hand, if you calculate a theoretical
+curve that is good throughout the range of x, it should be
+plotted as a continuous curve, perhaps even at a better
+resolution (more x values) than the raw data samples.
+
+Exercise 11.1 Exploring the simple plot
+1. run script in Listing 11 . 7 without the semicolon on Line 2, and observe the
+following:
+xx =
+-3 -2 -1 0 1 2 3
+{etc}
+yy =
+-3 -3 -3 -3 -3 -3 -3
+-{etc}
+3 3 3 3 3 3 3
+Notice that in general, if x is length m and y is length n , the xx values
+consist of the x vector in rows replicated n times, and the yy values consist
+of the y vector as a column replicated m times. Together, they provide the
+underlying x and y values for the “floor” of the bowl plot from which the z
+values are computed to draw the picture.
+2. Insert the line hidden off after mesh(xx, yy, zz) . Notice that the faces
+are now transparent.
+3. Change mesh(xx, yy, zz) to surf(xx, yy, zz) . Notice that the panels
+are now colored and the lines are black. This form is also insensitive to the
+hidden parameter.
+4. Replace hidden off with shading flat , and notice that the lines have
+disappeared.
+5. Replace shading flat with shading interp , and notice that the surface
+coloring now varies smoothly.
+6. Insert the line colormap 'summer' after surf(xx, yy, zz) . Look up
+colormap in Appendix A for details.
+7. Do not forget to rotate your images and examine them from different
+points of view using the 3-D rotate tool bar icon.
+
+
+Exercise 12.1 Matrix multiply
+1. >> A = [2 5 7; 1 3 42]
+A =
+2 5 7
+1 3 42
+2. >> B = [1 2 3]'
+B =
+1
+2
+3
+3. >> A * B
+ans =
+33
+133
+4. >> (1:2) * A
+ans =
+4 11 91
+5. >> I2 = eye(2)
+I2 =
+1 0
+0 1
+6. >> I2 * A
+ans =
+2 5 7
+1 3 42
+7. >> A*I2
+??? Error using ==> mtimes
+Inner matrix dimensions must agree.
+8. >> A*eye(3)
+ans =
+2 5 7
+1 3 42
+
+
+Technical Insight 12.1
+According to the MATLAB language help system, the
+third way really computes (C‘\A’)’, which can only
+work if C is also square.
+
+
+Exercise 12.2 Matrix divide
+>> A = magic(3)
+A =
+8 1 6
+3 5 7
+4 9 2
+>> B = [1 26 24; 9 22 20; 5 12 16]
+B =
+1 26 24
+9 22 20
+5 12 16
+>> AB = A * B
+AB =
+47 302 308
+83 272 284
+95 326 308
+>> BA = B * A
+BA =
+182 347 236
+218 299 248
+140 209 146
+>> AB * inv(B)
+ans =
+8 1 6
+3 5 7
+4 9 2
+>> AB / B
+ans =
+8 1 6
+3 5 7
+4 9 2
+>> B \ BA
+ans =
+8 1 6
+3 5 7
+4 9 2
+>> BA / B
+ans =
+-4.3000 29.2000 -15.3000
+-9.9667 27.5333 -3.9667
+-5.7333 20.7667 -8.2333
+
+
+Exercise 13.1 Working with image stretching
+>> pic = imread(<your favorite image>);
+>> [rows cols clrs] = size(pic)
+>> imshow( pic(2:2:end, 3:3:end, :);
+>> RFactor = 1.43; CFactor = 0.75; % shrink / stretch factors
+>> rowVec = round(linspace(1, rows, Rfactor*rows));
+>> colVec = round(linspace(1, cols, Cfactor*cols));
+>> imshow(pic(rowVec, colVec,:)); % shrunk / stretched image
+>> imshow(pic(:, :, [2 3 1])); % re-ordering the color layers
+
+
+Common Pitfalls 13.1
+Be careful requesting the size of 3-D (and more) arrays. If
+you leave off variables—as here, you might be tempted not
+to ask for the number of colors because you know it’s
+three—the size(...) function multiplies together the
+remaining dimension sizes. So if img is sized 1200 * 1600,
+[r,c] = size(img) would return r = 1200 and c = 4800 !
+If you provide to only one variable, it returns a vector of the
+sizes of each dimension of the array. So v = size(img)
+returns [1200 1600 3] .
+
+Technical Insight 14.1
+The background theory of sampling is beyond the scope of
+this text. Interested readers should research Nyquist on a
+good search engine.
+
+Exercise 14.1 Locating the first part of the speech
+>> [houston, Fsh] = wavread('a13prob.wav');
+>> subplot(1, 2, 1)
+>> plot(houston);
+>> sound(houston, Fsh);
+
+Exercise 14.2 Extracting the first part of the speech
+>> clip = 110000;
+>> prob = houston(clip:end)*2;
+>> subplot(1, 2, 2)
+>> plot(prob)
+
+
+Exercise 14.3 Extracting “my dear”
+>> figure
+>> [damn, Fsd] = wavread('givdamn2.wav');
+>> subplot(1, 2, 1)
+>> plot(damn);
+>> lo = 4500;
+>> hi = 8700;
+>> sdamn = [damn(1:lo); damn(hi:end) ] * .5;
+>> subplot(1, 2, 2)
+>> plot(sdamn);
+
+
+Exercise 14.4 Assemble the speech
+>> [truth, Fst] = wavread('truth1.wav');
+>> speech = [prob; sdamn; truth * .7];
+>> figure
+>> plot(speech);
+>> sound(speech, Fst);
+
+Exercise 14.5 Note pitch experiment
+>> [note Fs] = wavread('instr_piano.wav');
+>> sound(note, Fs);
+>> sound(note(ceil(1:1.3:end)), Fs);
+>> sound(note(ceil(1:0.5:end)), Fs);
+
+Technical Insight 14.2
+The fact that the actual maximum frequency is half of the
+sampling frequency is consistent with the Nyquist criterion
+that the maximum frequency you can discern with digital
+sampling is half the sampling frequency.
+
+Style Points 15.1
+A good convention to adopt is shown in Figure 15.4 :
+• Use symbols to plot data points that are real values with
+no associated information connecting them
+• Draw lines between data points only when there is an
+analytic relationship that connects the data points
+Here, we use a circle symbol for the raw data to emphasize
+the original source of the information, and a smooth line for
+the spline curve to indicate that we are assuming a possibly
+erroneous but continuous relationship between data points.
+
+
+Exercise 15.1 The evils of extrapolation
+After running the script in Listing 15 . 1 , enter this code:
+>> spline(x, y, -3)
+ans =
+813.3333
+
+
+Exercise 15.2 Optimal linear fit
+Again using the data from Section 15.1.1 :
+>> x=0:5; y=[0,20,60,68,77,110]
+>> polyfit(x, y, 1)
+ans =
+20.8286 3.7619
+
+Technical Insight 16.1
+Interested readers should look up little-O, Big-V,
+little-v, and Big-Q.
+
+
+Common Pitfalls 16.1
+A deceptively simple question arises: Should you expect the
+worldData at line 6 of Listing 16 . 7 to contain the field
+growth? Actually, it will not. Although it appears that the
+function findBestn adds this field to worldData , it is
+working with a copy of the worldData structure array that
+is not returned to the calling script.
+
+
+Template 17 . 1 Template for graph traversal
+1. < create a queue >
+2. < enqueue the start node >
+3. < initialize the result >
+4. while < the queue is not empty >
+5. < dequeue a node >
+6. < operate on the node >
+7. < for each edge from this node >
+8. < retrieve the other node >
+9. if < not already used >
+10. < enqueue the other node >
+11. end
+12. end
+13. end
+14. < return the result >
+
+
+Technical Insight 17.1
+According to Wikipedia, this algorithm was developed in
+1930 by Czech mathematician Vojtech Jarník and later
+independently by computer scientist Robert C. Prim in 1957
+and rediscovered by Edsger Dijkstra in 1959. Therefore, it is
+also sometimes called the DJP algorithm, the Jarník algorithm,
+or the Prim–Jarník algorithm.
+

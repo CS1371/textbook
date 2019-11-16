@@ -1,0 +1,601 @@
+Exercise 2.1  Starting and stopping MATLAB
+
+If you have not installed MATLAB on your computer yet, follow the directions that came with your license for performing and testing the installation.
+To start MATLAB, double-click on its icon. In the Interactions window you should see the MATLAB prompt (>> ), which tells you that the MATLAB system is waiting for you to enter a command.
+To exit MATLAB, type exit at the MATLAB prompt, choose the menu option File > Exit, or click the close icon (x) in the upper-right corner of the screen.
+
+Exercise 4.1 Using if statements
+
+Write a script that uses input(...) to request a numerical grade in percentage and uses if statements to convert that grade to a letter grade according to the following table:
+90% and better: A 80%–90%: B
+70%–80%: C
+60%–70%: D
+Below 60%: F
+
+Test your script by running it repeatedly for legal and illegal values of the grade  percentage.
+Check your work against the script shown in Listing 4.2.
+
+Exercise 4.2 Using the switch statement
+
+Write and test the script in Listing 4.4 using input(...) to request a numerical month value.
+You will need to preset a value for leapYear.
+Test your script by running it repeatedly for legal and illegal values of the month.
+Modify your script to ask whether the current year is a leap year. (It’s best to ask only for February.) You could use code like the following:
+
+ans = input('leap year (yes/no)', 's'); leapYear = (ans(1) == 'y');
+Test this new script thoroughly.
+Try this script without the second parameter to input(...). Can you explain what is happening?
+Modify the script again to accept the year rather than yes/no, and implement the logic to determine whether that year is a leap year.
+
+Exercise 4.3 Producing loop-and-a-half test results
+
+Enter and run the script in Listing 4.8. It should produce the following results:
+
+Enter a radius: 4
+area = 50.265482; circum = 25.132741 Enter a radius: 3
+area = 28.274334; circum = 18.849556 Enter a radius: 100
+area = 31415.926536; circum = 628.318531
+Enter a radius: 0
+>>
+
+Exercise 5.1 Saving and testing the cylinder function
+
+Enter the function definition from Listing 5.1 in the Text Editor and save it as cylinder.m in your Current Directory. Then enter the following experiments in the Interactions window. Notice that the first help line appears next to this file name in the Current Directory.
+>> help cylinder
+function to compute the volume of a cylinder volume = cylinder(height, radius)
+>> cylinder(1, 1) ans =
+3.1416
+>>
+
+Exercise 5.2 Testing multiple returns
+
+Adapt the original cylinder function as shown in Listing 5.2 and perform the following tests in the Command window:
+>> [a, v] = cylinder(1, 1) a =
+6.2832
+v =
+3.1416
+>> cylinder(1, 1) ans =
+6.2832
+>> a = cylinder(1, 1) a =
+6.2832
+>> v = cylinder(1, 1) v =
+6.2832
+>>
+
+
+Exercise 5.3  Observing variable scoping
+
+Put a break point at Line 6 of your version of the code in Listing 5.2, and then rerun the function by entering:
+
+>> [a, v] = cylinder(1, 1)
+
+Notice that the logic stops at that break point and the Text Editor displays an arrow. The Workspace window shows you the values of height, radius, and base but none of the variables you left in the workspace for the Interactions window. The function has no access to other workspaces.
+Observe that as you step through the function, the variables appear in the Variables window and are updated. When you return from the cylinder function to display the results, the workspace for the function disappears. The calling environment has no access to the variables within the function.
+
+Exercise 6.1 Character casting
+Enter the following in the Command window and study the results:
+>> uint8('A') % uint8 is an integer data type
+% with values 0 - 255
+ans =
+65
+>> char(100) % char is the character class
+ans =
+d
+>> char([97 98 99 100 101])
+ans =
+abcde
+>> double('fred')
+ans =
+102 114 101 100
+>> fred = 'Fred'
+fred =
+Fred
+>> next = fred + 1
+next =
+71 115 102 101
+>> a = uint8(fred)
+a =
+70 114 101 100
+>> name = char(a + 1)
+name =
+Gsfe
+
+Exercise 6.2 Character strings
+>> first = 'Fred'
+first =
+Fred
+>> last = 'Jones'
+last =
+Jones
+>> name = [first, ' ', last]
+name =
+Fred Jones
+>> name(1:2:end)
+ans =
+Fe oe
+>> name(end:-1:1)
+ans =
+senoJ derF
+
+Exercise 6.3 Character string logic
+>> n = 'fred'
+n =
+fred
+>> n > 'g'
+ans =
+0 1 0 0
+
+Exercise 6.4 The input(...) function
+>> fred = 'Fred';
+>> n = input( 'Enter a number: ' )
+Enter a number: 5
+n =
+5
+>> n = input( 'Enter a number: ' )
+Enter a number: fred
+n =
+Fred
+>> n = input( 'Enter a number: ' )
+Enter a number: 1sdf
+??? 1sdf
+Error: Missing MATLAB operator .
+Enter a number: s1df
+??? Error using ==> input
+Undefined function or variable 's1df'.
+Enter a number: char(fred - 2)
+n =
+Dpcb
+>> n = input( 'Enter a number: ' )
+Enter a number: 'ABCD'
+n =
+ABCD
+>> n = input( 'Enter a number: ' , 's' )
+Enter a number: ABCD
+n =
+ABCD
+
+Exercise 6.5 Converting strings to numbers
+>> value = str2num('3.14159')
+value =
+3.1416
+Now, to check the class of the variable value, either look in the
+Variables window or enter the whos command:
+>> whos
+Name Size Bytes Class Attributes
+value 1x1 8 double
+>>
+
+Exercise 6.6 The disp(...) function
+>> a = 4;
+>> disp(a)
+4
+>> disp(['the answer is ', a])
+the answer is
+>> disp(['the answer is ', int2str(a)])
+the answer is 4
+
+Exercise 6.7 fprintf(...) and sprintf (. . .)
+>> a = 42;
+>> b = 'fried okra';
+>> n = fprintf( 'the answer is %d\n cooking %s' , ...
+a, b);
+the answer is 42
+cooking fried okra
+n =
+37
+>> s = sprintf( 'the answer is %d\n cooking %s\n' , ...
+a, b)
+s =
+the answer is 42
+cooking fried Okra
+>> str = input( 'Enter the data: ' , 's' );
+Enter the data: 42 3.14159 -1
+A = sscanf( str,'%f')
+A =
+42.0000
+3.1416
+-1.0000
+>>
+
+Exercise 6.8 Character string comparison
+>> 'abcd' == 'abcd'
+1 1 1 1
+>> 'abcd' == 'abcde'
+??? Error using ==> eq
+Array dimensions must match for binary array op .
+>> strcmp('abcd', 'abcde')
+ans =
+0
+>> strcmp('abcd', 'abcd')
+ans =
+1
+>> 'abc' == 'a'
+ans =
+1 0 0
+>> strcmpi('ABcd', 'abcd')
+ans =
+1
+
+Exercise 6.9 Character string arrays
+>> v = ['Character strings having more than'
+'one row must have the same number '
+'of columns just like arrays! ']
+v =
+Character strings having more than
+one row must have the same number
+of columns just like arrays!
+>> v = [' MATLAB gets upset '
+' when rows have '
+' different lengths ']
+??? Error using ==> vertcat
+All rows in the bracketed expression must have the
+same number of columns .
+>>eng=char('Timoshenko','Maxwell','Mach','von Braun')
+eng =
+Timoshenko
+Maxwell
+Mach
+von Braun
+>> size(eng)
+ans =
+4 10
+
+Exercise 7.1 Cell arrays
+
+>> A = { 3, [1,2,3] 'abcde'} A =
+[3] [1x3 double] 'abcde'
+>> A{1:2}
+ans =
+3
+ans =
+1	2	3
+>> [x y] = A{1:2}
+x =
+3
+y =
+1	2	3
+>> B = A{1:2}
+??? Illegal right-hand side in assignment.
+Too many elements.
+>> B([1 3]) = A([1 2]) B =
+[3]	[]	[1x3 double]
+>> B{[1 3]} = A{[1 2]}
+??? Illegal right-hand side in assignment.
+Too many elements.
+>> [a, b, c] = deal(A{:}) a =
+3
+b =
+1	2	3
+c =
+abcde
+>> [a, b] = deal(A) a =
+[3]	[1x3 double]	'abcde' b =
+[3]	[1x3 double]	'abcde'
+>> B = A(1:2) B =
+[3]	[1x3 double]
+>> for i = 1:2
+s(i) = sum(A{i}) end
+s =
+3
+s =
+3	6
+>> F{2} = 42 F =
+[]	[42]
+>> F{3} = {42} F =
+[]	[42]	{1x1 cell}
+
+Exercise 7.2 Building structures
+
+Suppose that you want to use structures to maintain your address book. In the Command window, enter the following commands:
+
+>> entry.first = 'Fred' entry =
+first: 'Fred'
+>> entry.last = 'Jones';
+>> entry.phone = '(123) 555-1212' entry =
+first: 'Fred” last: 'Jones'
+phone: '(123) 555-1212'
+>> entry.phone ans =
+(123) 555-1212
+>> date.day = 31;
+>> date.month = 'February';
+>> date.year = 1965 date =
+day: 31 month:'February'
+year: 1965
+>> entry.birth = date entry =
+first: 'Fred' last: 'Jones'
+phone: '(123) 555-1212'
+birth: [1x1 struct]
+>> entry.birth ans =
+day: 31
+month: 'February' year: '1965'
+>> entry.birth.year ans =
+1965
+
+Exercise 7.3 A CD structure
+Create one entry of CD information:
+
+>> CD = makeCD('Blues', 'Charles, Ray', ... 'Genius Loves Company', 2004, 4.5, 15.35 ) CD =
+genre: 'Blues' artist: 'Charles, Ray'
+title: 'Genius Loves Company' year: 2004
+stars: 4.5000
+price: 15.3500
+>> flds = fieldnames(CD) flds =
+'genre' 'artist' 'title' 'year' 'stars' 'price'
+>> field = flds{2} field =
+artist
+>> CD.(field) ans =
+Charles, Ray
+
+Exercise 7.4 Building a structure array “by hand”
+
+>> entry(1).first = 'Fred';
+>> entry(1).last = 'Jones';
+>> entry(1).age = 37;
+>> entry(1).phone = ' (123) 555-1212';
+>> entry(2).first = 'Sally';
+>> entry(2).last = 'Smith';
+>> entry(2).age = 29;
+>> entry(2).phone = '(000) 555-1212' entry =
+1x2 structure array with fields: first
+last age phone
+
+Exercise 7.5 The CD collection
+
+Retrieve and run the script named buildCDs.m from the Companion Web site. Then, in the Interactions window, enter the following commands to create your collection of CD information:
+
+>> cds(5) ans =
+genre: 'Rock/Pop' artist: 'Ludacris'
+title: 'The Red Light District' year: 2004
+stars: 4
+price: 13.49
+>> flds = fieldnames(collection) flds =
+'genre' 'artist' 'title' 'year' 'stars'
+'price'
+cds(5).strs = 0.5;
+>> cds(5) ans =
+genre: 'Rock/Pop' artist: 'Ludacris'
+title: 'The Red Light District' year: 2004
+stars: 4
+price: 13.4900
+strs: 0.5
+>> cds(1) ans =
+genre: 'Blues'
+artist: 'Clapton, Eric'
+title: 'Sessions For Robert J' year: 2004
+stars: 2
+price: 18.9500 strs: []
+>> cds = rmfield(cds, 'strs');
+>> cds(1) ans =
+genre: 'Blues'
+artist: 'Clapton, Eric'
+title: 'Sessions For Robert J' year: 2004
+stars: 2
+price: 18.9500
+>> sum([cds.price]) ans =
+409.1100
+
+Exercise 8.1 Reading Excel data
+
+>> [nums txt raw] = csvread('grades.csv')
+% or xlsread('grades.xls') with MATLAB nums =
+19	78
+22	83
+98	99
+21	56
+23	89
+19	51
+txt	=	
+	'name'	'age'	'grade'
+	'fred'	"	"
+	'joe'	"	"
+	'sally'	"	"
+	'charlie'	"	"
+	'mary'	"	"
+	'ann'	"	"
+raw	=		
+	'name'	'age'	'grade'
+	'fred'	[ 19]	[	78]
+	'joe'	[ 22]	[	83]
+	'sally'	[ 98]	[	99]
+	'charlie'	[ 21]	[	56]
+	'mary'	[ 23]	[	89]
+	'ann'	[ 19]	[	51]
+	'ann'	[ 19]	[	51]
+
+Exercise 8.2 Reading delimited files
+>> A = dlmread('nums.txt') A =
+19	78	42
+22	83	100
+98	99	34
+21	56	12
+23	89	0
+19	51	0
+
+Exercise 9.1 Analyzing recursive behavior
+
+1.	Create the fact(...) function from Listing 9.1, remove the first ‘%’ from Line 3 to enable the printout, and run it from the Command window:
+
+>> fact(4) fact( 4 )
+fact( 3 )
+fact( 2 )
+fact( 1 )
+fact( 0 ) ans =
+24
+2.	Put a break point at Line 4 and run fact(2). The function should pause in the first stack frame. Notice that the only variable in the workspace is N with a value 2.
+3.	Find the “step into” button and click it. Since N is not 0, the arrow should move to Line 7.
+4.	Click again, and the workspace should change to a new workspace with the value N = 1— you just called a clone of the original function with its own stack frame. There should be a second, transparent arrow at Line 7 to indicate that some clone of this function is waiting at that point for a result.
+5.	Continue stepping into functions until you return from the copy where N = 0. When this return happens, you return to the frame with N = 1, the frame “underneath,”at Line 7, and are then able to compute the  first result.
+6.	Further stepping will return from each stack frame until you finally return to your script’s workspace with the final answer.
+
+Exercise 9.2 Processing exceptions
+Put the code from Listing 9.2 in a script and execute it, using the following data:
+
+enter a triangle: [3 4 8] 
+bad triangle - try again 
+enter a triangle: [3 4 6] 
+the angle is 62.720387
+Then, edit the script to remove the try statement and the catch block and repeat the test.
+
+Exercise 9.3  Writing the protected factorial
+
+Write the fact(...) function as shown in Listing 9.3, and test it in the Command window:
+
+>> fact(-1)
+??? Error using ==> fact bad parameter for fact
+>> fact(.5)
+??? Error using ==> fact bad parameter for fact
+>> fact(4) ans =
+24
+
+Exercise 11.1 Exploring the simple plot
+
+1.	run script in Listing 11.7 without the semicolon on Line 2, and observe the following:
+
+xx =
+-3 -2 -1	0	1	2	3
+{etc} yy =
+
+
+
+Notice that in general, if x is length m and y is length n, the xx values consist of the x vector in rows replicated n times, and the yy values consist of the y vector as a column replicated m times. Together, they provide the underlying x and y values for the “floor” of the bowl plot from which the z values are computed to draw the picture.
+2.	Insert the line hidden off after mesh(xx, yy, zz). Notice that the faces are now transparent.
+3.	Change mesh(xx, yy, zz) to surf(xx, yy, zz). Notice that the panels are now colored and the lines are black. This form is also insensitive to the hidden parameter.
+4.	Replace hidden off with shading flat, and notice that the lines have disappeared.
+5.	Replace shading flat with shading interp, and notice that the surface coloring now varies smoothly.
+6.	Insert the line colormap 'summer' after surf(xx, yy, zz). Look up
+colormap in Appendix A for details.
+7.	Do not forget to rotate your images and examine them from different points of view using the 3-D rotate tool bar icon
+
+Exercise 12.1 Matrix multiply
+
+1. >> A = [2 5 7; 1 3 42] A =
+2	5	7
+1	3	42
+2. >> B = [1 2 3]' B =
+1
+2
+3
+3. >> A * B
+ans =
+33
+133
+4. >> (1:2) * A
+ans =
+4	11	91
+5. >> I2 = eye(2) I2 =
+1	0
+0	1
+6.	>> I2 * A
+ans =
+
+
+7.	>> A*I2
+??? Error using ==> mtimes
+Inner matrix dimensions must agree. 8. >> A*eye(3)
+ans =
+2	5	7
+1	3	42
+
+Exercise 12.2 Matrix divide
+
+>> A = magic(3) A =
+8	1	6
+3	5	7
+4	9	2
+>> B = [1 26 24; 9 22 20; 5 12 16] B =
+ 
+1	26	24
+9	22	20
+5	12	16
+>> AB = A * B AB =
+47	302	308
+83	272	284
+95	326	308
+>> BA = B * A BA =
+182	347	236
+218	299	248
+140	209	146
+>> AB * inv(B) ans =
+8	1	6
+3	5	7
+4	9	2
+>> AB / B
+ans =
+8	1	6
+3	5	7
+4	9	2
+>> B \ BA
+ans =
+8	1	6
+3	5	7
+4	9	2
+>> BA / B
+ans =
+-4.3000	29.2000	-15.3000
+-9.9667	27.5333	-3.9667
+-5.7333	20.7667	-8.2333
+
+Exercise 13.1 Working with image stretching
+
+>> pic = imread(<your favorite image>);
+>> [rows cols clrs] = size(pic)
+>> imshow( pic(2:2:end, 3:3:end, :);
+>> RFactor = 1.43; CFactor = 0.75; % shrink / stretch factors
+>> rowVec = round(linspace(1, rows, Rfactor*rows));
+>> colVec = round(linspace(1, cols, Cfactor*cols));
+>> imshow(pic(rowVec, colVec,:)); % shrunk / stretched image
+>> imshow(pic(:, :, [2 3 1])); % re-ordering the color layers
+
+Exercise 14.1 Locating the first part of the speech
+
+>> [houston, Fsh] = wavread('a13prob.wav');
+>> subplot(1, 2, 1)
+>> plot(houston);
+>> sound(houston, Fsh);
+
+Exercise 14.2 Extracting the first part of the speech
+
+>> clip = 110000;
+>> prob = houston(clip:end)*2;
+>> subplot(1, 2, 2)
+>> plot(prob)
+
+Exercise 14.3  Extracting “my dear”
+
+>> figure
+>> [damn, Fsd] = wavread('givdamn2.wav');
+>> subplot(1, 2, 1)
+>> plot(damn);
+>> lo = 4500;
+>> hi = 8700;
+>> sdamn = [damn(1:lo); damn(hi:end) ] * .5;
+>> subplot(1, 2, 2)
+>> plot(sdamn);
+
+Exercise 14.4  Assemble the speech
+
+>> [truth, Fst] = wavread('truth1.wav');
+>> speech = [prob; sdamn; truth * .7];
+>> figure
+>> plot(speech);
+>> sound(speech, Fst);
+
+Exercise 14.5  Note pitch experiment
+
+>> [note Fs] = wavread('instr_piano.wav');
+>> sound(note, Fs);
+>> sound(note(ceil(1:1.3:end)), Fs);
+>> sound(note(ceil(1:0.5:end)), Fs);
+
+Exercise 15.1 The evils of extrapolation
+After running the script in Listing 15.1, enter this code:
+
+>> spline(x, y, -3) ans =
+813.3333
+
+Exercise 15.2 Optimal linear fit
+Again using the data from Section 15.1.1:
+
+>> x=0:5; y=[0,20,60,68,77,110]
+>> polyfit(x, y, 1) ans =
+20.8286	3.7619

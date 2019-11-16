@@ -1,0 +1,338 @@
+CHAPTER	7
+
+Cell Arrays and Structures
+
+
+7.1  Concept: Collecting Dissimilar  Objects
+7.2   Cell Arrays
+7.2.1  Creating Cell Arrays
+7.2.2  Accessing Cell Arrays
+7.2.3  Using Cell Arrays
+7.2.4  Processing Cell Arrays
+7.3  Structures
+7.3.1  Constructing and Accessing One Structure
+7.3.2  Constructor Functions
+7.4   Structure Arrays
+7.4.1  Constructing Cell Arrays
+7.4.2  Accessing Structure Elements
+7.4.3  Manipulating Structures
+7.5  Engineering Example— Assembling a Physical Structure
+
+Chapter Objectives
+
+This chapter discusses the nature, implementation, and behavior of collections that may contain data items of any class, size, or shape. We will deal with two different heterogeneous storage mechanisms:
+
+■	Those accessed by index (cell arrays)
+
+■	Those accessed by field name (structures)
+
+In addition, we will consider collecting structures into arrays of structures.
+
+Introduction
+
+This chapter covers data collections that are more general and flexible than the arrays we have considered so far. Heterogeneous collections may contain objects of any type, rather than just numbers. Consequently, none of the collective operations defined for numerical arrays can be applied to cell arrays or structures. To perform most operations on their contents, the items must be extracted one at a time and replaced if necessary. We will consider three different mechanisms for building heterogeneous collections:
+you access components of a cell array with a numerical index; you acc components of a structure with a symbolic field name; and you access c of a structure array by way of a numerical index to reach a specific stru then a symbolic field name.
+
+7.1	Concept: Collecting Dissimilar Objects
+
+Heterogeneous collections permit objects of different data types to be grouped in a collection. They allow data abstraction to apply to a much broader range of content. However, the fact that the contents of these collections may be of any data type severely restricts the operations that can be performed on the collections as a whole. Whereas a significant number of arithmetic and logical operations can be performed on whole number arrays, algorithms that process heterogeneous collections almost always deal with the data contents one item at a time.
+
+7.2	Cell Arrays
+
+Cell arrays, as the name suggests, have the general form of arrays and can be indexed numerically as arrays. However, each element of a cell array should be considered as a container in which one data object of any class can be stored.1 They can be treated as arrays of containers for the purpose of concatenation and slicing. However, if you wish to access or modify the contents of the containers, the cells must be accessed individually.
+1 --- Java programmers might recognize a cell array as an array of Objects.
+
+7.2.1	Creating Cell Arrays
+
+Cell arrays may be constructed in the following ways:
+■	By assigning values individually to a variable indexed with braces:
+
+>> A{1} = 42 A = [42]
+■	By assigning containers individually to a variable indexed with brackets:
+
+>> B[1] = {[4 6]}; B =
+[1x2 double]
+■	By concatenating cell contents using braces {. . .}:
+
+C = {3, [1,2,3], 'abcde'} C =
+[3] [1x3 double] 'abcde'
+■	By concatenating cell containers:
+
+>> D = [A B C {'xyz'}] D =
+[42] [1x2 double] [3] [1x3 double] 'abcde' 'xyz'
+
+Based on these examples, we observe the following:
+■	A cell array can contain any legal MATLAB object
+■	Just as with number arrays, cell arrays can be created “on the fly” by assigning values to an indexed variable
+
+When the values from a cell array are displayed, their appearance is different from that of the contents of a number array. Individual numbers are shown in brackets, for example, [3]; larger numerical arrays display their size, for example, [1x3 double]; and character strings are displayed with the enclosing quotes, for example, 'abcde'.
+
+7.2.2	Accessing Cell Arrays
+
+Since cell arrays can be considered as conventional arrays of containers, the containers can be accessed and manipulated normally. For example, continuing the previous examples, we have the following:
+
+>> E = D(2) % parentheses - a container E =
+[4 6]
+However, braces are used to access the contents of the containers as follows:
+
+>> D{2} % braces - the contents ans =
+4 6
+
+If the right-hand side of an assignment statement results in multiple cell arrays, the assignment must be to the same number of variables. The built-in function deal(...) is used to make these allocations. Exercise 7.1 shows its use.
+Notice the following observations:
+
+■	When we extract the contents of multiple cells using A{1:2}, this results in multiple assignments being made. These multiple assignments must go to separate variables. This is the fundamental mechanism behind returning multiple results from a function.
+■	These multiple assignments cannot be made to a single variable; sufficient storage must be provided either as a collection of variables or explicitly as a vector.
+■	Cell arrays can be “sliced” with normal vector indexing assignments as long as the sizes match on the left and right sides of the assignment. Any unassigned array elements are filled with an empty vector.
+■	The assignment B{[1 3]} = A{[1 2]} that produced an error needs some thought. Since A{[1 2]} produces two separate assignments, MATLAB will not assign the answers, even to the right number of places in another cell array. The deal(...) function is provided to capture these multiple results in different variables. Notice the difference between A{:} and A as a parameter to deal(...). When deal(...) is provided with a parameter other than a collection of cells, it copies that parameter to each variable.
+■	Assignments work normally if cell arrays are treated as vectors and the extraction of items can be indexed—s is a vector of the sums of the elements in A.
+■	Finally, notice that when accessing cell arrays, it is normal to have braces on one side or the other of an assignment; it is rarely appropriate to have braces on both sides of an assignment. The result here is that a cell array is loaded into the third container in the cell array.
+
+7.2.3	Using Cell Arrays
+
+There are a number of uses for cell arrays, some of which will be evident in upcoming chapters. For now, the following examples will suffice:
+
+■	Containing lists of possible values for switch/case statements, as we saw in Chapter 4
+■	Substituting for parameter lists in function calls
+
+For example, suppose you have a function largest(a, b, c) that consumes three variables and produces the largest of the three values provided. It can be used in the following styles, as shown in Listing 7.1.
+In Listing 7.1:
+Lines 1–3: Set the values of A, B, and C.
+Line 4: A conventional function call that results in a value of 6 for N. Lines 5–6: The same function call implemented as a cell array, returning the same answer.
+
+7.2.4	Processing Cell Arrays
+
+The general template for processing cell arrays is shown in Template 7.1.
+Checking the class of the element can be achieved in one of two ways:
+
+■	The function class(item) returns a string specifying the item type that can be used in a switch statement
+
+■	Individual test functions can be used in an if... elseif construct; examples of the individual test functions are isa(item, 'class'), iscell(...), ischar(...), islogical(...), isnumeric(...), and isstruct(...).
+For example, suppose you are provided with a cell array and have been asked for a function that finds the total length of all the vectors it contains. The function might look like that shown in Listing 7.2.
+In Listing 7.2:
+Line 1: Typical function header accepting a cell array as input. Line 2: Initializes the result.
+Line 3: Traverses the whole cell array. Line 4: Extracts each item in turn.
+Line 5: Determines whether this item is of type double. If so, it proceeds to line 6.
+Line 6: Accumulates the number of items in this array. Recall that the size(...) function returns a vector of the sizes of each dimension. The total number of numbers is therefore the product of these values.
+
+
+7.3 Structures
+
+Where cell arrays implemented the concept of homogeneous collections as indexed collections, structures allow items in the collection to be indexed by field name. Most modern languages implement the concept of a structure in a similar style. The data contained in a structure are referenced by field name, for example, item1. The rules for making a field name are the same as those for a variable. Fields of a structure, like the elements of a cell array, are heterogeneous—they can contain any MATLAB object. First, we will see how to construct and manipulate one structure, and then how to aggregate individual structures into an array of structures.
+
+7.3.1	Constructing and Accessing One Structure
+
+To set the value of items in a structure A, the syntax is as follows:
+>> A.item1 = 'abcde' A =
+item1: 'abcde'
+>> A.item2 = 42 A =
+item1: 'abcde' item2: 42
+Notice that MATLAB displays the elements of an emerging structure by name. Fields in a structure are accessed in the same way—by using the dotted notation.
+>> A.item2 = A.item2 ./ 2 A =
+item1: 'abcde' item2: 21
+You can determine the names of the fields in a structure using the built-in function fieldnames(...). It returns a cell array containing the field names as strings.
+>> names = fieldnames(A) names =
+'item1' 'item2'
+Fields can also be accessed “indirectly” by setting a variable to the name of the field, and then by using parentheses to indicate that the variable contents should be used as the field name:
+>> fn = names{1};
+>> A.(fn) = [A.(fn) 'fg'] A =
+ 
+item1: 'abcdefg' item2: 21
+You can also remove a field from a structure using the built-in function rmfield(...). Exercise 7.2 gives you an opportunity to understand how to build structures. Here we build a typical structure that could be used as one entry in a telephone book. Since phone numbers usually contain punctuation, we could store them as strings. Notice that since a structure may contain any object, it is quite legal to make a structure containing a date and insert that structure in the date field of the entry. The structure display function, however, does not display the contents of the structures.
+
+7.3.2	Constructor Functions
+
+This section discusses functions that assign their parameters to the fields of a structure and then return that structure. You do this, as opposed to “manually” entering data into structures, for the following reasons:
+
+■	Manual entry can result in strange behavior due to typographical errors or having fields in the wrong order
+■	The resulting code is generally more compact and easier to understand
+■	When constructing collections of structures, it enforces consistency across the collections
+
+There are two approaches to the use of constructor functions: using built-in capabilities and writing your own constructor. There is a built-in function, struct(...), that consumes pairs of entries (each consisting of a field name as a string and a cell array of field contents) and produces a structure. If all the cell arrays have more than one entry, this actually creates a structure array, as discussed in Section 7.4.1.
+
+The following command would construct the address book entry created in the previous section. Note the use of ellipses (...) to indicate to the MATLAB machinery that the logic is continued onto the next line.
+
+>> struct('first','Fred', ...
+'last','Jones', ...
+'phone','(123) 555-1212', ...
+'birth', struct( 'day', 31,
+'month', 'February',
+'year', 1965 ))
+ans =
+first: 'Fred' last: 'Jones'
+phone: '(123) 555-1212'
+birth: [1x1 struct]
+
+This is useful in general to create structures, but the need to repeat the field names makes this general-purpose approach a little annoying. We can create a special-purpose function that “knows” the necessary field names to create multiple structures in an organized way.
+
+Listing 7.3 shows the code for a function that consumes parameters that describe a CD and assembles a structure containing those attributes by name.
+
+In Exercise 7.3, you can try your hand at using this function to construct a CD structure and then verify the structure contents.
+
+7.4 Structure Arrays
+
+To be useful, collections like address books or CD collections require multiple structure entries with the same fields. This is accomplished by forming an array of data items, each of which contains the same fields of information.
+
+MATLAB implements the concept of structure arrays with the properties described in the following paragraphs.
+
+7.4.1	Constructing Structure Arrays
+
+Structure arrays can be created either by creating values for individual fields, as shown in Exercise 7.4; by using MATLAB’s struct(...) function to build the whole structure array, as shown in Listing 7.4; or by using a custom function to create each individual structure, as shown in Listing 7.5. This latter listing illustrates these concepts by implementing a collection of CDs as a structure array using the function makeCD(...) from Listing 7.3.
+
+In Listing 7.4:
+
+Lines 1–5: Build cell arrays containing field values for five CDs. Line 6: Uses the built-in struct(...) function to create the CD collection. The function consumes a variable number of pairs of parameters. The first parameter of the pair is a string containing
+the name of a field to be created. The second parameter is the
+content of that field expressed as either a cell array or any other
+data type. If the field content is a cell array, the structure to be
+created becomes a structure array whose length is the length of
+that cell array. Each field of the structure array receives the
+corresponding value from the cell array. If the field content is
+anything other than a cell array, the content of each structure array
+field becomes a copy of that item.
+
+In Listing 7.5:
+
+Lines 1–2: Call the makeCD(...) function defined in Listing 7.3 to generate the description of the first CD.
+Lines 3–16: Repeat the process for seven more CDs, each of which is added to the collection.
+
+7.4.2	Accessing Structure Elements
+
+Like normal arrays or cell arrays, items can be stored and retrieved by their index in the array. As structures are added to the array, MATLAB forces all elements in the structure array to implement the same field names in the same order. Elements can be accessed either manually (not recommended) or by creating new structures with a constructor and adding them (recommended).
+
+If you elect to manipulate them manually, you merely identify the array element by indexing and use the .field operator. For example, for the CD collection cds, we could change the price of one of them as follows:
+
+>> cds(3).price = 11.95 cds =
+1x31 struct array with fields: genre,
+artist, title, year, stars, price
+This is a little hazardous when making manual additions to a structure array. A typographical error while entering a field name results in all the structures having that bad field name. For example, consider this error:
+
+>> cds(3).prce = 11.95 cds =
+1x31 struct array with fields: genre,
+artist, title, year, stars, price, prce
+
+You have accidentally added a new field to the whole collection. You can check this by looking at one entry:
+
+>> cds(1) ans =
+genre: 'Blues'
+artist: 'Sessions For Robert J' title: 'Clapton, Eric'
+year: 2004
+stars: 2
+price: 18.95 prce: []
+
+If this happens, you can use the fieldnames(...) function to determine the situation and then the rmfield(...) function to remove the offending entry.
+
+>> fieldnames(cds) ans =
+
+'genre' 'artist' 'title' 'year' 'stars' 'price' 'prce'
+
+>> cds = rmfield(cds,'prce') cds =
+1x32 struct array with fields: genre,
+artist, title, year, stars, price
+
+It is best to construct a complete structure and then insert it into the structure array. For example:
+
+>> newCD = makeCD( 'Oldies', 'Greatest Hits', ... 'Ricky Nelson', 2005, 5, 15.79 );
+>> cds(8) = newCD
+cds =
+1x8 struct array with fields: genre,
+artist, title, year, stars, price
+
+If you insert that new CD beyond the end of the array, as one might expect, MATLAB fills out the array with empty structures:
+
+>> cds(50) = newCD cds =
+1x50 struct array with fields: genre,
+artist, title, year, stars, price
+>> cds(49) ans =
+genre: []
+artist: []
+title: []
+year: []
+stars: []
+price: []
+
+7.4.3	Manipulating Structures
+
+Structures and structure arrays can be manipulated in the following ways:
+
+I.	Single values can be changed using the “.” (dot) notation directly with a field name:
+
+>> cds(5).price = 19.95;
+
+II.	or indirectly using the “.” (dot) notation with a variable containing the field name:
+>> fld = 'price';
+>> cds(5).(fld) = 19.95;
+
+or by using built-in functions:
+III.	nms = fieldnames(str) returns a cell array containing the names of the fields in a structure or structure array.
+
+>> flds = fieldnames(cds)
+
+IV.	it = isfield(str, <fldname>) determines whether the given name is a field in this structure or structure array.
+>> if isfield(cds, 'price') ...
+V.	str = setfield(str, <fldname>, <value>) returns a new structure array with the specified field set to the specified value.
+>> cds(1) = setfield(cds(1), 'price', 19.95);
+VI.	val = getfield(str, <fldname>) returns the value of the specified field.
+>> disp(getfield(cds(1), 'price') );
+VII.	str = rmfield(str, <fldname>) returns a new structure array with the specified field removed.
+>> noprice = rmfield(cds, 'price');
+VIII.	Values across the whole array can be retrieved using the “.” notation by accumulating them into arrays either into cell arrays:
+>> titles = {cds.title};
+>> [alpha order] = sort(titles);
+IX.	or, if the values are all numeric, into a vector:
+>> prices = [cds.price];
+>> total = sum(prices);
+Notice that after extracting the price values into a cell array or vector, all the normal operations—in this case, sort(...) and sum(...)—can be utilized.
+Exercise 7.5 provides some practice in manipulating structure arrays using the above CD collection as an example.
+
+7.5 Engineering Example—Assembling a Physical Structure
+
+Many large buildings today have steel frames as their basic structure. Engineers perform the analysis and design work for each steel component and deliver these designs to the steel company. The steel company manufactures all the components, and prepares them for delivery to the building site. At this point, each component is identified only by a unique identifier string stamped and/or chalked onto that component. For even a modest-sized building, this transportation may require a significant number of truckloads of components. The question we address here is how to decide the sequence in which the components are delivered to the building site so that components are available when needed, but not piled up waiting to be used.
+
+Consider the relatively simple structure shown in Figure 7.1. The components have individual labels, and we can obtain from the architect the identities of the components that are connected together. The construction needs to start from the fixed point A. We need to analyze this information and compute the order in which the components would be used to assemble the structure.
+
+The data will be organized as a structure array with one entry for each component. One of the fields in that structure will be a cell array of the names of the components to which this component is connected.
+
+The code in Listing 7.6 shows the solution to this problem.
+
+In Listing 7.6:
+
+Lines 1–22: Construct the structure array using the beam(...)
+constructor function below.
+Line 23: The current connection point, conn—originally, the point A. Line 24: Initializes the connection list, a cell array of names.
+Line 25: An infinite loop to be exited with break statements.
+Lines 26–33: Traverse the components to make a structure array, found, containing all the components connected to the current connection point, conn.
+Lines 34–40: Go through the found array, removing any component already on the connected list and appending the names of those not removed to the connected list.
+Lines 41–45: We will exit the while loop when there are no new components found; until then, choose the next component to connect.
+
+The support functions for this script are assembled for convenience into Listing 7.7. They should be in separate files with the appropriate file names to be accessible by MATLAB.
+
+In Listing 7.7:
+
+Lines 1–5: Constructor for one structure defining one component. Lines 6–14: A function to determine whether a beam touches this connecting point.
+Lines 15–23: A similar function to determine whether a particular string is on the connection list, a cell array of strings.
+Lines 24–35: Function to find the next connection to use based on the latest components found—the “outer edges” of the emerging structure—and its not being already on the connected list.
+
+Here is the resulting output:
+
+data =
+
+1x11 struct array with fields: name,
+pos, connect
+
+the order of assembly is:
+'A' 'A-2' 'A-1' 'D-1' 'A-3' 'B-2' 'B-1' 'D-2' 'B-3' 'C-2' 'C-1' 'C-3'
+
+Chapter Summary
+
+This chapter covered the nature, implementation, and behavior of two heterogeneous collections:
+■	Cell arrays are vectors of containers; their elements can be manipulated either as vectors of containers, or individually by inserting or extracting the contents of the container using braces in place of parentheses
+■	The elements of a structure are accessed by name rather than by indexing, using the dot operator, ‘.’, to specify the field name to be used
+■	Structures can be collected into structure arrays whose elements are structures all with the same field names. These elements can then be indexed and manipulated in the same manner as the cells in a cell array
+
+[Special Characters]
+
+[Problems]
+
+
+

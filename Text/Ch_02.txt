@@ -1,0 +1,250 @@
+CHAPTER	2
+
+2.1  Programming Language Background
+2.1.1  Abstraction
+2.1.2   Algorithms
+2.1.3   Programming
+Paradigms
+2.2  Basic Data Manipulation
+2.2.1   Starting and
+Stopping MATLAB
+2.2.2  Assigning Values to Variables
+2.2.3   Data Typing
+2.2.4  Classes and Objects
+2.3  MATLAB User Interface
+2.3.1  Command Window
+2.3.2  Command History
+2.3.3  Workspace
+Window
+2.3.4  Current Directory Window
+2.3.5   Variable Editor
+2.3.6  Figure Window
+2.3.7  Editor Window
+2.4  Scripts
+2.4.1   Text Files
+2.4.2  Creating Scripts
+2.4.3  The Current
+Directory
+2.4.4  Running Scripts
+2.4.5   Punctuating Scripts
+2.4.6  Debugging Scripts
+2.5  Engineering Example— Spacecraft   Launch
+
+Chapter Objectives
+This chapter introduces you to some of the fundamentals of computing that apply to all programming languages, and specifically to the programming environment used for program development. The fundamentals of programming include:
+
+■	How to use abstraction to think in a general way about a collection of data and procedural steps
+■	How to describe the solution of a problem as an algorithm
+
+■	The three paradigms of computing and the position of MATLAB in that spectrum
+■	Three aspects of the apparently simple task of assigning a value to a variable
+
+As you study the user interface, you will understand:
+
+■	How to explore single commands interactively and how to recall earlier commands to be repeated or changed
+■	Where to examine the variables and files
+
+■	How to view data 
+
+■	How graphical data are presented
+
+■	How to create scripts to solve simple arithmetic problems
+
+Introduction
+The name MATLAB is a contraction of Matrix Laboratory. It was developed for engineers to create, manipulate, and visualize matrices—rectangular arrays of numerical values. At its most basic level, MATLAB can perform the same functions as your scientific calculator, but it has expanded far beyond its original capabilities and now provides an interactive system and programming language for many applications, including financial analysis as well as general scientific and technical computation.
+ The following are the fundamental components of MATLAB:
+
+■	A computing system that accepts one instruction at a time in text form and implements the logic of that instruction. Instructions must conform to a specific syntax and vocabulary, which will be the topic of Chapters 3–9.
+■	A large library of modules that provide high-level capabilities for processing data. These modules will be the major topic of Chapters 10–17.
+■	A graphical user interface (GUI) that lets users assemble and implement programs that solve specific problems. The rest of this chapter will describe the basic behavior of these windows.
+
+MATLAB offers a number of advantages to users over conventional, compiled languages like C++, Java, or FORTRAN:
+■	Because MATLAB programs are interpreted rather than compiled, the process of producing a working solution can be much quicker than with compiled languages.
+■	MATLAB excels at numerical calculations, especially matrix calculations.
+
+■	MATLAB has built-in graphics capabilities that produce professional-looking images for reports.
+
+However, the very attributes that make MATLAB convenient for a user to develop quick solutions to certain problems make it unsuitable for other kinds of projects. For example:
+■	MATLAB does not work well for large computing projects where a number of developers share coding responsibilities.
+■	Professional GUIs and windowing applications (like the MATLAB system itself) are best written in a compiled language.
+
+
+2.1  Programming Language Background
+Before learning about concepts in computing, you need to understand the background of programming languages. This section discusses the following aspects of programming languages: abstraction, algorithms, programming paradigms, and three fundamental concepts of programming—assigning values to variables, data typing, and the difference between classes and objects.
+2.1.1  Abstraction
+For the purpose of this text, we will define abstraction as “expressing a quality apart from a particular implementation.” We use the concept of abstraction in everyday conversation without thinking about it:
+“To convert from degrees Celsius to Kelvin, you add 273 to the temperature.”
+“He drove home from the office.”
+The first is an example of data abstraction. “The temperature” could mean a single reading from the thermometer hanging outside the window or a table of temperature readings for the month of August. The specifics are unimportant; the phrase captures all you need to know.
+The second example is actually much more complex — an example of multiple levels of procedural abstraction. To a person taking the same route home every night, “drive home” is all that is required to understand the idea. To a competent driver unfamiliar with the route, the next level of abstraction might be necessary—turn right out of the parking lot, left onto Main Street, and so on. For instructions to guide a future robotic commuter vehicle, an incredibly fine-grained level of abstraction will be required. Everything taken for granted in the higher level abstractions will need to be meticulously spelled out for the robotic vehicle — start the engine, accelerate the vehicle, look out for traffic, keep in the lane, find the turn, steer the vehicle, control the speed, observe and obey all signs, and so on.
+
+
+2.1.2   Algorithms
+Chapter 1 defined problem solving as the ability to isolate sub-problems that seem simple and appropriate to solve, and then assemble the solutions to these sub-problems. The solutions to each of these sub- problems would be expressed as an algorithm, which is a sequence of instructions for solving a sub-problem. The process of solving each sub- problem and assembling the solutions to form the solution to the whole problem would also be expressed as an algorithm at a higher level of abstraction.
+
+The level of abstraction needed to describe an algorithm varies greatly with the mechanism available. For example, describing the algorithm (recipe) for baking cookies might take the following forms:
+■	To your grandmother, who has been baking cookies for the last 50 years, it might be “Please bake some cookies.”
+■	To others it might be “Buy a cookie mix and follow the directions.”
+■	To a young person learning to cook from scratch, the algorithm might include an intricate series of instructions for measuring, sifting, and combining ingredients; setting the oven temperature and preheating the oven; forming the cookies and putting them on the cookie sheet; and so on.
+In programming terms, algorithms are frequently expressed first conceptually at a high level of abstraction, as demonstrated in Section 1.5. The solutions to each sub-problem would then be expressed at lower and lower levels of abstraction until the description is sufficient to write programs that solve each sub-problem, thereby contributing the pieces that, when assembled, solve the whole problem.
+
+2.1.3   Programming
+Paradigms
+From the Greek word paradeigma—“to show alongside”—the American Heritage Dictionary defines a paradigm as “a set of assumptions, concepts, values, and practices that constitutes a way of viewing reality for the community that shares them, especially in an intellectual discipline.” So a programming paradigm becomes a codified set of practices allowing the community of computing professionals to frame their ideas. This section considers three radically different paradigms: functional programming, procedural programming, and object-oriented programming.
+
+Functional programming is typically associated with languages like Lisp and Forth, in which every programming operation is actually implemented as a function call with no side effects (changes of state of the program surroundings) permitted or implemented in the language. Without side effects, a programming solution can be mathematically proven to be correct—an enormous advantage. Except for the discussion of recursion, this paradigm will not be mentioned again.
+
+Procedural programming is typical of languages like FORTRAN, C, and MATLAB, where the basic programs or sub-programs are sequences of operations on data items that are generally accessible to all programs. Although side effects from sub-programs—such as changing the values of variables outside that sub-program—are considered poor practice, they are not prohibited by the language.
+
+Object-oriented programming (OOP), typical of languages like C++, Ada, and Java, is a relatively new addition to the world of programming paradigms. It is characterized by the concept of encapsulating, or packaging, data items together with the methods or functions that manipulate those data items. In this paradigm, side effects are explicitly managed by controlling access to the data and methods in a particular grouping. The major theme in true OOP is that “everything is an object.” You will see MATLAB exhibiting many traits of OOP as you work through this book, but you will not need to use this programming paradigm.
+
+2.2  Basic Data Manipulation
+In order to use MATLAB to demonstrate basic data manipulation, we begin with an exercise in starting and stopping the MATLAB system, and then discuss assigning values to variables, how Matlab determines the data type, and the difference between a class and an object.
+2.2.1   Starting and Stopping MATLAB
+Exercise 2.1 shows you how to start and stop the MATLAB user interface. We will soon see the details of all the program’s windows. For the moment, however, we will interact with MATLAB by typing instructions in the large Command window that occupies the left side of your screen.
+
+2.2.2  Assigning Values to Variables
+The concept of assigning values to variables is the first challenge facing novice programmers. The difficulty arises because many programming languages (including MATLAB) present this simple concept in a syntax that is very similar to conventional algebra, but with significantly different meaning. Consider, for example, the following algebraic expression:
+z = x + y
+In normal algebra, this is a two-way relationship that is an identity for the duration of the problem. If you knew the values of z and x, you could derive the value of y with no further analysis. To a programmer, however, this statement has a different meaning. It means that you want to sum the values given to the variables x and y, and store the result in a variable called z. If either x or y is unknown at the time of executing this statement, an error ensues. In particular, this relationship is true only for this statement. The relationship can be revoked in the next instruction, which might be:
+z = 4*x - y
+In algebra, this pair of statements collectively constrains the values of x, y, and z. In programming, the only significance is that the programmer decided to calculate the current value of z differently. A few computer languages are sensitive to this dilemma and use a different symbol for assigning values to a variable. For example, in Pascal or Ada, an instruction to assign the value z = x + y would be written as follows:
+z := x + y
+The “:=” operator clearly indicates that this is an assignment statement, not an algebraic identity.
+
+Variable names: In general, variable names may contain any combination of uppercase and lowercase alphabetic letters, numbers, and the special characters _ (underscore) and $ (dollar). The underscore character is frequently used to represent a space in a variable name because spaces are not allowed. However, variable names may not begin with a numeric character, and even though the names may be hundreds of characters long, the  first  64  characters  must  be unique. Exercise 2.2 demonstrates the assignment of values to variables.
+
+
+2.2.3   Data Typing
+It is important to understand how MATLAB treats the data stored in a variable. Different languages take varying approaches to this problem, and languages in general fall into two broad categories: untyped and typed. In general, interpreted languages like Lisp, Forth, Python, and MATLAB determine the type of data contained by a variable based on the type of data being stored there. Such languages are referred to as untyped languages .    Each    assignment statement is presumed to be correct. If the variable already exists, both its type and value are reassigned; if it did not exist before, a new variable is created. Exercise 2.3 illustrates the effect of performing simple mathematical operations in MATLAB. By putting 49 into the variable radius, you established its type as numeric and enabled it to be used in normal arithmetic operations. Character strings are specified by including arbitrary characters between single quote marks. These have the type char, and must be handled differently, as discussed fully in Chapter 6. When you stored a character string in the variable radius, adding 1 to it did not cause an error in MATLAB as it would in some other languages, because addition is actually defined for character strings. It just did something radically different — it actually converted the individual characters to numbers and then added 1!
+
+While this ability to assign data types dynamically is good for interpreted languages, it has two undesirable consequences that are really hard to unravel as the program runs:
+■	Typographical errors that misspell variable names in assignment statements cause new variables to be declared unintentionally and without the user noticing the error
+■	Logical errors that assign incompatible data to the same variable can cause obscure runtime errors
+Typed languages require that programmers declare both the name and type of a variable before a value can be assigned to it. With this information, a compiler can then do a better job of ensuring that the programmer is not using a variable in an unintended way. Typed languages fall into two categories: weak typing and strong typing. If programmers decide to use only the normal data types, such as double and char as we saw above, this is known as weak typing and is the usual approach to typing. In some extreme circumstances, programmers may choose to be more restrictive and define specific data types with a limited set of permitted interactions. This is called strong typing. For example, programmers might define the following data types, all of which are actually of type double: meters, seconds, and meters_per_second. The compiler would then be provided with a set of rules specifying the legal relationships between these types. For example, assignments can only be made to a variable of type meters_per_ second from another variable of the same type, or by dividing a variable of type meters by a variable of type seconds. Before rushing to judge on the pickiness of this approach, note that this would have avoided the loss in 1999 of the Mars Climate Orbiter, which crashed into Mars because one group of programmers used English units while another used metric.
+
+2.2.4  Classes and Objects
+This section discusses two different attributes of a variable: its type and its value. In Section 2.2.2 you saw that a variable is a container for data, whose value is determined by what is assigned to the variable. In Section 2.2.3 you saw that by making that assignment to a variable, MATLAB also infers the type of data stored in that variable. You will see that while MATLAB is an untyped language, the programs you write will behave differently if applied to data of different types. For example, the type double specifies the form and expected behavior of a number. Adding 1 to a variable of class double containing 4 will, as expected, produce the result 5. Similarly, the type char is intended to hold a single character. Adding 1 to a char variable containing the value 'd' will produce the numerical equivalent of the character 'e'. MATLAB refers to the type of data in a variable as its class, and the value contained in the variable at any time as an object, an instance of that class. So in the operation:
+this_number = 42.0
+the variable this_number would be defined (if it didn’t already exist); its class would be set to double, the inherent type of a floating point number; and its value to 42.0. So the word double corresponds to a type definition or class, while the variable this_number is a variable of that type, which is an instance of that class or, in programming terms, an object.
+
+2.3  MATLAB User Interface
+MATLAB uses several display windows. The default view includes a large Command window and a set of windows showing the files, variables, and command history. Other windows, such as an editor window or a figure window, will automatically open when needed.
+2.3.1  Command Window
+You can use MATLAB in two modes: Command mode, which is useful if you need instant responses to specific MATLAB commands, and Edit mode, in which practical solutions are developed. When working in Command mode, we use the Command window, which offers an environment similar to a scientific calculator. This window lets you save any values you calculate, but you cannot permanently save the commands used to generate those values. You will see in the next section how to use the Editor window to create and execute a text file of commands as the first step to unleashing the full programming capability of the language. The Command window is useful for performing quick experiments to discover the effects of different commands in MATLAB before embedding them in a larger program. You can perform calculations in the Command window much like doing calculations on a scientific calculator. Most of the syntax is even the same. Exercise 2.4 shows how you might use the Command window to test two simple calculations.
+
+Notice that in both of the examples in Exercise 2.4, MATLAB echoes the result as if it were saved in a variable called ans. This is the default variable used to save the result of any calculation you perform in the Command window that is not specifically assigned to another variable. Notice also the use of one of MATLAB’s many built-in functions, cos(...), that compute the cosine of an angle in radians, and of the built-in constant pi.
+
+2.3.2  Command History
+The Command History window records the commands you issued in the Command window in chronological sequence. When you exit MATLAB or when you issue the clc (Clear Commands) instruction, the commands
+listed in the Command window are cleared. However, the Command History window retains  a  list  of  all  the  commands  you issued. You can clear the Command History using the Edit menu if you need to by selecting Edit and then Clear Command History. If you entered the sample commands in Exercise 2.4, notice that they are repeated in the Command History window. This window lets you review previous MATLAB sessions, and you can transfer the commands to the Command window by copying and pasting. Exercise 2.5 demonstrates the use of the Command History window. You will find the Command History window useful as you perform more and more complicated calculations in the Command window.
+
+2.3.3  Workspace Window
+The Workspace window keeps track of the variables you have defined as you execute commands in the Command window. As you have seen in the exercises so far, because you have not created other variables yet, the Workspace window should just show one variable, ans. The columns in the window display the name of the variable, its current value, and an entry in the class column (see Figure 2.2). In this case, the variable ans has a value of 25 and is a double array. Actually, even a single number you would usually consider a scalar is a 1 3 1 array to MATLAB. Exercise 2.6 shows how to obtain more information about a particular variable. Figure 2.2 shows the normal Variable window display for the variable ans. Figure 2.3 shows that the variable ans is a 1 3 1 array, uses 8 bytes of memory, and is an object of class double.
+
+In Exercise 2.7, variable A has been added to the Workspace window, which lists variables in alphabetical order. Variables beginning with capital letters are listed first, followed by variables starting with lowercase letters.
+
+Exercise 2.8 added the variable B to the Workspace window, and you can see that its size is a 1 x 4 array.
+
+You define two-dimensional arrays in a similar fashion. Semicolons are used to separate rows, as illustrated in Exercise 2.9. As you can see variable c appears in the Workspace window as a 3 x 4 array. Vectors and arrays are discussed fully in Chapter 3.
+
+You can recall the values for any variable by just typing in the variable name, as shown in Exercise 2.10.
+If you prefer to have a less cluttered desktop, you can close any of the windows (except the Command window) by clicking the x in the upper-right corner of each window.
+
+2.3.4  Current Directory Window
+When MATLAB accesses files from and saves information to your hard drive, it uses the current directory. The default for the current directory depends on your version of the software and how it was installed. The current directory is listed at the top of the main window. This can be changed by selecting another directory from the drop-down list to the right of the current directory name, or by browsing through your computer files using the browse button located to the right of the drop-down list.
+2.3.5   Variable Editor
+Double-clicking on any variable listed in the Workspace window automatically launches a Variable Editor window. Values stored in the variable are displayed in a spreadsheet-like format. You can change values in the Variable editor, or you can add new values.
+2.3.6  Figure Window
+A Figure window is created automatically when a MATLAB command requests a graph. Exercise 2.12 guides you through creating a graph. The figure window opens automatically. Any additional graphs you create will overwrite the plot in the current Figure window unless you specifically command MATLAB to open a new Figure window with the figure command. 
+MATLAB makes it easy to modify graphs by adding titles, x and y labels, multiple lines, and more with MATLAB built-in commands. Details of these commands will be presented in Chapter 11.
+
+
+2.3.7  Editor Window
+MATLAB provides a text editor, enabling you to create or modify text files that run in the editor window. This window lets you type and save a series of commands without executing them. You can also open the editor window by double-clicking a file name in the Current Directory window or by typing:
+>> edit <file_name>
+in the Command window, where <file_name> is the name of the file you want to open. You can open multiple files at the same time, using the tabbed overlays to identify the files. An asterisk appears on the tab with the file name to indicate that the file has been modified since it was saved. Options under the Window menu let you organize the multiple files in various ways that make more than one file visible at once. When closing the Editor window, MATLAB displays a dialog asking if you need to save any changed files.
+
+2.4  Scripts
+This section describes the basic mechanism for creating, saving, and executing scripts as m-files. Building script files lets you save  and reuse program statements without retyping them in the Command window.
+2.4.1   Text Files
+MATLAB uses text files as a permanent means of saving scripts (sets of instructions) rather than just entering commands in the Command window. As you will see in Chapter 8, text files are streams of characters stored sequentially with “markers” that indicate the end of each line of text. For now, think of a script much like writing an e-mail message—a number of lines of text written in a “smart” editor. The MATLAB Editor uses various techniques to help you format commands in these files.
+2.4.2  Creating Scripts
+A MATLAB script consists of a combination of executable instructions that MATLAB interprets and comment statements that help readers understand the script. You create comments by putting a percent sign (%) in the text file. MATLAB will ignore all text from that mark to the end of the current line. The MATLAB Editor colors all such comments green to distinguish them from the executable instructions. Most applications that use files specify a particular file name extension (the characters after the period in the file name) to identify how the text files will be used. MATLAB uses the extension .m, and the script files are often referred to as m-files. You create a new script file either by choosing File > New > M-File or by clicking the new file icon on the far left of the tool bar. The MATLAB Editor will then open a blank file in which you   can   enter   commands   and comments. Try creating the script described in Exercise 2.13.
+
+2.4.3  The Current Directory
+After you have entered a script, you must name it and save it in a directory. MATLAB will need to find that directory—its working directory—in order to run the script. By default, MATLAB expects scripts to be stored in the working directory, displayed in the tool bar at the top of the MATLAB main window. The specific path will vary with your version of MATLAB. However, the Current Directory window always shows the default location when MATLAB starts. If you decide to store your scripts elsewhere, you will need to redirect MATLAB to that directory by typing it into the Current Directory window or using the browse button to the right of the display.
+
+Once script files are saved in your working directory, you can edit them again by selecting and opening them with the MATLAB Editor. To open them, either use the open menu command or double-click the file name in the Current Directory window. Before you close MATLAB, you should save the file created in Exercise 2.13.
+
+2.4.4  Running Scripts
+After you have built and saved a script, you can run it using any of the following methods:
+
+■	Type the name of the script in the Command window.
+■	Choose the Debug > Run menu item in the MATLAB Editor window.
+■	Press the F5 key when the script is visible in the editor. Doing this saves the script automatically before executing it.
+
+The latest versions of MATLAB will echo the file name in the Command window when you invoke the script by the latter two methods. After you execute the script, the trace output is written to the Command window as if you had typed the script instructions there one at a time. For practice, run the script created in Exercise 2.13.
+
+2.4.5   Punctuating Scripts
+Many programming languages put a semicolon (;) at the end of a line to indicate the end of a command. Since the MATLAB language uses the end of a line to indicate the end of a command, it does not require an end-of-line command character. If a long command needs to be extended to the next line for convenience in viewing the program, three periods, frequently referred to as ellipses, must be entered at the end of the line to continue the script.
+
+The MATLAB language uses the semicolon for a different purpose. By default, all assignment commands display their results in the Command window in text form. For complex programs, the volume of this output can become too large. Whenever you really don’t want to see all that output, putting a semicolon character at the end of a line will prevent the results of that assignment from displaying in the Command window.
+
+2.4.6  Debugging Scripts
+MATLAB provides extensive debugging capabilities based on the use of break points, which are places in your program where you want to stop and verify that the code is doing what you expect. You insert break points as you edit a code segment by clicking the small dash between the line number and the start of the text. If the program is ready to run, a red dot appears in place of the dash where you clicked. If the file has been changed and hasn’t been saved, the dot will be gray, in which case you should save the file. You can set any number of break points throughout your code.
+
+After you start running a program, when MATLAB reaches a break point, execution stops, an arrow overwrites the break point symbol, and you can examine the contents of the variables either in the Workspace window or by passing the mouse slowly over the variable in the Editor window. A Debugging tool bar is available with icons that let you:
+■	Continue executing the logic from this point (other break points may come into effect)
+■	Step over the logic in this line to the next line in this code block
+■	Step into any modules referenced by this line of code
+■	Step out of this current code block
+Use the script from Exercise 2.13 to practice inserting break points.
+
+2.5  Engineering Example— Spacecraft   Launch
+In 1996, the Ansari X Prize was offered for the first time for a private venture: a reusable spacecraft. The requirements were for the same vehicle to carry three people into outer space twice in a two-week time period. The competition was won in 2004 by Tier 1, a company led by Burt Rutan. Their concept was to have a mother ship take off and land on a conventional runway carrying Space Ship One. The spacecraft would be launched at 25,000 feet altitude and would reach outer space (an altitude of 100 km), then glide back and land on the same runway. They repeated this within a week, and they won the prize.
+Problem:
+Assuming that the spacecraft uses all its fuel to achieve a vertical velocity u at 25,000 feet, what is the value of u for the spacecraft to reach outer space?
+Solution:
+There are two parts to this problem: converting units to the metric system, and choosing and solving an equation for motion under constant acceleration (the rocket motor is no longer burning).
+1.	Convert the launch altitude from feet to meters. I like to remember as few numbers as possible. I do remember that 1 inch 5 2.54 cm, so we will use this in a MATLAB script to find the conversion from feet to meters. The appropriate chain of calculations is this:
+
+meters = feet X meters X cm X inch
+                  cm	inch  feet
+
+Listing 2.2 shows the beginning of the script to solve this problem.
+2.	Find and solve the equation. Given the following:
+■	Initial and final altitudes from which you can compute the distance traveled: s
+■	The motion is under constant acceleration, the force of gravity: g
+■	To just reach outer space, the final velocity, v, is 0
+■	The initial velocity, u, is needed
+
+So after some diligent head scratching, we remember the equation of motion under constant acceleration connecting u, v, s, and a is:
+v2 = u2 + 2as
+However, this is not yet in a useful form. For computers to be able to solve an equation, you need the unknown quantity on the left of the equation and everything known on the right. Since u is the unknown, we move this to the left side of the assignment, and organize the known quantities to the right. These are the final velocity, v (i.e., 0) the given distance, s, and the acceleration, a. Since the positive direction for u and s is upward, but gravity is downward, we must use a = −g, and the equation can be transformed to:
+
+u =  -gs
+
+With this information, you can now solve this problem. Listing 2.3 shows the rest of Listing 2.2 to complete this calculation.
+
+Although most modern computing environments, including MATLAB, have tools that actually solve symbolic equations, these tools are not appropriate for an introduction to programming and will not be discussed in this book.
+
+Chapter Summary
+This chapter presented some fundamental notions of computing and introduced you to the nature of MATLAB, its user interface, and the fundamental tools for making programs work.
+■	Abstraction lets you refer to collections of data or instructions as a whole
+■	An algorithm is a set of instructions at an appropriate level of abstraction for solving a specific problem
+■	A data class describes the type of data and the nature of operations that can be performed on that data
+■	An object is a specific instance of a class with specific values that can be assigned to a variable
+■	The Command window lets you experiment with ideas by entering commands line-by-line and seeing immediate results
+■	The Command History window lets you review and recall previous commands
+■	The Workspace window lists the names, values, and class of your local variables.
+■	The Current Directory window lists the current files in the directory to which MATLAB is currently pointed
+■	A Document window opens when a variable in the Workspace window is selected, to let you view and edit data items
+■	A Figure window presents data and/or images when invoked by programs
+■	The Editor window lets you view and modify text files
+■	Scripts provide the basic mechanism for implementing solutions to problems
+ 
+
+
+
+

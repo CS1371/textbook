@@ -1,0 +1,254 @@
+CHAPTER 5 Execution Control
+
+
+5.1   Concept: Code Blocks
+5.2  Conditional Execution in General
+5.3   if Statements
+5.3.1  General Template
+5.3.2   MATLAB
+Implementation
+5.3.3  Important Ideas
+5.4   switch Statements
+5.4.1  General Template
+5.4.2   MATLAB
+Implementation
+5.5   Iteration in General
+5.6   for Loops
+5.6.1  General for Loop Template
+5.6.2   MATLAB
+Implementation
+5.6.3  Indexing
+Implementation
+5.6.4   Breaking out of a
+for Loop
+5.7   while Loops
+5.7.1  General while
+Template
+5.7.2   MATLAB
+while Loop Implementation
+5.7.3  Loop-and-a-Half Implementation
+5.7.4  Breaking a while
+Loop
+5.8  Engineering Example— Computing  Liquid  Levels
+
+Chapter Objectives
+
+This chapter discusses techniques for changing the flow of control in a program, which may be necessary for two reasons:
+
+■	You may want to execute some parts of the code under certain circumstances only
+■	You may want to repeat a section of code a certain number of times
+
+In Chapter 3 we used the array notation to gather numbers into a form where they could be processed collectively rather than individually. This chapter deals with code blocks (collections of one or more lines of code) that solve a particular segment of a problem in the same way. We will see how to define a code block, how to decide to execute a code block under certain conditions only, and how to repeat execution of a code block.
+
+5.1	Concept: Code Blocks
+
+Some languages identify code blocks by enclosing them in braces ({. . .}); others identify them by the level of indentation of the text. The MATLAB language uses the occurrence of key command words in the text to define the extent of code blocks. Keywords like if, switch, while, for, case, otherwise, else, elseif, and end are identified with blue coloring by the MATLAB text editor. They are not part of the code block, but they serve as instructions on what to do with the code block and as delimiters that define the extent of the code block.
+
+5.2	Conditional Execution in General
+
+To this point, the statements written in our scripts (single code blocks) have been executed in sequence from the instruction at the top to the instruction at the bottom. However, it is frequently necessary to make choices about how to process a set of data based on some characteristic of that data. We have seen logical expressions that result in a Boolean result— true or false. This section discusses the code that implements the idea shown in Figure 5.1.  [Fig 5.1 here]
+
+In the flowchart shown in Figure 5.1, a set of statements (the code block to be executed) is shown as a rectangle, a decision point is shown as a diamond, and the flow of program control is indicated by arrows. When decision points are drawn, there will be at least two arrows leaving that symbol, each labeled with the reason one would take that path. This concept makes the execution of a code block conditional upon some test. If the result of the test is true, the code block is executed. Otherwise, the code block is omitted, and the instruction(s) after the end of that code block is executed next.
+
+An important generalization of this concept is shown in Figure 5.2. [Fig 5.2 here] Here the solution is generalized to permit the first code block to be implemented under the first condition as before. Now, however, if that first logical test returns false, a second test is performed to determine whether the second code block should be executed. If that test returns false, as many further tests as necessary may be performed, each with the appropriate code block to be implemented when the result is true. Finally, if none of these tests return true, the last code block, usually identified by the else keyword—(n 1 1) in the figure—is executed. As the flowchart shows, as soon as one of the code blocks is executed, the next instruction to execute is the one that follows the conditional code after the end statement. In particular, if there is no else clause, it is possible that no code at all is executed in this conditional statement.
+
+There are two common styles in which to implement this conditional behavior. First we will discuss the most general form, the if statement, and then we will discuss the more restrictive, but tidier, switch statement. Both implementations are found in most modern languages, albeit with slightly different syntax. In each case, the code block to be implemented is all the statements between the key words colored blue by the MATLAB editor.
+
+5.3  if Statements
+
+Here we introduce the concept of a programming template. Many programming texts still use the idea of flowcharts, such as those illustrated in Figures 5.1 and 5.2, to describe the design of a solution in a manner independent of the code implementation. However, since this graphical form cannot be maintained with a text editor, if the design of the solution changes, it is difficult to maintain any design description that is separate from the code itself.
+
+Throughout the remainder of this text, we will describe the overall design of a code module using a design template. Design templates are a textual form of flowchart consisting of the key words that control program flow and placeholders that identify the code blocks and expressions that are necessary to implement the solution logic. Design templates are powerful tools for the novice programmer to overcome the “blank sheet of paper” problem—“how do I start solving this problem?” All programmers need to do is recognize the nature of the solution and write down the appropriate template. Then solving a particular problem becomes the relatively simple task of writing the code blocks identified by the template.
+
+To discuss the if statement, first we consider its general, language independent template and then its MATLAB implementation.
+
+5.3.1	General Template
+
+Template 5.1 shows the general template for the if statement. [Template 5.1 here] Note the following:
+
+■	The only essential ingredients are the first if statement, one code block, and the end statement. All other features may be added as the logic requires.
+■	The code blocks may contain any sequence of legal MATLAB statements, including other if statements (nested ifs), switch statements, or iterations (see Section 5.5).
+■	Nested if statements with a code block are an alternative implementation of a logical AND statement.
+■	Recall that logical operations can be applied to a vector, resulting in a vector of Boolean values. This vector may be used as a logical expression. The if statement will accept this expression as true if all of the elements are true.
+Listing 5.1 is an example of the use of if statements.
+In Listing 5.1:
+
+Line 1: The first logical expression determines whether day is 7. 
+Line 2: The corresponding code block sets the value of the variable
+state to the string 'weekend'. In general, there can be as many
+statements within a code block as necessary.
+Line 3: The second logical expression determines whether day is 1. 
+Line 4: The corresponding code block also sets the value of the variable state to the string 'weekend'.
+Line 5: The key word else introduces the default code block executed when none of the previous tests pass.
+Line 6: The default code block sets the value of the variable state to the string 'weekday'.
+
+Exercise 5.1 gives you the opportunity to practice using if statements, and Listing 5.2 shows a script that will satisfy Exercise 5.1.
+
+
+5.3.3	Important Ideas
+
+There are two important ideas that are necessary for the successful implementation of if statements: the general form of the logical expressions and short-circuit analysis.
+Logical Expressions The if statement requires a logical expression for its condition. A logical expression is any collection of constants, variables, and operators whose result is a Boolean true or false value.
+ 
+Logical expressions can be created in the following ways:
+■	The value of a Boolean constant (e.g., true or false)
+■	The value of a variable containing a Boolean result (e.g., found)
+■	The result of a logical operation on two scalar quantities (e.g., A > 5)
+■	The result of logically negating a Boolean quantity using the unary negation operator (e.g., ~found)
+■	The result of combining multiple scalar logical expressions with the operators && or || (e.g., A && B or A || B)
+■	The results of the functions that are the logical equivalent of the &&,
+||, and ~ operators: and(A, B) or(A, B) and not(A)
+■	The results of other functions that operate on Boolean vectors:
+any(...) and all(...)
+
+The result from any(...) will be true if any logical value in the vector is true. The result from all(...) will be true only if all logical values in the vector are true. The function all(...) is implicitly called if you supply a vector of logical values to the if statement, as shown in Listing 5.3. 
+[Pitfalls 5.1 goes here]
+
+Short-Circuit Evaluation When evaluating a sequence of logical && or ||, MATLAB will stop processing when it finds the first result that makes all subsequent processing irrelevant. This concept is best illustrated by an example. Assume that A and B are logical results and you want to evaluate A && B. Since the result of this is true only if both A and B are true, if you evaluate A and the result is false, no value of B can change the outcome A &&
+B.	Therefore, there is no reason to evaluate any more components of a logical
+and expression once a false result has been found. Similarly, if you want A
+|| B, if A is found to be true, you do not need to evaluate B. For example,
+suppose you want to test the nth element of a vector v using a variable n,
+and you are concerned that n might not be a legal index value.
+
+The following code could be used:
+
+if (n <= length(v)) && (v(n) > 0)
+% success!
+end
+
+If n were not a legal index, the indexed accessor v(n) would cause an error for attempting to reach beyond the end of the vector. However, by putting the test of n first, the short-circuit logic would not process the second part of the expression if the test of n failed.
+
+5.4 switch Statements
+
+A switch statement implements the logic shown in Figure 5.2 in a different programming style by allowing the programmer to consider a number of different cases for the value of one variable. First we consider the general, language-independent template for switch statements, and then its MATLAB implementation.
+
+5.4.1	General Template
+
+Template 5.2 shows the general template for the switch statement. [Template 5.2 goes here]
+Note the following:
+■	All tests refer to the value of the same parameter
+■	case specifications may be either a single value or a set of parameters enclosed in braces { ... }
+■	otherwise specifies the code block to be executed when none of the case values apply
+■	The code blocks may contain any sequence of legal MATLAB statements, including other if statements (nested ifs), switch statements, or iterations
+
+5.4.2	MATLAB Implementation
+Listing 5.4 shows the MATLAB implementation of a typical logical problem: determining the number of days in a month. It assumes that the value of month is 1 . . . 12, and leapYear is a logical variable identifying the current year as a leap year.
+[Style Points 5.1 goes here]
+[Style Points 5.2 goes here]
+[Hint 5.1 goes here]
+Listing 5.4 illustrates the use of a switch statement.
+
+
+[Exercise 5.2 goes here]
+Try using the switch statement in Exercise 5.2.
+
+5.5	Iteration in General
+
+Iteration allows controlled repetition of a code block. Control statements at the beginning of the code block specify the manner and extent of the repetition:
+
+■	The for loop is designed to repeat its code block a fixed number of times and largely automates the process of managing the iteration.
+■	The while loop is more flexible in character. In contrast to the fixed repetition of the for loop, its code block can be repeated a variable number of times, depending on the values of data being processed. It is much more of a “do-it-yourself” iteration kit.
+
+The if and switch statements allow us to decide to skip code blocks based on conditions in the data. The for and while constructs allow us to repeat code blocks. Note, however, that the MATLAB language is designed to avoid iteration. Under most circumstances of processing numbers, the array processing operations built into the language make do-it-yourself loop constructs unnecessary.
+
+5.6	for Loops
+
+Figure 5.3 shows a simple for loop. [Figure 5.3 goes here] The hexagonal shape illustrates the control of repetition. The repeated execution of the code block is performed under the control of a loop-control variable. It is first set to an initial value that is tested against a terminating condition. If the terminating test succeeds, the program leaves the for loop. Otherwise, the computations in the code block are performed using the current value of that variable. When one pass through the code block is finished, the variable is updated to its next value, and control returns to the termination test.
+
+5.6.1	General for Loop Template
+
+The general template for implementing for loops is shown in Template 5.3. [Template 5.3 here] All of the mechanics of iteration control are handled automatically in the variable specification section. In some languages—especially those with their origins in C—the variable specification is a formidable collection of statements that provide great generality of loop management. The designers of the MATLAB language, with its origins in matrix processing, chose a much simpler approach for specifying the variable range, as shown in the general template. The repetition of the code block is managed completely by the specification of the loop control variable.
+
+5.6.2	MATLAB Implementation
+
+The core concept in the MATLAB for loop implementation is in the style of the variable specification, which is accomplished as follows:
+
+<variable specification>: <variable> = <vector>
+
+where <variable> is the name of the loop control variable and <vector> is any vector that can be created by the techniques discussed in Chapter 3. If we were to use the variable specification x = A, MATLAB would proceed as follows:
+
+1.	Set an invisible index to 1.
+2.	Repeat steps 3 to 5 as long as that index is less than or equal to the length of A.
+3.	Set the value of x to A(index)
+4.	Evaluate the code block with that value of x
+5.	Increment the index
+
+For a simple example of for loops, the code shown in Listing 5.5 solves a problem that should be done in a single MATLAB instruction: max(A) where A is a vector of integers. However, by expanding this into a for loop, we see the basic structure of the for loop at work. Listing 5.5 illustrates the behavior of a for loop.
+[Common Pitfalls 5.2 here]
+ 
+5.6.3	Indexing Implementation
+
+The above for loop implementation may seem very strange to those with a C-based language background, in which the loop-control variable is usually an index into the array being traversed rather than an element from that array. In order to illustrate the difference, we will adapt the code from Listing 5.5 to solve a slightly different problem that approximates the behavior of max(A). This time we need to know not only the maximum value in the array, but also its index. This requires that we resort to indexing the array in a more conventional style, as shown in Listing 5.6. 
+Enter and run the scripts in Listings 5.5 and 5.6. They should each produce the following results:
+A = 6 12 6 91 13 61 26 22 71 54
+the max value in A is 91 at 4
+
+5.6.4	Breaking out of a for Loop
+
+If you are in a for loop and find a circumstance where you really do not want to continue iterating, the break statement will skip immediately out of the innermost containing loop. If you want to continue iterating but omit all further steps of the current iteration, you can use the continue statement.
+
+5.7 while Loops
+
+We use while loops in general to obtain more control over the number of times the iteration is repeated. Figure 5.4 [Fig 5.4 here] illustrates the control flow for a while loop. Since the termination test is performed before the loop is entered, the loop control expression must be initialized to a state that will normally permit loop entry. It is possible that the code block is not executed at all—for example—if there is no data to process.
+
+5.7.1 General while Template
+
+Template 5.4 shows [Template 5.4 here] the general template for implementing while loops. The logical expression controlling the iteration is testing some state of the workspace; therefore, two things that were automatic in the for loop must be manually accomplished with the while loop: initializing the test and updating the workspace in the code block so that the test will eventually fail and the iteration will stop.
+
+5.7.2	MATLAB while Loop Implementation
+
+For the sake of consistency, Listing 5.7 shows you how to solve the same problem using the while syntax.
+
+Enter and run the script in Listing 5.7. It should produce the following results:
+
+A =
+6 12 6 91 13 61 26 22 71 54
+the max value in A is 91 at 4
+
+
+
+5.7.3	Loop-and-a-Half Implementation
+
+Listing 5.8 illustrates the implementation of the loop-and-a-half iteration style, in which we must enter the loop and perform some computation before realizing that we do not need to continue. Here we continually ask the user for the radius of a circle until an illegal radius is entered, which is our cue to terminate the iteration. For each radius entered, we want to display the area and circumference of the circle with that radius.
+
+[Style Points 5.3 here]
+[Style Points 5.4 here]
+ [Listing 5.8 here]
+ 
+
+Try this script in Exercise 5.3
+
+5.7.4 Breaking a while Loop
+As with the for loop, break will exit the innermost while loop, and continue
+will skip to the end of the loop but remain within it.
+
+5.8	Engineering Example—Computing Liquid Levels
+
+Figure 5.5 shows a cylindrical tank of height H [Fig 5.5 here] and radius r with a spherical cap on each end (also of radius, r ). If the height of the liquid is h, what is the volume of liquid in the tank? Clearly, the calculation of the volume of liquid in the tank depends upon the relationship between h, H, and r:
+
+■	If h is less than r, we need the volume, v, of a partially filled sphere given by:
+[equation to enter]
+■	If h is greater than r but less than H 2 r, we need the volume of a fully filled hemisphere plus the volume of a cylinder of height h 2 r:
+[equation to enter]
+■	If h is greater than H 1 r, we need the volume of a fully filled sphere plus the volume of a cylinder of height H 1 2r minus the partially empty upper hemisphere of height H 1 h:
+[equation to enter]
+The script to perform this calculation is shown in Listing 5.9. Rather than performing the computations for one liquid level only, we should write the script so that we continue to consider tanks of different dimensions and different liquid heights for each tank until the user indicates that he needs no more results.
+
+
+Table 5.1 [Table 5.1 here] shows some typical results.
+
+
+Chapter Summary
+
+This chapter presented techniques for changing the flow of control of a program for condition execution and repetitive execution:
+■	The most general conditional form is the if statement, with or without the accompanying elseif and else statements
+■	The switch statement considers different cases of the values of a countable variable
+■	A for loop in its most basic form executes a code block for each of the elements of a vector
+■	A while loop repeats a code block a variable number of times, as long as the conditions specified for continuing the repetition remain true
+
+[Summary Table 04]
+
+[Problems added here]
+
+

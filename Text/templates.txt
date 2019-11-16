@@ -1,0 +1,170 @@
+Template 4.1 General template for the if statement
+
+if <logical expression 1>
+<code block 1>
+elseif <logical expression 2>
+<code block 2>
+.
+.
+.
+elseif <logical expression n>
+<code block n>
+ 
+else
+end
+
+Template 4.2 General template for the switch statement
+
+switch <parameter>
+case <case specification 1>
+<code block 1>
+case <case specification 2>
+<code block 2>
+ 
+.
+.
+
+case <case specification n>
+<code block n> otherwise
+<default code block>
+end
+
+Template 4.3 General template for the for statement
+
+for <variable specification>
+<code block>
+end
+
+Template 4.4 General template for the while statement
+
+<initialization>
+while <logical expression>
+<code block>	% must make some changes
+% to enable the loop to terminate
+end
+
+Template 5.1 General template for a function
+
+function <return info> <function name> (<parameters>)
+<documentation>
+<code body> % must return the results
+end
+
+Template 7.1 General template for processing cell arrays
+
+<initialize result>
+for <index specification>
+<extract an element>
+<check the element accordingly>
+<process the element accordingly>
+end
+<finalize result>
+
+Template 9.1  General template for a recursive function
+
+function <result> = <function_name> (<formal_params>)
+<documentation>
+if <terminating condition 1>
+<result> = <initial value 1> elseif <terminating condition 2>
+<result> = <initial value 2>
+...
+else
+<result> = <operation> ... (<formal_params>, ...
+<function_name> (<new_params>))
+end
+
+Template 9.2  General template for processing exceptions
+
+successful = false
+while <not successful>
+try
+<request data from the user>
+<process the data> successful = true
+catch
+<announce the error to the user>
+end 
+end
+
+Template 10.1 Template for inserting
+
+%inserting item into a collection coll
+
+<set insert point, ins, at the front> while <insertion point in coll and
+item comes before coll(ins)>
+<move insertion point forward>
+<end of the while loop>
+<concatenate coll before ins with item and coll at and beyond ins>
+
+Template 10.2 Template for traversing
+
+<initialize the result>
+for item <across the whole collection>
+<operate on the item>
+<end of the loop>
+<finalize the result>
+
+Template 10.3 Template for building
+
+<initialize the new collection> for item <across the data source>
+<extract the item>
+<insert item in new collection>
+<end of the loop>
+<finalize the new collection>
+
+Template 10.4 Template for mapping
+
+<initialize the result>
+for item <across the whole collection>
+<extract the item>
+<modify the item>
+<insert modified item in the result>
+<end of the loop>
+<finalize the result>
+
+Template 10.5 Template for filtering
+
+<initialize the new collection>
+for item <across the whole collection>
+<extract the item> if <keep the item>
+<insert item in new collection>
+<end if>
+<end for>
+<finalize the new collection>
+
+Template 10.6 Template for folding
+
+<initialize the summary value>
+for item <across the whole collection>
+<extract the item>
+<update the summary value>
+<end for>
+<finalize the summary value>
+
+Template 10.7 Template for searching
+
+<initialize result to not succeeded> for <item in the collection>
+if <found criteria>
+<set result to succeeded>
+<break the loop>
+<end if>
+<end for>
+<check for failure>
+
+Template 17.1 Template for graph traversal
+
+1.	< create a queue >
+2.	< enqueue the start node >
+3.	< initialize the result >
+4.	while < the queue is not empty >
+5.	< dequeue a node >
+6.	< operate on the node >
+7.	< for each edge from this node >
+8.	< retrieve the other node >
+9.	if < not already used >
+10.	< enqueue the other node >
+11.	end
+12.	end
+13.	end
+14.	< return the result >
+
+

@@ -1,0 +1,328 @@
+Chapter 12 - Matrices
+
+
+12.1   Concept: Behavioral Abstraction
+12.2  Matrix Operations
+12.2.1  Matrix
+Multiplication
+12.2.2  Matrix Division
+12.2.3  Matrix
+Exponentiation
+12.3    Implementation
+12.3.1  Matrix
+Multiplication
+12.3.2  Matrix Division
+12.4   Rotating Coordinates
+12.4.1 2-D Rotation
+12.4.2 3-D Rotation
+12.5  Solving Simultaneous Linear   Equations
+12.5.1  Intersecting Lines
+12.6   Engineering Examples
+12.6.1 Ceramic
+Composition
+12.6.2 Analyzing an Electrical Circuit
+
+Chapter Objectives
+
+This chapter shows matrices as logical extensions of arrays. You will learn about two specialized operations performed with matrices:
+
+■	Multiplication for coordinate rotation
+
+■	Division for solving simultaneous equations
+
+Although the matrix operations that are the subject of this chapter can be performed on pairs of vectors or arrays that meet certain cri- teria, when using these operations, we tend to refer to the data objects as matrices. In most mathematical discussions, the words “matrix” and “array” can be used interchangeably, and rightly so, because they store data in exactly the same form. Moreover, almost all of the operations we can perform on an array can also be per- formed on a matrix—logical operations, concatenation, slicing, and most of the arithmetic operations behave identically. The fact that some of the mathematical operations are defined differently gives us a chance to think about an important concept that is usually well hidden within the MATLAB language definition.
+
+12.1	Concept: Behavioral Abstraction
+
+Recall the following concepts:
+
+■	Abstraction is the ability to ignore specific details and generalize the description of an entity
+■	Data abstraction is the specific example of abstraction that we first considered whereby we could treat vectors of data (and later other collections like structures and arrays) as single entities rather than enumerating their elements individually
+■	Procedural abstraction are functions that collect multiple operations into a form; once they are developed, we can overlook the specific details and treat them as a “black box,” much as we treat built-in functions
+
+Behavioral abstraction combines data and procedural abstraction, encapsulating not only collections of data, but also the operations that are legal to perform on that data. One might argue that this is a new, irrelevant concept best ignored until “we just have to!” However, consider the rules we have had to establish for what we can and cannot do with data collections we have seen so far. For example, am I able to add two arrays together? Yes, but only if they have the same number of rows and columns, or if one of them is scalar. Can I add two character strings? Almost the same answer, except that each string is first converted to a numerical quantity and the result is a vector of numbers and not a string. Can I add two cell arrays? No.
+
+So at least some, and maybe all, data collections also “understand” the set of operations that are permitted on the data. This encapsulation of data and operations is the essence of behavioral abstraction. Therefore, we distinguish arrays from matrices not by the data they collect, but by the operations that are legal to perform on them.
+
+12.2	Matrix Operations
+
+The arithmetic operations that differ between arrays and matrices are multiplication, division, and exponentiation.
+
+12.2.1	Matrix Multiplication
+
+Previously, when we considered multiplying two arrays, we called this scalar multiplication, and it had the following typical array operation characteristics:
+
+■	Either the two arrays must be the same size, or one of them must be scalar
+■	The multiplication was indicated with the .* operator
+■	The result was an array with the same size as the larger original array
+■	Each element of the result was the product of the corresponding elements in the original two arrays
+
+This is best illustrated in Figure 12.1. Scalar division and exponentiation have the same constraints.
+
+Matrix multiplication, on the other hand, performed using the normal * operator, is an entirely different logical operation, as shown in Figure 12.2. The logical characteristics of matrix multiplication are as follows:
+
+■	The two matrices do not have to be the same size. The requirements are either:
+•	One of the matrices is a scalar, in which case the matrix operation reduces to a scalar multiply.
+•	The number of columns in the first matrix must equal the number of rows in the second. We refer to these as the inner dimensions. The result is a new matrix with the column count of the first matrix and the row count of the second.
+■	If, as illustrated, A is an m 3 n matrix and B is an n 3 p matrix, the result of A * B is an m 3 p matrix.
+■	The item at (i, j) in the result matrix is the sum of the scalar product of the ith row of A and the jth column of B.
+■	Whereas with scalar multiplication A .* B gives the same result as B .* A, this is not the case with matrix multiplication. In fact, if A * B works, B * A will not work unless both matrices are square, and even then the results are different. (Proof of this can be derived immediately from Figure 12.3 by eliminating the third row and column and exchanging a for b. All four terms of the result of A * B are different from B * A.)
+■	Whereas with scalar multiplication the original array A can be recovered by dividing the result by B, this is not the case with matrix multiplication unless both matrices are square.
+■	The identity matrix, sometimes given the symbol In, is a square matrix with n rows and n columns that is zero everywhere except on its major diagonal, which contains the value 1. In has the special property that when pre-multiplied by any matrix A with n columns, or post-multiplied with any matrix A with n rows, the result is A. We will need this property to derive matrix division below. (The
+built-in function eye(...) generates the identity matrix.)
+Figure 12.3 illustrates the mathematics for the case where a 3 3 2 matrix is multiplied by a 2 3 3 matrix, resulting in a 3 3 3 matrix.
+
+12.2.2	Matrix Division
+
+Matrix division is the logical process of reversing the effects of a matrix multiplication. The goal is as follows: given An3n, Bn3p, and Cn3p, where C = A * B, we wish to define the mathematical equivalent of C/A that will result in B.
+
+Since C = A * B, we are actually searching for some matrix Kn3n by which we can multiply each side of the above equation:
+
+K * C = K * A * B
+
+This multiplication would accomplish the division we desire if K * A were to result in In, the identity matrix. If this were the case, pre- multiplying C by K would result in In * B, or simply B by the definition of In above. The matrix K is referred to as the inverse of A, or A-1. The algebra for computing this inverse is messy but well defined. In fact, Gaussian Elimination to solve linear simultaneous equations accomplishes the
+same thing. The MATLAB language defines both functions (inv(A)) and operators (“back divide,” \) that accomplish this. However, two things should be noted:
+
+■	This inverse does not exist for all matrices—if any two rows or columns of a matrix are linearly related, the matrix is singular and does not have an inverse
+■	Only non-singular, square matrices have an inverse (just as a set of linear equations is soluble only if there are as many equations as there are unknown variables)
+
+12.2.3	Matrix  Exponentiation
+
+For completeness, we mention here that matrix operations include exponentiation. However, this does not suggest that one would encounter An3n^Bn3n  in the scope of our applications. Rather, our usage of matrix
+k
+ 
+exponentiation will be confined to A
+ 
+where k is any non-zero integer value.
+ 
+The result for positive k is accomplished by multiplying A by itself k times
+(using matrix multiplication). The result for negative k is accomplished by inverting A-k. (There is, in fact, meaning in matrix exponentials with non- scalar exponents, but this involves advanced concepts with eigen values and eigenvectors and is beyond the scope of this text.)
+
+12.3  Implementation
+
+In this section, we see how MATLAB implements matrix multiplication and division. However, since applications that require matrix exponentiation Ak where k is anything but a scalar quantity are beyond the scope of this text, we will not look at its implementation in MATLAB.
+
+12.3.1	Matrix Multiplication
+
+Matrix multiplication is accomplished by using the “normal” multiplication symbol, as illustrated in Exercise 12.1.
+In Exercise 12.1 we make the following observations:
+■	Entry 1 creates a 2 3 3 matrix, A
+■	Entry 2 creates a 3 3 1 matrix, B, a column vector
+■	Entry 3 indicates that this multiplication is legal because the columns in A match the rows in B
+■	Entry 4 shows that, likewise, it is legal to multiply a 1 3 2 vector by a 2 3 3 matrix
+■	Entry 5 creates an identity matrix
+■	Entry 6 shows that pre-multiplying A by this is legal because the inner dimensions match
+■	Entry 7 shows that post-multiplying A by I2 does not work because the inner dimensions do not match
+■	Entry 8 uses I3 to post-multiply legally
+
+12.3.2	Matrix Division
+
+Matrix division is accomplished in a number of ways, all of which appear to work, but some give the wrong answer. Returning to the division problem described in Section 12.2.2, we know that A is a square matrix of side n, and B and C have n rows, and C = A * B. If we are actually given the matrices A and B, we can compute B in one of the following ways:
+
+■	B = inv(A) * C —using the MATLAB inv(...) function to compute the inverse of B
+■	B = A \ C—“back dividing” B into C to produce the same result
+■	B = C / A—apparently performing the same operation, but giving different answers
+ 
+The order in which the matrix multiply is done affects the value of the result; therefore, care must be taken to ensure that the appropriate inversion or division is used. Study the results of Exercise 12.2 carefully. In Exercise 12.2 we make the following observations: 
+Entries 1 and 2 construct two 3 3 3 matrices, A and B
+Entries 3 and 4 pre-multiply and post-multiply B and A; recall that we expect this to produce different answers
+Entry 5 shows that since we defined inv(B) as that function that produces the result B*inv(B)=I, this should produce a matrix with the same values as A
+Entry 6 reveals that normal division by B should also produce a matrix with the same values as A
+Entry 7 shows that back dividing B into BA should also produce a matrix equal to A
+Entry 8 verifies that dividing BA by B works but does not return the matrix A
+
+
+12.4  Rotating Coordinates
+
+A common use for matrix multiplication is for rotating coordinates in two or three dimensions. Previously we have seen the ability to rotate a complete picture by changing the viewing angle. We can move and scale items on a plot by adding coordinate offsets or multiplying them by scalar quantities. However, frequently the need arises to rotate the coordinates of a graphical object by some angle. We can use matrix multiplication to rotate individual items in a picture in two or three dimensions.
+
+12.4.1	2-D Rotation
+
+The mathematics implementing rotation in two dimensions is relatively straightforward, as shown in Figure 12.4. If the original point location P is (x, y) and you wish to find the point P* (x*, y*) that is the result of rotating P by the angle u about the origin of coordinates, the mathematics are as follows:
+
+x* = x cosu  − y sinu y* = x sinu  + y cosu
+which can be expressed as the matrix equation:
+
+P* = A * P
+where A is found by:
+
+A = [cosu  −sinu
+sinu	cosu]
+
+To rotate the x-y coordinates of a graphic object in the x-y plane about some point, P, other than the origin, you would do as follows:
+
+1.	Translate the object so that P is at the origin by subtracting P from all the object’s coordinates
+2.	Perform the rotation by multiplying each coordinate by the rotation matrix shown above
+3.	Translate the rotated object back to P by adding P to all the rotated coordinates
+
+Rotating a Line  Listing 12.1 illustrates a simple script to rotate a line about the origin.
+
+In Listing 12.1:
+Lines 1 and 2: Considering the form of the rotation equations, we need to define the points where the x values are in the first row and the y values are in the second row.
+Line 3: Plots the line in its original location from (3, 1) to (10, 3). Lines 4 and 5: Fix the axes at a suitable size.
+Line 6: Iterates across a selection of angles (in radians). Line 7: Computes the rotation matrix.
+Line 8: Rotates the original line by the current angle. Line 9: Plots the rotated line.
+Figure 12.5 shows the plot resulting from this script.
+
+Twinkling Stars As a second example, consider the problem of simulating twinkling stars. One way to accomplish this is to draw two triangles for each star rotating in opposite directions. The script shown in Listing 12.2 accomplishes this.
+In Listing 12.2:
+Line 1: Sets the number of stars and the initial rotation angle.
+Lines 2–6: Establish the location, size, and rotation speed of each star. Lines 7–19: Continue drawing until interrupted by Ctrl-C.
+Lines 8–13: Draw each star at the current rotation (see Listing 12.3 for the star(...) function).
+Line 14: Chooses a color map with yellow as the first color. Lines 15 and 16: Show the normal display environment setup. Line 17: Updates the angle of rotation.
+Line 18: Waits 1/10 sec for the figure to be displayed. Without this, the computation would be continuous and the user would never see the result.
+In Listing 12.3:
+Line 1: Draws one star at location [pt(1), pt(2)] with scale sc, rotation speed v, and angle th.
+Lines 2–4: Invoke the helper function triangle(...) to draw two triangles rotating in opposite directions.
+Line 6: Function to draw one triangle with the following parameters:
+up, with values 1 for upright and -1 for point down; th, the scaled rotation angle; and pt and sc, which are passed directly through from the star(...) function.
+Lines 7 and 8: Are coordinates of an equilateral triangle.
+Line 9: Computes the rotation matrix and applies the scaling factor.
+Line 10: Rotates and scales the points of the triangle.
+Lines 11 and 12: Call the function fill(...) to fill the triangle, offsetting the x and y coordinates by the original location of the triangle, and scaling y by the up multiplier to invert the triangle if necessary.
+The results of this script are shown in Figure 12.6.
+
+
+12.4.2	3-D Rotation
+
+The mathematics implementing rotation in three dimensions is a natural extension of the 2-D rotation case. We present here a simple way to make this extension. The 2-D rotation in Section 12.4.1 that rotates by the angle u in the x-y plane is actually rotating about the z-axis. If P* and P are now 3-D coordinates, we can rotate P by an angle u about the z-axis with the equation:
+
+P* = Rz * P
+where Rz is computed as
+
+Rz =	[ cosu,	-sinu,	0
+	sinu,
+0,	cosu,
+0,	0
+1]
+
+Similarly, we can develop matrices Rx and Ry that rotate about the x and y axes by angles f and c, respectively.
+
+Rx =	[	1,	0,	0
+0,	cosf,	-sinf
+0,	sinf,	cosf]
+Ry =	[	cosc,	0,	sinc
+0,	1,	0
+-sinc,	0,	cosc]
+P* = Rx * Ry * Rz * P
+
+An example of a script to rotate the solid cube drawn in Chapter 11 is shown in Listing 12.4. The major problem with rotating solid objects is that the coordinates of the object are defined as arrays of points. However, the rotation matrices need each set of coordinates in single rows. To accomplish this, we will use the reshape(...) function to transform the coordinates to and from the row vectors necessary for the coordinate rotation.
+
+In Listing 12.4:
+
+Lines 1–12: Build the coordinates of the cube centered at the origin. Lines 13 and 14: Determine the length of the linearized row vector for the reshape(...) function.
+Lines 15 and 16: Set up the three rotation angle parameters—the initial values and the increments.
+Lines 17 and 18: Repeat the drawing loop until the variable go is reset.
+Lines 19–21: Draw one cube not rotated four units down the x-axis. Lines 22–30: Set up the rotation matrices.
+Lines 31–33: Reshape the x, y, and z arrays into linear form. Line 34: Performs the rotation.
+Lines 35–37: Recover the original array shapes. Lines 38–42: Draw the rotated cube.
+Line 43: Updates the rotation angles.
+Line 44: Shows the terminating condition.
+Line 45: Pauses to give the figure time to draw.
+The results after running this script are shown in Figure 12.7. Notice that the mechanization of the top face has caused a “wrapped parcel” effect on the light reflections off that surface.
+
+12.5 Solving Simultaneous Linear Equations
+
+A common use for matrix division is solving simultaneous linear equations. To be solvable, simultaneous linear equations must be expressed as N independent equations involving N unknown variables, xi. They are usually expressed in the following form:
+
+A11 x1 1 A12 x2 1 ... 1 A1N xN 5 c1
+A21 x1 1 A22 x2 1 ... 1 A2N xN 5 c2
+.	.	.	.
+.	.	.	.
+AN1 x1 1 AN2 x2 1 ... 1 ANN xN 5 cN
+In matrix form, they can be expressed as follows:
+
+AN3N 5 XN31 5 CN31
+from which, since all of the values in A and C are constants, we can immediately solve for the column vector X by back division:
+
+X 5 A\C
+or by using the matrix inverse function:
+
+X 5 inv(A) * C
+
+12.5.1 Intersecting Lines
+
+A typical example of a simultaneous equation problem might take the following form. Consider two straight lines on a plot with the following general form:
+
+A11 x 1 A12y 5 c1
+A21 x 1 A22y 5 c2
+These lines intersect at some point P (x, y) that is the solution to both of these equations. The equations can be rewritten in matrix form as follows:
+
+A * V 5 c
+
+where c is the column vector [c1 c2]' and V is the required result, the column vector [x y]'. The solution is obtained by matrix division as follows:
+
+V 5 A \ c
+
+Recall that back divide, like the inv(...) function, will fail to produce a result if the matrix is singular, that is, has two rows or columns that have a linear relationship. In the specific example of two intersecting lines, this singularity occurs when the two lines are parallel, in which case there is no point of intersection. Listing 12.5 shows the solution to a pair of simultaneous equations.
+In Listing 12.5:
+Line 1: Sets the x and y limits of the plot. Lines 2–8: Plot the original lines.
+Line 9: Sets the simultaneous equation matrix. Line 10: Shows the right-hand side of the equation.
+Line 11: Solves the linear equations—P(1) is the x value; P(2) is the y value.
+Lines 12–14: Plot the lines identifying the intersection point. Lines 15–17: Plot the axes.
+Lines 18–19: Finish the plot.
+Figure 12.8 shows the result of this script.
+
+12.6 Engineering Examples
+
+The following examples illustrate applications of the matrix capabilities discussed in this chapter.
+
+12.6.1 Ceramic Composition
+Industrial ceramics plants require mixtures with precise formulations in order to produce products of consistent quality. For example, a factory might require 100 kg of a mix consisting of 67% silica, 5% alumina, 2% calcium oxide, and 26% magnesium oxide. However, the raw material provided is not pure quantities of these materials. Rather, they are delivered as batches of material that consist of the required components in different proportions. Each batch of raw materials is analyzed to determine their composition, and we will need to do the analysis to determine the proportions of the raw materials to mix in order to accomplish the appropriate formulation. The raw materials we will use here are feldspar, diatomite, magnesite, and talc. Table 12.1 illustrates a typical analysis of the composition of these compounds.
+
+For example, if we mixed Wf kg of feldspar, Wd kg of diatomite, Wm kg of magnesite, and Wt kg of talc, the amount of silica would be 0.695 Wf 1 0.897 Wd 1 0.067 Wm 1 0.692 Wt. Repeating this equation for the other components produces a matrix equation that reduces to:
+
+C = A * W
+
+where C is the required composition of the resulting mix, A is a 4 3 4 matrix showing the results of analyzing the four raw materials, and W is the proportions in which should we mix the raw material to produce the desired result. We find the appropriate amounts of the raw material by solving these equations:
+
+W = A\B
+
+A script that works this problem is shown in Listing 12.6.
+In Listing 12.6:
+
+Lines 1–4: Matrix A is the transpose of the original data table. Line 5: Shows the required composition in kg.
+Line 6: Shows the computed weights of the raw materials in kg, which produces the following result:
+
+W =
+16.0083 35.3043 15.1766 33.5108
+
+12.6.2 Analyzing an Electrical Circuit
+Figure 12.9 illustrates a typical electrical circuit with two voltage sources connected to five resistors with three closed loops. The voltages and resistances are given. We are asked to determine the voltage drop across R1. Solution techniques apply Ohm’s Law to the voltage drops around each closed circuit. When this technique is applied, the equations are
+as follows:
+
+V1 = i1 * R1 + (i1 – i2) * R4
+0 = i2 * R2 + (i2 – i3) * R5 + (i2 – i1) * R4
+–V2 = i3 * R3 + (i3 – i2) * R5
+
+When these three equations are manipulated to isolate the three currents, we have the following matrix equation:
+
+V = A * I
+
+which can be solved as usual by:
+
+I = A \ V
+
+The script to accomplish this is shown in Listing 12.7.
+In Listing 12.7:
+
+Lines 1–3: Set up the parameters of the problem. Lines 4–7: Set up the coefficient matrices.
+Lines 8–10: Compute and display the answers. Running this script produces the following printout:
+curr =	0.0283
+0.0104
+0.0003
+drop across R1 is 2.83 volts
+
+Chapter Summary
+
+This chapter presented two specialized operations performed with matrices:
+■	Matrix multiplication can be used for 2-D and 3-D coordinate rotations by building the appropriate rotation matrices
+■	Matrix division can be used for solving simultaneous equations by setting up the equations in the general form B 5 A * x, where the known matrix A is n 3 n and the known column vector B is n 3 1; the unknown vector x is then found by x 5 A\B or x = inv(A) * B
+
+
+
+
+[Special Characters]
+
+[Problems]
+

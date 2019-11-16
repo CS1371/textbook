@@ -1,0 +1,244 @@
+Chapter 13 - Images
+
+
+13.1  Nature of an Image
+13.2   Image Types
+13.2.1  True Color Images
+13.2.2  Gray Scale Images
+13.2.3  Color Mapped Images
+13.2.4 Preferred Image Format
+13.3   Reading, Displaying, and Writing    Images
+13.4   Operating on Images
+13.4.1 Stretching or
+Shrinking Images
+13.4.2 Color Masking
+13.4.3 Creating a
+Kaleidoscope
+13.4.4  Images on a Surface
+13.5  Engineering Example— Detecting   Edges
+
+Chapter Objectives
+
+This chapter covers:
+
+■	The basic representation of images
+
+■	How to read, display, and write JPEG image files
+
+■	Some basic operations on images
+
+■	Some advanced image processing techniques
+
+
+Introduction
+
+The graphical techniques we have seen so far have been 2-D and 3-D plots, whose basic concept is to write in places on the screen where data are required and to leave the rest of the screen blank. These presentations are easily generated when we have a
+mathematical model of the data and wish to represent it graphically. However, many sensors observing the world do not have that underlying model of the data. Rather, they passively generate 2-D repr that we see as images, leaving the interpretation of those images to a h observer. This kind of presentation is exemplified by a digital photogra includes images from many other sources like radar or X-ray machines.
+
+This chapter discusses some of the elementary processes that can be images in order to begin to extract meaning from them.
+
+13.1  Nature of an Image
+
+Before we confine ourselves to practical, computational reality, we need to understand the general nature of an image. The easiest answer would be that an image is a 2-D sheet on which the color at any point can have essentially infinite variability. However, since we live in a digital world, we will immediately confine ourselves to the conventional representation of images required for most digital display processors, as shown in Figure 13.1. We can represent any image as a 2-D, M 3 N array of points usually referred to as picture elements, or pixels, where M and N are the number of rows and columns, respectively. Each pixel is “painted” by blending variable amounts of the three primary colors: red, green, and blue. (Notice that this is not the same blending process used in painting with oils or water colors, where the second primary color is yellow and the combination process is reversed—increasing amounts of the primary colors tends toward black, not white.)
+
+The resolution of a picture is measured by the number of pixels per unit of picture width and height. This governs the fuzziness of its appearance in print, and controls the maximum size of good-quality photo printing. The color resolution is measured by the number of bits in the words containing the red, green, and blue (RGB) components. Since one value generally exists for each of the M 3 N pixels in the array, increasing the number of bits for each pixel color will have a significant effect on the stored size of the image. Typically, 8 bits (values 0–255) are assigned to each color.
+
+The MATLAB language has a data type, uint8, which uses 8 bits to store an unsigned integer in the range 0–255. It is unsigned because we are not interested in negative color values, and to specify the sign value would cost a data bit and reduce the resolution of the data to 0–127. By combining the three color values, there are actually 224 different combinations of color available to a true-color image—many more possible combinations than the human eye can distinguish.
+
+13.2 Image Types
+
+Our sources for images to process are data files captured by imaging devices such as cameras, scanners, and graphic arts systems, and these image files are provided in a wide variety of formats. According to the MATLAB documentation, it recognizes files in TIFF, PNG, HDF, BMP, JPEG (JPG), GIF, PCX, XWD, CUR, and ICO formats. The various file formats are usually identified by their file extensions. While this seems a bewildering collection of formats, MATLAB provides one image reading function that converts these file formats to one of three internal representations: true color, gray scale, or color mapped images. In the MATLAB implementation, we will confine our interests to two formats: .png files when absolute color fidelity is required and .jpg files that offer better compression ratios to give a smaller file size for a given image.
+
+
+13.2.1	True Color Images
+
+True color images are stored according to the scheme shown in Figure 13.2 as an M*N*3 array where every pixel is directly stored as uint8 values in three layers of the 3-D array. The first layer contains the red value, the second layer the green value, and the third layer the blue value. The advantage of this approach, as the name suggests, is that every pixel can be represented as its true color value without compromise. The only disadvantage is the size of the image in memory because there are three color values for every pixel.
+
+
+13.2.2	Gray Scale Images
+
+Gray scale images are also directly stored, but save the black-to-white intensity value for each pixel as a single uint8 value rather than three values. The function imread(...) will read an existing gray scale image into a 2 dimensional array, and the function rgb2gray(...) will convert a true color image to gray scale.
+
+13.2.3	Color Mapped Images
+
+Color mapped, or indexed, images keep a separate color map either 256 items long (for maximum economy of memory) or up to 32,768 items long. Each item in the color map contains the red, blue, and green values of a color, respectively. As illustrated in Figure 13.3, the image itself is stored as an M 3 N array of indices into the color map. So, for example, a certain pixel index might contain the value 143. The color to be shown at that pixel location would be the 143rd color set (RGB) on the color map.
+
+If the color map is restricted to 256 colors, each pixel can be drawn at the same color resolution as a true color image, as three 8-bit values, but the choice of colors is very restricted, and normal pictures of scenery—sky, for instance—take on a “layered color” appearance. Color mapped images can be used effectively, however, to store “cartoon pictures” economically where limited color choices are not a problem. Using a larger color map provides a larger, but still sometimes restrictive, range of color choices; but since the indices in the picture array must be 16-bit values and the color map is larger, the memory size advantages of this method of storage are diminished. Computationally, it is possible to convert a color mapped image to true color, but true color or black-and-white images cannot normally be converted to color mapped format without loss of fidelity in the color representation.
+
+RGB = imread('witney.jpg');
+figure
+imagesc(RGB)
+[IND,map] = rgb2ind(RGB,256);
+figure
+imagesc(IND)
+colormap(map)
+
+13.2.4	Preferred Image Format
+
+In order to avoid confusion in the format of images, we will confine our discussions to one specific image file format that is prevalent at the time of writing and that provides a nice compromise between economy of storage as an image file and accessibility within MATLAB. We will discuss files compressed according to a standard algorithm originally proposed by the Joint Photographic Experts Group (JPEG). When MATLAB reads JPEG images, they are decoded as true color images; when MATLAB writes them, they are again encoded in compressed form. The file size for a typical JPEG file is 30 times less than the size you would need to store the M*N*3 bytes of the image. As we will see later, however, this compression does not come without cost.
+
+13.3	Reading, Displaying, and Writing Images
+
+MATLAB uses one image reading function, imread(...), for all image file types. To read a file named myPicture.jpg, we use the following command:
+
+>> pic = imread('myPicture.jpg', 'jpg')
+
+where the result, pic, is an M 3 N 3 3 uint8 array of pixel color values, and the second parameter, 'jpg', provides the format of the file explicitly. This parameter is optional; MATLAB usually infers the file format correctly from the file contents.
+
+Once the picture has been read, you can display it in a figure window with fixed size and axes visible by using the following command:
+
+>> image(pic)
+
+This actually stretches or shrinks the image to fit the size of the normal plot figure, a behavior you normally desire; however, occasionally, you want the plot figure to match the actual image size (or at least, preserving its aspect ratio). Releases of MATLAB after R20008a provide the imshow(...) function, which presents the image without stretching, shrinking, or axes (unless the figure window is too small).
+
+Similarly, there is one function for writing files: imwrite(...), which can be used to write most common file formats. If we have made some changes to pic, the internal representation of the image, we could write a new version to the disk by using the following:
+
+>> imwrite( pic, 'newPicture.jpg', 'jpg')
+
+where the third parameter, 'jpg', is required to specify the output format of the file.
+
+13.4	Operating on Images
+
+Since images are stored as arrays, it is not surprising that we can employ the normal operations of creation, manipulation, slicing, and concatenation. We will note one particular matrix operation that will be of great value before examining some applications of array manipulation related to image processing.
+
+13.4.1	Stretching or Shrinking Images
+
+In earlier chapters we have seen the basic ability to use index vectors to extract rows and columns from an array. Now we extend these ideas to understand how to uniformly shrink or stretch an array to match an exact size. Consider, for example, A, a rows 3 cols array. Assume for a moment that the vertical size is good, but we want to stretch or shrink the image horizontally to newRows—a number that might be larger or smaller than rows. We use linspace(...) to create an index vector as follows:
+
+>> rowVector = linspace(1, rows, newRows)
+
+where the third parameter is the desired size of the new array. In general, this index vector will contain fractional values, but MATLAB will truncate the index values. We can round the results as follows:
+
+>> rowVector = round(rowVector)
+Then we can use this vector to shrink or stretch the picture pic as follows:
+
+>> newPic = pic(rowVector, cols, :)
+
+Clearly, this can be applied to both dimensions simultaneously, as shown in Exercise 13.1.
+
+In this exercise, first we read an image and determine its size. Note that with 3-D images, you must give to the size(...) function three variables. Then we illustrate the “normal” slicing operations by reducing the image to the even rows, and every third column. Next, we generalize this image slicing by stretching the number of rows by a factor 1.43 and shrinking the number of columns by a factor 0.75. This is accomplished by building a row index vector, rowVec, and a column index vector, colVec, according to the algorithm above. The stretching is achieved by repeating selected values in the index vector, and shrinking is achieved by omitting some.
+
+13.4.2	Color Masking
+
+As an example of image manipulation, consider the image shown in Fig- ure 13.4. This is a 2400 3 1600 JPEG image that can be taken with any good digital camera. However, the appearance of the Vienna garden is somewhat marred by the fact that the sky is gray, not blue. Fortunately, we have a picture of a cottage, as shown in Figure 13.5, with a nice, clear blue sky. So our goal is to replace the gray sky in the Vienna garden with the blue sky from the cottage picture.
+Initial Exploration Before we can do this, however, we need to explore the Vienna picture to determine how to distinguish the gray sky from the rest of the picture. In particular, there are patches of sky visible between the tree branches that must be changed as well as the open sky. Listing 13.1 illustrates a good way to accomplish this. Here we display the image in one figure; choose a representative row in the image that includes some sky showing through the tree (we chose row 350); and then plot the red, blue, and green values of the pixels across that row. Figure 13.6 shows the resulting plot.
+In Listing 13.1:
+Line 1: Reads the image. 
+Line 2: Displays the image
+Line 3: Creates a new figure window for the next plots. 
+Line 4: Determines a suitable row (350 is a good choice).
+Lines 5–7: Extract the three color layers for the chosen row. 
+Lines 8–11: Plot the three colors. Since we omitted one of the axis values, we make the assumption that the x values are the integers 1:length(y), which give us the horizontal pixel number across the row.
+
+Analysis As we examine Figure 13.6, we see that the red, green, and blue values for the open sky are all around 250 because the sky is almost white. However, the color “spikes” that correspond to the color values of the sky elements that show through the tree are actually lower. We could decide, for example, to define the sky as all those pixels where the red, blue, and green values are all above a chosen threshold, and we could comfortably set that threshold at 160.
+
+There is one more important consideration. It would be unfortunate to turn the hair of the lady (the author’s wife) blue, and there are fountains and walkways that might also logically appear to be “sky.” We can prevent this embarrassment by limiting the color replacement to the upper portion of the picture above row 700.
+Final Computation So we are ready to create the code that will replace the gray sky with blue. The code in Listing 13.2 accomplishes this, and Figure 13.7 shows the resulting image.
+
+In Listing 13.2:
+Lines 1 and 2: Read the two images. 
+Line 3: Draws the cottage picture. 
+Line 4: Makes a new figure window. 
+Line 5: Sets the arbitrary threshold.
+Lines 6–8: Define a 2-D layer containing logic that separates the Vienna sky from the rest of the picture.
+Lines 9–11: Build a logical mask to replace the appropriate pixels from the cottage picture into the Vienna picture by populating each color layer of the mask with that layer.
+Line 12: Refuses to replace any pixels below row 700. 
+Line 13: Copies the original image.
+Line 14: Replaces the sky. 
+Line 15: Shows the image. 
+Line 16: Saves the JPEG result.
+Post-operative Analysis We realize that this is not quite the end of the story, because a wire has suddenly become evident in the picture. Furthermore, if we take a close look at the wire (Figure 13.8), we see a number of disturbing things:
+
+■	The sky is by no means uniform in color—justifying the assertion that color mapped images do not have enough different colors to draw a true sky effectively
+■	The color of the wire is not far removed from the color of some parts of the blue sky—so replacing slightly darker blue would be problematic
+■	There is a light colored “halo” around the wire that is actually a result of the original JPEG compression of the image so that even if we did replace the darker colors, the “ghost” of the wire would still be visible
+ 
+From this we conclude that pixel replacement will probably not solve our wire problem. We will take a different approach to solve this problem in Chapter 15.
+
+13.4.3	Creating a Kaleidoscope
+
+Originally, a kaleidoscope was a cardboard tube in which a number of mirrors were arranged in such a manner that one image—usually, a collection of colored beads—was reflected to produce a symmetrical collection of images. We will replicate that general idea using MATLAB. Figure 13.9 illustrates the geometric manipulation necessary to create one particular kaleidoscope picture. We start with an arbitrary image and use shrinking or stretching to generate a square picture—the ‘F’ in the figure. We then mirror it horizontally and concatenate it horizontally with the original image. We then mirror these two images vertically and concatenate them vertically. Finally, we take that compound image and repeat the process to produce the 4*4 image array on the right side.
+
+Figure 13.10 shows the original image and the results. The overall logic flow of the solution matches that shown in Figure 13.9.
+
+Listing 13.3 shows the code that makes the kaleidoscope. In Listing 13.3:
+Line 2: Reads the original image. Lines 2–3: Draw it on the left subplot.
+13.4.4 Images on a Surface
+
+In Chapter 11 we saw how to create a surface representing solid objects and, in particular, how to create a spherical image that rotates with lighting.
+
+Spectacular effects can be created by “pasting” images onto these surfaces, as will be illustrated in this last example. Here, we are given an image of the surface of the earth using Mercator projection, shown in Fig- ure 13.11.[1 The file earth_s.jpg is provided as part of the MATLAB system] It is important to use the Mercator projection, named for the sixteenth-century Flemish cartographer Gerardus Mercator, because this projection keeps the lines of latitude and longitude on a rectangular grid. This allows a correct representation of the map as it is pasted onto the spherical surface. However, it also presents a challenge because in this projection, the north and south poles would be stretched to infinite length across the top and bottom of the map. This map, therefore, leaves off the region near the poles, and we have to replace those regions.
+
+The objective of this exercise is to paste this image onto a rotating globe. The trick to accomplishing this is to use a feature of the surf(...) function, whereby the image is supplied in a specific form as the fourth parameter, as follows:
+
+surf(xx, yy, zz, img)
+
+It will replace the normal coloring scheme of the surface with the image under the following conditions:
+
+■	The rows and columns of the image match the rows and columns of the xx, yy, zz plaid
+■	The image supplies the red, green, and blue layers in the same form as true color images
+■	The color values, however, must be of type double in the range 0..1
+In the following code, rather than stretching the image to the size of the plaid, we choose to size the plaid to the image, thereby preserving all the image resolution. Clearly, in different circumstances where the size of the plaid is specified,  the  image  can  be  stretched  to suit those dimensions. The code to accomplish all this is shown in Listing 13.4.
+In Listing 13.4:
+Line 1: Reads the JPEG image.
+Line 2: Enables good closure at the image edge by copying the first column of the map beyond the last column.
+Line 3: Computes the mean image intensity of the snow on the top edge of the image. This will be used to fill the circles at the north and south poles.
+Line 4: Fetches the size of the map.
+Line 5: To calculate the size of the circles at the poles, we assume that the map takes us to ±85° of latitude, so we need the equivalent of 5° at the top and bottom of the map. This line calculates how many rows represent 1° of latitude.
+Line 6: Shows the number of rows to add to the map.
+Line 7: Computes the values of a single color layer by making an array with ones(...) using the number of rows to add and the number of map columns, and multiplying by the snow intensity.
+Lines 8–10: Build the strips to add to the globe map by copying this layer to the red, green, and blue layers of a new image array.
+Line 11: Prepares the complete map by concatenating this image to the top and bottom of the map.
+Line 12: Retrieves the size of this map.
+Lines 13 and 14: Prepare the vectors defining the plaid by spreading the map dimensions across p radians in latitude and 2p radians in longitude.
+Lines 15–19: Prepare the sphere.
+Line 20: Scales the image to double values between 0 and 1 as required by surf(...).
+Lines 21–23: Draw the surface as usual, using the image as the color distribution.
+Lines 24–26: Special preparation of the surface luminosity and light characteristics to prevent glare spots.
+Lines 27–32: The perpetual rotation with the angle th moving backward one degree at a time.
+Line 30: This keeps the light in the same position relative to the observer.
+Line 31: The usual pause to allow the drawing to take place for each iteration.
+A snapshot of the globe as it is rotating is shown in Figure 13.12.
+
+
+13.5  Engineering Example—Detecting Edges
+
+While images are powerful methods of delivering information to the human eye, they have limitations when being used by computer programs. Our eyes have an astonishing ability to interpret the content of an image, such as the one shown in Figure 13.13. Even a novice observer would have no difficulty seeing that it is a picture of an aircraft in flight. An experienced observer would be able to identify the type of aircraft as a Lockheed C-130 and perhaps some other characteristics of the aircraft.
+
+While our eyes are excellent at interpreting images, computer programs need a lot of help. One operation commonly performed to reduce the complexity of an image is edge detection, in which the complete image is replaced by a very small number of points that mark the edges of “interesting artifacts.” Figure 13.14 shows the results from a simple program attempting to paint the outline of the aircraft in black by putting a black pixel at an identified edge. The key element of the algorithm is the ability to determine unambiguously whether a pixel is part of the object of interest or not. An edge is then defined as a pixel where some of the surrounding pixels are on the object and some are not. The image selected for this exercise makes edge detection simple since the aircraft is everywhere darker than the surrounding sky.
+
+The script used to generate this picture is shown in Listing 13.5. The basic approach of the algorithm is to use simple array processing tools to detect the edges across the whole image at once. To accomplish this, we create four arrays, each one row and one column less than the original image and each offset by one pixel, as illustrated in Figure 13.15. The array pix is in the original location, pt is one row up from that location, pl is one row left, and ptl is one row left and up. If we now collapse these arrays on top of each other, we are simultaneously comparing the values of a square of four pixels across the whole image (less one row and one column).
+
+In Listing 13.5:
+
+Lines 1–4: Read the original image, display it, and determine its size. 
+Lines 5–7: Construct an array of size rows 3 cols containing the total color intensity of each pixel. The class uint16, using two bytes instead
+of one, is big enough for the sum of three unit8s.
+Lines 8–11: Rather than guess an amplitude threshold, we compute a threshold halfway between the maximum and minimum intensities across the picture.
+Lines 12–15: Set up the four overlapping arrays offset by a pixel each. 
+Lines 16–17: The logical array alloff will be true wherever all four adjacent pixels have an intensity above the threshold—these are on the sky.
+Lines 18–19: The logical array allon will be true wherever all four adjacent pixels have an intensity below the threshold—these are on the aircraft.   Line 20: The pixels we are looking for are those where the pixel is
+neither completely sky nor completely aircraft.
+Line 21: Makes a white image the same size as the logical arrays. 
+Line 22: Sets the edges to black.
+Lines 23–27: Put that layer into the RGB layers, show the image, and write it to the disk.
+Observation Clearly, while there is much more to be done with this data for it to be useful, the complexity of this image has been reduced from 12 million uint8 values with no real meaning to a small number of data values that outline an object of interest. Algorithms beyond the scope of this text could be used to convert these outlining points to polynomial shapes. These shapes could then be matched against projections of 3-D models to actually identify the object in the picture.
+
+
+Chapter Summary
+
+This chapter covered the following:
+
+■	Images represented internally in bit-mapped, gray scale, or true color form
+■	Image files that come in a large variety of formats; MATLAB provides a single reader function and a single writer function to manipulate all the common image types
+■	Common operations on images, including cropping, stretching or shrinking, and concatenating and pasting an image onto a surface
+■	An engineering example showing how edge detection begins the process of extracting meaning from an image
+
+
+
+
+
+[Special Characters]
+
+[Problems]
+
