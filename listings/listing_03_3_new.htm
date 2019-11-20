@@ -1,0 +1,25 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% compute the volume and area of a flange</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;h = <font color="#ff8000">1</font>; <font color="#00A000">% thickness - all measurements in inches</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;R = <font color="#ff8000">5</font>; <font color="#00A000">% outer radius</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cr = <font color="#ff8000">2</font>; <font color="#00A000">% center hole</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;hr = <font color="#ff8000">0.25</font>; <font color="#00A000">% small holes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[A, V] = my_cylinder(h, R); <font color="#00A000">% whole disk</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[cA, cV, cT] = my_cylinder(h, cr); <font color="#00A000">% center hole</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[hA, hV, hT] = my_cylinder(h, hr); <font color="#00A000">% small holes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;Volume = V - cV - <font color="#ff8000">8</font> * hV<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Area = A + cA + <font color="#ff8000">8</font> * hA;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% but we need to subtract tops and bottoms</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;Area = Area - <font color="#ff8000">4</font> * cT - <font color="#ff8000">4</font> * <font color="#ff8000">8</font> * hT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> [area, volume, top] = my_cylinder(height, radius)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% function to compute the area and volume of a cylinder</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: [area, volume]=cylinder(height, radius)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;top = pi .* radius.^<font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;volume = top .* height;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;area = <font color="#ff8000">2</font> * pi * radius .* height + <font color="#ff8000">2</font> * top;<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

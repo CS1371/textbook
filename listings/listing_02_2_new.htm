@@ -1,0 +1,28 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_02_2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Script to compute the spacecraft's velocity</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Define general knowledge with meaningful variable names to enable</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% subsequent use of these values without ambiguity.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cmPerInch = <font color="#ff8000">2.54</font>; <font color="#00A000">% general knowledge</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;inchesPerFt = <font color="#ff8000">12</font>; <font color="#00A000">% general knowledge</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;metersPerCm = <font color="#ff8000">1</font>/<font color="#ff8000">100</font>; <font color="#00A000">% general knowledge</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The conversion factor we need. Notice that because the variable names are</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% consistent with the logic, they help to avoid errors.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;MetersPerFt = metersPerCm * cmPerInch * inchesPerFt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Develop the initial conditions with suitable units.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;startFt = <font color="#ff8000">25000</font>; <font color="#00A000">% ft - given</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;startM = startFt * MetersPerFt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The standard value for the acceleration due to gravity.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;g = <font color="#ff8000">9.81</font>; <font color="#00A000">% m/sec^2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the altitude of outer space is given in the problem statement.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;top = <font color="#ff8000">100</font>; <font color="#00A000">% km - given</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% computes the distance traveled, including the unit conversion from</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% kilometers to meters. Note the optional, and in this case</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% unnecessary, use of parentheses to define the order of operations.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;s = (top*<font color="#ff8000">1000</font>) - startM; <font color="#00A000">% m</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The final computation. The operator ^ is the MATLAB expression for exponentiation;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% x^y in MATLAB results in computing xy. Notice that the parentheses are required</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% here to force the multiplication to happen before the exponentiation.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;initialV = (<font color="#ff8000">2</font>*g*s)^<font color="#ff8000">0.5</font> <font color="#00A000">% the final answer</font><br>
+</strong></code>
