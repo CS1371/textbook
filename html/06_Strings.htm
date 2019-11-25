@@ -104,7 +104,15 @@ numerical representation as a number, in which case we have to cast the
 variable containing the characters to a numerical data type. MATLAB
 implements casting as a function with the name of the data type expected.
 In essence, these functions implement the mapping from one character
-representation to another.</p>
+representation to another. For example:<br>
+<code> &gt;&gt; str = 'ABCD'<br>
+str = 
+&nbsp;&nbsp;&nbsp;&nbsp; ABCD<br>
+&gt;&gt; double(str)<br>
+ans = 
+&nbsp;&nbsp;&nbsp;&nbsp; 65 66 67 68<br>
+</code>In your workspace window, <code>ans</code> will be of type <code>double</code>.</p>
+
 <p>A <b>token</b> is a collection of characters to which we may wish to attach
 meaning. Obvious examples of tokens are the name of a MATLAB variable
 or the characters representing the values of a number to be used in an
@@ -116,13 +124,15 @@ additional delimiters with specific meanings.</p>
 <div class="container">
   <div class="sidebar_R">
 <h4>Exercise 6.1 Character casting</h4>
-<code>
+
 Enter the following in the Command window and study the results:<br>
->> uint8('A') % uint8 is an integer data type
+<code>% uint8 is an integer data type<br>
 % with values 0 - 255<br>
+>> uint8('A') 
 ans =<br>
 &nbsp;&nbsp;&nbsp;&nbsp;65<br>
->> char(100) % char is the character class<br>
+% char is the character class<br>
+>> char(100) <br>
 ans =<br>
 &nbsp;&nbsp;&nbsp;&nbsp;d<br>
 >> char([97 98 99 100 101])<br>
@@ -137,6 +147,9 @@ fred =<br>
 >> next = fred + 1<br>
 next =<br>
 &nbsp;&nbsp;&nbsp;&nbsp;71 115 102 101<br>
+>> next = char(fred + 1)<br>
+next =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Gsfe<br>
 >> a = uint8(fred)<br>
 a =<br>
 &nbsp;&nbsp;&nbsp;&nbsp;70 114 101 100<br>
@@ -156,10 +169,11 @@ doubling the character. For example, if you entered the following in the
 Command window:<br>
 <code>>> refusal = 'I can''t do that!'</code><br>
 The result displayed would be<br>
-<code>refusal = I can't do that</code><br>
+<code>refusal = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;I can't do that</code><br>
 
-Exercise 6.1 illustrates the concept of casting between data types char and
-double .
+Exercise 6.1 illustrates the concept of casting between data types <code>char</code> and
+<code>double</code>.
 In Exercise 6.1:
 <ul>
 <li>the casting function <code>uint8(...)</code> takes a character or
@@ -180,6 +194,11 @@ You can perform any mathematical operation on the vector and use the
 cast, <code>char(...)</code>, to cast it back to a string.</li>
 </ul>
 </div>
+<h3><a name="6_2_1">6.2.1 Slicing and Concatenating Strings</a></h3>
+
+Strings are internally represented as vectors; therefore, we can perform all
+the usual vector operations on strings. Try it in Exercise 6.2.
+
 <div class="container">
   <div class="sidebar_R">
 <h4>Exercise 6.2 Character strings</h4>
@@ -203,10 +222,6 @@ ans =<br>
 </div>
 <div class="container">
 
-<h3><a name="6_2_1">6.2.1 Slicing and Concatenating Strings</a></h3>
-
-Strings are internally represented as vectors; therefore, we can perform all
-the usual vector operations on strings. Try it in Exercise 6.2.
 <ul>
 <li>First, we set the variable <code>first</code>.</li>
 <li>Then, the variable <code>last</code>.</li>
@@ -214,10 +229,18 @@ the usual vector operations on strings. Try it in Exercise 6.2.
 <li>Then we display every other character in the name.</li>
 <li>Then we display the letters of name in reverse order.</li>
 </ul>
-<br><br><br><br>
 </div>
 
 <h3><a name="6_2_2">6.2.2 Arithmetic and Logical Operations</a></h3>
+Mathematical operations can be performed on the numerical mapping of a
+character string. If you do not explicitly perform that casting first, MATLAB
+will do the cast for you and create a result of type double (not usually
+suitable for character values). Note that <code>char('a' + 1 )</code> returning <code>'b'</code> is an
+accident of the character type mapping.
+Logical operations on character strings are also exactly equivalent to
+logical operations on vectors, with the same automatic casting. Exercise 6.3
+gives you an opportunity to try it yourself.
+
 
 <div class="container">
   <div class="sidebar_R">
@@ -231,15 +254,6 @@ ans =<br>
 &nbsp;&nbsp;&nbsp;&nbsp;0 1 0 0</code>
 </div>
 <div class="container">
-Mathematical operations can be performed on the numerical mapping of a
-character string. If you do not explicitly perform that casting first, MATLAB
-will do the cast for you and create a result of type double (not usually
-suitable for character values). Note that char('a' + 1 ) returning 'b' is an
-accident of the character type mapping.
-Logical operations on character strings are also exactly equivalent to
-logical operations on vectors, with the same automatic casting. Exercise 6.3
-gives you an opportunity to try it yourself.
-
 <h3><a name="6_2_3">6.2.3 Useful Functions</a></h3>
 
 The following functions are useful in analyzing character strings:
@@ -324,203 +338,404 @@ with at least 12 spaces and 4 decimal places, and the default numerical
 conversion.</li>
 <li>Finally, a new line character was inserted into the string.</li>
 </ul>
+We will formalize here the function<br>
+<code>fprintf(&lt;control string&gt;, &lt;parameters&gt;)</code><br>
+where the <code>&lt;control string&gt;</code> is the format control string discussed above, and<br>
+<code>&lt;parameters&gt;</code> is a collection of 0 or more parameters whose values will be presented in each <code>'%'</code> entry in the control string.<br>
+The function <code>fprintf(...)</code> works exactly as <code>sprintf(...)</code> except that instead of returning the resulting string, it writes that string directly to the command window. Notice its use at the bottom of Listing 6.1 below.</p>
+<h3><a name="6_3_2">6.3.2 Conversion from Strings to Numbers and Other Stuff</a></h3>
 
-<h3><a name="6_3_2">6.3.2 Conversion from Strings to Numbers</a></h3>
+Conversion from strings to numbers is much messier. In order to understand the situation, let us emulate some of the Matlab behavior that you have already used, but probably not realized all the underlying complexity.  <br>
+<b>First Try</b>: Suppose, for example, you have the string: <code>'area = 3.14159265 .* radius .^ 2'</code>. In paragraph 6.1, we mentioned the idea of a token as a string whose meaning is important and the delimiters that separate tokens. Our first guess might be to assume that <code>'area'</code>, <code>'='</code>, <code>'3.14159265'</code>, <code>'.*',</code> <code>'radius'</code>, <code>'.^'</code> and <code>'2'</code> were the tokens because they carry the meaning of the equation, and the space character is the delimiter.<br>
+In order to separate this out into its individual tokens, we will repeatedly employ the function <code>strtok(...)</code>. This function consumes two inputs and produces two outputs:<br>
+<code>[token, rest] = strtok(str, delims)</code> <br>
+where <code>str</code> is the string to process, <br>
+<code>delims</code> is a string of delimiting characters, <br>
+<code>token</code> is the first token returned, and<br>
+<code>rest</code> is what remains of the string when that token is removed.<br>
+Look carefully through Listing 6.1 to see how we extract the meaning from the line of code.
 
-<h1>NEEDS REWRITE FROM HERE DOWN.  SHOULD WE MENTION TOKENIZING?</h1>
-Conversion from strings to numbers is much messier, and it should be
-avoided if possible. When possible, allow MATLAB’s built-in functions
-<code>input(...)</code>, <code>str2num</code> or <code>str2double</code>,  to do the conversion for you. If you have to do the conversion
-yourself, you can either split a string into tokens and then convert each
-token with the str2num(str) function or, if you are really desperate and
-using licensed MATLAB software, you can use the function sscanf(...) .
-The function input(str) presents the string parameter to the user in the
-Command window and waits for the user to type some characters and the
-e key, all of which are echoed in the Command window. Then it parses
-the input string according to the following rules:
-■ If the string begins with a numerical character, MATLAB converts
-the string to a number
-■ If it begins with a non-numeric character, MATLAB constructs a
-variable name and looks for its current value
-■ If it begins with an open bracket, '[' , a vector is constructed
-■ If it begins with the single quote character, MATLAB creates a
-string
-■ If a format error occurs, MATLAB repeats the prompt
-This behavior can be modified if 's' is provided as the second parameter,
-input(str, 's') , in which case the complete input character sequence is
-saved as a string. Exercise 6 . 4 demonstrates a number of capabilities of the
-input(...) function.
-In Exercise 6 . 4 , first we define the variable fred . Then MATLAB attempts
-to interpret the result either as a number or as the name of an existing
-variable. Since the variable fred was defined (although not a number), it
-was assigned correctly to the variable n . MATLAB will distinguish between
-a variable and a number input by the first digit. Here, the information
-entered was an illegal variable name beginning with a number. When
-input(...) detects an error parsing the text entered, it automatically resets
-and requests a new entry.
-On the second attempt, although this is a correctly formed variable name,
-its value is not known. On the third attempt, the input(...) function
-actually treats the string entered as an expression, to be evaluated by the
-same process as MATLAB parses the Command window entries.
+<h4>Listing 6.1: extracting meaning from a String</h4>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% string to process</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;str = <font color="#c000c0">'area = 3.14159265 .* radius .^ 2'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty(str) <font color="#00A000">% repeat until the string is empty</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% put the first token into var_1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% and put the remainder back into str</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[var_1, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[op_1, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[num_1, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[op_2, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[var_2, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[op_3, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[num_2, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% convert the numbers</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_1 = str2num(num_1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_2 = str2num(num_2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% confirm the meaning</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'calculate %s by doing %s with %s and %d'</font> , var_1, op_3, var_2, n_2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">', then doing %s with the result and %1.4f\n'</font>, op_2, n_1);<br>
+</strong></code>
+When you run this code, you see this in the Command Window:<br>
+<code>
+calculate area by doing .^ with radius and 2, then doing .* with the result and 3.1416<br>
+</code>
+Notice that I deliberately changed the numerical resolution of <code>pi</code> to only 4 decimal places to assert that we really did convert the string <code>num_1</code> to the <code>double</code> value <code>n_1</code>.<br>
+<b>Second Thought</b>: now, what could possibly go wrong ... oh, wait a sec<br>
+<ul>
+<li>although we have been inserting spaces in the code for clarity, this line is quite legal: <code>'area=3.14159265.*radius.^2'</code>.  So we have to treat the '<code>=</code>' and even worse, the '<code>.*</code>' and '<code>.^</code>' as delimiters. </li>
+<li>Messier still, the simple parsing in Listing 6.1 had to assume that the first token was a variable name, the second was the '=' to make an assignment etc. We are certainly not intending to delve into the correct way to process this simple line of code.</li>
+</ul>
+I did warn you at the top of this paragraph about messes to come ...</p>
+<div class="container">
+  <div class="sidebar_R">
+<h4>Exercise 6.4 Using the input(...) function</h4>
+1. define fred as a string<br>
+<code>
+>> fred = 'Fred';<br>
+</code>2. Ask for a number and type <code>5<br>
+>> n = input( 'Enter a number: ' )<br>
+Enter a number: 5<br>
+n =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;5<br>
+</code>3. Despite the prompt asking for a number, enter a known variable name <code>fred<br>
+>> n = input( 'Enter a number: ' )<br>
+Enter a number: fred<br>
+n =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Fred<br>
+</code>4. Now try an unknown name <code>lsdf<br>
+>> n = input( 'Enter a number: ' )<br>
+Enter a number: lsdf<br>
+</code>Matlab throws an error<br>
+<font color="#c00000">Error using input<br>
+Undefined function or variable 'lsdf'..</font><br>
+</code>Matlab automatically asks for another input to which we give an illegal value, a variable starting with a numeric character<code><br>
+Enter a number: 2sdf<br>
+</code>Matlab throws an error and asks for another input to which we give a complex expression<code><br>
+<font color="#c00000">Error: Invalid expression. Check for missing multiplication operator, missing or
+unbalanced delimiters, or other syntax error. To construct matrices, use brackets
+instead of parentheses.</font><br>
+Enter a number: char(fred - 2)<br>
+n =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dpcb<br>
+</code>Now, enter a string with the single quotes<code><br>
+>> n = input( 'Enter a number: ' )<br>
+Enter a number: 'ABCD'<br>
+n =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ABCD<br>
+</code>using the second parameter 's', we don't need the single quotes<code>
+>> n = input( 'Enter a number: ' , 's' )<br>
+Enter a number: ABCD<br>
+n =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ABCD<br>
+</code>
+</div>
+<div class="container">
 
-If you actually want a string literal entered, it must be enclosed in the
-string delimiters. If you are sure you want a string literal entered, the second
-parameter, 's' , forces MATLAB to return the string entered without
-attempting to parse it.
-The function str2num(str) consumes a token (string) representing a single
-numerical value and returns the numerical equivalent. Do Exercise 6 . 5 to
-understand this function.
+<p><b>Preferred Approach:</b> When possible, allow MATLAB’s built-in functions
+<code>str2num</code>, <code>str2double</code> or <code>input(...)</code> to do the work of conversion for you:<br>
+<ul>
+<li>The function <code>str2num(str)</code> consumes a string representing either a single
+numerical value or an arbitrarily complex array of numbers and returns the numerical equivalent.</li>
+<li>The function <code>str2double(str)</code> consumes a string representing only a single
+numerical value and returns the numerical equivalent with <code>double</code> precision.</li>
+<li>The function <code>input(prompt)</code> presents the prompt string to the user in the
+Command window and waits for the user to type some characters and the [Enter] key, all of which are echoed in the Command window. Then it parses the input string in exactly the same manner as if you had typed that string to the command window, according to the following rules:<br>
+<ol>
+<li>If the string begins with a numerical character, MATLAB converts
+the string to a number</li>
+<li>If it begins with a non-numeric character, MATLAB constructs a
+variable name and looks for its current value</li>
+<li>If you actually want a string literal entered, it must be enclosed in the
+string delimiters.</li>
+<li>If it begins with an open bracket, <code>'['</code>, a vector is constructed</li>
+<li>If it begins with the single quote character, MATLAB creates a
+string</li>
+<li>If a format error occurs, MATLAB repeats the prompt and waits for another input</li>
+</ol>
+This behavior can be modified if <code>'s'</code> is provided as the second parameter,
+<code>input(prompt, 's')</code>, in which case the complete input character sequence is
+returned to the user as a string with no attempt to perform the above conversions. Exercise 6.4 demonstrates a number of capabilities of the <code>input(...)</code> function.
+</li>
+</ul></p>
+</div>
 
-We observe that the function has indeed interpreted the string as its numerical
-value.
-
-The function sscanf(...) was designed to extract the values of variables
-from a string, but is really difficult to use. The author recommends the use
-of strtok(...) followed by str2num(...) as necessary to accomplish the
-same goal in a more controlled manner.
-
-6.4 Character String Operations
+<b>Severe Warning: </b> Be careful to separate in your mind the use of the <code>input(...)</code> function and the process of passing parameters into a function. When values are passed to a function, we refer to this as the function <b><i>consuming</i></b> the incoming parameter(s), and this process happens automatically as part of the function call processing.  The <code>input(...)</code> function is a manual process whereby the user has to type data to be processed. The <code>input(...)</code> function should only be used in scripts that test functions and <b><i>never</i></b> in the body of a function.
+<br></p>
+<p><b>Hopeful footnote:</b> If you have to do some complex conversions
+yourself, the function <code>sscanf(...)</code> was designed to extract the values of variables
+from a string, but is really difficult to use. Instead,
+you can either split a string into tokens as we did above, and then convert each
+token with the str2num(str) function or, you might be better off putting that string into a text file and using the techniques in Chapter 8 to extract the meaning you need.
+<br></p>
+<h2>6.4 Character String Operations</h2>
+<p>
 As with the string-to-number conversions, input and output in the
 Command window can be accomplished with simple functions that have
-little flexibility or with complex functions that have better control.
-6.4.1 Simple Data Output: The disp(. . .) Function
-We have already seen the use of the disp(...) function to present data in
-readable form in the Intractions window. As the exercises indicate, it can
+little flexibility or with complex functions that have better control.</p>
+<h3>6.4.1 Simple Data Output: The <code>disp(. . .)</code> Function</h3>
+<div class="container">
+  <div class="sidebar_R">
+<h4>Exercise 6.5 Character string comparison</h4>
+<code>
+>> 'abcd' == 'abcd'<br>
+1 1 1 1<br>
+>> 'abcd' == 'abcde'<br>
+??? Error using ==> eq<br>
+Array dimensions must match for binary array op .<br>
+>> strcmp('abcd', 'abcde')<br>
+ans =<br>
+0<br>
+>> strcmp('abcd', 'abcd')<br>
+ans =<br>
+1<br>
+>> 'abc' == 'a'<br>
+ans =<br>
+1 0 0<br>
+>> strcmpi('ABcd', 'abcd')<br>
+ans =<br>
+1<br>
+</code>
+</div>
+<div class="container">
+<p>We have already seen the use of the <code>disp(...)</code> function to present data in
+readable form in the Command window. It can
 present the values of any variable, regardless of type, or of strings
 constructed by concatenation. Note, however, that an explicit number
-conversion is required to concatenate variables with strings. Try
-Exercise 6 . 6 .
-Note that although you can concatenate strings for output, conversion
-from the ASCII code is not automatic; the second result produced a character
-whose ASCII code is 4. You must use the simple string conversion functions
-to enforce consistent information for concatenation.
-6.4.2 Complex Output
-The function fprintf(...) is similar to sprintf(...) , except that it prints
-its results to the Command window instead of returning a string.
-fprintf(...) returns the number of characters actually printed. Exercise 6 . 7
-demonstrates this.
-6.4.3 Comparing Strings
+conversion is required to concatenate variables with strings. Note also that conversion
+from the ASCII code is not automatic; you need the <code>char(...)</code> cast function.
+<h3>6.4.2 Complex Output</h3>
+<p>We discussed the functions fprintf(...) and sprintf(...) in Paragraph 6.3.1. While slightly messy to use, their flexibility makes them the functions of choice for displaying nicely formatted results.  Appendix A includes a complete discussion of the behavior of elements in the control strings of these functions.</p>
+<h3>6.4.3 Comparing Strings</h3>
+
 Since strings are readily translated into vectors of numbers, they may be
 compared in the obvious way with the logical operators we used on
 numbers. However, there is the restriction that either the strings must be of the same length or one of them must be of length 1 before it is legal to
 compare them with these operators. To avoid this restriction, MATLAB
-provides the C-style function strcmp(<s1>, <s2>) that returns true if the
-strings are identical and false if they are not.
-Unfortunately, this is not quite the same behavior as the C version, which
-does a more rigorous comparison returning −1, 0, or 1. You can try a
-character string comparison in Exercise 6 . 8 .
+provides the function <code>strcmp(&lt;s1&gt;, &lt;s2&gt;)</code> that returns <code>true</code> if the
+strings are identical and <code>false</code> if they are not.
+Unfortunately for C programmers, this is not quite the same behavior as the C version, which
+does a more rigorous comparison returning <code>−1</code>, <code>0</code>, or <code>1</code>. You can study character string comparison in Exercise 6.5.
 
-In Exercise 6 . 8 , we see that strings of the same length compare exactly to vectors returning a logical vector result. You cannot use the equality test on strings of unequal length.
-strcmp(...) deals gracefully with strings of unequal length. As with vectors, the equality test works if one of the inputs is a single character. For case-independent testing, use
-strcmpi(...) .
 
-6.5 Arrays of Strings
+</div>
+<h2>6.5 Arrays of Strings</h2>
+<div class="container">
+  <div class="sidebar_R"
+  style="width: 30%";>
+<h4>Exercise 6.6 Character string arrays</h4>
+1. make a character array with all<br>
+strings the same length<br>
+<code>
+>> v =                                         ['Character strings having over'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'one row need the same number&nbsp;'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'of columns just like arrays!&nbsp;'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+v =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Character strings having over<br>
+&nbsp;&nbsp;&nbsp;&nbsp;one row need the same number&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;of columns just like arrays!&nbsp;<br>
+</code>2. try with different lengths<code><br>
+>> v = [' MATLAB gets upset'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' when rows have'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' different lengths']<br>
+<font color="#c00000">Error using ==> vertcat<br>
+All rows in the bracketed expression<br>
+must have the same number of columns.</font><br>
+</code>3. use a special form of the char(...) cast<br>
+to solve the different lengths problem<code><br>
+>>eng = char('Timoshenko', ... <br>
+&nbsp;&nbsp;&nbsp;&nbsp;'Maxwell','Mach','von Braun')<br>
+eng =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Timoshenko<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maxwell<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Mach<br>
+&nbsp;&nbsp;&nbsp;&nbsp;von Braun<br>
+>> size(eng)<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4 10<br>
+</code></div>
+<div class="container">
 Since a single character string is stored as a vector, it seems natural to
 consider storing a collection of strings as an array. The most obvious way to
 do this, as shown in previous examples, has some limitations, for which
 there are nice, tidy cures built into the MATLAB language. Consider the
-example shown in Exercise 6 . 9 . Character arrays can be constructed by
+example shown in Exercise 6.6. Character arrays can be constructed by
 either of the following:
-■ As a vertical vector of strings, all of which must be the same
-length
-■ By using a special version of
+<ul>
+<li>As a vertical vector of strings, all of which must be the same
+length</li>
+<li>By using a special version of
 the char() cast function that
 accepts a variable number of
 strings with different lengths,
 pads them with blanks to
 make all rows the same length,
 and stores them in an array of
-characters
-
-6.6 Engineering Example — Encryption
-The Problem
-As public access to information becomes more pervasive, there is increasing
+characters</li>
+</div>
+<h2>6.6 Engineering Example — Encryption</h2>
+<b>The Problem</b>
+<p>As public access to information becomes more pervasive, there is increasing
 interest in the use of encryption to protect intellectual property and private
 communications from unauthorized access. The following discussion is
 based on no direct knowledge of the latest encryption technology.
 However, it illustrates a very simple approach to developing an algorithm
 that is immune to all but the most obvious, brute-force code-breaking
-techniques.
-Background
-Historically, simple encryption has been accomplished by substituting one
-character for another in the message, so that 'Fred' becomes 'Iuhg' when
-substituting the letter three places down the alphabet for each letter in the
-message. More advanced techniques use a random letter selection to
-substitute new letters. However, any constant letter substitution is vulnerable
-to elementary code-cracking techniques based on the frequency of letters in
-the alphabet, for example.
-The Solution
-We propose a simple algorithm where a predetermined random series is
-used to select the replacement letters. Since the same letter in the original
-message is never replaced by the same substitute, no simple language
-analysis will crack the code. The rand(...) function is an excellent source
+techniques.</p>
+<b>Background</b>
+
+<p>Historically, a simple encryption was accomplished using a Caesar cypher that used a single offset value,
+ say N, to replace all characters with the character N spaces farther down the alphabet. If the entered 
+value was 'A' and N was 4, the encrypted text would have 'E'. With strictly manual analysis, without 
+knowing N, it was deemed impossible to decipher messages. In World War II, the German armed forces 
+used a slight modification to this algorithm whereby each key in the alphabet had a different offset value.
+Figure 6.1 shows an actual Enigma machine that automatically applied the key offset values to messages 
+typed on its keyboard. However, it was vulnerable for two reasons:
+<ul> 
+<li>there was still a constant mapping between plain text and encrypted charaacters leaving it open to "simple" letter frequency analysis, and</li>
+<li>since it was difficult to distribute fresh key maps, the maps were only changed once a day.</li>
+</ul>
+A massive effort in England led by Alan Turing produced "Colossus" discussed in Paragraph 1.2.2 that was generally recognized as one of the first "general-purpose" computers. It was able to decode a large majority of the intercepted German message traffic, and was credited with contributing to the end of that terrible war.<br>
+</p>
+<b>The Solution</b>
+<p>We propose a simple algorithm whereby the key replacement map can be changed rapidly so that
+ the same letter in the original
+message is only replaced by the same substitute for a short period of time.  Hnce, no simple language
+analysis will crack the code. The <code>rand(...)</code> function is an excellent source
 for an appropriate random sequence. If the encryption and decryption
-processes use the same value to seed the generator, the same sequence of
-apparently random (pseudo-random) values will be generated.
-Since the seed can take on 2 31 –2 values, it is virtually impossible to
+processes use the same value to seed the same random generator, the same sequence of
+apparently random (pseudo-random) values will be generated. Since the seed can take on <code>2<sup>31</sup> – 2</code> values, it is virtually impossible to
 determine the decryption without knowing the seed value. The seed (i.e., the
 decryption key) can be transmitted to anyone authorized to decrypt the
 message by any number of ways. Furthermore, since there are abundant
 different techniques for generating pseudo-random sequences, the specific
 generation technique must be known in addition to the seed value for
-successful decryption. Listing 6 . 1 shows the code for encrypting, and Listing 6.2 the corresponding decryption by this technique. Listing 6.3 shows two attempts to decrypt—once with the wrong key and once with the wrong generator.
-In Listing 6.1 :
-Lines 2–12: This is the original text taken from earlier in this chapter.
-Multiple lines of characters can be concatenated as shown. The
-number 13 inserted in the string is the numerical equivalent of the new
-line escape sequence, '\n' .
-Line 13: Seeds the random generator with a known value.
-Lines 14–16: Set the upper and lower bounds and the range of the
-characters we will convert. This range excludes 32, the space
-character, and 13, the new line character. This choice was deliberate—
-it leaves the encrypted text with the appearance of a character
-substitution algorithm since all the characters are printable, and seem
-to be grouped in words.
-Line 17: Generates the random values between 0 and range-1 .
-Line 18: Identifies the indices of the printable characters.
-Line 19: Makes a copy of the original text.
-Line 20: Adds the random offsets to those characters we intend to
-change.
-Line 21: If the addition pushes a character value above the maximum
-printable character, this brings it back within range.
-Lines 22–23: Display the encrypted text. Notice that no two characters
-of the original text are replaced by the same character.
+successful decryption.</p>
+<p><b>Awkward Dilemma:</b> unfortunately, earlier versions of Matlab had strange implementations of the ability to change the seed and generators of the rand(...) and randn(...) functions.  Rather than struggle with this deprecated implementation, we will take a short tour of the modern implementation for setting up rand(...).<br>
+There are currently three number generators that consume the current state and generate the next state: 'twister', the default generator, and 'v4' and 'v5uniform' and 'v5normal' the legacy generators.  Each generator can be seeded with an integer value. So we have these implementations:
+<ul>
+<li>to generate the next random state, <code>val = rand()</code></li>
+<li>to set the seed value sd with the default generator:  <code>rnd(sd) </code></li>
+<li>to select another generator and seed it:  <code>rnd(sd, &lt;gen&gt;) </code> where <code>&lt;gen&gt;</code> is one of the generators above.</li>
+</ul>
 
-In Listing 6.2:
-Lines 24–27: Begin the decryption by seeding the generator with
-the same value, creating the same random sequence, finding the
-printable characters, and copying the original file to the decrypt
-string.
-Lines 28–29: We must subtract the random sequence from the
-encrypted string and correct for the underflow. However, there
-are some numerical issues involved. It is best to add the range
-value to all the letters while subtracting the random offsets, and then
-bring back those values that remain above the highest printable
-character.
-Lines 30–31: Display the decrypted values.
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="250" src="Fig_6_1.jpg" width="250" /></p>
+<figcaption><b>Fig 6.1: an Enigma machine</b></figcaption></figure>
+<p>Listing 6.2 shows the code for encrypting, the corresponding decryption by this technique and two attempts at decryption decrypt - one with the wrong key and one with the wrong generator.<br>
+<h4>Listing 6.2: Studying Encryption</h4>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_06_1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Encryption</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;txt = [ <font color="#c000c0">'The quality of mercy is not strain'</font><font color="#c000c0">'d'</font> ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'original text: %s\n'</font>, txt);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;seed = <font color="#ff8000">1234567</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = encrypt(txt, seed);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'encrypted text: %s\n'</font>, res);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;back = decrypt(res, seed, false);  <font color="#00A000">% decrypt with correct settings</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt, back)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'not matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'decrypted text with right values: %s (%s)\n'</font>, back, good);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;back = decrypt(res, seed+<font color="#ff8000">1</font>, false);  <font color="#00A000">% decrypt with bad seed</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt, back)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'not matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'decrypted text with bad seed: %s (%s)\n'</font>, back, good);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;back = decrypt(res, seed, true);  <font color="#00A000">% decrypt with bad generator</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt, back)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'not matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'decrypted text with bad generator: %s (%s)\n'</font>, back, good);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> res = encrypt(txt, seed)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% encrypt txt with the 'twister' generator and the given seed</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: function res = encrypt(txt, seed)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   txt: text to encrypt</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  seed: seed value for the generator</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;rng(seed, <font color="#c000c0">'twister'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% solve the wrap-around cases </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% set wraparound bounds and range</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;loch = <font color="#ff8000">33</font>; hich = <font color="#ff8000">126</font>; range = hich+<font color="#ff8000">1</font>-loch;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% generate random integer array with length of text</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  and values 0 .. range - 1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;rn = floor( range * rand(<font color="#ff8000">1</font>, length(txt) ) );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% only change the letters within legal bounds</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;change = (txt>=loch) & (txt<=hich);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% make a copy of txt</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;enc = txt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% add random num to legal characters</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;enc(change) = enc(change) + rn(change);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% since this is addition, can't go below loch</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% wrap encrypted values off to the right </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;enc(enc > hich) = enc(enc > hich) - range;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% return the result</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = char(enc);<br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> res = decrypt(txt, seed, change_gen)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% decrypt txt with the given seed, maybe change the generator</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: function res = decrypt(txt, seed, change_gen)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%        txt: text to encrypt</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       seed: seed value for the generator</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% change_gen: logical - if true, change the generator</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> change_gen<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rng(seed, <font color="#c000c0">'v4'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rng(seed, <font color="#c000c0">'twister'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% solve the wrap-around cases </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% set wraparound bounds and range</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;loch = <font color="#ff8000">33</font>; hich = <font color="#ff8000">126</font>; range = hich+<font color="#ff8000">1</font>-loch;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% generate random integer array with length of text</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  and values 0 .. range - 1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;rn = floor( range * rand(<font color="#ff8000">1</font>, length(txt) ) );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% only change the letters within legal bounds</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;change = (txt>=loch) & (txt<=hich);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% make a copy of txt</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dec = txt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% since this is subtraction, can't go above hich</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% however, must wrap decrypted values off to the left</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  because they could have negative indices</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dec(change) = dec(change) - rn(change) + range;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% then wrap the characters we just moved beyond hich</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dec(dec > hich) = dec(dec > hich) - range;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% return the result</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = char(dec);<br>
+<font color="#0000ff">end</font><br>
+<br>
+</strong></code>
+<p>This is the result when the code is run:</p>
+<code>
+&nbsp;original text: The quality of mercy is not strain'd<br>
+encrypted text: Xf% FmHH31$ {\ ove10 }M %~4 ]gB-~,yM<br>
+decrypted text with right values: The quality of mercy is not strain'd (matched)<br>
+decrypted text with bad seed: 2&gt;W 7Cr]lgq %@ ,N(nV ep [/x h4ac1n+a (not matched)<br>
+decrypted text with bad generator: 8v&gt; (zx^G'+ /N |Xb#U KC PcN b6I.6$Q~ (not matched)<br>
+</code>
 
-In Listing 6.3
-Lines 32–39: Attempt to decrypt with the same code but a bad seed.
-Lines 40–48: Attempt to decrypt with the right seed but a different
-generator—in this case, MATLAB’s normal random generator limited to
-positive values within the letter range of interest.
-
-Table 6.1 shows the output from this encryption exercise.
-
-Chapter Summary
+<h3>Chapter Summary</h3>
 This chapter discussed the nature, implementation, and behavior of character
 strings. We learned the following:
-■ Character strings are merely vectors of numbers that are presented
-to the user as single characters
-■ We can perform on strings the same operations that can be
+<ul>
+<li>Character strings are merely vectors of numbers that are presented
+to the user as single characters</li>
+<li>We can perform on strings the same operations that can be
 performed on vectors; if mathematical operations are
 performed, MATLAB first converts the characters to double
-values
-■ We can convert between string representations of numbers and the
-numbers themselves using built-in functions
-■ MATLAB provides functions that convert numbers to text strings
-for presentation in the Command window
-■ Arrays of strings can be assembled using the char(...) function
+values</li>
+<li>We can convert between string representations of numbers and the
+numbers themselves using built-in functions</li>
+<li>MATLAB provides functions that convert numbers to text strings
+for presentation in the Command window</li>
+<li>Arrays of strings can be assembled using the char(...) function</li>
+</ul>
 </p>
 [Special Characters]
 

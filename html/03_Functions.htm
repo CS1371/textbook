@@ -64,8 +64,8 @@
 The basic operation of a function begins before execution of the function actually starts. If the function definition requires n parameters, the calling instructions first prepare n items of data from its workspace to be provided to the function. These data are then passed to the function, the code body is executed, and the results are returned to the caller.</p>
 
 <center><figure style="margin_bottom: 5px">
-<p><img alt="image" height="250" src="Fig_3_1.jpg" width="600" /></p>
-<figcaption>Fig 3.1 Black Box View of a Function</figcaption></figure></center>
+<p><img alt="image" height="200" src="Fig_3_1.jpg" width="450" /></p>
+<figcaption><b>Fig 3.1 Black Box View of a Function</b></figcaption></figure></center>
 
 
 <h2><a name="3_3">3.3  MATLAB Implementation</a></h2>
@@ -89,25 +89,25 @@ The basic operation of a function begins before execution of the function actual
 
 <h3><a name="3_3_2">3.3.2	Function Definition</a></h3>
 
-<p>In the MATLAB language, functions must be stored in a separate file located in a directory accessible to any script or function that calls it. The file containing the definition of a function named function_name must be
-<function_name>.m. For the general user, the Current Directory is the normal place to store it. Listing 3.1 illustrates a typical MATLAB function called <code>cylinder</code> that consumes two parameters, the <code>height</code> and <code>radius</code> of a cylinder, and produces the return variable <code>volume</code>.<br>
+<p>In the MATLAB language, functions must be stored in a separate file located in a directory accessible to any script or function that calls it. The definition of a function named, for example, <code>function_name</code> <b>must</b> be
+stored in a file called <code>function_name.m</code>. For the general user, the Current Directory is the normal place to store it. Listing 3.1 illustrates a typical MATLAB function called <code>my_cylinder</code> that consumes two parameters, the <code>height</code> and <code>radius</code> of a cylinder, and produces the return variable <code>volume</code>.<br>
 
-<code>function volume = my_cylinder(height, radius)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% function to compute the volume of a cylinder<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% usage: volume = cylinder(height, radius)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% Although encapsulation rules forbid access to the caller’s variables, <br>
-&nbsp;&nbsp;&nbsp;&nbsp;% the code body still has access to all built-in MATLAB variables<br> 
-&nbsp;&nbsp;&nbsp;&nbsp;% and functions (e.g., pi, as used here).<br>
-
-&nbsp;&nbsp;&nbsp;&nbsp;base = pi * radius^2;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% You must make at least one assignment to the result variable.<br>
+<h4>Listing 3.1: my_cylinder - a simple function</h4>
+<code><strong>
+<font color="#0000ff">function</font> volume = my_cylinder(height, radius)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% function to compute the volume of a cylinder</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: volume = cylinder(height, radius)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;base = pi * radius^<font color="#ff8000">2</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;volume = base * height;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% Regrettably, the end statement is not required if there is only one <br>
-&nbsp;&nbsp;&nbsp;&nbsp;% function in the file; without it, the code body terminates at the <br>
-&nbsp;&nbsp;&nbsp;&nbsp;% end of the file. However, it must be present if there are other <br>
-&nbsp;&nbsp;&nbsp;&nbsp;% function definitions in the same file.<br>
-end</code>
-<h4>Listing 3.1 - my_cylinder</h4>
+<font color="#0000ff">end</font><br>
+</strong></code>
+<p><b>Important Notes</b>:<br>
+<ol>
+<li>It is a good idea to include in the comments a usage statement showing a copy of the function header line, sometimes referred to as the Application Programmer Interface (API), to remind a user exactly how to use this function.</li>
+<li>Although encapsulation rules forbid external access to the caller's variables, the code body still has access to all built-in MATLAB variables and functions (e.g., pi, as used here).
+</li>
+<li>You probably noticed the apparently weird affectation that called the function <code>my_cylinder</code> and not just <code>cylinder</code>.  This is perhaps the most annoying feature of interpreted languages: the library functions and system variables are defined and used in the same "name space" as your scripts and functions.  For example, we have already seen the function <code>cos(...)</code> and the value <code>pi</code> in the previous chapter - some of the many trigonometry features of Matlab.  If you were unwise enough to write and run your own <code>cos(...)</code> function, it would replace the library <code>cos(...)</code> function for any commands, scripts or functions that you use with your <code>cos(...)</code> function in the current directory!<br>
+<b>Moral of the story</b>: when choosing function names, check to see if that name already exists in Matlab by typing:<code>&gt;&gt; help &lt;whatever&gt;</code> in the command window. <br>
 
 <div class="container">
   <div class="sidebar_R">
@@ -116,22 +116,40 @@ end</code>
 <p>Enter the function from Listing 3.1 in the Editor Window and save it in the file <code>my_cylinder.m</code> in your Current Directory. Then enter the following experiments in the Command Window:</p>
 <code>>> help my_cylinder<br>
 function to compute the volume of a cylinder<br>
-usage: volume = cylinder(height, radius)<br>
-Although encapsulation rules forbid access to the caller’s variables, <br>
-the code body still has access to all built-in MATLAB variables<br> 
-and functions (e.g., pi, as used here).<br>
+usage: volume = my_cylinder(height, radius)<br>
 >> my_cylinder(1,1)<br>
 ans =<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.1416<br>
 >></code>
   </div>
   <div class="content">
-<p>It is a good idea to include in the comments a usage statement showing a copy of the function header line, sometimes referred to as the Application Programmer Interface (API), to remind a user exactly how to use this function.</p>
+For example, if you were considering writing the function <code>cylinder</code>, do this:<br>
+<code>&gt;&gt; help cylinder<br>
+ cylinder Generate cylinder.<br>
+    [X,Y,Z] = cylinder(R,N) forms the unit cylinder based on the generator<br>
+    curve in the vector R. Vector R contains the radius at equally<br>
+    blah blah blah<br>
+    See also sphere, ellipsoid.<br>
+    Reference page for cylinder<br>
+</code>Obviously, there is a cylinder function already present in Matlab. <br>
+Before you wrote and saved <code>my_cylinder</code>, this would have indicated that all was well with the name <code>my_cylinder</code>:<br><code>
+&gt;&gt; help my_cylinder<br>
+my_cylinder not found.<br>
+Use the Help browser search field to search the documentation, or<br>
+type "help help" for help command options, such as help for methods.<br>
+<br>
+</code>Oh, and incidentally, after it was written and stored, this would have happened:<br><code>
+&gt;&gt;help my_cylinder<br>
+  function to compute the area and volume of a cylinder<br>
+  usage: [area, volume]=cylinder(height, radius)<br>
+&gt;&gt; </code><br>
+In general, when you ask for help on a function you wrote, Matlab shows you all the comments after the function header, and shows you just the first line if requested in the Current Directory (see Fig 2.4)</li>
+</ol></p>
 <p>Try saving and testing the cylinder function in Exercise 3.1</p>
 
 <h3><a name="3_3_3">3.3.3	Storing and Using Functions</a></h3>
 
-<p>All user-defined MATLAB functions must be created like scripts in an m-file. When the file is first created, it must be saved in an m-file with the same file name as the function. For example, the function in Listing 3.1 named cylinder must be saved in a file named cylinder.m. Once the file has been saved, you may invoke the function by entering its name and parameters of the right type and number in the Command window, in a script, or in other function definitions. If you do not specify an assignment for the result of the function call, it will be assigned to the variable ans.</p>
+<p>All user-defined MATLAB functions must be created like scripts in an m-file. When the file is first created, it must be saved in an m-file with the same file name as the function. For example, the function in Listing 3.1 named <code>my_cylinder</code> must be saved in a file named <code>my_cylinder.m</code>. Once the file has been saved, you may invoke the function by entering its name and parameters of the right type and number in the Command window, in a script, or in other function definitions. If you do not specify an assignment for the result of the function call, it will be assigned to the variable <code>ans</code>.</p>
 
 
 <h3><a name="3_3_4">3.3.4	Calling Functions</a></h3>
@@ -161,19 +179,17 @@ ans =<br>
 
 <h3><a name="3_3_6">3.3.6	Returning Multiple Results</a></h3>
 
-<p>The MATLAB language is unique among programming languages in providing the ability to return more than one result from a function by name. The multiple results are specified as a “vector” of variable names, for example, [area, volume], as shown in Listing 3.2. Assignments must be made to each of the result variables. However, the calling program is not required to make use of all the return values.</p>
+<p>The MATLAB language is unique among programming languages in providing the ability to return more than one result from a function by name. The multiple results are specified as a "vector" (see the next chapter for details) of variable names, for example, [area, volume], as shown in Listing 3.2. Assignments must be made to each of the result variables. However, the calling program is not required to make use of all the return values.</p>
+<h4>Listing 3.2 - function returning multiple results</h4>
 <code>
-function [area, volume] = my_cylinder(height, radius)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% function to compute the area and volume of a cylinder<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% usage: [area, volume]=cylinder(height, radius)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% Multiple results to be returned are specified as a collection of <br>
-&nbsp;&nbsp;&nbsp;&nbsp;% variable names, each of which must be assigned from the code body.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;base = pi .* radius.^2;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% Line added to set the value of the second result.<br>
+<font color="#0000ff">function</font> [area, volume] = my_cylinder(height, radius)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% function to compute the area and volume of a cylinder</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: [area, volume]=my_cylinder(height, radius)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;base = pi .* radius.^<font color="#ff8000">2</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;volume = base .* height;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;area = 2 * pi * radius .* height + 2 * base;<br>
-end</code>
-<h4>Listing 3.2 - test the cylinder function with multiple results</h4>
+&nbsp;&nbsp;&nbsp;&nbsp;area = <font color="#ff8000">2</font> * pi * radius .* height + <font color="#ff8000">2</font> * base;<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
 <p>Exercise 3.2 shows how to invoke a function that can return multiple results. Notice that the normal method to access the multiple answers is to put the names of the variable to receive the results in a vector. The names may be any legal variable name, and the values are returned in the order of the results defined. If you choose less than the full number of results (or none at all), the answers that are specified are allocated from left to right from the available results. As with parameter assignment, the results are allocated by position in these vectors. Although we called the variable <code>v</code> in the last test, it still receives the value of the first result, <code>area</code>. If you really only want the second result value, you must put either a <code>'~'</code> marker or a dummy variable name like <code>'junk'</code> in the place of any variable you wish to ignore.</p>
 <div class="container">
   <div class="sidebar_R">
@@ -232,50 +248,46 @@ Observe that as you step through the function, the variables appear in the Varia
 <h3><a name="3_3_9">3.3.9	Global Variables</a></h3>
 
 
-<p>Because MATLAB always copies the input data into the function’s workspace, there are occasions when it is very inefficient to pass large data sets into and out of a function. To avoid passing large amounts of data, we can use global variables. Global variables must be defined in both the calling script and the function using the key word global. For example, suppose we collect a large volume of data in a variable buffer and do not want to copy the whole buffer into and out of a function that processes that data. In this case, we declare the variable to be global in both the calling space and the called function by placing the following line of code before the variable is first used in both places:</p>
+<p>Because MATLAB always copies the input data into the function's workspace, there are occasions when it is very inefficient to pass large data sets into and out of a function. To avoid passing large amounts of data, we can use global variables. Global variables must be defined in both the calling script and the function using the key word global. For example, suppose we collect a large volume of data in a variable buffer and do not want to copy the whole buffer into and out of a function that processes that data. In this case, we declare the variable to be global in both the calling space and the called function by placing the following line of code before the variable is first used in both places:</p>
 <code>global buffer</code>
-<p>The function will then be able to access and modify the values in buffer without having to pass it in and out as a parameter. This feature must be used with caution, however, because any function with global access to data is empowered to change that data. In other words, the use of global data circumvents the natural MATLAB language’s encapsulation mechanisms.</p>
+<p>The function will then be able to access and modify the values in buffer without having to pass it in and out as a parameter. This feature must be used with caution, however, because any function with global access to data is empowered to change that data. In other words, the use of global data circumvents the natural MATLAB language's encapsulation mechanisms.</p>
 
-<h2><a name="3_4"> 3.4 Engineering Example — Measuring a Solid Object</a></h2>
+<h2><a name="3_4"> 3.4 Engineering Example: Measuring a Solid Object</a></h2>
 
 <p><strong>Problem:</strong></p>
+<p>Consider the disk shown in Figure 3.2 commonly referred to as a "flange". Flanges are used in many systems where a pipe must be separated for ease of assembly or maintenance. A flange is welded to each part of the pipe and nuts and bolts then hold the two parts of the pipe securely. For example, pipes carry fuel through the body from one wing to the other of an aircraft.  Since the wings are manufactured individually and then attached to the body of the aircraft, all pipes between the wing and body need flanges.</p>
+<p>Our flange has a radius <code>R</code>, height <code>h</code>, one central hole with radius <code>cr</code> and eight cylindrical holes each of radius <code>hr</code> bored in it. During the process of designing an aircraft, we need to know the weight of this flange including the amount of paint required to finish it. The weight and the amount of paint for the machine is the sum of the values for each component. Since the weight of our disk is proportional to its volume and the amount of paint is proportional to its "wetted area", we need the volume and area of this flange.</p>
+<p>Write a script to compute the volume of the flange and its wetted area</p>
 <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
 <p><img alt="image" height="250" src="Fig_3_2.jpg" width="350" /></p>
-<figcaption>Fig 3.2 a flange </figcaption></figure>
-<p>Consider the disk shown in Figure 3.2. It has a radius R, height h, one central hole with radius cr and eight cylindrical holes each of radius hr bored in it. This is commonly called a flange and two of them are typically used to connect two pipes that need to be separated later for maintenance purposes. During the process of designing this machine, we may need to know the weight of this disk and the amount of paint required to finish it. The weight and the amount of paint for the machine is the sum of the values for each component. Since the weight of our disk is proportional to its volume and the amount of paint is proportional to its “wetted area,” we need the volume and area of this disk.</p>
-<p>Write a script to compute the volume of the disk and its wetted area</p>
+<figcaption><center><b>Fig 3.2 A Flange</b></center> </figcaption></figure>
 <p><strong>Solution:</strong></p>
-<p>Figure 3.2 Disk with holes</p>
-
-<h3>Listing 3.3</h3>
-<code>% compute the volume and area of a flange<br>
-clear; clc<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%Set up the disk sizes.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;h = 1; % thickness - all measurements in inches<br>
-&nbsp;&nbsp;&nbsp;&nbsp;R = 5; % outer radius<br>
-&nbsp;&nbsp;&nbsp;&nbsp;cr = 2; % center hole<br>
-&nbsp;&nbsp;&nbsp;&nbsp;hr = 0.25; % small holes<br>
-&nbsp;&nbsp;&nbsp;&nbsp; % area and volume of the whole disk<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[A, V] = my_cylinder(h, R);<br>
-&nbsp;&nbsp;&nbsp;&nbsp; % area and volume of the center hole<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[cA, cV, cT] = my_cylinder(h, cr); % <br>
-&nbsp;&nbsp;&nbsp;&nbsp; % area and volume of one small hole<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[hA, hV, hT] = my_cylinder(h, hr);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% compute the volume<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Volume = V - cV - 8 * hV<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% computing the area is a little trickier<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Area = A + cA + 8 * hA;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% but we need to subtract tops and bottoms<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Area = Area - 4 * cT - 4 * 8 * hT<br>
-<br>
-function [area, volume, top] = my_cylinder(height, radius)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% function to compute the area and volume of a cylinder<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% usage: [area, volume]=cylinder(height, radius)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;top = pi .* radius.^2;<br>
+<h4>Listing 3.3: Solving the Problem</h4>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% compute the volume and area of a flange</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;h = <font color="#ff8000">1</font>; <font color="#00A000">% thickness - all measurements in inches</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;R = <font color="#ff8000">5</font>; <font color="#00A000">% outer radius</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cr = <font color="#ff8000">2</font>; <font color="#00A000">% center hole</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;hr = <font color="#ff8000">0.25</font>; <font color="#00A000">% small holes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[A, V] = my_cylinder(h, R); <font color="#00A000">% whole disk</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[cA, cV, cT] = my_cylinder(h, cr); <font color="#00A000">% center hole</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[hA, hV, hT] = my_cylinder(h, hr); <font color="#00A000">% small holes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;Volume = V - cV - <font color="#ff8000">8</font> * hV<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Area = A + cA + <font color="#ff8000">8</font> * hA;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% but we need to subtract tops and bottoms</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;Area = Area - <font color="#ff8000">4</font> * cT - <font color="#ff8000">4</font> * <font color="#ff8000">8</font> * hT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> [area, volume, top] = my_cylinder(height, radius)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% function to compute the area and volume of a cylinder</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: [area, volume]=cylinder(height, radius)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;top = pi .* radius.^<font color="#ff8000">2</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;volume = top .* height;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;area = 2 * pi * radius .* height + 2 * top;<br>
-end</code>
+&nbsp;&nbsp;&nbsp;&nbsp;area = <font color="#ff8000">2</font> * pi * radius .* height + <font color="#ff8000">2</font> * top;<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
 <p>The results displayed should be:</p>
 <code>
 Volume =<br>
@@ -301,13 +313,15 @@ same rules as the main function</li>
 <p>[Summary Table 05]<br>
 
 [Problems added here]</p>
-
-
-
-
-
-
-
+<table align="center">
+	<tbody>
+		<tr>
+			<td><a href="02_Basics.htm">previous</a></td>
+			<td><a href="Contents.htm">home</a></td>
+			<td><a href="04_Vectors.htm">next</a></td>
+		</tr>
+	</tbody>
+</table>
 <p align="center"><font size="1">This Web Page was Built with PageBreeze </font><a href="http://pagebreeze.com" target="_blank"><font size="1">Free HTML Editor</font></a><font size="1"> </font></p>
 </body>
 </html>

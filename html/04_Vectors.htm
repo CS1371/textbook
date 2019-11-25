@@ -74,7 +74,7 @@ In Chapter 7, we will encounter more general collection implementations that <b>
 
 <center><figure style="margin_bottom: 5px">
 <p><img alt="image" height="70" src="Fig_4_1.jpg" width="400" /></p>
-<figcaption>Fig 4.1 A General Vector</figcaption></figure></center>
+<figcaption><center><b>Fig 4.1 A General Vector</b></center></figcaption></figure></center>
 
 
 <h3><a name="4_2_1">4.2.1  Creating a Vector</a></h3>
@@ -196,9 +196,6 @@ Inner matrix dimensions must agree.<br>
 </p>
 <p><b>Arithmetic Operations:</b> Arithmetic operations can be performed collectively on the individual components of two vectors as long as both vectors are the same length, or one of the vectors is a scalar (i.e., a vector of length 1). Addition and subtraction have exactly the syntax you would expect, as illustrated in Exercise 4.3. Multiplication, division, and exponentiation, however, have a small syntactic idiosyncrasy related to the fact that these are element-by-element operations, not matrix operations. We will discuss matrix operations in Chapter 12. When the MATLAB language was designed, the ordinary symbols (<code>*</code>,<code>/</code>, and <code>^</code>) were  reserved  for  matrix  operations.  However,  element-by-element  multiplicative  operations  are fundamentally different from matrix operations, and a new set of operators is required to specify these operations. <br>
 These are the symbols <code>.*</code>, <code>./</code>, and <code>.^</code> {the dots are part of the operators, but the commas are not} that are used respectively for element-by- element  multiplication,  division,  and exponentiation. Note that because matrix and element-by-element addition and subtraction are identical, no special operation symbols are required for <code>+</code> and <code>-</code>.</p>
-<p>In Exercise 4.3, we first see the addition and multiplication of a vector by a scalar quantity, and then element-by-element multiplication of <code>A</code> and <code>B</code>. The first error is generated because we omitted the ‘<code>.</code>’ on the multiply symbol, thereby invoking matrix multiplication, which is improper with the vector <code>A</code> and <code>B</code>. The second error occurs because two vectors involved in arithmetic operations must have the same size. Notice, incidentally, the use of the <code>%</code> sign indicating that the rest of the line is a comment.</p>
-
-<p>You can change the signs of all the values of a vector with the unary minus (<code>-</code>) operator.</p>
 </div>
 <div class="container">
   <div class="sidebar_R">
@@ -239,6 +236,9 @@ ans =<br>
   </div>
   <div class="content">
 
+<p>In Exercise 4.3, we first see the addition and multiplication of a vector by a scalar quantity, and then element-by-element multiplication of <code>A</code> and <code>B</code>. The first error is generated because we omitted the ‘<code>.</code>’ on the multiply symbol, thereby invoking matrix multiplication, which is improper with the vector <code>A</code> and <code>B</code>. The second error occurs because two vectors involved in arithmetic operations must have the same size. Notice, incidentally, the use of the <code>%</code> sign indicating that the rest of the line is a comment.</p>
+
+<p>You can change the signs of all the values of a vector with the unary minus (<code>-</code>) operator.</p>
 <p><b>Logical Operations:</b> In Exercise 4.2, you might have wondered why you would ever use logical indexing. In this section, we will see that logical operations on vectors produce vectors of logical results. We can then use these logical result vectors to index vectors in a style that makes the logic of complex expressions very clear. As with arithmetic operations, logical operations can be performed element-by-element on two vectors as long as both vectors are the same length, or if one of the vectors is a scalar (i.e., a vector of length 1). The result will be a vector of logical values with the same length as the longer of the original vector(s).</p>
 <p>Try Exercise 4.4 to see how vector logical expressions work. First we built the vectors <code>A</code> and <code>B</code>, and then we performed two legal logical operations: finding where each element of <code>A</code> is not less than <code>5</code>, and where each element of <code>A</code> is not less than the corresponding element of <code>B</code>. As with arithmetic operations, an error occurs if you attempt a logical operation with vectors of different sizes (neither size being 1). Note to our eternal sadness that when MATLAB reports a logical result, it displays the values <code>1</code> for true and <code>0</code> for false. If you check in the Workspace window, the values are in fact of class <code>Logical</code>.</p>
 
@@ -376,12 +376,13 @@ where <code>&lt;rangeA&gt;</code> and <code>&lt;rangeB&gt;</code> are both index
 <li>Either the size of <code>rangeB</code> must be equal to the size of <code>rangeA</code> or
 <code>rangeA</code> must be of size <code>1</code></li>
 <li>If <code>B</code> did not exist before this statement was implemented, it is zero filled where assignments were not explicitly made</li>
-<li>If <code>B</code> did exist before this statement, the values not directly assigned in <code>rangeB</code> remain unchanged. </p>
-Study the comments in Listing 4.1 and do Exercise 4.10.</p>
+<li>If <code>B</code> did exist before this statement, the values not directly assigned in <code>rangeB</code> remain unchanged. </li>
+</ul>
+Study the comments in Listing 4.1 and do Exercise 4.6.</p>
 
 <div class="container">
   <div class="sidebar_R">
-<h4>Exercise 4.10: Running the vector indexing script</h4>
+<h4>Exercise 4.6: Running the vector indexing script</h4>
 <p>Execute the script in Listing 4.1.You should see the following output:<br>
 <code>odd values of A using predefined indices<br>
 ans =<br>
@@ -409,58 +410,58 @@ A =<br>
   <div class="content">
 
 <h4>Listing 4.1: Vector Indexing Script</h4>
-<code>
-clear; clc<br>
-    % Create a vector A with five elements.<br>
-    A = [2 5 7 1 3 4];<br>
-    % When predefining an index vector, if you want to refer to the size of a<br>
-    % vector, you must use either the length(...) function or the size(...)<br>
-    % function.<br>
-    odds = 1:2:length(A);<br>
-    % The disp(...) function shows the contents of its parameter in the<br>
-    % Command window, in this case: 'odd values of A using predefined<br>
-    % indices'. We use disp(...) rather than comments because comments are<br>
-    % visible only in the script itself, not in the program output, which we<br>
-    % need here.<br>
-    disp('odd values of A using predefined indices')<br>
-    % Using a predefined index vector to access elements in vector A.<br>
-    % Since no assignment is made, the variable ans takes on the value<br>
-    % of a three-element vector containing the odd-numbered elements of<br>
-    % A. Notice that these are the odd-numbered elements, not the<br>
-    % elements with odd values.<br>
-    A(odds)    % {1}<br>
-    disp('odd values of A using anonymous indices')<br>
-    % Next is the anonymous version of the command given at {1}. Notice that the<br>
-    % anonymous version allows you to use the word end within the vector meaning<br>
-    % the index of its last element.<br>
-    A(1:2:end)<br>
-    disp('put evens into odd values in a new array')<br>
-    % Since B did not previously exist (a good reason to run the clear command<br>
-    % at the beginning of a script is to be sure this is true), a new vector is<br>
-    % created with five elements (the largest index assigned in B). Elements in<br>
-    % B at positions less than five that were not assigned are zero filled.<br>
-    B(odds) = A(2:2:end)<br>
-    disp('set the even values in B to 99')<br>
-    % If you assign a scalar quantity to a range of indices in a vector, all<br>
-    % values at those indices are assigned the scalar value.<br>
-    B(2:2:end) = 99<br>
-    disp('find the small values in A')<br>
-    % Logical operations on a vector produce a vector of Boolean results. This<br>
-    % is not the same as typing small = [1 0 0 1 1 0] . If you want to create a<br>
-    % logical vector, you must use true and false, for example:<br>
-    %       small = [true false false true true false]<br>
-    small = A < 4<br>
-    disp('add 10 to the small values')<br>
-    % This is actually performing the scalar arithmetic operation + 10<br>
-    % on an anonymous vector of three elements, and then assigning those<br>
-    % values to the range of elements in A.<br>
-    A(small) = A(small) + 10<br>
-    disp('this can be done in one ugly operation')<br>
-    % Not only is this unnecessarily complex, but it is also less efficient<br>
-    % because it is applying the logical operator to A twice. It is better to<br>
-    % use the form above.<br>
-    A(A < 10) = A(A < 10) + 10<br>
-	</code>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Create a vector A with six elements.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [<font color="#ff8000">2</font> <font color="#ff8000">5</font> <font color="#ff8000">7</font> <font color="#ff8000">1</font> <font color="#ff8000">3</font> <font color="#ff8000">4</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% When predefining an index vector, if you want to refer to the size of a</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% vector, you must use either the length(...) function or the size(...)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% function.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;odds = <font color="#ff8000">1</font>:<font color="#ff8000">2</font>:length(A);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The disp(...) function shows the contents of its parameter in the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Interactions window, in this case: 'odd values of A using predefined</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% indices'. We use disp(...) rather than comments because comments are</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% visible only in the script itself, not in the program output, which we</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% need here.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'odd values of A using predefined indices'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Using a predefined index vector to access elements in vector A.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Since no assignment is made, the variable ans takes on the value</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% of a three-element vector containing the odd-numbered elements of</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% A. Notice that these are the odd-numbered elements, not the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% elements with odd values.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(odds)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'odd values of A using anonymous indices'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The anonymous version of the command given in Line 4. Notice that the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% anonymous version allows you to use the word end within the vector meaning</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the index of its last element.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(<font color="#ff8000">1</font>:<font color="#ff8000">2</font>:end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'put evens into odd values in a new array'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Since B did not previously exist (a good reason to run the clear command</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% at the beginning of a script is to be sure this is true), a new vector is</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% created with five elements (the largest index assigned in B). Elements in</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% B at positions less than five that were not assigned are zero filled.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;B(odds) = A(<font color="#ff8000">2</font>:<font color="#ff8000">2</font>:end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'set the even values in B to 99'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% If you assign a scalar quantity to a range of indices in a vector, all</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% values at those indices are assigned the scalar value.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;B(<font color="#ff8000">2</font>:<font color="#ff8000">2</font>:end) = <font color="#ff8000">99</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'find the small values in A'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Logical operations on a vector produce a vector of Boolean results. This</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% is not the same as typing small = [1 0 0 1 1 0] . If you want to create a</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% logical vector, you must use true and false, for example:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       small = [true false false true true false]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;small = A < <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'add 10 to the small values'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This is actually performing the scalar arithmetic operation + 10</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% on an anonymous vector of three elements, and then assigning those</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% values to the range of elements in A.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(small) = A(small) + <font color="#ff8000">10</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'this can be done in one ugly operation'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Not only is this unnecessarily complex, but it is also less efficient</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% because it is applying the logical operator to A twice. It is better to</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% use the form above.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(A < <font color="#ff8000">10</font>) = A(A < <font color="#ff8000">10</font>) + <font color="#ff8000">10</font><br>
+</strong></code>
 </div>
 
 <h2><a name="4_3">4.3 Engineering Example — Forces  and  Moments</a></h2>
@@ -468,34 +469,59 @@ clear; clc<br>
 Vectors are ideal representations of the concept of a vector used in physics. Consider two forces acting on an object at a point P, as shown in Figure 4.2. Calculate the resultant force at P, the unit vector in the direction of that resultant, and the moment of that force about the point M. We can represent each of the vectors in this problem as a MATLAB vector with three components: the x, y, and z values of the vector. The solution to this problem for specific vectors is shown in Listing 4.2.
 <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
 <p><img alt="image" height="250" src="Fig_4_2.jpg" width="250" /></p>
-<figcaption>Fig 4.2 Vector Analysis </figcaption></figure>
+<figcaption><b><center>Fig 4.2 Vector Analysis</center></b></figcaption></figure>
 <p>
-<h3>Listing 4.2 - solving a vector problem</h3>
-<code>% Script to solve vector problems<br>
-clear; clc<br>
-    % Typical initial values for the problem.<br>
-    PA = [0 1 1];<br>
-    PB = [1 1 0];<br>
-    P = [2 1 1]<br>
-    A = P + PA<br>
-    B = P + PB<br>
-    M = [4 0 1]<br>
-    % find the resultant of PA and PB<br>
-    PC = PA + PB;<br>
-    C = P + PC<br>
-    % find the unit vector in the direction of PC<br>
-    % The unit vector along PC is PC divided by its magnitude. The magnitude is<br>
-    % the square root of the sum of the squares of the individual components.<br>
-    mag = sqrt(sum(PC.^2));<br>
-    unit_vector = PC/mag;<br>
-    % find the moment of the force PC about M<br>
-    % this is the cross product of MP and PC<br>
-    % The vector MP is the vector difference between P and M.<br>
-    MP = P - M;<br>
-    % There is a built-in function, cross(..), to compute the cross product<br>
-    %  of two vectors.<br>
-    mom = cross( MP, PC )<br>
-</code>
+<h4>Listing 4.2: solving a vector problem</h4>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc; close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Typical initial values for the problem.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;PA = [<font color="#ff8000">0</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PB = [<font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">0</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;P = [<font color="#ff8000">2</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = P + PA<br>
+&nbsp;&nbsp;&nbsp;&nbsp;B = P + PB<br>
+&nbsp;&nbsp;&nbsp;&nbsp;M = [<font color="#ff8000">4</font> <font color="#ff8000">0</font> <font color="#ff8000">1</font>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the resultant of PA and PB</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;PC = PA + PB;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C = P + PC<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the unit vector in the direction of PC</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The unit vector along PC is PC divided by its magnitude. The magnitude is</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the square root of the sum of the squares of the individual components.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;mag = sqrt(sum(PC.^<font color="#ff8000">2</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unit_vector = PC/mag;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the moment of the force PC about M</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this is the cross product of MP and PC</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The vector MP is the vector difference between P and M.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;MP = P - M;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% There is a built-in function, cross(..), to compute the cross product</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  of two vectors.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;mom = cross( MP, PC )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv([<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>], P, <font color="#c000c0">'r-'</font>,'P', true) <font color="#00A000">%O-P</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text(<font color="#ff8000">0</font>, <font color="#ff8000">0</font>, <font color="#ff8000">0</font>,<font color="#c000c0">'O'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv([<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>], [<font color="#ff8000">5</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>], <font color="#c000c0">'k-'</font>, 'X axis', true) <font color="#00A000">% x axis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv([<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>], [<font color="#ff8000">0</font> <font color="#ff8000">4</font> <font color="#ff8000">0</font>], <font color="#c000c0">'k-'</font>, 'Y axis', true) <font color="#00A000">% y axis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv([<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>], [<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">3</font>], <font color="#c000c0">'k-'</font>, 'Z axis', true) <font color="#00A000">% z axis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv(P, A, <font color="#c000c0">'r-'</font>, 'A', true)   <font color="#00A000">% P-A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv(P, B, <font color="#c000c0">'g-'</font>, 'B', true)   <font color="#00A000">% P-B</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv(P, C, <font color="#c000c0">'b--'</font>, 'C', true)   <font color="#00A000">% P-C</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv(M, P, <font color="#c000c0">'m--'</font>, 'M', false)   <font color="#00A000">% M-P</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv(P, mom, <font color="#c000c0">'c:'</font>, 'momentum', true)   <font color="#00A000">% P-mom</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis([-<font color="#ff8000">1</font> <font color="#ff8000">5</font> -<font color="#ff8000">1</font> <font color="#ff8000">4</font> -<font color="#ff8000">6</font> <font color="#ff8000">3</font>])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> my_quiv(A, B, ln, txt, fwd)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'[%d %d %d] -> [%d %d %d] %s %s\n'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(<font color="#ff8000">1</font>), A(<font color="#ff8000">2</font>), A(<font color="#ff8000">3</font>), B(<font color="#ff8000">1</font>), B(<font color="#ff8000">2</font>), B(<font color="#ff8000">3</font>), ln, txt)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;quiver3(A(<font color="#ff8000">1</font>), A(<font color="#ff8000">2</font>), A(<font color="#ff8000">3</font>), B(<font color="#ff8000">1</font>), B(<font color="#ff8000">2</font>), B(<font color="#ff8000">3</font>), ln)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> fwd<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text(B(<font color="#ff8000">1</font>), B(<font color="#ff8000">2</font>), B(<font color="#ff8000">3</font>), txt)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text(A(<font color="#ff8000">1</font>), A(<font color="#ff8000">2</font>), A(<font color="#ff8000">3</font>), txt)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+</strong></code>
 <p><b>Strong Suggestion:</b> After any nontrivial computation, a good engineer will always
 perform a sanity check on the answers. When you run the
 code for this problem, for example, the answers returned are:<br>
@@ -515,7 +541,7 @@ result shown.</p>
 <h2><a name="4_4">4.4  Arrays</a></h2>
 <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
 <p><img alt="image" height="170" src="Fig_4_3.jpg" width="250" /></p>
-<figcaption>Fig 4.3 an Array </figcaption></figure>
+<figcaption><center><b>Fig 4.3 an Array</b></center></figcaption></figure>
 
 In Section 4.2, we saw that a vector is the simplest way to group a collection of similar data items. We will now extend these ideas to include arrays of multiple dimensions, initially confined to two dimensions. Each row will have the same number of columns, and each column will have the same number of rows.
 
@@ -532,7 +558,7 @@ will return the information in one of two forms:
 </ul>
 <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
 <p><img alt="image" height="170" src="Fig_4_4.jpg" width="250" /></p>
-<figcaption>Fig 4.4 an Array Transposed</figcaption></figure>
+<figcaption><center><b>Fig 4.4 an Array Transposed</b></center></figcaption></figure>
 
 The <code>length(...)</code> function returns the <b>maximum dimension</b> of the array. So if we created an array <code>A</code> dimensioned 2 &#215; 8 &#215; 3, <code>size(A)</code> would return <code>[2 8 3]</code> and <code>length(A)</code> would return <code>8</code>.
 
@@ -549,7 +575,7 @@ vector as you saw earlier.</li>
 
 <div class="container">
   <div class="sidebar_R">
-<h4>Exercise 4.11 Creating arrays</h4>
+<h4>Exercise 4.7 Creating arrays</h4>
 
 <code>>> A = [2, 5, 7; 1, 3, 42]<br>
 A =<br>
@@ -600,18 +626,18 @@ ans =<br>
 <li>The function <code>diag(...)</code> takes several forms, the most useful of which are <code>diag(A)</code>, where <code>A</code> is an array, that returns its diagonal as a vector, and <code>diag(V)</code>, where <code>V</code> is a vector, that returns a square matrix with that diagonal. Type <code>help diag</code> in the Command window for a full description of the capabilities of <code>diag(...)</code></li>
 <li>The MATLAB language also defines the function <code>magic(m)</code>, which fills a square matrix with the numbers <code>1</code> to <code>m<sup>2</sup></code> organized in such a way that its rows, columns, and diagonals all add up to the same value.</li>
 </ul>
-Try Exercise 4.11 to practice working with arrays.
+Try Exercise 4.7 to practice creating arrays.
 </div>
 <h3><a name="4_4_3">4.4.3   Accessing Elements of an Array</a></h3>
-<p>The elements of an array may be addressed by enclosing the indices of the required element in parentheses, with the first index being the row index and the second index the column index. Considering the values produced by Exercise 4.11, <code>A(2, 3)</code> would return the element in the second row, third column: <code>42</code>. If you were to attempt to read outside the length of the rows or columns, an error would result.</p>
+<p>The elements of an array may be addressed by enclosing the indices of the required element in parentheses, with the first index being the row index and the second index the column index. Considering the values produced by Exercise 4.7, <code>A(2, 3)</code> would return the element in the second row, third column: <code>42</code>. If you were to attempt to read outside the length of the rows or columns, an error would result.</p>
 
-<p>We can also store values that are elements of an array. For example, continuing Example 4.11, <br>
+<p>We can also store values that are elements of an array. For example, continuing Exercise 4.7, <br>
 <code>A(2, 3) = 0</code><br>
 would result in this answer:</p>
 <code>A =<br>
 &nbsp;&nbsp;&nbsp;&nbsp;2	5	7<br>
 &nbsp;&nbsp;&nbsp;&nbsp;1	3	0<br></code>
-<p>As with vectors, MATLAB will automatically extend the array if you write beyond its boundaries. If there are missing elements between the current array elements and the index at which you attempt to store a new value, the missing elements will be zero filled. For example, again continuing Example 4.11,<br>
+<p>As with vectors, MATLAB will automatically extend the array if you write beyond its boundaries. If there are missing elements between the current array elements and the index at which you attempt to store a new value, the missing elements will be zero filled. For example, again continuing Exercise 4.7,<br>
 <code>A(4, 1) = 3</code><br>
 would result in this answer:<br>
 <code>A =<br>
@@ -626,7 +652,7 @@ would result in this answer:<br>
 
 <div class="container">
   <div class="sidebar_R">
-<h4>Exercise 4.12: Working with array arithmetic</h4>
+<h4>Exercise 4.8: Working with array arithmetic</h4>
 <code>
 >> A = [2 5 7<br>
 &nbsp;&nbsp;&nbsp;&nbsp;1 3 2]<br>
@@ -676,10 +702,10 @@ was then entered, the result would be:<br>
 
 <h3><a name="4_4_5">4.4.5  Operating on Arrays</a></h3>
 <p>This section discusses how array operations extend directly from vector operations: arithmetic and logical operations, the application of functions, concatenation, and slicing. This section will also discuss two topics peculiar to arrays: reshaping and linearizing arrays.</p>
-<p><b>Array Arithmetic Operations</b>: Arithmetic operations can be performed collectively on the individual components of two arrays as long as both arrays have the same dimensions or one of them is a scalar (i.e., has a vector of length 1). Addition and subtraction have exactly the syntax you would expect, as shown in Exercise 4.12. Multiplication, division, and exponentiation, however, must use the “dot operator” symbols: .*, ./, and .^ (the dot is part of the symbol, but the commas are not) for scalar multiplication, division, and exponentiation.</p>
+<p><b>Array Arithmetic Operations</b>: Arithmetic operations can be performed collectively on the individual components of two arrays as long as both arrays have the same dimensions or one of them is a scalar (i.e., has a vector of length 1). Addition and subtraction have exactly the syntax you would expect, as shown in Exercise 4.8. Multiplication, division, and exponentiation, however, must use the “dot operator” symbols: .*, ./, and .^ (the dot is part of the symbol, but the commas are not) for scalar multiplication, division, and exponentiation.</p>
 <div class="container">
   <div class="sidebar_R">
-<h4>Exercise 4.13: Working with array logical operations</h4>
+<h4>Exercise 4.9: Working with array logical operations</h4>
 <code>
 >> A = [2 5; 1 3]<br>
 A =<br>
@@ -701,7 +727,7 @@ Matrix dimensions must agree.<br></code>
 </div>
 <div class="content">
 
-<p><b>Array Logical Operations:</b> As with vectors, logical array operations can be performed collectively on the individual components of two arrays as long as both arrays have the same dimensions or one of the arrays is a scalar (i.e., has a vector of length 1). The result will be an array of logical values with the same size as the original array(s). Do Exercise 4.13 to see how array logical operations work. Here, we successfully compare the array <code>A</code> to a scalar value, and to the array <code>B</code> that has the same dimensions as <code>A</code>. However, comparing to the array <code>C</code> that has the same number of elements but the wrong shape produces an error. </p>
+<p><b>Array Logical Operations:</b> As with vectors, logical array operations can be performed collectively on the individual components of two arrays as long as both arrays have the same dimensions or one of the arrays is a scalar (i.e., has a vector of length 1). The result will be an array of logical values with the same size as the original array(s). Do Exercise 4.9 to see how array logical operations work. Here, we successfully compare the array <code>A</code> to a scalar value, and to the array <code>B</code> that has the same dimensions as <code>A</code>. However, comparing to the array <code>C</code> that has the same number of elements but the wrong shape produces an error. </p>
 <p><b>Applying Library Functions:</b> In addition to being able to consume vectors, most mathematical functions in the MATLAB language can consume an array of numbers and return an array of the same shape. The following functions deserve special mention because they are exceptions to this rule and provide specific capabilities that are frequently useful:</p>
 <ul>
 <li><code>sum(v)</code> and <code>mean(v)</code> when applied to a 2-D array return a row vector containing the sum and mean of each column of the array, respectively. If you want the sum of the whole array, use <code>sum(sum(v))</code>.</li>
@@ -732,7 +758,7 @@ Therefore, we correctly conclude that the maximum number in this array is <code>
 </div>
 <div class="container">
   <div class="sidebar_R">
-<h4>Exercise 4.14 Concatenating arrays</h4>
+<h4>Exercise 4.10 Concatenating arrays</h4>
 <code>
 >> A = [2 5; 1 7];<br>
 >> B = [1 3]'; % makes a column vector<br>
@@ -751,7 +777,7 @@ ans =<br>
 <li>Vertically, as long as each has the same number of columns:<br>
 <code>A = [B; C; D; ... X; Y; Z]</code></li>
 </ul>
-The result of horizontal concatenation will be an array with the number of rows common to all and for the number of columns, the sum of the columns of each element concatenated. Similarly, the result of vertical concatenation will be an array with the number of columns common to all and for the number of rows, the sum of the rows of each element concatenated. Exercise 4.14 gives you the opportunity to concatenate an array.
+The result of horizontal concatenation will be an array with the number of rows common to all and for the number of columns, the sum of the columns of each element concatenated. Similarly, the result of vertical concatenation will be an array with the number of columns common to all and for the number of rows, the sum of the rows of each element concatenated. Exercise 4.10 gives you the opportunity to concatenate an array.
 </p>
 </div>
 <p><b>Slicing Arrays:</b> The general form of statements for moving sections of one array into sections of another is as follows:<br>
@@ -759,7 +785,7 @@ The result of horizontal concatenation will be an array with the number of rows 
 where each <code>&lt;range..&gt;</code> is an index vector, <code>A</code> is an existing array, and <code>B</code> can be either an existing array or a new array. The values in <code>B</code> at the specified indices are all assigned the corresponding values copied from A. The rules for using this template are as follows:
 <div class="container">
   <div class="sidebar_R">
-<h4>Exercise 4.15 Reshaping an array</h4>
+<h4>Exercise 4.11 Reshaping an array</h4>
 <code>
 >> A = 1:10<br>
 A =<br>
@@ -784,12 +810,12 @@ ans =<br>
 <li>If B did not exist before this statement was implemented, it would be zero filled where assignments were not explicitly made.</li>
 <li>If B did exist before this statement, the values not directly assigned would remain unchanged.</li>
 </ul>
-<p><b>Reshaping Arrays:</b> Occasionally, it is useful to take an array with one set of dimensions and reshape it to another set. The function <code>reshape( ... )</code> accomplishes this. The command <code>reshape(A, rows, cols, ...)</code> will take the array <code>A</code>, whatever its dimensions, and reform it into an array sized <code>(rows &#215; cols &#215; ...)</code> out to as many dimensions as desired. However, <code>reshape(...)</code> neither discards excess data nor pads the data to fill any empty space. The product of all the original dimensions of <code>A</code> must equal the product of the new dimensions. Try Exercise 4.15 to see how to reshape an array. Here, we first take a 1 x 10 array, A, and attempt to reshape it to 4 x 3. Since the element count does not match, an error results. When we concatenate two zeros to the array A, it has the right element count and the reshape succeeds.
+<p><b>Reshaping Arrays:</b> Occasionally, it is useful to take an array with one set of dimensions and reshape it to another set. The function <code>reshape( ... )</code> accomplishes this. The command <code>reshape(A, rows, cols, ...)</code> will take the array <code>A</code>, whatever its dimensions, and reform it into an array sized <code>(rows &#215; cols &#215; ...)</code> out to as many dimensions as desired. However, <code>reshape(...)</code> neither discards excess data nor pads the data to fill any empty space. The product of all the original dimensions of <code>A</code> must equal the product of the new dimensions. Try Exercise 4.11 to see how to reshape an array. Here, we first take a 1 x 10 array, A, and attempt to reshape it to 4 x 3. Since the element count does not match, an error results. When we concatenate two zeros to the array A, it has the right element count and the reshape succeeds.
 </p>
 </div>
 <div class="container">
   <div class="sidebar_R">
-<h4>Exercise 4.16 Linearizing an array</h4>
+<h4>Exercise 4.12 Linearizing an array</h4>
 <code>
 >> A = [2 5 7 3<br>
 &nbsp;&nbsp;&nbsp;&nbsp;8 0 9 42<br>
@@ -816,11 +842,11 @@ ans =<br>
 <code>[rows cols] = find(...)</code> <br>
 or we can receive back just one result by asking for:<br>
 <code>ndx = find(...)</code>.<br>
-Indexing with this result exposes the linearized nature of arrays. The way this feature manifests itself is shown in Exercise 4.16.</p>
+Indexing with this result exposes the linearized nature of arrays. The way this feature manifests itself is shown in Exercise 4.12.</p>
 <p>Here, we build a 4 &#215; 3 array <code>A</code> and calculate the logical array where <code>A</code> is greater than <code>5</code>. When we save the result of finding these locations in the variable <code>ix</code>, we see that this is a vector of values. If we count down the columns from the top left, we see that the second, seventh, eighth, and eleventh values in the linearized version of <code>A</code> are indeed <code>true</code>. We also see that it is legal to use this linearized index vector to access the values in the original array—in this case, to add <code>3</code> to each one. </p>
 <div class="container">
   <div class="sidebar_R">
-<h4>Exercise 4.17: Running the array manipulation script</h4>
+<h4>Exercise 4.13: Running the array manipulation script</h4>
 <code>
 Run the script in Listing 4.3 and observe the results:<br>
 A = <br>
@@ -886,42 +912,52 @@ and it is never the “only way to do” anything.</p>
 MATLAB “unwinds” the storage of the array, counts down to the eleventh entry—3 for column 1, 3 for column 2, and 3 for column 3—and then extracts the second element of column 4.</p>
 </div>
 
-<p>To understand all these array manipulation ideas fully, you should work carefully through the script in Listing 4.3, study the explanatory notes that follow, and do Exercise 4.17.
+<p>To understand all these array manipulation ideas fully, you should work carefully through the script in Listing 4.3, study the explanatory notes that follow, and do Exercise 4.13.
 <h4>Listing 4.3: Array manipulation script</h4>
-<code>% Create a 2 &#215; 4 array A<br>
-A = [2 5 7 3<br>
-&nbsp;&nbsp;&nbsp;&nbsp;1 3 4 2]<br>
-% Determine the rows and columns in A<br>
-[rows, cols] = size(A)<br>
-% find the indices of the odd numbered columns<br>
-odds = 1:2:cols<br>
-% use this explicit index vector to access the odd columns of A<br>
-disp('odd columns of A using predefined indices')<br>
-A(:, odds)<br>
-% Use an anonymous index vector to access the odd columns of A<br>
-% Notice that this enables the use of the word 'end.'
-disp('odd columns of A using anonymous indices')<br>
-A(end, 1:2:end)<br>
-% Take copy the even columns in a into the odd columns of B, a new array
-disp('put evens into odd values in a new array')<br>
-B(:, odds) = A(:, 2:2:end)<br>
-disp('set the even values in B''s top row to 99')<br>
-B(1, 2:2:end) = 99<br>
-% add 10 to the values in A less than 4<br>
-disp('find the small values in A')<br>
-small = A < 4<br>
-disp('add 10 to the small values')<br>
-A(small) = A(small) + 10<br>
-% Repeat this exercise with anonymous vectors<br>
-% Note that the efficiency might be a little less, but <br>
-% the clarity of the code has improved<br>
-disp('this can be done in one ugly operation')<br>
-A(A < 4) = A(A < 4) + 10<br>
-% now, to expose the linearized indices when find(...) is used
-small_index = find(small)<br>
-% then use the linearized index to add 100 to all the small values.
-A(small_index) = A(small_index) + 100<br>
-</code>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Create a 2 X 4 array A.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [<font color="#ff8000">2</font> <font color="#ff8000">5</font> <font color="#ff8000">7</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> <font color="#ff8000">3</font> <font color="#ff8000">4</font> <font color="#ff8000">2</font>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Determine the number of rows and columns</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rows, cols] = size(A)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Builds a vector odds containing the indices of the odd numbered columns.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;odds = <font color="#ff8000">1</font>:<font color="#ff8000">2</font>:cols<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'odd columns of A using predefined indices'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Uses odds to access the columns in A. The : specifies that this is</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% using all the rows.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(:, odds)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'odd columns of A using anonymous indices'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The anonymous version of the line above. Notice that you can use</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the keyword 'end' in any dimension of the array to represent the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% last index on that dimension.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(end, <font color="#ff8000">1</font>:<font color="#ff8000">2</font>:end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'put evens into odd values in a new array'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Because B did not previously exist (a good reason to have 'clear'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% at the beginning of the script to be sure this is true), a new</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% array is created. Elements in B that were not assigned are zero filled.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;B(:, odds) = A(:, <font color="#ff8000">2</font>:<font color="#ff8000">2</font>:end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'set the even values in B to 99'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Puts 99 into selected locations in B.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;B(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>:<font color="#ff8000">2</font>:end) = <font color="#ff8000">99</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'find the small values in A'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Logical operations on arrays produce an array of logical results.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;small = A < <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'add 10 to the small values'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Add 10 to the values in A that are small.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(small) = A(small) + <font color="#ff8000">10</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'this can be done in one ugly operation'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Not only is this unnecessarily complex, but it is also less efficient</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% because it is applying the logical operator to A twice.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(A < <font color="#ff8000">4</font>) = A(A < <font color="#ff8000">4</font>) + <font color="#ff8000">10</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The function find(...) actually returns a column vector of the index</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% values in the linearized version of the original array, as shown</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% in Exercise 4.12</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;small_index = find(small)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% As illustrated in the lines, it is not necessary to use find(...)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% before indexing an array. However, this command does work.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(small_index) = A(small_index) + <font color="#ff8000">100</font><br>
+</strong></code>
 <br> 
 Notice that all the results are consistent with our expectations.</p>
 </div>
@@ -929,327 +965,331 @@ Notice that all the results are consistent with our expectations.</p>
 <p><b>Problem</b><br>
 <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
 <p><img alt="image" height="170" src="Fig_4_5.jpg" width="250" /></p>
-<figcaption>Fig 4.5 a road through hilly terrain</figcaption></figure>
-<p>We consider now an interesting problem from civil engineering.  Whenever a road [or railway track] are being run through hilly terrain, portions of hills need to be removed and valleys filled in.  The preliminary planning for the road location, slope and height must include the problem of moving earth.  It is most economical to use the earth removed from hills to fill in nearby valleys without having to haul surplus earth away or bring in extra fill dirt. Typically, the slopes of the cuttings and embankments are specified, for example, at 45 degrees.  Figure 4.5 illustrates a typical example.</p>
+<figcaption><b><center>Fig 4.5 a road through hilly terrain</center></b></figcaption></figure>
+<p>We consider now an interesting problem from civil engineering.  Whenever a road [or railway track] is being run through hilly terrain, portions of hills need to be removed and valleys filled in.  The preliminary planning for the road location, slope and height must include the problem of moving earth.  It is most economical to use the earth removed from hills to fill in nearby valleys without having to haul surplus earth away or bring in extra fill dirt. Typically, the slopes of the cuttings and embankments are specified, for example, at 45 degrees.  Figure 4.5 illustrates a typical example.</p>
 <p><b>Solution</b><br>
 <p>Listing 4.4 shows one solution to this problem. Consider Figure 4.6 showing the earth to be removed in red and the earth needed to fill the valley in green. In order to balance the amount of earth to be moved, we need merely to sum the depths of the red patches and subtract the sum of the depth of the green patch. </p>
 <p>There are a number of MATLAB language features in Listing 4.4 that will be dealt with in later chapters.  Refer to MATLAB documentation or the subsequent chapters of this text.</p>
 <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
 <p><img alt="image" height="170" src="Fig_4_6.jpg" width="250" /></p>
-<figcaption>Fig 4.6 Material to be moved</figcaption></figure>
+<figcaption><b><center>Fig 4.6 Material to be moved</center></b></figcaption></figure>
 <h3>Listing 4.4 Computing the earth to be moved</h3>
-<code>
-clear; clc; close all<br>
-% lay out scenery for road cut<br>
-    
-global x<br>
-global y<br>
-global z<br>
-global A<br>
-global yr<br>
-global clr<br>
-global sxp<br>
-global syp<br>
-global szp<br>
-global road_z<br>
-global dbg<br>
-global l_edge_ndx<br>
-global r_edge_ndx<br>
-global top<br>
-global bot<br>
-    
-&nbsp;&nbsp;dbg = fopen('debug.log', 'w');<br>
-&nbsp;&nbsp;road_z = 0;<br>
-&nbsp;&nbsp;grey = [0.8 0.8 0.8];<br>
-&nbsp;&nbsp;load('../xyz.mat')<br>
-&nbsp;&nbsp;tth = x;<br>
-&nbsp;&nbsp;pphi = y;<br>
-&nbsp;&nbsp;zz = z;<br>
-&nbsp;&nbsp;% road lines are phi = 2.4 - 2.6<br>
-&nbsp;&nbsp;%                th = min - maxA =<br>
-&nbsp;&nbsp;%                zz = 0<br>
-&nbsp;&nbsp;xr = [th(1) th(1) th(end) th(end)];<br>
-&nbsp;&nbsp;yr = [2.4 2.6 2.6 2.4];<br>
-&nbsp;&nbsp;[xxr yyr] = meshgrid(xr, yr);<br>
-&nbsp;&nbsp;zzr = xxr .* 0;<br>
-&nbsp;&nbsp;[rr, rc] = size(xxr);<br>
-&nbsp;&nbsp;img = uint8(zeros(rr, rc, 3) + 100);<br>
-&nbsp;&nbsp;surf(xxr, yyr, zzr, img)   % road<br>
-&nbsp;&nbsp;hold on<br>
-&nbsp;&nbsp;% surfaces 45 deg from road edges are<br>
-&nbsp;&nbsp;%   z = 2.4 - y<br>
-&nbsp;&nbsp;%   z = y - 2.4<br>
-&nbsp;&nbsp;%   z = 2.6 + y<br>
-&nbsp;&nbsp;%   z = -y - 2.6<br>
-&nbsp;&nbsp;zv = 2;<br>
-&nbsp;&nbsp;xp = xr;<br>
-&nbsp;&nbsp;yp = [yr(1), yr(1)-zv, yr(1)-zv, yr(1)];<br>
-&nbsp;&nbsp;[xxp yyp] = meshgrid(xp, yp);<br>
-&nbsp;&nbsp;zp = yr(1) - yyp;<br>
-&nbsp;&nbsp;sxp{1} = xp;<br>
-&nbsp;&nbsp;sxp{2} = xp;<br>
-&nbsp;&nbsp;syp{1} = yp;<br>
-&nbsp;&nbsp;syp{2} = yp;<br>
-&nbsp;&nbsp;szp{1} = zp;<br>
-&nbsp;&nbsp;szp{2} = -zp;<br>
-&nbsp;&nbsp;yp = [yr(2), yr(2)+zv, yr(2)+zv, yr(2)];<br>
-&nbsp;&nbsp;[xxp yyp] = meshgrid(xp, yp);<br>
-&nbsp;&nbsp;zp = yr(2) - yyp;<br>
-&nbsp;&nbsp;sxp{3} = xp;<br>
-&nbsp;&nbsp;sxp{4} = xp;<br>
-&nbsp;&nbsp;syp{3} = yp;<br>
-&nbsp;&nbsp;syp{4} = yp;<br>
-&nbsp;&nbsp;szp{3} = zp;<br>
-&nbsp;&nbsp;szp{4} = -zp;<br>
-&nbsp;&nbsp;% now, find the contours<br>
-&nbsp;&nbsp;% restate the planes as ax + by + cz + d = 0<br>
-&nbsp;&nbsp;%<br>
-&nbsp;&nbsp;%   p1 : z = 2.4 - y    0   -1   -1   2.4<br>
-&nbsp;&nbsp;%   p2 : z = y - 2.4    0    1   -1  -2.4<br>
-&nbsp;&nbsp;%   p3 : z = y - 2.6    0    1   -1  -2.6<br>
-&nbsp;&nbsp;%   p4 : z = -y + 2.6   0   -1   -1   2.6<br>
-&nbsp;&nbsp;%    save x, y, z;<br>
-&nbsp;&nbsp;A = [0   -1   -1   2.4<br>
-&nbsp;&nbsp;&nbsp;&nbsp;0    1   -1  -2.4<br>
-&nbsp;&nbsp;&nbsp;&nbsp;0    1   -1  -2.6<br>
-&nbsp;&nbsp;&nbsp;&nbsp;0   -1   -1   2.6];<br>
-&nbsp;&nbsp;clr = {'red','green','blue','cyan'};<br>
-&nbsp;&nbsp;for n = 1:4<br>
-&nbsp;&nbsp;&nbsp;&nbsp;draw_contours(n)<br>
-&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;% find y values right before road and right after<br>
-&nbsp;&nbsp;yps = y(:,1);<br>
-&nbsp;&nbsp;% yps covering road<br>
-&nbsp;&nbsp;at = yps &gt; yr(1) &amp; yps &lt; yr(2);<br>
-&nbsp;&nbsp;fat = find(at);<br>
-&nbsp;&nbsp;l_edge_ndx = fat(1)-1;<br>
-&nbsp;&nbsp;r_edge_ndx = fat(end)+1;<br>
-&nbsp;&nbsp;% populate bot and top surfaces with NaN<br>
-&nbsp;&nbsp;[rows cols] = size(x);<br>
-&nbsp;&nbsp;bot = zeros(rows, cols) + NaN;<br>
-&nbsp;&nbsp;top = bot;<br>
-&nbsp;&nbsp;removeCutSurface()<br>
-&nbsp;&nbsp;% force road level to be below road<br>
-&nbsp;&nbsp;y_road = find(y(:,1) &gt; yr(1) &amp; y(:,1) &lt; yr(2));<br>
-&nbsp;&nbsp;y_road = [y_road(1)-1; y_road; y_road(end)+1];<br>
-&nbsp;&nbsp;road_strip = z(y_road,:);<br>
-&nbsp;&nbsp;too_high = road_strip &gt;= road_z;<br>
-&nbsp;&nbsp;road_strip(too_high) = road_z - 0.05;<br>
-&nbsp;&nbsp;z(y_road,:) = road_strip;<br>
-&nbsp;&nbsp;[rws cls] = size(x);<br>
-&nbsp;&nbsp;img = uint8(zeros(rws, cls, 3));<br>
-&nbsp;&nbsp;img(:,:,[1 2]) = 140;<br>
-&nbsp;&nbsp;surf(x, y, z, img);  % hillside<br>
-&nbsp;&nbsp;xlabel('x (th)')<br>
-&nbsp;&nbsp;ylabel('y (phi)')<br>
-&nbsp;&nbsp;axis equal<br>
-&nbsp;&nbsp;axis off<br>
-&nbsp;&nbsp;view(78,16)<br>
-&nbsp;&nbsp;saveas(gcf,'cutting.jpg')<br>    
-&nbsp;&nbsp;hold on<br>
-&nbsp;&nbsp;dy = 0.5;<br>
-&nbsp;&nbsp;dz = 0.7;<br>
-&nbsp;&nbsp;where = ~isnan(bot);<br>
-&nbsp;&nbsp;top(where) = zz(where);<br>
-&nbsp;&nbsp;sz = size(x);<br>
-&nbsp;&nbsp;img = uint8(zeros(sz(1), sz(2), 3));<br>
-&nbsp;&nbsp;img(:,:,2) = 255;<br>
-&nbsp;&nbsp;surf(x, y+dy, bot+dz, img); % embankment added<br>
-&nbsp;&nbsp;xlabel('x (th)')<br>
-&nbsp;&nbsp;ylabel('y (phi)')<br>
-&nbsp;&nbsp;axis equal<br>
-&nbsp;&nbsp;axis off<br>
-&nbsp;&nbsp;hold on<br>
-&nbsp;&nbsp;[rws cls] = size(x);<br>
-&nbsp;&nbsp;img = uint8(zeros(rws, cols, 3));<br>
-&nbsp;&nbsp;img(:,:,1) = 255;<br>
-&nbsp;&nbsp;surf(x, y+dy, top+dz, img);  % embankment removed<br>
-&nbsp;&nbsp;view(78,16)<br>
-&nbsp;&nbsp;saveas(gcf,'cutting_removed.jpg')<br>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc; close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% lay out scenery for road cut</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> A<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> yr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> clr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> sxp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> syp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> szp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> road_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> dbg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> l_edge_ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> r_edge_ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> top<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> bot<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dbg = fopen(<font color="#c000c0">'debug.log'</font>, 'w');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;road_z = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grey = [<font color="#ff8000">0.8</font> <font color="#ff8000">0.8</font> <font color="#ff8000">0.8</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;load(<font color="#c000c0">'../xyz.mat'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tth = x;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pphi = y;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zz = z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% road lines are phi = 2.4 - 2.6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%                th = min - maxA =</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%                zz = 0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;xr = [th(<font color="#ff8000">1</font>) th(<font color="#ff8000">1</font>) th(end) th(end)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yr = [<font color="#ff8000">2.4</font> <font color="#ff8000">2.6</font> <font color="#ff8000">2.6</font> <font color="#ff8000">2.4</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[xxr yyr] = meshgrid(xr, yr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zzr = xxr .* <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rr, rc] = size(xxr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img = uint8(zeros(rr, rc, <font color="#ff8000">3</font>) + <font color="#ff8000">100</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(xxr, yyr, zzr, img)   <font color="#00A000">% road</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% surfaces 45 deg from road edges are</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   z = 2.4 - y</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   z = y - 2.4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   z = 2.6 + y</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   z = -y - 2.6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;zv = <font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xp = xr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yp = [yr(<font color="#ff8000">1</font>), yr(<font color="#ff8000">1</font>)-zv, yr(<font color="#ff8000">1</font>)-zv, yr(<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[xxp yyp] = meshgrid(xp, yp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zp = yr(<font color="#ff8000">1</font>) - yyp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sxp{<font color="#ff8000">1</font>} = xp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sxp{<font color="#ff8000">2</font>} = xp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;syp{<font color="#ff8000">1</font>} = yp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;syp{<font color="#ff8000">2</font>} = yp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;szp{<font color="#ff8000">1</font>} = zp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;szp{<font color="#ff8000">2</font>} = -zp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yp = [yr(<font color="#ff8000">2</font>), yr(<font color="#ff8000">2</font>)+zv, yr(<font color="#ff8000">2</font>)+zv, yr(<font color="#ff8000">2</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[xxp yyp] = meshgrid(xp, yp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zp = yr(<font color="#ff8000">2</font>) - yyp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sxp{<font color="#ff8000">3</font>} = xp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sxp{<font color="#ff8000">4</font>} = xp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;syp{<font color="#ff8000">3</font>} = yp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;syp{<font color="#ff8000">4</font>} = yp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;szp{<font color="#ff8000">3</font>} = zp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;szp{<font color="#ff8000">4</font>} = -zp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% now, find the contours</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% restate the planes as ax + by + cz + d = 0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   p1 : z = 2.4 - y    0   -1   -1   2.4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   p2 : z = y - 2.4    0    1   -1  -2.4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   p3 : z = y - 2.6    0    1   -1  -2.6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   p4 : z = -y + 2.6   0   -1   -1   2.6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    save x, y, z;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [<font color="#ff8000">0</font>   -<font color="#ff8000">1</font>   -<font color="#ff8000">1</font>   <font color="#ff8000">2.4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>    <font color="#ff8000">1</font>   -<font color="#ff8000">1</font>  -<font color="#ff8000">2.4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>    <font color="#ff8000">1</font>   -<font color="#ff8000">1</font>  -<font color="#ff8000">2.6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>   -<font color="#ff8000">1</font>   -<font color="#ff8000">1</font>   <font color="#ff8000">2.6</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clr = {<font color="#c000c0">'red'</font>,'green',<font color="#c000c0">'blue'</font>,'cyan'};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> n = <font color="#ff8000">1</font>:<font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;draw_contours(n)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find y values right before road and right after</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;yps = y(:,<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% yps covering road</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = yps > yr(<font color="#ff8000">1</font>) & yps < yr(<font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fat = find(at);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;l_edge_ndx = fat(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;r_edge_ndx = fat(end)+<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% populate bot and top surfaces with NaN</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rows cols] = size(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bot = zeros(rows, cols) + NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;top = bot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;removeCutSurface()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% force road level to be below road</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;y_road = find(y(:,<font color="#ff8000">1</font>) > yr(<font color="#ff8000">1</font>) & y(:,<font color="#ff8000">1</font>) < yr(<font color="#ff8000">2</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y_road = [y_road(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>; y_road; y_road(end)+<font color="#ff8000">1</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;road_strip = z(y_road,:);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;too_high = road_strip >= road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;road_strip(too_high) = road_z - <font color="#ff8000">0.05</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z(y_road,:) = road_strip;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rws cls] = size(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img = uint8(zeros(rws, cls, <font color="#ff8000">3</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img(:,:,[<font color="#ff8000">1</font> <font color="#ff8000">2</font>]) = <font color="#ff8000">140</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(x, y, z, img);  <font color="#00A000">% hillside</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%shading interp</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x (th)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'y (phi)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;view(<font color="#ff8000">78</font>,<font color="#ff8000">16</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;saveas(gcf,<font color="#c000c0">'cutting.jpg'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dy = <font color="#ff8000">0.5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dz = <font color="#ff8000">0.7</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;where = ~isnan(bot);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;top(where) = zz(where);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sz = size(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img = uint8(zeros(sz(<font color="#ff8000">1</font>), sz(<font color="#ff8000">2</font>), <font color="#ff8000">3</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img(:,:,<font color="#ff8000">2</font>) = <font color="#ff8000">255</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(x, y+dy, bot+dz, img); <font color="#00A000">% embankment added</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x (th)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'y (phi)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rws cls] = size(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img = uint8(zeros(rws, cols, <font color="#ff8000">3</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img(:,:,<font color="#ff8000">1</font>) = <font color="#ff8000">255</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(x, y+dy, top+dz, img);  <font color="#00A000">% embankment removed</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;view(<font color="#ff8000">78</font>,<font color="#ff8000">16</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;saveas(gcf,<font color="#c000c0">'cutting_removed.jpg'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> removeCutSurface<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rows, cols] = size(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = <font color="#ff8000">1</font>:cols<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xp = x(<font color="#ff8000">1</font>,c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yps = y(:, c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% interpolate for the red and blue z values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make_a_cut(xp, yps, <font color="#ff8000">1</font>, <font color="#ff8000">3</font>, c)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% interpolate for the green and cyan z values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make_a_cut(xp, yps, <font color="#ff8000">2</font>, <font color="#ff8000">4</font>, c)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
 <br>
-function removeCutSurface<br>
-&nbsp;&nbsp;global x<br>
-&nbsp;&nbsp;global y<br>
-&nbsp;&nbsp;global z<br>
-&nbsp;&nbsp;[rows, cols] = size(x);<br>
-&nbsp;&nbsp;for c = 1:cols<br>
-&nbsp;&nbsp;&nbsp;&nbsp;try<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xp = x(1,c);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yps = y(:, c);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% interpolate for the red and blue z values<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make_a_cut(xp, yps, 1, 3, c)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% interpolate for the green and cyan z values<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make_a_cut(xp, yps, 2, 4, c)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch<br>
-&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;end<br>
-end<br>
+<font color="#0000ff">function</font> make_a_cut(xp, yps, a, b, c)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> yr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> dbg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> l_edge_ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> r_edge_ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> road_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> top<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> bot<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;za = interp1(lip_x{a}, lip_z{a}, xp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zb = interp1(lip_x{b}, lip_z{b}, xp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~isnan(za) & ~isnan(zb)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ya = interp1(lip_x{a}, lip_y{a}, xp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yb = interp1(lip_x{b}, lip_y{b}, xp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cut = yps > ya & yps < yb;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bot(cut,c) = road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(cut,c) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg,<font color="#c000c0">'a = [%0.2f,%0.2f]; b = [%0.2f,%0.2f]\n'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ya, za, yb, zb);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ny = find(cut);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg, <font color="#c000c0">'ny = [ '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> it = ny<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg, <font color="#c000c0">'%d '</font>, it);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg, <font color="#c000c0">']\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> z(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>,c) > road_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx,c) = yr(<font color="#ff8000">1</font>) - y(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx,c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(l_edge_ndx+<font color="#ff8000">1</font>,c) = road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx-<font color="#ff8000">1</font>,c) = road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx:ny(end)+<font color="#ff8000">1</font>,c) = y(r_edge_ndx:ny(end)+<font color="#ff8000">1</font>,c) - yr(<font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx,c) = -yr(<font color="#ff8000">1</font>) + y(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx,c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(l_edge_ndx+<font color="#ff8000">1</font>,c) = road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx-<font color="#ff8000">1</font>,c) = road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx:ny(end)+<font color="#ff8000">1</font>,c) = -y(r_edge_ndx:ny(end)+<font color="#ff8000">1</font>,c) + yr(<font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bot(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx+<font color="#ff8000">1</font>,c) = z(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx+<font color="#ff8000">1</font>,c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bot(r_edge_ndx-<font color="#ff8000">1</font>:ny(end)+<font color="#ff8000">1</font>,c) = z(r_edge_ndx-<font color="#ff8000">1</font>:ny(end)+<font color="#ff8000">1</font>,c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
 <br>
-function make_a_cut(xp, yps, a, b, c)<br>
-&nbsp;&nbsp;global x<br>
-&nbsp;&nbsp;global y<br>
-&nbsp;&nbsp;global z<br>
-&nbsp;&nbsp;global yr<br>
-&nbsp;&nbsp;global lip_x<br>
-&nbsp;&nbsp;global lip_y<br>
-&nbsp;&nbsp;global lip_z<br>
-&nbsp;&nbsp;global dbg<br>
-&nbsp;&nbsp;global l_edge_ndx<br>
-&nbsp;&nbsp;global r_edge_ndx<br>
-&nbsp;&nbsp;global road_z<br>
-&nbsp;&nbsp;global top<br>
-&nbsp;&nbsp;global bot<br>
-    <br>
-&nbsp;&nbsp;za = interp1(lip_x{a}, lip_z{a}, xp);<br>
-&nbsp;&nbsp;zb = interp1(lip_x{b}, lip_z{b}, xp);<br>
-&nbsp;&nbsp;if ~isnan(za) & ~isnan(zb)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ya = interp1(lip_x{a}, lip_y{a}, xp);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;yb = interp1(lip_x{b}, lip_y{b}, xp);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;cut = yps > ya & yps < yb;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;bot(cut,c) = road_z;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;z(cut,c) = NaN;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg,'a = [%0.2f,%0.2f]; b = [%0.2f,%0.2f]\n', ...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ya, za, yb, zb);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ny = find(cut);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg, 'ny = [ ');<br>
-&nbsp;&nbsp;&nbsp;&nbsp;for it = ny<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg, '%d ', it);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg, ']\n');<br>
-&nbsp;&nbsp;&nbsp;&nbsp;if z(ny(1)-1,c) &gt; road_z<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(ny(1)-1:l_edge_ndx,c) = yr(1) - y(ny(1)-1:l_edge_ndx,c);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(l_edge_ndx+1,c) = road_z;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx-1,c) = road_z;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx:ny(end)+1,c) = y(r_edge_ndx:ny(end)+1,c) - yr(3);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;else<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(ny(1)-1:l_edge_ndx,c) = -yr(1) + y(ny(1)-1:l_edge_ndx,c);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(l_edge_ndx+1,c) = road_z;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx-1,c) = road_z;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx:ny(end)+1,c) = -y(r_edge_ndx:ny(end)+1,c) + yr(3);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;&nbsp;&nbsp;bot(ny(1)-1:l_edge_ndx+1,c) = z(ny(1)-1:l_edge_ndx+1,c);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;bot(r_edge_ndx-1:ny(end)+1,c) = z(r_edge_ndx-1:ny(end)+1,c);<br>
-&nbsp;&nbsp;end<br>
-end<br>
-<br>
-function draw_contours(ndx)<br>
-&nbsp;&nbsp;global x<br>
-&nbsp;&nbsp;global y<br>
-&nbsp;&nbsp;global z<br>
-&nbsp;&nbsp;global A<br>
-&nbsp;&nbsp;global clr<br>
-&nbsp;&nbsp;global sxp<br>
-&nbsp;&nbsp;global syp<br>
-&nbsp;&nbsp;global szp<br>
-&nbsp;&nbsp;global road_z<br>
-&nbsp;&nbsp;global lip_x<br>
-&nbsp;&nbsp;global lip_y<br>
-&nbsp;&nbsp;global lip_z<br>
-    <br>
-&nbsp;&nbsp;pln = A(ndx,:);<br>
-&nbsp;&nbsp;cl = clr{ndx};<br>
-&nbsp;&nbsp;d = x.*pln(1) + y.*pln(2) + z.*pln(3) + pln(4);<br>
-&nbsp;&nbsp;[~,hcontour] = contour(x, y, d, 'LevelList', 0);<br>
-&nbsp;&nbsp;c = hcontour.ContourMatrix;<br>
-&nbsp;&nbsp;delete(hcontour);<br>
-<br>    
-&nbsp;&nbsp;% Loop through the ContourMatrix<br>
-&nbsp;&nbsp;i = 1;<br>
-&nbsp;&nbsp;while i &lt; size(c,2)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% Get the X &amp; Y for the next curve<br>
-&nbsp;&nbsp;&nbsp;&nbsp;n = c(2,i);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x2 = c(1,i+(1:n));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;y2 = c(2,i+(1:n));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% Use interp2 to compute the matching Z values<br>
-&nbsp;&nbsp;&nbsp;&nbsp;z2 = interp2(x,y,z, x2,y2);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;switch ndx<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case {1 3}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z2(z2 < road_z) = NaN;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case {2 4}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z2(z2 > road_z) = NaN;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% Draw that line<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%      line(x2,y2,z2,'Color',cl,'LineWidth',2);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;z2 = condition(z2, ndx);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;lip_x{ndx} = x2;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;lip_y{ndx} = y2;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;lip_z{ndx} = z2;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% Advance to next curve<br>
-&nbsp;&nbsp;&nbsp;&nbsp;i = i+n+1;<br>
-&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;%     xp = sxp{ndx};<br>
-&nbsp;&nbsp;%     yp = syp{ndx};<br>
-&nbsp;&nbsp;%     zp = szp{ndx};<br>
-&nbsp;&nbsp;%     surf(xp, yp, zp)<br>
-end<br>
-<br>
-function z = condition(z, ndx)<br>
-&nbsp;&nbsp;try<br>
-&nbsp;&nbsp;&nbsp;&nbsp;nn = find(isnan(z));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;d = diff(nn);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;at = find(d &gt; 1);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;nat = length(at);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% ndx 1 and 3 (red and blue)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%            should have exactly one group of NaNs<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%            with real numbers before and after<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%  ideally:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%  d = [n1 1 1 1 1 ... 1 1 1]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%  worst case:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%  d = [1 1 n1 1 1 ... 1 1 1 n2 1]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%  put 0 in first 2 and last z values<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% ndx 2 and 4 (green and cyan)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%            should have exactly 2 groups of NaNs<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%            with numbers only between them<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% ideally:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%  d = [1 1 ... 1 1 n2 1 1 ... 1 1]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%  worst case<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%  d = [1 1 n1 1 1 ... 1 1 n2 1 1 ... 1 1 n3 1 1 1]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%  put NaN in z(3:(3 + n1 - 1))<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%         and z(end-3:-1:end-3-n3+1)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;%<br>
-&nbsp;&nbsp;&nbsp;&nbsp;switch ndx<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case {1 3}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if nat &gt; 2<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error('really bad')<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if d(1) == 1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(1:at(1)-1) = 0;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;&nbsp;&nbsp;case {2 4}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if nat &gt; 1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ouch = true;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if nat == 3
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% fix the front<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%  put NaN in z(3:(3 + n1 - 1))<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n1 = d(at(1));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(at(1):(at(1) + n1 - 1)) = NaN;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% fix the back<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%         and z(end-3:-1:end-3-n3+1)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n3 = d(at(3));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(end-at(3):-1:end - at(3) - n3 + 1) = NaN;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif nat == 2<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% find which to fix<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if at(1) &lt; 10<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% fix the front<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%  put NaN in z(3:(3 + n1 - 1))<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n1 = d(at(1));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(at(1):(at(1) + n1 - 1)) = NaN;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% fix the back<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%         or z(end-3:-1:end-3-n3+1)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n2 = d(at(2));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(end-at(2):-1:end - at(2) - n2 + 1) = NaN;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error('really bad')<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;catch<br>
-&nbsp;&nbsp;end<br>
-end<br>
-</code></p>
+<font color="#0000ff">function</font> draw_contours(ndx)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> A<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> clr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> sxp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> syp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> szp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> road_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pln = A(ndx,:);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cl = clr{ndx};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;d = x.*pln(<font color="#ff8000">1</font>) + y.*pln(<font color="#ff8000">2</font>) + z.*pln(<font color="#ff8000">3</font>) + pln(<font color="#ff8000">4</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[~,hcontour] = contour(x, y, d, <font color="#c000c0">'LevelList'</font>, <font color="#ff8000">0</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;c = hcontour.ContourMatrix;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;delete(hcontour);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Loop through the ContourMatrix</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;i = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> i<size(c,<font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Get the X & Y for the next curve</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = c(<font color="#ff8000">2</font>,i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x2 = c(<font color="#ff8000">1</font>,i+(<font color="#ff8000">1</font>:n));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y2 = c(<font color="#ff8000">2</font>,i+(<font color="#ff8000">1</font>:n));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Use interp2 to compute the matching Z values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z2 = interp2(x,y,z, x2,y2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">switch</font> ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#ff8000">1</font> <font color="#ff8000">3</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z2(z2 < road_z) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#ff8000">2</font> <font color="#ff8000">4</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z2(z2 > road_z) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Draw that line</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%      line(x2,y2,z2,'Color',cl,'LineWidth',2);</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z2 = condition(z2, ndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lip_x{ndx} = x2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lip_y{ndx} = y2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lip_z{ndx} = z2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Advance to next curve</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = i+n+<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     xp = sxp{ndx};</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     yp = syp{ndx};</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     zp = szp{ndx};</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     surf(xp, yp, zp)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> z = condition(z, ndx)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nn = find(isnan(z));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d = diff(nn);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = find(d > <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nat = length(at);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ndx 1 and 3 (red and blue)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%            should have exactly one group of NaNs</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%            with real numbers before and after</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  ideally:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  d = [n1 1 1 1 1 ... 1 1 1]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  worst case:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  d = [1 1 n1 1 1 ... 1 1 1 n2 1]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  put 0 in first 2 and last z values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ndx 2 and 4 (green and cyan)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%            should have exactly 2 groups of NaNs</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%            with numbers only between them</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ideally:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  d = [1 1 ... 1 1 n2 1 1 ... 1 1]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  worst case</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  d = [1 1 n1 1 1 ... 1 1 n2 1 1 ... 1 1 n3 1 1 1]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  put NaN in z(3:(3 + n1 - 1))</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         and z(end-3:-1:end-3-n3+1)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">switch</font> ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#ff8000">1</font> <font color="#ff8000">3</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> nat > <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'really bad'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> d(<font color="#ff8000">1</font>) == <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(<font color="#ff8000">1</font>:at(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>) = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#ff8000">2</font> <font color="#ff8000">4</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> nat > <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ouch = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> nat == <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fix the front</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  put NaN in z(3:(3 + n1 - 1))</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n1 = d(at(<font color="#ff8000">1</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(at(<font color="#ff8000">1</font>):(at(<font color="#ff8000">1</font>) + n1 - <font color="#ff8000">1</font>)) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fix the back</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         and z(end-3:-1:end-3-n3+1)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n3 = d(at(<font color="#ff8000">3</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(end-at(<font color="#ff8000">3</font>):-<font color="#ff8000">1</font>:end - at(<font color="#ff8000">3</font>) - n3 + <font color="#ff8000">1</font>) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> nat == <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find which to fix</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> at(<font color="#ff8000">1</font>) < <font color="#ff8000">10</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fix the front</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  put NaN in z(3:(3 + n1 - 1))</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n1 = d(at(<font color="#ff8000">1</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(at(<font color="#ff8000">1</font>):(at(<font color="#ff8000">1</font>) + n1 - <font color="#ff8000">1</font>)) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fix the back</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         or z(end-3:-1:end-3-n3+1)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n2 = d(at(<font color="#ff8000">2</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(end-at(<font color="#ff8000">2</font>):-<font color="#ff8000">1</font>:end - at(<font color="#ff8000">2</font>) - n2 + <font color="#ff8000">1</font>) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'really bad'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+</strong></code>
+
 <h2>Chapter Summary</h2>
 
 This chapter introduced you to vectors and arrays. For each collection, you saw how to:

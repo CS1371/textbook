@@ -131,36 +131,56 @@ following table:</p>
 grade percentage and check your work against the script shown in Listing 5.2.
 </div>
 <div class="container">
-<h4>Listing 5.1: example of a MATLAB if statement</h4>
-<code>if day == 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% is the day Saturday?<br>
-&nbsp;&nbsp;state = 'weekend'&nbsp;&nbsp;% if so, it's a weekend<br>
-elseif day == 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% if not Saturday, is it Sunday?<br>
-&nbsp;&nbsp;state = 'weekend'&nbsp;&nbsp;% if so, it's a weekend<br>
-else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% it's neither Saturday or Sunday,<br>
-&nbsp;&nbsp;state = 'weekday'&nbsp;&nbsp;% must be a weekday<br>
-end<br>
-</code>
+<h4>Listing 5.1: Example of a MATLAB if statement</h4>
+<code><strong>
+
+<font color="#0000ff">function</font> day(day)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The first logical expression determines whether day is 7.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> day == <font color="#ff8000">7</font> <font color="#00A000">% Saturday</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The corresponding code block sets the value of the variable</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% state to the string 'weekend'. In general, there can be as</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% many statements within a code block as necessary.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state = <font color="#c000c0">'weekend'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The second logical expression determines whether day is 1.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> day == <font color="#ff8000">1</font> <font color="#00A000">% Sunday</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The corresponding code block also sets the value of the variable % state to the string 'weekend'.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state = <font color="#c000c0">'weekend'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The key word else introduces the default code block executed when % none of the previous tests pass.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The default code block sets the value of the variable state to % the string 'weekday'.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state = <font color="#c000c0">'weekday'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+
 Exercise 5.1 gives you the opportunity to practice using if statements, and Listing 5.2 shows a script that will satisfy Exercise 5.1.
 
 <h4>Listing 5.2 Script with if statements</h4>
-<code>
-grade = input('what grade? ');&nbsp;&nbsp;% request and receive a numerical grade value from the user<br>
-if grade &gt;= 90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% if it is greater or equal to 90,<br>
-&nbsp;&nbsp;letter = 'A'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% the letter grade is A<br>
-elseif grade &gt;= 80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% otherwise, if it is greater or equal to 80,<br>
-&nbsp;&nbsp;letter = 'B'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% the letter grade is B<br>
-elseif grade &gt;= 70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% otherwise, if it is greater or equal to 70,<br>
-&nbsp;&nbsp;letter = 'C'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% the letter grade is C<br>
-elseif grade &gt;= 60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% otherwise, if it is greater or equal to 60,<br>
-&nbsp;&nbsp;letter = 'D'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% the letter grade is D<br>
-else% otherwise,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%  otherwise,<br>
-&nbsp;&nbsp;letter = 'F'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% the letter grade is F<br>
-end<br>
-</code>
+<code><strong>
+<font color="#0000ff">function</font> letter(grade)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The first logical expression looks for the grade that earns an A.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> grade >= <font color="#ff8000">90</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The corresponding code block sets the value of the variable</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% letter to 'A'.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let = <font color="#c000c0">'A'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% The next 5 lines contain the corresponding logic for letter</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% grades B, C, and D.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> grade >= <font color="#ff8000">80</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let = <font color="#c000c0">'B'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> grade >= <font color="#ff8000">70</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let = <font color="#c000c0">'C'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> grade >= <font color="#ff8000">60</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let = <font color="#c000c0">'D'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The default logic setting the variable letter to 'F'.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let = <font color="#c000c0">'F'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>
 </div>
 
 <h3><a name="5_3_3">5.3.3	Important Ideas</a></h3>
-<p>There are two important ideas that are necessary for the successful implementation of if statements: the general form of the logical expressions and short-circuit analysis.</p>
+<p>There are two important ideas that are necessary for the successful implementation of <code>if</code> statements: the general form of the logical expressions and short-circuit analysis.</p>
 <b>Logical Expressions</b>: The <code>if</code> statement requires a logical expression for its condition. A logical expression is any collection of constants, variables, and operators whose result is a logical <code>true</code> or <code>false</code> value. Logical expressions can be created in the following ways:
 <ul>
 <li>The value of a Logical constant (e.g., <code>true</code> or <code>false</code>)</li>
@@ -183,22 +203,23 @@ appearance, logical values are not numeric and should
 never be treated as if they were.</li>
 </ol>
 <h4>Listing 5.3: The if statement with a logical vector</h4>
-<code>clear; clc<br>
-&nbsp;&nbsp;% Make the variable A a logical vector.<br>
-&nbsp;&nbsp;A = [true true false]<br>
-&nbsp;&nbsp;% Using this as a logical expression, MATLAB internally converts<br>
-&nbsp;&nbsp;% this expression to if all(A).<br>
-&nbsp;&nbsp;if A<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% All the values of A are not true; therefore, any code<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% written here does not execute.<br>
- &nbsp;&nbsp;end<br>
-&nbsp;&nbsp;% Make all the elements of A true.<br>
-&nbsp;&nbsp;A(3) = true;<br>
-&nbsp;&nbsp;if A<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% this code block will now execute.<br>
-&nbsp;&nbsp; end<br>
-</code><br>
-	
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Make the variable A a logical vector.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [true true false]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Using this as a logical expression, MATLAB internally converts</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this expression to if all(A).</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> A<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% All the values of A are not true; therefore, any code</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% written here does not execute.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Make all the elements of A true.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(<font color="#ff8000">3</font>) = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> A<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this code block will now execute.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+</strong></code>
+<br>	
 
 <b>Short-Circuit Evaluation</b>: When evaluating a sequence of logical <code>&amp;&amp;</code> or <code>||</code> expressions, MATLAB will stop processing when it finds the first result that makes all subsequent processing irrelevant. This concept is best illustrated by an example. Assume that <code>A</code> and <code>B</code> are logical results and you want to evaluate <code>A &amp;&amp; B</code>. Since the result of this is <code>true</code> only if both <code>A</code> and <code>B</code> are <code>true</code>, if you evaluate <code>A</code> and the result is <code>false</code>, no value of <code>B</code> can possibly change the outcome <code>A &amp;&amp; B</code>.	Therefore, there is no reason to evaluate any more components of a logical
 and expression once a false result has been found. Similarly, if you want <code>A
@@ -253,9 +274,6 @@ Note the following:</p>
 </div>
 <h3><a name="5_4_2">5.4.2	MATLAB Implementation</a></h3>
 
-<p>Listing 5.4 shows the MATLAB implementation of a typical logical problem: determining the number of days in a month. It assumes that the value of month is 1 . . . 12, and leapYear is a logical variable identifying the current year as a leap year.</p>
-<h4>Listing 5.4: compute days in a month</h4>
-
 <div class="container">
   <div class="sidebar_R">
 <b>Style Points 5.1</b><br>
@@ -270,39 +288,25 @@ Listings 5.3 and 5.4.</p>
 </div>
 
 <div class="contents">
-<code>month = input('Please enter a month as a number: ');<br>
-switch month&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% All tests refer to the value of the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% variable month.<br>
-&nbsp;&nbsp;case {9, 4, 6, 11} % indices for Sept, Apr, June, Nov<br>
-&nbsp;&nbsp;&nbsp;&nbsp;days = 30;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% The code block extends from the case <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% statement to the next control statement<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% (case, otherwise, or end).<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Other languages use a break statement<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% to prevent this code block from falling<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% through to the next case.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% This is not necessary in MATLAB <br>
-% and can cause <b>very</b> strange behavior!<br>
-&nbsp;&nbsp;case 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% the index for Feb<br>
-&nbsp;&nbsp;&nbsp;&nbsp;if leapYear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% This code block contains an if statement<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% to deal with the February case. <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% It presumes that a logical variable<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% leapYear has been created to indicate<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% whether this month is in a leap year.<br>
+<p>Listing 5.4 shows the MATLAB implementation of a typical logical problem: determining the number of days in a month. It assumes that the value of month is 1 . . . 12, and leapYear is a logical variable identifying the current year as a leap year.</p>
+<h4>Listing 5.4: compute days in a month</h4>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;days = 29;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% yes it is<br>
-&nbsp;&nbsp;&nbsp;&nbsp;else<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;days = 28;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% no it isn't<br>
-&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;case {1, 3, 5, 7, 8, 10, 12} % other legal month index values<br>
-&nbsp;&nbsp;&nbsp;&nbsp;days = 31;<br>
-&nbsp;&nbsp;otherwise<br>
-&nbsp;&nbsp;&nbsp;&nbsp;error('bad month index')<br>
-end<br>
-</code>
+<code><strong>
+<font color="#0000ff">function</font> days = month_days(month, leap)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% All tests refer to the value of the variable month.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">switch</font> month<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This case specification is a cell array (See Chapter 7 for specifics)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% containing the indices of the months with 30 days.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#ff8000">9</font>, <font color="#ff8000">4</font>, <font color="#ff8000">6</font>, <font color="#ff8000">11</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%      Sept, Apr, June, Nov</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The code block extends from the case statement to the next</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% control statement (case, otherwise, or end).</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;days = <font color="#ff8000">30</font>;<br>
 </div>
 <div class="container">
   <div class="sidebar_R">
-<b>Exercise 5.2: Using a switch statement</b><br><br>
+  </strong></code>
+<b>Exercise 5.2: Using a switch statement</b>
 <p>
 Write and test the script in Listing 5.4. You will need to preset a value for <code>leapYear</code>.<br>
 Test your script by running it repeatedly for legal and illegal values of the
@@ -317,11 +321,31 @@ Try this test without the second parameter to <code>input(...)</code>. <br>
 Can you explain what is happening?<br>
 Modify the script again to accept the year rather than yes/no, and implement
 the logic to determine whether that year is a leap year.
-</p>
+</p><code><strong>
 </div>
 <div class="contents">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#ff8000">2</font> <font color="#00A000">% Feb</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% This code block contains an if statement to deal with the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% February case. It presumes that a Boolean variable leapYear</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% has been created to indicate whether this month is in a leap year.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> leap<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;days = <font color="#ff8000">29</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;days = <font color="#ff8000">28</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% case to deal with the remaining months.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#ff8000">1</font>, <font color="#ff8000">3</font>, <font color="#ff8000">5</font>, <font color="#ff8000">7</font>, <font color="#ff8000">8</font>, <font color="#ff8000">10</font>, <font color="#ff8000">12</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;days = <font color="#ff8000">31</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The default case - an error</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">otherwise</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% A built-in MATLAB function that announces the error and</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% terminates the script.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad month index'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+</strong></code>
 Try using the switch statement in Exercise 5.2.
-
+<br><br><br>
 <h2><a name="5_5">5.5	Iteration in General</a></h2>
 <p>The if and switch statements allow us to decide to skip code blocks based on conditions in the data. The for and while constructs allow us to repeat code blocks. Note, however, that the MATLAB language is designed to avoid iteration. Under most circumstances of processing numbers, the array processing operations built into the language make do-it-yourself loop constructs unnecessary.</p>
 <p>When you do decide you have to use it, iteration allows controlled repetition of a code block. Control statements at the beginning of the code block specify the manner and extent of the repetition:
@@ -386,49 +410,67 @@ A were negative.</p>
 </div>
 <div class="contents">
 
-<code>A = ceil(rand(1,10)*100) % create the initial vector generalizing the<br>
-% values of A using the rand(...) function to create a vector with <br>
-% 10 elements each between 0 and 100.
-% The ceil(...) function rounds each value up to the next higher integer. <br>
-theMax = A(1); % The tidiest way to find something in a collection of numbers is to<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% seed the result, theMax, with the first number<br>
-for x = A % iterate through A<br>
-&nbsp;&nbsp;% The code block extends from the for statement to the associated end statement.<br>
-&nbsp;&nbsp;% The code will be executed the same number of times as the length of A<br>
-&nbsp;&nbsp;% <i>even if you change the values of x or A</i> within the code block.<br>
-&nbsp;&nbsp;% At each iteration, the value of x will be set to the next<br>
-&nbsp;&nbsp;% element from the array A.<br>
-&nbsp;&nbsp;if x > theMax % test each element<br>
-&nbsp;&nbsp;&nbsp;&nbsp;theMax = x;<br>
-&nbsp;&nbsp;end<br>
-end<br>
-fprintf('max(A) is %d\n', theMax);<br>
-% The fprintf(...) function is a very flexible means of formatting output to the Command window.<br>
-% See the discussion in Chapter 8, or enter the following in the Command window:<br>
->> help fprintf</code><br>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Create a vector A with six elements.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [<font color="#ff8000">6</font> <font color="#ff8000">12</font> <font color="#ff8000">6</font> <font color="#ff8000">91</font> <font color="#ff8000">13</font> <font color="#ff8000">6</font>] <font color="#00A000">% initial vector</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The tidiest way to find limits of a collection of numbers</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% is to seed the result with the first number.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;theMax = A(<font color="#ff8000">1</font>); <font color="#00A000">% set initial max value</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Iterate across the values of A.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> x = A <font color="#00A000">% iterate through A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% The code block extends from the for statement to the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% associated end statement.  The code will be executed</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the same number of times as the length of A even if</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% you change the value of x within the code block.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% At each iteration, the value of x will be set to</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the next element from the array A.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> x > theMax <font color="#00A000">% test each element</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theMax = x;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font>  <font color="#00A000">% end of the if</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font>  <font color="#00A000">% end of the for</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% show the result. The fprintf(...)function is a flexible</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% means of formatting output to the Command window.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% See the discussion in Chapter 8, or enter the following</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% in the Command window:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% > help fprintf</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'max(A) is %d\n'</font>, theMax);<br>
+</strong></code>
 </div>
  
 <h3><a name="5_6_3">5.6.3	Indexing Implementation</a></h3>
 <p>The above for loop implementation may seem very strange to those with a C-based language background, in which the loop-control variable is usually an index into the array being traversed rather than an element from that array. In order to illustrate the difference, we will adapt the code from Listing 5.5 to solve a slightly different problem that approximates the behavior of max(A). This time we need to know not only the maximum value in the array, but also its index. This requires that we resort to indexing the array in a more conventional style, as shown in Listing 5.6. </p>
 <h4>Listing 5.6: for statement using indexing</h4>
-<p><code>A = ceil(rand(1,10)*100) % create the initial random vector again<br>
-theMax = A(1); % Initialize theMax and where<br>
-where = 1;<br>
-for index = 1:length(A) % Create an anonymous vector of indices from 1 to <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% the length of A and use it to define the loop-control variable, index.<br>
-&nbsp;&nbsp;x = A(index); % Extract the appropriate element from A to operate with.<br>
-&nbsp;&nbsp;if x > theMax % The same comparison logic as shown in Listing 5.5<br>
-&nbsp;&nbsp;&nbsp;&nbsp;theMax = x;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;where = index; % In addition to saving the new max value, we save the index
-where it occurs.<br>
-&nbsp;&nbsp;end<br>
-end<br>
-fprintf('the max value in A is %d at %d\n', ... <br>
-&nbsp;&nbsp;&nbsp;&nbsp;theMax, where);<br>
-% This is our first occurrence where a logical line of code extends beyond the physical limitations<br>
-%  of a single line. Since MATLAB normally uses the end of the line to indicate the end of an<br>
-%  operation, we use ellipses (...) to specify that the logic is continued onto the next line<br>
-</code></p>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Generalize the creation of the vector A using the rand(...)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% function to create a vector with 10 elements each</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% between 0 and 100. The floor(...) function rounds</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% each value down to the next lower integer.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = floor(rand(<font color="#ff8000">1</font>,<font color="#ff8000">10</font>)*<font color="#ff8000">100</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Initialize variables</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;theMax = A(<font color="#ff8000">1</font>), theIndex = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Create an anonymous vector of indices from 1 to the length</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% of A and uses it to define the loop-control variable, index.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> index = <font color="#ff8000">1</font>:length(A)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Extract the appropriate element from A to operate with as before.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = A(index);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% The same comparison logic as shown in Listing 4.5.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> x > theMax<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theMax = x;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% In addition to saving the new max value, we save the index</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% where it occurs.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theIndex = index;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This is our first occurrence where a logical line of code</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% extends beyond the physical limitations of a single line.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Since MATLAB normally uses the end of the line to indicate</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the end of an operation, we use ellipses (...) to specify</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% that the logic is continued onto the next line.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'the max value in A is %d at %d\n'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;theMax, theIndex);<br>
+</strong></code>
 <p>Enter and run the scripts in Listings 5.5 and 5.6. They should each produce the vector A and its maximum value, and the second listing would also tell you at what index that maximum occurred.</p>
 
 <h3><a name="5_6_4">5.6.4	Breaking out of a for Loop</a></h3>
@@ -466,22 +508,30 @@ end</code>
 <h3><a name="5_7_2">5.7.2	MATLAB while Loop Implementation</a></h3>
 <p>To illustrate the use of a while loop, Listing 5.7 shows you how to solve the same problem of finding the largest value in a vector.using the while syntax.</p>
 <h4>Listing 5.7 while loop example</h4>
-<code>
-A = ceil(rand(1,10)*100) % Create a test vector and initialize the answers as before.<br>
-theMax = A(1);<br>
-where = 1;<br>
-index = 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Initialize the loop index value since this is now manually updated.<br>
-while index <= length(A) % This test will fail immediately if the vector A is empty.<br>
-&nbsp;&nbsp;x = A(index);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% extract and test the vector value required<br>
-&nbsp;&nbsp;if x > theMax<br>
-&nbsp;&nbsp;&nbsp;&nbsp;theMax = x;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;where = index;<br>
-&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;index = index + 1; &nbsp;&nbsp;&nbsp;&nbsp;% <i>update the index value</i><br>
-end<br>
-fprintf('the max value in A is %d at %d\n', ...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;theMax, where);<br>
-</code></p>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_05_7</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% while statement example</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% Create a test vector and initialize the answers as before.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = floor(rand(<font color="#ff8000">1</font>,<font color="#ff8000">10</font>)*<font color="#ff8000">100</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;theMax = A(<font color="#ff8000">1</font>); theIndex = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Initialize the index value since this is manually updated.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;index = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This test will fail immediately if the vector A is empty.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> index <= length(A)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Extract the item x from the array</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = A(index);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The same test as before to update the maximum value.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> x > theMax<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theMax = x;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theIndex = index;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% “Manually" update the index to move the loop closer to finishing.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index = index + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'the max value in A is %d at %d\n'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;theMax, theIndex);<br>
+</strong></code>
 <p>Enter and run the script in Listing 5.7. It should produce similar results as before
 
 
@@ -502,19 +552,35 @@ of the MATLAB language.</p>
 </div>
 <div class="contents">
 
-<code>R = 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Initializes the radius value to allow the loop to be entered the first time.<br>
-while R > 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% We will remain in this loop until the user enters an illegal radius.<br>
-&nbsp;&nbsp;R = input('Enter a radius: ');<br>
-&nbsp;&nbsp;if R > 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% We want to present the area and circumference only if the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% radius has a legal value. Since this test occurs in the middle of the while loop, <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% we call this “loop-and-a-half" processing.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;area = pi * R^2; % Compute and display the area and circumference of a circle with this radius. <br>
-&nbsp;&nbsp;&nbsp;&nbsp;circum = 2 * pi * R;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fprintf('area = %f; circum = %f\n', ...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;area, circum);<br>
-&nbsp;&nbsp;end<br>
-end<br>
-</code>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Initialize the radius value to allow the loop to be entered</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the first time.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;R = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% We will remain in this loop until the user enters</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% an illegal radius.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> R > <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The input(...)function shows the user the text string,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% parses what is typed, and stores the result in the variable</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% provided. This is described fully in Chapter 8.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% R = input('Enter a radius: ');</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   for auto listing gen only</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R = rand(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) - <font color="#ff8000">0.5</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% We want to present the area and circumference only if the radius</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% has a legal value. Since this test occurs in the middle of the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% while loop, we call this “loop-and- a-half" processing.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> R > <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Compute and display the area and circumference of a circle.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;area = pi * R^<font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;circum = <font color="#ff8000">2</font> * pi * R;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'area = %f; circum = %f\n'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;area, circum);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+</strong></code>
 </div>
 Try this script with any number of radius values.
 
@@ -542,47 +608,35 @@ Figure 5.5 shows a cylindrical tank of height H  and radius r with a hemispheric
 The script to perform this calculation is shown in Listing 5.9. Rather than performing the computations for one liquid level only, we should write the script so that we continue to consider tanks of different dimensions and different liquid heights for each tank until the user indicates that he needs no more results.
 
 <h4>Listing 5.9: Script to compute liquid levels in a Tank</h4>
-<code>
-clear; clc<br>
-&nbsp;&nbsp;% Initialize another_tank to start the while loop code.<br>
-&nbsp;&nbsp;another_tank = true;<br>
-&nbsp;&nbsp;while another_tank<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% Get the tank dimensions.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;H = input('Overall tank height: ');<br>
-&nbsp;&nbsp;&nbsp;&nbsp;r = input('tank radius: ');<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% Initialize more_heights to start the inner while loop.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;more_heights = true;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;while more_heights<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Get the liquid height.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h = input('liquid height: ');<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%% Calculations for legal values of h. Notice that no<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% dot operators are required here, because these conditional<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% computations will not work correctly with vectors.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if h < r<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = (1/3)*pi*h.^2.*(3*r-h);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif h < H-r<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = (2/3)*pi*r^3 + pi*r^2*(h-r);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif h <= H<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = (4/3)*pi*r^3 + pi*r^2*(H-2*r) ...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- (1/3)*pi*(H-h)^2*(3*r-H+h);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Illegal h values end up here.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disp('liquid level too high')<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Jump to the end of the inner loop, skipping the printout.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Print the result.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf( ...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'rad %0.2f ht %0.2f level %0.2f vol %0.2f\n', ...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r,	H,	h,	v);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% More levels when "y" is entered.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;more_heights = input('more levels? (y/n)','s')=='y';<br>
-&nbsp;&nbsp;&nbsp;&nbsp;end<br>
-&nbsp;&nbsp;&nbsp;&nbsp;% Another tank when “y" is entered.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;another_tank = input('another tank? (y/n)','s')=='y';<br>
-&nbsp;&nbsp;end<br>
-
-</code>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Initialize the radius value to allow the loop to be entered</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the first time.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;R = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% We will remain in this loop until the user enters</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% an illegal radius.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> R > <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The input(...)function shows the user the text string,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% parses what is typed, and stores the result in the variable</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% provided. This is described fully in Chapter 8.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% R = input('Enter a radius: ');</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   for auto listing gen only</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R = rand(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) - <font color="#ff8000">0.5</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% We want to present the area and circumference only if the radius</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% has a legal value. Since this test occurs in the middle of the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% while loop, we call this “loop-and- a-half" processing.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> R > <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Compute and display the area and circumference of a circle.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;area = pi * R^<font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;circum = <font color="#ff8000">2</font> * pi * R;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'area = %f; circum = %f\n'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;area, circum);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+</strong></code>
 
 
 Table 5.1 [Table 5.1 here] shows some typical results.
