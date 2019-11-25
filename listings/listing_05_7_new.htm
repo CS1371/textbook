@@ -1,0 +1,24 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_05_7</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% while statement example</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% Create a test vector and initialize the answers as before.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = floor(rand(<font color="#ff8000">1</font>,<font color="#ff8000">10</font>)*<font color="#ff8000">100</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;theMax = A(<font color="#ff8000">1</font>); theIndex = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Initialize the index value since this is manually updated.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;index = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This test will fail immediately if the vector A is empty.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> index <= length(A)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Extract the item x from the array</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = A(index);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The same test as before to update the maximum value.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> x > theMax<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theMax = x;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theIndex = index;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% “Manually" update the index to move the loop closer to finishing.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index = index + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'the max value in A is %d at %d\n'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;theMax, theIndex);<br>
+</strong></code>

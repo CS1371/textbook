@@ -1,0 +1,10 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;in = fopen(<font color="#c000c0">'all_run.m'</font>,'r');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;out = fopen(<font color="#c000c0">'all_run_really.m'</font>,'w');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;line = fgets(in);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ischar(line)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line(line == <font color="#ff8000">0</font>) = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(out, <font color="#c000c0">'%s'</font>, line);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line = fgets(in);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+</strong></code>

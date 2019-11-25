@@ -1,0 +1,18 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_08_1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Script to list a text file</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list_text(<font color="#c000c0">'../mercy.txt'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> list_text(fn);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fh = fopen( fn, <font color="#c000c0">'r'</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ln = <font color="#c000c0">''</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ischar( ln )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ln = fgetl( fh );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ischar( ln )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf( <font color="#c000c0">'%s\n'</font>, ln );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fclose( fh );<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

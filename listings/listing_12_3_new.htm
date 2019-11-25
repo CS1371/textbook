@@ -1,0 +1,53 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Rotating a solid cube</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xx = [ <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> -<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> -<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yy = [ <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zz = [ <font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[r c] = size(xx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ln = r*c; <font color="#00A000">% length of reshaped vector</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;th = <font color="#ff8000">0</font>; ph = <font color="#ff8000">0</font>; ps = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dth = <font color="#ff8000">0.05</font>; dph = <font color="#ff8000">0.03</font>; dps = <font color="#ff8000">0.01</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;go = true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> go<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf(xx+<font color="#ff8000">4</font>, yy, zz)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shading interp; colormap autumn<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold on; alpha(<font color="#ff8000">0.5</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rz = [cos(th) -sin(th)  <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sin(th) cos(th) <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">1</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ry = [cos(ph) <font color="#ff8000">0</font> -sin(ph)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font> <font color="#ff8000">1</font> <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sin(ph) <font color="#ff8000">0</font> cos(ph)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rx = [ <font color="#ff8000">1</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font> cos(ps) -sin(ps)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font> sin(ps) cos(ps)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P(<font color="#ff8000">1</font>,:) = reshape(xx, <font color="#ff8000">1</font>, ln);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P(<font color="#ff8000">2</font>,:) = reshape(yy, <font color="#ff8000">1</font>, ln);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P(<font color="#ff8000">3</font>,:) = reshape(zz, <font color="#ff8000">1</font>, ln);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q = Rx*Ry*Rz*P;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qx = reshape(Q(<font color="#ff8000">1</font>,:), r, c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qy = reshape(Q(<font color="#ff8000">2</font>,:), r, c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qz = reshape(Q(<font color="#ff8000">3</font>,:), r, c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf(qx, qy, qz)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axis equal; axis off; hold off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axis([-<font color="#ff8000">2</font> <font color="#ff8000">6</font> -<font color="#ff8000">2</font> <font color="#ff8000">2</font> -<font color="#ff8000">2</font> <font color="#ff8000">2</font>])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">40</font>, <font color="#ff8000">65</font>); alpha(<font color="#ff8000">0.5</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;th = th+dth; ph = ph+dph; ps = ps+dps;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go = ps < pi/<font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">0.03</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

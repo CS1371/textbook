@@ -1,0 +1,34 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Listing_14_2  play a tune using half_step count</font><br>
+<font color="#0000ff">function</font> main(note)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Fs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;half_note = <font color="#ff8000">2</font>.^(<font color="#ff8000">1</font>/<font color="#ff8000">12</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(note)/<font color="#ff8000">10</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'play a tune using half_step count for pitch\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;notes = [   <font color="#ff8000">4</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">4</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(notes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nt = notes(ndx, <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dur = notes(ndx, <font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mult = half_note .^ nt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sampler = floor(linspace(<font color="#ff8000">1</font>, N, N / mult));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(note(sampler), Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">0.2</font>*dur)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

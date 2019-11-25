@@ -1,0 +1,85 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_06_1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Encryption</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;txt = [ <font color="#c000c0">'The quality of mercy is not strain'</font><font color="#c000c0">'d'</font> ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'original text: %s\n'</font>, txt);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;seed = <font color="#ff8000">1234567</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = encrypt(txt, seed);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'encrypted text: %s\n'</font>, res);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;back = decrypt(res, seed, false);  <font color="#00A000">% decrypt with correct settings</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt, back)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'not matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'decrypted text with right values: %s (%s)\n'</font>, back, good);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;back = decrypt(res, seed+<font color="#ff8000">1</font>, false);  <font color="#00A000">% decrypt with bad seed</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt, back)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'not matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'decrypted text with bad seed: %s (%s)\n'</font>, back, good);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;back = decrypt(res, seed, true);  <font color="#00A000">% decrypt with bad generator</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt, back)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;good = <font color="#c000c0">'not matched'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'decrypted text with bad generator: %s (%s)\n'</font>, back, good);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> res = encrypt(txt, seed)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% encrypt txt with the 'twister' generator and the given seed</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: function res = encrypt(txt, seed)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   txt: text to encrypt</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  seed: seed value for the generator</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;rng(seed, <font color="#c000c0">'twister'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% solve the wrap-around cases </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% set wraparound bounds and range</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;loch = <font color="#ff8000">33</font>; hich = <font color="#ff8000">126</font>; range = hich+<font color="#ff8000">1</font>-loch;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% generate random integer array with length of text</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  and values 0 .. range - 1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;rn = floor( range * rand(<font color="#ff8000">1</font>, length(txt) ) );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% only change the letters within legal bounds</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;change = (txt>=loch) & (txt<=hich);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% make a copy of txt</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;enc = txt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% add random num to legal characters</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;enc(change) = enc(change) + rn(change);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% since this is addition, can't go below loch</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% wrap encrypted values off to the right </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;enc(enc > hich) = enc(enc > hich) - range;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% return the result</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = char(enc);<br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> res = decrypt(txt, seed, change_gen)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% decrypt txt with the given seed, maybe change the generator</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: function res = decrypt(txt, seed, change_gen)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%        txt: text to encrypt</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       seed: seed value for the generator</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% change_gen: logical - if true, change the generator</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> change_gen<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rng(seed, <font color="#c000c0">'v4'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rng(seed, <font color="#c000c0">'twister'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% solve the wrap-around cases </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% set wraparound bounds and range</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;loch = <font color="#ff8000">33</font>; hich = <font color="#ff8000">126</font>; range = hich+<font color="#ff8000">1</font>-loch;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% generate random integer array with length of text</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  and values 0 .. range - 1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;rn = floor( range * rand(<font color="#ff8000">1</font>, length(txt) ) );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% only change the letters within legal bounds</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;change = (txt>=loch) & (txt<=hich);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% make a copy of txt</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dec = txt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% since this is subtraction, can't go above hich</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% however, must wrap decrypted values off to the left</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  because they could have negative indices</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dec(change) = dec(change) - rn(change) + range;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% then wrap the characters we just moved beyond hich</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dec(dec > hich) = dec(dec > hich) - range;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% return the result</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = char(dec);<br>
+<font color="#0000ff">end</font><br>
+<br>
+</strong></code>

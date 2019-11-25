@@ -1,0 +1,50 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  FFT of a sine wave</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fundamental relationships</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       N samples</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       Fs - sampling frequency</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       dt = 1/Fs</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       Tmax = N * dt</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       df = 1/Tmax</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       Fmax = N * df</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%           really mirrored about Fmax/2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%           usually plot many points less</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   Start with a 3 sec sine wave at Middle C, 261.6 Hz</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;Fs = <font color="#ff8000">44100</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;Tmax = <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = Fs .* Tmax<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mid_C = <font color="#ff8000">261.6</font> * <font color="#ff8000">2</font> * pi;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t = linspace(<font color="#ff8000">0</font>, Tmax, N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;note = sin(mid_C .* t);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(note, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(length(note) ./ Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(t, note)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Y = fft(note);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;f = linspace(<font color="#ff8000">0</font>, Fs, N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ns = N / <font color="#ff8000">10</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(f(<font color="#ff8000">1</font>:ns), real(Y(<font color="#ff8000">1</font>:ns)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[tpt, Fs] = audioread(<font color="#c000c0">'../instr_tpt.wav'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(tpt);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(tpt, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tmax = N/Fs;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(tmax)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Y = fft(tpt);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fmax = Fs;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ns = <font color="#ff8000">20000</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;f = linspace(<font color="#ff8000">0</font>, fmax, N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(f(<font color="#ff8000">1</font>:ns), abs(Y(<font color="#ff8000">1</font>:ns)));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot3(f(<font color="#ff8000">1</font>:ns), real(Y(<font color="#ff8000">1</font>:ns)), imag(Y(<font color="#ff8000">1</font>:ns)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[note Fs] = audioread(<font color="#c000c0">'../trainwhistle.wav'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(note);<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

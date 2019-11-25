@@ -1,0 +1,29 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Integrating rocket velocity</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v =[ <font color="#ff8000">0.0</font> <font color="#ff8000">15.1</font> <font color="#ff8000">25.1</font> <font color="#ff8000">13.7</font> <font color="#ff8000">22.2</font> <font color="#ff8000">41.7</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">39.8</font> <font color="#ff8000">54.8</font> <font color="#ff8000">57.6</font> <font color="#ff8000">62.6</font> <font color="#ff8000">61.6</font> <font color="#ff8000">63.9</font> <font color="#ff8000">69.6</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">76.2</font> <font color="#ff8000">86.7</font> <font color="#ff8000">101.2</font> <font color="#ff8000">99.8</font> <font color="#ff8000">112.2</font> <font color="#ff8000">111.0</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">116.8</font> <font color="#ff8000">122.6</font> <font color="#ff8000">127.7</font> <font color="#ff8000">143.4</font> <font color="#ff8000">131.3</font> <font color="#ff8000">143.0</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">144.0</font> <font color="#ff8000">162.7</font> <font color="#ff8000">167.8</font> <font color="#ff8000">180.3</font> <font color="#ff8000">177.6</font> <font color="#ff8000">172.6</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">166.6</font> <font color="#ff8000">173.1</font> <font color="#ff8000">173.3</font> <font color="#ff8000">176.0</font> <font color="#ff8000">178.5</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">196.5</font> <font color="#ff8000">213.0</font> <font color="#ff8000">223.6</font> <font color="#ff8000">235.9</font> <font color="#ff8000">244.2</font> <font color="#ff8000">244.5</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">259.4</font> <font color="#ff8000">271.4</font> <font color="#ff8000">270.5</font> <font color="#ff8000">294.5</font> <font color="#ff8000">297.6</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">308.7</font> <font color="#ff8000">310.5</font> <font color="#ff8000">326.6</font> <font color="#ff8000">344.1</font> <font color="#ff8000">342.0</font> <font color="#ff8000">358.2</font> <font color="#ff8000">362.7</font> ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lv = length(v);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dt = <font color="#ff8000">0.2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t = (<font color="#ff8000">0</font>:lv-<font color="#ff8000">1</font>) * dt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;h = dt .* cumsum(v);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(t, v)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on, hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(t, h/<font color="#ff8000">5</font>,<font color="#c000c0">'k--'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;legend({<font color="#c000c0">'velocity'</font>, 'altitude/<font color="#ff8000">5'</font> })<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'velocity and altitude of a rocket'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'time (sec)'</font>); ylabel(<font color="#c000c0">'v (m/s), h(m/5)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'cumsum height: %g\n'</font>, h(end) );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ht = dt .* cumtrapz(v);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'trapezoidal height: %g\n'</font>, ht(end));<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

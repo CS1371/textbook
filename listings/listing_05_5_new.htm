@@ -1,0 +1,28 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_05_5</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Example of a for statement</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Create a vector A with six elements.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [<font color="#ff8000">6</font> <font color="#ff8000">12</font> <font color="#ff8000">6</font> <font color="#ff8000">91</font> <font color="#ff8000">13</font> <font color="#ff8000">6</font>] <font color="#00A000">% initial vector</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The tidiest way to find limits of a collection of numbers</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% is to seed the result with the first number.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;theMax = A(<font color="#ff8000">1</font>); <font color="#00A000">% set initial max value</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Iterate across the values of A.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> x = A <font color="#00A000">% iterate through A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% The code block extends from the for statement to the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% associated end statement.  The code will be executed</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the same number of times as the length of A even if</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% you change the value of x within the code block.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% At each iteration, the value of x will be set to</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the next element from the array A.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> x > theMax <font color="#00A000">% test each element</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theMax = x;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font>  <font color="#00A000">% end of the if</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font>  <font color="#00A000">% end of the for</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% show the result. The fprintf(...)function is a flexible</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% means of formatting output to the Command window.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% See the discussion in Chapter 8, or enter the following</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% in the Command window:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% > help fprintf</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'max(A) is %d\n'</font>, theMax);<br>
+</strong></code>

@@ -1,0 +1,26 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Creating a subplot</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = -<font color="#ff8000">2</font>*pi:<font color="#ff8000">.05</font>:<font color="#ff8000">2</font>*pi;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, sin(x))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'1 - sin(x)'</font>); grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, cos(x))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'2 - cos(x)'</font>); grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">3</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, tan(x))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'3 - tan(x)'</font>); grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">4</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, x.^<font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'4 - x^2'</font>); grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">5</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, sqrt(x))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'5 - sqrt(x)'</font>); grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">6</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, exp(x))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'4 - e^x'</font>); grid on<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

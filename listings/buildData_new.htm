@@ -1,0 +1,36 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Listing_10_2  build country array</font><br>
+<font color="#0000ff">function</font> worldData = buildData(name)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% read the spreadsheet into a data array</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% and a text cell array</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[data txt] = xlsread(name);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;country = <font color="#c000c0">' '</font>; % force the first data row<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% to change the country</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cntry_index = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Traverse the data and cell arrays producing</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% an array of structures,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% one for each country</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> row = <font color="#ff8000">1</font>:length(data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Because the text data in txt contains</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the header row of the spreadsheet,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the data at a given row belongs to the country</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% whose name is at txt{row+1}.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% if the country name changes,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% begin a new structure.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt{row+<font color="#ff8000">1</font>}, country)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;country = txt{row+<font color="#ff8000">1</font>};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry_index = cntry_index + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.name = country;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year(col) = data(row, <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop(col) = data(row, <font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp(col) = data(row, <font color="#ff8000">5</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = col + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worldData(cntry_index) = cntry;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

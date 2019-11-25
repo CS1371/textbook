@@ -1,0 +1,18 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Simple 2-D plots</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = linspace(-<font color="#ff8000">1.5</font>, <font color="#ff8000">1.5</font>, <font color="#ff8000">30</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clr = <font color="#c000c0">'rgbk'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> pwr = <font color="#ff8000">1</font>:<font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot(x, x.^pwr, clr(pwr))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'x^N'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'powers of x'</font>), grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;legend({<font color="#c000c0">'N=1'</font>, 'N=<font color="#ff8000">2'</font>, <font color="#c000c0">'N=3'</font>, 'N=<font color="#ff8000">4'</font>}, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'Location'</font>,'SouthEast')<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

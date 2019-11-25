@@ -1,0 +1,25 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Listing_17_14  Breadth-first graph search</font><br>
+<font color="#0000ff">function</font> D = grBFS(A, home, target)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;q = qEnq([], home);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty(q)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[q current] = qDeq(q);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> current(end) == target <font color="#00A000">% success exit</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D = sparse([<font color="#ff8000">0</font>]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ans = <font color="#ff8000">1</font>:length(current)-<font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D(current(ans), current(ans+<font color="#ff8000">1</font>)) = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">return</font>; <font color="#00A000">% exit the function</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <font color="#00A000">% if current == target</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thisNode = current(end);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children = find(A(thisNode,:) ~= <font color="#ff8000">0</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> thisChild = children<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~any(thisChild == current)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = qEnq(q, [current thisChild]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <font color="#00A000">% if ~any(thisChild == current)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <font color="#00A000">% for thisChild = children</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <font color="#00A000">% while q not empty</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% if we reach here we never found a path</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;D = [];<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

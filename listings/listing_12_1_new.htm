@@ -1,0 +1,17 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Script to rotate a line</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pts = [<font color="#ff8000">3</font>, <font color="#ff8000">10</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font>, <font color="#ff8000">3</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(pts(<font color="#ff8000">1</font>,:), pts(<font color="#ff8000">2</font>,:))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis ([<font color="#ff8000">0</font> <font color="#ff8000">10</font> <font color="#ff8000">0</font> <font color="#ff8000">10</font>]), axis equal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> angle = <font color="#ff8000">0.05</font>:<font color="#ff8000">0.05</font>:<font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A = [ cos(angle), -sin(angle); sin(angle), cos(angle) ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pr = A * pts;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot(pr(<font color="#ff8000">1</font>,:), pr(<font color="#ff8000">2</font>,:))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

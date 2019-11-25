@@ -1,0 +1,46 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_04_3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Array manipulation script</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Create a 2 X 4 array A.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [<font color="#ff8000">2</font> <font color="#ff8000">5</font> <font color="#ff8000">7</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> <font color="#ff8000">3</font> <font color="#ff8000">4</font> <font color="#ff8000">2</font>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Determine the number of rows and columns</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rows, cols] = size(A)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Builds a vector odds containing the indices of the odd numbered columns.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;odds = <font color="#ff8000">1</font>:<font color="#ff8000">2</font>:cols<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'odd columns of A using predefined indices'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Uses odds to access the columns in A. The : specifies that this is</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% using all the rows.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(:, odds)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'odd columns of A using anonymous indices'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The anonymous version of the line above. Notice that you can use</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the keyword 'end' in any dimension of the array to represent the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% last index on that dimension.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(end, <font color="#ff8000">1</font>:<font color="#ff8000">2</font>:end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'put evens into odd values in a new array'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Because B did not previously exist (a good reason to have 'clear'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% at the beginning of the script to be sure this is true), a new</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% array is created. Elements in B that were not assigned are zero filled.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;B(:, odds) = A(:, <font color="#ff8000">2</font>:<font color="#ff8000">2</font>:end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'set the even values in B to 99'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Puts 99 into selected locations in B.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;B(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>:<font color="#ff8000">2</font>:end) = <font color="#ff8000">99</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'find the small values in A'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Logical operations on arrays produce an array of logical results.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;small = A < <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'add 10 to the small values'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Add 10 to the values in A that are small.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(small) = A(small) + <font color="#ff8000">10</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'this can be done in one ugly operation'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Not only is this unnecessarily complex, but it is also less efficient</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% because it is applying the logical operator to A twice.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(A < <font color="#ff8000">4</font>) = A(A < <font color="#ff8000">4</font>) + <font color="#ff8000">10</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The function find(...) actually returns a column vector of the index</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% values in the linearized version of the original array, as shown</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% in Exercise 3.16</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;small_index = find(small)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% As illustrated in the lines, it is not necessary to use find(...)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% before indexing an array. However, this command does work.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(small_index) = A(small_index) + <font color="#ff8000">100</font><br>
+</strong></code>

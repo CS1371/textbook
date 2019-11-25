@@ -1,0 +1,176 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Code for Dijkstra’s algorithm</font><br>
+<font color="#0000ff">function</font> grDijkstra<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[A coord] = makeGraph; <font color="#00A000">% call script to make the graph:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;gplot(A, coord, <font color="#c000c0">'ro-'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> index = <font color="#ff8000">1</font>:length(coord)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str = char(<font color="#c000c0">'A'</font> + index - <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text(coord(index,<font color="#ff8000">1</font>) + <font color="#ff8000">0.2</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coord(index,<font color="#ff8000">2</font>) + <font color="#ff8000">0.3</font>, str);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;showCosts(coord, A);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis([<font color="#ff8000">0</font> <font color="#ff8000">11</font> <font color="#ff8000">0</font> <font color="#ff8000">10</font>]); axis off; hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;start = <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;target = <font color="#ff8000">8</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;pq = pqEnq([], Path(start, <font color="#ff8000">0</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty(pq)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[pq current] = qDeq(pq);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> pthGetLast(current) == target<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D = sparse(<font color="#ff8000">0</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;answer = current.nodes;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ans = <font color="#ff8000">1</font>:length(answer)-<font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D(answer(ans), answer(ans+<font color="#ff8000">1</font>)) = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gplot(D, coord, <font color="#c000c0">'gx--'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'Optimal Search from B to H'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">return</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <font color="#00A000">% if last(current) == target</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endnode = pthGetLast(current);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children = A(endnode,:);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children = find(children ~= <font color="#ff8000">0</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> achild = children<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len = A(endnode, achild);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~any(achild == current.nodes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clone = Path( [current.nodes achild], <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.key + len);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pq = pqEnq(pq, clone);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <font color="#00A000">% if ~any child == current.nodes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <font color="#00A000">% for achild = children</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <font color="#00A000">% if pq not empty</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% If we reach here we never found a path</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;D = [];<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> showCosts(co, A)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n = length(A);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> r = <font color="#ff8000">1</font>:n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = r+<font color="#ff8000">1</font>:n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> A(r,c) > <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str = num2str(A(r,c));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c1 = co(r,:);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c2 = co(c,:);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = (c1 + c2) ./ <font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text(at(<font color="#ff8000">1</font>),at(<font color="#ff8000">2</font>), str);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> [A coord] = makeGraph<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% edge weights</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cost = [<font color="#ff8000">24</font> <font color="#ff8000">19</font> <font color="#ff8000">15</font> <font color="#ff8000">19</font> <font color="#ff8000">19</font> <font color="#ff8000">19</font> <font color="#ff8000">27</font> <font color="#ff8000">27</font> <font color="#ff8000">27</font> <font color="#ff8000">70</font> <font color="#ff8000">18</font> <font color="#ff8000">15</font> <font color="#ff8000">31</font> <font color="#ff8000">19</font> <font color="#ff8000">27</font> <font color="#ff8000">27</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% edge directions</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dir = [<font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% connectivity</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;node = [ <font color="#ff8000">1</font> <font color="#ff8000">2</font> <font color="#ff8000">3</font> <font color="#ff8000">0</font> <font color="#00A000">% edges from A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> <font color="#ff8000">4</font> <font color="#ff8000">5</font> <font color="#ff8000">6</font>   <font color="#00A000">% edges from B</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font> <font color="#ff8000">7</font> <font color="#ff8000">8</font> <font color="#ff8000">0</font>   <font color="#00A000">% edges from C</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">7</font> <font color="#ff8000">9</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>   <font color="#00A000">% edges from D</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font> <font color="#ff8000">9</font> <font color="#ff8000">10</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from E</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3</font> <font color="#ff8000">11</font> <font color="#ff8000">12</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from F</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">11</font> <font color="#ff8000">13</font> <font color="#ff8000">14</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from G</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">10</font> <font color="#ff8000">13</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from H</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">12</font> <font color="#ff8000">14</font> <font color="#ff8000">15</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from I</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">5</font> <font color="#ff8000">15</font> <font color="#ff8000">16</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from J</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6</font> <font color="#ff8000">8</font> <font color="#ff8000">16</font> <font color="#ff8000">0</font>]  <font color="#00A000">% edges from K</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% coordinates</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;coord = [   <font color="#ff8000">5</font> <font color="#ff8000">4</font>  <font color="#00A000">% A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3</font> <font color="#ff8000">6</font>  <font color="#00A000">% B</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font> <font color="#ff8000">4</font>  <font color="#00A000">% C</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3</font> <font color="#ff8000">1</font>  <font color="#00A000">% D</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6</font> <font color="#ff8000">2</font>  <font color="#00A000">% E</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6</font> <font color="#ff8000">5.5</font>  <font color="#00A000">% F </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">8</font> <font color="#ff8000">5</font>  <font color="#00A000">% G</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">10</font> <font color="#ff8000">2</font>  <font color="#00A000">% H</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">7</font> <font color="#ff8000">7</font>  <font color="#00A000">% I</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font> <font color="#ff8000">8</font>  <font color="#00A000">% J</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> <font color="#ff8000">7</font>]; <font color="#00A000">% K</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = grAdjacency( node, cost, dir );<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> A = grAdjacency( node, cost, dir )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% compute an adjacency matrix.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% it should contain the weight from one</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% node to another (0 if the nodes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% are not connected)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[m cols] = size(node);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n = length(cost);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;k = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% iterate across the edges</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% finding the nodes at each end of the edge</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> is = <font color="#ff8000">1</font>:n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ir = <font color="#ff8000">1</font>:m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ic = <font color="#ff8000">1</font>:cols<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> node(ir, ic) == is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv = iv + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> iv > <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad intersection matrix'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ij(iv) = ir;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> iv ~= <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(sprintf(<font color="#c000c0">'didn'</font><font color="#c000c0">'t find both ends of edge %d'</font>, is));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = cost(is);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> dir(is) ~= -<font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k = k + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip(k) = ij(<font color="#ff8000">1</font>); jp(k) = ij(<font color="#ff8000">2</font>); tp(k) = t;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> dir(is) ~= <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k = k + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip(k) = ij(<font color="#ff8000">2</font>); jp(k) = ij(<font color="#ff8000">1</font>); tp(k) = t;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = sparse( ip, jp, tp );<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> pq = pqEnq(pq, item)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue in order to a queue</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;in = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = length(pq)+<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> in <= length(pq)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> is_before(item, pq{in})<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = in;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in = in + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;pq = [pq(<font color="#ff8000">1</font>:at-<font color="#ff8000">1</font>) {item} pq(at:end)];<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> [q ans] = qDeq(q)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dequeue</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans = q{<font color="#ff8000">1</font>};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;q = q(<font color="#ff8000">2</font>:end);<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> ret = Path(nodes, len)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Path constructor</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ret.nodes = nodes;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ret.key = len;<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> ret = pthGetLast(apath)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Returns number of last node on a path</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ret = apath.nodes(end);<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> ans = is_before(a, b)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;acl = class(a);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> isa(b, acl)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">switch</font> acl<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'double'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = a < b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'struct'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> isfield(a, <font color="#c000c0">'key'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = a.key < b.key;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> isfield(a, <font color="#c000c0">'dod'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = age(a) < age(b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'comparing unknown structures'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">otherwise</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error([<font color="#c000c0">'can'</font><font color="#c000c0">'t compare '</font> acl <font color="#c000c0">'s'</font>])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+</strong></code>

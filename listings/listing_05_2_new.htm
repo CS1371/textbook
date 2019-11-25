@@ -1,0 +1,30 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_05_2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Function with if statements</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;letter(<font color="#ff8000">92</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;letter(<font color="#ff8000">80</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;letter(<font color="#ff8000">79.9</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;letter(<font color="#ff8000">65</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;letter(<font color="#ff8000">21</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> letter(grade)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The first logical expression looks for the grade that earns an A.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> grade >= <font color="#ff8000">90</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The corresponding code block sets the value of the variable</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% letter to 'A'.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let = <font color="#c000c0">'A'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% The next 5 lines contain the corresponding logic for letter</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% grades B, C, and D.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> grade >= <font color="#ff8000">80</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let = <font color="#c000c0">'B'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> grade >= <font color="#ff8000">70</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let = <font color="#c000c0">'C'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> grade >= <font color="#ff8000">60</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let = <font color="#c000c0">'D'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The default logic setting the variable letter to 'F'.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let = <font color="#c000c0">'F'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

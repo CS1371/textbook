@@ -1,0 +1,18 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_05_3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  The if statement with a logical vector</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Make the variable A a logical vector.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [true true false]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Using this as a logical expression, MATLAB internally converts</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this expression to if all(A).</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> A<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% All the values of A are not true; therefore, any code</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% written here does not execute.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Make all the elements of A true.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(<font color="#ff8000">3</font>) = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> A<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this code block will now execute.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+</strong></code>

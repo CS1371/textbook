@@ -1,0 +1,30 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Rotating an irregular shape</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;u = [<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">3</font> <font color="#ff8000">3</font> <font color="#ff8000">1.75</font> <font color="#ff8000">1.75</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">1.75</font> <font color="#ff8000">1.75</font> <font color="#ff8000">3</font> <font color="#ff8000">4</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">5.25</font> <font color="#ff8000">5.25</font> <font color="#ff8000">5</font> <font color="#ff8000">5</font> <font color="#ff8000">5.25</font> <font color="#ff8000">5.25</font> <font color="#ff8000">3</font> <font color="#ff8000">3</font> <font color="#ff8000">6</font> <font color="#ff8000">6</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = [<font color="#ff8000">0</font> <font color="#ff8000">.5</font> <font color="#ff8000">.5</font> <font color="#ff8000">.502</font> <font color="#ff8000">.502</font> <font color="#ff8000">.55</font> <font color="#ff8000">.55</font> <font color="#ff8000">1.75</font> <font color="#ff8000">1.75</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.5</font> <font color="#ff8000">2.5</font> <font color="#ff8000">1.5</font> <font color="#ff8000">1.5</font> <font color="#ff8000">1.4</font> <font color="#ff8000">1.4</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">.55</font> <font color="#ff8000">.55</font> <font color="#ff8000">.502</font> <font color="#ff8000">.502</font> <font color="#ff8000">.5</font> <font color="#ff8000">.5</font> <font color="#ff8000">0</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(u, v, <font color="#c000c0">'k'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis ([-<font color="#ff8000">1</font> <font color="#ff8000">7</font> -<font color="#ff8000">1</font> <font color="#ff8000">3</font>]), axis equal, axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'2-D profile'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">200</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[zz yy xx] = cylinder(v,<font color="#ff8000">300</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(u)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xx(ndx,:) = u(ndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis square, axis tight, axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;colormap bone<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">60</font>, <font color="#ff8000">45</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">140</font>, <font color="#ff8000">45</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alpha(<font color="#ff8000">0.8</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'rotated object'</font>)<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

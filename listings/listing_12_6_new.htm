@@ -1,0 +1,15 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Analyzing an electrical circuit</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;R1 = <font color="#ff8000">100</font>; R2 = <font color="#ff8000">200</font>; R3 = <font color="#ff8000">300</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;R4 = <font color="#ff8000">400</font>; R5 = <font color="#ff8000">500</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;V1 = <font color="#ff8000">10</font>; V2 = <font color="#ff8000">5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [R1+R4 -R4 <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-R4 R2+R4+R5 -R5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font> -R5 R3+R5];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;B = [V1; <font color="#ff8000">0</font>; -V2];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;curr = inv(A) * B<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'drop across R1 is %6.2f volts\n'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;curr(<font color="#ff8000">1</font>) * R1 );<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

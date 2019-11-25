@@ -1,0 +1,18 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Exploring the sky situation</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = imread(<font color="#c000c0">'../Vienna.jpg'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image(v)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;row = <font color="#ff8000">400</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;red = v(row, :, <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gr = v(row, :, <font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bl = v(row, :, <font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(red, <font color="#c000c0">'r'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(gr,  <font color="#c000c0">'g'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(bl, <font color="#c000c0">'b'</font>);<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

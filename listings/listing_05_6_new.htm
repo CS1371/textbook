@@ -1,0 +1,32 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_05_6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% for statement using indexing</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Generalize the creation of the vector A using the rand(...)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% function to create a vector with 10 elements each</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% between 0 and 100. The floor(...) function rounds</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% each value down to the next lower integer.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = floor(rand(<font color="#ff8000">1</font>,<font color="#ff8000">10</font>)*<font color="#ff8000">100</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Initialize variables</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;theMax = A(<font color="#ff8000">1</font>), theIndex = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Create an anonymous vector of indices from 1 to the length</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% of A and uses it to define the loop-control variable, index.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> index = <font color="#ff8000">1</font>:length(A)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Extract the appropriate element from A to operate with as before.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = A(index);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% The same comparison logic as shown in Listing 4.5.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> x > theMax<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theMax = x;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% In addition to saving the new max value, we save the index</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% where it occurs.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theIndex = index;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This is our first occurrence where a logical line of code</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% extends beyond the physical limitations of a single line.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Since MATLAB normally uses the end of the line to indicate</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the end of an operation, we use ellipses (...) to specify</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% that the logic is continued onto the next line.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'the max value in A is %d at %d\n'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;theMax, theIndex);<br>
+</strong></code>

@@ -1,0 +1,15 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Spline interpolation</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = <font color="#ff8000">0</font>:<font color="#ff8000">5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y = [<font color="#ff8000">0</font>, <font color="#ff8000">20</font>, <font color="#ff8000">60</font>, <font color="#ff8000">68</font>, <font color="#ff8000">77</font>, <font color="#ff8000">110</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;new_x = <font color="#ff8000">0</font>:<font color="#ff8000">0.2</font>:<font color="#ff8000">5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;new_y = spline(x, y, new_x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, y, <font color="#c000c0">'o'</font>, new_x, new_y, <font color="#c000c0">'-'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on, axis([-<font color="#ff8000">1</font>,<font color="#ff8000">6</font>,-<font color="#ff8000">20</font>,<font color="#ff8000">120</font>])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'Cubic-Spline Data Plot'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel( <font color="#c000c0">'x values'</font>); ylabel(<font color="#c000c0">'y values'</font>)<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

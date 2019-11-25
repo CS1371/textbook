@@ -1,0 +1,52 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_04_2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Script to solve vector problems</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc; close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Typical initial values for the problem.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;PA = [<font color="#ff8000">0</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PB = [<font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">0</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;P = [<font color="#ff8000">2</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = P + PA<br>
+&nbsp;&nbsp;&nbsp;&nbsp;B = P + PB<br>
+&nbsp;&nbsp;&nbsp;&nbsp;M = [<font color="#ff8000">4</font> <font color="#ff8000">0</font> <font color="#ff8000">1</font>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the resultant of PA and PB</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;PC = PA + PB;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C = P + PC<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the unit vector in the direction of PC</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The unit vector along PC is PC divided by its magnitude. The magnitude is</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the square root of the sum of the squares of the individual components.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;mag = sqrt(sum(PC.^<font color="#ff8000">2</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unit_vector = PC/mag;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the moment of the force PC about M</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this is the cross product of MP and PC</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The vector MP is the vector difference between P and M.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;MP = P - M;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% There is a built-in function, cross(..), to compute the cross product</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  of two vectors.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;mom = cross( MP, PC )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv([<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>], P, <font color="#c000c0">'r-'</font>,'P', true) <font color="#00A000">%O-P</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text(<font color="#ff8000">0</font>, <font color="#ff8000">0</font>, <font color="#ff8000">0</font>,<font color="#c000c0">'O'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv([<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>], [<font color="#ff8000">5</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>], <font color="#c000c0">'k-'</font>, 'X axis', true) <font color="#00A000">% x axis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv([<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>], [<font color="#ff8000">0</font> <font color="#ff8000">4</font> <font color="#ff8000">0</font>], <font color="#c000c0">'k-'</font>, 'Y axis', true) <font color="#00A000">% y axis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv([<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>], [<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">3</font>], <font color="#c000c0">'k-'</font>, 'Z axis', true) <font color="#00A000">% z axis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv(P, A, <font color="#c000c0">'r-'</font>, 'A', true)   <font color="#00A000">% P-A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv(P, B, <font color="#c000c0">'g-'</font>, 'B', true)   <font color="#00A000">% P-B</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv(P, C, <font color="#c000c0">'b--'</font>, 'C', true)   <font color="#00A000">% P-C</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv(M, P, <font color="#c000c0">'m--'</font>, 'M', false)   <font color="#00A000">% M-P</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;my_quiv(P, mom, <font color="#c000c0">'c:'</font>, 'momentum', true)   <font color="#00A000">% P-mom</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis([-<font color="#ff8000">1</font> <font color="#ff8000">5</font> -<font color="#ff8000">1</font> <font color="#ff8000">4</font> -<font color="#ff8000">6</font> <font color="#ff8000">3</font>])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> my_quiv(A, B, ln, txt, fwd)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'[%d %d %d] -> [%d %d %d] %s %s\n'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A(<font color="#ff8000">1</font>), A(<font color="#ff8000">2</font>), A(<font color="#ff8000">3</font>), B(<font color="#ff8000">1</font>), B(<font color="#ff8000">2</font>), B(<font color="#ff8000">3</font>), ln, txt)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;quiver3(A(<font color="#ff8000">1</font>), A(<font color="#ff8000">2</font>), A(<font color="#ff8000">3</font>), B(<font color="#ff8000">1</font>), B(<font color="#ff8000">2</font>), B(<font color="#ff8000">3</font>), ln)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> fwd<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text(B(<font color="#ff8000">1</font>), B(<font color="#ff8000">2</font>), B(<font color="#ff8000">3</font>), txt)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text(A(<font color="#ff8000">1</font>), A(<font color="#ff8000">2</font>), A(<font color="#ff8000">3</font>), txt)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+</strong></code>

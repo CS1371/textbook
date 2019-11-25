@@ -1,0 +1,10 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Listing_17_3  Converting a cell array to a string</font><br>
+<font color="#0000ff">function</font> str = CAToString(ca)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Traverse a cell array to make a string</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;str = <font color="#c000c0">''</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:length(ca)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str = [str toString(ca{in}) <font color="#ff8000">13</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

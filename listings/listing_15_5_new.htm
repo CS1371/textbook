@@ -1,0 +1,21 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Removing the power line from the sky</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p = imread(<font color="#c000c0">'../Witney.jpg'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rows, cols, clrs] = size(p);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = <font color="#ff8000">1</font>:cols;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sky = p;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> row = <font color="#ff8000">1</font>:<font color="#ff8000">700</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> color = <font color="#ff8000">1</font>:<font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv = double(p(row, :, color));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coef = polyfit(x, cv, <font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ncr = polyval(coef, x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sky(row,:,color) = uint8(ncr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;image(sky)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;imwrite(sky, <font color="#c000c0">'sky.jpg'</font>);<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

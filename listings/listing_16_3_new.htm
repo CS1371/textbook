@@ -1,0 +1,40 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Merge sort</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;vec = round((rand(<font color="#ff8000">1</font>,<font color="#ff8000">9</font>)-<font color="#ff8000">0.5</font>) .* <font color="#ff8000">100</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;vs = mergesort(vec);<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> b = mergesort(a)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This function sorts a column array,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% using the merge sort algorithm</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;b = a; sz = length(a);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> sz > <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;szb2 = floor(sz / <font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;first = mergesort(a(<font color="#ff8000">1</font> : szb2));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;second = mergesort(a(szb2+<font color="#ff8000">1</font> : sz));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = merge(first, second);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> b = merge(first, second)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Merges two sorted arrays</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;i1 = <font color="#ff8000">1</font>; i2 = <font color="#ff8000">1</font>; out = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% as long as neither i1 nor i2 past the end,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% move the smaller element into a</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> (i1 <= length(first)) & (i2 <= length(second))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> lt(first(i1), second(i2))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b(out,<font color="#ff8000">1</font>) = first(i1); i1 = i1 + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b(out,<font color="#ff8000">1</font>) = second(i2); i2 = i2 + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out = out + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% copy any remaining entries of the first array</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> i1 <= length(first)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b(out,<font color="#ff8000">1</font>) = first(i1); i1 = i1 + <font color="#ff8000">1</font>; out = out + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% copy any remaining entries of the second array</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> i2 <= length(second)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b(out,<font color="#ff8000">1</font>) = second(i2); i2 = i2 + <font color="#ff8000">1</font>; out = out + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

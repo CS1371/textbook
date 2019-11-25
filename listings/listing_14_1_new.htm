@@ -1,0 +1,68 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Playing with sound</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Exercises with sound</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Fs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hear = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 1. playing back sound</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       - read "give a damn" speech</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       - play it</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       - change amplitude</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       - change frequency</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 2. slicing sounds</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       - construct "frankly, Bond, I don't give a damn - beam me up"</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[give, Fs] = audioread(<font color="#c000c0">'../sp_givdamn2.wav'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(give)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'read and play a sound\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t = (<font color="#ff8000">1</font>:length(give)) ./ Fs;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(t, give)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'plot of Rhett speech'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'time(sec)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'amplitude'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;give = give./<font color="#ff8000">4</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> hear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(give, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(length(give) ./ Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'play louder - increase amplitude\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> hear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(give.*<font color="#ff8000">2</font>, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(length(give) ./ Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'play softer - decrease amplitude\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> hear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(give./<font color="#ff8000">2</font>, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(length(give) ./ Fs) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'play faster - drop half the data\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> hear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(give(<font color="#ff8000">1</font>:<font color="#ff8000">2</font>:end) , Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(length(give).* <font color="#ff8000">0.5</font> ./ Fs) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'play slower - reduce playback frequency\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> hear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(give , Fs/<font color="#ff8000">1.5</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(length(give).* <font color="#ff8000">1.5</font> ./ Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'pasting together speech pieces\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;give = give .* <font color="#ff8000">4</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;frankly = give(<font color="#ff8000">1</font>:<font color="#ff8000">5500</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;damn = give(<font color="#ff8000">11500</font>:end);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[bond, bFs] = audioread(<font color="#c000c0">'../sp_bond.wav'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bond = bond(<font color="#ff8000">1000</font>:<font color="#ff8000">6000</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[beam, bmFs] = audioread(<font color="#c000c0">'../sp_beam.wav'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;beam = beam.*<font color="#ff8000">2</font>;  <font color="#00A000">% make beam louder</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;speech = [frankly<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zeros(<font color="#ff8000">2000</font>, <font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bond<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zeros(<font color="#ff8000">2000</font>, <font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;damn<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zeros(<font color="#ff8000">2000</font>, <font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;beam];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> hear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(speech, Fs);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(length(speech) ./ Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

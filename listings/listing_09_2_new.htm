@@ -1,0 +1,21 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  listing_09_2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% script using exception processing</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;triangle([<font color="#ff8000">3</font>, <font color="#ff8000">4</font>, <font color="#ff8000">5</font>])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;triangle([<font color="#ff8000">3</font>, <font color="#ff8000">6</font>, <font color="#ff8000">5</font>])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font> exc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;er = getReport(exc)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> triangle(side)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a = side(<font color="#ff8000">1</font>); b = side(<font color="#ff8000">2</font>); c = side(<font color="#ff8000">3</font>); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;cosC = (c^<font color="#ff8000">2</font> - a^<font color="#ff8000">2</font> - b^<font color="#ff8000">2</font>)/(<font color="#ff8000">2</font> * a * b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;angle = acosd(cosC);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> imag(angle) ~= <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad triangle'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'the angle is %f\n'</font>, angle)<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

@@ -20,5 +20,7 @@ clear; clc
     % kilometers to meters. Note the optional, and in this case
     % unnecessary, use of parentheses to define the order of operations.
     s = (top*1000) - startM; % m
-    % The final computation. The operator ^ is the MATLAB expression for exponentiation; x^y in MATLAB results in computing xy. Notice that the parentheses are required here to force the multiplication to happen before the exponentiation.
+    % The final computation. The operator ^ is the MATLAB expression for exponentiation;
+    %	x^y in MATLAB results in computing xy. Notice that the parentheses are required
+    % here to force the multiplication to happen before the exponentiation.
     initialV = (2*g*s)^0.5 % the final answer

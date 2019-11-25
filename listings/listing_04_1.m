@@ -1,7 +1,7 @@
 % listing_04_1
 % Vector indexing script
 clear; clc
-    % Create a vector A with five elements.
+    % Create a vector A with six elements.
     A = [2 5 7 1 3 4];
     % When predefining an index vector, if you want to refer to the size of a
     % vector, you must use either the length(...) function or the size(...)

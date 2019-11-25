@@ -1,0 +1,24 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_09_4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Recursive palindrome detector</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;good = isPal(<font color="#c000c0">'Can I attain a C?'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bad = ~isPal(<font color="#c000c0">'Can I attain an A?'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> res = isPal(str)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;str = lower(str);     <font color="#00A000">% remove all upper case</font><br>
+str = str(str >= <font color="#c000c0">'a'</font> & str <= <font color="#c000c0">'z'</font>); % keep only lower <font color="#0000ff">case</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = r_isPal(str);<br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> res = r_isPal(str)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% recursive palindrome detector</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(str) < <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> str(<font color="#ff8000">1</font>) ~= str(end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = r_isPal(str(<font color="#ff8000">2</font>:end-<font color="#ff8000">1</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

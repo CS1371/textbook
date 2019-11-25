@@ -1,0 +1,17 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Simple 3-D line plots</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x=<font color="#ff8000">0</font>:<font color="#ff8000">0.1</font>:<font color="#ff8000">3</font>.*pi;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y1=zeros(size(x));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z1=sin(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z2=sin(<font color="#ff8000">2</font>.*x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z3=sin(<font color="#ff8000">3</font>.*x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y3=ones(size(x));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y2=y3./<font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot3(x,y1,z1, <font color="#c000c0">'r'</font>,x,y2,z2, <font color="#c000c0">'b'</font>,x,y3,z3, <font color="#c000c0">'g'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x-axis'</font>), ylabel(<font color="#c000c0">'y-axis'</font>), zlabel(<font color="#c000c0">'z-axis'</font>)<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

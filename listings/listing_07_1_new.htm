@@ -1,0 +1,15 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_07_1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Using cell arrays of parameters</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = <font color="#ff8000">4</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;B = <font color="#ff8000">6</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C = <font color="#ff8000">5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = largest(A, B, C)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;params = { <font color="#ff8000">4</font>, <font color="#ff8000">6</font>, <font color="#ff8000">5</font> };<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = largest(params{<font color="#ff8000">1</font>:<font color="#ff8000">3</font>})<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> it = largest(r, s, t)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;it = max([r s t]);<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

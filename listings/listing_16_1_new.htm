@@ -1,0 +1,31 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The insertion sort function</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;vec = round((rand(<font color="#ff8000">1</font>,<font color="#ff8000">7</font>)-<font color="#ff8000">0.5</font>) .* <font color="#ff8000">100</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;vs = insertionsort(vec);<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> b = insertionsort(a)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This function sorts a column vector,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% using the insertion sort algorithm</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;b = []; i = <font color="#ff8000">1</font>; sz = length(a);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> i <= sz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = insert(b, a(i) );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = i + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> a = insert(a, v)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% insert the value v into column vector a</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;i = <font color="#ff8000">1</font>; sz = length(a); done = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> i <= sz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> v < a(i)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = [a(<font color="#ff8000">1</font>:i-<font color="#ff8000">1</font>) v a(i:end)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = i + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~done<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a(end+<font color="#ff8000">1</font>) = v;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

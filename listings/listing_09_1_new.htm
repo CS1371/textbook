@@ -1,0 +1,16 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_09_1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Function to compute N factorial</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = fact(<font color="#ff8000">12</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> result = fact(N)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% recursive computation of N!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fprintf('fact( %d )\n', N); % testing only</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> N == <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = N * fact(N - <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

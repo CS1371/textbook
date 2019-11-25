@@ -1,0 +1,34 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Edge detection</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pic = imread(<font color="#c000c0">'../C-130.jpg'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;imshow(pic)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rows, cols, cl] = size(pic);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;amps = uint16(pic(:,:,<font color="#ff8000">1</font>))<font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;+ uint16(pic(:,:,<font color="#ff8000">2</font>))<font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;+ uint16(pic(:,:,<font color="#ff8000">3</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;up = max(max(amps))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dn = min(min(amps))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fact = <font color="#ff8000">.5</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;thresh = uint16(dn + fact * (up - dn))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pix = amps(<font color="#ff8000">2</font>:end, <font color="#ff8000">2</font>:end);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ptl = amps(<font color="#ff8000">1</font>:end-<font color="#ff8000">1</font>, <font color="#ff8000">1</font>:end-<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pt = amps(<font color="#ff8000">1</font>:end-<font color="#ff8000">1</font>, <font color="#ff8000">2</font>:end);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pl = amps(<font color="#ff8000">2</font>:end, <font color="#ff8000">1</font>:end-<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alloff= and(and((pix > thresh), ( pt  > thresh)), <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;and(( pl > thresh), (ptl > thresh)));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;allon = and(and((pix <= thresh), ( pt <= thresh)), <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;and(( pl <= thresh), (ptl <= thresh)));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;edges = and(not(allon), not(alloff));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;layer = uint8(ones(rows-<font color="#ff8000">1</font>, cols-<font color="#ff8000">1</font>) *<font color="#ff8000">255</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;layer(edges) = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;outline(:,:,<font color="#ff8000">1</font>) = layer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;outline(:,:,<font color="#ff8000">2</font>) = layer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;outline(:,:,<font color="#ff8000">3</font>) = layer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image(outline)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;imwrite(outline, <font color="#c000c0">'c-130 edges.jpg'</font>, 'jpg')<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

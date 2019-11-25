@@ -1,0 +1,42 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Simulating stars</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nst = <font color="#ff8000">20</font>; th = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:nst<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos(ndx,:) = rand(<font color="#ff8000">1</font>,<font color="#ff8000">2</font>)*<font color="#ff8000">10</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scale(ndx) = rand(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) * <font color="#ff8000">.9</font> + <font color="#ff8000">.1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rate(ndx) = rand(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) * <font color="#ff8000">3</font> + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> frame = <font color="#ff8000">1</font>:<font color="#ff8000">20</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> str = <font color="#ff8000">1</font>:nst<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;star(pos(str,:), <font color="#ff8000">...</font> <font color="#00A000">% location</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scale(str), <font color="#ff8000">...</font> <font color="#00A000">% scale</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;th, <font color="#ff8000">...</font> <font color="#00A000">% basic angle</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rate(str)) <font color="#00A000">% angle multiplier</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colormap autumn<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axis equal; axis([-<font color="#ff8000">.5</font> <font color="#ff8000">10.5</font> -<font color="#ff8000">.5</font> <font color="#ff8000">10.5</font>])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axis off; hold off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;th = mod(th + <font color="#ff8000">.1</font>, <font color="#ff8000">20</font>*pi);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">0.1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> star(pt, sc, v, th)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% draw a star at pt(1), pt(2),</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% scaled with sc, at angle v*th</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;triangle(<font color="#ff8000">1</font>, v*th, pt, sc)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;triangle(-<font color="#ff8000">1</font>, v*th, pt, sc)<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> triangle( up, th, pt, sc )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pts = [-<font color="#ff8000">.5</font> <font color="#ff8000">.5</font> <font color="#ff8000">0</font> -<font color="#ff8000">.5</font>; <font color="#00A000">% x values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">.289</font> -<font color="#ff8000">.289</font> <font color="#ff8000">.577</font> -<font color="#ff8000">.289</font>]; <font color="#00A000">% y values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% rotation matrix</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = sc * [cos(th), -sin(th); sin(th), cos(th)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;thePts = A * pts;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fill( thePts(<font color="#ff8000">1</font>,:) + pt(<font color="#ff8000">1</font>), <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;up*thePts(<font color="#ff8000">2</font>,:) + pt(<font color="#ff8000">2</font>), <font color="#ff8000">1</font>);<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

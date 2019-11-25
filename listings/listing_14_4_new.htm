@@ -1,0 +1,73 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Building a tune file_name</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> note<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Fs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[Y f] = compute(<font color="#c000c0">'../instr_violin.wav'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>, <font color="#ff8000">1</font>, <font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ne = round(length(f) / <font color="#ff8000">4</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(f(<font color="#ff8000">1</font>:ne), Y(<font color="#ff8000">1</font>:ne))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'frequency(Hz)'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'sound energy (relative)'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'frequency spectrum of violin'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[Y f] = compute(<font color="#c000c0">'../instr_tpt.wav'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>, <font color="#ff8000">1</font>, <font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(f(<font color="#ff8000">1</font>:end/<font color="#ff8000">4</font>), Y(<font color="#ff8000">1</font>:end/<font color="#ff8000">4</font>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'frequency(Hz)'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'sound energy (relative)'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'frequency spectrum of trumpet'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[Y f] = compute(<font color="#c000c0">'../trainwhistle.wav'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>, <font color="#ff8000">1</font>, <font color="#ff8000">3</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n = round(length(f)/<font color="#ff8000">10</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(f(<font color="#ff8000">1</font>:n), Y(<font color="#ff8000">1</font>:n))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'frequency(Hz)'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'sound energy (relative)'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'frequency spectrum of whistle'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;play_steps(note)<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> [Y, f] = compute( name )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> note<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Fs   <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[note Fs] = audioread(name);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(note, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = round(length(note) / <font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Y = abs(fft(note)) / N;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Y = Y(<font color="#ff8000">1</font>:N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;f = (<font color="#ff8000">1</font>:N) * Fs / (<font color="#ff8000">2</font>*N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(length(note)./Fs)<br>
+<font color="#0000ff">end</font><br>
+<font color="#00A000">% Listing_14_2  play a tune using half_step count</font><br>
+<font color="#0000ff">function</font> play_steps(note)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Fs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;half_note = <font color="#ff8000">2</font>.^(<font color="#ff8000">1</font>/<font color="#ff8000">12</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(note)/<font color="#ff8000">10</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'play a tune using half_step count for pitch\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;notes = [   <font color="#ff8000">4</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">4</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(notes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nt = notes(ndx, <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dur = notes(ndx, <font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mult = half_note .^ nt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sampler = floor(linspace(<font color="#ff8000">1</font>, N, N / mult));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(note(sampler), Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">0.2</font>*dur)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

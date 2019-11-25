@@ -1,0 +1,25 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Bubble sort</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> b<br>
+&nbsp;&nbsp;&nbsp;&nbsp;b = round((rand(<font color="#ff8000">1</font>,<font color="#ff8000">7</font>)-<font color="#ff8000">0.5</font>) .* <font color="#ff8000">100</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bubblesort();<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> bubblesort()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This function sorts the column array b in place,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% using the bubble sort algorithm</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> b<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;right = N-<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:(N-<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> jn = <font color="#ff8000">1</font>:right<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> b(jn) > b(jn+<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp = b(jn); <font color="#00A000">% swap b(jn) with b(jn+1)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b(jn) = b(jn+<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b(jn+<font color="#ff8000">1</font>) = tmp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right = right - <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

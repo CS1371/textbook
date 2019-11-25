@@ -1,0 +1,28 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_09_3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Wrapper implementation for the factorial function</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;r1 = fact(<font color="#ff8000">10</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font>, r2 = fact(-<font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font> exc, er = getReport(exc), <font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font>, r2 = fact(-<font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font> exc, er = getReport(exc), <font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> result = fact(N)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% computation of N!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> (N < <font color="#ff8000">0</font>) || ((N - floor(N)) > <font color="#ff8000">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad parameter for fact'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = r_fact(N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> result = r_fact(N)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% recursive computation of N!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'fact( %d )\n'</font>, N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> N == <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = N * r_fact(N - <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

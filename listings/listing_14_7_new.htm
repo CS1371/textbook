@@ -1,0 +1,52 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Script to plot eight-instrument spectra</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[y Fs] = audioread(<font color="#c000c0">'../instr_tpt.wav'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(y, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(y);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(N./Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(y)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Y = fft(y) / (N/<font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;f = (<font color="#ff8000">1</font>:N) * Fs / N;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot3(f(<font color="#ff8000">1</font>:end/<font color="#ff8000">4</font>), real(Y(<font color="#ff8000">1</font>:end/<font color="#ff8000">4</font>)), imag(Y(<font color="#ff8000">1</font>:end/<font color="#ff8000">4</font>)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'frequency'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'real part'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'imag part'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;absY = abs(Y(<font color="#ff8000">1</font>:end/<font color="#ff8000">4</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;af = f(<font color="#ff8000">1</font>:end/<font color="#ff8000">4</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(af, absY)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the peaks</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;nFreq = <font color="#ff8000">40</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:nFreq<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[junk where] = max(absY);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frq = where * Fs / N;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rl = real(Y(where));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;im = imag(Y(where));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;absY(where-<font color="#ff8000">50</font>:where+<font color="#ff8000">50</font>) = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coef(ndx,<font color="#ff8000">1</font>) = frq/<font color="#ff8000">1000</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coef(ndx,<font color="#ff8000">2</font>) = rl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coef(ndx,<font color="#ff8000">3</font>) = im;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% now, reconstruct the sound, one spike at a time</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[~, order] = sort(coef(:,<font color="#ff8000">1</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:<font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coef(:,ndx) = coef(order,ndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;nSynth = <font color="#ff8000">3</font>*Fs;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;synth = zeros(nSynth,<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t = (<font color="#ff8000">0</font>:nSynth - <font color="#ff8000">1</font>) ./ Fs;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;snd = zeros(nSynth, <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(coef)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w = coef(ndx,<font color="#ff8000">1</font>) .* <font color="#ff8000">2000</font> .* pi;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note = coef(ndx,<font color="#ff8000">2</font>) .* cos(w.*t) + coef(ndx,<font color="#ff8000">3</font>) .* sin(w*t);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;snd = snd + note';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;mx = max(abs(snd));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(snd./mx, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(t(end));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;coef<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

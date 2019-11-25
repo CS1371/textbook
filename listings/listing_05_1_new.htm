@@ -1,0 +1,27 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_05_1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% if statement example</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc; close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;day(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;day(<font color="#ff8000">5</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;day(<font color="#ff8000">6</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;day(<font color="#ff8000">7</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> day(day)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The first logical expression determines whether day is 7.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> day == <font color="#ff8000">7</font> <font color="#00A000">% Saturday</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The corresponding code block sets the value of the variable</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% state to the string 'weekend'. In general, there can be as</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% many statements within a code block as necessary.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state = <font color="#c000c0">'weekend'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The second logical expression determines whether day is 1.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> day == <font color="#ff8000">1</font> <font color="#00A000">% Sunday</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The corresponding code block also sets the value of the variable % state to the string 'weekend'.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state = <font color="#c000c0">'weekend'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The key word else introduces the default code block executed when % none of the previous tests pass.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The default code block sets the value of the variable state to % the string 'weekday'.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state = <font color="#c000c0">'weekday'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

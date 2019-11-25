@@ -1,0 +1,107 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_07_6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Connectivity of a structure</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">1</font>) = beam(<font color="#c000c0">'A-1'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">0.5</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'A',<font color="#c000c0">'A-2'</font>,'A-<font color="#ff8000">3'</font>,<font color="#c000c0">'D-1'</font>} );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">2</font>) = beam(<font color="#c000c0">'A-2'</font>, <font color="#ff8000">0</font>, <font color="#ff8000">1</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'A', <font color="#c000c0">'A-3'</font>, 'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'B-2'</font>} );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">3</font>) = beam(<font color="#c000c0">'A-3'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">1.5</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'A-<font color="#ff8000">1'</font>, <font color="#c000c0">'A-2'</font>, 'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'D-1'</font>} );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">4</font>) = beam(<font color="#c000c0">'B-1'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">2.5</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'A-<font color="#ff8000">2'</font>, <font color="#c000c0">'A-3'</font>, 'B-<font color="#ff8000">2'</font>, <font color="#c000c0">'B-3'</font>, 'D-<font color="#ff8000">1'</font>, <font color="#c000c0">'D-2'</font>} );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">5</font>) = beam(<font color="#c000c0">'B-2'</font>, <font color="#ff8000">0</font>, <font color="#ff8000">3</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'A-<font color="#ff8000">2'</font>, <font color="#c000c0">'A-3'</font>, 'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'B-3'</font>, 'C-<font color="#ff8000">1'</font>, <font color="#c000c0">'C-2'</font>} );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">6</font>) = beam(<font color="#c000c0">'B-3'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">3.5</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'B-2'</font>, 'C-<font color="#ff8000">1'</font>, <font color="#c000c0">'C-2'</font>, 'D-<font color="#ff8000">1'</font>, <font color="#c000c0">'D-2'</font>} );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">7</font>) = beam(<font color="#c000c0">'C-1'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">4.5</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'B-<font color="#ff8000">2'</font>, <font color="#c000c0">'B-3'</font>, 'C-<font color="#ff8000">2'</font>, <font color="#c000c0">'C-3'</font>, 'D-<font color="#ff8000">2'</font>} );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">8</font>) = beam(<font color="#c000c0">'C-2'</font>, <font color="#ff8000">0</font>, <font color="#ff8000">5</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'B-<font color="#ff8000">2'</font>, <font color="#c000c0">'B-3'</font>, 'C-<font color="#ff8000">1'</font>, <font color="#c000c0">'C-3'</font>, 'C'} );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">9</font>) = beam(<font color="#c000c0">'C-3'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">5.5</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'C-<font color="#ff8000">1'</font>, <font color="#c000c0">'C-2'</font>, 'D-<font color="#ff8000">2'</font>, <font color="#c000c0">'C'</font>} );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">10</font>) = beam(<font color="#c000c0">'D-1'</font>, <font color="#ff8000">1.732</font>, <font color="#ff8000">2</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'A-<font color="#ff8000">1'</font>, <font color="#c000c0">'A-3'</font>, 'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'B-3'</font>, 'D-<font color="#ff8000">2'</font>} );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">11</font>) = beam( <font color="#c000c0">'D-2'</font>, <font color="#ff8000">1.732</font>, <font color="#ff8000">4</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'B-3'</font>, 'C-<font color="#ff8000">1'</font>, <font color="#c000c0">'C-3'</font>, 'D-<font color="#ff8000">1'</font>} )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;conn = <font color="#c000c0">'A'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clist = {conn};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find all the beams connected to conn</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:length(data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str = data(in);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> touches(str, conn)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index = index + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;found(index) = str;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% eliminate those already connected</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> jn = index:-<font color="#ff8000">1</font>:<font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ison(found(jn)<font color="#ff8000">.name</font>, clist)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;found(jn) = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clist = [clist {found(jn)<font color="#ff8000">.name</font>}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(found) > <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conn = nextconn( found, clist );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'the order of assembly is:'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(clist)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> ans = beam( nm, xp, yp, conn )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% construct a beam structure with fields:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% name - beam name</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% xp, yp - coordinates of its centroid</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% conn - cell array - names of adjacent beams</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% useage: ans = beam( nm, xp, yp, conn )</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans.name = nm;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans.pos = [xp, yp];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans.connect = conn;<br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> res = touches(beam, conn)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% does the beam touch this connecting point?</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: res = touches(beam, conn)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:length(beam.connect)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item = beam.connect{in};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> strcmp(item,conn)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = true; <font color="#0000ff">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> res = ison( nm, cl )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% is this beam on the connection list,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% a cell array of beam names</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: res = ison( beam, cl )</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:length(cl)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item = cl{in};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> strcmp(item, nm)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = true; <font color="#0000ff">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> nm = nextconn( fnd, cl )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find a connection name among</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% those found not already connected</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: nm = nextconn( fnd, cl )</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:length(fnd)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item = fnd(in);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cn = item.connect;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> jn = <font color="#ff8000">1</font>:length(cn)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nm = cn{jn};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~ison(nm, cl)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

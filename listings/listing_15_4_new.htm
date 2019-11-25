@@ -1,0 +1,21 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Higher-order fits</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = <font color="#ff8000">0</font>:<font color="#ff8000">5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fine_x = <font color="#ff8000">0</font>:<font color="#ff8000">.1</font>:<font color="#ff8000">5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y = [<font color="#ff8000">0</font> <font color="#ff8000">20</font> <font color="#ff8000">60</font> <font color="#ff8000">68</font> <font color="#ff8000">77</font> <font color="#ff8000">110</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> order = <font color="#ff8000">2</font>:<font color="#ff8000">5</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y2=polyval(polyfit(x,y,order), fine_x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">2</font>,<font color="#ff8000">2</font>,order-<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot(x, y, <font color="#c000c0">'o'</font>, fine_x, y2)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid on, axis([-<font color="#ff8000">1</font> <font color="#ff8000">7</font> -<font color="#ff8000">20</font> <font color="#ff8000">120</font>])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ttl = sprintf(<font color="#c000c0">'Degree %d Polynomial Fit'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title(ttl)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'Time (sec)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Temperature (degrees F)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

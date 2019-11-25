@@ -1,0 +1,16 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The Fibonacci function</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tic<br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = fib(<font color="#ff8000">32</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'fib(32) took %1.4f seconds\n'</font>, toc);<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> result = fib(N)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% recursive computation the Nth Fibonacci number</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> N == <font color="#ff8000">1</font> || N == <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = fib(N-<font color="#ff8000">1</font>) + fib(N-<font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

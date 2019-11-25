@@ -1,0 +1,77 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Plotting the spectrum of one instrument</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[piano Fs] = audioread(<font color="#c000c0">'..\instr_piano.wav'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;frq = <font color="#ff8000">261</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;duration = length(piano)/Fs;   <font color="#00A000">% sec</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t = linspace(<font color="#ff8000">0</font>, duration, Fs * duration);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;totalLength = Fs * duration;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;w = <font color="#ff8000">2</font> * pi * frq;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Y = fft(piano);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = <font color="#ff8000">10000</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Y = Y(<font color="#ff8000">1</font>:N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;f = <font color="#ff8000">1</font>:N;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;df = Fs/length(piano);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;f = f .* df;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(f, abs(Y))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;val = max(abs(Y));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;thr = <font color="#ff8000">150</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ndx = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> val > thr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[val where] = max(abs(Y));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C(ndx) = Y(where);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loc(ndx) = where;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fr = where - <font color="#ff8000">50</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to = where + <font color="#ff8000">50</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> fr < <font color="#ff8000">1</font>, fr = <font color="#ff8000">1</font>, <font color="#0000ff">end</font><br>
+<font color="#0000ff">if</font> to > N, to = N, <font color="#0000ff">end</font><br>
+Y(where-<font color="#ff8000">50</font>:where+<font color="#ff8000">50</font>) = <font color="#ff8000">0</font>;<br>
+ndx = ndx + <font color="#ff8000">1</font>;<br>
+<font color="#0000ff">end</font><br>
+<font color="#00A000">% sort the coefficients</font><br>
+[junk ndx] = sort(loc);<br>
+coeff = C(ndx);<br>
+note = zeros(<font color="#ff8000">1</font>, Fs * duration);<br>
+pianoLength = length(piano);<br>
+<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(coeff)<br>
+note = note + real(coeff(ndx)) .* cos(ndx * w * t);<br>
+note = note + imag(coeff(ndx)) .* sin(ndx * w * t);<br>
+<font color="#0000ff">end</font><br>
+<font color="#00A000">% scale it to +/- 1</font><br>
+amp = max(abs(note));<br>
+note = note / amp;<br>
+<font color="#00A000">% check fft of note (wrong!)</font><br>
+figure<br>
+Y = fft(note);<br>
+Y = Y(<font color="#ff8000">1</font>:N);<br>
+plot(f, abs(Y))<br>
+figure<br>
+plot(piano)<br>
+<font color="#00A000">% calc the amp shape of the piano</font><br>
+<font color="#00A000">% chop into pieces (20 samples per sec)</font><br>
+size = Fs/<font color="#ff8000">30</font>;<br>
+place = size+<font color="#ff8000">1</font>;<br>
+ndx = <font color="#ff8000">1</font>;<br>
+<font color="#0000ff">while</font> place < pianoLength - size<br>
+val(ndx) = max(piano((place-size):(place+size)));<br>
+loc(ndx) = place;<br>
+ndx = ndx + <font color="#ff8000">1</font>;<br>
+place = place + size*<font color="#ff8000">2</font>;<br>
+<font color="#0000ff">end</font><br>
+hold on<br>
+plot(loc, val, <font color="#c000c0">'r*'</font>)<br>
+<font color="#00A000">% curve fit the points</font><br>
+cf = polyfit(loc, val, <font color="#ff8000">8</font>);<br>
+ampmod = polyval(cf, <font color="#ff8000">1</font>:totalLength);<br>
+plot(<font color="#ff8000">1</font>:totalLength, ampmod, <font color="#c000c0">'c'</font>)<br>
+note = note .* ampmod;<br>
+sound(note, Fs)<br>
+tmax = length(note) / Fs;<br>
+pause(tmax)<br>
+sound(piano, Fs)<br>
+pause(length(piano) ./ Fs)<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

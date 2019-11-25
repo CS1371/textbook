@@ -1,0 +1,39 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Rotating a globe</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;WM = imread(<font color="#c000c0">'../earthmap_s.jpg'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;WM(:,end+<font color="#ff8000">1</font>,:) = WM(:,<font color="#ff8000">1</font>,:);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;snow = mean( mean(WM(<font color="#ff8000">1</font>,:,:)));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[WMr, WMc, clr] = size(WM);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rowsperdeglat = WMr/<font color="#ff8000">170</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;add = floor(rowsperdeglat * <font color="#ff8000">5</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;addlayer = uint8(ones(add, WMc) * snow);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;toAdd(:,:,<font color="#ff8000">1</font>) = addlayer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;toAdd(:,:,<font color="#ff8000">2</font>) = addlayer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;toAdd(:,:,<font color="#ff8000">3</font>) = addlayer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;worldMap = [toAdd; WM; toAdd];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[nlat nlong clr] = size(worldMap)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lat = double(<font color="#ff8000">0</font>:nlat-<font color="#ff8000">1</font>) * pi / nlat;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;long = double(<font color="#ff8000">0</font>:nlong-<font color="#ff8000">1</font>) * <font color="#ff8000">2</font> * pi / (nlong-<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[th phi] = meshgrid(long, lat);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;radius = <font color="#ff8000">10</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zz = radius * cos(phi);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xx = radius * sin(phi) .* cos(th);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yy = radius * sin(phi) .* sin(th);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wM = double(worldMap) / <font color="#ff8000">256</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz, wM);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal, axis off, axis tight<br>
+&nbsp;&nbsp;&nbsp;&nbsp;material dull<br>
+&nbsp;&nbsp;&nbsp;&nbsp;th = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;handle = light(<font color="#c000c0">'Color'</font>,[<font color="#ff8000">1</font>,<font color="#ff8000">1</font>,<font color="#ff8000">1</font>]); <font color="#00A000">% a custom light source</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> frame = <font color="#ff8000">1</font>:<font color="#ff8000">300</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;th = th - <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view([th <font color="#ff8000">20</font>]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lightangle(handle, th+<font color="#ff8000">50</font>, <font color="#ff8000">20</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">.03</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

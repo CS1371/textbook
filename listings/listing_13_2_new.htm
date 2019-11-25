@@ -1,0 +1,23 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Replacing the gray sky</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = imread(<font color="#c000c0">'../Vienna.jpg'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;w = imread(<font color="#c000c0">'../Witney.jpg'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image(w)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;thres = <font color="#ff8000">160</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;layer = (v(:,:,<font color="#ff8000">1</font>) > thres) <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;& (v(:,:,<font color="#ff8000">2</font>) > thres) <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;& (v(:,:,<font color="#ff8000">3</font>) > thres);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mask(:,:,<font color="#ff8000">1</font>) = layer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mask(:,:,<font color="#ff8000">2</font>) = layer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mask(:,:,<font color="#ff8000">3</font>) = layer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mask(<font color="#ff8000">700</font>:end,:,:) = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nv = v;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nv(mask) = w(mask);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image(nv);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;imwrite(nv, <font color="#c000c0">'newVienna.jpg'</font>, 'jpg')<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

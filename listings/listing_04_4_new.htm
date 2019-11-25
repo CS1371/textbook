@@ -1,0 +1,317 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_04_5</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% moving earth</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc; close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% lay out scenery for road cut</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> A<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> yr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> clr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> sxp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> syp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> szp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> road_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> dbg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> l_edge_ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> r_edge_ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> top<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> bot<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dbg = fopen(<font color="#c000c0">'debug.log'</font>, 'w');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;road_z = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grey = [<font color="#ff8000">0.8</font> <font color="#ff8000">0.8</font> <font color="#ff8000">0.8</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;load(<font color="#c000c0">'../xyz.mat'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tth = x;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pphi = y;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zz = z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% road lines are phi = 2.4 - 2.6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%                th = min - maxA =</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%                zz = 0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;xr = [th(<font color="#ff8000">1</font>) th(<font color="#ff8000">1</font>) th(end) th(end)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yr = [<font color="#ff8000">2.4</font> <font color="#ff8000">2.6</font> <font color="#ff8000">2.6</font> <font color="#ff8000">2.4</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[xxr yyr] = meshgrid(xr, yr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zzr = xxr .* <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rr, rc] = size(xxr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img = uint8(zeros(rr, rc, <font color="#ff8000">3</font>) + <font color="#ff8000">100</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(xxr, yyr, zzr, img)   <font color="#00A000">% road</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% surfaces 45 deg from road edges are</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   z = 2.4 - y</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   z = y - 2.4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   z = 2.6 + y</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   z = -y - 2.6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;zv = <font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xp = xr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yp = [yr(<font color="#ff8000">1</font>), yr(<font color="#ff8000">1</font>)-zv, yr(<font color="#ff8000">1</font>)-zv, yr(<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[xxp yyp] = meshgrid(xp, yp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zp = yr(<font color="#ff8000">1</font>) - yyp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sxp{<font color="#ff8000">1</font>} = xp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sxp{<font color="#ff8000">2</font>} = xp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;syp{<font color="#ff8000">1</font>} = yp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;syp{<font color="#ff8000">2</font>} = yp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;szp{<font color="#ff8000">1</font>} = zp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;szp{<font color="#ff8000">2</font>} = -zp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yp = [yr(<font color="#ff8000">2</font>), yr(<font color="#ff8000">2</font>)+zv, yr(<font color="#ff8000">2</font>)+zv, yr(<font color="#ff8000">2</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[xxp yyp] = meshgrid(xp, yp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zp = yr(<font color="#ff8000">2</font>) - yyp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sxp{<font color="#ff8000">3</font>} = xp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sxp{<font color="#ff8000">4</font>} = xp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;syp{<font color="#ff8000">3</font>} = yp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;syp{<font color="#ff8000">4</font>} = yp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;szp{<font color="#ff8000">3</font>} = zp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;szp{<font color="#ff8000">4</font>} = -zp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% now, find the contours</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% restate the planes as ax + by + cz + d = 0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   p1 : z = 2.4 - y    0   -1   -1   2.4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   p2 : z = y - 2.4    0    1   -1  -2.4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   p3 : z = y - 2.6    0    1   -1  -2.6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   p4 : z = -y + 2.6   0   -1   -1   2.6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    save x, y, z;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [<font color="#ff8000">0</font>   -<font color="#ff8000">1</font>   -<font color="#ff8000">1</font>   <font color="#ff8000">2.4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>    <font color="#ff8000">1</font>   -<font color="#ff8000">1</font>  -<font color="#ff8000">2.4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>    <font color="#ff8000">1</font>   -<font color="#ff8000">1</font>  -<font color="#ff8000">2.6</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>   -<font color="#ff8000">1</font>   -<font color="#ff8000">1</font>   <font color="#ff8000">2.6</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clr = {<font color="#c000c0">'red'</font>,'green',<font color="#c000c0">'blue'</font>,'cyan'};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> n = <font color="#ff8000">1</font>:<font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;draw_contours(n)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find y values right before road and right after</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;yps = y(:,<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% yps covering road</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = yps > yr(<font color="#ff8000">1</font>) & yps < yr(<font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fat = find(at);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;l_edge_ndx = fat(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;r_edge_ndx = fat(end)+<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% populate bot and top surfaces with NaN</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rows cols] = size(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bot = zeros(rows, cols) + NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;top = bot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;removeCutSurface()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% force road level to be below road</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;y_road = find(y(:,<font color="#ff8000">1</font>) > yr(<font color="#ff8000">1</font>) & y(:,<font color="#ff8000">1</font>) < yr(<font color="#ff8000">2</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y_road = [y_road(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>; y_road; y_road(end)+<font color="#ff8000">1</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;road_strip = z(y_road,:);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;too_high = road_strip >= road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;road_strip(too_high) = road_z - <font color="#ff8000">0.05</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z(y_road,:) = road_strip;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rws cls] = size(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img = uint8(zeros(rws, cls, <font color="#ff8000">3</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img(:,:,[<font color="#ff8000">1</font> <font color="#ff8000">2</font>]) = <font color="#ff8000">140</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(x, y, z, img);  <font color="#00A000">% hillside</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%shading interp</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x (th)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'y (phi)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;view(<font color="#ff8000">78</font>,<font color="#ff8000">16</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;saveas(gcf,<font color="#c000c0">'cutting.jpg'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dy = <font color="#ff8000">0.5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dz = <font color="#ff8000">0.7</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;where = ~isnan(bot);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;top(where) = zz(where);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sz = size(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img = uint8(zeros(sz(<font color="#ff8000">1</font>), sz(<font color="#ff8000">2</font>), <font color="#ff8000">3</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img(:,:,<font color="#ff8000">2</font>) = <font color="#ff8000">255</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(x, y+dy, bot+dz, img); <font color="#00A000">% embankment added</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x (th)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'y (phi)'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rws cls] = size(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img = uint8(zeros(rws, cols, <font color="#ff8000">3</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img(:,:,<font color="#ff8000">1</font>) = <font color="#ff8000">255</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(x, y+dy, top+dz, img);  <font color="#00A000">% embankment removed</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;view(<font color="#ff8000">78</font>,<font color="#ff8000">16</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;saveas(gcf,<font color="#c000c0">'cutting_removed.jpg'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> removeCutSurface<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rows, cols] = size(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = <font color="#ff8000">1</font>:cols<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xp = x(<font color="#ff8000">1</font>,c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yps = y(:, c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% interpolate for the red and blue z values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make_a_cut(xp, yps, <font color="#ff8000">1</font>, <font color="#ff8000">3</font>, c)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% interpolate for the green and cyan z values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make_a_cut(xp, yps, <font color="#ff8000">2</font>, <font color="#ff8000">4</font>, c)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> make_a_cut(xp, yps, a, b, c)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> yr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> dbg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> l_edge_ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> r_edge_ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> road_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> top<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> bot<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;za = interp1(lip_x{a}, lip_z{a}, xp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zb = interp1(lip_x{b}, lip_z{b}, xp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~isnan(za) & ~isnan(zb)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ya = interp1(lip_x{a}, lip_y{a}, xp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yb = interp1(lip_x{b}, lip_y{b}, xp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cut = yps > ya & yps < yb;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bot(cut,c) = road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(cut,c) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg,<font color="#c000c0">'a = [%0.2f,%0.2f]; b = [%0.2f,%0.2f]\n'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ya, za, yb, zb);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ny = find(cut);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg, <font color="#c000c0">'ny = [ '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> it = ny<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg, <font color="#c000c0">'%d '</font>, it);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(dbg, <font color="#c000c0">']\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> z(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>,c) > road_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx,c) = yr(<font color="#ff8000">1</font>) - y(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx,c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(l_edge_ndx+<font color="#ff8000">1</font>,c) = road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx-<font color="#ff8000">1</font>,c) = road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx:ny(end)+<font color="#ff8000">1</font>,c) = y(r_edge_ndx:ny(end)+<font color="#ff8000">1</font>,c) - yr(<font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx,c) = -yr(<font color="#ff8000">1</font>) + y(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx,c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(l_edge_ndx+<font color="#ff8000">1</font>,c) = road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx-<font color="#ff8000">1</font>,c) = road_z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(r_edge_ndx:ny(end)+<font color="#ff8000">1</font>,c) = -y(r_edge_ndx:ny(end)+<font color="#ff8000">1</font>,c) + yr(<font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bot(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx+<font color="#ff8000">1</font>,c) = z(ny(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>:l_edge_ndx+<font color="#ff8000">1</font>,c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bot(r_edge_ndx-<font color="#ff8000">1</font>:ny(end)+<font color="#ff8000">1</font>,c) = z(r_edge_ndx-<font color="#ff8000">1</font>:ny(end)+<font color="#ff8000">1</font>,c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> draw_contours(ndx)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> A<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> clr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> sxp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> syp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> szp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> road_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> lip_z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pln = A(ndx,:);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cl = clr{ndx};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;d = x.*pln(<font color="#ff8000">1</font>) + y.*pln(<font color="#ff8000">2</font>) + z.*pln(<font color="#ff8000">3</font>) + pln(<font color="#ff8000">4</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[~,hcontour] = contour(x, y, d, <font color="#c000c0">'LevelList'</font>, <font color="#ff8000">0</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;c = hcontour.ContourMatrix;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;delete(hcontour);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Loop through the ContourMatrix</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;i = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> i<size(c,<font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Get the X & Y for the next curve</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = c(<font color="#ff8000">2</font>,i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x2 = c(<font color="#ff8000">1</font>,i+(<font color="#ff8000">1</font>:n));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y2 = c(<font color="#ff8000">2</font>,i+(<font color="#ff8000">1</font>:n));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Use interp2 to compute the matching Z values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z2 = interp2(x,y,z, x2,y2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">switch</font> ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#ff8000">1</font> <font color="#ff8000">3</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z2(z2 < road_z) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#ff8000">2</font> <font color="#ff8000">4</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z2(z2 > road_z) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Draw that line</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%      line(x2,y2,z2,'Color',cl,'LineWidth',2);</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z2 = condition(z2, ndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lip_x{ndx} = x2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lip_y{ndx} = y2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lip_z{ndx} = z2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Advance to next curve</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = i+n+<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     xp = sxp{ndx};</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     yp = syp{ndx};</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     zp = szp{ndx};</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     surf(xp, yp, zp)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> z = condition(z, ndx)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nn = find(isnan(z));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d = diff(nn);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = find(d > <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nat = length(at);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ndx 1 and 3 (red and blue)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%            should have exactly one group of NaNs</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%            with real numbers before and after</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  ideally:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  d = [n1 1 1 1 1 ... 1 1 1]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  worst case:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  d = [1 1 n1 1 1 ... 1 1 1 n2 1]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  put 0 in first 2 and last z values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ndx 2 and 4 (green and cyan)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%            should have exactly 2 groups of NaNs</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%            with numbers only between them</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ideally:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  d = [1 1 ... 1 1 n2 1 1 ... 1 1]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  worst case</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  d = [1 1 n1 1 1 ... 1 1 n2 1 1 ... 1 1 n3 1 1 1]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  put NaN in z(3:(3 + n1 - 1))</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         and z(end-3:-1:end-3-n3+1)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">switch</font> ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#ff8000">1</font> <font color="#ff8000">3</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> nat > <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'really bad'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> d(<font color="#ff8000">1</font>) == <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(<font color="#ff8000">1</font>:at(<font color="#ff8000">1</font>)-<font color="#ff8000">1</font>) = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#ff8000">2</font> <font color="#ff8000">4</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> nat > <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ouch = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> nat == <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fix the front</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  put NaN in z(3:(3 + n1 - 1))</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n1 = d(at(<font color="#ff8000">1</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(at(<font color="#ff8000">1</font>):(at(<font color="#ff8000">1</font>) + n1 - <font color="#ff8000">1</font>)) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fix the back</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         and z(end-3:-1:end-3-n3+1)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n3 = d(at(<font color="#ff8000">3</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(end-at(<font color="#ff8000">3</font>):-<font color="#ff8000">1</font>:end - at(<font color="#ff8000">3</font>) - n3 + <font color="#ff8000">1</font>) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> nat == <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find which to fix</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> at(<font color="#ff8000">1</font>) < <font color="#ff8000">10</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fix the front</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  put NaN in z(3:(3 + n1 - 1))</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n1 = d(at(<font color="#ff8000">1</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(at(<font color="#ff8000">1</font>):(at(<font color="#ff8000">1</font>) + n1 - <font color="#ff8000">1</font>)) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fix the back</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         or z(end-3:-1:end-3-n3+1)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n2 = d(at(<font color="#ff8000">2</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(end-at(<font color="#ff8000">2</font>):-<font color="#ff8000">1</font>:end - at(<font color="#ff8000">2</font>) - n2 + <font color="#ff8000">1</font>) = NaN;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'really bad'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+</strong></code>

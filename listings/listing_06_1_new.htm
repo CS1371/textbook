@@ -1,0 +1,24 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% string to process</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;str = <font color="#c000c0">'area = 3.14159265 .* radius .^ 2'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty(str) <font color="#00A000">% repeat until the string is empty</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% put the first token into var_1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% and put the remainder back into str</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[var_1, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[op_1, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[num_1, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[op_2, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[var_2, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[op_3, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[num_2, str] = strtok(str, <font color="#c000c0">' '</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% convert the numbers</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_1 = str2num(num_1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_2 = str2num(num_2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% confirm the meaning</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'calculate %s by doing %s with %s and %d'</font> , var_1, op_3, var_2, n_2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">', then doing %s with the result and %1.4f\n'</font>, op_2, n_1);<br>
+</strong></code>

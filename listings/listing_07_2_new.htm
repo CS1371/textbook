@@ -1,0 +1,22 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_07_2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Cell array processing example</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;it = totalNums({<font color="#ff8000">1</font>:<font color="#ff8000">3</font> {<font color="#ff8000">4</font> <font color="#ff8000">9</font>} <font color="#ff8000">42</font> {{{<font color="#ff8000">4</font>}}}})<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> ans = totalNums(ca)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% count the numbers in a cell array</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font> :length(ca)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item = ca{in} ; <font color="#00A000">% extract the item</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type = class(item); <font color="#00A000">% determine its type</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">switch</font> type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'double'</font>  % add the number to the total<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = ans + sum(item);<br>
+<font color="#0000ff">case</font> <font color="#c000c0">'cell'</font> % use this <font color="#0000ff">function</font> on the embedded cell array<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans = ans + totalNums(item);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ignore any other types</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>

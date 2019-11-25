@@ -1,0 +1,130 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Prim's Algorithm to compute a MST</font><br>
+<font color="#0000ff">function</font> prims<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[A coord] = makeGraph<br>
+&nbsp;&nbsp;&nbsp;&nbsp;start = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gplot(A, coord, <font color="#c000c0">'ro-'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> index = <font color="#ff8000">1</font>:length(coord)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str = char(<font color="#c000c0">'A'</font> + index - <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text(coord(index,<font color="#ff8000">1</font>) + <font color="#ff8000">0.2</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coord(index,<font color="#ff8000">2</font>) + <font color="#ff8000">0.3</font>, str);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;showCosts(coord, A)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis([<font color="#ff8000">0</font> <font color="#ff8000">11</font> <font color="#ff8000">0</font> <font color="#ff8000">10</font>]); axis off; hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = start;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;running = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;result = sparse([<font color="#ff8000">0</font>]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> running<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the smallest edge</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;best = <font color="#ff8000">10000</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;running = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(N)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node = N(ndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = find(A(node,:) > <font color="#ff8000">0</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> nxt = <font color="#ff8000">1</font>:length(next)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nxtn = next(nxt);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~any(N == nxtn)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;running = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> A(node, nxtn) < best<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;best = A(node, nxtn);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from = node;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to = nxtn;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> running<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N = [N to];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result(from, to) = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;gplot(result, coord, <font color="#c000c0">'gx--'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'MST with Prim'</font><font color="#c000c0">'s Algorithm'</font>)<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> showCosts(co, A)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n = length(A);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> r = <font color="#ff8000">1</font>:n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = r+<font color="#ff8000">1</font>:n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> A(r,c) > <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str = num2str(A(r,c));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c1 = co(r,:);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c2 = co(c,:);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = (c1 + c2) ./ <font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text(at(<font color="#ff8000">1</font>),at(<font color="#ff8000">2</font>), str);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> [A coord] = makeGraph<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% edge weights</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cost = [<font color="#ff8000">24</font> <font color="#ff8000">19</font> <font color="#ff8000">15</font> <font color="#ff8000">19</font> <font color="#ff8000">19</font> <font color="#ff8000">19</font> <font color="#ff8000">27</font> <font color="#ff8000">27</font> <font color="#ff8000">27</font> <font color="#ff8000">70</font> <font color="#ff8000">18</font> <font color="#ff8000">15</font> <font color="#ff8000">31</font> <font color="#ff8000">19</font> <font color="#ff8000">27</font> <font color="#ff8000">27</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% edge directions</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dir = [<font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% connectivity</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;node = [ <font color="#ff8000">1</font> <font color="#ff8000">2</font> <font color="#ff8000">3</font> <font color="#ff8000">0</font> <font color="#00A000">% edges from A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> <font color="#ff8000">4</font> <font color="#ff8000">5</font> <font color="#ff8000">6</font>   <font color="#00A000">% edges from B</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font> <font color="#ff8000">7</font> <font color="#ff8000">8</font> <font color="#ff8000">0</font>   <font color="#00A000">% edges from C</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">7</font> <font color="#ff8000">9</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>   <font color="#00A000">% edges from D</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font> <font color="#ff8000">9</font> <font color="#ff8000">10</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from E</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3</font> <font color="#ff8000">11</font> <font color="#ff8000">12</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from F</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">11</font> <font color="#ff8000">13</font> <font color="#ff8000">14</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from G</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">10</font> <font color="#ff8000">13</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from H</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">12</font> <font color="#ff8000">14</font> <font color="#ff8000">15</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from I</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">5</font> <font color="#ff8000">15</font> <font color="#ff8000">16</font> <font color="#ff8000">0</font>  <font color="#00A000">% edges from J</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6</font> <font color="#ff8000">8</font> <font color="#ff8000">16</font> <font color="#ff8000">0</font>]  <font color="#00A000">% edges from K</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% coordinates</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;coord = [   <font color="#ff8000">5</font> <font color="#ff8000">4</font>  <font color="#00A000">% A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3</font> <font color="#ff8000">6</font>  <font color="#00A000">% B</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font> <font color="#ff8000">4</font>  <font color="#00A000">% C</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3</font> <font color="#ff8000">1</font>  <font color="#00A000">% D</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6</font> <font color="#ff8000">2</font>  <font color="#00A000">% E</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6</font> <font color="#ff8000">5.5</font>  <font color="#00A000">% F </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">8</font> <font color="#ff8000">5</font>  <font color="#00A000">% G</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">10</font> <font color="#ff8000">2</font>  <font color="#00A000">% H</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">7</font> <font color="#ff8000">7</font>  <font color="#00A000">% I</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font> <font color="#ff8000">8</font>  <font color="#00A000">% J</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> <font color="#ff8000">7</font>]; <font color="#00A000">% K</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = grAdjacency( node, cost, dir );<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> A = grAdjacency( node, cost, dir )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% compute an adjacency matrix.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% it should contain the weight from one</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% node to another (0 if the nodes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% are not connected)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[m cols] = size(node);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n = length(cost);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;k = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% iterate across the edges</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% finding the nodes at each end of the edge</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> is = <font color="#ff8000">1</font>:n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ir = <font color="#ff8000">1</font>:m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ic = <font color="#ff8000">1</font>:cols<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> node(ir, ic) == is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv = iv + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> iv > <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad intersection matrix'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ij(iv) = ir;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> iv ~= <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(sprintf(<font color="#c000c0">'didn'</font><font color="#c000c0">'t find both ends of edge %d'</font>, is));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = cost(is);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> dir(is) ~= -<font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k = k + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip(k) = ij(<font color="#ff8000">1</font>); jp(k) = ij(<font color="#ff8000">2</font>); tp(k) = t;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> dir(is) ~= <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k = k + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip(k) = ij(<font color="#ff8000">2</font>); jp(k) = ij(<font color="#ff8000">1</font>); tp(k) = t;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = sparse( ip, jp, tp );<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

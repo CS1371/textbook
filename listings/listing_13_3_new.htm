@@ -1,0 +1,31 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Making a kaleidoscope</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;kaleidoscope(<font color="#c000c0">'../tree.jpg'</font>)<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> kaleidoscope(name)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Making a kaleidoscope</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: kaleidoscope(file_name)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%read the image</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;picture = imread(name);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>,<font color="#ff8000">2</font>,<font color="#ff8000">1</font>); imshow(picture(ceil(<font color="#ff8000">1</font>:<font color="#ff8000">1.5</font>:end),:,:))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% resize it to 128*128</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rows cols ~] = size(picture);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n = <font color="#ff8000">128</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rndx = ceil(linspace(<font color="#ff8000">1</font>,rows, n));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cndx = ceil(linspace(<font color="#ff8000">1</font>,cols, n));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pic = picture(rndx, cndx, :);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% build the kaleidoscope</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;img = buildIt(buildIt(pic));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>,<font color="#ff8000">2</font>,<font color="#ff8000">2</font>); imshow(img)<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> img = buildIt(img)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% helper function to do the manipulations</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% top left top right</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% bottom left bottom right</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;img = [img              img(:,end:-<font color="#ff8000">1</font>:<font color="#ff8000">1</font>,:)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img(end:-<font color="#ff8000">1</font>:<font color="#ff8000">1</font>,:,:) img(end:-<font color="#ff8000">1</font>:<font color="#ff8000">1</font>,end:-<font color="#ff8000">1</font>:<font color="#ff8000">1</font>,:)];<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

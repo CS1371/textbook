@@ -1,0 +1,37 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Recursive Root Finding</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;px = linspace(-<font color="#ff8000">7</font>, <font color="#ff8000">9</font>, <font color="#ff8000">100</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(px, f(px))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;px = linspace(-<font color="#ff8000">6.3</font>, <font color="#ff8000">8.4</font>, <font color="#ff8000">19</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py = f(px);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'zeros occur just after'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zeros = find(py(<font color="#ff8000">1</font>:end-<font color="#ff8000">1</font>) .* py(<font color="#ff8000">2</font>:end) <= <font color="#ff8000">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> zndx = <font color="#ff8000">1</font>:length(zeros)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root = findZero([px(zeros(zndx)) px(zeros(zndx)+<font color="#ff8000">1</font>)]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot(root, f(root), <font color="#c000c0">'ro'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> pt = findZero(x)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% x is a lower-upper pair guaranteed to have</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% y values of opposite sign</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% return the x coordinate of the root</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> abs(x(<font color="#ff8000">1</font>)-x(<font color="#ff8000">2</font>)) < <font color="#ff8000">.001</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pt = x(<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mx = sum(x)/<font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my = f(mx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> my*f(x(<font color="#ff8000">1</font>)) <= <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pt = findZero([x(<font color="#ff8000">1</font>) mx]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pt = findZero([mx x(<font color="#ff8000">2</font>)]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> res = f(x)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = polyval([<font color="#ff8000">0.0333</font>, -<font color="#ff8000">0.3</font>, -<font color="#ff8000">1.3333</font>, <font color="#ff8000">16</font>, <font color="#ff8000">0</font>, -<font color="#ff8000">187.2</font>, <font color="#ff8000">172.9</font>],x);<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

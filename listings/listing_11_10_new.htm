@@ -1,0 +1,16 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Rotating v = u^2 about the x axes</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">100</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;u = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">5</font>, facets);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;usq = u .^ <font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% rotate about the x-axis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[zz yy xx] = cylinder(usq);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz, xx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shading interp, axis tight<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x'</font>), ylabel(<font color="#c000c0">'y'</font>), zlabel(<font color="#c000c0">'z'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'u^2 rotated about the x-axis'</font>)<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

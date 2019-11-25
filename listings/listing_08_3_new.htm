@@ -1,0 +1,20 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_08_3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Script to copy a text file</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;copy_text(<font color="#c000c0">'../mercy.txt'</font>,'../mercy_copy.txt')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> copy_text(ifn, ofn)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ih = fopen( ifn, <font color="#c000c0">'r'</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;oh = fopen( ofn, <font color="#c000c0">'w'</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ln = <font color="#c000c0">''</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ischar( ln )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ln = fgets( ih );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ischar( ln )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf( oh, ln );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fclose( ih );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fclose( oh );<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

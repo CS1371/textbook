@@ -1,0 +1,18 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Differentiating a function</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = -<font color="#ff8000">7</font>:<font color="#ff8000">0.1</font>:<font color="#ff8000">9</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;f = polyval([<font color="#ff8000">0.0333</font>,-<font color="#ff8000">0.3</font>,-<font color="#ff8000">1.3333</font>,<font color="#ff8000">16</font>,<font color="#ff8000">0</font>,-<font color="#ff8000">187.2</font>,<font color="#ff8000">0</font>], x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, f)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on, hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;df = diff(f)./diff(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x(<font color="#ff8000">2</font>:end), df, <font color="#c000c0">'g'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x(<font color="#ff8000">1</font>:end-<font color="#ff8000">1</font>), df, <font color="#c000c0">'r'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xm = (x(<font color="#ff8000">2</font>:end)+x(<font color="#ff8000">2</font>:end)) / <font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(xm, df, <font color="#c000c0">'c'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;legend({<font color="#c000c0">'f(x)'</font>, 'forward', <font color="#c000c0">'backward'</font>, 'central'})<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

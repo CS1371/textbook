@@ -1,0 +1,200 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Playing the piano</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Playing the piano</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[note Fs] = audioread(<font color="#c000c0">'../instr_piano.wav'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(note);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;half_note = <font color="#ff8000">2</font>.^(<font color="#ff8000">1</font>/<font color="#ff8000">12</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'middle C on the piano\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(note, Fs);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(length(note) ./ Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'octave higher by doubling the playback frequency\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(note, Fs*<font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(length(note) ./ (<font color="#ff8000">2</font>*Fs))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'octave lower by stretching the sound vector\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(note(round(<font color="#ff8000">1</font>:<font color="#ff8000">0.5</font>:end)), Fs);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(length(note) ./ (<font color="#ff8000">0.5</font>*Fs))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'middle C on the piano\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(note, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;seconds = <font color="#ff8000">0.5</font>; <font color="#00A000">% length(note) / Fs</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(seconds)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mult = half_note;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'play an octave of black and white notes\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> count = <font color="#ff8000">1</font>:<font color="#ff8000">12</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(note, Fs*mult)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(seconds)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mult = mult * half_note;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'play C major scale by changing frequency\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gaps = [<font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">1</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">1</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mult = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(note, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(seconds)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> count = <font color="#ff8000">1</font>:length(gaps)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;times = gaps(count);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mult = mult * (half_note .^ times);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(note, Fs*mult)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(seconds)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'play C major scale by shrinking the sound vector\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mult = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(note, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(seconds)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> count = <font color="#ff8000">1</font>:length(gaps)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;times = gaps(count);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mult = mult * (half_note .^ times);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ndx = round(linspace(<font color="#ff8000">1</font>,N,N/mult));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(note(ndx), Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(seconds)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;play_steps(note)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;run(<font color="#c000c0">'../ramblinWreck'</font>)   % fetch the score<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'play a tune using music notation for pitch\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;solo = play_part(soloPart,<font color="#c000c0">'organ'</font>, <font color="#ff8000">180</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t = <font color="#ff8000">0.75</font> * length(solo) ./ Fs;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(solo, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(t)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'assemble orchestra parts\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;solo = play_part(soloPart, <font color="#c000c0">'tpt'</font>, <font color="#ff8000">180</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;solomax = max(abs(solo));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NSolo = length(solo);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;soprano = play_part(sopranoPart, <font color="#c000c0">'piano'</font>, <font color="#ff8000">180</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sopmax = max(abs(soprano));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NSop = length(soprano);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alto1 = play_part(alto1Part, <font color="#c000c0">'piano'</font>, <font color="#ff8000">180</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alto1max = max(abs(alto1));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NA1 = length(alto1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alto2 = play_part(alto2Part, <font color="#c000c0">'piano'</font>, <font color="#ff8000">180</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alto2max = max(abs(alto2));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NA2 = length(alto2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tenor = play_part(tenorPart, <font color="#c000c0">'organ'</font>, <font color="#ff8000">180</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tenormax = max(abs(tenor));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NT = length(tenor);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bass = play_part(bassPart, <font color="#c000c0">'tbone'</font>, <font color="#ff8000">180</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bassmax = max(abs(bass));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NB = length(bass);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;RSize = max([NSop NA1 NA2 NT NB]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;right = zeros(RSize, <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;LSize = max([NSolo, NB]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;left = zeros(LSize, <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NRight = <font color="#ff8000">5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NLeft = <font color="#ff8000">8</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;right(<font color="#ff8000">1</font>:NSop) = right(<font color="#ff8000">1</font>:NSop) + soprano ./ NRight;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;right(<font color="#ff8000">1</font>:NA1) = right(<font color="#ff8000">1</font>:NA1) + alto1 ./ NRight;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;right(<font color="#ff8000">1</font>:NA2) = right(<font color="#ff8000">1</font>:NA2) + alto2 ./ NRight;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;right(<font color="#ff8000">1</font>:NT) = right(<font color="#ff8000">1</font>:NT) + tenor ./ NRight;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;right(<font color="#ff8000">1</font>:NB) = right(<font color="#ff8000">1</font>:NB) + bass ./ NRight;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;left(<font color="#ff8000">1</font>:NSolo) = left(<font color="#ff8000">1</font>:NSolo) + solo * <font color="#ff8000">1.5</font> ./ NLeft;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;left(<font color="#ff8000">1</font>:NB) = left(<font color="#ff8000">1</font>:NB) + bass * <font color="#ff8000">3</font> ./ NLeft;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wreck(<font color="#ff8000">1</font>:RSize,<font color="#ff8000">1</font>) = right;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wreck(<font color="#ff8000">1</font>:LSize,<font color="#ff8000">2</font>) = left;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;keep = (right ~= <font color="#ff8000">0</font>) | (left ~= <font color="#ff8000">0</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wreck = wreck(keep);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(wreck, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(length(wreck)./Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;audiowrite(<font color="#c000c0">'new_wreck.wav'</font>, wreck, Fs)<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> play_steps(note)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Fs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;half_note = <font color="#ff8000">2</font>.^(<font color="#ff8000">1</font>/<font color="#ff8000">12</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(note)/<font color="#ff8000">10</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'play a tune using half_step count for pitch\n'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;notes = [   <font color="#ff8000">4</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">4</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(notes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nt = notes(ndx, <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dur = notes(ndx, <font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mult = half_note .^ nt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sampler = floor(linspace(<font color="#ff8000">1</font>, N, N / mult));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound(note(sampler), Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">0.2</font>*dur)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> part = play_part( score, instr, rate)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Fs;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fname = [<font color="#c000c0">'../instr_'</font> instr <font color="#c000c0">'.wav'</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[note Fs] = audioread(fname);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;note = [note; zeros(<font color="#ff8000">200000</font>,<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lngth = overall(score);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ns = length(note);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;maxSize = Ns + Fs * lngth * <font color="#ff8000">60</font> / rate;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;part = zeros(maxSize,<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dt = <font color="#ff8000">60</font>/rate;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;where = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;samples = Fs * dt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(score)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name = score{ndx, <font color="#ff8000">1</font>};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dur = score{ndx, <font color="#ff8000">2</font>};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pitch = getPitch(name);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num = samples * dur;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(name, <font color="#c000c0">'R0'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index = ceil(linspace(<font color="#ff8000">1</font>, Ns, Ns/pitch));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notes = note(index(<font color="#ff8000">1</font>:num));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;part(where:(where+num-<font color="#ff8000">1</font>)) = part(where:(where+num-<font color="#ff8000">1</font>))  + notes;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where = where + num;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> sum = overall(score)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sum = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(score);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> it = <font color="#ff8000">1</font>:N<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum = sum + score{it,<font color="#ff8000">2</font>};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> [pitch, muted] = getPitch(note)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Get the pitch of a note in ascii form</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;half = <font color="#ff8000">2</font>.^(<font color="#ff8000">1</font>/<font color="#ff8000">12</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;muted = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">switch</font> note(<font color="#ff8000">1</font>:end-<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#c000c0">'C'</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#c000c0">'R'</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muted = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#c000c0">'CS'</font> 'DF'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'D'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#c000c0">'DS'</font> 'EF'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">3</font>;        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'E'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">4</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'F'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#c000c0">'FS'</font> 'GF'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">6</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'G'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">7</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#c000c0">'GS'</font> 'AF'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">8</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'A'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">9</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#c000c0">'AS'</font> 'BF'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">10</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'B'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">11</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">otherwise</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error([<font color="#c000c0">'bad note value: '</font> note])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let = note(end) - <font color="#c000c0">'0'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diff = let - <font color="#ff8000">4</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = power + <font color="#ff8000">12</font> * diff;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pitch = half .^ power;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+</strong></code>

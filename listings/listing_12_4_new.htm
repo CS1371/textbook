@@ -1,0 +1,35 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Plotting line intersections</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% equations are y = m1 x + c1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% y = m2 x + c2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% in matrix form:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% [ -m1 1; * [xp; = [c1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% -m2 1 ] yp] c2]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ax = [-<font color="#ff8000">0.5</font> <font color="#ff8000">6</font>]; ay = [-<font color="#ff8000">4.5</font> <font color="#ff8000">18</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% plot the two lines</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;m1 = <font color="#ff8000">3</font>; c1 = -<font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y1 = m1*ax + c1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;m2 = -<font color="#ff8000">2</font>; c2 = <font color="#ff8000">9</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y2 = m2*ax + c2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(ax, y1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(ax, y2, <font color="#c000c0">'b-'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% solve for the intersection point</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [-m1 <font color="#ff8000">1</font>; -m2 <font color="#ff8000">1</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;c = [c1; c2];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;P = A\c;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% draw intersection identification lines</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ix = P(<font color="#ff8000">1</font>); iy = P(<font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot([ix ix], [<font color="#ff8000">0</font> iy*<font color="#ff8000">1.2</font>], <font color="#c000c0">'r:'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot([<font color="#ff8000">0</font> ix*<font color="#ff8000">1.2</font>],[iy iy], <font color="#c000c0">'r:'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% draw the axes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(ax, [<font color="#ff8000">0</font> <font color="#ff8000">0</font>], <font color="#c000c0">'k'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis([ax ay])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot([<font color="#ff8000">0</font> <font color="#ff8000">0</font>], ay, <font color="#c000c0">'k'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;legend({<font color="#c000c0">'Line 1'</font>,'Line <font color="#ff8000">2'</font>,<font color="#c000c0">'Intersect'</font>}, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'Location'</font>,'NorthWest' )<br>
+<font color="#0000ff">end</font><br>
+</strong></code>

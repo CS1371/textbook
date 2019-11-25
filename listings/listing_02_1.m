@@ -1,6 +1,7 @@
 % listing_02_1
 % Script to solve for the hypotenuse of a right triange
-clear; clc
+clear
+clc
     % Assign values to A and B. The semicolons prevent MATLAB from displaying
     % the result in the Command window; the percent sign begins the legible
     % comment. Lines may contain nothing but a comment.
