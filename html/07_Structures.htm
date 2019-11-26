@@ -333,7 +333,38 @@ You must remember the scope rules for variables within a function. Code inside a
  <li>The resulting code is generally more compact and easier to understand</li>
  <li>When constructing collections of structures, it enforces consistency across the collections.
 </li>
- </ul> There are two approaches to the use of constructor functions: using built-in capabilities or writing your own constructor. There is a built-in function, <code>struct(...)</code>, that consumes pairs of entries, each consisting of a field name as a string and a cell array of field contents and produces a structure. If all the cell arrays have more than one entry, this actually creates a structure array, as discussed in Section 7.4.1.  The following command would construct the address book entry created in the previous section. Note the use of ellipses <code>(...)</code> to indicate to the MATLAB machinery that the logic is continued onto the next line.<br>
+ </ul> There are two approaches to the use of constructor functions: using built-in capabilities or writing your own constructor. <br>
+<b>Built-in Constructor: </b> There is a built-in function, <code>struct(...)</code>, that consumes pairs of entries, each consisting of a field name as a string and a cell array of field contents and produces a structure. If all the cell arrays have more than one entry, this actually creates a structure array, as discussed in Section 7.4.1.  The following command would construct the address book entry created in the previous section. Note the use of ellipses <code>(...)</code> to indicate to the MATLAB machinery that the logic is continued onto the next line.<br>
+ <div class="container">
+  <div class="sidebar_R">
+<h4>Exercise 7.3: A Custom CD structure</h4>
+Create one entry of CD information:
+<code>>> CD = makeCD('Blues', 'Charles, Ray', ...<br>
+'Genius Loves Company', 2004, 4.5, 15.35 )<br>
+CD =<br>
+genre: 'Blues'<br>
+artist: 'Charles, Ray'<br>
+title: 'Genius Loves Company'<br>
+year: 2004<br>
+stars: 4.5000<br>
+price: 15.3500<br>
+>> flds = fieldnames(CD)<br>
+flds =<br>
+'genre'<br>
+'artist'<br>
+'title'<br>
+'year'<br>
+'stars'<br>
+'price'<br>
+>> field = flds{2}<br>
+field =<br>
+artist<br>
+>> CD.(field)<br>
+ans =<br>
+Charles, Ray<br>
+</code>
+</div>
+
  <code>>>struct('first','Fred', ...<br>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'last','Jones', ... <br>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'phone','(123) 555-1212', ...<br>
@@ -343,7 +374,22 @@ You must remember the scope rules for variables within a function. Code inside a
 &nbsp;&nbsp;&nbsp;&nbsp;last: 'Jones'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;phone: '(123) 555-1212'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;birth: [1x1 struct]<br>
-</code> This is useful in general to create structures, but the need to repeat the field names makes this general-purpose approach a little annoying. We can create a special-purpose function that “knows” the necessary field names to create multiple structures in an organized way.  Listing 7.3 shows the code for a function that consumes parameters that describe a CD and assembles a structure containing those attributes by name.  In Exercise 7.3, you can try your hand at using this function to construct a CD structure and then verify the structure contents.  
+</code> <br>
+<b>Custom Constructor:</b>The <code>struct(...)</code> constructor is useful in general to create structures, but the need to repeat the field names makes this general-purpose approach a little annoying. We can create a special-purpose function that “knows” the necessary field names to create multiple structures in an organized way.  Listing 7.3 shows the code for a function that consumes parameters that describe a CD and assembles a structure containing those attributes by name.<br>
+
+<h4>Listing 7.3: a CD constructor</h4>
+<code><strong>
+<font color="#0000ff">function</font> ans = makeCD(gn, ar, ti, yr, st, pr)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% integrate CD data into a structure</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans.genre = gn ;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans.artist = ar ;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans.title = ti;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans.year = yr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans.stars = st;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans.price = pr;<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+  In Exercise 7.3, you can try your hand at using this function to construct a CD structure and then verify the structure contents.  
 <h2><a name="7_4">7.4 Structure Arrays</a></h2>
  To be useful, collections like address books or CD collections require multiple structure entries with the same fields. This is accomplished by forming an array of data items, each of which contains the same fields of information.  MATLAB implements the concept of structure arrays with the properties described in the following paragraphs.  
 <h3><a name="7_4_1">7.4.1	Constructing Structure Arrays</a></h3>
