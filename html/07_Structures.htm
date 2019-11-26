@@ -281,37 +281,37 @@ Suppose that you want to use structures to maintain your address book. In the
 Command window, enter the following commands:<br>
 <code>>> entry.first = 'Fred'<br>
 entry =<br>
-first: 'Fred'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;first: 'Fred'<br>
 >> entry.last = 'Jones';<br>
 >> entry.phone = '(123) 555-1212'<br>
 entry =<br>
-first: 'Fred”<br>
-last: 'Jones'<br>
-phone: '(123) 555-1212'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;first: 'Fred”<br>
+&nbsp;&nbsp;&nbsp;&nbsp;last: 'Jones'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;phone: '(123) 555-1212'<br>
 >> entry.phone<br>
 ans =<br>
-(123) 555-1212<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(123) 555-1212<br>
 >> date.day = 31;<br>
 >> date.month = 'February';<br>
 >> date.year = 1965<br>
 date =<br>
-day: 31<br>
-month:'February'<br>
-year: 1965<br>
+&nbsp;&nbsp;&nbsp;&nbsp;day: 31<br>
+&nbsp;&nbsp;&nbsp;&nbsp;month:'February'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year: 1965<br>
 >> entry.birth = date<br>
 entry =<br>
-first: 'Fred'<br>
-last: 'Jones'<br>
-phone: '(123) 555-1212'<br>
-birth: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;first: 'Fred'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;last: 'Jones'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;phone: '(123) 555-1212'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;birth: [1x1 struct]<br>
 >> entry.birth<br>
 ans =<br>
-day: 31<br>
-month: 'February'<br>
-year: '1965'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;day: 31<br>
+&nbsp;&nbsp;&nbsp;&nbsp;month: 'February'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year: '1965'<br>
 >> entry.birth.year<br>
 ans =<br>
-1965<br></code>
+&nbsp;&nbsp;&nbsp;&nbsp;1965<br></code>
 </div>
 <code>>> fn = names{1};<br>
 >> A.(fn) = [A.(fn) 'fg']<br>
@@ -327,7 +327,23 @@ You must remember the scope rules for variables within a function. Code inside a
  
  Exercise 7.2 gives you an opportunity to understand how to build structures. Here we build a typical structure that could be used as one entry in a telephone book. Since phone numbers usually contain punctuation, we could store them as strings. Notice that since a structure may contain any object, it is quite legal to make a structure containing a date and insert that structure in the date field of the entry. The structure display function, however, does not display the contents of the structures.  
 <h3><a name="7_3_2">7.3.2	Constructor Functions</a></h3>
- This section discusses functions that assign their parameters to the fields of a structure and then return that structure. You do this, as opposed to “manually” entering data into structures, for the following reasons:  ■	Manual entry can result in strange behavior due to typographical errors or having fields in the wrong order ■	The resulting code is generally more compact and easier to understand ■	When constructing collections of structures, it enforces consistency across the collections  There are two approaches to the use of constructor functions: using built-in capabilities and writing your own constructor. There is a built-in function, struct(...), that consumes pairs of entries (each consisting of a field name as a string and a cell array of field contents) and produces a structure. If all the cell arrays have more than one entry, this actually creates a structure array, as discussed in Section 7.4.1.  The following command would construct the address book entry created in the previous section. Note the use of ellipses (...) to indicate to the MATLAB machinery that the logic is continued onto the next line.  >> struct('first','Fred', ... 'last','Jones', ... 'phone','(123) 555-1212', ... 'birth', struct( 'day', 31, 'month', 'February', 'year', 1965 )) ans = first: 'Fred' last: 'Jones' phone: '(123) 555-1212' birth: [1x1 struct]  This is useful in general to create structures, but the need to repeat the field names makes this general-purpose approach a little annoying. We can create a special-purpose function that “knows” the necessary field names to create multiple structures in an organized way.  Listing 7.3 shows the code for a function that consumes parameters that describe a CD and assembles a structure containing those attributes by name.  In Exercise 7.3, you can try your hand at using this function to construct a CD structure and then verify the structure contents.  
+ This section discusses functions that assign their parameters to the fields of a structure and then return that structure. You do this, as opposed to “manually” entering data into structures, for the following reasons:
+ <ul>
+ <li>Manual entry can result in strange behavior due to typographical errors or having fields in the wrong order</li>
+ <li>The resulting code is generally more compact and easier to understand</li>
+ <li>When constructing collections of structures, it enforces consistency across the collections.
+</li>
+ </ul> There are two approaches to the use of constructor functions: using built-in capabilities or writing your own constructor. There is a built-in function, <code>struct(...)</code>, that consumes pairs of entries, each consisting of a field name as a string and a cell array of field contents and produces a structure. If all the cell arrays have more than one entry, this actually creates a structure array, as discussed in Section 7.4.1.  The following command would construct the address book entry created in the previous section. Note the use of ellipses <code>(...)</code> to indicate to the MATLAB machinery that the logic is continued onto the next line.<br>
+ <code>>>struct('first','Fred', ...<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'last','Jones', ... <br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'phone','(123) 555-1212', ...<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'birth', struct( 'day', 31, 'month', 'February', 'year', 1965 ))<br>
+ ans = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;first: 'Fred'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;last: 'Jones'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;phone: '(123) 555-1212'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;birth: [1x1 struct]<br>
+</code> This is useful in general to create structures, but the need to repeat the field names makes this general-purpose approach a little annoying. We can create a special-purpose function that “knows” the necessary field names to create multiple structures in an organized way.  Listing 7.3 shows the code for a function that consumes parameters that describe a CD and assembles a structure containing those attributes by name.  In Exercise 7.3, you can try your hand at using this function to construct a CD structure and then verify the structure contents.  
 <h2><a name="7_4">7.4 Structure Arrays</a></h2>
  To be useful, collections like address books or CD collections require multiple structure entries with the same fields. This is accomplished by forming an array of data items, each of which contains the same fields of information.  MATLAB implements the concept of structure arrays with the properties described in the following paragraphs.  
 <h3><a name="7_4_1">7.4.1	Constructing Structure Arrays</a></h3>
