@@ -1,14 +1,14 @@
 % listing_05_9
 % Script to compute liquid levels
-clear; clc
+% clear; clc
     % Initialize another_tank to start the while loop code.
     another_tank = true;
     while another_tank
         % Get the tank dimensions.
-        %%3.	H = input('Overall tank height: ');
-        %%4.	r = input('tank radius: ');
+%         H = input('Overall tank height: ');
+%         r = input('tank radius: ');
         %%%%
-        %   auto gen only
+%         %   auto gen only
         rn = round(rand(1,2) * 100);
         H = rn(1);
         r = rn(2);
@@ -17,7 +17,7 @@ clear; clc
         more_heights = true;
         while more_heights
             % Get the liquid height.
-            %	h = input('liquid height: ');
+            % h = input('liquid height: ');
             %%%%
             %   auto gen only
             rn = round(rand(1,1) * 100);

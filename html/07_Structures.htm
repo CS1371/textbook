@@ -37,7 +37,8 @@
     <li><a href="#7_4_2">7.4.2  Accessing Structure Elements</a>
     <li><a href="#7_4_3">7.4.3  Manipulating Structures</a>
 </ul>
-<li><a href="#7_5">7.5  Engineering Example— Assembling a Physical Structure</a>
+<li><a href="#7_5">7.5  Comparing Cell Arrays to Structure Arrays</a>
+<li><a href="#7_6">7.6  Engineering Example— Assembling a Physical Structure</a>
 </ul>
 <h2>Chapter Objectives</h2>
 
@@ -61,11 +62,33 @@ In addition, we will consider collecting structures into arrays of structures.
 <b>Insignificant Footnote:</b> There is a fundamental aspect of computing that is carefully hidden by the Matlab but fully exposed in other languages especially Java. That aspect is this: computer languages that deal with complex concepts such as the subject of this chapter actually need to implement the classes that define behavior in a hierarchy.  At the root of that hierarchy in Java is a class called Object, and all Java classes actually respond as if they were Objects in addition to their specific behavior.  Matlab hides exactly the same behavior. Hence, while we discuss these collections as if they were heterogeneous, because of this hierarchy, the Matlab infrastructure treats them as homogeneous collections of Objects.</p>
 
 <h2><a name="7_2">7.2	Cell Arrays</a></h2>
+
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="250" src="Fig_7_1.jpg" width="450" /></p>
+<figcaption><b><center>Fig 7.1 Conceptual Cell Array</center></b></figcaption></figure>
+
 Cell arrays, as the name suggests, have the general form of arrays and can be indexed numerically as arrays. However, each element of a cell array should be considered as a container in which one data object of any class can be stored. They can be treated as arrays of containers for the purpose of concatenation and slicing. However, if you wish to access or modify the contents of the containers, the cells must be accessed individually.<br>
 <b>Nomenclature:</b> Cells and cell arrays have dual meanings.  In one sense, the braces specify a <b>cell</b>, a <b>container</b> of whatever is inside the braces. The other sense suggests that within the cell is an arbitrary <b>collection of objects</b> we will refer to as a cell's <b>contents</b>.
  
 <h3><a name="7_2_1">7.2.1	Creating Cell Arrays</a></h3>
- 
+Cell arrays may be constructed in the following ways: 
+ <ui>
+ <li>By assigning values individually to a variable indexed with braces:<br>
+ <code>>> A{1} = 42<br>
+ A =<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;[42] </li></code>
+ <li>By assigning anything contained within braces individually to a variable normally indexed with parentheses:<br>
+ <code>>> B(1) = {[4 6]};<br>
+ B =<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;[1x2 double] </code></li>
+ <li>By concatenating cell contents using braces <code>{. . .}:<br>
+ >> C = {3, [1,2,3], 'abcde'}<br>
+ C = <br>
+ &nbsp;&nbsp;&nbsp;&nbsp;[3] [1x3 double] 'abcde'</li></code>
+ <li>By concatenating cell containers:<br>
+ <code>>> D = [A B C {'xyz'}]<br>
+ D = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[42] [1x2 double] [3] [1x3 double] 'abcde' 'xyz'</li> </code> 
 <div class="container">
   <div class="sidebar_R">
 <h4>Exercise 7.1 Cell Arrays Distributing Data</h4>
@@ -130,24 +153,7 @@ F =<br>
 </code>
 </div>
 <div class="container">
-Cell arrays may be constructed in the following ways: 
- <ui>
- <li>By assigning values individually to a variable indexed with braces:<br>
- <code>>> A{1} = 42<br>
- A =<br>
- &nbsp;&nbsp;&nbsp;&nbsp;[42] </li></code>
- <li>By assigning anything contained within braces individually to a variable normally indexed with parentheses:<br>
- <code>>> B(1) = {[4 6]};<br>
- B =<br>
- &nbsp;&nbsp;&nbsp;&nbsp;[1x2 double] </code></li>
- <li>By concatenating cell contents using braces <code>{. . .}:<br>
- >> C = {3, [1,2,3], 'abcde'}<br>
- C = <br>
- &nbsp;&nbsp;&nbsp;&nbsp;[3] [1x3 double] 'abcde'</li></code>
- <li>By concatenating cell containers:<br>
- <code>>> D = [A B C {'xyz'}]<br>
- D = <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[42] [1x2 double] [3] [1x3 double] 'abcde' 'xyz'</li> </code>
+
 </ui>
 <br>
  Based on these examples, we observe the following:
@@ -253,6 +259,10 @@ end<br>
 </strong></code>
  </div>
 <h2><a name="7_3">7.3 Structures</a></h2>
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="250" src="Fig_7_2.jpg" width="450" /></p>
+<figcaption><b><center>Fig 7.2 Conceptual Structure Array</center></b></figcaption></figure>
+
  Where cell arrays implemented the concept of homogeneous collections as indexed collections, a structure provides for items to be accessed by field name rather than by indexing. Most modern languages implement the concept of a structure in a similar style. The data contained in a structure are referenced by field name, for example, <code>item1</code>. The rules for making a field name are the same as those for a variable. Fields of a structure, like the elements of a cell array, are heterogeneous — they can contain any MATLAB object. First, we will see how to construct and manipulate one structure, and then how to aggregate individual structures into an array of structures.  
 <h3><a name="7_3_1">7.3.1	Constructing and Accessing One Structure</a></h3>
  To set the value of items in a structure <code>A</code>, the syntax is as follows:<br>
@@ -273,6 +283,11 @@ You can determine the names of the fields in a structure using the built-in func
 names = <br>
 &nbsp;&nbsp;&nbsp;&nbsp;'item1' 'item2'<br></code>
 Fields can also be accessed “indirectly” by setting a variable to the name of the field, and then by using parentheses to indicate that the variable contents should be used as the field name:<br>
+<code>>> fn = names{1};<br>
+>> A.(fn) = [A.(fn) 'fg']<br>
+A =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcdefg'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item2: 21</code><br>
  <div class="container">
   <div class="sidebar_R">
 <h4>Exercise 7.2: Building structures</h4>
@@ -313,11 +328,6 @@ ans =<br>
 ans =<br>
 &nbsp;&nbsp;&nbsp;&nbsp;1965<br></code>
 </div>
-<code>>> fn = names{1};<br>
->> A.(fn) = [A.(fn) 'fg']<br>
-A =<br>
-&nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcdefg'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;item2: 21</code><br>
  You can also remove a field from a structure using the built-in function <code>rmfield(...)</code>. Its specification is:<br>
  <code>function &lt;res&gt; = rmfield(&lt;str&gt;, &lt;fld_name&gt;)</code><br>
  where <code>&lt;str&gt;</code> represents a structure consumed by the function<br>
@@ -335,36 +345,7 @@ You must remember the scope rules for variables within a function. Code inside a
 </li>
  </ul> There are two approaches to the use of constructor functions: using built-in capabilities or writing your own constructor. <br>
 <b>Built-in Constructor: </b> There is a built-in function, <code>struct(...)</code>, that consumes pairs of entries, each consisting of a field name as a string and a cell array of field contents and produces a structure. If all the cell arrays have more than one entry, this actually creates a structure array, as discussed in Section 7.4.1.  The following command would construct the address book entry created in the previous section. Note the use of ellipses <code>(...)</code> to indicate to the MATLAB machinery that the logic is continued onto the next line.<br>
- <div class="container">
-  <div class="sidebar_R">
-<h4>Exercise 7.3: A Custom CD structure</h4>
-Create one entry of CD information:
-<code>>> CD = makeCD('Blues', 'Charles, Ray', ...<br>
-'Genius Loves Company', 2004, 4.5, 15.35 )<br>
-CD =<br>
-genre: 'Blues'<br>
-artist: 'Charles, Ray'<br>
-title: 'Genius Loves Company'<br>
-year: 2004<br>
-stars: 4.5000<br>
-price: 15.3500<br>
->> flds = fieldnames(CD)<br>
-flds =<br>
-'genre'<br>
-'artist'<br>
-'title'<br>
-'year'<br>
-'stars'<br>
-'price'<br>
->> field = flds{2}<br>
-field =<br>
-artist<br>
->> CD.(field)<br>
-ans =<br>
-Charles, Ray<br>
-</code>
-</div>
-
+ 
  <code>>>struct('first','Fred', ...<br>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'last','Jones', ... <br>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'phone','(123) 555-1212', ...<br>
@@ -375,6 +356,35 @@ Charles, Ray<br>
 &nbsp;&nbsp;&nbsp;&nbsp;phone: '(123) 555-1212'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;birth: [1x1 struct]<br>
 </code> <br>
+<div class="container">
+  <div class="sidebar_R">
+<h4>Exercise 7.3: A Custom CD structure</h4>
+Create one entry of CD information:<br>
+<code>>> CD = makeCD('Blues', 'Charles, Ray', ...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'Genius Loves Company', 2004, 4.5, 15.35 )<br>
+CD =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre: 'Blues'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist: 'Charles, Ray'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title: 'Genius Loves Company'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year: 2004<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars: 4.5000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price: 15.3500<br>
+>> flds = fieldnames(CD)<br>
+flds =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'genre'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'artist'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'title'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'year'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'stars'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'price'<br>
+>> field = flds{2}<br>
+field =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist<br>
+>> CD.(field)<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Charles, Ray<br>
+</code>
+</div>
 <b>Custom Constructor:</b>The <code>struct(...)</code> constructor is useful in general to create structures, but the need to repeat the field names makes this general-purpose approach a little annoying. We can create a special-purpose function that “knows” the necessary field names to create multiple structures in an organized way.  Listing 7.3 shows the code for a function that consumes parameters that describe a CD and assembles a structure containing those attributes by name.<br>
 
 <h4>Listing 7.3: a CD constructor</h4>
@@ -390,15 +400,74 @@ Charles, Ray<br>
 <font color="#0000ff">end</font><br>
 </strong></code>
   In Exercise 7.3, you can try your hand at using this function to construct a CD structure and then verify the structure contents.  
+  
 <h2><a name="7_4">7.4 Structure Arrays</a></h2>
  To be useful, collections like address books or CD collections require multiple structure entries with the same fields. This is accomplished by forming an array of data items, each of which contains the same fields of information.  MATLAB implements the concept of structure arrays with the properties described in the following paragraphs.  
 <h3><a name="7_4_1">7.4.1	Constructing Structure Arrays</a></h3>
- Structure arrays can be created either by creating values for individual fields, as shown in Exercise 7.4; by using MATLAB’s struct(...) function to build the whole structure array, as shown in Listing 7.4; or by using a custom function to create each individual structure, as shown in Listing 7.5. This latter listing illustrates these concepts by implementing a collection of CDs as a structure array using the function makeCD(...) from Listing 7.3.  In Listing 7.4:  Lines 1–5: Build cell arrays containing field values for five CDs. Line 6: Uses the built-in struct(...) function to create the CD collection. The function consumes a variable number of pairs of parameters. The first parameter of the pair is a string containing the name of a field to be created. The second parameter is the content of that field expressed as either a cell array or any other data type. If the field content is a cell array, the structure to be created becomes a structure array whose length is the length of that cell array. Each field of the structure array receives the corresponding value from the cell array. If the field content is anything other than a cell array, the content of each structure array field becomes a copy of that item.  In Listing 7.5:  Lines 1–2: Call the makeCD(...) function defined in Listing 7.3 to generate the description of the first CD. Lines 3–16: Repeat the process for seven more CDs, each of which is added to the collection.  
+ Structure arrays can be created either by using MATLAB’s <code>struct(...)</code> function to build the whole structure array, or by using a custom function to create each individual structure. <br>
+ 
+<b>Built-in Constructor:</b> Listing 7.4 illustrates these concepts by implementing a collection of CDs as a structure array using the function <code>struct(...)</code> from Listing 7.3.<br>
+ <h4>Listing 7.4: Building a structure <i>array</i> using <code>struct(...)</code></h4>
+ <code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Build cell arrays containing field values for three CDs.</font><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;genres = {<font color="#c000c0">'Blues'</font>, <font color="#c000c0">'Classical'</font>, <font color="#c000c0">'Country'</font> };<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artists = {<font color="#c000c0">'Clapton, Eric'</font>, <font color="#c000c0">'Bocelli, Andrea'</font>, <font color="#c000c0">'Twain, Shania'</font> };<br>
+&nbsp;&nbsp;&nbsp;&nbsp;years = { <font color="#ff8000">2004</font>, <font color="#ff8000">2017</font>, <font color="#ff8000">1984</font> };<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars = { <font color="#ff8000">2</font>, <font color="#ff8000">4.6</font>, <font color="#ff8000">3.9</font> };<br>
+&nbsp;&nbsp;&nbsp;&nbsp;prices = { <font color="#ff8000">18.95</font>, <font color="#ff8000">14.89</font>, <font color="#ff8000">13.49</font> };<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds = struct( <font color="#c000c0">'genre'</font>, genres, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'artist'</font>, artists, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'year'</font>, years, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'stars'</font>, stars, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'price'</font>, prices)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+</strong></code>
+
+ When using the built-in <code>struct(...)</code> function to create a structure array, the form of the function call is identical to that used in Para 7.3.2. The only difference is the usage of the second parameter of each field_name/value pair. If the value is a cell array, the structure to be created becomes a structure array whose size (in the general sense) is the size of that cell array. Then, each field of the structure array receives the corresponding value from the cell array. If the field content is anything other than a cell array, the content of each structure array field becomes a copy of that item.  It is possible that the first field may not have a cell array as its value such as, for example, a last_name field. The first field whose value is a cell array will define the size of the structure array.  Subsequent fields may have the same size, but it is illegal for any subsequent fields to have cell array of a different size.<br>
+
+<b>Built-in Constructor:</b> Listing 7.5 illustrates these concepts by implementing a collection of CDs as a structure array using the function <code>makeCD(...)</code> from Listing 7.3.<br>
+ <h4>Listing 7.5: Building a structure <i>array</i> using a custom constructor</h4>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_07_5</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Building a structure array using a custom constructor</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% extracts from http://www.cduniverse.com/ 12/30/04</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">1</font>) = makeCD(<font color="#c000c0">'Blues'</font>, 'Clapton, Eric', <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'Sessions For Robert J'</font>, <font color="#ff8000">2004</font>, <font color="#ff8000">2</font>, <font color="#ff8000">18.95</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">2</font>) = makeCD(<font color="#c000c0">'Classical'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'Bocelli, Andrea'</font>, 'Andrea', <font color="#ff8000">2004</font>, <font color="#ff8000">4.6</font>, <font color="#ff8000">14.89</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">3</font>) = makeCD( <font color="#c000c0">'Country'</font>, 'Twain, Shania', <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'Greatest Hits'</font>, <font color="#ff8000">2004</font>, <font color="#ff8000">3.9</font>, <font color="#ff8000">13.49</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds<br>
+</strong></code>
+
+
+
+  
 <h3><a name="7_4_2">7.4.2	Accessing Structure Elements</a></h3>
  Like normal arrays or cell arrays, items can be stored and retrieved by their index in the array. As structures are added to the array, MATLAB forces all elements in the structure array to implement the same field names in the same order. Elements can be accessed either manually (not recommended) or by creating new structures with a constructor and adding them (recommended).  If you elect to manipulate them manually, you merely identify the array element by indexing and use the .field operator. For example, for the CD collection cds, we could change the price of one of them as follows:  >> cds(3).price = 11.95 cds = 1x31 struct array with fields: genre, artist, title, year, stars, price This is a little hazardous when making manual additions to a structure array. A typographical error while entering a field name results in all the structures having that bad field name. For example, consider this error:  >> cds(3).prce = 11.95 cds = 1x31 struct array with fields: genre, artist, title, year, stars, price, prce  You have accidentally added a new field to the whole collection. You can check this by looking at one entry:  >> cds(1) ans = genre: 'Blues' artist: 'Sessions For Robert J' title: 'Clapton, Eric' year: 2004 stars: 2 price: 18.95 prce: []  If this happens, you can use the fieldnames(...) function to determine the situation and then the rmfield(...) function to remove the offending entry.  >> fieldnames(cds) ans =  'genre' 'artist' 'title' 'year' 'stars' 'price' 'prce'  >> cds = rmfield(cds,'prce') cds = 1x32 struct array with fields: genre, artist, title, year, stars, price  It is best to construct a complete structure and then insert it into the structure array. For example:  >> newCD = makeCD( 'Oldies', 'Greatest Hits', ... 'Ricky Nelson', 2005, 5, 15.79 ); >> cds(8) = newCD cds = 1x8 struct array with fields: genre, artist, title, year, stars, price  If you insert that new CD beyond the end of the array, as one might expect, MATLAB fills out the array with empty structures:  >> cds(50) = newCD cds = 1x50 struct array with fields: genre, artist, title, year, stars, price >> cds(49) ans = genre: [] artist: [] title: [] year: [] stars: [] price: []  
 <h3><a name="7_4_3">7.4.3	Manipulating Structures</a></h3>
  Structures and structure arrays can be manipulated in the following ways:  I.	Single values can be changed using the “.” (dot) notation directly with a field name:  >> cds(5).price = 19.95;  II.	or indirectly using the “.” (dot) notation with a variable containing the field name: >> fld = 'price'; >> cds(5).(fld) = 19.95;  or by using built-in functions: III.	nms = fieldnames(str) returns a cell array containing the names of the fields in a structure or structure array.  >> flds = fieldnames(cds)  IV.	it = isfield(str, <fldname>) determines whether the given name is a field in this structure or structure array. >> if isfield(cds, 'price') ... V.	str = setfield(str, <fldname>, <value>) returns a new structure array with the specified field set to the specified value. >> cds(1) = setfield(cds(1), 'price', 19.95); VI.	val = getfield(str, <fldname>) returns the value of the specified field. >> disp(getfield(cds(1), 'price') ); VII.	str = rmfield(str, <fldname>) returns a new structure array with the specified field removed. >> noprice = rmfield(cds, 'price'); VIII.	Values across the whole array can be retrieved using the “.” notation by accumulating them into arrays either into cell arrays: >> titles = {cds.title}; >> [alpha order] = sort(titles); IX.	or, if the values are all numeric, into a vector: >> prices = [cds.price]; >> total = sum(prices); Notice that after extracting the price values into a cell array or vector, all the normal operations—in this case, sort(...) and sum(...)—can be utilized. Exercise 7.5 provides some practice in manipulating structure arrays using the above CD collection as an example.  
-<h2><a name="7_5">7.5 Engineering Example—Assembling a Physical Structure</a></h2>
+ 
+ 
+<h2><a name="7_5">7.5  Comparing Cell Arrays to Structure Arrays</a></h2>
+
+To provide some context for this discussion, compare the cell array illustrated in Fig 7.1 with the structure array in Fig 7.2.<br>
+<strong>Cell Array:</strong>  To access, for example, the year of the birthday of the third person in the Cell Array, you would need to:<br>
+<ul>
+<li>figure out from some design document beyond the code itself which column contained the date structure and which row of the date structure contained the year.</li>
+<li>then you would enter this: <br><code>it = Obj{3}{3}{3}</code></li>
+</ul>
+
+<strong>Structure Array:</strong>  To access the same item, you would just enter this:<br>
+ <code>it = Obj(3).birth.year</code>
+Most people would greatly prefer the simplicity and clarity of the Structure Array, and that seems appropriate.  Unfortunately, as you have seen already in this chapter, and will see even more in the next chapter, cell arrays are built into the infrastructure of Matlab and are frequently necessary to extract data from collections or files.
+
+
+<h2><a name="7_6">7.6 Engineering Example—Assembling a Physical Structure</a></h2>
 
 Many large buildings today have steel frames as their basic structure. Engineers perform the analysis and design work for each steel component and deliver these designs to the steel company. The steel company manufactures all the components, and prepares them for delivery to the building site. At this point, each component is identified only by a unique identifier string stamped and/or chalked onto that component. For even a modest-sized building, this transportation may require a significant number of truckloads of components. The question we address here is how to decide the sequence in which the components are delivered to the building site so that components are available when needed, but not piled up waiting to be used.
 
