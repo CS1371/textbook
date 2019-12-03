@@ -35,7 +35,7 @@ clc
 %     format('listing_05_6.m');
 %     format('listing_05_7.m');
 %     format('listing_05_8.m');
-     format('listing_05_9.m');
+%     format('listing_05_9.m');
 %     format('listing_06_1.m');
 %     format('listing_06_2.m');
 %     format('listing_07_1.m');
@@ -43,7 +43,7 @@ clc
 %     format('listing_07_3.m');
 %     format('listing_07_4.m');
 %     format('listing_07_5.m');
-%     format('listing_07_6.m');
+     format('listing_07_6.m');
 %     format('listing_08_1.m');
 %     format('listing_08_2.m');
 %     format('listing_08_3.m');

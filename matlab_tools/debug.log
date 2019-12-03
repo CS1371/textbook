@@ -1,234 +1,190 @@
 
 
-Processing file ../listings/listing_05_9.m
-process >% listing_05_9<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_05_9</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_05_9</font><br><
-process >% Script to compute liquid levels<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Script to compute liquid levels</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Script to compute liquid levels</font><br><
+Processing file ../listings/listing_07_6.m
+process >% listing_07_6<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_07_6</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_07_6</font><br><
+process >% Connectivity of a structure<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Connectivity of a structure</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Connectivity of a structure</font><br><
 process >clear; clc<
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br><
-process >% Initialize another_tank to start the while loop code.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Initialize another_tank to start the while loop code.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Initialize another_tank to start the while loop code.</font><br><
-process >another_tank = true;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;another_tank = true;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;another_tank = true;<br><
-process >while another_tank<
+process ><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
+process >global adj<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> another_tank<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> another_tank<br><
-process >% Get the tank dimensions.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Get the tank dimensions.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Get the tank dimensions.</font><br><
-process >H = input('Overall tank height: ');<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H = input(<font color="#c000c0">'Overall tank height: '</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H = input(<font color="#c000c0">'Overall tank height: '</font>);<br><
-process >r = input('tank radius: ');<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = input(<font color="#c000c0">'tank radius: '</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = input(<font color="#c000c0">'tank radius: '</font>);<br><
-process >%%%%<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-process >%         %   auto gen only<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         %   auto gen only</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         %   auto gen only</font><br><
-process >%         rn = round(rand(1,2) * 100);<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         rn = round(rand(1,2) * 100);</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         rn = round(rand(1,2) * 100);</font><br><
-process >%         H = rn(1);<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         H = rn(1);</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         H = rn(1);</font><br><
-process >%         r = rn(2);<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         r = rn(2);</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         r = rn(2);</font><br><
-process >%%%%<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-process >% Initialize more_heights to start the inner while loop.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Initialize more_heights to start the inner while loop.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Initialize more_heights to start the inner while loop.</font><br><
-process >more_heights = true;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;more_heights = true;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;more_heights = true;<br><
-process >while more_heights<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> adj<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> adj<br><
+process >global beams<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> more_heights<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> more_heights<br><
-process >% Get the liquid height.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Get the liquid height.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Get the liquid height.</font><br><
-process >h = input('liquid height: ');<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> beams<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> beams<br><
+process >% describe the structure as an adjacency list identifying for each<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% describe the structure as an adjacency list identifying for each</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% describe the structure as an adjacency list identifying for each</font><br><
+process >% node 'A'-'G' the notes to which it directly connects<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% node 'A'-'G' the notes to which it directly connects</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% node 'A'-'G' the notes to which it directly connects</font><br><
+process >adj = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [];<br><
+process >adj = [adj, struct('from', 'A', 'to', {{'B', 'E'}})];<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h = input(<font color="#c000c0">'liquid height: '</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h = input(<font color="#c000c0">'liquid height: '</font>);<br><
-process >%%%%<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-process >%   auto gen only<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   auto gen only</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   auto gen only</font><br><
-process >%             rn = round(rand(1,1) * 100);<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%             rn = round(rand(1,1) * 100);</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%             rn = round(rand(1,1) * 100);</font><br><
-process >%             h = rn(1);<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%             h = rn(1);</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%             h = rn(1);</font><br><
-process >%%%%<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-process >%% Calculations for legal values of h. Notice that no<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% Calculations for legal values of h. Notice that no</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% Calculations for legal values of h. Notice that no</font><br><
-process >% dot operators are required here, because these conditional<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dot operators are required here, because these conditional</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dot operators are required here, because these conditional</font><br><
-process >% computations will not work correctly with vectors.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% computations will not work correctly with vectors.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% computations will not work correctly with vectors.</font><br><
-process >if h < r<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'A', <font color="#c000c0">'to'</font>, {{'B', <font color="#c000c0">'E'</font>}})];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'A', <font color="#c000c0">'to'</font>, {{'B', <font color="#c000c0">'E'</font>}})];<br><
+process >adj = [adj, struct('from', 'B', 'to', {{'A', 'C', 'E', 'F'}})];<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'B', <font color="#c000c0">'to'</font>, {{'A', <font color="#c000c0">'C'</font>, 'E', <font color="#c000c0">'F'</font>}})];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'B', <font color="#c000c0">'to'</font>, {{'A', <font color="#c000c0">'C'</font>, 'E', <font color="#c000c0">'F'</font>}})];<br><
+process >adj = [adj, struct('from', 'C', 'to', {{'B', 'D', 'F', 'G'}})];<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'C', <font color="#c000c0">'to'</font>, {{'B', <font color="#c000c0">'D'</font>, 'F', <font color="#c000c0">'G'</font>}})];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'C', <font color="#c000c0">'to'</font>, {{'B', <font color="#c000c0">'D'</font>, 'F', <font color="#c000c0">'G'</font>}})];<br><
+process >adj = [adj, struct('from', 'D', 'to', {{'C', 'G'}})];<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'D', <font color="#c000c0">'to'</font>, {{'C', <font color="#c000c0">'G'</font>}})];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'D', <font color="#c000c0">'to'</font>, {{'C', <font color="#c000c0">'G'</font>}})];<br><
+process >adj = [adj, struct('from', 'E', 'to', {{'A', 'B', 'F'}})];<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'E', <font color="#c000c0">'to'</font>, {{'A', <font color="#c000c0">'B'</font>, 'F'}})];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'E', <font color="#c000c0">'to'</font>, {{'A', <font color="#c000c0">'B'</font>, 'F'}})];<br><
+process >adj = [adj, struct('from', 'F', 'to', {{'B', 'C', 'E', 'G'}})];<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'F', <font color="#c000c0">'to'</font>, {{'B', <font color="#c000c0">'C'</font>, 'E', <font color="#c000c0">'G'</font>}})];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'F', <font color="#c000c0">'to'</font>, {{'B', <font color="#c000c0">'C'</font>, 'E', <font color="#c000c0">'G'</font>}})];<br><
+process >adj = [adj, struct('from', 'G', 'to', {{'C', 'D', 'F'}})];<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'G', <font color="#c000c0">'to'</font>, {{'C', <font color="#c000c0">'D'</font>, 'F'}})];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'G', <font color="#c000c0">'to'</font>, {{'C', <font color="#c000c0">'D'</font>, 'F'}})];<br><
+process >% Don't worry about exactly why this algorithm works<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Don't worry about exactly why this algorithm works</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Don't worry about exactly why this algorithm works</font><br><
+process >% It is actually a search for "strongly connected components" (SCC's)<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% It is actually a search for "strongly connected components" (SCC's)</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% It is actually a search for "strongly connected components" (SCC's)</font><br><
+process >% described in the Corman, Leiserson, Rivest text<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% described in the Corman, Leiserson, Rivest text</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% described in the Corman, Leiserson, Rivest text</font><br><
+process >% "Introduction to Algorithms" pp 488-493<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% "Introduction to Algorithms" pp 488-493</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% "Introduction to Algorithms" pp 488-493</font><br><
+process >% this is the algorithm:<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this is the algorithm:</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this is the algorithm:</font><br><
+process >% 1. compute u, a Depth First Search (DFS: Para 7.4.2), storing the<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 1. compute u, a Depth First Search (DFS: Para 7.4.2), storing the</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 1. compute u, a Depth First Search (DFS: Para 7.4.2), storing the</font><br><
+process >%    finish time f(u)<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    finish time f(u)</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    finish time f(u)</font><br><
+process >% 2. compute a DFS using f(u) in descending order finish times d(u)<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 2. compute a DFS using f(u) in descending order finish times d(u)</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 2. compute a DFS using f(u) in descending order finish times d(u)</font><br><
+process >% 3. compute fi(u), the forefather of each node in u defined as that<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 3. compute fi(u), the forefather of each node in u defined as that</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 3. compute fi(u), the forefather of each node in u defined as that</font><br><
+process >%    node w connected to u with the maximum value of f(w). Note: to<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    node w connected to u with the maximum value of f(w). Note: to</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    node w connected to u with the maximum value of f(w). Note: to</font><br><
+process >%    get this right, u can connect to itself<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    get this right, u can connect to itself</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    get this right, u can connect to itself</font><br><
+process >% 4. all the nodes in u with the same forefather form one of the<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 4. all the nodes in u with the same forefather form one of the</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 4. all the nodes in u with the same forefather form one of the</font><br><
+process >%    groups of SCC's <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    groups of SCC's </font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    groups of SCC's </font><br><
+process >% 5. select the beams for each group that connect the group's <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 5. select the beams for each group that connect the group's </font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 5. select the beams for each group that connect the group's </font><br><
+process >%    forefather to all the other nodes. <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    forefather to all the other nodes. </font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    forefather to all the other nodes. </font><br><
+process >%<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br><
+process >% so here we go<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% so here we go</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% so here we go</font><br><
+process >%    set all nodes to 'not used' except A<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    set all nodes to 'not used' except A</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    set all nodes to 'not used' except A</font><br><
+process >at = 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;at = <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;at = <font color="#ff8000">1</font>;<br><
+process >finish = 0;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;finish = <font color="#ff8000">0</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;finish = <font color="#ff8000">0</font>;<br><
+process >N = length(adj);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;N = length(adj);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;N = length(adj);<br><
+process >for ndx = 1:N<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> h < r<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> h < r<br><
-process >v = (1/3)*pi*hú2ü(3*r-h);<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br><
+process >adj(ndx).used = false;<
 set parens = 1
 set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = (<font color="#ff8000">1</font>/<font color="#ff8000">3</font>)*pi*hú<font color="#ff8000">2</font>ü(<font color="#ff8000">3</font>*r-h);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = (<font color="#ff8000">1</font>/<font color="#ff8000">3</font>)*pi*h.^<font color="#ff8000">2</font>.*(<font color="#ff8000">3</font>*r-h);<br><
-process >elseif h < H-r<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(ndx)<font color="#ff8000">.used</font> = false;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(ndx)<font color="#ff8000">.used</font> = false;<br><
+process >end<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> h < H-r<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> h < H-r<br><
-process >v = (2/3)*pi*r^3 + pi*r^2*(h-r);<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = (<font color="#ff8000">2</font>/<font color="#ff8000">3</font>)*pi*r^<font color="#ff8000">3</font> + pi*r^<font color="#ff8000">2</font>*(h-r);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = (<font color="#ff8000">2</font>/<font color="#ff8000">3</font>)*pi*r^<font color="#ff8000">3</font> + pi*r^<font color="#ff8000">2</font>*(h-r);<br><
-process >elseif h <= H<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >% construct a list of beams<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% construct a list of beams</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% construct a list of beams</font><br><
+process >beams = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;beams = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;beams = [];<br><
+process >for ndx = 1:length(adj)<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> h <= H<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> h <= H<br><
-process >v = (4/3)*pi*r^3 + pi*r^2*(H-2*r) ...<
 set parens = 1
 set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(adj)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(adj)<br><
+process >fr = adj(ndx).from;<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = (<font color="#ff8000">4</font>/<font color="#ff8000">3</font>)*pi*r^<font color="#ff8000">3</font> + pi*r^<font color="#ff8000">2</font>*(H-<font color="#ff8000">2</font>*r) <font color="#ff8000">...</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = (<font color="#ff8000">4</font>/<font color="#ff8000">3</font>)*pi*r^<font color="#ff8000">3</font> + pi*r^<font color="#ff8000">2</font>*(H-<font color="#ff8000">2</font>*r) <font color="#ff8000">...</font><br><
-process >- (1/3)*pi*(H-h)^2*(3*r-H+h);<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fr = adj(ndx)<font color="#ff8000">.from</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fr = adj(ndx)<font color="#ff8000">.from</font>;<br><
+process >ca = adj(ndx).to;<
 set parens = 1
 set parens = 0
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- (<font color="#ff8000">1</font>/<font color="#ff8000">3</font>)*pi*(H-h)^<font color="#ff8000">2</font>*(<font color="#ff8000">3</font>*r-H+h);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- (<font color="#ff8000">1</font>/<font color="#ff8000">3</font>)*pi*(H-h)^<font color="#ff8000">2</font>*(<font color="#ff8000">3</font>*r-H+h);<br><
-process >else<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = adj(ndx)<font color="#ff8000">.to</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = adj(ndx)<font color="#ff8000">.to</font>;<br><
+process >for c = ca<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
-process >% Illegal h values end up here.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Illegal h values end up here.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Illegal h values end up here.</font><br><
-process >disp('liquid level too high')<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = ca<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = ca<br><
+process >bm = [fr c{1}];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bm = [fr c{<font color="#ff8000">1</font>}];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bm = [fr c{<font color="#ff8000">1</font>}];<br><
+process >if ~is_beam(bm)<
+see parens = 0
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'liquid level too high'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'liquid level too high'</font>)<br><
-process >% Jump to the end of the inner loop, skipping the printout.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Jump to the end of the inner loop, skipping the printout.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Jump to the end of the inner loop, skipping the printout.</font><br><
-process >continue<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">continue</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">continue</font><br><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~is_beam(bm)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~is_beam(bm)<br><
+process >beams = [beams {bm}]; <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beams = [beams {bm}]; <br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beams = [beams {bm}]; <br><
 process >end<
 see parens = 0
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >% Print the result.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Print the result.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Print the result.</font><br><
-process >fprintf( ...<
-set parens = 1
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf( <font color="#ff8000">...</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf( <font color="#ff8000">...</font><br><
-process >'rad %0.2f ht %0.2f level %0.2f vol %0.2f\n', ...<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'rad %0.2f ht %0.2f level %0.2f vol %0.2f\n'</font>, <font color="#ff8000">...</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'rad %0.2f ht %0.2f level %0.2f vol %0.2f\n'</font>, <font color="#ff8000">...</font><br><
-process >r, H, h, v);<
-set parens = -1
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r, H, h, v);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r, H, h, v);<br><
-process >% More levels when "y" is entered.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% More levels when "y" is entered.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% More levels when "y" is entered.</font><br><
-process >%% 22. more_heights = input('more levels? (y/n)','s')=='y';<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% 22. more_heights = input('more levels? (y/n)','s')=='y';</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% 22. more_heights = input('more levels? (y/n)','s')=='y';</font><br><
-process >%%%%<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-process >%   auto gen only<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   auto gen only</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   auto gen only</font><br><
-process >rn = round(rand(1,1) * 100 - 50);<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rn = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) * <font color="#ff8000">100</font> - <font color="#ff8000">50</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rn = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) * <font color="#ff8000">100</font> - <font color="#ff8000">50</font>);<br><
-process >more_heights = (rn > 0);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;more_heights = (rn > <font color="#ff8000">0</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;more_heights = (rn > <font color="#ff8000">0</font>);<br><
-process >%%%%<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-process >end<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >% Another tank when “y" is entered.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Another tank when “y" is entered.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Another tank when “y" is entered.</font><br><
-process >%% 24. another_tank = input('another tank? (y/n)','s')=='y';<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% 24. another_tank = input('another tank? (y/n)','s')=='y';</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%% 24. another_tank = input('another tank? (y/n)','s')=='y';</font><br><
-process >%%%%<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%%%%</font><br><
-process >another_tank = false;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;another_tank = false;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;another_tank = false;<br><
-process >rn = round(rand(1,1) * 100 - 50);<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rn = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) * <font color="#ff8000">100</font> - <font color="#ff8000">50</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rn = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) * <font color="#ff8000">100</font> - <font color="#ff8000">50</font>);<br><
-process >if rn > 0<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> rn > <font color="#ff8000">0</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> rn > <font color="#ff8000">0</font><br><
-process >another_tank = true;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;another_tank = true;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;another_tank = true;<br><
 process >end<
 see parens = 0
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
@@ -237,6 +193,522 @@ process >end<
 see parens = 0
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >adj(1).used = true;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;adj(<font color="#ff8000">1</font>)<font color="#ff8000">.used</font> = true;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;adj(<font color="#ff8000">1</font>)<font color="#ff8000">.used</font> = true;<br><
+process >adj(1).f = finish;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;adj(<font color="#ff8000">1</font>)<font color="#ff8000">.f</font> = finish;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;adj(<font color="#ff8000">1</font>)<font color="#ff8000">.f</font> = finish;<br><
+process >u(1) = 1;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;u(<font color="#ff8000">1</font>) = <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;u(<font color="#ff8000">1</font>) = <font color="#ff8000">1</font>;<br><
+process >nxt = 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nxt = <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nxt = <font color="#ff8000">1</font>;<br><
+process >% fprintf('u(%d) = %c; f(%d) = %d\n', 1, adj(1).from, 1, adj(1).f); <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fprintf('u(%d) = %c; f(%d) = %d\n', 1, adj(1).from, 1, adj(1).f); </font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fprintf('u(%d) = %c; f(%d) = %d\n', 1, adj(1).from, 1, adj(1).f); </font><br><
+process >% 1. DFS starting at A, choosing the first child reachable from <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 1. DFS starting at A, choosing the first child reachable from </font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 1. DFS starting at A, choosing the first child reachable from </font><br><
+process >%    the current node u storing the finish time f(u)<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    the current node u storing the finish time f(u)</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    the current node u storing the finish time f(u)</font><br><
+process >for ndx = 2:N<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">2</font>:N<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">2</font>:N<br><
+process >nxt = get_DFS_next(nxt);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nxt = get_DFS_next(nxt);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nxt = get_DFS_next(nxt);<br><
+process >finish = finish + 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish = finish + <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish = finish + <font color="#ff8000">1</font>;<br><
+process >adj(nxt).used = true;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(nxt)<font color="#ff8000">.used</font> = true;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(nxt)<font color="#ff8000">.used</font> = true;<br><
+process >u(nxt) = nxt;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u(nxt) = nxt;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u(nxt) = nxt;<br><
+process >adj(nxt).f = finish;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(nxt)<font color="#ff8000">.f</font> = finish;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(nxt)<font color="#ff8000">.f</font> = finish;<br><
+process >%     fprintf('u(%d) = %c; f(%d) = %d\n', ...<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     fprintf('u(%d) = %c; f(%d) = %d\n', ...</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     fprintf('u(%d) = %c; f(%d) = %d\n', ...</font><br><
+process >%         ndx, adj(nxt).from, ndx, adj(nxt).f); <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         ndx, adj(nxt).from, ndx, adj(nxt).f); </font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         ndx, adj(nxt).from, ndx, adj(nxt).f); </font><br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >% 2. compute a DFS using f(u) in descending order finish times d(u)<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 2. compute a DFS using f(u) in descending order finish times d(u)</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 2. compute a DFS using f(u) in descending order finish times d(u)</font><br><
+process >f_vals = [adj.f];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;f_vals = [adj.f];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;f_vals = [adj.f];<br><
+process >finish = 0;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;finish = <font color="#ff8000">0</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;finish = <font color="#ff8000">0</font>;<br><
+process >for ndx = 1:N<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br><
+process >at = find(f_vals == (7 - ndx));<
+set parens = 1
+set parens = 2
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = find(f_vals == (<font color="#ff8000">7</font> - ndx));<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = find(f_vals == (<font color="#ff8000">7</font> - ndx));<br><
+process >v(ndx) = at;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v(ndx) = at;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v(ndx) = at;<br><
+process >adj(at).d = finish;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(at)<font color="#ff8000">.d</font> = finish;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(at)<font color="#ff8000">.d</font> = finish;<br><
+process >finish = finish + 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish = finish + <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish = finish + <font color="#ff8000">1</font>;<br><
+process >%     fprintf('v(%d) = %c; d(%d) = %d\n', ...<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     fprintf('v(%d) = %c; d(%d) = %d\n', ...</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     fprintf('v(%d) = %c; d(%d) = %d\n', ...</font><br><
+process >%         ndx, adj(at).from, ndx, adj(at).d); <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         ndx, adj(at).from, ndx, adj(at).d); </font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         ndx, adj(at).from, ndx, adj(at).d); </font><br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >% 3. compute fi(u), the forefather of each node in u defined as that<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 3. compute fi(u), the forefather of each node in u defined as that</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 3. compute fi(u), the forefather of each node in u defined as that</font><br><
+process >%    node w connected to u with the maximum value of f(w). Note: to<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    node w connected to u with the maximum value of f(w). Note: to</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    node w connected to u with the maximum value of f(w). Note: to</font><br><
+process >%    get this right, u can connect to itself<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    get this right, u can connect to itself</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    get this right, u can connect to itself</font><br><
 process ><
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
+process >for ndx = 1:N<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br><
+process >ca = [{adj(ndx).from, adj(ndx).to{:}}];<
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = [{adj(ndx)<font color="#ff8000">.from</font>, adj(ndx)<font color="#ff8000">.to</font>{:}}];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = [{adj(ndx)<font color="#ff8000">.from</font>, adj(ndx)<font color="#ff8000">.to</font>{:}}];<br><
+process >it = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it = [];<br><
+process >ord = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ord = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ord = [];<br><
+process >for c = ca<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = ca<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = ca<br><
+process >jk = c{1} - 'A' + 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jk = c{<font color="#ff8000">1</font>} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jk = c{<font color="#ff8000">1</font>} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br><
+process >ord = [ord jk];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ord = [ord jk];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ord = [ord jk];<br><
+process >it = [it adj(jk).f];<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it = [it adj(jk)<font color="#ff8000">.f</font>];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it = [it adj(jk)<font color="#ff8000">.f</font>];<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >[~, at] = max(it);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[~, at] = max(it);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[~, at] = max(it);<br><
+process >choice = ca{at} - 'A' + 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;choice = ca{at} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;choice = ca{at} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br><
+process >adj(ndx).fi = choice;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(ndx)<font color="#ff8000">.fi</font> = choice;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(ndx)<font color="#ff8000">.fi</font> = choice;<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >finx = [adj.fi];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;finx = [adj.fi];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;finx = [adj.fi];<br><
+process >fi = char(finx + 'A' - 1);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;fi = char(finx + <font color="#c000c0">'A'</font> - <font color="#ff8000">1</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;fi = char(finx + <font color="#c000c0">'A'</font> - <font color="#ff8000">1</font>);<br><
+process >% 4. all the nodes in u with the same forefather form one of the<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 4. all the nodes in u with the same forefather form one of the</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 4. all the nodes in u with the same forefather form one of the</font><br><
+process >%    groups of SCC's <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    groups of SCC's </font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    groups of SCC's </font><br><
+process >at = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;at = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;at = [];<br><
+process >ca = {adj.from};<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ca = {adj.from};<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ca = {adj.from};<br><
+process >foref = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;foref = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;foref = [];<br><
+process >for ndx = 1:7<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:<font color="#ff8000">7</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:<font color="#ff8000">7</font><br><
+process >if any(finx == ndx)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> any(finx == ndx)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> any(finx == ndx)<br><
+process >grp = ca(finx == ndx);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grp = ca(finx == ndx);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grp = ca(finx == ndx);<br><
+process >at = [at {grp}];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = [at {grp}];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = [at {grp}];<br><
+process >foref = [foref ndx];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foref = [foref ndx];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foref = [foref ndx];<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >% 5. a. select the beams for each group that connect the group's <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 5. a. select the beams for each group that connect the group's </font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 5. a. select the beams for each group that connect the group's </font><br><
+process >%    forefather to all the other nodes. <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    forefather to all the other nodes. </font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    forefather to all the other nodes. </font><br><
+process >%    b. select the beams totally within the emerging collection<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    b. select the beams totally within the emerging collection</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    b. select the beams totally within the emerging collection</font><br><
+process >%    of nodes<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    of nodes</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    of nodes</font><br><
+process >save_bms = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;save_bms = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;save_bms = [];<br><
+process >all_nodes = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;all_nodes = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;all_nodes = [];<br><
+process >for gndx = 1:length(at)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> gndx = <font color="#ff8000">1</font>:length(at)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> gndx = <font color="#ff8000">1</font>:length(at)<br><
+process >ff = foref(gndx);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ff = foref(gndx);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ff = foref(gndx);<br><
+process >ca = at{gndx};<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = at{gndx};<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = at{gndx};<br><
+process >all_nodes = [all_nodes ca];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all_nodes = [all_nodes ca];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all_nodes = [all_nodes ca];<br><
+process >fprintf('group %d = {', gndx);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'group %d = {'</font>, gndx);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'group %d = {'</font>, gndx);<br><
+process >for nx = 1:length(ca)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> nx = <font color="#ff8000">1</font>:length(ca)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> nx = <font color="#ff8000">1</font>:length(ca)<br><
+process >fprintf(' %s', ca{nx});<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">' %s'</font>, ca{nx});<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">' %s'</font>, ca{nx});<br><
+process >beam = [adj(ff).from, ca{nx}];<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beam = [adj(ff)<font color="#ff8000">.from</font>, ca{nx}];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beam = [adj(ff)<font color="#ff8000">.from</font>, ca{nx}];<br><
+process >save_bms = add_beam(save_bms, beam);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save_bms = add_beam(save_bms, beam);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save_bms = add_beam(save_bms, beam);<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >fprintf(' }\n');<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">' }\n'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">' }\n'</font>);<br><
+process >% also save all beams with both ends in all_nodes<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% also save all beams with both ends in all_nodes</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% also save all beams with both ends in all_nodes</font><br><
+process >for nx = 1:length(all_nodes)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> nx = <font color="#ff8000">1</font>:length(all_nodes)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> nx = <font color="#ff8000">1</font>:length(all_nodes)<br><
+process >for ny = nx+1:length(all_nodes)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ny = nx+<font color="#ff8000">1</font>:length(all_nodes)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ny = nx+<font color="#ff8000">1</font>:length(all_nodes)<br><
+process >bm = [all_nodes{nx} all_nodes{ny}];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bm = [all_nodes{nx} all_nodes{ny}];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bm = [all_nodes{nx} all_nodes{ny}];<br><
+process >save_bms = add_beam(save_bms, bm);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save_bms = add_beam(save_bms, bm);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save_bms = add_beam(save_bms, bm);<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >% display the answers<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% display the answers</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% display the answers</font><br><
+process >fprintf('Beams should arrive in this order:\n');<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Beams should arrive in this order:\n'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Beams should arrive in this order:\n'</font>);<br><
+process >for bm = save_bms<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> bm = save_bms<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> bm = save_bms<br><
+process >b = bm{:};<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = bm{:};<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = bm{:};<br><
+process >fprintf('%c-%c ', b(1), b(2));<
+set parens = 1
+set parens = 2
+set parens = 1
+set parens = 2
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'%c-%c '</font>, b(<font color="#ff8000">1</font>), b(<font color="#ff8000">2</font>));<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'%c-%c '</font>, b(<font color="#ff8000">1</font>), b(<font color="#ff8000">2</font>));<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >fprintf('\n');<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'\n'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'\n'</font>);<br><
+process ><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
+process >function bms = add_beam(bms, beam)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> bms = add_beam(bms, beam)<br><
+replace_stuff gives ><font color="#0000ff">function</font> bms = add_beam(bms, beam)<br><
+process >if is_beam(beam)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> is_beam(beam)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> is_beam(beam)<br><
+process >% check if it's already there<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% check if it's already there</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% check if it's already there</font><br><
+process >rev = [beam(2) beam(1)];<
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rev = [beam(<font color="#ff8000">2</font>) beam(<font color="#ff8000">1</font>)];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rev = [beam(<font color="#ff8000">2</font>) beam(<font color="#ff8000">1</font>)];<br><
+process >if ~(any(strcmp(bms, beam))||any(strcmp(bms, rev)))<
+see parens = 0
+set parens = 1
+set parens = 2
+set parens = 3
+set parens = 2
+set parens = 1
+set parens = 2
+set parens = 3
+set parens = 2
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~(any(strcmp(bms, beam))||any(strcmp(bms, rev)))<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~(any(strcmp(bms, beam))||any(strcmp(bms, rev)))<br><
+process >bms = [bms {beam}];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bms = [bms {beam}];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bms = [bms {beam}];<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function is = is_beam(str)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> is = is_beam(str)<br><
+replace_stuff gives ><font color="#0000ff">function</font> is = is_beam(str)<br><
+process >global beams<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> beams<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> beams<br><
+process >is = false;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;is = false;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;is = false;<br><
+process >rev = [str(2) str(1)];<
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;rev = [str(<font color="#ff8000">2</font>) str(<font color="#ff8000">1</font>)];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;rev = [str(<font color="#ff8000">2</font>) str(<font color="#ff8000">1</font>)];<br><
+process >for ndx = 1:length(beams)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(beams)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(beams)<br><
+process >if strcmp(beams{ndx}, str) || strcmp(beams{ndx},rev)<
+see parens = 0
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> strcmp(beams{ndx}, str) || strcmp(beams{ndx},rev)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> strcmp(beams{ndx}, str) || strcmp(beams{ndx},rev)<br><
+process >is = true;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is = true;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is = true;<br><
+process >break;<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function res = get_DFS_next(u)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> res = get_DFS_next(u)<br><
+replace_stuff gives ><font color="#0000ff">function</font> res = get_DFS_next(u)<br><
+process >global adj;<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> adj;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> adj;<br><
+process >ca = adj(u).to;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ca = adj(u)<font color="#ff8000">.to</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ca = adj(u)<font color="#ff8000">.to</font>;<br><
+process >to_ndx = 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;to_ndx = <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;to_ndx = <font color="#ff8000">1</font>;<br><
+process >at = ca{to_ndx} - 'A' + 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;at = ca{to_ndx} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;at = ca{to_ndx} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br><
+process >while adj(at).used<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> adj(at)<font color="#ff8000">.used</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> adj(at)<font color="#ff8000">.used</font><br><
+process >to_ndx = to_ndx + 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to_ndx = to_ndx + <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to_ndx = to_ndx + <font color="#ff8000">1</font>;<br><
+process >at = ca{to_ndx} - 'A' + 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = ca{to_ndx} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = ca{to_ndx} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >res = at;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;res = at;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;res = at;<br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><

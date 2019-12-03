@@ -2,6 +2,9 @@
 <html> 
 <head> 
 <title>07_Structures</title> 
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />    <link rel="stylesheet" href="styles/styles.css" />
 <link rel="stylesheet" href="styles/styles.css" /> 
 <script async src="./javascript/index.js"></script> 
 </head> 
@@ -38,7 +41,7 @@
     <li><a href="#7_4_3">7.4.3  Manipulating Structures</a>
 </ul>
 <li><a href="#7_5">7.5  Comparing Cell Arrays to Structure Arrays</a>
-<li><a href="#7_6">7.6  Engineering Example— Assembling a Physical Structure</a>
+<li><a href="#7_6">7.6  Engineering Example: Assembling a Physical Structure</a>
 </ul>
 <h2>Chapter Objectives</h2>
 
@@ -49,7 +52,10 @@
 <li>Those accessed by field name (structures) </li>
 </ul>
 In addition, we will consider collecting structures into arrays of structures. 
-
+<! ––<video width="320" height="240" autoplay>
+  <source src="klein_bottle.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>––>
 <h1>Introduction</h1>
  This chapter covers data collections that are more general and flexible than the <b>homogeneous</b> arrays we have considered so far. Conceptually, <b>heterogeneous</b> collections may contain objects of any type, rather than just numbers. Consequently, none of the collective operations defined for numerical arrays can be applied to cell arrays or structures. To perform most operations on their contents, the items must be extracted one at a time and replaced if necessary. We will consider three different mechanisms for building heterogeneous collections:
  <ui>
@@ -430,16 +436,43 @@ ans =<br>
 <b>Built-in Constructor:</b> Listing 7.5 illustrates these concepts by implementing a collection of CDs as a structure array using the function <code>makeCD(...)</code> from Listing 7.3.<br>
  <h4>Listing 7.5: Building a structure <i>array</i> using a custom constructor</h4>
 <code><strong>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_07_5</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Building a structure array using a custom constructor</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% extracts from http://www.cduniverse.com/ 12/30/04</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">1</font>) = makeCD(<font color="#c000c0">'Blues'</font>, 'Clapton, Eric', <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'Sessions For Robert J'</font>, <font color="#ff8000">2004</font>, <font color="#ff8000">2</font>, <font color="#ff8000">18.95</font> );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">2</font>) = makeCD(<font color="#c000c0">'Classical'</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'Bocelli, Andrea'</font>, 'Andrea', <font color="#ff8000">2004</font>, <font color="#ff8000">4.6</font>, <font color="#ff8000">14.89</font> );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">3</font>) = makeCD( <font color="#c000c0">'Country'</font>, 'Twain, Shania', <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'Greatest Hits'</font>, <font color="#ff8000">2004</font>, <font color="#ff8000">3.9</font>, <font color="#ff8000">13.49</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Data from www.cduniverse.com on 1/21/06</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds( <font color="#ff8000">1</font>) = makeCD( <font color="#c000c0">'Punk'</font>, 'Get Behind Me Satan', <font color="#c000c0">'White Stripes'</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">3.7</font>, <font color="#ff8000">14.59</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds( <font color="#ff8000">2</font>) = makeCD( <font color="#c000c0">'Punk'</font>, 'Complete Discography', <font color="#c000c0">'Minor Threat'</font>, <font color="#ff8000">1990</font>, <font color="#ff8000">4.4</font>, <font color="#ff8000">10.39</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds( <font color="#ff8000">3</font>) = makeCD( <font color="#c000c0">'Punk'</font>, 'Fresh Fruit For Rotting Vegetables', <font color="#c000c0">'Dead Kennedys'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1980</font>, <font color="#ff8000">5</font>,  <font color="#ff8000">14.29</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds( <font color="#ff8000">4</font>) = makeCD( <font color="#c000c0">'Punk'</font>, 'Take This To Your Grave', <font color="#c000c0">'Fall Out Boy'</font>, <font color="#ff8000">2003</font>, <font color="#ff8000">4.4</font>, <font color="#ff8000">9.75</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds( <font color="#ff8000">5</font>) = makeCD( <font color="#c000c0">'Punk'</font>, 'Stories And Alibis', <font color="#c000c0">'Matchbook Romance'</font>, <font color="#ff8000">2003</font>, <font color="#ff8000">4.4</font>, <font color="#ff8000">9.75</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds( <font color="#ff8000">6</font>) = makeCD( <font color="#c000c0">'Heavy metal'</font>, 'Rosenrot', <font color="#c000c0">'Rammstein'</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">4.1</font>, <font color="#ff8000">17.79</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds( <font color="#ff8000">7</font>) = makeCD( <font color="#c000c0">'Heavy metal'</font>, 'Elements Of Persuasion', <font color="#c000c0">'James Labrie'</font>, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2005</font>, <font color="#ff8000">4.4</font>, <font color="#ff8000">14.29</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds( <font color="#ff8000">8</font>) = makeCD( <font color="#c000c0">'Heavy metal'</font>, 'Second Life Syndrome', <font color="#c000c0">'Riverside'</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">4.1</font>, <font color="#ff8000">13.89</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds( <font color="#ff8000">9</font>) = makeCD( <font color="#c000c0">'Heavy metal'</font>, 'Still Life', <font color="#c000c0">'Opeth'</font>, <font color="#ff8000">2000</font>, <font color="#ff8000">4.8</font>, <font color="#ff8000">10.29</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">10</font>) = makeCD( <font color="#c000c0">'Heavy metal'</font>, 'Rough Cutt Wants You', <font color="#c000c0">'Rough Cutt'</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">4.7</font>, <font color="#ff8000">13.29</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">11</font>) = makeCD( <font color="#c000c0">'Rap'</font>, 'Unpredictable', <font color="#c000c0">'Jamie Foxx'</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">4.5</font>,<font color="#ff8000">16.19</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">12</font>) = makeCD( <font color="#c000c0">'Rap'</font>, 'The Breakthrough', <font color="#c000c0">'Blige, Mary J'</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">4.4</font>, <font color="#ff8000">13.65</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">13</font>) = makeCD( <font color="#c000c0">'Rap'</font>, 'Curtain Call: The Hits', <font color="#c000c0">'Eminem'</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">4.5</font>, <font color="#ff8000">12.69</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">14</font>) = makeCD( <font color="#c000c0">'Rap'</font>, '13 Blue Magic Lane', <font color="#c000c0">'Blue Magic'</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">5</font>, <font color="#ff8000">9.09</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">15</font>) = makeCD( <font color="#c000c0">'Rap'</font>, 'Duets: The Final Chapter', <font color="#c000c0">'Notorious '</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">4.1</font>, <font color="#ff8000">15.05</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">16</font>) = makeCD( <font color="#c000c0">'Blues'</font>, 'Bronx In Blue', <font color="#c000c0">'Dion'</font>, <font color="#ff8000">2006</font>, <font color="#ff8000">4.3</font>, <font color="#ff8000">9.50</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">17</font>) = makeCD( <font color="#c000c0">'Blues'</font>, 'Super Session', <font color="#c000c0">'Bloomfield, Mike et al'</font>, <font color="#ff8000">1968</font>, <font color="#ff8000">4.5</font>, <font color="#ff8000">9.75</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">18</font>) = makeCD( <font color="#c000c0">'Blues'</font>, 'It Ain''t Easy', <font color="#c000c0">'Baldry, Long John'</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">5</font>, <font color="#ff8000">15.69</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">19</font>) = makeCD( <font color="#c000c0">'Blues'</font>, 'Mourning In The Morning', <font color="#c000c0">'Otis Rush'</font>, <font color="#ff8000">1969</font>, <font color="#ff8000">1</font>, <font color="#ff8000">9.09</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">20</font>) = makeCD( <font color="#c000c0">'Blues'</font>, 'Had To Cry Today', <font color="#c000c0">'Joe Bonamassa'</font>, <font color="#ff8000">2004</font>, <font color="#ff8000">4.3</font>, <font color="#ff8000">14.29</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">21</font>) = makeCD( <font color="#c000c0">'Classical'</font>, 'Tchaikovsky: Suite no <font color="#ff8000">3'</font>, <font color="#c000c0">' Jurowski et al'</font>, <font color="#ff8000">2006</font>, <font color="#ff8000">5</font>, <font color="#ff8000">13.99</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">22</font>) = makeCD( <font color="#c000c0">'Classical'</font>, 'Most Relaxing Classical Album in the World...Ever!<font color="#c000c0">', ... <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '</font>Most Relaxing Classical Album In World Ever', <font color="#ff8000">1999</font>, <font color="#ff8000">4</font>, <font color="#ff8000">15.79</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">23</font>) = makeCD( <font color="#c000c0">'Classical'</font>, 'Phantom Of The Opera', <font color="#c000c0">'Hybrid'</font>, <font color="#ff8000">2004</font>, <font color="#ff8000">5</font>, <font color="#ff8000">15.79</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">24</font>) = makeCD( <font color="#c000c0">'Classical'</font>, 'Mozart: Wind Concertos', <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'Concertgebouw Chamber Orchestra'</font>, <font color="#ff8000">2006</font>, <font color="#ff8000">1</font>, <font color="#ff8000">13.99</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">25</font>) = makeCD( <font color="#c000c0">'Classical'</font>, 'Wicked', <font color="#c000c0">'Original Cast'</font>, <font color="#ff8000">2003</font>, <font color="#ff8000">4.8</font>, <font color="#ff8000">15.49</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">26</font>) = makeCD( <font color="#c000c0">'Oldies'</font>, 'Bronx In Blue', <font color="#c000c0">'Dion'</font>, <font color="#ff8000">2006</font>, <font color="#ff8000">4.3</font>, <font color="#ff8000">9.50</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">27</font>) = makeCD( <font color="#c000c0">'Oldies'</font>, 'Gold', <font color="#c000c0">'Righteous Brothers'</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">1</font>, <font color="#ff8000">13.99</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">28</font>) = makeCD( <font color="#c000c0">'Oldies'</font>, 'Greatest Hits', <font color="#c000c0">'Ricky Nelson'</font>, <font color="#ff8000">2005</font>, <font color="#ff8000">5</font>, <font color="#ff8000">15.79</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">29</font>) = makeCD( <font color="#c000c0">'Oldies'</font>, 'Black & White Night', <font color="#c000c0">'Roy Orbison'</font>, <font color="#ff8000">1989</font>, <font color="#ff8000">4.8</font>, <font color="#ff8000">11.29</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">30</font>) = makeCD( <font color="#c000c0">'Oldies'</font>, 'Retrospective', <font color="#c000c0">'Animals'</font>, <font color="#ff8000">2004</font>, <font color="#ff8000">4.3</font>, <font color="#ff8000">14.49</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cds(<font color="#ff8000">31</font>) = makeCD( <font color="#c000c0">'Oldies'</font>, 'Very Best Of Frankie Valli & The Four Seasons', <font color="#c000c0">'Frankie Valli'</font>, <font color="#ff8000">2002</font>, <font color="#ff8000">5</font>, <font color="#ff8000">15.69</font> );<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;cds<br>
 </strong></code>
@@ -448,9 +481,226 @@ ans =<br>
 
   
 <h3><a name="7_4_2">7.4.2	Accessing Structure Elements</a></h3>
- Like normal arrays or cell arrays, items can be stored and retrieved by their index in the array. As structures are added to the array, MATLAB forces all elements in the structure array to implement the same field names in the same order. Elements can be accessed either manually (not recommended) or by creating new structures with a constructor and adding them (recommended).  If you elect to manipulate them manually, you merely identify the array element by indexing and use the .field operator. For example, for the CD collection cds, we could change the price of one of them as follows:  >> cds(3).price = 11.95 cds = 1x31 struct array with fields: genre, artist, title, year, stars, price This is a little hazardous when making manual additions to a structure array. A typographical error while entering a field name results in all the structures having that bad field name. For example, consider this error:  >> cds(3).prce = 11.95 cds = 1x31 struct array with fields: genre, artist, title, year, stars, price, prce  You have accidentally added a new field to the whole collection. You can check this by looking at one entry:  >> cds(1) ans = genre: 'Blues' artist: 'Sessions For Robert J' title: 'Clapton, Eric' year: 2004 stars: 2 price: 18.95 prce: []  If this happens, you can use the fieldnames(...) function to determine the situation and then the rmfield(...) function to remove the offending entry.  >> fieldnames(cds) ans =  'genre' 'artist' 'title' 'year' 'stars' 'price' 'prce'  >> cds = rmfield(cds,'prce') cds = 1x32 struct array with fields: genre, artist, title, year, stars, price  It is best to construct a complete structure and then insert it into the structure array. For example:  >> newCD = makeCD( 'Oldies', 'Greatest Hits', ... 'Ricky Nelson', 2005, 5, 15.79 ); >> cds(8) = newCD cds = 1x8 struct array with fields: genre, artist, title, year, stars, price  If you insert that new CD beyond the end of the array, as one might expect, MATLAB fills out the array with empty structures:  >> cds(50) = newCD cds = 1x50 struct array with fields: genre, artist, title, year, stars, price >> cds(49) ans = genre: [] artist: [] title: [] year: [] stars: [] price: []  
+
+ Like normal arrays or cell arrays, items can be stored and retrieved by their index in the array. As structures are added to the array, MATLAB forces all elements in the structure array to implement the same field names in the same order, even if the inserted structure has the fields in the wrong order, or with some missing. Fields in the original structure not changed by the addition are filled with empty vector, <code>[]</code>. If you are trying to add a non-existent field, you should first add that field to the whole structure array before adding another structure containing that field. <br>
+Elements can be accessed in three ways:
+<ul>
+<li>individually either:
+<ul>
+<li>manually (not recommended) or</li>
+<li>by creating new structures with a constructor and adding them (recommended).</li>
+</ul>
+<li>or by collectively accessing specific fields across the whole structure array</li>
+</ul>
+</code>
+
+
+<b>Manually:</b> If you elect to manipulate the elements of a structure array manually, you merely identify the array element by indexing and use the <code>.field</code> operator. For example, for the CD collection <code>cds</code>, we could change the price of one of them as follows:<br>
+<code>>> cds(3).price = 11.95<br>
+cds = <br>
+&nbsp;&nbsp;1x3 struct array with fields:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price<br>
+</code>This is a little hazardous when making manual additions to a structure array. A typographical error while entering a field name results in all the structures having that bad field name. For example, consider this error:<br>
+<code>>> cds(3).prce = 11.95<br>
+cds = <br>
+&nbsp;&nbsp;1x31 struct array with fields:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price<br>
+&nbsp;&nbsp;&nbsp;&nbsp;prce<br>
+</code> You have accidentally added a new field to the whole collection. You can check this by looking at one entry:<br>
+<code>>> cds(1)<br>
+ans = <br>
+&nbsp;&nbsp;struct with fields:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre: 'Blues'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist: 'Sessions For Robert J'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title: 'Clapton, Eric'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year: 2004<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars: 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price: 18.95<br>
+&nbsp;&nbsp;&nbsp;&nbsp;prce: []<br>
+</code> If this happens, you can use the <code>fieldnames(...)</code> function to determine the situation and then the <code>rmfield(...)</code> function to remove the offending entry.<br>
+<code>>> fieldnames(cds)<br>
+ans =  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'genre'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'artist'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'title'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'year'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'stars'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'price'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'prce'}<br>
+>> cds = rmfield(cds,'prce')<font color="#00A000">    % recall that the result must be assigned to replace the original. </font><br>
+cds = 1x32 struct array with fields:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price</code><br>
+</code><br>
+<b>Custom Constructor:</b> It is best to use the custom constructor to make a complete structure and then insert it into the structure array. For example:<br>
+<code>>> newCD = makeCD( 'Oldies', 'Greatest Hits', ... 'Ricky Nelson', 2005, 5, 15.79 );<br>
+>> cds = [cds  newCD]<br>
+cds =<br>
+&nbsp;&nbsp;1x3 struct array with fields:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price<br>
+</code>  If you insert that new CD beyond the end of the array, as one might expect, MATLAB fills out the array with empty structures:<br>
+<code>>> cds(end+2) = newCD<br>
+cds =<br>
+&nbsp;&nbsp;1&#215;5 struct array with fields:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price<br>
+<br>
+>> cds(end-1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre []<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist []<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title []<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year []<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars []<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price []<br>
+<br></code>
+
+<div class="container">
+  <div class="sidebar_R">
+<h4>Exercise 7.5 The CD collection</h4>
+Run the script in Listing 7.5.
+Then, in the Interactions window, enter the following commands to create
+your collection of CD information:<br>
+<code>
+<font color="#00A000">% Look at the 5th CD entry</font><br>
+>> cds(5)<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre: 'Rock/Pop'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist: 'Ludacris'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title: 'The Red Light District'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year: 2004<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars: 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price: 13.49<br>
+<font color="#00A000">% Look at the field names</font><br>
+>> flds = fieldnames(collection)<br>
+flds =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'genre'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'artist'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'title'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'year'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'stars'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'price' <br>
+<font color="#00A000">% Typo: bad field name</font><br>
+cds(5).strs = 0.5;<br>
+>> cds(5)<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre: 'Rock/Pop'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist: 'Ludacris'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title: 'The Red Light District'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year: 2004<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars: 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price: 13.4900<br>
+&nbsp;&nbsp;&nbsp;&nbsp;strs: 0.5<br>
+<font color="#00A000">% All CDs now have a bad field</font><br>
+>> cds(1)<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre: 'Blues'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist: 'Clapton, Eric'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title: 'Sessions For Robert J'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year: 2004<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars: 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price: 18.9500<br>
+&nbsp;&nbsp;&nbsp;&nbsp;strs: []<br>
+<font color="#00A000">% remove that field from cds</font><br>
+>> cds = rmfield(cds, 'strs');<br>
+>> cds(1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genre: 'Blues'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist: 'Clapton, Eric'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title: 'Sessions For Robert J'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year: 2004<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stars: 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;price: 18.9500<br>
+<font color="#00A000">% extract all their prices and sum them</font><br>
+>> sum([cds.price])<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;409.1100<br>
+</code>
+</div>
+
+<b>Accessing one field from the whole structure array</b>: Suppose we really want to extract, for example, all the prices from the cd array. Let's try the obvious way first:<br>
+<code>>> prices = cds.price;<br>
+prices =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;18.9500<br>
+</code>
+Hmmm - seems to have given me just the first one.  How about letting <code>ans</code> have them all?<br>
+
+<code>>> cds.price;<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;18.9500<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;14.8900<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;13.4900<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[]<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;15.7900<br>
+</code>
+That looks familiar - sending too many results (in this case, one result for each of the structures in the array) to the default variable.  See the beginning of Exercise 7.1 above. There, we solved the problem by providing at least one actual variable to capture a result, just as we did in our first try above. But what if we actually want all the values of a field? Since the number of structures is variable, we can't really provide the right number of variables to save all the results. So we use a different strategy: "catching" all the values in a collection of the appropriate type: a vector for fields containing only single numbers, a cell array for everything else.  For example,<br>
+<code>
+>> [cds.price]<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;18.9500   14.8900   13.4900   15.7900<br>
+<font color="#00A000">% Be careful here - since the 4th structure has an empty vector for price,<br>
+%    it was ignored by the concatenation</font><br>
+>> {cds.genre}<br>
+ans =<br>
+&nbsp;&nbsp;1&#215;5 cell array<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'Blues'}    {'Classical'}    {'Country'}    {0&#215;0 double}    {'Oldies'}
+
+</code>.
 <h3><a name="7_4_3">7.4.3	Manipulating Structures</a></h3>
- Structures and structure arrays can be manipulated in the following ways:  I.	Single values can be changed using the “.” (dot) notation directly with a field name:  >> cds(5).price = 19.95;  II.	or indirectly using the “.” (dot) notation with a variable containing the field name: >> fld = 'price'; >> cds(5).(fld) = 19.95;  or by using built-in functions: III.	nms = fieldnames(str) returns a cell array containing the names of the fields in a structure or structure array.  >> flds = fieldnames(cds)  IV.	it = isfield(str, <fldname>) determines whether the given name is a field in this structure or structure array. >> if isfield(cds, 'price') ... V.	str = setfield(str, <fldname>, <value>) returns a new structure array with the specified field set to the specified value. >> cds(1) = setfield(cds(1), 'price', 19.95); VI.	val = getfield(str, <fldname>) returns the value of the specified field. >> disp(getfield(cds(1), 'price') ); VII.	str = rmfield(str, <fldname>) returns a new structure array with the specified field removed. >> noprice = rmfield(cds, 'price'); VIII.	Values across the whole array can be retrieved using the “.” notation by accumulating them into arrays either into cell arrays: >> titles = {cds.title}; >> [alpha order] = sort(titles); IX.	or, if the values are all numeric, into a vector: >> prices = [cds.price]; >> total = sum(prices); Notice that after extracting the price values into a cell array or vector, all the normal operations—in this case, sort(...) and sum(...)—can be utilized. Exercise 7.5 provides some practice in manipulating structure arrays using the above CD collection as an example.  
+ Structures and structure arrays can be manipulated in the following ways:
+ <ul>
+ <li>Single values can be changed using the '.' (dot) notation directly with a field name:<br>
+ <code>>> cds(5).price = 19.95;</code></li>
+ <li>or indirectly using the "." (dot) notation with a variable containing the field name:<br> <code>>> fld = 'price';<br>
+ >> cds(5).(fld) = 19.95;</li> </code>
+ <li>or by using built-in functions:<br>
+ <ul>
+ <li> <code>nms = fieldnames(str)</code>returns a cell array containing the names of the fields in a structure or structure array.<br>
+  <code>>> flds = fieldnames(cds);</li>
+ <li>it = isfield(str, <fldname>) </code>determines whether the given name is a field in this structure or structure array.<br>
+  <code>>> if isfield(cds, 'price') ... </li>
+ <li>str = setfield(str, &lt;fldname&gt;, &lt;value&gt;) </code> returns a new structure array with the specified field set to the specified value.<br>
+  <code>>> cds(1) = setfield(cds(1), 'price', 19.95); </code></li>
+ <li> <code>val = getfield(str, &lt;fldname&gt;) </code> returns the value of the specified field.<br>
+  <code>>> disp(getfield(cds(1), 'price') );</li>
+ <li>str = rmfield(str, &lt;fldname&gt;) </code> returns a new structure array with the specified field removed.<br>
+  <code>>> noprice = rmfield(cds, 'price');</li> </code>
+ <li>Values across the whole array can be retrieved using the “.” notation by accumulating them into either arrays or cell arrays:<br>
+  <code>>> titles = {cds.title};<br>>> [alpha order] = sort(titles); </li> </code>
+ <li>or, if the values are all numeric, into a vector:<br>
+  <code>>> prices = [cds.price];<br>
+  >> total = sum(prices);<br>
+   </code>Notice that after extracting the price values into a cell array or vector, all the normal operations - in this case,  <code>sort(...) </code> and  <code>sum(...) </code> - can be utilized.</li>
+</ul>
+</ul>
+ Exercise 7.5 provides some practice in manipulating structure arrays using the above CD collection as an example.  
+ </div>
  
  
 <h2><a name="7_5">7.5  Comparing Cell Arrays to Structure Arrays</a></h2>
@@ -463,55 +713,213 @@ To provide some context for this discussion, compare the cell array illustrated 
 </ul>
 
 <strong>Structure Array:</strong>  To access the same item, you would just enter this:<br>
- <code>it = Obj(3).birth.year</code>
+ <code>it = Obj(3).birth.year</code><br>
 Most people would greatly prefer the simplicity and clarity of the Structure Array, and that seems appropriate.  Unfortunately, as you have seen already in this chapter, and will see even more in the next chapter, cell arrays are built into the infrastructure of Matlab and are frequently necessary to extract data from collections or files.
 
 
-<h2><a name="7_6">7.6 Engineering Example—Assembling a Physical Structure</a></h2>
+<h2><a name="7_6">7.6 Engineering Example: Assembling a Physical Structure</a></h2>
 
-Many large buildings today have steel frames as their basic structure. Engineers perform the analysis and design work for each steel component and deliver these designs to the steel company. The steel company manufactures all the components, and prepares them for delivery to the building site. At this point, each component is identified only by a unique identifier string stamped and/or chalked onto that component. For even a modest-sized building, this transportation may require a significant number of truckloads of components. The question we address here is how to decide the sequence in which the components are delivered to the building site so that components are available when needed, but not piled up waiting to be used.
+Many large bridges today have steel frames as their basic structure. Engineers perform the analysis and design work for each steel component and deliver these designs to the steel company. The steel company manufactures all the components, and prepares them for delivery to the building site. At this point, each component is identified only by a unique identifier string stamped and/or chalked onto that component. For even a modest-sized bridge, this transportation may require a significant number of truckloads of components. The question we address here is how to decide the sequence in which the components are delivered to the building site so that components are available when needed, but not piled up waiting to be used.<br>
 
-Consider the relatively simple structure shown in Figure 7.1. The components have individual labels, and we can obtain from the architect the identities of the components that are connected together. The construction needs to start from the fixed point A. We need to analyze this information and compute the order in which the components would be used to assemble the structure.
+Consider the relatively simple structure shown in Figure 7.3. The components have individual labels, and we can obtain from the architect the identities of the components that are connected together. The construction needs to start from the fixed point A. We need to analyze this information and compute the order in which the components would be used to assemble the structure.
 
 The data will be organized as a structure array with one entry for each component. One of the fields in that structure will be a cell array of the names of the components to which this component is connected.
 
-The code in Listing 7.6 shows the solution to this problem.
+The code in Listing 7.6 shows the solution to this problem. When you run this, the output should be:<br>
+<code>group 1 = { A B E F }<br>
+group 2 = { C G }<br>
+group 3 = { D }<br>
+Beams should arrive in this order:<br>
+E-A E-B E-F A-B B-F F-C F-G B-C C-G G-D C-D<br></code><br>
+Although this seems to be simple problem, there is not a natural ordering of the components.  The goal of algorithm cited within the listing is to identify small groups of components that do have natural ordering and then schedule the beams that make up each group for delivery.
+<center><figure style="margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="600" src="Fig_7_3.jpg" width="800" /></p>
+<figcaption><b><center>Fig 7.3 Simple Bridge Structure</center></b></figcaption></figure></center>
+<h3>Listing_07_6: Connectivity of a structure</h3>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> adj<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> beams<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% describe the structure as an adjacency list identifying for each</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% node 'A'-'G' the nodes to which it directly connects</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, <font color="#c000c0">'A'</font>, <font color="#c000c0">'to'</font>, {{<font color="#c000c0">'B'</font>, <font color="#c000c0">'E'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, <font color="#c000c0">'B'</font>, <font color="#c000c0">'to'</font>, {{<font color="#c000c0">'A'</font>, <font color="#c000c0">'C'</font>, <font color="#c000c0">'E'</font>, <font color="#c000c0">'F'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, <font color="#c000c0">'C'</font>, <font color="#c000c0">'to'</font>, {{<font color="#c000c0">'B'</font>, <font color="#c000c0">'D'</font>, <font color="#c000c0">'F'</font>, <font color="#c000c0">'G'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, <font color="#c000c0">'D'</font>, <font color="#c000c0">'to'</font>, {{<font color="#c000c0">'C'</font>, <font color="#c000c0">'G'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, <font color="#c000c0">'E'</font>, <font color="#c000c0">'to'</font>, {{<font color="#c000c0">'A'</font>, <font color="#c000c0">'B'</font>, <font color="#c000c0">'F'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, <font color="#c000c0">'F'</font>, <font color="#c000c0">'to'</font>, {{<font color="#c000c0">'B'</font>, <font color="#c000c0">'C'</font>, <font color="#c000c0">'E'</font>, <font color="#c000c0">'G'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, <font color="#c000c0">'G'</font>, <font color="#c000c0">'to'</font>, {{<font color="#c000c0">'C'</font>, <font color="#c000c0">'D'</font>, <font color="#c000c0">'F'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Don't worry about exactly why this algorithm works</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% It is actually a search for "strongly connected components" (SCC's)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% described in the Corman, Leiserson, Rivest text</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% "Introduction to Algorithms" pp 488-493</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this is the algorithm:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 1. compute u, a Depth First Search (DFS: Para 7.4.2), storing the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    finish order f(u)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 2. compute a DFS using f(u) in descending order finish times d(u)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 3. compute fi(u), the forefather of each node in u defined as that</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    node w connected to u with the maximum value of f(w). Note: to</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    get this right, u can connect to itself</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 4. all the nodes in u with the same forefather form one of the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    groups of SCC's </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 5. select the beams for each group that connect the group's </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    forefather to all the other nodes. </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% so here we go</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    set all nodes to 'not used' except A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;finish = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(adj);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(ndx)<font color="#ff8000">.used</font> = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% construct a list of beams</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;beams = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(adj)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fr = adj(ndx)<font color="#ff8000">.from</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = adj(ndx)<font color="#ff8000">.to</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = ca<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bm = [fr c{<font color="#ff8000">1</font>}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~is_beam(bm)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beams = [beams {bm}]; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj(<font color="#ff8000">1</font>)<font color="#ff8000">.used</font> = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj(<font color="#ff8000">1</font>)<font color="#ff8000">.f</font> = finish;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;u(<font color="#ff8000">1</font>) = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nxt = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fprintf('u(%d) = %c; f(%d) = %d\n', 1, adj(1).from, 1, adj(1).f); </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 1. DFS starting at A, choosing the first child reachable from </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    the current node u storing the finish time f(u)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">2</font>:N<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nxt = get_DFS_next(nxt);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish = finish + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(nxt)<font color="#ff8000">.used</font> = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u(nxt) = nxt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(nxt)<font color="#ff8000">.f</font> = finish;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     fprintf('u(%d) = %c; f(%d) = %d\n', ...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         ndx, adj(nxt).from, ndx, adj(nxt).f); </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 2. compute a DFS using f(u) in descending order finish times d(u)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;f_vals = [adj.f];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;finish = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = find(f_vals == (<font color="#ff8000">7</font> - ndx));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v(ndx) = at;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(at)<font color="#ff8000">.d</font> = finish;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish = finish + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     fprintf('v(%d) = %c; d(%d) = %d\n', ...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         ndx, adj(at).from, ndx, adj(at).d); </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 3. compute fi(u), the forefather of each node in u defined as that</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    node w connected to u with the maximum value of f(w). Note: to</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    get this right, u can connect to itself</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = [{adj(ndx)<font color="#ff8000">.from</font>, adj(ndx)<font color="#ff8000">.to</font>{:}}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ord = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = ca<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jk = c{<font color="#ff8000">1</font>} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ord = [ord jk];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it = [it adj(jk)<font color="#ff8000">.f</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[~, at] = max(it);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;choice = ca{at} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(ndx)<font color="#ff8000">.fi</font> = choice;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;finx = [adj.fi];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fi = char(finx + <font color="#c000c0">'A'</font> - <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 4. all the nodes in u with the same forefather form one of the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    groups of SCC's </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ca = {adj.from};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;foref = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:<font color="#ff8000">7</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> any(finx == ndx)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grp = ca(finx == ndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = [at {grp}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foref = [foref ndx];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 5. a. select the beams for each group that connect the group's </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    forefather to all the other nodes. </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    b. select the beams totally within the emerging collection</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    of nodes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;save_bms = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;all_nodes = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> gndx = <font color="#ff8000">1</font>:length(at)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ff = foref(gndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = at{gndx};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all_nodes = [all_nodes ca];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'group %d = {'</font>, gndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> nx = <font color="#ff8000">1</font>:length(ca)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">' %s'</font>, ca{nx});<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beam = [adj(ff)<font color="#ff8000">.from</font>, ca{nx}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save_bms = add_beam(save_bms, beam);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">' }\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% also save all beams with both ends in all_nodes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> nx = <font color="#ff8000">1</font>:length(all_nodes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ny = nx+<font color="#ff8000">1</font>:length(all_nodes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bm = [all_nodes{nx} all_nodes{ny}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save_bms = add_beam(save_bms, bm);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% display the answers</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Beams should arrive in this order:\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> bm = save_bms<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = bm{:};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'%c-%c '</font>, b(<font color="#ff8000">1</font>), b(<font color="#ff8000">2</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> bms = add_beam(bms, beam)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> is_beam(beam)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% check if it's already there</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rev = [beam(<font color="#ff8000">2</font>) beam(<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~(any(strcmp(bms, beam))||any(strcmp(bms, rev)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bms = [bms {beam}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> is = is_beam(str)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> beams<br>
+&nbsp;&nbsp;&nbsp;&nbsp;is = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rev = [str(<font color="#ff8000">2</font>) str(<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(beams)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> strcmp(beams{ndx}, str) || strcmp(beams{ndx},rev)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> res = get_DFS_next(u)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> adj;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ca = adj(u)<font color="#ff8000">.to</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to_ndx = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = ca{to_ndx} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> adj(at)<font color="#ff8000">.used</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to_ndx = to_ndx + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = ca{to_ndx} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = at;<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
 
-In Listing 7.6:
-
-Lines 1–22: Construct the structure array using the beam(...)
-constructor function below.
-Line 23: The current connection point, conn—originally, the point A. Line 24: Initializes the connection list, a cell array of names.
-Line 25: An infinite loop to be exited with break statements.
-Lines 26–33: Traverse the components to make a structure array, found, containing all the components connected to the current connection point, conn.
-Lines 34–40: Go through the found array, removing any component already on the connected list and appending the names of those not removed to the connected list.
-Lines 41–45: We will exit the while loop when there are no new components found; until then, choose the next component to connect.
-
-The support functions for this script are assembled for convenience into Listing 7.7. They should be in separate files with the appropriate file names to be accessible by MATLAB.
-
-In Listing 7.7:
-
-Lines 1–5: Constructor for one structure defining one component. Lines 6–14: A function to determine whether a beam touches this connecting point.
-Lines 15–23: A similar function to determine whether a particular string is on the connection list, a cell array of strings.
-Lines 24–35: Function to find the next connection to use based on the latest components found—the “outer edges” of the emerging structure—and its not being already on the connected list.
-
-Here is the resulting output:
-
-data =
-
-1x11 struct array with fields: name,
-pos, connect
-
-the order of assembly is:
-'A' 'A-2' 'A-1' 'D-1' 'A-3' 'B-2' 'B-1' 'D-2' 'B-3' 'C-2' 'C-1' 'C-3'
-
-Chapter Summary
+<h2>Chapter Summary</h2>
 
 This chapter covered the nature, implementation, and behavior of two heterogeneous collections:
-■	Cell arrays are vectors of containers; their elements can be manipulated either as vectors of containers, or individually by inserting or extracting the contents of the container using braces in place of parentheses
-■	The elements of a structure are accessed by name rather than by indexing, using the dot operator, ‘.’, to specify the field name to be used
-■	Structures can be collected into structure arrays whose elements are structures all with the same field names. These elements can then be indexed and manipulated in the same manner as the cells in a cell array
-
+<ul>
+<li>Cell arrays are vectors of containers; their elements can be manipulated either as vectors of containers, or individually by inserting or extracting the contents of the container using braces in place of parentheses</li>
+<li>The elements of a structure are accessed by name rather than by indexing, using the dot operator, ‘.’, to specify the field name to be used</li>
+<li>Structures can be collected into structure arrays whose elements are structures all with the same field names. These elements can then be indexed and manipulated in the same manner as the cells in a cell array<li>
+</ul>
 [Special Characters]
 
 [Problems]

@@ -2,106 +2,177 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_07_6</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Connectivity of a structure</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">1</font>) = beam(<font color="#c000c0">'A-1'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">0.5</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;{'A',<font color="#c000c0">'A-2'</font>,'A-<font color="#ff8000">3'</font>,<font color="#c000c0">'D-1'</font>} );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">2</font>) = beam(<font color="#c000c0">'A-2'</font>, <font color="#ff8000">0</font>, <font color="#ff8000">1</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;{'A', <font color="#c000c0">'A-3'</font>, 'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'B-2'</font>} );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">3</font>) = beam(<font color="#c000c0">'A-3'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">1.5</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;{'A-<font color="#ff8000">1'</font>, <font color="#c000c0">'A-2'</font>, 'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'D-1'</font>} );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">4</font>) = beam(<font color="#c000c0">'B-1'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">2.5</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;{'A-<font color="#ff8000">2'</font>, <font color="#c000c0">'A-3'</font>, 'B-<font color="#ff8000">2'</font>, <font color="#c000c0">'B-3'</font>, 'D-<font color="#ff8000">1'</font>, <font color="#c000c0">'D-2'</font>} );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">5</font>) = beam(<font color="#c000c0">'B-2'</font>, <font color="#ff8000">0</font>, <font color="#ff8000">3</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;{'A-<font color="#ff8000">2'</font>, <font color="#c000c0">'A-3'</font>, 'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'B-3'</font>, 'C-<font color="#ff8000">1'</font>, <font color="#c000c0">'C-2'</font>} );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">6</font>) = beam(<font color="#c000c0">'B-3'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">3.5</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;{'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'B-2'</font>, 'C-<font color="#ff8000">1'</font>, <font color="#c000c0">'C-2'</font>, 'D-<font color="#ff8000">1'</font>, <font color="#c000c0">'D-2'</font>} );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">7</font>) = beam(<font color="#c000c0">'C-1'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">4.5</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;{'B-<font color="#ff8000">2'</font>, <font color="#c000c0">'B-3'</font>, 'C-<font color="#ff8000">2'</font>, <font color="#c000c0">'C-3'</font>, 'D-<font color="#ff8000">2'</font>} );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">8</font>) = beam(<font color="#c000c0">'C-2'</font>, <font color="#ff8000">0</font>, <font color="#ff8000">5</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;{'B-<font color="#ff8000">2'</font>, <font color="#c000c0">'B-3'</font>, 'C-<font color="#ff8000">1'</font>, <font color="#c000c0">'C-3'</font>, 'C'} );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">9</font>) = beam(<font color="#c000c0">'C-3'</font>, <font color="#ff8000">0.866</font>, <font color="#ff8000">5.5</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;{'C-<font color="#ff8000">1'</font>, <font color="#c000c0">'C-2'</font>, 'D-<font color="#ff8000">2'</font>, <font color="#c000c0">'C'</font>} );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">10</font>) = beam(<font color="#c000c0">'D-1'</font>, <font color="#ff8000">1.732</font>, <font color="#ff8000">2</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;{'A-<font color="#ff8000">1'</font>, <font color="#c000c0">'A-3'</font>, 'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'B-3'</font>, 'D-<font color="#ff8000">2'</font>} );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data(<font color="#ff8000">11</font>) = beam( <font color="#c000c0">'D-2'</font>, <font color="#ff8000">1.732</font>, <font color="#ff8000">4</font>, <font color="#ff8000">...</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;{'B-<font color="#ff8000">1'</font>, <font color="#c000c0">'B-3'</font>, 'C-<font color="#ff8000">1'</font>, <font color="#c000c0">'C-3'</font>, 'D-<font color="#ff8000">1'</font>} )<br>
-&nbsp;&nbsp;&nbsp;&nbsp;conn = <font color="#c000c0">'A'</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;clist = {conn};<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> true<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index = <font color="#ff8000">0</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find all the beams connected to conn</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:length(data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str = data(in);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> touches(str, conn)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index = index + <font color="#ff8000">1</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;found(index) = str;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> adj<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> beams<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% describe the structure as an adjacency list identifying for each</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% node 'A'-'G' the notes to which it directly connects</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'A', <font color="#c000c0">'to'</font>, {{'B', <font color="#c000c0">'E'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'B', <font color="#c000c0">'to'</font>, {{'A', <font color="#c000c0">'C'</font>, 'E', <font color="#c000c0">'F'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'C', <font color="#c000c0">'to'</font>, {{'B', <font color="#c000c0">'D'</font>, 'F', <font color="#c000c0">'G'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'D', <font color="#c000c0">'to'</font>, {{'C', <font color="#c000c0">'G'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'E', <font color="#c000c0">'to'</font>, {{'A', <font color="#c000c0">'B'</font>, 'F'}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'F', <font color="#c000c0">'to'</font>, {{'B', <font color="#c000c0">'C'</font>, 'E', <font color="#c000c0">'G'</font>}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = [adj, struct(<font color="#c000c0">'from'</font>, 'G', <font color="#c000c0">'to'</font>, {{'C', <font color="#c000c0">'D'</font>, 'F'}})];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Don't worry about exactly why this algorithm works</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% It is actually a search for "strongly connected components" (SCC's)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% described in the Corman, Leiserson, Rivest text</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% "Introduction to Algorithms" pp 488-493</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this is the algorithm:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 1. compute u, a Depth First Search (DFS: Para 7.4.2), storing the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    finish time f(u)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 2. compute a DFS using f(u) in descending order finish times d(u)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 3. compute fi(u), the forefather of each node in u defined as that</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    node w connected to u with the maximum value of f(w). Note: to</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    get this right, u can connect to itself</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 4. all the nodes in u with the same forefather form one of the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    groups of SCC's </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 5. select the beams for each group that connect the group's </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    forefather to all the other nodes. </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% so here we go</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    set all nodes to 'not used' except A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;finish = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(adj);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(ndx)<font color="#ff8000">.used</font> = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% construct a list of beams</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;beams = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(adj)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fr = adj(ndx)<font color="#ff8000">.from</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = adj(ndx)<font color="#ff8000">.to</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = ca<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bm = [fr c{<font color="#ff8000">1</font>}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~is_beam(bm)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beams = [beams {bm}]; <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% eliminate those already connected</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> jn = index:-<font color="#ff8000">1</font>:<font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ison(found(jn)<font color="#ff8000">.name</font>, clist)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;found(jn) = [];<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clist = [clist {found(jn)<font color="#ff8000">.name</font>}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj(<font color="#ff8000">1</font>)<font color="#ff8000">.used</font> = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj(<font color="#ff8000">1</font>)<font color="#ff8000">.f</font> = finish;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;u(<font color="#ff8000">1</font>) = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nxt = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fprintf('u(%d) = %c; f(%d) = %d\n', 1, adj(1).from, 1, adj(1).f); </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 1. DFS starting at A, choosing the first child reachable from </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    the current node u storing the finish time f(u)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">2</font>:N<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nxt = get_DFS_next(nxt);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish = finish + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(nxt)<font color="#ff8000">.used</font> = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u(nxt) = nxt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(nxt)<font color="#ff8000">.f</font> = finish;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     fprintf('u(%d) = %c; f(%d) = %d\n', ...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         ndx, adj(nxt).from, ndx, adj(nxt).f); </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 2. compute a DFS using f(u) in descending order finish times d(u)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;f_vals = [adj.f];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;finish = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = find(f_vals == (<font color="#ff8000">7</font> - ndx));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v(ndx) = at;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(at)<font color="#ff8000">.d</font> = finish;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish = finish + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     fprintf('v(%d) = %c; d(%d) = %d\n', ...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         ndx, adj(at).from, ndx, adj(at).d); </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 3. compute fi(u), the forefather of each node in u defined as that</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    node w connected to u with the maximum value of f(w). Note: to</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    get this right, u can connect to itself</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:N<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = [{adj(ndx)<font color="#ff8000">.from</font>, adj(ndx)<font color="#ff8000">.to</font>{:}}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ord = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> c = ca<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jk = c{<font color="#ff8000">1</font>} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ord = [ord jk];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it = [it adj(jk)<font color="#ff8000">.f</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[~, at] = max(it);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;choice = ca{at} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj(ndx)<font color="#ff8000">.fi</font> = choice;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;finx = [adj.fi];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fi = char(finx + <font color="#c000c0">'A'</font> - <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 4. all the nodes in u with the same forefather form one of the</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    groups of SCC's </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ca = {adj.from};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;foref = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:<font color="#ff8000">7</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> any(finx == ndx)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grp = ca(finx == ndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = [at {grp}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foref = [foref ndx];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 5. a. select the beams for each group that connect the group's </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    forefather to all the other nodes. </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    b. select the beams totally within the emerging collection</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    of nodes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;save_bms = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;all_nodes = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> gndx = <font color="#ff8000">1</font>:length(at)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ff = foref(gndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = at{gndx};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all_nodes = [all_nodes ca];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'group %d = {'</font>, gndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> nx = <font color="#ff8000">1</font>:length(ca)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">' %s'</font>, ca{nx});<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beam = [adj(ff)<font color="#ff8000">.from</font>, ca{nx}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save_bms = add_beam(save_bms, beam);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">' }\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% also save all beams with both ends in all_nodes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> nx = <font color="#ff8000">1</font>:length(all_nodes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ny = nx+<font color="#ff8000">1</font>:length(all_nodes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bm = [all_nodes{nx} all_nodes{ny}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save_bms = add_beam(save_bms, bm);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(found) > <font color="#ff8000">0</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conn = nextconn( found, clist );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% display the answers</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Beams should arrive in this order:\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> bm = save_bms<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = bm{:};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'%c-%c '</font>, b(<font color="#ff8000">1</font>), b(<font color="#ff8000">2</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> bms = add_beam(bms, beam)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> is_beam(beam)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% check if it's already there</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rev = [beam(<font color="#ff8000">2</font>) beam(<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~(any(strcmp(bms, beam))||any(strcmp(bms, rev)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bms = [bms {beam}];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> is = is_beam(str)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> beams<br>
+&nbsp;&nbsp;&nbsp;&nbsp;is = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rev = [str(<font color="#ff8000">2</font>) str(<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(beams)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> strcmp(beams{ndx}, str) || strcmp(beams{ndx},rev)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is = true;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'the order of assembly is:'</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;disp(clist)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-<font color="#0000ff">function</font> ans = beam( nm, xp, yp, conn )<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% construct a beam structure with fields:</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% name - beam name</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% xp, yp - coordinates of its centroid</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% conn - cell array - names of adjacent beams</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% useage: ans = beam( nm, xp, yp, conn )</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;ans.name = nm;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ans.pos = [xp, yp];<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ans.connect = conn;<br>
 <font color="#0000ff">end</font><br>
 <br>
-<font color="#0000ff">function</font> res = touches(beam, conn)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% does the beam touch this connecting point?</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: res = touches(beam, conn)</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;res = false;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:length(beam.connect)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item = beam.connect{in};<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> strcmp(item,conn)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = true; <font color="#0000ff">break</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> res = get_DFS_next(u)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> adj;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ca = adj(u)<font color="#ff8000">.to</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to_ndx = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = ca{to_ndx} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> adj(at)<font color="#ff8000">.used</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to_ndx = to_ndx + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = ca{to_ndx} - <font color="#c000c0">'A'</font> + <font color="#ff8000">1</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-<font color="#0000ff">end</font><br>
-<br>
-<font color="#0000ff">function</font> res = ison( nm, cl )<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% is this beam on the connection list,</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% a cell array of beam names</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: res = ison( beam, cl )</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;res = false;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:length(cl)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item = cl{in};<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> strcmp(item, nm)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = true; <font color="#0000ff">break</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-<font color="#0000ff">end</font><br>
-<br>
-<font color="#0000ff">function</font> nm = nextconn( fnd, cl )<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find a connection name among</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% those found not already connected</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: nm = nextconn( fnd, cl )</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:length(fnd)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item = fnd(in);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cn = item.connect;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> jn = <font color="#ff8000">1</font>:length(cn)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nm = cn{jn};<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~ison(nm, cl)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = at;<br>
 <font color="#0000ff">end</font><br>
 </strong></code>
