@@ -159,8 +159,6 @@ F =<br>
 </code>
 </div>
 <div class="container">
-
-</ui>
 <br>
  Based on these examples, we observe the following:
 <ul>
@@ -240,6 +238,7 @@ end<br>
  </ul>
  <p>For example, suppose you are provided with a cell array and have been asked for a function that finds the total length of all the vectors it contains. The function might look like that shown in Listing 7.2. 
  <h4>Listing 7.2: Cell array processing example</h4>
+ </div>
  <code><strong>
 &nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
 &nbsp;&nbsp;&nbsp;&nbsp;it = totalNums({<font color="#ff8000">1</font>:<font color="#ff8000">3</font> {<font color="#ff8000">4</font> <font color="#ff8000">9</font>} <font color="#ff8000">42</font> {{{<font color="#ff8000">4</font>}}}})<br>
@@ -263,7 +262,11 @@ end<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 <font color="#0000ff">end</font><br>
 </strong></code>
- </div>
+MATLAB provides two functions that can cast data between a cell array containing only numbers, <code>ca</code>, and a numerical array, <code>arr</code>:<br>
+<code>arr = cell2num(ca) % consumes a cell array and returns a numerical array<br>
+</code>and<br>
+<code>ca = num2cell(arr) % consumes a number array and returns a cell array<br>
+</code> 
 <h2><a name="7_3">7.3 Structures</a></h2>
 <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
 <p><img alt="image" height="250" src="Fig_7_2.jpg" width="450" /></p>
@@ -735,7 +738,7 @@ Although this seems to be simple problem, there is not a natural ordering of the
 <center><figure style="margin-left: 10px; margin_bottom: 5px">
 <p><img alt="image" height="600" src="Fig_7_3.jpg" width="800" /></p>
 <figcaption><b><center>Fig 7.3 Simple Bridge Structure</center></b></figcaption></figure></center>
-<h3>Listing_07_6: Connectivity of a structure</h3>
+<h3>Listing 7.6: Connectivity of a structure</h3>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> adj<br>
