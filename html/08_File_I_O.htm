@@ -393,36 +393,57 @@ raw =<br>
 </code>
 <ul>
 <li>the <code>nums</code> values are going to include all the numerical cells from the spreadsheet omitting the first row and columns E-H which is exactly what we don't want. It also, because it returns a <code>double</code> array,  replaces any strings with <code>NaN</code>.</li>
-<li>the <code>txt</code> values include all the text we need to solve the problem but replaces the numerical values with an empty cell array. However, since we might need to use the numerical index values, this is not exclusively a text processing problem so the second, text-only result is not what we need.</li>
-<li>Therefore, in this particular application, we will process the <code>raw</code> data provided by  <code>csvread(...) </code>, giving both the string and numerical  data.</li>
+<li>the <code>txt</code> values include all the text we need to solve the problem but replaces the numerical values with an empty cell array. However, since we might conceptually need to use the numerical values, this is not exclusively a text processing problem so the second, text-only result is not what we need.</li>
+<li>Therefore, in this particular application, we will process the <code>raw</code> data provided by  <code>xlsread(...) </code>, giving both the string and numerical data.</li>
 </ul>
 The other concern is that there are a different number of connections on each row of the sheet. Our solution to the beams problem requires the connections to be placed in a cell array. When a connection is present, it is a string. When it is not present, we can see from the behavior of the raw data that the contents of empty cells appear as a cell containing NaN.<br>
 <b>Note:</b> If memory serves me correctly, previous versions of MATLAB put an empty cell array in the raw data when there were no data present. (sigh!)<br>
 
 We need a function that will read this spread sheet and produce the same model of the structure used in Chapter 7. Such a function is shown in Listing 8.4.
-In Listing 8.4:
-Line 1: The function consumes the file name and produces a structure array with the fields described in the following comments. Line 2: Reads the spreadsheet and keeps only the raw data.
-Line 3: Gets the rows and columns in the raw data; we need to ignore the top row and left column.
-Line 4: Initializes the output index for the structure array.
-Line 5: Ignoring the first row, traverses all the remaining rows. Line 6: The component name is in the second column.
-Line 7: The coordinates of the component are in the third and fourth columns.
-Lines 8–9: Initialize the search for the connections for this component. It is important to empty the array conn before each pass to avoid “inheriting” data from a previous row.
-Lines 10–11: Extract each item in turn from the row.
-Lines 12–14: If the item is not of class char, this is the blank cell at the end of the row; the break command exits the for loop moving across the row.
-Lines 15–16: Otherwise, it stores the connection and keeps going. Lines 18–20: When the connections are complete, it stores them in the structure, stores the structure in the structure array, and continues to the next row.
-Line 21: When the rows are completed, the data are ready to return to the calling script.
+<h4>Listing 8.4: Reading structure data</h4>
+<code><strong>
+<font color="#0000ff">function</font> data = readStruct(filename)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% read a spreadsheet and produce a structure array:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% - index - the first column values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% - name - the name of each node</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% - pos - columns 3 and 4 in a vector</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% - connect - cell array with the remaining data on the row</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[~,~,raw] = xlsread(filename);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Read the spreadsheet and keep only the raw data.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rows cols] = size(raw);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  Find the size of the raw data</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;out = <font color="#ff8000">1</font>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% index of the structure array returned</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> row = <font color="#ff8000">2</font>:rows;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Iterate across the rows except the first row</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.index = raw{row,<font color="#ff8000">1</font>};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The first column is the numerical index</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.name = raw{row,<font color="#ff8000">2</font>};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The second column is the node name</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.pos = [raw{row,<font color="#ff8000">3</font>} raw{row,<font color="#ff8000">4</font>}];<font color="#00A000">% Columns 3 and 4 are the numerical position of the node [we don't need this]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cni = <font color="#ff8000">1</font>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Index of the connecting nodes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conn = {};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Collect the connected nodes here</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> col = <font color="#ff8000">5</font>:cols&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Iterate across the remaining columns</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item = raw{row, col};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Fetch each item </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~ischar(item)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% If it is not a string, </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ...  stop processing the row</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><font color="#00A000"></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conn{cni} = item;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Otherwise, save the connected node </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cni = cni + <font color="#ff8000">1</font>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ... and bump the index of connections</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.connect = conn;<font color="#00A000">% Store the cell array of connections</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data(out) = str;<font color="#00A000">% Store this structure</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out = out + <font color="#ff8000">1</font>;<font color="#00A000">% ... and increment the structure index</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>
 
-To test this function, replace the structure array construction in lines 1–22 of Listing 7.6 in Chapter 7 with the following line:
+To test this function, replace the structure array construction in lines 1–22 of Listing 7.6 in Chapter 7 with the following line:<br><br>
+<code>data = readStruct('beams.xlsx');</code><br><br>
+The script should then produce the same results as before.<br>
 
-data = readStruct('Structure_data.xls');
-The script should then produce the same results as before.
-
-Chapter Summary
+<h2>Chapter Summary</h2>
 
 We have described three levels of capability for reading and writing files:
-■	The save and load operators allow you to save variables from the workspace and restore them to the workspace
-■	Specialized functions read and write spreadsheets and delimited text files
-■	Lower-level functions provide the ability to open and close files, and to read and write text files in any form that is required
+<ul>
+<li>The save and load operators allow you to save variables from the workspace and restore them to the workspace</li>
+<li>Specialized functions read and write spreadsheets and delimited text files</li>
+<li>Lower-level functions provide the ability to open and close files, and to read and write text files in any form that is required</li>
+</ul>
 
 [Special Characters]
 

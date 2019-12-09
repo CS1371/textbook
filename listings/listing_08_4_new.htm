@@ -2,20 +2,21 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% listing_08_4</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Reading structure data</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
-&nbsp;&nbsp;&nbsp;&nbsp;it = readStruct(<font color="#c000c0">'../beams.xlsx'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj = readStruct(<font color="#c000c0">'beams.xlsx'</font>)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
 <font color="#0000ff">function</font> data = readStruct(filename)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% read a spreadsheet and produce a</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% structure array:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% index - the first column value</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% name - the second column value</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% pos - columns 3 and 4 in a vector</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% connect - cell array with the remaining</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% data on the row</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;[~,~,raw] = xlsread(filename);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;[rows cols] = size(raw);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ignore the first row and column</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;out = <font color="#ff8000">1</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> row = <font color="#ff8000">2</font>:rows<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.index = raw{row,<font color="#ff8000">1</font>};<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.name = raw{row,<font color="#ff8000">2</font>};<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.pos = [raw{row,<font color="#ff8000">3</font>} raw{row,<font color="#ff8000">4</font>}];<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cni = <font color="#ff8000">1</font>;<br>
