@@ -43,38 +43,264 @@
 </ul>
 <h1>Chapter Objectives</h1>
 
-This chapter discusses the following basic ideas of recursive programming: 
-
-■ Three basic characteristics must be present for a recursive function to work 
-■ Exceptions are a powerful mechanism for detecting and trapping errors 
-■ A wrapper function is used to set up the recursion 
-
-■ Other forms of recursion occur in special circumstances 
+This chapter discusses the following basic ideas of recursive programming:
+<ul> 
+<li>Three basic characteristics must be present for a recursive function to work </li>
+<li>Exceptions are a powerful mechanism for detecting and trapping errors</li>
+<li>A wrapper function is used to set up the recursion </li>
+<li>Other forms of recursion occur in special circumstances</li>
+</ul>
 
 <h1>Introduction</h1>
- Recursion is an alternative technique by which a code block can be repeated in a controlled manner. In Chapter 4, we saw repetition achieved by inserting control statements in the code (either for or while) to determine how many times a code block would be repeated. Recursion uses the basic mechanism for invoking functions to manage the repetition of a block of code.  While some problems are naturally solved by iterative solutions, the problems for which a recursive solution is elegant and easily understoo a recursive function needs a “wrapper function” to set up the recursion and to check for erroneous initial conditions that might cause errors. T recursive function then becomes a private helper function.  
+ Recursion is an alternative technique by which a code block can be repeated in a controlled manner. In Chapter 4, we saw repetition achieved by inserting control statements in the code (either <code>for</code> or <code>while</code>) to determine how many times a code block would be repeated. Recursion uses the basic mechanism for invoking functions to manage the repetition of a block of code.  While some problems are naturally solved by iterative solutions, there are many problems for which a recursive solution is elegant and easily understood. Frequently, a recursive function needs a “wrapper function” to set up the recursion and to check for erroneous initial conditions that might cause errors. The recursive function itself then becomes a private helper function.  
 <h2><a name="9_1">9.1  Concept: The Activation Stack</a></h2>
  In order to understand recursive programming, we must look deeper into the mechanism by which function calls are mechanized. Calling any function depends on a special kind of data structure built into the architecture of the central processing unit (CPU). This is called the activation stack. It enables the CPU to determine which functions are active or suspended awaiting the completion of other function calls. To understand the activation stack, first we consider the basic concept of a stack.  
-<h3><a name="9_1_1">9.1.1	A Stack</a></h3>
- A stack is one of the fundamental data structures of computer science. It is best modeled by considering the trays at the front of the cafeteria line. You cannot see how many trays there are on the stack, and the only access you have to them is to take a tray off the stack or put one on. So a stack is a collection of objects of arbitrary size with a restricted number of operations we are allowed to perform on that collection (see Figure 9.1). Unlike a vector, where it is permissible to read, add, or remove items anywhere in the collection, we are only allowed the following operations with a stack:  ■	Push an object onto the stack ■	Pop an object off the stack ■	Peek at the top object without removing it ■	Check whether the stack is empty  
+<h3><a name="9_1_1">9.1.1: A Stack</a></h3>
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="200" src="Fig_9_1.jpg" width="300" /></p></center>
+<figcaption><b><center>Fig 9.1: A Stack</center></b></figcaption></figure>
+
+ A stack is one of the fundamental data structures of computer science. It is best modeled by considering the plates at the front of the cafeteria line. You cannot see how many plates there are on the stack, and the only access you have to them is to take the top plate off the top of the stack or put one on. So a stack is a collection of objects of arbitrary size with a restricted number of operations we are allowed to perform on that collection (see Figure 9.1). Unlike a vector, where it is permissible to read, add, or remove items anywhere in the collection, we are only allowed the following operations with a stack:<ul>
+<li>Push an object onto the stack</li>
+<li>Pop an object off the stack</li>
+<li>Peek at the top object without removing it</li>
+<li>Check whether the stack is empty</li>
+</ul>  
 <h3><a name="9_1_2">9.1.2	Activation Stack</a></h3>
- The core concept that enables any function (especially a recursive function) to operate is the concept of an activation stack. The activation stack is the means by which the operating system allocates memory to functions for local storage. Typically, local storage is required by a function for the following reasons:  ■	Storing the location in memory to which control must be returned when the function execution completes ■	Storing copies of the function parameter values ■	Providing space for the values of any local variables defined within the function  When MATLAB is initializing, the operating system allocates a block of memory to contain its activation stack and allocates the first item (usually called a “frame”) on the activation stack to store variables defined in the Command window and by scripts. An astute reader might recognize this as the initial workspace for the system. When the user starts a script or makes an entry in the Command window, any variables created are stored in that stack frame. When that application calls a function, a new stack frame is allocated and “pushed” onto the activation stack. The calling program is then suspended, actual parameters are copied to formal parameters in the new workspace and control is passed to the function. Any new variables created are stored in its stack frame. When that function completes, its frame is popped off the stack and destroyed, and control is returned   to the frame beneath, which is now the  top  of  the  stack.  If  an  active function calls another function, this process  is  repeated.  The  calling function is suspended, a stack frame is pushed onto the activation stack for the new function, and the original function is suspended until the new function completes.  
+ The core concept that enables any function (especially a recursive function) to operate is the concept of an activation stack. The activation stack is the means by which the operating system allocates memory to functions for storing local data. Typically, local storage is required by a function for the following reasons:<ul>
+ <li>Storing the location in memory to which control must be returned when the function execution completes</l>
+ <li>Storing copies of the function parameter values</l>
+ <li>Providing space for the values of any local variables defined within the function</l>
+ </ul>
+ When MATLAB is initializing, the operating system allocates a block of memory to contain its activation stack and allocates the first item (usually called a “frame”) on the activation stack to store variables defined in the Command window and by scripts. An astute reader might recognize this as the initial workspace for the system. When the user starts a script or makes an entry in the Command window, any variables created are stored in that stack frame. When that application calls a function, a new stack frame is allocated and “pushed” onto the activation stack. The calling program is then suspended, actual parameters are copied to formal parameters in the new workspace and control is passed to the function. Any new variables created are stored in its stack frame. When that function completes, its frame is popped off the stack and destroyed, and control is returned   to the frame beneath, which is now the  top  of  the  stack.  If  an  active function calls another function, this process  is  repeated.  The  calling function is suspended, a stack frame is pushed onto the activation stack for the new function, and the original function is suspended until the new function completes.  
 <h3><a name="9_1_3">9.1.3 Function Instances</a></h3>
- In Chapter 2 we discussed the difference between the type of data defined by its class and an object—an instance of that class assigned to a variable. In the same way, we draw the distinction between the .m file that defines the behavior of a function and the instance(s) of that function that results when the function is called. Each new instance of a function has its own workspace that occupies a temporary stack frame allocated from the activation stack.  
+ In Chapter 2 we discussed the difference between the type of data defined by its class and an object — an instance of that class assigned to a variable. In the same way, we draw the distinction between the .m file that defines the behavior of a function and the instance(s) of that function that result(s) when the function is called. Each new instance of a function has its own workspace that occupies a temporary stack frame allocated from the activation stack.  
 <h2><a name="9_2">9.2	Recursion Defined</a></h2>
- Following the previous line of reasoning, in principle there is no reason why a function could not in fact “call itself,” and this is the logical basis for recursive programming. Of course, as with iterative programming, if there is no mechanism to stop the recursion, the process would repeat endlessly. In the case of endless recursion, since space is being consumed on the activation stack, the system will eventually terminate the process when the memory originally allocated for the activation stack is exhausted.  The canonical illustration of recursion is the computation of n factorial. We could view the calculation of 5! in the following ways:  5! = 5 × 4 × 3 × 2 × 1 5! = 5 × 4!  The second representation is the recursive view, which warrants a closer examination as follows:  n! = n × (n-1)!  This definition would not be complete, however, without realizing that it must stop somewhere. In the original definition above, we did not continue the chain of multiplication with " * 0 * (-1) * (-2) ..." for obvious reasons—multiplying by 0 makes all factorial values 0! Mathematically, we “artificially” define the terminating condition for the factorial calculation as the state where 0! = 1. We can derive from this example the three necessary characteristics of a recursive function:  1.	There must be a terminating condition to stop the process 2.	The function must call a clone of itself 3.	The parameters to that call must move the function toward the terminating condition  The word clone is important here—a recursive function really does not “call itself,” because it requests a new stack frame and passes different parameters to the instance of the function that occupies the new frame.  
+ Following the previous line of reasoning, in principle there is no reason why a function could not in fact “call itself,” and this is the logical basis for recursive programming. Of course, as with iterative programming, if there is no mechanism to stop the recursion, the process would repeat endlessly. In the case of endless recursion, since space is being consumed on the activation stack, the system will eventually terminate the process when the memory originally allocated for the activation stack is exhausted.<br>
+ The canonical illustration of recursion is the computation of n factorial. We could view the calculation of <code>5!</code> in the following ways:<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;5! = 5 × 4 × 3 × 2 × 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;5! = 5 × 4!</code><br>
+The second representation is the recursive view, which warrants a closer examination as follows:<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;n! = n × (n-1)!</code><br>
+This definition would not be complete, however, without realizing that it must stop somewhere. In the original definition above, we did not continue the chain of multiplication with "<code> * 0 * (-1) * (-2) ... </code>" for obvious reasons — multiplying by 0 makes all factorial values 0! Mathematically, we “artificially” define the terminating condition for the factorial calculation as the state where <code>0! = 1</code>. We can derive from this example the three necessary characteristics of a recursive function:<ol>
+<li>There must be a terminating condition to stop the process</li>
+<li>The function must call <b>a clone</b> of itself</li>
+<li>The parameters to that call must move the function toward the terminating condition</li>
+</ol>
+<b>Note:</b> The word <b>clone</b> is important here — a recursive function really does not “call itself,” because it requests a new stack frame and passes different parameters to the instance of the function that occupies the new frame.  
 <h2><a name="9_3">9.3	Implementing a Recursive Function</a></h2>
- Template 9.1 shows the general template for recursive functions. The following general guidelines indicate how the recursive template is implemented:  ■	The <function_name>, like the name of any other function, may be any legal variable name ■	The variable <result> may be any legal variable name or a vector of variable names ■	As usual with functions, you should supply at least one line of <documentation> to define its purpose and implementation ■	Each exit from the function must assign values to all the result variables ■	The first design decision is to determine the condition(s) under which the recursive process should stop, and how to express this as the <terminating condition N> tests ■	The <initial value N> entries are the value(s) of the result(s) at the terminating condition(s) ■	The second design decision is to determine the <operation>—the specific mathematical or logical operation that must be performed to combine the current formal parameters with the result of the recursive call to create a new value of the <result> ■	The last design decision is to determine how to compute the <actual_params> of the recursive call to ensure that the process moves toward at least one of the <terminating condition N> states The implementation of the factorial function is shown in Listing 9.1. In Listing 9.1: Before Line 2, we show a diagnostic print call that, if not commented, enables you to observe the sequence of events.  Line 2: The terminating condition. Line 5: The result at termination. Line 7: Calls a clone of the function, which moves closer to termination by reducing N and computing the result. Exercise 9.1 provides an analysis of recursive behavior. In particular, notice that all the mathematical operations are performed as the activation stack “unwinds.”  
+Template 9.1 shows the general template for recursive functions. The following general guidelines indicate how the recursive template is implemented:
+
+<div class="container">
+  <div class="sidebar_R">
+<h4>Template 9.1: General template for a recursive function</h4>
+<code>
+function &lt;result&gt; = &lt;function_name&gt; (&lt;formal_params&gt;)<br>
+&lt;documentation&gt;<br>
+&nbsp;&nbsp;if &lt;terminating condition 1&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&gt; = &lt;initial value 1&gt;<br>
+&nbsp;&nbsp;elseif &lt;terminating condition 2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&gt; = &lt;initial value 2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&gt; = &lt;operation&gt; ...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&lt;formal_params&gt;, ...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;function_name&gt; (&lt;new_params&gt;))<br>
+end</code></div><br>
+
+<div class="container">
+ <ul>
+<li>The <code>&lt;function_name&gt;</code>, like the name of any other function, may be any legal variable name</li>
+<li>The variable <code>&lt;result&gt;</code> may be any legal variable name or a vector of variable names</li>
+<li>As usual with functions, you should supply at least one line of <code>&lt;documentation&gt;</code> to define its purpose and implementation</li>
+<li>Each exit from the function must assign values to all the result variables</li>
+<li>The first design decision is to determine the condition(s) under which the recursive process should stop, and how to express this as the <code>&lt;terminating condition N&gt;</code> tests</li>
+<li>The <code>&lt;initial value N&gt;</code> entries are the value(s) of the result(s) at the terminating condition(s)</li>
+<li>The second design decision is to determine the <code>&lt;operation&gt;</code> - the specific mathematical or logical operation that must be performed to combine the current formal parameters with the result of the recursive call to create a new value of the <code>&lt;result&gt;</code></li>
+<li>The last design decision is to determine how to compute the <actual_params> of the recursive call to ensure that the process moves toward at least one of the <code>&lt;terminating condition N&gt;</code> states</li>
+</ul>
+ </div>
+
+<div class="container">
+  <div class="sidebar_R">
+<h4>Exercise 9.1 Analyzing recursive behavior</h4>
+<ol>
+<li>Create the <code>fact(...)</code> function from Listing 9.1 , remove the '<code>%</code>' from the print statement to enable the printout, and run it from the Command window:<br>
+<code>>> fact(4)<br>
+fact( 4 )<br>
+fact( 3 )<br>
+fact( 2 )<br>
+fact( 1 )<br>
+fact( 0 )<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;24</li></code>
+<li>Put a break point at Line 4 and run <code>fact(2)</code>. The function should pause in the first stack frame. Notice that the only variable in the workspace is <code>N</code> with a value <code>2</code>.</li>
+<li>Find the “step into” button and click it. Since <code>N</code> is not <code>0</code>, the arrow should move to Line 8.</li>
+<li>Click again, and the workspace should change to a new workspace with the value <code>N = 1</code> — you just called a clone of the original function with its own stack frame. There should be a second, transparent arrow at Line 7 to indicate that some clone of this function is waiting at that point for a result.</li>
+<li>Continue stepping into functions until you return from the copy where <code>N = 0</code>. When this return happens, you return to the frame with <code>N = 1</code>, the frame "underneath," at Line 8, and are then able to compute the first result.</li>
+<li>Further stepping will return from each stack frame until you finally return to your script’s workspace with the final answer.<br>
+</strong></code>
+</div>
+<div class="container">
+The implementation of the factorial function is shown in Listing 9.1. In Listing 9.1 at Line 3, we show a diagnostic print call that, if not commented, enables you to observe the sequence of events.  Exercise 9.1 provides an analysis of recursive behavior. In particular, notice that all the mathematical operations are performed as the activation stack "unwinds."  
+
+<h4>Listing 9.1: Function to compute N factorial</h4>
+<code><strong>
+<font color="#0000ff">function</font> result = fact(N)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% recursive computation of N!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fprintf('fact( %d )\n', N); % testing only</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> N == <font color="#ff8000">0</font><font color="#00A000"> % Terminating condition</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = <font color="#ff8000">1</font>;<font color="#00A000"> % Terminating action</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+<font color="#00A000"> % recursive call</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = N * fact(N - <font color="#ff8000">1</font>);<br>
+<font color="#00A000"> % parameter moves closer to 0 as long as it started as a positive integer</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font></strong></code><br>
+
+
 <h2><a name="9_4">9.4  Exceptions</a></h2>
- We digress here to discuss how programs deal with unexpected circumstances. Exceptions are a powerful tool for gracefully managing run- time errors caused by programming errors or bad data. The general need for an exception mechanism might best be established by way of an example. Suppose you write a program that requests some data from a user and then launches a significant number of nested function calls—perhaps even a recursive function—to perform an analysis on the data received. Somewhere in the depths of these function calls, the program divides something by a value, but in this instance that value is zero. The cause of this problem is probably bad data entered by the user in the top-level script. However, the effect is discovered deep in the activation stack in the middle of some obscure numerical computation.   
+ We digress here to discuss how programs deal with unexpected circumstances. Exceptions are a powerful tool for gracefully managing run- time errors caused by programming errors or bad data. The general need for an exception mechanism might best be established by way of an example. Suppose you write a program that requests some data from a user and then launches a significant number of nested function calls—perhaps even a recursive function—to perform an analysis on the data received. Somewhere in the depths of these function calls, the program divides something by a value, but in this instance that value is zero. The cause of this problem is probably bad data entered by the user in the top-level script. However, the effect is discovered deep in the activation stack in the middle of some obscure numerical computation. 
+</div >
 <h3><a name="9_4_1">9.4.1	Historical Approaches</a></h3>
- Early programming languages attempted to deal with this problem in one of two equally unpleasant ways:  ■	Some languages require any mathematical function that might produce an error to return the status of that calculation to the calling function. They allow errors to be reported and processed, but they have two unpleasant consequences: using up the ability of a function to return a value and calling this function, which means choosing between testing for errors and solving the problem locally and passing the error condition back to its calling function in the hope that somewhere the error will be dealt with. ■	Perhaps worse than this are the languages that use a globally accessible variable, such as ierror, to report status. For example, if ierror were normally set to 0, an error could be announced by setting its value to something other than 0 to indicate the nature of the failure. This frees the function from needing to return status, but it does not relieve the calling function of the need to check whether the ierror value is bad, or solving the problem, or elevating it. Furthermore, if an error does occur within a function, since it is now still returning a value, what value should it return if it is unable to complete its assigned calculation?  
+ Early programming languages attempted to deal with this problem in one of two equally unpleasant ways:
+ <ul>
+ <li>Some languages require any mathematical function that might produce an error to return the status of that calculation to the calling function. They allow errors to be reported and processed, but they have two unpleasant consequences: using up the ability of a function to return a value and calling this function, which means choosing between testing for errors and solving the problem locally and passing the error condition back to its calling function in the hope that somewhere the error will be dealt with.</li>
+ <li>Perhaps worse than this are the languages that use a globally accessible variable, such as <code>ierror</code>, to report status. For example, if <code>ierror</code> were normally set to <code>0</code>, an error could be announced by setting its value to something other than <code>0</code> to indicate the nature of the failure. This frees the function from needing to return status, but it does not relieve the calling function of the need to check whether the <code>ierror</code> value is bad, or solving the problem, or elevating it. Furthermore, if an error does occur within a function, since it is now still returning a value, what value should it return if it is unable to complete its assigned calculation? </li>
+</ul> 
 <h3><a name="9_4_2">9.4.2	Generic Exception Implementation</a></h3>
- By contrast, most modern programming languages provide an exception mechanism whereby if an error occurs, regardless of how deep in the activation stack, program implementation is immediately suspended in the current stack frame. The activation stack below this frame is then searched for the frame of a program that has “volunteered” to process this type of exception. When it is found, all the stack frames above this frame are removed from the stack and the code in the exception handling mechanism is activated. If no such frame is discovered, the overall program aborts with an error code.  The following mechanisms are necessary to implement the exception mechanism effectively:  ■	Throwing an exception. Whenever a problem occurs, the operating system must suspend operations at that point in the activation stack and go looking for a function equipped to handle the specific exception. If no such function is found, the program is terminated and an exception is shown to the user (in MATLAB, it is written in red in the Command window). ■	Catching an exception. A function that is able to deal with a specific exception uses a try ... catch construct to identify the suspect code and resolve the problem. Between try and catch, the programmer puts a code block that contains activities that could throw exceptions. After the catch statement, there is a code block that should fix the problem.  Depending on the specific language implementation, the exception-catching mechanism usually offers facilities both for determining exactly where the exception occurred and for reconstructing the activation stack with all the variable values as they were at the time of the exception.  In the previous example, the general template for successfully interacting with the user is shown in Template 9.2. The successful Boolean flag will be set only if the data are processed without error. It does not matter how deep in the data processing code the error occurs—the user interface catches the error, reports it to the user, and prompts the user for better data.  For example, you might have noticed earlier that the input(...) function has a built-in try ... catch mechanism to deal with erroneous user input. If something is entered that cannot be parsed, rather than throw red ink in the Command window, the exception is caught and the prompt repeated for the user.  
+
+ By contrast, most modern programming languages provide an exception mechanism whereby if an error occurs, regardless of how deep in the activation stack, program implementation is immediately suspended in the current stack frame. The activation stack below this frame is then searched for the frame of a program that has “volunteered” to process this type of exception. When it is found, all the stack frames above this frame are removed from the stack and the code in the exception handling mechanism is activated. If no such frame is discovered, the overall program aborts with an error code.  The following mechanisms are necessary to implement the exception mechanism effectively:
+
+<div class="container">
+  <div class="sidebar_R">
+<h4><center>Template 9.2: Template for processing exceptions</center></h4>
+<code>
+&lt;successful&gt; = false<br>
+while &lt;not successful&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;try<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;request data from the user&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;process the data&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;successful&gt; = true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;catch<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;announce the error to the user&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end<br>
+end</code></div><br>
+
+<div class="container">
+ <ul>
+ <li><b>Throwing an exception:</b> Whenever a problem occurs, the operating system must suspend operations at that point in the activation stack and go looking for a function equipped to handle the specific exception. If no such function is found, the program is terminated and an exception is shown to the user (in MATLAB, it is written in red in the Command window).</li>
+ <li><b>Catching an exception</b> A function that is able to deal with a specific exception uses a <code>try ... catch</code> construct to identify the suspect code and resolve the problem. Between <code>try</code> and <code>catch</code>, the programmer puts a code block that contains activities that could throw exceptions. After the <code>catch</code> statement, there is a code block that should fix the problem.  Depending on the specific language implementation, the exception-catching mechanism usually offers facilities both for determining exactly where the exception occurred and for reconstructing the activation stack with all the variable values as they were at the time of the exception.</li>
+ </ul>
+ In the previous example, the general template for successfully interacting with the user is shown in Template 9.2. The successful Boolean flag will be set only if the data are processed without error. It does not matter how deep in the data processing code the error occurs—the user interface catches the error, reports it to the user, and prompts the user for better data.  For example, you might have noticed earlier that the <code>input(...)</code> function has a built-in <code>try ... catch</code> mechanism to deal with erroneous user input. If something is entered that cannot be parsed, rather than throw red ink in the Command window, the exception is caught and the prompt repeated for the user.  
+ </div>
 <h3><a name="9_4_3">9.4.3	MATLAB Implementation</a></h3>
- MATLAB implements a simplified version of the most general form of exception processing. The try ... catch ... end construct is fully supported. However, unlike some languages, the MATLAB language does not distinguish between the kinds of exception that can be thrown.  ■	All built-in functions throw exceptions when they discover error conditions—attempting to open a nonexistent file for reading, for example—and expect the programmer to catch these exceptions if they are recoverable. ■	To throw an exception manually, the program calls the error(...) function that takes one parameter, a string defining the error. If the exception is not caught, the string provided is displayed in red to the user. If the exception is caught, that string is ignored. ■	To handle an exception, a code block we suspect might throw an exception is placed between try and catch statements. If no error occurs in the code block, the catch statement is ignored. If an exception is thrown from that code block, however, execution is suspended at that point. No further processing is performed, no data are returned from functions, and the code in the closest catch block is executed up to the associated end statement. To determine the cause of the exception, you can use the lasterror function. It returns the textual information provided at the exception and a structure array describing the activation stack. ■	In more complex situations where this function may not be able to actually handle the error, a further exception can be thrown from the catch block. This exception will escape from this try ... catch block and must be caught (if at all) by another function or script deeper in the activation stack.  Listing 9.2 illustrates a simple example. The objective is to have the user define a triangle by entering a vector of three sides and to calculate the angle between the first two sides. The acosd(...) function computes the inverse cosine of a ratio. If that ratio is greater than one, there is something seriously wrong with the triangle, and acosd returns a complex number. This script detects that the answer is complex and throws an exception.  In Listing 9.2:  Lines 1 and 2: We will repeat the attempts to compute the angle of a triangle until successful. Line 3: Begins the suspect code. Line 8: Detects the problem with the data. Line 9: Throws the exception. In this case, the exception occurs visibly in this script. However, the try ... catch behavior is the same if the exception occurs deep in a set of nested function calls. Line 11: The end of the suspect code block and the beginning of the exception handler—in this case, it’s a warning to the user that the data are bad. Line 14: This line is reached only if the suspect code block executed correctly, in which case we can exit the while loop. You have an opportunity to work with exception processing in Exercise 9.2.  
+ MATLAB implements a simplified version of the most general form of exception processing. The <code>try ... catch ... end</code> construct is fully supported. However, unlike some languages, the MATLAB language does not distinguish between the kinds of exception that can be thrown.
+ <ul>
+ <li>All built-in functions throw exceptions when they discover error conditions—attempting to open a nonexistent file for reading, for example—and expect the programmer to catch these exceptions if they are recoverable.</li>
+ <li>To throw an exception manually, the program calls the error(...) function that takes one parameter, a string defining the error. If the exception is not caught, the string provided is displayed in red to the user. If the exception is caught, that string is ignored.</li>
+ <li>To handle an exception, a code block we suspect might throw an exception is placed between <code>try</code> and <code>catch</code> statements. If no error occurs in the code block, the <code>catch</code> statement is ignored. If an exception is thrown from that code block, however, execution is suspended at that point. No further processing is performed, no data are returned from functions, and the code in the closest <code>catch</code> block is executed up to the associated end statement. To determine the cause of the exception, you can use the <code>lasterror</code> function. It returns the textual information provided at the exception and a structure array describing the activation stack.</li>
+ <li>In more complex situations where this function may not be able to actually handle the error, a further exception can be thrown from the <code>catch</code> block. This exception will escape from the current <code>try ... catch</code> block and must be caught (if at all) by another function or script deeper in the activation stack.</li>
+ </ul>
+ Listing 9.2 illustrates a simple example. The objective is to have the user define a triangle by entering a vector of three sides and to calculate the angle between the first two sides. The acosd(...) function computes the inverse cosine of a ratio. If that ratio is greater than one, there is something seriously wrong with the triangle, and acosd returns a complex number. This script detects that the answer is complex and throws an exception.  
+ <div class="container">
+  <div class="sidebar_R">
+<h4>Exercise 9.2 Processing exceptions</h4>
+Put the code from Listing 9.2 in a script and execute it, using the following data:<br>
+<code>enter a triangle [a b c]: 2<font color="#00A000"> % wrong number of sides</font><br>
+bad triangle - try again<br>
+enter a triangle [a b c]: [3 4 8]<font color="#00A000"> % bad values</font><br>
+bad triangle - try again<br>
+enter a triangle: [3 4 6]<br>
+the angle is 62.720387<br>
+</code>
+Then, edit the script to remove the try statement and the catch block and
+repeat the test.
+</div>
+<div class="container">
+
+ <h4>Listing 9.2: A script using exception processing</h4>
+ <code><strong>
+OK = false;<font color="#00A000"> % force the while loop to run at least once</font><br>
+while ~OK<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><font color="#00A000"></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;side = input(<font color="#c000c0">'enter a triangle [a b c]: '</font>);<font color="#00A000"> % ask the user for a triangle</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = side(<font color="#ff8000">1</font>); b = side(<font color="#ff8000">2</font>); c = side(<font color="#ff8000">3</font>); <font color="#00A000"> % allocate sides to [a b c]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This will fail with an error if the vector doesn't have at least 3 elements</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% I have the odd feeling that deal(...) could do this ... (sigh!)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cosC = (c^<font color="#ff8000">2</font> - a^<font color="#ff8000">2</font> - b^<font color="#ff8000">2</font>)/(<font color="#ff8000">2</font> * a * b);<font color="#00A000"> % compute the cosine</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;angle = acosd(cosC);<font color="#00A000"> % compute the angle. If the triangle is illegal, this will return a complex number</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> imag(angle) ~= <font color="#ff8000">0</font><font color="#00A000"></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad triangle'</font>)<font color="#00A000"> % announce the error and go immediately to the catch block which does nothing,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%       except go back to the input(...) call.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK = true;<font color="#00A000"> % This line is only reached if the allocations and the acosd call work properly.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+fprintf(<font color="#c000c0">'the angle is %f\n'</font>, angle)<font color="#00A000"></font><br>
+<br>
+</strong></code>
+</div>
+<div class="container">
+  <div class="sidebar_R">
+<h4><center>Template 9.3: Template for a wrapper function</center></h4>
+<code>
+function &lt;result&gt; = &lt;function_name&gt; (&lt;formal_params&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;documentation&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if &lt;bad_condition&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;throw exception&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&gt; = &lt;private_name&gt; (&lt;actual_params&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end<br>
+end<br>
+<br>
+function &lt;result&gt; = &lt;private_name&gt; (&lt;formal_params&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;documentation&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if &lt;terminating condition 1&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&gt; = &lt;initial value 1&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;elseif &lt;terminating condition 2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&gt; = &lt;initial value 2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&gt; = &lt;operation&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&lt;formal_params&gt;, ...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;private_name&gt; (&lt;new_params&gt;) )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end<br>
+end</code></div><br>
+
+<div class="container">
+You have an opportunity to work with exception processing in Exercise 9.2.  
 <h2><a name="9_5">9.5 Wrapper Functions</a></h2>
- Consider the factorial function again for a moment—specifically, ask how you would deal with a user who accidentally called for the factorial of a negative number or of a number containing a fractional part. Our original recursive fact(...) function is not protected from these programmer errors. There are three possible strategies for dealing with this situation:  1.	The legalist approach ignores the bad values, lets the user’s program die, and then responds to user complaints by pointing out that the documentation clearly indicates that you should not call for the facto- rial of a negative number. Usually this is not the best approach from the customer relations viewpoint or from the technical support effort viewpoint, especially since recursive code that hangs up typically crashes with a stack overflow—not the easiest symptom to diagnose! 2.	In-line coding builds into the code a test for N less than zero (or fractional) and throws an exception with a meaningful error mes- sage. Although this is an improvement over the first choice because it exits gracefully, the test is in a bad place. The function is recursive; therefore, the code for that test is repeated as many times as the function is called. While modern computers are fast enough that one would probably not notice the difference, in general this is a poor implementation that punishes those who are using the function cor- rectly with the same test each time the recursive function is called. 3.	A wrapper function is the best solution. A wrapper function is called once to perform any tests or setup that the recursion requires and then to call the recursive function as a helper to the main function call. While there is a small computational cost to using a wrapper, it is only executed once rather than each time the recursive function is called. Template 9.3 illustrates this idea. The first function named <function_name> is actually the wrapper function with the return result, parameters, and documentation expected by the caller. It makes whatever tests are necessary to validate the input data, cleans it up if necessary, and calls the helper function named <private_name>. Listing 9.3 is the implementation of the factorial function with protection from bad data. In Listing 9.3:  Line 1: To the outside world, this is the function actually called. (Ugly secret: even if the name is not the same name as the file, the first function in the file is always executed first.) Line 2: Checks for negative and fractional inputs. Line 4: Throws an exception if the data are bad. Line 6: Calls the recursive version if the data are valid. Line 9: Definition of the recursive function. By convention, some MATLAB users tend to give the prefix local_ to private functions like this, but this has no significance to the system. Line 15: Calls the local recursive function—it is not necessary to go back to the wrapper by calling fact(..) here.  Exercise  9.3  gives  you  an  opportunity  to  work  with  the  protected factorial.  
+ Consider the factorial function again for a moment—specifically, ask how you would deal with a user who accidentally called for the factorial of a negative number or of a number containing a fractional part. Our original recursive <code>fact(...)</code> function is not protected from these programmer errors. There are three possible strategies for dealing with this situation:
+<ol>
+<li>The legalist approach ignores the bad values, lets the user’s program die, and then responds to user complaints by pointing out that the documentation clearly indicates that you should not call for the factorial of a negative number. Usually this is not the best approach from the customer relations viewpoint or from the technical support effort viewpoint, especially since recursive code that hangs up typically crashes with a stack overflow—not the easiest symptom to diagnose!</li>
+<li>In-line coding builds into the code a test for N less than zero (or fractional) and throws an exception with a meaningful error message. Although this is an improvement over the first choice because it exits gracefully, the test is in a bad place. The function is recursive; therefore, the code for that test is repeated as many times as the function is called. While modern computers are fast enough that one would probably not notice the difference, in general this is a poor implementation that punishes those who are using the function correctly with the same test each time the recursive function is called.</li>
+<li>A wrapper function is the best solution. A wrapper function is called once to perform any tests or setup that the recursion requires and then to call the recursive function as a helper to the main function call. While there is a small computational cost to using a wrapper, it is only executed once rather than each time the recursive function is called.</li>
+</ol>
+</div>
+Template 9.3 illustrates this idea. The first function named <function_name> is actually the wrapper function with the return result, parameters, and documentation expected by the caller. It makes whatever tests are necessary to validate the input data, cleans it up if necessary, and calls the helper function named <private_name>. Listing 9.3 is the implementation of the factorial function with protection from bad data.<br>
+<h4>Listing 9.3: Wrapper implementation for the factorial function</h4>
+<code><strong>
+<font color="#0000ff">function</font> result = fact(N)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% computation of N!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> (N < <font color="#ff8000">0</font>) || ((N - floor(N)) > <font color="#ff8000">0</font>)&nbsp;&nbsp;&nbsp;&nbsp; <font color="#00A000">% Look for negative or fractional parts of N</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad parameter for fact'</font>);&nbsp;&nbsp;&nbsp;<font color="#00A000">% if found, exit with an error.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% otherwise, </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = r_fact(N);<font color="#00A000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% call the helper function where the real recursion happens.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> result = r_fact(N)<font color="#00A000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% The recursive helper function</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% recursive computation of N!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'fact( %d )\n'</font>, N);<font color="#00A000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Diagnostic Printing enabled</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> N == <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = N * r_fact(N - <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+
+ In Listing 9.3:  Line 1: To the outside world, this is the function actually called. (Ugly secret: even if the name is not the same name as the file, the first function in the file is always executed first.) Line 2: Checks for negative and fractional inputs. Line 4: Throws an exception if the data are bad. Line 6: Calls the recursive version if the data are valid. Line 9: Definition of the recursive function. By convention, some MATLAB users tend to give the prefix local_ to private functions like this, but this has no significance to the system. Line 15: Calls the local recursive function—it is not necessary to go back to the wrapper by calling fact(..) here.  Exercise  9.3  gives  you  an  opportunity  to  work  with  the  protected factorial.  
 <h2><a name="9_6">9.6 Examples of Recursion</a></h2>
  We conclude this chapter with three examples of recursive programming: detecting palindromes, computing the Fibonacci series of numbers, and finding zeros of a function. The examples are followed by a practical engineering example of the use of zero finding.  
 <h3><a name="9_6_1">9.6.1	Detecting Palindromes</a></h3>

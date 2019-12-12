@@ -73,9 +73,11 @@ calculation and save the workspace. The second part can
 then read the workspace quickly, and you can develop
 sophisticated ways to display the data without having to
 re-run the lengthy calculations.</div>
+
 <h2><a name="8_2">8.2 Workspace I/O</a></h2>
 
-<div class="container">The MATLAB language defines the tools to save your complete workspace to a file with the <code>save</code> command and reload it with the <code>load</code> command. If you provide a file name with the <code>save</code> command, a file of that name will be written into your current directory in such a form that a subsequent <code>load</code> command with that file name will restore the saved workspace. By convention, these files will have a <code>".mat"</code> extension. If you do not provide a file name, the workspace is saved as <code>matlab.mat</code>.  If you are using MATLAB, you can also identify specific variables that you want to save — either by listing them explicitly or by providing logical expressions to indicate the variable names. For example:<br>
+<div class="container">
+The MATLAB language defines the tools to save your complete workspace to a file with the <code>save</code> command and reload it with the <code>load</code> command. If you provide a file name with the <code>save</code> command, a file of that name will be written into your current directory in such a form that a subsequent <code>load</code> command with that file name will restore the saved workspace. By convention, these files will have a <code>".mat"</code> extension. If you do not provide a file name, the workspace is saved as <code>matlab.mat</code>.  If you are using MATLAB, you can also identify specific variables that you want to save — either by listing them explicitly or by providing logical expressions to indicate the variable names. For example:<br>
 <code>>> save mydata.mat a b c* </code><br>
 would save the variables  <code>a</code> and  <code>b</code> and any variable beginning with the letter  <code>c</code>. <br>
 To recover the data:<br>
