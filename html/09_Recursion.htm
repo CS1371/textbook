@@ -278,7 +278,24 @@ You have an opportunity to work with exception processing in Exercise 9.2.
 <li>A wrapper function is the best solution. A wrapper function is called once to perform any tests or setup that the recursion requires and then to call the recursive function as a helper to the main function call. While there is a small computational cost to using a wrapper, it is only executed once rather than each time the recursive function is called.</li>
 </ol>
 </div>
-Template 9.3 illustrates this idea. The first function named <function_name> is actually the wrapper function with the return result, parameters, and documentation expected by the caller. It makes whatever tests are necessary to validate the input data, cleans it up if necessary, and calls the helper function named <private_name>. Listing 9.3 is the implementation of the factorial function with protection from bad data.<br>
+Template 9.3 illustrates this idea. The first function named <function_name> is actually the wrapper function with the return result, parameters, and documentation expected by the caller. It makes whatever tests are necessary to validate the input data, cleans it up if necessary, and calls the helper function named <private_name>. Listing 9.3 is the implementation of the factorial function with a wrapper for protection from bad data.<br>
+ <div class="container">
+  <div class="sidebar_R">
+<h4>Exercise 9.3 Running the protected factorial function</h4>
+Write the <code>fact(...)</code> function as shown in Listing 9.3, and test it in the
+Command window:<br>
+<code>>> fact(-1)<br>
+??? Error using ==> fact<br>
+bad parameter for fact<br>
+>> fact(.5)<br>
+??? Error using ==> fact<br>
+bad parameter for fact<br>
+>> fact(4)<br>
+ans =<br>
+24<br>
+</code>
+</div>
+<div class="container">
 <h4>Listing 9.3: Wrapper implementation for the factorial function</h4>
 <code><strong>
 <font color="#0000ff">function</font> result = fact(N)<br>
@@ -291,24 +308,118 @@ Template 9.3 illustrates this idea. The first function named <function_name> is 
 <font color="#0000ff">end</font><br>
 <font color="#0000ff">function</font> result = r_fact(N)<font color="#00A000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% The recursive helper function</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% recursive computation of N!</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'fact( %d )\n'</font>, N);<font color="#00A000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Diagnostic Printing enabled</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> N == <font color="#ff8000">0</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'fact( %d )\n'</font>, N);<font color="#00A000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Diagnostic Printing enabled</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> N == <font color="#ff8000">0</font><font color="#00A000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Check terminating condition</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = <font color="#ff8000">1</font>;<font color="#00A000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Terminating action</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = N * r_fact(N - <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = N * r_fact(N - <font color="#ff8000">1</font>);<font color="#00A000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% recursive call</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 <font color="#0000ff">end</font><br>
 </strong></code>
-
- In Listing 9.3:  Line 1: To the outside world, this is the function actually called. (Ugly secret: even if the name is not the same name as the file, the first function in the file is always executed first.) Line 2: Checks for negative and fractional inputs. Line 4: Throws an exception if the data are bad. Line 6: Calls the recursive version if the data are valid. Line 9: Definition of the recursive function. By convention, some MATLAB users tend to give the prefix local_ to private functions like this, but this has no significance to the system. Line 15: Calls the local recursive function—it is not necessary to go back to the wrapper by calling fact(..) here.  Exercise  9.3  gives  you  an  opportunity  to  work  with  the  protected factorial.  
+</div>
+Exercise  9.3  gives  you  an  opportunity  to  work  with  the  protected factorial.  
 <h2><a name="9_6">9.6 Examples of Recursion</a></h2>
  We conclude this chapter with three examples of recursive programming: detecting palindromes, computing the Fibonacci series of numbers, and finding zeros of a function. The examples are followed by a practical engineering example of the use of zero finding.  
 <h3><a name="9_6_1">9.6.1	Detecting Palindromes</a></h3>
- We might want to determine whether a word or phrase received as a string is a palindrome, that is, whether it is spelled the same forward and backward. Of course, you could accomplish this in one line with vector operations (think about it!) but that would not be a good recursive exercise. One could design a recursive function named isPal(<string>) as follows:  ■	The function isPal(<string>) terminates if the <string> has zero or one character, returning true. ■	It also terminates if the first and last characters are not equal, returning false. ■	Otherwise (first and last are equal), the function returns isPal(<shorter string>), where the shorter string is obtained by removing the first and last characters of the original string. ■	Clearly, since the string is always being shortened, the recursive solution is approaching the terminating condition.  The MATLAB implementation of the palindrome detector is shown in Listing 9.4. In Listing 9.4:  Line 3: The successful terminating condition is when the length of the string is under 2. Line 5: The failure condition is when the first and last characters do not match. Line 8: To move toward termination, remove the first and last characters that have already been checked.  We should observe further that a serious student of palindromes might know that real palindromes contain spaces, punctuation marks, and uppercase and lowercase characters. We leave it as an exercise for you to write a wrapper function that cleans up strings containing these issues before passing the string to the recursive palindrome detector.  
+ We might want to determine whether a word or phrase received as a string is a palindrome, that is, whether it is spelled the same forward and backward. Of course, you could accomplish this in one line with vector operations (think about it!) but that would not be a good recursive exercise. If you look up what are considered official palindromes, the string can contain spaces and punctuation, and can have upper or lower case characters. One could design a recursive function named <code>isPal(&lt;string&gt;)</code> as follows:
+ <ul>
+ <li>Pre-process the string changing upper case to lower case and then removing all characters that are not lower case characters.</li>
+ <li>The function <code>isPal(&lt;string&gt;)</code> terminates if the <code>&lt;string&gt;</code> has zero or one character, returning true.</li>
+ <li>It also terminates if the first and last characters are not equal, returning false.</li>
+ <li>Otherwise (first and last are equal), the function returns <code>isPal(&lt;shorter string&gt;)</code>, where the shorter string is obtained by removing the first and last characters of the original string.</li>
+ <li>Clearly, since the string is always being shortened, the recursive solution is approaching the terminating condition.</li>
+ </ul>
+ The MATLAB implementation of the palindrome detector is shown in Listing 9.4. 
+ <h4>Listing 9.4: Recursive palindrome detector</h4>
+ <code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Start with a wrapper function to clean up the input string:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% - Change upper case to lower case</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% - remove all characters not lower case</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+<font color="#0000ff">function</font> res = isPal(str)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;str = lower(str);     <font color="#00A000">% remove all upper case</font><br>
+str = str(str >= <font color="#c000c0">'a'</font> & str <= <font color="#c000c0">'z'</font>); <font color="#00A000">% keep only lower case</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = r_isPal(str);<font color="#00A000">% make the recursive call</font><<br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> res = r_isPal(str)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% recursive palindrome detector</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(str) < <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = true;<font color="#00A000">  % success: a short string</font><<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> str(<font color="#ff8000">1</font>) ~= str(end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = false;<font color="#00A000"> % failure - first and last characters don't match</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% recursive call is safe because there must be at least 2 characters here</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = r_isPal(str(<font color="#ff8000">2</font>:end-<font color="#ff8000">1</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+Check this with these strings:<br>
+<code>>> isPal('Can I attain a C?')<br>
+>> isPal('Can I attain a&nbsp;&nbsp;C?')<br>
+>> isPal('Can I attain a A?')<br>
+>> isPal('Can I attain any C?')<br>
+</code>
 <h3><a name="9_6_2">9.6.2	Fibonacci Series</a></h3>
- The Fibonacci series was originally named for the Italian mathematician Leonardo Pisano Fibonacci, who was studying the growth of rabbit populations in the eleventh century. He hypothesized that rabbits mature one month after birth, after which time each pair would produce a new pair of rabbits each month. Starting with a pair of newborn rabbits free in a field, he wanted to calculate the rabbit population after a year. Figure 9.2 illustrates the calculation for the first six months, counting rabbit pairs. It soon becomes clear that the number of rabbits in month N comprises the number in month N-1 (since in this ideal example, none of them die) plus the new rabbits born to the mature pairs (shown in boxes in the figure). Since the rabbits mature after a month, the number of mature pairs   that produce a new pair is the number of rabbits in the month before, N-2. So the algorithm for computing the population of pairs after N months, fib(N), is recursive:  ■	There is a terminating condition: when N = 1 or N = 2, the answer is 1 ■	The recursive condition is: fib(N) = fib(N-1) + fib(N-2) ■	The solution is moving toward the terminating condition, since as long as N is a positive integer, computing N-1 and N-2 will move toward 1 or 2. The implementation of the Fibonacci function is shown in Listing 9.5. The algorithm produces the Fibonacci series: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, . . ., giving a population after a year of 144. A closely related phenomenon is the golden ratio or golden number computed as the limit of the ratio of successive Fibonacci series values— approximately 1.618034—that has been found to occur in nature. To the surprise of naturalists, this series of numbers occurs in nature in a remarkable number of circumstances. Consider Figure 9.3 for example, where a set of squares placed side by side in a rotating sequence is drawn using the Fibonacci series for the size of each square. The resulting geometric figure is a close approximation to the logarithmic spiral so frequently found in nature, such as the nautilus shell pictured in Figure 9.3.  
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="300" src="Fig_9_2.jpg" width="450" /></p></center>
+<figcaption><b><center>Fig 9.2: Fibonacci with Rabbits</center></b></figcaption></figure>
+ The Fibonacci series was originally named for the Italian mathematician Leonardo Pisano Fibonacci, who was studying the growth of rabbit populations in the eleventh century. He hypothesized that rabbits mature one month after birth, after which time each pair would produce a new pair of rabbits each month. Starting with a pair of newborn rabbits free in a field, he wanted to calculate the rabbit population after a year. Figure 9.2 illustrates the calculation for the first six months, counting rabbit pairs. It soon becomes clear that the number of rabbits in month <code>N</code> comprises the number in month <code>N-1</code> (since in this ideal example, none of them die) plus the new rabbits born to the mature pairs. Since the rabbits mature after a month, the number of mature pairs that produce a new pair is the number of rabbits in the month before, <code>N-2</code>. So the algorithm for computing the population of pairs after <code>N</code> months, <code>fib(N)</code>, is recursive:
+ <ul>
+ <li>There is a terminating condition: when <code>N == 1</code> or <code>N == 2</code>, the answer is <code>1</code></li>
+ <li>The recursive condition is: <code>fib(N) = fib(N-1) + fib(N-2)</code></li>
+ <li>The solution is moving toward the terminating condition, since as long as <code>N</code> is a positive integer, computing <code>N-1</code> and <code>N-2</code> will move toward <code>1</code> or <code>2</code>.</li>
+ </ul>
+ The implementation of the Fibonacci function is shown in Listing 9.5.<br>
+ <h4>Listing 9.5: The Fibonacci Function</h4>
+ <code><strong>
+<font color="#0000ff">function</font> result = fib(N)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% recursive computation the Nth Fibonacci number</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> N == <font color="#ff8000">1</font> || N == <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = fib(N-<font color="#ff8000">1</font>) + fib(N-<font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="300" src="Fig_9_3.jpg" width="450" /></p></center>
+<figcaption><b><center>Fig 9.3: Fibonacci in Nature</center></b></figcaption></figure>
+This algorithm produces the Fibonacci series: <code>1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, . . .</code>, giving a population after a year of <code>144</code> pairs of rabbits. <br>
+A closely related phenomenon is the golden ratio or golden number computed as the limit of the ratio of successive Fibonacci series values — approximately <code>1.618034</code> — that has been found to occur in nature. To the surprise of naturalists, this series of numbers occurs in nature in a remarkable number of circumstances. Consider Figure 9.3 for example, where a set of squares placed side by side in a rotating sequence is drawn using the Fibonacci series for the size of each square. The resulting geometric figure is a close approximation to the logarithmic spiral so frequently found in nature, such as sea shells or seeds packed in pods.  <br>
+<b>Notes: </b>
+<ol>
+<li>Although not shown here, the Fibonacci function needs the same kind of wrapper as we used on the factorial function to protect against bad input values (negative or fractional).</li>
+<li>Before we leave the Fibonacci function, we should run a few examples:<br>
+<code>
+>> fib(1)<font color="#00A000"> % one of the terminating conditions</font><br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1<br>
+>> fib(6)<font color="#00A000"> % illustrated in Figure 9.2</font><br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;8<br>
+>> fib(12)<font color="#00A000"> % illustrated in Figure 9.3</font><br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;144<br>
+>> fib(35)<font color="#00A000"> % did you notice anything?</font><br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;9227465<br>
+</li>
+</ol>
+</code>
+Unless you are running on a really fast computer, that last computation probably took over a second to run.  This may be our first example of situations where the algorithm is stunningly inefficient, and need a total redesign.  In the case of Fibonacci, the answer is easy, and will be left to the student to implement and test.  <b>Hint: </b> Could you do this iteratively instead of recursively by storing the previous two values of N?
+
 <h3><a name="9_6_3">9.6.3 Zeros of a Function</a></h3>
- Frequently we need to solve nonlinear equations by seeking the values of the independent variable that produced a zero result. There are a number of well-known numerical techniques for achieving this goal. We will examine a recursive approach to determining the zeros of functions. However, especially when there are multiple zero crossings, it is very helpful to have a good initial estimate of the location(s) of the crossing(s). As an example, consider a function f (x). We will use the function given by: f (x) = 0.0333x6 2 0.3x5 2 1.3333x4 1 16x3 2 187.2x 1 172.9  as plotted in Figure 9.4. However, this algorithm will work for any function of x. We assume that the continuous line describes the exact function, and the plus marks indicate locations for which we have measurements. Clearly, there are a number of zero crossings of this function, including a very messy looking crossing at around = 6.  We will find the exact value of one of the zeros of this function by first estimating the zero crossings and then by using a recursive technique for refining a better estimate to arbitrary levels of accuracy.   Estimating Critical Points of a Function First, we need to compute an approximation to the roots of this equation. These approximations will be found by finding the x values at which adjacent values of the function change sign. The technique for determining where adjacent points change sign is simply to multiply adjacent values of f(x) and find where that product is not positive, as shown in Listing 9.6. In Listing 9.6: Line 1: Establishes samples of x. Line 2: Computes y = f (x). Line 3: Detects the indices where the zero crossings occur by shifting y to the right by one and by shortening the original by one to keep the vector size equal. Lines 4 and 5: Display the zero crossing estimates. Line 6: Calls the recursive function to find the third zero crossing that estimates one root of this equation. Clearly, one could iterate here to find all of the roots. Listing 9.6 produces the following results, which can be verified by observing the circled data points shown in Figure 9.4: zeros occur just after ans = -6.3000	-4.6667	0.2333	5.9500 Having observed these results, we decide to compute the exact value of the first positive root, occurring at the third crossing. Recursive Refinement of the Estimate The recursive function to find the third root of f(x) works on the principle of binary division. It consumes a vector of adjacent values of x that are guaranteed to have values of f(x) of opposite sign. The fundamental features of the recursive solution are as follows: ■	The terminating condition is when the two x values are within acceptable error—in this case, 0.001 ■	Otherwise, we find the middle of this x range, mx, find its f(mx), and then make the recursive call either with [x(1) mx] or [mx x(2)], depending on the sign of f(mx) × f(x(1)) ■	This will always converge because each recursive call halves the distance between the x limits. In general, this method is a little slower than Newton’s method, which uses the slope of f(x) to compute the next estimate. However, it is very strong and somewhat immune from the instability suffered by Newton’s method on undulating data. The function that solves this problem is shown in Listing 9.7. In Listing 9.7: Line 1: The function consumes a pair of x limits and produces the x root. Lines 2–4: Check for the terminating condition and return the x root. Lines 5 and 6: Calculate the x and y values of the midpoint of the x range. Line 7: Checks the sign of the y value of the midpoint. Line 8: If different from the sign at first limit, it makes the recursive call with the first limit and the midpoint. Lines 9 and 10: Otherwise, it uses the range from the midpoint to the second limit. This function computes the correct crossing at x = 1.00.  
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="300" src="Fig_9_4.jpg" width="450" /></p></center>
+<figcaption><b><center>Fig 9.4: Find the zeros of this function</center></b></figcaption></figure>
+
+ Frequently we need to solve nonlinear equations by seeking the values of the independent variable that produced a zero result. There are a number of well-known numerical techniques for achieving this goal. We will examine a recursive approach to determining the zeros of functions. However, especially when there are multiple zero crossings, it is very helpful to have a good initial estimate of the location(s) of the crossing(s). As an example, consider a function <code>f(x)</code>. We will use the function given by:<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;f(x) = 0.0333x<sup>6</sup> - 0.3x<sup>5</sup> - 1.3333x<sup>4</sup> + 16x<sup>3</sup> - 187.2x + 172.9</code><br>
+ as plotted in Figure 9.4. Of course, this algorithm will work for any function of <code>x</code>. We assume that the continuous line describes the exact function, and the plus marks indicate locations for which we have measurements. Clearly, there are a number of zero crossings of this function, including a very messy looking crossing at around <code>x = 6</code>.  We will find the exact value of one of the zeros of this function by first estimating the zero crossings and then by using a recursive technique for refining a better estimate to arbitrary levels of accuracy.<br>
+<b>Estimating Critical Points of a Function:</b> First, we need to compute an approximation to the roots of this equation illustrated by the red '+' marks on Fig 9.4. For our recursive algorithm to work nicely, we need a pair of x values whose y values straddle the x axis. These are marked by green circles on Fig 9.4. These approximations will be found by finding the x values at which adjacent values of the function change sign. The technique for determining where adjacent points change sign is simply to multiply adjacent values of f(x) and find where that product is not positive. Clearly, one could iterate here to find all of the roots. Listing 9.6 produces the following results, which can be verified by observing the circled data points shown in Figure 9.4: zeros occur just after ans = -6.3000	-4.6667	0.2333	5.9500 Having observed these results, we decide to compute the exact value of the first positive root, occurring at the third crossing.<br>
+<b>Recursive Refinement of the Estimate:</b> The recursive function to find any root of f(x) works on the principle of binary division. It consumes a vector of adjacent values of x that are guaranteed to have values of f(x) of opposite sign. The fundamental features of the recursive solution are as follows: ■	The terminating condition is when the two x values are within acceptable error—in this case, 0.001 ■	Otherwise, we find the middle of this x range, mx, find its f(mx), and then make the recursive call either with [x(1) mx] or [mx x(2)], depending on the sign of f(mx) × f(x(1)) ■	This will always converge because each recursive call halves the distance between the x limits. In general, this method is a little slower than Newton’s method, which uses the slope of f(x) to compute the next estimate. However, it is very strong and somewhat immune from the instability suffered by Newton’s method on undulating data. The function that solves this problem is shown in Listing 9.7. In Listing 9.7: Line 1: The function consumes a pair of x limits and produces the x root. Lines 2–4: Check for the terminating condition and return the x root. Lines 5 and 6: Calculate the x and y values of the midpoint of the x range. Line 7: Checks the sign of the y value of the midpoint. Line 8: If different from the sign at first limit, it makes the recursive call with the first limit and the midpoint. Lines 9 and 10: Otherwise, it uses the range from the midpoint to the second limit. This function computes the correct crossing at x = 1.00.  
 <h2><a name="9_7">9.7 Engineering Example—Robot Arm Motion</a></h2>
 
 Here we consider the problem of programming the arm of a robot to move in a straight line. Consider the arm shown in Figure 9.5. It consists of two jointed limbs of length r1 and r2 at angles a and b, respectively, to the horizontal.

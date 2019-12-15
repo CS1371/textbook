@@ -38,33 +38,27 @@ bl = 'B';
 t = 'E';
 dy = ln+4;
 fryy = ln - ryy;
+Pa = [10 0 32];
+Pb = [-3, 60, 0];
+plot3([Pa(1) Pb(1)],[Pa(2) Pb(2)],[Pa(3) Pb(3)], 'r--') 
+hold on
 for block = 1:3
-    surf(xx, zz, yy, img) % line A-B / B-C / C-D
-    hold on
-    text(cxx(1,1), cyy(1,1)+15, czz(1,1)+3, [br '-' bl]) % txt A-B / B-C / C-D 
     if(block == 1)
-        axis equal
-        axis off
-        xlabel('X axis')
-        ylabel('Z axis')
-        zlabel('Y axis')
-        text(cxx(1,1), cyy(1,1)-3, czz(1,1)+7, br) % txt A
         surf(cxx, cyy-2, czz, cimg)                % plug A
-    else
-        surf(xx, zz-ln/2-2, yy+ln-2, img) % lines E-F / F-G
-        text(cxx(1,1), cyy(1,1)+15-ln/2, czz(1,1)+ln+3, ...
-                    [char(br+3) '-' char(bl+3)]) % txt E-F / F-G 
+        axis equal
+%        axis off
+        xlabel('X axis')
+        ylabel('Y axis')
+        zlabel('Z axis')
+    elseif block == 2
+        surf(xx, zz-ln/2-2, yy+ln-2, img) % line E-F
     end
-    surf(cxx, cyy+32, czz, cimg)                % plug B
-    surf(rxx, ryy, rzz, img)                   % line EA FB GC
-    surf(rxx, fryy, rzz, img)                   % line BE CF DG
-    text(cxx(1,1), cyy(1,1)+(42+ln/2)/2, czz(1,1)+5+zoff/2, ...
-                                    [bl '-' t]) % txt B-E, C-F D-G
-    text(cxx(1,1), cyy(1,1)+(ln/2-4)/2, czz(1,1)+5+zoff/2, ...
-                                    [t '-' br]) % txt E-A, F-B G-C
-    text(cxx(1,1), cyy(1,1)+32, czz(1,1)+7, bl) % txt B C D
-    surf(cxx, cyy+ln/2, czz+zoff, cimg)         % plug E F G
-    text(cxx(1,1), cyy(1,1)+ln/2, czz(1,1)+5+zoff, t) % txt E F G
+    if block == 1
+        surf(rxx, ryy, rzz, img)                   % line EA
+    end
+    if block ~= 3
+        surf(cxx, cyy+ln/2, czz+zoff, cimg)         % plug E F
+    end
     zz = zz + dy;
     ryy = ryy + dy;
     fryy = fryy + dy;
@@ -76,6 +70,7 @@ end
 shading interp
 material metal
 N = 100;
+% cylinder base
 [xx yy zz] = cylinder([1 1], N);
 xx = [zeros(1,N+1); xx; zeros(1,N+1)];
 yy = [zeros(1,N+1); yy; zeros(1,N+1)];
@@ -86,6 +81,7 @@ img(:,:,1) = 0.7;
 img(:,:,2) = 0.7;
 img(:,:,3) = 0.2;
 surf(xx*3, yy*3-2, zz*5-5, img)
+% cube
 cxx = [ 0  0  0  0  0
       -1 -1  1  1 -1
       -1 -1  1  1 -1
@@ -104,21 +100,10 @@ cimg(:,:,1) = 0.5;
 cimg(:,:,2) = 0.5;
 cimg(:,:,3) = 0.2;
 surf(cxx, cyy-2, czz-10, cimg)
-dy = 3*(ln+4);
-surf(cxx, cyy+dy-2, czz-10, cimg)
-czz = czz/5 
-surf(cxx, cyy+dy-2, czz-1, cimg)
-rxx = zz;
-ryy = xx;
-rzz = yy;
-img(:,:,:) = 0;
-surf(rxx*10-5, ryy*1.5+96.5, rzz*1.5-3.5,img)
-surf(rxx*10-5, ryy*1.5+100, rzz*1.5-3.5,img)
-surf(rxx*10-5, ryy*1.5+103.5, rzz*1.5-3.5,img)
 shading interp
 lightangle(-45, 45)
 lightangle(45, 45)
-view(-130, 25)
+view(90, 0)
 
 
 
