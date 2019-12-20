@@ -408,7 +408,8 @@ ans =<br>
 </li>
 </ol>
 </code>
-Unless you are running on a really fast computer, that last computation probably took over a second to run.  This may be our first example of situations where the algorithm is stunningly inefficient, and need a total redesign.  In the case of Fibonacci, the answer is easy, and will be left to the student to implement and test.  <b>Hint: </b> Could you do this iteratively instead of recursively by storing the previous two values of N?
+Unless you are running on a really fast computer, that last computation probably took over a second to run.  This may be our first example of situations where the algorithm is stunningly inefficient, and need a total redesign.  In the case of Fibonacci, the answer is easy, and will be left to the student to implement and test.<br>
+<b>Hint: </b> Could you do this iteratively instead of recursively by storing the previous two values of N?
 
 <h3><a name="9_6_3">9.6.3 Zeros of a Function</a></h3>
 <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
@@ -418,77 +419,394 @@ Unless you are running on a really fast computer, that last computation probably
  Frequently we need to solve nonlinear equations by seeking the values of the independent variable that produced a zero result. There are a number of well-known numerical techniques for achieving this goal. We will examine a recursive approach to determining the zeros of functions. However, especially when there are multiple zero crossings, it is very helpful to have a good initial estimate of the location(s) of the crossing(s). As an example, consider a function <code>f(x)</code>. We will use the function given by:<br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;f(x) = 0.0333x<sup>6</sup> - 0.3x<sup>5</sup> - 1.3333x<sup>4</sup> + 16x<sup>3</sup> - 187.2x + 172.9</code><br>
  as plotted in Figure 9.4. Of course, this algorithm will work for any function of <code>x</code>. We assume that the continuous line describes the exact function, and the plus marks indicate locations for which we have measurements. Clearly, there are a number of zero crossings of this function, including a very messy looking crossing at around <code>x = 6</code>.  We will find the exact value of one of the zeros of this function by first estimating the zero crossings and then by using a recursive technique for refining a better estimate to arbitrary levels of accuracy.<br>
-<b>Estimating Critical Points of a Function:</b> First, we need to compute an approximation to the roots of this equation illustrated by the red '+' marks on Fig 9.4. For our recursive algorithm to work nicely, we need a pair of x values whose y values straddle the x axis. These are marked by green circles on Fig 9.4. These approximations will be found by finding the x values at which adjacent values of the function change sign. The technique for determining where adjacent points change sign is simply to multiply adjacent values of f(x) and find where that product is not positive. Clearly, one could iterate here to find all of the roots. Listing 9.6 produces the following results, which can be verified by observing the circled data points shown in Figure 9.4: zeros occur just after ans = -6.3000	-4.6667	0.2333	5.9500 Having observed these results, we decide to compute the exact value of the first positive root, occurring at the third crossing.<br>
-<b>Recursive Refinement of the Estimate:</b> The recursive function to find any root of f(x) works on the principle of binary division. It consumes a vector of adjacent values of x that are guaranteed to have values of f(x) of opposite sign. The fundamental features of the recursive solution are as follows: ■	The terminating condition is when the two x values are within acceptable error—in this case, 0.001 ■	Otherwise, we find the middle of this x range, mx, find its f(mx), and then make the recursive call either with [x(1) mx] or [mx x(2)], depending on the sign of f(mx) × f(x(1)) ■	This will always converge because each recursive call halves the distance between the x limits. In general, this method is a little slower than Newton’s method, which uses the slope of f(x) to compute the next estimate. However, it is very strong and somewhat immune from the instability suffered by Newton’s method on undulating data. The function that solves this problem is shown in Listing 9.7. In Listing 9.7: Line 1: The function consumes a pair of x limits and produces the x root. Lines 2–4: Check for the terminating condition and return the x root. Lines 5 and 6: Calculate the x and y values of the midpoint of the x range. Line 7: Checks the sign of the y value of the midpoint. Line 8: If different from the sign at first limit, it makes the recursive call with the first limit and the midpoint. Lines 9 and 10: Otherwise, it uses the range from the midpoint to the second limit. This function computes the correct crossing at x = 1.00.  
+<b>Estimating Critical Points of a Function:</b> First, we need to compute an approximation to the roots of this equation illustrated by the red '+' marks on Fig 9.4. For our recursive algorithm to work nicely, we need a pair of x values whose y values straddle the x axis. These are marked by green circles on Fig 9.4. These approximations will be found by finding the x values at which adjacent values of the function change sign. The technique for determining where adjacent points change sign is simply to multiply adjacent values of f(x) and find where that product is not positive. Clearly, one could iterate here to find all of the roots. Listing 9.6 produces the following results, which can be verified by observing the circled data points shown in Figure 9.4:<br>
+<code>zeros occur just after -6.3000	-4.6667	0.2333	5.9500</code><br>
+ Having observed these results, we decide to compute the exact value of the first positive root, occurring at the third crossing.<br>
+<b>Recursive Refinement of the Estimate:</b> The recursive function to find any root of <code>f(x)</code> works on the principle of binary division. It consumes a vector of adjacent values of <code>x</code> that are guaranteed to have values of <code>f(x)</code> of opposite sign. The fundamental features of the recursive solution are as follows:<ul>
+<li>The terminating condition is when the two x values are within acceptable error—in this case, 0.001</li>
+<li>Otherwise, we find the middle of this x range, mx, find its f(mx), and then make the recursive call either with [x(1) mx] or [mx x(2)], depending on the sign of f(mx) × f(x(1))</li>
+<li>This will always converge because each recursive call halves the distance between the x limits. 
+</ul>
+In general, this method is a little slower than Newton’s method, which uses the slope of <code>f(x)</code> to compute the next estimate. However, it is very strong and somewhat immune from the instability suffered by Newton’s method on undulating data. The function that solves this problem is shown in Listing 9.6. 
+<h4>Listing 9.6: Finding Zeros of a Function</h4>
+
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Recursive Root Finding</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;px = linspace(-<font color="#ff8000">7</font>, <font color="#ff8000">9</font>, <font color="#ff8000">100</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(px, f(px))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;px = linspace(-<font color="#ff8000">6.3</font>, <font color="#ff8000">8.4</font>, <font color="#ff8000">19</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py = f(px);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;disp(<font color="#c000c0">'zeros occur just after'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zeros = find(py(<font color="#ff8000">1</font>:end-<font color="#ff8000">1</font>) .* py(<font color="#ff8000">2</font>:end) <= <font color="#ff8000">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> zndx = <font color="#ff8000">1</font>:length(zeros)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root = findZero([px(zeros(zndx)) px(zeros(zndx)+<font color="#ff8000">1</font>)]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot(root, f(root), <font color="#c000c0">'ro'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> pt = findZero(x)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% x is a lower-upper pair guaranteed to have</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% y values of opposite sign</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% return the x coordinate of the root</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> abs(x(<font color="#ff8000">1</font>)-x(<font color="#ff8000">2</font>)) < <font color="#ff8000">.001</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pt = x(<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mx = sum(x)/<font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my = f(mx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> my*f(x(<font color="#ff8000">1</font>)) <= <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pt = findZero([x(<font color="#ff8000">1</font>) mx]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pt = findZero([mx x(<font color="#ff8000">2</font>)]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> res = f(x)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;res = polyval([<font color="#ff8000">0.0333</font>, -<font color="#ff8000">0.3</font>, -<font color="#ff8000">1.3333</font>, <font color="#ff8000">16</font>, <font color="#ff8000">0</font>, -<font color="#ff8000">187.2</font>, <font color="#ff8000">172.9</font>],x);<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+  
+
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="300" src="Fig_9_5.jpg" width="450" /></p></center>
+<figcaption><b><center>Fig 9.5: Robot Arm Problem</center></b></figcaption></figure>
+
 <h2><a name="9_7">9.7 Engineering Example—Robot Arm Motion</a></h2>
 
-Here we consider the problem of programming the arm of a robot to move in a straight line. Consider the arm shown in Figure 9.5. It consists of two jointed limbs of length r1 and r2 at angles a and b, respectively, to the horizontal.
+Here we consider the problem of programming the arm of a robot to move its tip in a straight line. Consider the arm shown in Figure 9.5. It consists of a base free to rotate by an angle <code>&alpha;</code> from the direction of the X axis and two jointed limbs of length <code>r<sub>1</sub></code> and <code>r<sub>2</sub></code> at angles <code>&beta;</code> and <code>&gamma;</code>, respectively, to the horizontal. We will simplify things a bit by assuming that <code>r<sub>1</sub></code> and <code>r<sub>2</sub></code> are both equal to the same length <code>l<sub>n</sub></code>.<br>
 
-Overall Objective
-The ultimate challenge of this situation is to calculate the sequence of values of a and b that will guide the end of the arm along the straight line:
+<b>Overall Objective:</b>
+The ultimate challenge of this situation is to calculate the sequence of values of <code>&alpha;</code>, <code>&beta;</code> and <code>&gamma;</code> that will guide the end of the arm, <code>P</code>, along the straight line defined by the points <code>P<sub>a</sub></code> and <code>P<sub>b</sub></code> where <code>P, P<sub>a</sub></code> and <code>P<sub>b</sub></code> are vectors showing the <code>x, y</code> and <code>z</code> coordinates of points on the red dashed line.  We will use a parametric definition of the line:<br>
+<code>P = P<sub>a</sub> + t&#215;(P<sub>b</sub> - P<sub>a</sub>)</code><br>where t can take any value between 0 and 1.<br><br>
+The value of <code>&alpha;</code> is easily determined to be the rotation to put P into the plane of the arm motion:<br>
+<code>(1) &alpha; = atan2(P(1), P(2)) * 180/&pi;;<br></code>
+We create the solution for <code>&beta;</code> and <code>&gamma;</code> with three more equations:<br>
+<b>horizontally:</b> <code>(2) l<sub>n</sub>cos(&beta;) + l<sub>n</sub>cos(&gamma;) = |OR|</code> where O is the origin of coordinates and R is the projection of P onto the x-y plane.<br>
+<b>vertically:</b> <code>(3) l<sub>n</sub>sin(&beta;) + l<sub>n</sub>sin(&gamma;) = P(3)</code><br>
+<b>from algebra:</b><code>(4) cos<sup>2</sup>(&gamma;) + sin<sup>2</sup>(&gamma;) = 1</code><br>
+and after much manipulation, we determine this expression:<br> 
+<code>(5) |OR|<sup>2</sup> + P(3)<sup>2</sup> - 2l<sub>n</sub>(|OR|cos(&beta;) + P(3)sin(&beta;)) = 0<br>
+</code>
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="300" src="Fig_9_6.jpg" width="450" /></p></center>
+<figcaption><b><center>Fig 9.6: The Zero Crossing Problem</center></b></figcaption></figure>
 
-x 1 y = r1 1 r2	(1)
+Pretty daunting until we plot the LHS of this equation against values of <code>&beta;</code> between <code>0</code> and <code>2&pi;</code> (Figure 9.6) and realize that we solve for <code>&beta;</code> by finding the value(s) of <code>&beta;</code> that reduce the LHS to 0 - a simple zero crossing problem.<br>
+<b>Immediate Objective:</b>
+The sub-problem we address here is to determine the value of <code>&beta;</code> that will reduce the LHS of Equation <code>(5)</code> to zero.<br>
+<b>The Solution to the Sub-problem:</b> as before, since there is no analytical solution to this function, we will find the approximate location of the zero crossings and then use a recursive function to find the exact roots. The script that accomplishes this is shown in Listing 9.8.<br>
 
-However, this complete problem is more complex than necessary for this  point in the text. First, we will address a necessary component of the problem.
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> start<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> P<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ln<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cxx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cyy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> czz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cimg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nxx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nyy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nzz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nimg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ORxmag<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> fh<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+</strong></code>
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><video width="560" height="420" controls>
+<source src="robot_arm.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></p></center>
+<figcaption><b><center>Fig 9.7: The Solution</center></b></figcaption></figure>
+<code><strong>
 
-Immediate Objective
-The sub-problem we address here is to determine for a given value of a, the value b that will place the end of the arm at some place on the line. The algebra and trigonometry of this problem are quite simple. The position of the end of the arm, [x2 y2], is expressed as:
-x2 5 r1 cos a 1 r2 cos b	(2)
-y2 5 r1 sin a 1 r2 sin b	(3)
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% We have 3 angles to compute:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  - alfa at A about the Z axis from the Y axis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  - beta at A about the X axis from the horizontal</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  - gamma at B about the X axis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fh = fopen(<font color="#c000c0">'debug.log'</font>,'w');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(fh, <font color="#c000c0">'%10s%10s%10s%10s\n\n'</font>, 'step',<font color="#c000c0">'alpha'</font>,'beta',<font color="#c000c0">'gamma'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;start = <font color="#ff8000">90</font>;  <font color="#00A000">% inital guess at solution</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ln = <font color="#ff8000">30</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nw = <font color="#ff8000">3</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nr = <font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">10</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[cxx cyy czz] = cylinder([<font color="#ff8000">1</font> <font color="#ff8000">1</font>], facets);  <font color="#00A000">% arms</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;czz(<font color="#ff8000">2</font>,:) = ln;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[r, c] = size(cxx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cimg = zeros(r, c, <font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cimg = cimg + <font color="#ff8000">0.8</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[xx yy zz] = cylinder([nr nr], facets);  <font color="#00A000">% nodes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;nxx = zz;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nyy = yy;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nzz = xx;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nxx = nxx*nw - nw/<font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nzr = zeros(<font color="#ff8000">1</font>,facets+<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nxx = [nzr-nw/<font color="#ff8000">2</font>; nxx; nzr+nw/<font color="#ff8000">2</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nyy = [nzr; nyy; nzr];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nzz = [nzr; nzz; nzr];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[nr, nc] = size(nxx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nimg = zeros(nr, nc, <font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nimg = nimg + <font color="#ff8000">0.8</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Pa = [<font color="#ff8000">10</font> -<font color="#ff8000">20</font> <font color="#ff8000">32</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Pb = [-<font color="#ff8000">3</font>, <font color="#ff8000">40</font>, <font color="#ff8000">0</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t = <font color="#ff8000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;results = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ok = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ok && t <= <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P = Pa + (Pb - Pa).*t;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find alfa</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[alfa, beta, gamma] = get_angles();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ok = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.alf = alfa;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.bet = beta;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.gam = gamma;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.P = P;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;results = [results res];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(fh, <font color="#c000c0">'%10.4f%10.2f%10.2f%10.2f\n'</font>, t, alfa, beta, gamma);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = t + <font color="#ff8000">0.01</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fclose(fh);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;draw_stuff(results)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> draw_stuff(res)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cxx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cyy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> czz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cimg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nxx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nyy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nzz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nimg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;set(gca,<font color="#c000c0">'nextplot'</font>,'replacechildren'); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Create a video writer object for the output video file and open the object for writing.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = VideoWriter(<font color="#c000c0">'robot_arm.mp4'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;open(v);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Generate a set of frames, get the frame from the figure, and then write each frame to the file.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> rndx = <font color="#ff8000">1</font>:length(res)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alfa = res(rndx)<font color="#ff8000">.alf</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beta = res(rndx)<font color="#ff8000">.bet</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gamma = res(rndx)<font color="#ff8000">.gam</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P = res(rndx)<font color="#ff8000">.P</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot3([Pa(<font color="#ff8000">1</font>) Pb(<font color="#ff8000">1</font>)],[Pa(<font color="#ff8000">2</font>) Pb(<font color="#ff8000">2</font>)],[Pa(<font color="#ff8000">3</font>) Pb(<font color="#ff8000">3</font>)], <font color="#c000c0">'rs--'</font>) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot3(P(<font color="#ff8000">1</font>), P(<font color="#ff8000">2</font>), P(<font color="#ff8000">3</font>), <font color="#c000c0">'g*'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fixed infrastructure</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% cylinder base</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N = <font color="#ff8000">100</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[bxx byy bzz] = cylinder([<font color="#ff8000">1</font> <font color="#ff8000">1</font>], N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bxx = [zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>); bxx; zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byy = [zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>); byy; zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bzz = [zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>); bzz; ones(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[r c] = size(bxx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg = zeros(r, c, <font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">1</font>) = <font color="#ff8000">0.7</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">2</font>) = <font color="#ff8000">0.7</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">3</font>) = <font color="#ff8000">0.2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf(bxx*<font color="#ff8000">3</font>, byy*<font color="#ff8000">3</font>, bzz*<font color="#ff8000">5</font>-<font color="#ff8000">5</font>, bimg)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% cube</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bxx = [ <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>] * <font color="#ff8000">5</font>;      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byy = [ <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>] * <font color="#ff8000">5</font>;      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bzz = [ <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>] * <font color="#ff8000">5</font>;      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[r c] = size(bxx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg = zeros(r, c, <font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">1</font>) = <font color="#ff8000">0.5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">2</font>) = <font color="#ff8000">0.5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">3</font>) = <font color="#ff8000">0.2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf(bxx, byy, bzz-<font color="#ff8000">10</font>, bimg)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf_rotated(nxx, nyy, nzz, nimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">0</font>, [<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>]);          <font color="#00A000">% plug A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nd1 = surf_rotated(cxx, cyy, czz, cimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">90</font>-beta, [<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>]);     <font color="#00A000">% line E-A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf_rotated(nxx+nd1(<font color="#ff8000">1</font>), nyy+nd1(<font color="#ff8000">2</font>), nzz+nd1(<font color="#ff8000">3</font>), <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">0</font>, nd1);                                      <font color="#00A000">% plug E</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nd2 = surf_rotated(cxx+nd1(<font color="#ff8000">1</font>), cyy+nd1(<font color="#ff8000">2</font>), czz+nd1(<font color="#ff8000">3</font>), <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">90</font> - gamma, nd1); <font color="#00A000">% line E-F                            % line E-F</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf_rotated(nxx+nd2(<font color="#ff8000">1</font>), nyy+nd2(<font color="#ff8000">2</font>), nzz+nd2(<font color="#ff8000">3</font>), nimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">0</font>, nd2); <font color="#00A000">% plug F</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    axis off</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'X axis'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Y axis'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'Z axis'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;material metal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lightangle(-<font color="#ff8000">45</font>, <font color="#ff8000">45</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">45</font>, <font color="#ff8000">45</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">120</font>,<font color="#ff8000">40</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame = getframe(gcf); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeVideo(v,frame);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">0.03</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;close(v);<br>
+<font color="#0000ff">end</font><br>
+<br>
+<br>
+<font color="#0000ff">function</font> [alf bet gam] = get_angles()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> start<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> P<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ORxmag<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ln<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> fh<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% alpha is rotation to put P into the plane of the arm motion</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;alf = atan2(P(<font color="#ff8000">1</font>), P(<font color="#ff8000">2</font>)) * <font color="#ff8000">180</font>/pi;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% create the solution for the equation</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%               </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   1. horizontal: ln cos b + ln cos g = ORxmag </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     ORxmagf = ln.*(cosd(bet)+cosd(gam))</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   2. vertical:   ln sin b + ln sin g = P(3)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     P3f = ln .* (sind(bet) + sind(gam))</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   3. algebra:    cos g^2 + sin g^2 = 1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% from 1:   cos g = ORxmag/ln - cos b</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% from 2:   sin g = P(3)/ln - sin b</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% so in3:   (ORxmag/ln - cos b)^2 + (P(3)/ln - sin b)^2 - 1 = 0;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% mult by ln^2:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%            (ORxmag - ln cos b)^2 + (P(3) - ln sin b)^2 - ln^2 = 0;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% simplify:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%              ORxmag^2 - 2 ln ORxmag cos b + ln^2 cos b^2 </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   + P(3)^2 - 2 ln P(3) sin b + ln^2 sin b^2 - ln^2 = 0;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% using 3 again:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   ORxmag^2 + P(3)^2 - 2 ln(ORxmag cos b + P(3) sin b) = 0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ORxmag = sqrt(P(<font color="#ff8000">1</font>)^<font color="#ff8000">2</font> + P(<font color="#ff8000">2</font>)^<font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;b = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">360</font>, <font color="#ff8000">100</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y = equation(b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(b, y)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'intersection equation'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'beta'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'y'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis([-<font color="#ff8000">100</font> <font color="#ff8000">400</font> -<font color="#ff8000">2000</font> <font color="#ff8000">5000</font>])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">0.01</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = find(b > start);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = at(<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = y(at);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% starting at at, find the index of b closest to </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% at that has Y value opposite in sign to v = y(at)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% bto is all the b indices whose values are opposite</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% sign from v</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;bto = find(y.* v < <font color="#ff8000">0</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> isempty(bto)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'no solution'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dist is the index distance from 'at'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dist = abs(bto - at);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ndx is the place on dist where the min occurs</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[~, ndx] = min(dist);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% bto(ndx) is the index on B closest to the start</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;to = bto(ndx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bet = get_zero(b(at), b(to));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'early shower'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;gam = atan2(P(<font color="#ff8000">3</font>)./ln - sind(bet), ORxmag./ln - cosd(bet))*<font color="#ff8000">180</font>/pi;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;start = bet;<br>
+<font color="#0000ff">end</font><br>
+<br>
+<br>
+<br>
+<font color="#0000ff">function</font> res = get_zero(b1, b2)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> abs(b1-b2) < <font color="#ff8000">0.01</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = b1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bm = (b1 + b2) ./ <font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1 = equation(b1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2 = equation(b2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;em = equation(bm);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> e1 .* em >= <font color="#ff8000">0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = get_zero(bm, b2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = get_zero(b1, bm);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<br>
+<font color="#0000ff">function</font> fn = equation(bet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> P<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ln<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ORxmag<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cb = cosd(bet);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sb = sind(bet);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fn = ORxmag.^<font color="#ff8000">2</font> + P(<font color="#ff8000">3</font>).^<font color="#ff8000">2</font> - <font color="#ff8000">2</font>.*ln.*(ORxmag.*cb + P(<font color="#ff8000">3</font>).*sb);<br>
+<font color="#0000ff">end</font><br>
+<br>
+<br>
+<font color="#0000ff">function</font> nd = surf_rotated(xx, yy, zz, img, alpha, beta, offset)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% beta is about x axis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [cosd(beta) -sind(beta)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sind(beta)  cosd(beta)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[r c] = size(xx);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = r*c;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">1</font>,:) = reshape(yy-offset(<font color="#ff8000">2</font>), <font color="#ff8000">1</font>, N); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">2</font>,:) = reshape(zz-offset(<font color="#ff8000">3</font>), <font color="#ff8000">1</font>, N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;P2 = A * P1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yy = reshape(P2(<font color="#ff8000">1</font>,:), r, c) + offset(<font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zz = reshape(P2(<font color="#ff8000">2</font>,:), r, c) + offset(<font color="#ff8000">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% alpha is about z axis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [cosd(alpha) -sind(alpha)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sind(alpha)  cosd(alpha)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">1</font>,:) = reshape(xx-offset(<font color="#ff8000">1</font>), <font color="#ff8000">1</font>, N); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">2</font>,:) = reshape(yy-offset(<font color="#ff8000">2</font>), <font color="#ff8000">1</font>, N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;P2 = A * P1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xx = reshape(P2(<font color="#ff8000">1</font>,:), r, c) + offset(<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yy = reshape(P2(<font color="#ff8000">2</font>,:), r, c) + offset(<font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz, img);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nd = [mean(xx(<font color="#ff8000">2</font>,:)), mean(yy(<font color="#ff8000">2</font>,:)), mean(zz(<font color="#ff8000">2</font>,:))];<br>
+<font color="#0000ff">end</font><br>
+<br>
+<br>
+<br>
+<br>
+</strong></code>
 
-Combining these two relationships with Equation (1) gives the equation for F(b), the difference between the end point derived from b and the straight line. We need to solve this for F(b) = 0:
-F(b) 5 r1 cos a 1 r2 cos b 1 r1 sin a 1 r2 sin b 2 (r1 1 r2)	(4) If we are given values for r1, r2, and the angle a, we will use the method of
-Section 9.6.3 to find the value(s) of the variable a that satisfies this equation. By inspecting Figure 9.5, we might expect two answers—one with a small negative value and one “bending backward” at an angle greater than 90°.
 
-Figure 9.6 shows a plot of this function for r1 = 4, r2 = 3, and a = 30°. The zero crossings of this function confirm our intuition that there are two values of a that satisfy the equation for small, positive values of b: one around –30° and one around 110°.
+<b>Reflections:</b>
+<ol>
+<li>A modest amount of code is all that is required to create an elegant solution to a nontrivial problem. The structure of the recursive function <code>get_zero(b1, b2)</code> shown in Listing 9.8 clearly reflects the standard recursive template, and that function can be used to find zeros of any continuous function defined in the function <code>equation(bet)</code>.</li>
+<li>At the risk of alarming students, I have left in place the not insignificant amount of code needed to verify that we are indeed solving the right problem correctly.  This code was pulled forward from concepts presented later in this text. 
+</li></ol>
 
-The Solution to the Sub-problem
-As before, since there is no analytical solution to this function, we will find the approximate location of the zero crossings and then use a recursive function to find the exact roots. The script that accomplishes this is shown in Listing 9.8.
+<h2>Chapter Summary</h2>
 
-In Listing 9.8:
+This chapter discussed the three basic principles of recursive programming that must be present for a recursive program to succeed:<ul>
+<li>There must be a terminating condition</li>
+<li>The function must call a clone of itself</li>
+<li>The parameters of that clone must move the function toward the terminating condition.</li>
+</ul>
 
-Lines 1–6: Establish the parameters of the problem as global variables to avoid the overhead cost of passing them into recursive functions.
-
-Lines 7 and 8: Sample the possible range of b values with enough values to identify the zero crossings, and compute the corresponding values of F(b).
-Lines 9–11: Estimate the zero locations by multiplying adjacent function values and display the results.
-Line 12: Calls the recursive function to find the zero crossing. Running this script produces the following:
-r1 =
-4
-r2 =
-3
-alpha =
-0.5236
-zeros =
-8 15
-zeros occur just after ans =
--0.6981 1.7453
-zero =
--0.4152 -0.0009
-
-The function for which we are seeking the zero is shown in Listing 9.9. In Listing 9.9:
-Lines 2–4: Gain access to the global parameters.  Lines 5–6: Compute the left-hand side of Equation (4).
-The function that finds the zero crossings of fab(beta) is shown in Listing 9.10. In Listing 9.10:
-Line 2: Computes the y values corresponding to the x limits.
-Lines 3 and 4: Check the terminating condition and return the [x y]
-coordinates of the result.
-Lines 6 and 7: Find the x and y values of the midpoint.
-Lines 8 and 9: If the midpoint is on the opposite side of the x-axis from the lower limit, make a recursive call using these limits.
-Line 11: Otherwise, makes the recursive call using the midpoint and the upper limit.
-
-Reflection
-A modest amount of code is all that is required to create an elegant solution to a nontrivial problem. The structure of the recursive function shown in Listing 9.8 clearly reflects the standard recursive template, and that function can be used to find zeros of any continuous function defined in fab(x).
-
-Chapter Summary
-
-This chapter discussed the three basic principles of recursive programming that must be present for a recursive program to succeed:
-■	There must be a terminating condition
-■	The function must call a clone of itself
-■	The parameters of that clone must move the function toward the
-terminating condition
-
-We have also seen some other important capabilities as follows:
-■	Exceptions are declared either within system functions or by the user using the error(...) function; they are trapped and perhaps remedied using try ... catch code blocks
-■	A wrapper function is used to set up a recursive solution by validating the incoming data.
+We have also seen some other important capabilities as follows:<ul>
+<li>Exceptions are declared either within system functions or by the user using the error(...) function; they are trapped and perhaps remedied using try ... catch code blocks</li>
+<li>A wrapper function is used to set up a recursive solution by validating the incoming data.</li>
+</ul>
 
 
 [Special Characters]
