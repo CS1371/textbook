@@ -4,6 +4,7 @@ clc
     
     dbg = fopen('debug.log','w');
 
+%     format('ch_10_snip.m');
 %     format('test_coloring.m');
 %     format('all_run.m');
 %     format('all_run_really.m');
@@ -55,8 +56,8 @@ clc
 %     format('listing_09_5.m');
 %     format('listing_09_6.m');
 %     format('listing_09_7.m');
-    format('listing_09_8.m');
-%     format('listing_10_1.m');
+%     format('listing_09_8.m');
+    format('listing_10_1.m');
 %     format('listing_11_1.m');
 %     format('listing_11_10.m');
 %     format('listing_11_11.m');

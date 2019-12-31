@@ -1,669 +1,114 @@
 
 
-Processing file ../listings/listing_09_8.m
+Processing file ../listings/listing_10_1.m
+process >% Country analysis<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Country analysis</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Country analysis</font><br><
 process >clear<
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;clear<br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;clear<br><
 process >clc<
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;clc<br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;clc<br><
-process >close all<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;close all<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;close all<br><
+process >findBestCountry<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;findBestCountry<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;findBestCountry<br><
 process ><
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-process >global start<
+process >function findBestCountry<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> start<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> start<br><
-process >global P<
+coloring gives ><font color="#0000ff">function</font> findBestCountry<br><
+replace_stuff gives ><font color="#0000ff">function</font> findBestCountry<br><
+process >% build the country array<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% build the country array</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% build the country array</font><br><
+process >worldData = buildData('.ûWorld_data.xlsx');<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;worldData = buildData(<font color="#c000c0">'.ûWorld_data.xlsx'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;worldData = buildData(<font color="#c000c0">'../World_data.xlsx'</font>);<br><
+process >best = findBest(worldData);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;best = findBest(worldData);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;best = findBest(worldData);<br><
+process >fprintf('best country is %s\n', ...<
+set parens = 1
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'best country is %s\n'</font>, <font color="#ff8000">...</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'best country is %s\n'</font>, <font color="#ff8000">...</font><br><
+process >worldData(best).name)<
+set parens = 1
+set parens = 0
+set parens = -1
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;worldData(best)<font color="#ff8000">.name</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;worldData(best)<font color="#ff8000">.name</font>)<br><
+process >end<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> P<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> P<br><
-process >global ln<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ln<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ln<br><
-process >global Pa<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pa<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pa<br><
-process >global Pb<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pb<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pb<br><
-process >global cxx<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cxx<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cxx<br><
-process >global cyy<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cyy<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cyy<br><
-process >global czz<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> czz<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> czz<br><
-process >global cimg<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cimg<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cimg<br><
-process >global nxx<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nxx<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nxx<br><
-process >global nyy<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nyy<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nyy<br><
-process >global nzz<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nzz<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nzz<br><
-process >global nimg<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nimg<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nimg<br><
-process >global ORxmag<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ORxmag<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ORxmag<br><
-process >global fh<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> fh<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> fh<br><
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
 process ><
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-process >% We have 3 angles to compute:<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% We have 3 angles to compute:</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% We have 3 angles to compute:</font><br><
-process >%  - alfa at A about the Z axis from the Y axis<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  - alfa at A about the Z axis from the Y axis</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  - alfa at A about the Z axis from the Y axis</font><br><
-process >%  - beta at A about the X axis from the horizontal<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  - beta at A about the X axis from the horizontal</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  - beta at A about the X axis from the horizontal</font><br><
-process >%  - gamma at B about the X axis<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  - gamma at B about the X axis</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  - gamma at B about the X axis</font><br><
-process >fh = fopen('debug.log','w');<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;fh = fopen(<font color="#c000c0">'debug.log'</font>,'w');<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;fh = fopen(<font color="#c000c0">'debug.log'</font>,'w');<br><
-process >fprintf(fh, '%10s%10s%10s%10s\n\n', 'step','alpha','beta','gamma');<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;fprintf(fh, <font color="#c000c0">'%10s%10s%10s%10s\n\n'</font>, 'step',<font color="#c000c0">'alpha'</font>,'beta',<font color="#c000c0">'gamma'</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;fprintf(fh, <font color="#c000c0">'%10s%10s%10s%10s\n\n'</font>, 'step',<font color="#c000c0">'alpha'</font>,'beta',<font color="#c000c0">'gamma'</font>);<br><
-process >start = 90;  % inital guess at solution<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;start = <font color="#ff8000">90</font>;  <font color="#00A000">% inital guess at solution</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;start = <font color="#ff8000">90</font>;  <font color="#00A000">% inital guess at solution</font><br><
-process >ln = 30;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ln = <font color="#ff8000">30</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ln = <font color="#ff8000">30</font>;<br><
-process >nw = 3;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nw = <font color="#ff8000">3</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nw = <font color="#ff8000">3</font>;<br><
-process >nr = 2;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nr = <font color="#ff8000">2</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nr = <font color="#ff8000">2</font>;<br><
-process >facets = 10;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">10</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">10</font>;<br><
-process >[cxx cyy czz] = cylinder([1 1], facets);  % arms<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[cxx cyy czz] = cylinder([<font color="#ff8000">1</font> <font color="#ff8000">1</font>], facets);  <font color="#00A000">% arms</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[cxx cyy czz] = cylinder([<font color="#ff8000">1</font> <font color="#ff8000">1</font>], facets);  <font color="#00A000">% arms</font><br><
-process >czz(2,:) = ln;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;czz(<font color="#ff8000">2</font>,:) = ln;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;czz(<font color="#ff8000">2</font>,:) = ln;<br><
-process >[r, c] = size(cxx);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[r, c] = size(cxx);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[r, c] = size(cxx);<br><
-process >cimg = zeros(r, c, 3);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;cimg = zeros(r, c, <font color="#ff8000">3</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;cimg = zeros(r, c, <font color="#ff8000">3</font>);<br><
-process >cimg = cimg + 0.8;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;cimg = cimg + <font color="#ff8000">0.8</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;cimg = cimg + <font color="#ff8000">0.8</font>;<br><
-process >[xx yy zz] = cylinder([nr nr], facets);  % nodes<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[xx yy zz] = cylinder([nr nr], facets);  <font color="#00A000">% nodes</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[xx yy zz] = cylinder([nr nr], facets);  <font color="#00A000">% nodes</font><br><
-process >nxx = zz;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nxx = zz;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nxx = zz;<br><
-process >nyy = yy;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nyy = yy;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nyy = yy;<br><
-process >nzz = xx;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nzz = xx;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nzz = xx;<br><
-process >nxx = nxx*nw - nw/2;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nxx = nxx*nw - nw/<font color="#ff8000">2</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nxx = nxx*nw - nw/<font color="#ff8000">2</font>;<br><
-process >nzr = zeros(1,facets+1);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nzr = zeros(<font color="#ff8000">1</font>,facets+<font color="#ff8000">1</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nzr = zeros(<font color="#ff8000">1</font>,facets+<font color="#ff8000">1</font>);<br><
-process >nxx = [nzr-nw/2; nxx; nzr+nw/2];<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nxx = [nzr-nw/<font color="#ff8000">2</font>; nxx; nzr+nw/<font color="#ff8000">2</font>];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nxx = [nzr-nw/<font color="#ff8000">2</font>; nxx; nzr+nw/<font color="#ff8000">2</font>];<br><
-process >nyy = [nzr; nyy; nzr];<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nyy = [nzr; nyy; nzr];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nyy = [nzr; nyy; nzr];<br><
-process >nzz = [nzr; nzz; nzr];<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nzz = [nzr; nzz; nzr];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nzz = [nzr; nzz; nzr];<br><
-process >[nr, nc] = size(nxx);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[nr, nc] = size(nxx);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[nr, nc] = size(nxx);<br><
-process >nimg = zeros(nr, nc, 3);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nimg = zeros(nr, nc, <font color="#ff8000">3</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nimg = zeros(nr, nc, <font color="#ff8000">3</font>);<br><
-process >nimg = nimg + 0.8;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nimg = nimg + <font color="#ff8000">0.8</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nimg = nimg + <font color="#ff8000">0.8</font>;<br><
-process >Pa = [10 -20 32];<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;Pa = [<font color="#ff8000">10</font> -<font color="#ff8000">20</font> <font color="#ff8000">32</font>];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;Pa = [<font color="#ff8000">10</font> -<font color="#ff8000">20</font> <font color="#ff8000">32</font>];<br><
-process >Pb = [-3, 40, 0];<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;Pb = [-<font color="#ff8000">3</font>, <font color="#ff8000">40</font>, <font color="#ff8000">0</font>];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;Pb = [-<font color="#ff8000">3</font>, <font color="#ff8000">40</font>, <font color="#ff8000">0</font>];<br><
-process >t = 0;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;t = <font color="#ff8000">0</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;t = <font color="#ff8000">0</font>;<br><
-process >results = [];<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;results = [];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;results = [];<br><
-process >ok = true;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ok = true;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ok = true;<br><
-process >while ok && t <= 1<
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function besti = findBest(worldData)<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ok && t <= <font color="#ff8000">1</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ok && t <= <font color="#ff8000">1</font><br><
-process >P = Pa + (Pb - Pa)üt;<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P = Pa + (Pb - Pa)üt;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P = Pa + (Pb - Pa).*t;<br><
-process >% find alfa<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find alfa</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find alfa</font><br><
-process >try<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br><
-process >[alfa, beta, gamma] = get_angles();<
+coloring gives ><font color="#0000ff">function</font> besti = findBest(worldData)<br><
+replace_stuff gives ><font color="#0000ff">function</font> besti = findBest(worldData)<br><
+process >% find the index of the best country<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the index of the best country</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the index of the best country</font><br><
+process >% according to the criterion in the function<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% according to the criterion in the function</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% according to the criterion in the function</font><br><
+process >% fold<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fold</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fold</font><br><
+process >best = fold(worldData(1));<
+set parens = 1
+set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[alfa, beta, gamma] = get_angles();<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[alfa, beta, gamma] = get_angles();<br><
-process >catch<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;best = fold(worldData(<font color="#ff8000">1</font>));<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;best = fold(worldData(<font color="#ff8000">1</font>));<br><
+process >besti = 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;besti = <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;besti = <font color="#ff8000">1</font>;<br><
+process >for ndx = 2:length(worldData)<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br><
-process >ok = false;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ok = false;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ok = false;<br><
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">2</font>:length(worldData)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">2</font>:length(worldData)<br><
+process >cntry = worldData(ndx);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry = worldData(ndx);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry = worldData(ndx);<br><
+process >tryThis = fold(cntry);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tryThis = fold(cntry);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tryThis = fold(cntry);<br><
+process >if tryThis > best<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> tryThis > best<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> tryThis > best<br><
+process >best = tryThis;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;best = tryThis;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;best = tryThis;<br><
+process >besti = ndx;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;besti = ndx;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;besti = ndx;<br><
 process >end<
 see parens = 0
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >res.alf = alfa;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.alf = alfa;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.alf = alfa;<br><
-process >res.bet = beta;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.bet = beta;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.bet = beta;<br><
-process >res.gam = gamma;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.gam = gamma;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.gam = gamma;<br><
-process >res.P = P;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.P = P;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.P = P;<br><
-process >results = [results res];<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;results = [results res];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;results = [results res];<br><
-process >fprintf(fh, '%10.4f%10.2f%10.2f%10.2f\n', t, alfa, beta, gamma);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(fh, <font color="#c000c0">'%10.4f%10.2f%10.2f%10.2f\n'</font>, t, alfa, beta, gamma);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(fh, <font color="#c000c0">'%10.4f%10.2f%10.2f%10.2f\n'</font>, t, alfa, beta, gamma);<br><
-process >t = t + 0.01;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = t + <font color="#ff8000">0.01</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = t + <font color="#ff8000">0.01</font>;<br><
 process >end<
 see parens = 0
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >fclose(fh);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;fclose(fh);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;fclose(fh);<br><
-process >draw_stuff(results)<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;draw_stuff(results)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;draw_stuff(results)<br><
-process ><
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-process ><
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-process >function draw_stuff(res)<
-see parens = 0
-set parens = 1
-set parens = 0
-coloring gives ><font color="#0000ff">function</font> draw_stuff(res)<br><
-replace_stuff gives ><font color="#0000ff">function</font> draw_stuff(res)<br><
-process >global Pa<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pa<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pa<br><
-process >global Pb<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pb<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Pb<br><
-process >global cxx<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cxx<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cxx<br><
-process >global cyy<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cyy<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cyy<br><
-process >global czz<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> czz<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> czz<br><
-process >global cimg<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cimg<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> cimg<br><
-process >global nxx<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nxx<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nxx<br><
-process >global nyy<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nyy<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nyy<br><
-process >global nzz<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nzz<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nzz<br><
-process >global nimg<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nimg<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> nimg<br><
-process >figure<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;figure<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;figure<br><
-process >set(gca,'nextplot','replacechildren'); <
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;set(gca,<font color="#c000c0">'nextplot'</font>,'replacechildren'); <br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;set(gca,<font color="#c000c0">'nextplot'</font>,'replacechildren'); <br><
-process >% Create a video writer object for the output video file and open the object for writing.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Create a video writer object for the output video file and open the object for writing.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Create a video writer object for the output video file and open the object for writing.</font><br><
-process ><
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-process >v = VideoWriter('robot_arm.mp4');<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;v = VideoWriter(<font color="#c000c0">'robot_arm.mp4'</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;v = VideoWriter(<font color="#c000c0">'robot_arm.mp4'</font>);<br><
-process >open(v);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;open(v);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;open(v);<br><
-process >% Generate a set of frames, get the frame from the figure, and then write each frame to the file.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Generate a set of frames, get the frame from the figure, and then write each frame to the file.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Generate a set of frames, get the frame from the figure, and then write each frame to the file.</font><br><
-process ><
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-process >for rndx = 1:length(res)<
-see parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> rndx = <font color="#ff8000">1</font>:length(res)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> rndx = <font color="#ff8000">1</font>:length(res)<br><
-process >alfa = res(rndx).alf;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alfa = res(rndx)<font color="#ff8000">.alf</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alfa = res(rndx)<font color="#ff8000">.alf</font>;<br><
-process >beta = res(rndx).bet;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beta = res(rndx)<font color="#ff8000">.bet</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beta = res(rndx)<font color="#ff8000">.bet</font>;<br><
-process >gamma = res(rndx).gam;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gamma = res(rndx)<font color="#ff8000">.gam</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gamma = res(rndx)<font color="#ff8000">.gam</font>;<br><
-process >P = res(rndx).P;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P = res(rndx)<font color="#ff8000">.P</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P = res(rndx)<font color="#ff8000">.P</font>;<br><
-process >plot3([Pa(1) Pb(1)],[Pa(2) Pb(2)],[Pa(3) Pb(3)], 'rs--') <
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot3([Pa(<font color="#ff8000">1</font>) Pb(<font color="#ff8000">1</font>)],[Pa(<font color="#ff8000">2</font>) Pb(<font color="#ff8000">2</font>)],[Pa(<font color="#ff8000">3</font>) Pb(<font color="#ff8000">3</font>)], <font color="#c000c0">'rs--'</font>) <br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot3([Pa(<font color="#ff8000">1</font>) Pb(<font color="#ff8000">1</font>)],[Pa(<font color="#ff8000">2</font>) Pb(<font color="#ff8000">2</font>)],[Pa(<font color="#ff8000">3</font>) Pb(<font color="#ff8000">3</font>)], <font color="#c000c0">'rs--'</font>) <br><
-process >hold on<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold on<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold on<br><
-process >plot3(P(1), P(2), P(3), 'g*')<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot3(P(<font color="#ff8000">1</font>), P(<font color="#ff8000">2</font>), P(<font color="#ff8000">3</font>), <font color="#c000c0">'g*'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot3(P(<font color="#ff8000">1</font>), P(<font color="#ff8000">2</font>), P(<font color="#ff8000">3</font>), <font color="#c000c0">'g*'</font>)<br><
-process ><
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><
-process >% fixed infrastructure<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fixed infrastructure</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fixed infrastructure</font><br><
-process >% cylinder base<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% cylinder base</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% cylinder base</font><br><
-process >N = 100;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N = <font color="#ff8000">100</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N = <font color="#ff8000">100</font>;<br><
-process >[bxx byy bzz] = cylinder([1 1], N);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[bxx byy bzz] = cylinder([<font color="#ff8000">1</font> <font color="#ff8000">1</font>], N);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[bxx byy bzz] = cylinder([<font color="#ff8000">1</font> <font color="#ff8000">1</font>], N);<br><
-process >bxx = [zeros(1,N+1); bxx; zeros(1,N+1)];<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bxx = [zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>); bxx; zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>)];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bxx = [zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>); bxx; zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>)];<br><
-process >byy = [zeros(1,N+1); byy; zeros(1,N+1)];<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byy = [zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>); byy; zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>)];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byy = [zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>); byy; zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>)];<br><
-process >bzz = [zeros(1,N+1); bzz; ones(1,N+1)];<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bzz = [zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>); bzz; ones(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>)];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bzz = [zeros(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>); bzz; ones(<font color="#ff8000">1</font>,N+<font color="#ff8000">1</font>)];<br><
-process >[r c] = size(bxx);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[r c] = size(bxx);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[r c] = size(bxx);<br><
-process >bimg = zeros(r, c, 3);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg = zeros(r, c, <font color="#ff8000">3</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg = zeros(r, c, <font color="#ff8000">3</font>);<br><
-process >bimg(:,:,1) = 0.7;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">1</font>) = <font color="#ff8000">0.7</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">1</font>) = <font color="#ff8000">0.7</font>;<br><
-process >bimg(:,:,2) = 0.7;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">2</font>) = <font color="#ff8000">0.7</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">2</font>) = <font color="#ff8000">0.7</font>;<br><
-process >bimg(:,:,3) = 0.2;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">3</font>) = <font color="#ff8000">0.2</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">3</font>) = <font color="#ff8000">0.2</font>;<br><
-process >surf(bxx*3, byy*3, bzz*5-5, bimg)<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf(bxx*<font color="#ff8000">3</font>, byy*<font color="#ff8000">3</font>, bzz*<font color="#ff8000">5</font>-<font color="#ff8000">5</font>, bimg)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf(bxx*<font color="#ff8000">3</font>, byy*<font color="#ff8000">3</font>, bzz*<font color="#ff8000">5</font>-<font color="#ff8000">5</font>, bimg)<br><
-process >% cube<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% cube</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% cube</font><br><
-process >bxx = [ 0  0  0  0  0<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bxx = [ <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bxx = [ <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font><br><
-process >-1 -1  1  1 -1<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font><br><
-process >-1 -1  1  1 -1<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font><br><
-process >0  0  0  0  0] * 5;      <
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>] * <font color="#ff8000">5</font>;      <br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>] * <font color="#ff8000">5</font>;      <br><
-process >byy = [ 0  0  0  0  0<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byy = [ <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byy = [ <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font><br><
-process >1 -1 -1  1  1<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br><
-process >1 -1 -1  1  1<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br><
-process >0  0  0  0  0] * 5;      <
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>] * <font color="#ff8000">5</font>;      <br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>] * <font color="#ff8000">5</font>;      <br><
-process >bzz = [ 1  1  1  1  1<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bzz = [ <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bzz = [ <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br><
-process >1  1  1  1  1<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font><br><
-process >-1 -1 -1 -1 -1<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font><br><
-process >-1 -1 -1 -1 -1] * 5;      <
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>] * <font color="#ff8000">5</font>;      <br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>] * <font color="#ff8000">5</font>;      <br><
-process >[r c] = size(bxx);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[r c] = size(bxx);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[r c] = size(bxx);<br><
-process >bimg = zeros(r, c, 3);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg = zeros(r, c, <font color="#ff8000">3</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg = zeros(r, c, <font color="#ff8000">3</font>);<br><
-process >bimg(:,:,1) = 0.5;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">1</font>) = <font color="#ff8000">0.5</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">1</font>) = <font color="#ff8000">0.5</font>;<br><
-process >bimg(:,:,2) = 0.5;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">2</font>) = <font color="#ff8000">0.5</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">2</font>) = <font color="#ff8000">0.5</font>;<br><
-process >bimg(:,:,3) = 0.2;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">3</font>) = <font color="#ff8000">0.2</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bimg(:,:,<font color="#ff8000">3</font>) = <font color="#ff8000">0.2</font>;<br><
-process >surf(bxx, byy, bzz-10, bimg)<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf(bxx, byy, bzz-<font color="#ff8000">10</font>, bimg)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf(bxx, byy, bzz-<font color="#ff8000">10</font>, bimg)<br><
-process >shading interp<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br><
-process >surf_rotated(nxx, nyy, nzz, nimg, 180 - alfa, 0, [0 0 0]);          % plug A<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf_rotated(nxx, nyy, nzz, nimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">0</font>, [<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>]);          <font color="#00A000">% plug A</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf_rotated(nxx, nyy, nzz, nimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">0</font>, [<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>]);          <font color="#00A000">% plug A</font><br><
-process >nd1 = surf_rotated(cxx, cyy, czz, cimg, 180 - alfa, 90-beta, [0 0 0]);     % line E-A<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nd1 = surf_rotated(cxx, cyy, czz, cimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">90</font>-beta, [<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>]);     <font color="#00A000">% line E-A</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nd1 = surf_rotated(cxx, cyy, czz, cimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">90</font>-beta, [<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>]);     <font color="#00A000">% line E-A</font><br><
-process >surf_rotated(nxx+nd1(1), nyy+nd1(2), nzz+nd1(3), ...<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf_rotated(nxx+nd1(<font color="#ff8000">1</font>), nyy+nd1(<font color="#ff8000">2</font>), nzz+nd1(<font color="#ff8000">3</font>), <font color="#ff8000">...</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf_rotated(nxx+nd1(<font color="#ff8000">1</font>), nyy+nd1(<font color="#ff8000">2</font>), nzz+nd1(<font color="#ff8000">3</font>), <font color="#ff8000">...</font><br><
-process >nimg, 180 - alfa, 0, nd1);                                      % plug E<
-set parens = -1
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">0</font>, nd1);                                      <font color="#00A000">% plug E</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">0</font>, nd1);                                      <font color="#00A000">% plug E</font><br><
-process >nd2 = surf_rotated(cxx+nd1(1), cyy+nd1(2), czz+nd1(3), ...<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nd2 = surf_rotated(cxx+nd1(<font color="#ff8000">1</font>), cyy+nd1(<font color="#ff8000">2</font>), czz+nd1(<font color="#ff8000">3</font>), <font color="#ff8000">...</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nd2 = surf_rotated(cxx+nd1(<font color="#ff8000">1</font>), cyy+nd1(<font color="#ff8000">2</font>), czz+nd1(<font color="#ff8000">3</font>), <font color="#ff8000">...</font><br><
-process >cimg, 180 - alfa, 90 - gamma, nd1); % line E-F                            % line E-F<
-set parens = -1
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">90</font> - gamma, nd1); <font color="#00A000">% line E-F                            % line E-F</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">90</font> - gamma, nd1); <font color="#00A000">% line E-F                            % line E-F</font><br><
-process >surf_rotated(nxx+nd2(1), nyy+nd2(2), nzz+nd2(3), nimg, 180 - alfa, 0, nd2); % plug F<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf_rotated(nxx+nd2(<font color="#ff8000">1</font>), nyy+nd2(<font color="#ff8000">2</font>), nzz+nd2(<font color="#ff8000">3</font>), nimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">0</font>, nd2); <font color="#00A000">% plug F</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surf_rotated(nxx+nd2(<font color="#ff8000">1</font>), nyy+nd2(<font color="#ff8000">2</font>), nzz+nd2(<font color="#ff8000">3</font>), nimg, <font color="#ff8000">180</font> - alfa, <font color="#ff8000">0</font>, nd2); <font color="#00A000">% plug F</font><br><
-process >axis equal<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br><
-process >%    axis off<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    axis off</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    axis off</font><br><
-process >xlabel('X axis')<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'X axis'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'X axis'</font>)<br><
-process >ylabel('Y axis')<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Y axis'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Y axis'</font>)<br><
-process >zlabel('Z axis')<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'Z axis'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'Z axis'</font>)<br><
-process >shading interp<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br><
-process >material metal<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;material metal<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;material metal<br><
-process >grid on<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
-process >lightangle(-45, 45)<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lightangle(-<font color="#ff8000">45</font>, <font color="#ff8000">45</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lightangle(-<font color="#ff8000">45</font>, <font color="#ff8000">45</font>)<br><
-process >lightangle(45, 45)<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">45</font>, <font color="#ff8000">45</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">45</font>, <font color="#ff8000">45</font>)<br><
-process >view(-120,40)<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">120</font>,<font color="#ff8000">40</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">120</font>,<font color="#ff8000">40</font>)<br><
-process >hold off<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold off<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold off<br><
-process >frame = getframe(gcf); <
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame = getframe(gcf); <br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame = getframe(gcf); <br><
-process >writeVideo(v,frame);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeVideo(v,frame);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeVideo(v,frame);<br><
-process >pause(0.03)<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">0.03</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">0.03</font>)<br><
-process >end<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >close(v);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;close(v);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;close(v);<br><
 process >end<
 see parens = 0
 coloring gives ><font color="#0000ff">end</font><br><
@@ -671,264 +116,69 @@ replace_stuff gives ><font color="#0000ff">end</font><br><
 process ><
 coloring gives ><br><
 replace_stuff gives ><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process >function [alf bet gam] = get_angles()<
+process >function ans = fold(st)<
 see parens = 0
 set parens = 1
 set parens = 0
-coloring gives ><font color="#0000ff">function</font> [alf bet gam] = get_angles()<br><
-replace_stuff gives ><font color="#0000ff">function</font> [alf bet gam] = get_angles()<br><
-process >global start<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> start<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> start<br><
-process >global P<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> P<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> P<br><
-process >global ORxmag<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ORxmag<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ORxmag<br><
-process >global ln<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ln<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ln<br><
-process >global fh<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> fh<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> fh<br><
-process ><
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-process >% alpha is rotation to put P into the plane of the arm motion<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% alpha is rotation to put P into the plane of the arm motion</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% alpha is rotation to put P into the plane of the arm motion</font><br><
-process >alf = atan2(P(1), P(2)) * 180/pi;<
-set parens = 1
-set parens = 2
+coloring gives ><font color="#0000ff">function</font> ans = fold(st)<br><
+replace_stuff gives ><font color="#0000ff">function</font> ans = fold(st)<br><
+process >% s1 is the rate of growth of population<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% s1 is the rate of growth of population</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% s1 is the rate of growth of population</font><br><
+process >pop = st.pop(~isnan(st.pop));<
 set parens = 1
 set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;alf = atan2(P(<font color="#ff8000">1</font>), P(<font color="#ff8000">2</font>)) * <font color="#ff8000">180</font>/pi;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;alf = atan2(P(<font color="#ff8000">1</font>), P(<font color="#ff8000">2</font>)) * <font color="#ff8000">180</font>/pi;<br><
-process >% create the solution for the equation<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% create the solution for the equation</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% create the solution for the equation</font><br><
-process >%               <
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%               </font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%               </font><br><
-process >%   1. horizontal: ln cos b + ln cos g = ORxmag <
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   1. horizontal: ln cos b + ln cos g = ORxmag </font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   1. horizontal: ln cos b + ln cos g = ORxmag </font><br><
-process >%     ORxmagf = ln.*(cosd(bet)+cosd(gam))<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     ORxmagf = ln.*(cosd(bet)+cosd(gam))</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     ORxmagf = ln.*(cosd(bet)+cosd(gam))</font><br><
-process >%   2. vertical:   ln sin b + ln sin g = P(3)<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   2. vertical:   ln sin b + ln sin g = P(3)</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   2. vertical:   ln sin b + ln sin g = P(3)</font><br><
-process >%     P3f = ln .* (sind(bet) + sind(gam))<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     P3f = ln .* (sind(bet) + sind(gam))</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     P3f = ln .* (sind(bet) + sind(gam))</font><br><
-process >%   3. algebra:    cos g^2 + sin g^2 = 1<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   3. algebra:    cos g^2 + sin g^2 = 1</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   3. algebra:    cos g^2 + sin g^2 = 1</font><br><
-process >% from 1:   cos g = ORxmag/ln - cos b<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% from 1:   cos g = ORxmag/ln - cos b</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% from 1:   cos g = ORxmag/ln - cos b</font><br><
-process >% from 2:   sin g = P(3)/ln - sin b<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% from 2:   sin g = P(3)/ln - sin b</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% from 2:   sin g = P(3)/ln - sin b</font><br><
-process >% so in3:   (ORxmag/ln - cos b)^2 + (P(3)/ln - sin b)^2 - 1 = 0;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% so in3:   (ORxmag/ln - cos b)^2 + (P(3)/ln - sin b)^2 - 1 = 0;</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% so in3:   (ORxmag/ln - cos b)^2 + (P(3)/ln - sin b)^2 - 1 = 0;</font><br><
-process >% mult by ln^2:<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% mult by ln^2:</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% mult by ln^2:</font><br><
-process >%            (ORxmag - ln cos b)^2 + (P(3) - ln sin b)^2 - ln^2 = 0;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%            (ORxmag - ln cos b)^2 + (P(3) - ln sin b)^2 - ln^2 = 0;</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%            (ORxmag - ln cos b)^2 + (P(3) - ln sin b)^2 - ln^2 = 0;</font><br><
-process >% simplify:<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% simplify:</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% simplify:</font><br><
-process >%              ORxmag^2 - 2 ln ORxmag cos b + ln^2 cos b^2 <
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%              ORxmag^2 - 2 ln ORxmag cos b + ln^2 cos b^2 </font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%              ORxmag^2 - 2 ln ORxmag cos b + ln^2 cos b^2 </font><br><
-process >%   + P(3)^2 - 2 ln P(3) sin b + ln^2 sin b^2 - ln^2 = 0;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   + P(3)^2 - 2 ln P(3) sin b + ln^2 sin b^2 - ln^2 = 0;</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   + P(3)^2 - 2 ln P(3) sin b + ln^2 sin b^2 - ln^2 = 0;</font><br><
-process >% using 3 again:<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% using 3 again:</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% using 3 again:</font><br><
-process >%   ORxmag^2 + P(3)^2 - 2 ln(ORxmag cos b + P(3) sin b) = 0<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   ORxmag^2 + P(3)^2 - 2 ln(ORxmag cos b + P(3) sin b) = 0</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   ORxmag^2 + P(3)^2 - 2 ln(ORxmag cos b + P(3) sin b) = 0</font><br><
-process >ORxmag = sqrt(P(1)^2 + P(2)^2);<
-set parens = 1
-set parens = 2
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;pop = st.pop(~isnan(st.pop));<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;pop = st.pop(~isnan(st.pop));<br><
+process >yr = st.year(~isnan(st.pop));<
 set parens = 1
 set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ORxmag = sqrt(P(<font color="#ff8000">1</font>)^<font color="#ff8000">2</font> + P(<font color="#ff8000">2</font>)^<font color="#ff8000">2</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ORxmag = sqrt(P(<font color="#ff8000">1</font>)^<font color="#ff8000">2</font> + P(<font color="#ff8000">2</font>)^<font color="#ff8000">2</font>);<br><
-process >b = linspace(0, 360, 100);<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;yr = st.year(~isnan(st.pop));<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;yr = st.year(~isnan(st.pop));<br><
+process >s1 = slope(yr, pop)/mean(pop);<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;b = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">360</font>, <font color="#ff8000">100</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;b = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">360</font>, <font color="#ff8000">100</font>);<br><
-process >y = equation(b);<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;y = equation(b);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;y = equation(b);<br><
-process >plot(b, y)<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;plot(b, y)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;plot(b, y)<br><
-process >grid on<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
-process >title('intersection equation')<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'intersection equation'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'intersection equation'</font>)<br><
-process >xlabel('beta')<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'beta'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'beta'</font>)<br><
-process >ylabel('y');<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'y'</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'y'</font>);<br><
-process >axis([-100 400 -2000 5000])<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;axis([-<font color="#ff8000">100</font> <font color="#ff8000">400</font> -<font color="#ff8000">2000</font> <font color="#ff8000">5000</font>])<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;axis([-<font color="#ff8000">100</font> <font color="#ff8000">400</font> -<font color="#ff8000">2000</font> <font color="#ff8000">5000</font>])<br><
-process >pause(0.01)<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">0.01</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">0.01</font>)<br><
-process >at = find(b > start);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;at = find(b > start);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;at = find(b > start);<br><
-process >at = at(1);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;at = at(<font color="#ff8000">1</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;at = at(<font color="#ff8000">1</font>);<br><
-process >v = y(at);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;v = y(at);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;v = y(at);<br><
-process >% starting at at, find the index of b closest to <
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% starting at at, find the index of b closest to </font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% starting at at, find the index of b closest to </font><br><
-process >% at that has Y value opposite in sign to v = y(at)<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% at that has Y value opposite in sign to v = y(at)</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% at that has Y value opposite in sign to v = y(at)</font><br><
-process >% bto is all the b indices whose values are opposite<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% bto is all the b indices whose values are opposite</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% bto is all the b indices whose values are opposite</font><br><
-process >% sign from v<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% sign from v</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% sign from v</font><br><
-process >bto = find(yü v < 0);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;bto = find(yü v < <font color="#ff8000">0</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;bto = find(y.* v < <font color="#ff8000">0</font>);<br><
-process >if isempty(bto)<
-see parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> isempty(bto)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> isempty(bto)<br><
-process >error('no solution');<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'no solution'</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'no solution'</font>);<br><
-process >end<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >% dist is the index distance from 'at'<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dist is the index distance from 'at'</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dist is the index distance from 'at'</font><br><
-process >dist = abs(bto - at);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;dist = abs(bto - at);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;dist = abs(bto - at);<br><
-process >% ndx is the place on dist where the min occurs<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ndx is the place on dist where the min occurs</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ndx is the place on dist where the min occurs</font><br><
-process >[~, ndx] = min(dist);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[~, ndx] = min(dist);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[~, ndx] = min(dist);<br><
-process >% bto(ndx) is the index on B closest to the start<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% bto(ndx) is the index on B closest to the start</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% bto(ndx) is the index on B closest to the start</font><br><
-process >to = bto(ndx);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;to = bto(ndx);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;to = bto(ndx);<br><
-process >try<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br><
-process >bet = get_zero(b(at), b(to));<
-set parens = 1
-set parens = 2
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;s1 = slope(yr, pop)/mean(pop);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;s1 = slope(yr, pop)/mean(pop);<br><
+process >% s2 is the rate of growth of the GDP<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% s2 is the rate of growth of the GDP</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% s2 is the rate of growth of the GDP</font><br><
+process >gdp = st.gdp(~isnan(st.gdp));<
 set parens = 1
 set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bet = get_zero(b(at), b(to));<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bet = get_zero(b(at), b(to));<br><
-process >catch<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br><
-process >error('early shower')<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'early shower'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'early shower'</font>)<br><
-process >end<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >gam = atan2(P(3)ûln - sind(bet), ORxmagûln - cosd(bet))*180/pi;<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;gdp = st.gdp(~isnan(st.gdp));<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;gdp = st.gdp(~isnan(st.gdp));<br><
+process >yr = st.year(~isnan(st.gdp));<
 set parens = 1
 set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;gam = atan2(P(<font color="#ff8000">3</font>)ûln - sind(bet), ORxmagûln - cosd(bet))*<font color="#ff8000">180</font>/pi;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;gam = atan2(P(<font color="#ff8000">3</font>)./ln - sind(bet), ORxmag./ln - cosd(bet))*<font color="#ff8000">180</font>/pi;<br><
-process >start = bet;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;start = bet;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;start = bet;<br><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;yr = st.year(~isnan(st.gdp));<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;yr = st.year(~isnan(st.gdp));<br><
+process >s2 = slope(yr, gdp)/mean(gdp);<
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;s2 = slope(yr, gdp)/mean(gdp);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;s2 = slope(yr, gdp)/mean(gdp);<br><
+process >% Measure of merit is how much faster<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Measure of merit is how much faster</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Measure of merit is how much faster</font><br><
+process >% the gdp grows than the population<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the gdp grows than the population</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the gdp grows than the population</font><br><
+process >ans = s2 - s1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ans = s2 - s1;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ans = s2 - s1;<br><
 process >end<
 see parens = 0
 coloring gives ><font color="#0000ff">end</font><br><
@@ -936,77 +186,52 @@ replace_stuff gives ><font color="#0000ff">end</font><br><
 process ><
 coloring gives ><br><
 replace_stuff gives ><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process >function res = get_zero(b1, b2)<
+process >function sl = slope(x, y)<
 see parens = 0
 set parens = 1
 set parens = 0
-coloring gives ><font color="#0000ff">function</font> res = get_zero(b1, b2)<br><
-replace_stuff gives ><font color="#0000ff">function</font> res = get_zero(b1, b2)<br><
-process >global P<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> P<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> P<br><
-process >if abs(b1-b2) < 0.01<
+coloring gives ><font color="#0000ff">function</font> sl = slope(x, y)<br><
+replace_stuff gives ><font color="#0000ff">function</font> sl = slope(x, y)<br><
+process >% Estimate the slope of a curve<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Estimate the slope of a curve</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Estimate the slope of a curve</font><br><
+process >if length(x) == 0 || x(end) == x(1)<
 see parens = 0
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> abs(b1-b2) < <font color="#ff8000">0.01</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> abs(b1-b2) < <font color="#ff8000">0.01</font><br><
-process >res = b1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = b1;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = b1;<br><
+set parens = 1
+see parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(x) == <font color="#ff8000">0</font> || x(end) == x(<font color="#ff8000">1</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(x) == <font color="#ff8000">0</font> || x(end) == x(<font color="#ff8000">1</font>)<br><
+process >error('bad data')<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad data'</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad data'</font>)<br><
 process >else<
 see parens = 0
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
-process >bm = (b1 + b2) û 2;<
+process >sl = (y(end) - y(1))/(x(end) - x(1));<
+set parens = 1
+set parens = 2
+see parens = 2
+set parens = 1
+set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bm = (b1 + b2) û <font color="#ff8000">2</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bm = (b1 + b2) ./ <font color="#ff8000">2</font>;<br><
-process >e1 = equation(b1);<
+set parens = 1
+set parens = 2
+see parens = 2
+set parens = 1
+set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1 = equation(b1);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1 = equation(b1);<br><
-process >e2 = equation(b2);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2 = equation(b2);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2 = equation(b2);<br><
-process >em = equation(bm);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;em = equation(bm);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;em = equation(bm);<br><
-process >if e1 ü em >= 0<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> e1 ü em >= <font color="#ff8000">0</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> e1 .* em >= <font color="#ff8000">0</font><br><
-process >res = get_zero(bm, b2);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = get_zero(bm, b2);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = get_zero(bm, b2);<br><
-process >else<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
-process >res = get_zero(b1, bm);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = get_zero(b1, bm);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = get_zero(b1, bm);<br><
-process >end<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sl = (y(end) - y(<font color="#ff8000">1</font>))/(x(end) - x(<font color="#ff8000">1</font>));<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sl = (y(end) - y(<font color="#ff8000">1</font>))/(x(end) - x(<font color="#ff8000">1</font>));<br><
 process >end<
 see parens = 0
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
@@ -1021,212 +246,130 @@ replace_stuff gives ><br><
 process ><
 coloring gives ><br><
 replace_stuff gives ><br><
-process >function fn = equation(bet)<
+process >function worldData = buildData(name)<
 see parens = 0
 set parens = 1
 set parens = 0
-coloring gives ><font color="#0000ff">function</font> fn = equation(bet)<br><
-replace_stuff gives ><font color="#0000ff">function</font> fn = equation(bet)<br><
-process >global P<
+coloring gives ><font color="#0000ff">function</font> worldData = buildData(name)<br><
+replace_stuff gives ><font color="#0000ff">function</font> worldData = buildData(name)<br><
+process >% read the spreadsheet into a data array<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% read the spreadsheet into a data array</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% read the spreadsheet into a data array</font><br><
+process >% and a text cell array<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% and a text cell array</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% and a text cell array</font><br><
+process >[nums, txt, raw] = xlsread(name,'data');<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[nums, txt, raw] = xlsread(name,<font color="#c000c0">'data'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[nums, txt, raw] = xlsread(name,<font color="#c000c0">'data'</font>);<br><
+process >country = ' '; % force the first data row<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;country = <font color="#c000c0">' '</font>; % force the first data row<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;country = <font color="#c000c0">' '</font>; % force the first data row<br><
+process >% to change the country<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% to change the country</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% to change the country</font><br><
+process >cntry_index = 0;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;cntry_index = <font color="#ff8000">0</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;cntry_index = <font color="#ff8000">0</font>;<br><
+process >% Traverse the data and cell arrays producing<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Traverse the data and cell arrays producing</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Traverse the data and cell arrays producing</font><br><
+process >% an array of structures,<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% an array of structures,</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% an array of structures,</font><br><
+process >% one for each country<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% one for each country</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% one for each country</font><br><
+process >for row = 1:length(nums)<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> P<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> P<br><
-process >global ln<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> row = <font color="#ff8000">1</font>:length(nums)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> row = <font color="#ff8000">1</font>:length(nums)<br><
+process >% Because the text data in txt contains<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Because the text data in txt contains</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Because the text data in txt contains</font><br><
+process >% the header row of the spreadsheet,<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the header row of the spreadsheet,</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the header row of the spreadsheet,</font><br><
+process >% the data at a given numerical row belongs to the country<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the data at a given numerical row belongs to the country</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the data at a given numerical row belongs to the country</font><br><
+process >% whose name is at txt{row+1}.<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% whose name is at txt{row+1}.</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% whose name is at txt{row+1}.</font><br><
+process >% if the country name changes,<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% if the country name changes,</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% if the country name changes,</font><br><
+process >% begin a new structure.<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% begin a new structure.</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% begin a new structure.</font><br><
+process >if ~strcmp(txt{row+1, 2}, country)<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ln<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ln<br><
-process >global ORxmag<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt{row+<font color="#ff8000">1</font>, <font color="#ff8000">2</font>}, country)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt{row+<font color="#ff8000">1</font>, <font color="#ff8000">2</font>}, country)<br><
+process >col = 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = <font color="#ff8000">1</font>;<br><
+process >country = txt{row+1, 2};<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;country = txt{row+<font color="#ff8000">1</font>, <font color="#ff8000">2</font>};<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;country = txt{row+<font color="#ff8000">1</font>, <font color="#ff8000">2</font>};<br><
+process >cntry_index = cntry_index + 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry_index = cntry_index + <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry_index = cntry_index + <font color="#ff8000">1</font>;<br><
+process >cntry.year = 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year = <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year = <font color="#ff8000">1</font>;<br><
+process >cntry.pop = 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop = <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop = <font color="#ff8000">1</font>;<br><
+process >cntry.gdp = 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp = <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp = <font color="#ff8000">1</font>;<br><
+process >end<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ORxmag<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> ORxmag<br><
-process >cb = cosd(bet);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;cb = cosd(bet);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;cb = cosd(bet);<br><
-process >sb = sind(bet);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;sb = sind(bet);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;sb = sind(bet);<br><
-process >fn = ORxmagú2 + P(3)ú2 - 2ülnü(ORxmagücb + P(3)üsb);<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >cntry.name = country;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.name = country;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.name = country;<br><
+process >cntry.year(col) = nums(row, 1);<
 set parens = 1
 set parens = 0
 set parens = 1
-set parens = 2
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year(col) = nums(row, <font color="#ff8000">1</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year(col) = nums(row, <font color="#ff8000">1</font>);<br><
+process >cntry.gdp(col) = nums(row, 2);<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;fn = ORxmagú<font color="#ff8000">2</font> + P(<font color="#ff8000">3</font>)ú<font color="#ff8000">2</font> - <font color="#ff8000">2</font>ülnü(ORxmagücb + P(<font color="#ff8000">3</font>)üsb);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;fn = ORxmag.^<font color="#ff8000">2</font> + P(<font color="#ff8000">3</font>).^<font color="#ff8000">2</font> - <font color="#ff8000">2</font>.*ln.*(ORxmag.*cb + P(<font color="#ff8000">3</font>).*sb);<br><
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp(col) = nums(row, <font color="#ff8000">2</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp(col) = nums(row, <font color="#ff8000">2</font>);<br><
+process >cntry.pop(col) = nums(row, 4);<
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop(col) = nums(row, <font color="#ff8000">4</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop(col) = nums(row, <font color="#ff8000">4</font>);<br><
+process >col = col + 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = col + <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = col + <font color="#ff8000">1</font>;<br><
+process >worldData(cntry_index) = cntry;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worldData(cntry_index) = cntry;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worldData(cntry_index) = cntry;<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
 process >end<
 see parens = 0
 coloring gives ><font color="#0000ff">end</font><br><
 replace_stuff gives ><font color="#0000ff">end</font><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process >function nd = surf_rotated(xx, yy, zz, img, alpha, beta, offset)<
-see parens = 0
-set parens = 1
-set parens = 0
-coloring gives ><font color="#0000ff">function</font> nd = surf_rotated(xx, yy, zz, img, alpha, beta, offset)<br><
-replace_stuff gives ><font color="#0000ff">function</font> nd = surf_rotated(xx, yy, zz, img, alpha, beta, offset)<br><
-process >% beta is about x axis<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% beta is about x axis</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% beta is about x axis</font><br><
-process >A = [cosd(beta) -sind(beta)<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;A = [cosd(beta) -sind(beta)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;A = [cosd(beta) -sind(beta)<br><
-process >sind(beta)  cosd(beta)];<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;sind(beta)  cosd(beta)];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;sind(beta)  cosd(beta)];<br><
-process >[r c] = size(xx);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[r c] = size(xx);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[r c] = size(xx);<br><
-process >N = r*c;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;N = r*c;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;N = r*c;<br><
-process >P1(1,:) = reshape(yy-offset(2), 1, N); <
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">1</font>,:) = reshape(yy-offset(<font color="#ff8000">2</font>), <font color="#ff8000">1</font>, N); <br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">1</font>,:) = reshape(yy-offset(<font color="#ff8000">2</font>), <font color="#ff8000">1</font>, N); <br><
-process >P1(2,:) = reshape(zz-offset(3), 1, N);<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">2</font>,:) = reshape(zz-offset(<font color="#ff8000">3</font>), <font color="#ff8000">1</font>, N);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">2</font>,:) = reshape(zz-offset(<font color="#ff8000">3</font>), <font color="#ff8000">1</font>, N);<br><
-process >P2 = A * P1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;P2 = A * P1;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;P2 = A * P1;<br><
-process >yy = reshape(P2(1,:), r, c) + offset(2);<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;yy = reshape(P2(<font color="#ff8000">1</font>,:), r, c) + offset(<font color="#ff8000">2</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;yy = reshape(P2(<font color="#ff8000">1</font>,:), r, c) + offset(<font color="#ff8000">2</font>);<br><
-process >zz = reshape(P2(2,:), r, c) + offset(3);<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;zz = reshape(P2(<font color="#ff8000">2</font>,:), r, c) + offset(<font color="#ff8000">3</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;zz = reshape(P2(<font color="#ff8000">2</font>,:), r, c) + offset(<font color="#ff8000">3</font>);<br><
-process >% alpha is about z axis<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% alpha is about z axis</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% alpha is about z axis</font><br><
-process >A = [cosd(alpha) -sind(alpha)<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;A = [cosd(alpha) -sind(alpha)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;A = [cosd(alpha) -sind(alpha)<br><
-process >sind(alpha)  cosd(alpha)];<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;sind(alpha)  cosd(alpha)];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;sind(alpha)  cosd(alpha)];<br><
-process >P1(1,:) = reshape(xx-offset(1), 1, N); <
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">1</font>,:) = reshape(xx-offset(<font color="#ff8000">1</font>), <font color="#ff8000">1</font>, N); <br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">1</font>,:) = reshape(xx-offset(<font color="#ff8000">1</font>), <font color="#ff8000">1</font>, N); <br><
-process >P1(2,:) = reshape(yy-offset(2), 1, N);<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">2</font>,:) = reshape(yy-offset(<font color="#ff8000">2</font>), <font color="#ff8000">1</font>, N);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;P1(<font color="#ff8000">2</font>,:) = reshape(yy-offset(<font color="#ff8000">2</font>), <font color="#ff8000">1</font>, N);<br><
-process >P2 = A * P1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;P2 = A * P1;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;P2 = A * P1;<br><
-process >xx = reshape(P2(1,:), r, c) + offset(1);<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;xx = reshape(P2(<font color="#ff8000">1</font>,:), r, c) + offset(<font color="#ff8000">1</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;xx = reshape(P2(<font color="#ff8000">1</font>,:), r, c) + offset(<font color="#ff8000">1</font>);<br><
-process >yy = reshape(P2(2,:), r, c) + offset(2);<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;yy = reshape(P2(<font color="#ff8000">2</font>,:), r, c) + offset(<font color="#ff8000">2</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;yy = reshape(P2(<font color="#ff8000">2</font>,:), r, c) + offset(<font color="#ff8000">2</font>);<br><
-process >surf(xx, yy, zz, img);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz, img);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz, img);<br><
-process >nd = [mean(xx(2,:)), mean(yy(2,:)), mean(zz(2,:))];<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;nd = [mean(xx(<font color="#ff8000">2</font>,:)), mean(yy(<font color="#ff8000">2</font>,:)), mean(zz(<font color="#ff8000">2</font>,:))];<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;nd = [mean(xx(<font color="#ff8000">2</font>,:)), mean(yy(<font color="#ff8000">2</font>,:)), mean(zz(<font color="#ff8000">2</font>,:))];<br><
-process >end<
-see parens = 0
-coloring gives ><font color="#0000ff">end</font><br><
-replace_stuff gives ><font color="#0000ff">end</font><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
