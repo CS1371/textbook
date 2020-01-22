@@ -52,40 +52,145 @@
 </ul>
 <h1>Chapter Objectives</h1>
 
-This chapter presents the principles and practice of plotting in the following forms: 
-
-■ Basic two-dimensional (2-D) line plots 
-
-■ 2-D parametric plots 
-
-■ Three-dimensional (3-D) line and parametric plots 
-
-■ Basic 3-D surface plots 
-
-■ Parametric surface plots 
-
-■ Bodies of rotation 
-
+This chapter presents the principles and practice of plotting in the following forms: <ul>
+<li>Basic two-dimensional (2-D) line plots 
+<li>2-D parametric plots
+<li>Three-dimensional (3-D) line and parametric plots
+<li>Basic 3-D surface plots
+<li>Parametric surface plots
+<li>Bodies of rotation 
+</ul>
 <h1>Introduction</h1>
  There is a much-quoted expression that “a picture is worth a thousand words,” and this is never more appropriate than when talking about data. In previous chapters, we used some simple plot commands to display data to illustrate its behavior. The capability of the MATLAB language to present data reaches far beyond ordinary data plotting, and far beyond the limited confines of a textbook. This chapter will present the fundamental concepts of the different forms in which data can be presented, but it leaves to the reader the challenge of exploring the full range of capabilities available. You only really discover the power inherent in the plotting capabilities of MATLAB when you have some unusual data to visualize.  
 <h2><a name="11_1">11.1  Plotting in General</a></h2>
  Before considering the details of how each plotting mode works, we should set the context. In this section, we will discuss the general container for all graphical types, the figure, and some basic operations that apply to all figures—functions that enhance them, the ability to assemble subplots into a single figure, and the advisability of making manual changes to plots.  
 <h3><a name="11_1_1">11.1.1	A Figure—The Plot Container</a></h3>
- The fundamental container for plotting is a figure. In a simple script, if you just start plotting data, figure number 1 is automatically generated to present the data. You can manage the figures by asserting the figure command. Each time figure is called, a new figure is made available, with the next higher figure number. If you use the form figure <number>, you can select a specific figure for the next plot.  To clear the current figure, put the key word clf in the header of your script. To remove all the figures, put the key phrase close all at the beginning of your script. The listing examples below will assume that each script begins with clear, clc, close all.  
+ The fundamental container for plotting is a figure. In a simple script, if you just start plotting data, figure number 1 is automatically created to present the data. You can manage the figures by asserting the <code>figure</code> command. Each time figure is called, a new figure is made available, with the next higher figure number. If you use the form <code>figure &lt;number&gt;</code>, you can select a specific figure number for the next plot.  To clear the current figure, put the key word <code>clf</code> in the header of your script. To remove all the figures, put the key phrase <code>close all</code> at the beginning of your script. The listing examples below will assume that each script begins with <code>clear</code>, <code>clc</code>, <code>close all</code>.  
 <h3><a name="11_1_2">11.1.2	Simple Functions for Enhancing Plots</a></h3>
- We have already introduced plot(x, y), the basic function that creates a simple plot of x versus y. The following functions can be used to enhance any of the plots discussed in this chapter. Note that they enhance an existing plot; they should all be called after the fundamental function that creates a plot figure.  ■	axis <param> provides a rich set of tools for managing the appearance of the axes, including the following: •	tight reduces the axes to their smallest possible size •	equal sets the x and y scales to the same value •	square makes the plot figure of equal width and height •	off does not show the axes at all ■	axis([xl xu yl yu zl zu]) overrides the automatic computation of the axis values, forcing the x-axis to reach from xl to xu, the y-axis from yl to yu, and the z-axis from zl to zu. For 2-D plots, the z values should be omitted. ■	colormap <specification> establishes a sequence of colors, the color map, to be used under a number of circumstances to cycle through a series of colors automatically. The legal specification values are listed in Appendix A. ■	grid on puts a grid on the plot; grid off (the default) removes grid lines. ■	hold on holds the existing data on the figure to allow subsequent plotting calls to be added to the current figure without first erasing the existing plot; hold off (the default) redraws the current figure, erasing the previous contents. ■	legend(...) takes a cell array of strings, one for each of the multiple plots on a single figure, and creates a legend box. By default, that box appears in the top-right corner of the figure. However, this default can be overridden by explicitly specifying the location of the legend. See the help files for a complete discussion of the legend options. ■	shading <spec> defines the method for shading surfaces. See the help files for a complete discussion of the shading specification options. ■	text(x, y, {z,}, str) places the text provided at the specified (x, y) location on a 2-D plot, or at the (x, y, z) location on a 3-D plot. ■	title(...) places the text provided as the title of the current plot. ■	view(az, el) sets the angle from which to view a plot. The parameters are az, the azimuth, an angle measured in the horizontal plane, and el, the elevation, an angle measured upward from the horizontal. Both angles are specified in degrees. ■	xlabel(...) sets the string provided as the label for the x-axis. ■	ylabel(...) sets the string provided as the label for the y-axis. ■	zlabel(...) sets the string provided as the label for the z-axis. (As we will see, all plots actually have a third axis.)  
+ We have already introduced <code>plot(x, y)</code>, the basic function that creates a simple plot of <code>x</code> versus <code>y</code>. The following functions can be used to enhance any of the plots discussed in this chapter. Note that they enhance an existing plot; they should all be called after the fundamental function that creates a plot figure.
+	 <ul>
+	 <li><code>axis &lt;param&gt;</code> provides a rich set of tools for managing the appearance of the axes, including the following:<ul>
+	 <li><code>tight</code> reduces the axes to their smallest possible size
+	 <li><code>equal</code> sets the <code>x</code> and <code>y</code> scales to the same value
+	 <li><code>square</code> makes the plot figure of equal width and height
+	 <li><code>off</code> does not show the axes at all
+	 </ul>
+ <li><code>axis([xl xu yl yu zl zu])</code> overrides the automatic computation of the axis values, forcing the x-axis to reach from <code>xl</code> to <code>xu</code>, the y-axis from <code>yl</code> to <code>yu</code>, and the z-axis from <code>zl</code> to <code>zu</code>. For 2-D plots, the <code>z</code> values should be omitted.
+ <li><code>colormap &lt;specification&gt;</code> establishes a sequence of colors, the color map, to be used under a number of circumstances to cycle through a series of colors automatically. The legal specification values are listed in Appendix A.
+ <li><code>grid on</code> puts a grid on the plot; <code>grid off</code> (the default) removes grid lines.
+ <li><code>hold on</code> keeps the existing data on the current figure to allow the results of subsequent plotting calls to be added to the current figure without first erasing the existing plot; <code>hold off</code> (the default) allows you to redraw the current figure at the next plot call, erasing the previous contents.
+ <li><code>legend(...)</code> takes a cell array of strings, one for each of the multiple plots on a single figure, and creates a legend box. By default, that box appears in the top-right corner of the figure. However, this default can be overridden by explicitly specifying the location of the legend. See the help files for a complete discussion of the legend options.
+ <li><code>shading &lt;spec&gt;</code> defines the method for shading surfaces. See the help files for a complete discussion of the shading specification options.
+ <li><code>text(x, y, {z,}, str)</code> places the text provided at the specified (x, y) location on a 2-D plot, or at the (x, y, z) location on a 3-D plot.
+ <li><code>title(&lt;string&gt;)</code> places the text provided as the title of the current plot.
+ <li><code>view(az, el)</code> sets the angle from which to view a plot. The parameters are <code>az</code>, the azimuth, an angle measured in the horizontal plane, and <code>el</code>, the elevation, an angle measured upward from the x axis. Both angles are specified in degrees.
+ <li><code>xlabel(&lt;string&gt;)</code> sets the string provided as the label for the x-axis.
+ <li><code>ylabel(&lt;string&gt;)</code> sets the string provided as the label for the y-axis.
+ <li><code>zlabel(&lt;string&gt;)</code> sets the string provided as the label for the z-axis. (As we will soon see, all plots actually have a third axis.) 
+</ul> 
 <h3><a name="11_1_3">11.1.3	Multiple Plots on One Figure—Subplots</a></h3>
- Within the current figure, you can place multiple plots with the subplot command, as shown in Figure 11.1. The function subplot(r, c, n) divides the current figure into r rows and c columns of equally spaced plot areas, and then establishes the nth of these (counting across the rows first) as the current figure. You do not have to draw in all of the areas you specify. Figure 11.1 was generated by the code shown in Listing 11.1. In Listing 11.1:  Line 1: close all closes all figures currently open. This command should always be present at the beginning of a script but will be omitted from the example listings that follow. Line 2: Specifies a suitable range of x values. Line 3: Sets the first subplot region. Line 4: This is the simple version of the plot(...) function introduced earlier, plotting x against y and automatically creating the axes, creating subplot 1, the plot in the top-left corner. Note that although in the figure seen here the line is gray, when you run the script, the line will appear in its default color, blue. Line 5: The title(...) function puts the specified string at the top of the plot as its title. Lines 6–8: Create subplot 2, the second plot on the first row. Lines 9–11: Create subplot 3, the first plot on the second row. Lines 12–14: Create subplot 4, the second plot on the second row. Lines 15–17: Create subplot 5, the first plot on the bottom row.  Lines 18–20: Create subplot 6, the second plot on the bottom row.  
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="700" src="Fig_11_1.jpg" width="600" /></p></center>
+<figcaption><b><center>Fig 11.1: using Sub-plots</center></b></figcaption></figure>
+Within the current figure, you can place multiple plots with the subplot command, as shown in Figure 11.1. The function <code>subplot(r, c, n)</code>divides the current figure into <code>r</code> rows and <code>c</code> columns of equally spaced plot areas, and then establishes the nth of these (counting across the rows first) as the current figure. You do not have to draw in all of the areas you specify. Figure 11.1 was generated by the code shown in Listing 11.1. Notice that the order of the plot positions is in an order different from that achieved when you linearize an array.  
+<h3> Listing 11.1: Creating Sub-plots</h2>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% close all the previous figures.  As with clear and clc, we will</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% assume that all subsequent plotting examples include this line.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% set a suitable range of x values for all the plots</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = -<font color="#ff8000">2</font>*pi:<font color="#ff8000">.05</font>:<font color="#ff8000">2</font>*pi;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% set the first sub-plot region in the top left position</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% draw and title the plot</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, sin(x))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'1: sin(x)'</font>); grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the second sub-plot is at the top right</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, cos(x))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'2: cos(x)'</font>); grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the third sub-plot is below the first plot in the left column</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">3</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, tan(x))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'3: tan(x)'</font>); grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">4</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, x.^<font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'4: x^2'</font>); grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">5</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, sqrt(x))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'5: sqrt(x)'</font>); grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>,<font color="#ff8000">6</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(x, exp(x))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'6: e^x'</font>); grid on<br>
+</strong></code>
+
 <h3><a name="11_1_4">11.1.4	Manually Editing Plots</a></h3>
-  When a figure has been created, you are free to manipulate many of its characteristics  by  using  its  menu items and tool bars. They provide the ability to resize the plot, change the view characteristics, and annotate it with legends, axis labels, lines, and text callouts.  
+  When a figure has been created, you are free to manipulate many of its characteristics  by  using  its  menu items and tool bars. They provide the ability to resize the plot, change the view characteristics, and annotate it with legends, axis labels, lines, and text call-outs. However, <b><i>a word of caution</i></b> is in order here. It is very rare that you achieve what you desire on the first try.  Manual edits become very tedious and error prone when they must be repeated. You will always be better served by putting all that additions into your source code rather than ever using manual figure editing.  If for no other reason, by never using manual edits, you are avoiding the appearance of impropriety by being able to repeat any graphics you created from the source materials.
 <h2><a name="11_2">11.2 2-D Plotting</a></h2>
  
 <h3><a name="11_2_1">11.2.1 Simple Plots</a></h3>
- The basic function to use for 2-D plots is plot(...). The normal use of this function is to give it three parameters, plot(x, y, str), where x and y are vectors of the same length containing the x and y coordinates, respectively, and str is a string containing one or more optional line color and style control characters. A complete list of these control characters is included in Appendix A. If the vector x is omitted, MATLAB assumes that the x coordinates are 1:N, where N is the length of the y vector. If the str is omitted, the default line is solid blue. The MATLAB definition of this function also permits multiple (x, y, str) data sets in a single function call. It is always possible to produce the same result with multiple function calls in hold on mode.  Since we have already seen basic 2-D plotting at work, it should be sufficient to observe and comment on the simple example seen in Figure 11.2, generated by the code shown in Listing 11.2. In Listing 11.2: Line 1: Sets the range of x values. Line 2: Color specifications for the plots—red, green, blue, and black.  Lines 4–7: Plot x, x2, x3, and x4 with the above colors used in sequence. Lines 7–11: Add enhancements to the plot as noted above. Line 11: One of many possible parameters to the legend(...) function—this one forces its location to the lower-right corner of the figure, out of the way of the data.  
+The basic function to use for 2-D plots is <code>plot(...)</code>. The normal use of this function is to give it three parameters, <code>plot(x, y, str)</code>, where <code>x</code> and <code>y</code> are vectors of the same length containing the x and y coordinates respectively, and <code>str</code> is a string containing one or more optional line color and style control characters. A complete list of these control characters is included in Appendix A. If the vector <code>x</code> is omitted, MATLAB assumes that the x coordinates are <code>1:N</code>, where <code>N</code> is the length of the y vector. If the <code>str</code> is omitted, the default line is solid blue with no symbols at the data points. The MATLAB definition of this function also permits multiple <code>(x, y, str)</code> data sets in a single function call. It is always possible, of course, to produce the same result with multiple function calls in <code>hold on</code> mode.  Since we have already seen basic 2-D plotting at work, it should be sufficient to observe and comment on the simple example seen in Figure 11.2, generated by the code shown in Listing 11.2. 
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="300" src="Fig_11_2.jpg" width="300" /></p></center>
+<figcaption><b><center>Fig 11.2: overlaying plots with <code>hold on</code></center></b></figcaption></figure>
+<h3>Listing 11.2: Simple 2-D plots</h3>
+<code><strong>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% set the range of X values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = linspace(-<font color="#ff8000">1.5</font>, <font color="#ff8000">1.5</font>, <font color="#ff8000">30</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% each character is the color specification for</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% one of the lines</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clr = <font color="#c000c0">'rgbk'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% make 4 plots overlaid on the same figure</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> pwr = <font color="#ff8000">1</font>:<font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot(x, x.^pwr, clr(pwr))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% label the axes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'x^N'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% add a title</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'powers of x'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% show the grid</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Apply a legend in the bottom right corner of the plot</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;legend({<font color="#c000c0">'N=1'</font>, 'N=<font color="#ff8000">2'</font>, <font color="#c000c0">'N=3'</font>, 'N=<font color="#ff8000">4'</font>}, <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'Location'</font>,'SouthEast')<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+  
 <h3><a name="11_2_2">11.2.2	Plot Options</a></h3>
- In addition to the plot enhancement tools listed in Section 11.1.2, the following capabilities are available.  ■	Setting line styles and symbols to mark the data points (details in Appendix A) ■	Using plotyy(...) to put a second axis on the right side of the figure ■	Obtaining logarithmic plots on the x-axis (semilogx(...)), y-axis (semilogy(...)), or both axes (loglog(...))  We strongly suggest that the reader experiment with these features and observe their effects.  
+ In addition to the plot enhancement tools listed in Section 11.1.2, the following capabilities are available.  <ul>
+ <li>Setting line styles and symbols to mark the data points (details in Appendix A)
+ <li>Using <code>plotyy(...)</code> to put a second axis on the right side of the figure
+ <li>Obtaining logarithmic plots on the x-axis <code>(semilogx(...))</code>, y-axis <code>(semilogy(...))</code>, or both axes (<code>loglog(...)</code>)
+ </ul>
+ We strongly suggest that the reader experiment with these features and observe their effects.  
 <h3><a name="11_2_3">11.2.3	Parametric Plots</a></h3>
- Plotting is not restricted to the situation where the data along one axis are the  independent  variable  and  that along   the   other   are   dependent. Parametric plots allow the variables on each axis to be dependent on a separate, independent variable. That independent variable will define a path on the plotting surface. Consider the plot shown in Figure 11.3, which presents   a   simple   exercise   in transforming a circle into an airfoil. It was generated using the code shown in Listing 11.3.  In Listing 11.3:  Line 1: The independent variable in this case is the angle th varying from 0 to 2p. Line 2: The particular transformation we use here requires a circle with a radius, r, slightly greater than 1 offset by a small distance, g, from the x-axis, passing through the point (−1, 0). Line 3: We compute the center of the circle passing through the point (−1, 0). Lines 4–5: A standard polar-to-Cartesian coordinate transformation computing the coordinates of the circle. Line 6: Plots the two dependent variables x and y with a red line. Line 7: Equalizes the axes and forces the circle to be drawn correctly. Line 8: Displays a grid on which to estimate specific values. Line 9: Here we want to add a second plot to the figure. Lines 10–11: The Joukowski transformation is easiest when expressed in complex terms: if z is the path around the required circle, w = z + 1/z traces a very credible looking airfoil shape. Line 12: Adds the plot of w, and reverts from the complex plane to plot the real and imaginary parts of the answer colored in black.  
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="230" src="Fig_11_3.jpg" width="300" /></p></center>
+<figcaption><b><center>Fig 11.3: parametric plots</center></b></figcaption></figure>
+Plotting is not restricted to the situation where the data along one axis are the  independent  variable  and  that along   the   other   are   dependent. Parametric plots allow the variables on each axis to be dependent on a separate, independent variable. That independent variable will define a path or locus on the plotting surface. Consider the plot shown in Figure 11.3, which presents   a   simple   exercise   in transforming a circle into the shape of an airfoil, for example, the cross-section of an aircraft wing or a turbine blade. It was generated using the code shown in Listing 11.3.  
+<h3>Listing 11.3: Parametric Plots</h3>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Parametric plots</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;th = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">2</font>*pi, <font color="#ff8000">40</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;r = <font color="#ff8000">1.1</font>; g = <font color="#ff8000">.1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cx = sqrt(r^<font color="#ff8000">2</font>-g^<font color="#ff8000">2</font>) - <font color="#ff8000">1</font>; cy = g;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = r*cos(th) + cx;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y = r*sin(th) + cy;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot( x, y, <font color="#c000c0">'r'</font> )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on, hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z = complex(x, y);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;w = z + <font color="#ff8000">1</font>./z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot( real(w), imag(w), <font color="#c000c0">'k'</font> );<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+In Listing 11.3:  Line 1: The independent variable in this case is the angle th varying from 0 to 2p. Line 2: The particular transformation we use here requires a circle with a radius, r, slightly greater than 1 offset by a small distance, g, from the x-axis, passing through the point (−1, 0). Line 3: We compute the center of the circle passing through the point (−1, 0). Lines 4–5: A standard polar-to-Cartesian coordinate transformation computing the coordinates of the circle. Line 6: Plots the two dependent variables x and y with a red line. Line 7: Equalizes the axes and forces the circle to be drawn correctly. Line 8: Displays a grid on which to estimate specific values. Line 9: Here we want to add a second plot to the figure. Lines 10–11: The Joukowski transformation is easiest when expressed in complex terms: if z is the path around the required circle, w = z + 1/z traces a very credible looking airfoil shape. Line 12: Adds the plot of w, and reverts from the complex plane to plot the real and imaginary parts of the answer colored in black.  
 <h3><a name="11_2_4">11.2.4	Other 2-D Plot Capabilities</a></h3>
  You can also create some more exotic plots that are not necessary to understand the basic principles of plotting, but are powerful methods for visualizing real data:  ■	bar(x, y) produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with >> help bar. ■	barh(x, y) produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with >> help barh. ■	fill(x,y,n) produces a filled polygon defined by the coordinates in x and y. The fill color is specified by indexing n into the color map. The options available can be studied with >> help fill. ■	hist(y, x) produces a histogram plot with the values in y counted into bins defined by x. The options available can be studied with >>help hist. ■	pie(y) makes a pie chart of the values in y. For more options, see >> help pie. ■	polar(th, y) makes a polar plot of the angle th (radians) with the radius r specified for each angle. For more options, see >> help polar.  
 <h2><a name="11_3">11.3 3-D Plotting</a></h2>

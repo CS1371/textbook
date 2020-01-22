@@ -1,374 +1,72 @@
 
 
-Processing file ../listings/listing_10_1.m
-process >% Country analysis<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Country analysis</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Country analysis</font><br><
-process >clear<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;clear<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;clear<br><
-process >clc<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;clc<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;clc<br><
-process >findBestCountry<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;findBestCountry<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;findBestCountry<br><
-process ><
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
-process >function findBestCountry<
+Processing file ../listings/listing_11_3.m
+process >% Parametric plots<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Parametric plots</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Parametric plots</font><br><
+process >function main<
 see parens = 0
-coloring gives ><font color="#0000ff">function</font> findBestCountry<br><
-replace_stuff gives ><font color="#0000ff">function</font> findBestCountry<br><
-process >% build the country array<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% build the country array</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% build the country array</font><br><
-process >worldData = buildData('.ûWorld_data.xlsx');<
+coloring gives ><font color="#0000ff">function</font> main<br><
+replace_stuff gives ><font color="#0000ff">function</font> main<br><
+process >pause(1)<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;worldData = buildData(<font color="#c000c0">'.ûWorld_data.xlsx'</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;worldData = buildData(<font color="#c000c0">'../World_data.xlsx'</font>);<br><
-process >best = findBest(worldData);<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br><
+process >figure<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;figure<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;figure<br><
+process >th = linspace(0, 2*pi, 40);<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;best = findBest(worldData);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;best = findBest(worldData);<br><
-process >fprintf('best country is %s\n', ...<
-set parens = 1
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'best country is %s\n'</font>, <font color="#ff8000">...</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'best country is %s\n'</font>, <font color="#ff8000">...</font><br><
-process >worldData(best).name)<
-set parens = 1
-set parens = 0
-set parens = -1
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;worldData(best)<font color="#ff8000">.name</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;worldData(best)<font color="#ff8000">.name</font>)<br><
-process >end<
-see parens = 0
-coloring gives ><font color="#0000ff">end</font><br><
-replace_stuff gives ><font color="#0000ff">end</font><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process >function besti = findBest(worldData)<
-see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;th = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">2</font>*pi, <font color="#ff8000">40</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;th = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">2</font>*pi, <font color="#ff8000">40</font>);<br><
+process >r = 1.1; g = .1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;r = <font color="#ff8000">1.1</font>; g = <font color="#ff8000">.1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;r = <font color="#ff8000">1.1</font>; g = <font color="#ff8000">.1</font>;<br><
+process >cx = sqrt(r^2-g^2) - 1; cy = g;<
 set parens = 1
 set parens = 0
-coloring gives ><font color="#0000ff">function</font> besti = findBest(worldData)<br><
-replace_stuff gives ><font color="#0000ff">function</font> besti = findBest(worldData)<br><
-process >% find the index of the best country<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the index of the best country</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the index of the best country</font><br><
-process >% according to the criterion in the function<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% according to the criterion in the function</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% according to the criterion in the function</font><br><
-process >% fold<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fold</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% fold</font><br><
-process >best = fold(worldData(1));<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;cx = sqrt(r^<font color="#ff8000">2</font>-g^<font color="#ff8000">2</font>) - <font color="#ff8000">1</font>; cy = g;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;cx = sqrt(r^<font color="#ff8000">2</font>-g^<font color="#ff8000">2</font>) - <font color="#ff8000">1</font>; cy = g;<br><
+process >x = r*cos(th) + cx;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;x = r*cos(th) + cx;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;x = r*cos(th) + cx;<br><
+process >y = r*sin(th) + cy;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;y = r*sin(th) + cy;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;y = r*sin(th) + cy;<br><
+process >plot( x, y, 'r' )<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;plot( x, y, <font color="#c000c0">'r'</font> )<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;plot( x, y, <font color="#c000c0">'r'</font> )<br><
+process >axis equal<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br><
+process >grid on, hold on<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on, hold on<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on, hold on<br><
+process >z = complex(x, y);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;z = complex(x, y);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;z = complex(x, y);<br><
+process >w = z + 1ûz;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;w = z + <font color="#ff8000">1</font>ûz;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;w = z + <font color="#ff8000">1</font>./z;<br><
+process >plot( real(w), imag(w), 'k' );<
+set parens = 1
+set parens = 2
 set parens = 1
 set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;best = fold(worldData(<font color="#ff8000">1</font>));<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;best = fold(worldData(<font color="#ff8000">1</font>));<br><
-process >besti = 1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;besti = <font color="#ff8000">1</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;besti = <font color="#ff8000">1</font>;<br><
-process >for ndx = 2:length(worldData)<
-see parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">2</font>:length(worldData)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">2</font>:length(worldData)<br><
-process >cntry = worldData(ndx);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry = worldData(ndx);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry = worldData(ndx);<br><
-process >tryThis = fold(cntry);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tryThis = fold(cntry);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tryThis = fold(cntry);<br><
-process >if tryThis > best<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> tryThis > best<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> tryThis > best<br><
-process >best = tryThis;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;best = tryThis;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;best = tryThis;<br><
-process >besti = ndx;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;besti = ndx;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;besti = ndx;<br><
-process >end<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >end<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >end<
-see parens = 0
-coloring gives ><font color="#0000ff">end</font><br><
-replace_stuff gives ><font color="#0000ff">end</font><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process >function ans = fold(st)<
-see parens = 0
-set parens = 1
-set parens = 0
-coloring gives ><font color="#0000ff">function</font> ans = fold(st)<br><
-replace_stuff gives ><font color="#0000ff">function</font> ans = fold(st)<br><
-process >% s1 is the rate of growth of population<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% s1 is the rate of growth of population</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% s1 is the rate of growth of population</font><br><
-process >pop = st.pop(~isnan(st.pop));<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;pop = st.pop(~isnan(st.pop));<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;pop = st.pop(~isnan(st.pop));<br><
-process >yr = st.year(~isnan(st.pop));<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;yr = st.year(~isnan(st.pop));<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;yr = st.year(~isnan(st.pop));<br><
-process >s1 = slope(yr, pop)/mean(pop);<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;s1 = slope(yr, pop)/mean(pop);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;s1 = slope(yr, pop)/mean(pop);<br><
-process >% s2 is the rate of growth of the GDP<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% s2 is the rate of growth of the GDP</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% s2 is the rate of growth of the GDP</font><br><
-process >gdp = st.gdp(~isnan(st.gdp));<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;gdp = st.gdp(~isnan(st.gdp));<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;gdp = st.gdp(~isnan(st.gdp));<br><
-process >yr = st.year(~isnan(st.gdp));<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;yr = st.year(~isnan(st.gdp));<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;yr = st.year(~isnan(st.gdp));<br><
-process >s2 = slope(yr, gdp)/mean(gdp);<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;s2 = slope(yr, gdp)/mean(gdp);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;s2 = slope(yr, gdp)/mean(gdp);<br><
-process >% Measure of merit is how much faster<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Measure of merit is how much faster</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Measure of merit is how much faster</font><br><
-process >% the gdp grows than the population<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the gdp grows than the population</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the gdp grows than the population</font><br><
-process >ans = s2 - s1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ans = s2 - s1;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ans = s2 - s1;<br><
-process >end<
-see parens = 0
-coloring gives ><font color="#0000ff">end</font><br><
-replace_stuff gives ><font color="#0000ff">end</font><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process >function sl = slope(x, y)<
-see parens = 0
-set parens = 1
-set parens = 0
-coloring gives ><font color="#0000ff">function</font> sl = slope(x, y)<br><
-replace_stuff gives ><font color="#0000ff">function</font> sl = slope(x, y)<br><
-process >% Estimate the slope of a curve<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Estimate the slope of a curve</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Estimate the slope of a curve</font><br><
-process >if length(x) == 0 || x(end) == x(1)<
-see parens = 0
-set parens = 1
-set parens = 0
-set parens = 1
-see parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(x) == <font color="#ff8000">0</font> || x(end) == x(<font color="#ff8000">1</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(x) == <font color="#ff8000">0</font> || x(end) == x(<font color="#ff8000">1</font>)<br><
-process >error('bad data')<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad data'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad data'</font>)<br><
-process >else<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
-process >sl = (y(end) - y(1))/(x(end) - x(1));<
-set parens = 1
-set parens = 2
-see parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 2
-see parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sl = (y(end) - y(<font color="#ff8000">1</font>))/(x(end) - x(<font color="#ff8000">1</font>));<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sl = (y(end) - y(<font color="#ff8000">1</font>))/(x(end) - x(<font color="#ff8000">1</font>));<br><
-process >end<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >end<
-see parens = 0
-coloring gives ><font color="#0000ff">end</font><br><
-replace_stuff gives ><font color="#0000ff">end</font><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process ><
-coloring gives ><br><
-replace_stuff gives ><br><
-process >function worldData = buildData(name)<
-see parens = 0
-set parens = 1
-set parens = 0
-coloring gives ><font color="#0000ff">function</font> worldData = buildData(name)<br><
-replace_stuff gives ><font color="#0000ff">function</font> worldData = buildData(name)<br><
-process >% read the spreadsheet into a data array<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% read the spreadsheet into a data array</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% read the spreadsheet into a data array</font><br><
-process >% and a text cell array<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% and a text cell array</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% and a text cell array</font><br><
-process >[nums, txt, raw] = xlsread(name,'data');<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[nums, txt, raw] = xlsread(name,<font color="#c000c0">'data'</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[nums, txt, raw] = xlsread(name,<font color="#c000c0">'data'</font>);<br><
-process >country = ' '; % force the first data row<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;country = <font color="#c000c0">' '</font>; % force the first data row<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;country = <font color="#c000c0">' '</font>; % force the first data row<br><
-process >% to change the country<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% to change the country</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% to change the country</font><br><
-process >cntry_index = 0;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;cntry_index = <font color="#ff8000">0</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;cntry_index = <font color="#ff8000">0</font>;<br><
-process >% Traverse the data and cell arrays producing<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Traverse the data and cell arrays producing</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Traverse the data and cell arrays producing</font><br><
-process >% an array of structures,<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% an array of structures,</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% an array of structures,</font><br><
-process >% one for each country<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% one for each country</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% one for each country</font><br><
-process >for row = 1:length(nums)<
-see parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> row = <font color="#ff8000">1</font>:length(nums)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> row = <font color="#ff8000">1</font>:length(nums)<br><
-process >% Because the text data in txt contains<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Because the text data in txt contains</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Because the text data in txt contains</font><br><
-process >% the header row of the spreadsheet,<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the header row of the spreadsheet,</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the header row of the spreadsheet,</font><br><
-process >% the data at a given numerical row belongs to the country<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the data at a given numerical row belongs to the country</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the data at a given numerical row belongs to the country</font><br><
-process >% whose name is at txt{row+1}.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% whose name is at txt{row+1}.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% whose name is at txt{row+1}.</font><br><
-process >% if the country name changes,<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% if the country name changes,</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% if the country name changes,</font><br><
-process >% begin a new structure.<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% begin a new structure.</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% begin a new structure.</font><br><
-process >if ~strcmp(txt{row+1, 2}, country)<
-see parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt{row+<font color="#ff8000">1</font>, <font color="#ff8000">2</font>}, country)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt{row+<font color="#ff8000">1</font>, <font color="#ff8000">2</font>}, country)<br><
-process >col = 1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = <font color="#ff8000">1</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = <font color="#ff8000">1</font>;<br><
-process >country = txt{row+1, 2};<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;country = txt{row+<font color="#ff8000">1</font>, <font color="#ff8000">2</font>};<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;country = txt{row+<font color="#ff8000">1</font>, <font color="#ff8000">2</font>};<br><
-process >cntry_index = cntry_index + 1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry_index = cntry_index + <font color="#ff8000">1</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry_index = cntry_index + <font color="#ff8000">1</font>;<br><
-process >cntry.year = 1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year = <font color="#ff8000">1</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year = <font color="#ff8000">1</font>;<br><
-process >cntry.pop = 1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop = <font color="#ff8000">1</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop = <font color="#ff8000">1</font>;<br><
-process >cntry.gdp = 1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp = <font color="#ff8000">1</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp = <font color="#ff8000">1</font>;<br><
-process >end<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >cntry.name = country;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.name = country;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.name = country;<br><
-process >cntry.year(col) = nums(row, 1);<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year(col) = nums(row, <font color="#ff8000">1</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year(col) = nums(row, <font color="#ff8000">1</font>);<br><
-process >cntry.gdp(col) = nums(row, 2);<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp(col) = nums(row, <font color="#ff8000">2</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp(col) = nums(row, <font color="#ff8000">2</font>);<br><
-process >cntry.pop(col) = nums(row, 4);<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop(col) = nums(row, <font color="#ff8000">4</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop(col) = nums(row, <font color="#ff8000">4</font>);<br><
-process >col = col + 1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = col + <font color="#ff8000">1</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = col + <font color="#ff8000">1</font>;<br><
-process >worldData(cntry_index) = cntry;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worldData(cntry_index) = cntry;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worldData(cntry_index) = cntry;<br><
-process >end<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;plot( real(w), imag(w), <font color="#c000c0">'k'</font> );<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;plot( real(w), imag(w), <font color="#c000c0">'k'</font> );<br><
 process >end<
 see parens = 0
 coloring gives ><font color="#0000ff">end</font><br><
