@@ -63,9 +63,9 @@ clc
 %     format('listing_11_11.m');
 %     format('listing_11_12.m');
 %     format('listing_11_2.m');
-     format('listing_11_3.m');
+%     format('listing_11_3.m');
 %     format('listing_11_4.m');
-%     format('listing_11_5.m');
+     format('listing_11_5.m');
 %     format('listing_11_6.m');
 %     format('listing_11_7.m');
 %     format('listing_11_8.m');

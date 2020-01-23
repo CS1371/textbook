@@ -175,30 +175,103 @@ Plotting is not restricted to the situation where the data along one axis are th
 <code><strong>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Parametric plots</font><br>
 <font color="#0000ff">function</font> main<br>
-&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   The particular transformation we use here requires a circle </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   with a radius, r, slightly greater than 1 offset by a small </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   distance, g, from the x-axis, passing through the point (-1, 0).</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   We need theta from 0 to 2pi inclusive to form a complete circle.</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;th = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">2</font>*pi, <font color="#ff8000">40</font>);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;r = <font color="#ff8000">1.1</font>; g = <font color="#ff8000">.1</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;cx = sqrt(r^<font color="#ff8000">2</font>-g^<font color="#ff8000">2</font>) - <font color="#ff8000">1</font>; cy = g;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% compute the center of the circle passing through the point (?1, 0)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cx = sqrt(r^<font color="#ff8000">2</font>-g^<font color="#ff8000">2</font>) - <font color="#ff8000">1</font>; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;cy = g;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% A standard polar-to-Cartesian coordinate transformation </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% computing the coordinates of the circle</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;x = r*cos(th) + cx;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;y = r*sin(th) + cy;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;plot( x, y, <font color="#c000c0">'r'</font> )<br>
 &nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
 &nbsp;&nbsp;&nbsp;&nbsp;grid on, hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The Joukowski transformation is easiest when expressed in </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% complex terms: if z is the path around the required circle, </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% w = z + 1/z traces a very credible looking airfoil shape.</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;z = complex(x, y);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;w = z + <font color="#ff8000">1</font>./z;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;plot( real(w), imag(w), <font color="#c000c0">'k'</font> );<br>
 <font color="#0000ff">end</font><br>
 </strong></code>
-In Listing 11.3:  Line 1: The independent variable in this case is the angle th varying from 0 to 2p. Line 2: The particular transformation we use here requires a circle with a radius, r, slightly greater than 1 offset by a small distance, g, from the x-axis, passing through the point (−1, 0). Line 3: We compute the center of the circle passing through the point (−1, 0). Lines 4–5: A standard polar-to-Cartesian coordinate transformation computing the coordinates of the circle. Line 6: Plots the two dependent variables x and y with a red line. Line 7: Equalizes the axes and forces the circle to be drawn correctly. Line 8: Displays a grid on which to estimate specific values. Line 9: Here we want to add a second plot to the figure. Lines 10–11: The Joukowski transformation is easiest when expressed in complex terms: if z is the path around the required circle, w = z + 1/z traces a very credible looking airfoil shape. Line 12: Adds the plot of w, and reverts from the complex plane to plot the real and imaginary parts of the answer colored in black.  
+  
 <h3><a name="11_2_4">11.2.4	Other 2-D Plot Capabilities</a></h3>
- You can also create some more exotic plots that are not necessary to understand the basic principles of plotting, but are powerful methods for visualizing real data:  ■	bar(x, y) produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with >> help bar. ■	barh(x, y) produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with >> help barh. ■	fill(x,y,n) produces a filled polygon defined by the coordinates in x and y. The fill color is specified by indexing n into the color map. The options available can be studied with >> help fill. ■	hist(y, x) produces a histogram plot with the values in y counted into bins defined by x. The options available can be studied with >>help hist. ■	pie(y) makes a pie chart of the values in y. For more options, see >> help pie. ■	polar(th, y) makes a polar plot of the angle th (radians) with the radius r specified for each angle. For more options, see >> help polar.  
+ You can also create some more exotic plots that are not necessary to understand the basic principles of plotting, but are powerful methods for visualizing real data:
+ <ul>
+ <li><code>bar(x, y)</code> produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with <code>&gt;&gt; help bar</code>
+ <li><code>barh(x, y)</code> produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with <code>&gt;&gt; help bar</code>.
+ <li><code>fill(x,y,n)</code> produces a filled polygon defined by the coordinates in <code>x</code> and <code>y</code>. The fill color is specified by indexing n into the color map. The options available can be studied with <code>&gt;&gt; help fill</code>
+ <li><code>hist(y, x)</code> produces a histogram plot with the values in <code>y</code> counted into bins defined by <code>x</code>. The options available can be studied with <code>&gt;&gt; help hist.</code>
+ <li><code>pie(y)</code> makes a pie chart of the values in <code>y</code>. For more options, see <code>&gt;&gt; help pie</code>.
+ <li><code>polar(th, y)</code> makes a polar plot of the angle <code>th</code> (radians) with the radius <code>r</code> specified for each angle. For more options, see <code>&gt;&gt; help polar</code>.  
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="230" src="Fig_11_3a.jpg" width="300" /></p></center>
+<figcaption><b><center>Fig 11.3a: rotating 2-D plots</center></b></figcaption></figure>
 <h2><a name="11_3">11.3 3-D Plotting</a></h2>
- Before attacking the details of plotting in three dimensions, it should be noted that even 2-D plots are actually 3-D plots. Consider the picture shown in Figure 11.4, which was generated originally as the 2-D plot in Figure 11.3. By selecting the Rotate 3-D icon on the tool bar and moving the mouse on your figure, it becomes apparent that what appeared to be a 2-D plot in the x-y plane is really a 3-D plot in the x-y-z plane “suspended in space” at z = 0.  
+ Before attacking the details of plotting in three dimensions, it should be noted that even 2-D plots are actually 3-D plots. Consider the picture shown in Figure 11.3a, which was generated originally as the 2-D plot in Figure 11.3. By selecting the Rotate 3-D icon on the tool bar and moving the mouse on your figure, it becomes apparent that what appeared to be a 2-D plot in the x-y plane is really a 3-D plot in the x-y-z plane “suspended in space” at z = 0.  
 <h3><a name="11_3_1">11.3.1 Linear 3-D Plots</a></h3>
- The simplest method of 3-D plotting is to extend our 2-D plots by adding a set of z values. In the same style as plot(...), plot3(x, y, z, str) consumes three vectors of equal size and connects the points defined by those vectors in 3-D space. The optional str specifies the color and/or line style. If the str is omitted, the default line is solid blue.  Figure 11.5 shows three curves plotted in three dimensions, using the script shown in Listing 11.4. Each plot is in the z-x plane: the red curve at y = 0, the blue curve at y = 0.5, and the green curve at y = 1.  In Listing 11.4: Line 1: Each plot has the same set of x values. Lines 2–3: The y values for the first plot are all 0. Lines 4–5: The second and third plots are sin(x) at different frequencies. Lines 6–7: The y values of the second and third plots are all 0.5 and 1, respectively. Lines 8–10: Plot and annotate the results.  
+ The simplest method of 3-D plotting is to extend our 2-D plots by adding a set of z values. In the same style as <code>plot(...)</code>, <code>plot3(x, y, z, str)</code> consumes three vectors of equal size and connects the points defined by those vectors in 3-D space. The optional <code>str</code> specifies the color and/or line style. If the <code>str</code> is omitted, the default line is solid blue.  Figure 11.4 shows three curves plotted in three dimensions, using the script shown in Listing 11.4. Each plot is in the z-x plane: the red curve at y = 0, the blue curve at y = 0.5, and the green curve at y = 1.  
+<h3>Listing 11.4: Simple 3-D line plots</h3>
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="230" src="Fig_11_4.jpg" width="300" /></p></center>
+<figcaption><b><center>Fig 11.4: Linear 3-D Plots</center></b></figcaption></figure>
+<code><strong>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Each plot has the same set of x values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;x=<font color="#ff8000">0</font>:<font color="#ff8000">0.1</font>:<font color="#ff8000">3</font>.*pi;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The y values for the first plot are all 0.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;y1=zeros(size(x));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z1=sin(x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  The second and third plots are sin(x) at different frequencies</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;z2=sin(<font color="#ff8000">2</font>.*x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z3=sin(<font color="#ff8000">3</font>.*x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The y values of the second and third plots are all 0.5 and 1, respectively.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;y3=ones(size(x));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y2=y3./<font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot3(x,y1,z1, <font color="#c000c0">'r'</font>,x,y2,z2, <font color="#c000c0">'b'</font>,x,y3,z3, <font color="#c000c0">'g'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x-axis'</font>), ylabel(<font color="#c000c0">'y-axis'</font>), zlabel(<font color="#c000c0">'z-axis'</font>)<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+<br><br><br><br>
 <h3><a name="11_3_2">11.3.2	Linear Parametric 3-D Plots</a></h3>
- We can generalize the concept of parametric plots to 3-D, as shown in Figure 11.6, in which the x, y, and z values are mappings of some linear parameter. On the left side, the spiral is an example of a 3-D plot where two of the dimensions, x and y, are dependent on the third, independent parameter. The independent parameter in this example is the rotation angle, p, varying from 0 to 10p (five complete revolutions). The x and y values are mapped as sin(u) and cos(u)—the classic means of describing a circle. The spiral effect is accomplished by plotting u on the z-axis.  The right half of Figure 11.6 illustrates a fully parametric plot, where the values of all three coordinates are mappings of an independent parameter, t. This particular example is a plot of the 3-D motion of a particle receiving random impulses in all three axes. Note the use of text anchored in x-y-z space to label points on the graph. The figure is drawn using Listing 11.5. In Listing 11.5: Lines 2–5: Draw the spiral plot with a simple plot3(...) call.  Lines 8–10: Define random velocity increments in x, y, and z. Lines 11–13: Integrate to compute the position in x, y, z space. There will be a full discussion of integration in Chapter 15. Lines 14–16: Plot and enhance the time history of the particle.  Lines 17 and 18: Add labels to indicate the start and end of the trace.  
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="330" src="Fig_11_5.jpg" width="600" /></p></center>
+<figcaption><b><center>Fig 11.5: Linear Parametric 3-D Plots</center></b></figcaption></figure>
+ We can generalize the concept of parametric plots to 3-D, as shown in Figure 11.5, in which the x, y, and z values are mappings of some linear parameter. On the left side, the spiral is an example of a 3-D plot where two of the dimensions, x and y, are dependent on the third, independent parameter. The independent parameter in this example is the rotation angle, <code>theta</code>, varying from 0 to 10&pi; (five complete revolutions). The x and y values are mapped as sin(u) and cos(u) — the classic Polar to Cartesian conversion for describing a circle. The spiral effect is accomplished by plotting <code>theta</code> on the z-axis.  The right half of Figure 11.5 illustrates a fully parametric plot, where the values of all three coordinates are mappings of an independent parameter, <code>t</code>. This particular example is a plot of the 3-D Brownian motion of a particle receiving random impulses in all three axes. Note the use of text anchored in x-y-z space to label points on the graph. The figure is drawn using Listing 11.5. 
+<h3>Listing 11.5: Simple 3-D parametric plots</h3>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% First sub_plot: a spiral</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% theta is the independent variable</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;theta = <font color="#ff8000">0</font>:<font color="#ff8000">0.1</font>:<font color="#ff8000">10</font>.*pi;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot3(sin(theta),cos(theta),theta)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'parametric curve based on angle'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% second sub_plot: Brownian Motion</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% number of points on the trace</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = <font color="#ff8000">20</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% velocity changes are random impulses</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dvx = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font> <font color="#00A000">% random v changes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dvy = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;dvz = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% double integration to change accelerations into positions </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = cumsum(cumsum(dvx)); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;y = cumsum(cumsum(dvy));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z = cumsum(cumsum(dvz));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot3(x,y,z)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'all 3 axes varying with parameter t'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% text labels for the start and end of the trace</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;text(<font color="#ff8000">0</font>,<font color="#ff8000">0</font>,<font color="#ff8000">0</font>, <font color="#c000c0">'start'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text(x(N),y(N),z(N), <font color="#c000c0">'end'</font>);<br>
+</strong></code>  
 <h3><a name="11_3_3">11.3.3	Other 3-D Plot Capabilities</a></h3>
  If you are using MATLAB, you can also create some more exotic 3-D plots that are not necessary to understand the basic principles of plotting, but are powerful methods for visualizing real data: ■	bar3(x, y) produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with >> help bar3. ■	barh3(x, y) produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with >> help barh. ■	pie3(y) makes a 3-D pie chart of the values in y. For more options, see >> help pie3.  
 <h2><a name="11_4">11.4 Surface Plots</a></h2>

@@ -1,73 +1,122 @@
 
 
-Processing file ../listings/listing_11_3.m
-process >% Parametric plots<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Parametric plots</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Parametric plots</font><br><
-process >function main<
-see parens = 0
-coloring gives ><font color="#0000ff">function</font> main<br><
-replace_stuff gives ><font color="#0000ff">function</font> main<br><
-process >pause(1)<
+Processing file ../listings/listing_11_5.m
+process >% First sub_plot: a spiral<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% First sub_plot: a spiral</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% First sub_plot: a spiral</font><br><
+process >subplot(1, 2, 1)<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br><
-process >figure<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;figure<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;figure<br><
-process >th = linspace(0, 2*pi, 40);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;th = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">2</font>*pi, <font color="#ff8000">40</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;th = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">2</font>*pi, <font color="#ff8000">40</font>);<br><
-process >r = 1.1; g = .1;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;r = <font color="#ff8000">1.1</font>; g = <font color="#ff8000">.1</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;r = <font color="#ff8000">1.1</font>; g = <font color="#ff8000">.1</font>;<br><
-process >cx = sqrt(r^2-g^2) - 1; cy = g;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;cx = sqrt(r^<font color="#ff8000">2</font>-g^<font color="#ff8000">2</font>) - <font color="#ff8000">1</font>; cy = g;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;cx = sqrt(r^<font color="#ff8000">2</font>-g^<font color="#ff8000">2</font>) - <font color="#ff8000">1</font>; cy = g;<br><
-process >x = r*cos(th) + cx;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;x = r*cos(th) + cx;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;x = r*cos(th) + cx;<br><
-process >y = r*sin(th) + cy;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;y = r*sin(th) + cy;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;y = r*sin(th) + cy;<br><
-process >plot( x, y, 'r' )<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;plot( x, y, <font color="#c000c0">'r'</font> )<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;plot( x, y, <font color="#c000c0">'r'</font> )<br><
-process >axis equal<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br><
-process >grid on, hold on<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on, hold on<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on, hold on<br><
-process >z = complex(x, y);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;z = complex(x, y);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;z = complex(x, y);<br><
-process >w = z + 1ûz;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;w = z + <font color="#ff8000">1</font>ûz;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;w = z + <font color="#ff8000">1</font>./z;<br><
-process >plot( real(w), imag(w), 'k' );<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">1</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">1</font>)<br><
+process >% theta is the independent variable<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% theta is the independent variable</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% theta is the independent variable</font><br><
+process >theta = 0:0.1:10üpi;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;theta = <font color="#ff8000">0</font>:<font color="#ff8000">0.1</font>:<font color="#ff8000">10</font>üpi;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;theta = <font color="#ff8000">0</font>:<font color="#ff8000">0.1</font>:<font color="#ff8000">10</font>.*pi;<br><
+process >plot3(sin(theta),cos(theta),theta)<
 set parens = 1
 set parens = 2
 set parens = 1
 set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;plot( real(w), imag(w), <font color="#c000c0">'k'</font> );<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;plot( real(w), imag(w), <font color="#c000c0">'k'</font> );<br><
-process >end<
-see parens = 0
-coloring gives ><font color="#0000ff">end</font><br><
-replace_stuff gives ><font color="#0000ff">end</font><br><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;plot3(sin(theta),cos(theta),theta)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;plot3(sin(theta),cos(theta),theta)<br><
+process >title('parametric curve based on angle');<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'parametric curve based on angle'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'parametric curve based on angle'</font>);<br><
+process >grid on<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
+process >% second sub_plot: Brownian Motion<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% second sub_plot: Brownian Motion</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% second sub_plot: Brownian Motion</font><br><
+process >subplot(1, 2, 2)<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">2</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">2</font>)<br><
+process >% number of points on the trace<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% number of points on the trace</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% number of points on the trace</font><br><
+process >N = 20;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;N = <font color="#ff8000">20</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;N = <font color="#ff8000">20</font>;<br><
+process >% velocity changes are random impulses<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% velocity changes are random impulses</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% velocity changes are random impulses</font><br><
+process >dvx = rand(1, N) - 0.5 % random v changes<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;dvx = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font> <font color="#00A000">% random v changes</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;dvx = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font> <font color="#00A000">% random v changes</font><br><
+process >dvy = rand(1, N) - 0.5<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;dvy = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;dvy = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br><
+process >dvz = rand(1, N) - 0.5<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;dvz = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;dvz = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br><
+process >% double integration to change accelerations into positions <
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% double integration to change accelerations into positions </font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% double integration to change accelerations into positions </font><br><
+process >x = cumsum(cumsum(dvx)); <
+set parens = 1
+set parens = 2
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;x = cumsum(cumsum(dvx)); <br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;x = cumsum(cumsum(dvx)); <br><
+process >y = cumsum(cumsum(dvy));<
+set parens = 1
+set parens = 2
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;y = cumsum(cumsum(dvy));<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;y = cumsum(cumsum(dvy));<br><
+process >z = cumsum(cumsum(dvz));<
+set parens = 1
+set parens = 2
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;z = cumsum(cumsum(dvz));<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;z = cumsum(cumsum(dvz));<br><
+process >plot3(x,y,z)<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;plot3(x,y,z)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;plot3(x,y,z)<br><
+process >grid on<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
+process >title('all 3 axes varying with parameter t')<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'all 3 axes varying with parameter t'</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'all 3 axes varying with parameter t'</font>)<br><
+process >% text labels for the start and end of the trace<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% text labels for the start and end of the trace</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% text labels for the start and end of the trace</font><br><
+process >text(0,0,0, 'start');<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;text(<font color="#ff8000">0</font>,<font color="#ff8000">0</font>,<font color="#ff8000">0</font>, <font color="#c000c0">'start'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;text(<font color="#ff8000">0</font>,<font color="#ff8000">0</font>,<font color="#ff8000">0</font>, <font color="#c000c0">'start'</font>);<br><
+process >text(x(N),y(N),z(N), 'end');<
+set parens = 1
+set parens = 2
+set parens = 1
+set parens = 2
+set parens = 1
+set parens = 2
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;text(x(N),y(N),z(N), <font color="#c000c0">'end'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;text(x(N),y(N),z(N), <font color="#c000c0">'end'</font>);<br><
