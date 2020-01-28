@@ -1,25 +1,27 @@
 <code><strong>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Linear parametric 3-D plots</font><br>
-<font color="#0000ff">function</font> main<br>
-&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% First sub_plot: a spiral</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% theta is the independent variable</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;theta = <font color="#ff8000">0</font>:<font color="#ff8000">0.1</font>:<font color="#ff8000">10</font>.*pi;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;plot3(sin(theta),cos(theta),theta)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'parametric curve based on angle'</font>);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% second sub_plot: Brownian Motion</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% number of points on the trace</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;N = <font color="#ff8000">20</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% velocity changes are random impulses</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;dvx = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font> <font color="#00A000">% random v changes</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;dvy = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;dvz = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;x = cumsum(cumsum(dvx)); <font color="#00A000">% integrate to get pos</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% double integration to change accelerations into positions </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = cumsum(cumsum(dvx)); <br>
 &nbsp;&nbsp;&nbsp;&nbsp;y = cumsum(cumsum(dvy));<br>
 &nbsp;&nbsp;&nbsp;&nbsp;z = cumsum(cumsum(dvz));<br>
 &nbsp;&nbsp;&nbsp;&nbsp;plot3(x,y,z)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
 &nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'all 3 axes varying with parameter t'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% text labels for the start and end of the trace</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;text(<font color="#ff8000">0</font>,<font color="#ff8000">0</font>,<font color="#ff8000">0</font>, <font color="#c000c0">'start'</font>);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;text(x(N),y(N),z(N), <font color="#c000c0">'end'</font>);<br>
-<font color="#0000ff">end</font><br>
 </strong></code>

@@ -1,12 +1,17 @@
 <code><strong>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Country analysis</font><br>
-<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;findBestCountry<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> findBestCountry<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% build the country array</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;worldData = buildData(<font color="#c000c0">'../World_data.xls'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;worldData = buildData(<font color="#c000c0">'../World_data.xlsx'</font>);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;best = findBest(worldData);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'best country is %s\n'</font>, <font color="#ff8000">...</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;worldData(best)<font color="#ff8000">.name</font>)<br>
 <font color="#0000ff">end</font><br>
+<br>
 <font color="#0000ff">function</font> besti = findBest(worldData)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% find the index of the best country</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% according to the criterion in the function</font><br>
@@ -18,10 +23,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tryThis = fold(cntry);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> tryThis > best<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;best = tryThis;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;besti = ndx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;besti = ndx;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 <font color="#0000ff">end</font><br>
+<br>
 <font color="#0000ff">function</font> ans = fold(st)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% s1 is the rate of growth of population</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;pop = st.pop(~isnan(st.pop));<br>
@@ -35,6 +41,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the gdp grows than the population</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;ans = s2 - s1;<br>
 <font color="#0000ff">end</font><br>
+<br>
 <font color="#0000ff">function</font> sl = slope(x, y)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Estimate the slope of a curve</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(x) == <font color="#ff8000">0</font> || x(end) == x(<font color="#ff8000">1</font>)<br>
@@ -43,35 +50,37 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sl = (y(end) - y(<font color="#ff8000">1</font>))/(x(end) - x(<font color="#ff8000">1</font>));<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 <font color="#0000ff">end</font><br>
+<br>
+<br>
 <font color="#0000ff">function</font> worldData = buildData(name)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% read the spreadsheet into a data array</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% and a text cell array</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;[data txt] = xlsread(name);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[nums, txt, raw] = xlsread(name,<font color="#c000c0">'data'</font>);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;country = <font color="#c000c0">' '</font>; % force the first data row<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% to change the country</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;cntry_index = <font color="#ff8000">0</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Traverse the data and cell arrays producing</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% an array of structures,</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% one for each country</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> row = <font color="#ff8000">1</font>:length(data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> row = <font color="#ff8000">1</font>:length(nums)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Because the text data in txt contains</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the header row of the spreadsheet,</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the data at a given row belongs to the country</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the data at a given numerical row belongs to the country</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% whose name is at txt{row+1}.</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% if the country name changes,</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% begin a new structure.</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt{row+<font color="#ff8000">1</font>}, country)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~strcmp(txt{row+<font color="#ff8000">1</font>, <font color="#ff8000">2</font>}, country)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = <font color="#ff8000">1</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;country = txt{row+<font color="#ff8000">1</font>};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;country = txt{row+<font color="#ff8000">1</font>, <font color="#ff8000">2</font>};<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry_index = cntry_index + <font color="#ff8000">1</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year = <font color="#ff8000">1</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop = <font color="#ff8000">1</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp = <font color="#ff8000">1</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.name = country;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year(col) = data(row, <font color="#ff8000">1</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop(col) = data(row, <font color="#ff8000">2</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp(col) = data(row, <font color="#ff8000">5</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.year(col) = nums(row, <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.gdp(col) = nums(row, <font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cntry.pop(col) = nums(row, <font color="#ff8000">4</font>);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = col + <font color="#ff8000">1</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worldData(cntry_index) = cntry;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>

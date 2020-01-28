@@ -30,84 +30,422 @@
 <ul>
     <li><a href="#8_4_1">8.4.1	Opening and Closing Files</a>
     <li><a href="#8_4_2">8.4.2	Reading Text Files</a>
-    <li><a href="#8_4_3">8.4.3	Examples of Reading Text Files</a>
-    <li><a href="#8_4_4">8.4.4	Writing Text Files</a>
+    <li><a href="#8_4_3">8.4.3	Writing Text Files</a>
 </ul>
 <li><a href="#8_5">8.5	Engineering Example— Spreadsheet Data</a>
 </ul>
 <h1>Chapter Objectives</h1>
 
-This chapter discusses three levels of capability for reading and writing files in MATLAB, each including a discussion of the circumstances under which they are appropriate: 
-
-■ Saving and restoring the workspace 
-
-■ High-level functions for accessing files in specific formats 
-
-■ Low-level file access programs for general-purpose file processing 
-
-Reading and writing data in data files are fundamental to the utility of programming languages in general, and MATLAB in particular. In addition to the obvious need to save and restore scripts and functions (covered in Chapter 2), here we consider three types of activities that read and write data files. 
-
-■ The MATLAB language provides for the basic ability to save your workspace (or parts of your workspace) to a file and restore it later for further processing. 
-■ There are high-level functions that consume the name of a file whose contents are in any one of a number of popular formats and produce an internal representation of the data from that file in a form ready for processing. 
-■ Almost all these functions have an equivalent write function that will write a new file in the same format after you have manipulated the data. 
-■ However, we also need to deal with lower-level capabilities for manipulating text files that do not contain recognizable structures. 
+Reading and writing data in data files are fundamental to the utility of programming languages in general, and MATLAB in particular. In addition to the obvious need to save and restore scripts and functions (covered in Chapter 2), here we consider four types of activities that read and write data files in MATLAB, each including a discussion of the circumstances under which they are appropriate:
+<ul> 
+<li><b>Saving and restoring the workspace:</b>The MATLAB language provides for the basic ability to save your workspace (or parts of your workspace) to a file and restore it later for further processing.</li>
+<li><b>High-level functions for accessing files in specific formats:</b>There are high-level functions that consume the name of a file whose contents are in any one of a number of popular formats and produce an internal representation of the data from that file in a form ready for processing. Almost all these functions have an equivalent write function that will write a new file in the same format after you have manipulated the data.</li>
+<li><b>Lower-level file access programs for general-purpose text file processing:</b> we also need to deal with lower-level capabilities for manipulating text files that do not contain recognizable structures.
+</li>
+<li><b>Really low-level binary file access:</b> we recognize also that at the most fundamental level, file access is about reading and writing arbitrary bit patterns in a file. While the principles remain the same, the practice of operating on binary files is unusual for engineers to require and will not be further explored in this text.
+</li></ul> 
 
 <h1>Introduction</h1>
- This chapter discusses files that contain workspace variables, spreadsheet data, and text files containing delimited numbers and plain text. Subsequent chapters will discuss image files and sound files. For information on the other file formats, consult the help documentation for details of their usage. The MATLAB language also provides the ability to access binary files—files whose data are not in text form—but the interpretation of binary data is beyond the scope of this text, and we will not consider binary files here. Refer to MATLAB documentation for information about binary files.  
+ This chapter discusses files that contain workspace variables, spreadsheet data, and text. Subsequent chapters will discuss image files and sound files that have their own unique file access. MATLAB has the ability to process the many file formats currently in use. For information on the other file formats, consult the MATLAB help documentation for details of their usage. <br>  
+ 
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="250" src="Fig_8_1.jpg" width="450" /></p></center>
+<figcaption><b><center>Fig 8.1 Paper Tape I/O</center></b></figcaption></figure>
+
+We frequently refer to the process of reading and writing data files as Input/Output (I/O). We have already seen and used examples of file I/O to store and retrieve data and programs. Your script and function files are stored in your current directory and could be invoked from there by name from the Command window. To understand fully the concept of serial I/O, consider Figure 8.1. This figure takes us back to the early days of computing when paper tape was the only available storage medium. After the leader containing only the small holes used to move the tape forward, each row of the paper tape represents the value of one character as 8 bits of data.  The 8 bits represent the ASCII value in binary form with a hole punched where a bit is set. These tapes were prepared on a tape punching machine, and were fed through a tape reader to recover all the characters. This illustrates the meaning of "serial" processing - in this case, the data are actually stored sequentially on the paper tape. In principle, while the storage techniques have evolved beyond recognition and continue to evolve, to a user's program, any computer file system saves and retrieves data as a sequential stream of characters. 
+
 <h2><a name="8_1">8.1 Concept: Serial Input and Output (I/O)</a></h2>
- We frequently refer to the process of reading and writing data files as Input/Output (I/O). We have already seen and used examples of file I/O to store and retrieve data and programs. Your script and function files are stored in your current directory and could be invoked from there by name from the Command window. In general, any computer file system saves and retrieves data as a sequential (serial) stream of characters, as shown in Figure 8.1. Mixed in with the characters that represent the data are special characters (“delimiters”) that specify the organization of the data.  When a program opens a file by name for reading, it continually requests blocks of data from the file data stream until the end of the file is reached. As the data are received, the program must identify the delimiting characters and reformat the data to reconstruct the organization of the data as represented in the file. Similarly, when writing data to a file, the program must serialize the data, as shown in Figure 8.2. To preserve the organization of the data, the appropriate delimiting characters must be inserted into the serial character stream.  The purpose of the file I/O functions discussed in this chapter is to encapsulate these fundamental operations into a single system function, or at least into a manageable collection of functions.  
+Although the media used to store data have changed, the fundamental operations needed to read and write sequential files have not.  In order to create a paper tape from data in the computer, access to the tape punch was prepared, the leader and then the characters then a trailer are sent one item at a time to the punch.  When all the items had been sent, access to the punch was closed.  To read a paper tape, its leader was loaded into the tape reader and the reader motion started. As each character passed the read head, it was received and stored in the computer until no characters were left. The modern world of serial processing follows exactly the same pattern.<br>
+When a program opens a file by name for reading, it continually requests data from the file data stream until the end of the file is reached. As the data are received, the program must identify any special characters that define specific data characteristics and use them to format the data to reconstruct the organization of the data stored in the file. Similarly, when writing data to a file, the program must serialize the data, and include special character to preserve the organization of the data.  As we consider workspace I/O and high-level I/O, most of these operations will be invisible to the user inside the built-in functions.  However, when discussing text files, we will need to implement all of these concepts in our code.
+
+<div class="container">
+  <div class="sidebar_L">
+<h4>Style Points 8.1</h4>
+In a practical sense, saving workspace data is very rarely an
+appropriate approach to saving work because it saves the
+results but not the code that generated the results. It is
+almost always better to save the scripts and raw data that
+created the workspace. For example, this is a good idea
+when you have a lengthy computation (perhaps one run
+overnight) to prepare data for a display. You could split that
+script into two halves. The first half would do the overnight
+calculation and save the workspace. The second part can
+then read the workspace quickly, and you can develop
+sophisticated ways to display the data without having to
+re-run the lengthy calculations.</div>
+
 <h2><a name="8_2">8.2 Workspace I/O</a></h2>
- The MATLAB language defines the tools to save your complete workspace to a file with the save command and reload it with the load command. If you provide a file name with the save command, a file of that name will be written into your current directory in such a form that a subsequent load command with that file name will restore the saved workspace. By convention, these files will have a .mat extension. If you do not provide a file name, the workspace is saved as matlab.mat.  If you are using MATLAB, you can also identify specific variables that you want to save—either by listing them explicitly or by providing logical expressions to indicate the variable names. For example:  >> save mydata.mat a b c* would save the variables a and b and any variable beginning with the letter c. For more details, consult the MATLAB help documentation.  
+
+<div class="container">
+The MATLAB language defines the tools to save your complete workspace to a file with the <code>save</code> command and reload it with the <code>load</code> command. If you provide a file name with the <code>save</code> command, a file of that name will be written into your current directory in such a form that a subsequent <code>load</code> command with that file name will restore the saved workspace. By convention, these files will have a <code>".mat"</code> extension. If you do not provide a file name, the workspace is saved as <code>matlab.mat</code>.  If you are using MATLAB, you can also identify specific variables that you want to save — either by listing them explicitly or by providing logical expressions to indicate the variable names. For example:<br>
+<code>>> save mydata.mat a b c* </code><br>
+would save the variables  <code>a</code> and  <code>b</code> and any variable beginning with the letter  <code>c</code>. <br>
+To recover the data:<br>
+<code>>> clear  % if necessary to remove all existing variables from the workspace<br>
+>> load mydata.mat<br></code>
+For more details, consult the MATLAB help documentation.  
+</div> 
+
+
 <h2><a name="8_3">8.3 High-Level I/O Functions</a></h2>
- We turn to the general case of file I/O in which we expect to load data from external sources, process that data, and perhaps save data back to the file system with enhancements created by   your  program.  When  you  try  to process  data  from  some  unknown source, it is difficult to write code to process the data without some initial exploration   of   the   nature   and organization of that data. So a good habit is to explore the data in a file by whatever means you have available and then decide how to process the data according to your observations. Most programming languages require the programmer to write detailed programs to read and write files, especially those produced by other application programs or data acquisition packages. Fortunately for MATLAB programmers, much of this messy work has been built into special file readers and writers. Table 8.1 identifies the type of data, the name of the appropriate reader and writer, and the internal form in which MATLAB returns the data.  
+
+We turn to a more specific case of file I/O in which we expect to load a complete file from external sources with one function call, thereby hiding from the user all the details of file access. We might wish to process that data, and perhaps save the modified data back to the file system with one function call.  When  you  try  to process  data  from  some  unknown source, it is difficult to write code to process the data without some initial exploration   of   the   nature   and organization of that data. So a good habit is to explore the data in a file by whatever means you have available and then decide how to process the data according to your observations. Most programming languages require the programmer to write detailed programs to read and write files, especially those produced by other application programs or data acquisition packages. Fortunately for MATLAB programmers, much of this messy work has been built into special file readers and writers. Table 8.1 identifies the type of data, the name of the appropriate reader and writer, and the internal form in which MATLAB returns the data. 
+
+<h4>Table 8.1: File Types</h4>
+<table>
+<tr>
+<th>File</th><th>Content</th><th>Reader</th><th>Writer</th><th>Data Format</th><th>Extensions</th>
+</tr>
+<tr>
+<td>Binary</td><td>Anything</td><td><code>fread(...)</code></td><td><code>fwrite(...)</code></td><td>Any</td><td>various</td>
+</tr>
+<tr>
+<td>Text</td><td>ASCII Codes</td><td>See 8.4</td><td>See 8.4</td><td>Text Lines</td><td><code>.txt</code> etc</td>
+</tr>
+<tr>
+<td>CSV</td><td>Comma Separated Values</td><td><code>csvread(...)</code></td><td><code>csvwrite(...)</code><td><code>double</code> array</td><td><code>.csv</code></td>
+</tr>
+<tr>
+<td>Delimited</td><td>Numbers separated  by delimiters</td><td><code>dlmread(...)</code></td><td><code>dlmwrite(...)</code></td><td><code>double</code> array</td><td><code>.txt</code> etc</td>
+</tr>
+<tr>
+<td>Excel</td><td>Spread Sheet</td><td><code>xlsread(...)</code></td><td><code>xlswrite(...)</code><td><code>cell</code> array</td><td><code>.xls, .xlsx</code></td>
+</tr>
+<tr>
+<td>Image</td><td>Color image</td><td><code>imread(...)</code></td><td><code>imwrite(...)</code></td><td><code>uint8</code> array</td><td><code>.jpg </code>etc</td>
+</tr>
+<tr>
+<td>Audio</td><td>Multichannel Sound</td><td><code>wavread(...)</code></td><td><code>wavwrite(...)</code><td><code>double</code> vector</td><td><code>.wav, .mp3, .avi</code> etc</td>
+</tr>
+<tr>
+<td>Workspace</td><td>variable values</td><td><code>load ...</code></td><td><code>save ...</code><td>anything</td><td><code>.mat</code></td>
+</tr>
+</table>
 <h3><a name="8_3_1">8.3.1	Exploration</a></h3>
  The types of data of immediate interest are text files and spreadsheets. In Table 8.1 notice that the delimited text files are presumed to contain numerical values, whereas the spreadsheet data may be either numerical data stored as doubles or string data stored in cell arrays. Typically, text files are delimited by a special character (comma, tab, or anything else) to designate the column divider and a new-line character to designate the rows. Once the data are imported, all of our normal array and matrix processing tools can be applied. The exception to this rule is the plain text reader that must be provided with a format specifier to define the data, and the names of the variables in which the data are to be stored.  So when you are approached with a file, the file extension (the part of the file name after the dot) gives you a significant clue to the nature of the data. For example, if it is the output from a spreadsheet, you should open the data in that spreadsheet program to explore its contents and organization. [Typically, spreadsheet data will not open well in a plain text editor.] If you do not recognize the file extension as coming from a spreadsheet, try opening the file in a plain text editor such as that used for your scripts and functions and see if the data are legible. You should be able to discern the field delimiters and the content of each line if the file contains plain text.  
-<h3><a name="8_3_2">8.3.2	Spreadsheets</a></h3>
- Excel is a Microsoft product that implements spreadsheets. Spreadsheets are rectangular arrays containing labeled rows and columns of cells. The data in the cells may be numbers, strings, or formulae that combine the data values in other cells. Because of this computational capability, spreadsheets can be used to solve many problems, and most offer flexible plotting packages for presenting the results in colorful charts. There are occasions, however, when we need to apply the power of the MATLAB language to the data in a spreadsheet.  MATLAB provides a reader for Excel spreadsheets that gives you a significant amount of flexibility in retrieving the data from the spreadsheet. Consider the typical set of data in a spreadsheet named grades.xls shown in Table 8.2. The goal of your spreadsheet reader is to separate the text and numerical portions of the spreadsheet. The parameter consumed by your spreadsheet reader is the name of the file; you can ask for up to three return variables: the first will hold all the numerical values in an array of doubles; the second will hold all the text data in cell arrays; and the third, if you request it, will hold both string and numerical data in cell arrays (try Exercise 8.1).  The reader first determines the smallest rectangle on the spreadsheet containing all of the numerical data; we will refer to this as the “number rectangle.” Then it produces the following results:  1.	The first returned result is an array with the same number of rows and columns as the number rectangle and containing the values of all the numeric data in that rectangle. If there are non-numeric values within that rectangle, they are replaced by NaN, the built-in name for anything that is not a number. 2.	The second returned result is a cell array with the same size as the original spreadsheet, containing only the string data; to ensure the consistency of this cell array, all numbers present are replaced by the empty string. 3.	The third returned result is a cell array also with the same size as the original spreadsheet, containing both the strings and the num- bers. Cells that are blank are presumed to be numerical, and are assigned as a cell containing an empty vector.  Frequently, after processing data, you need to write the results back to a spreadsheet. Excel spreadsheets can be written using:  xlswrite(<filename>, <array>, <sheet>, <range>)  where <filename> is the name of the file, <array> is the data source (a cell array), <sheet> is the sheet name, and <range> is the range of cells in Excel cell identity notation. The sheet name and range are optional.  
+<h3><a name="8_3_2">8.3.2 Spreadsheets</a></h3>
+ Excel is a Microsoft product that implements spreadsheets. Spreadsheets are rectangular arrays containing labeled rows and columns of cells. The data in the cells may be numbers, strings, or formulae that combine the data values in other cells. Because of this computational capability, spreadsheets can be used to solve many problems, and most offer flexible plotting packages for presenting the results in colorful charts. There are occasions, however, when we need to apply the power of the MATLAB language to the data in a spreadsheet.  MATLAB provides a reader for Excel spreadsheets that gives you a significant amount of flexibility in retrieving the data from the spreadsheet. Consider the typical set of data in a spreadsheet named grades.xls shown in Table 8.2. 
+ 
+<center><h4>Table 8.2: Sample Spreadsheet Data</h4></center>
+<center><table>
+<tr>
+<th>name</th><th>age</th><th>grade</th>
+</tr>
+<tr>
+<td>fred</td><td>19</td><td>78</td>
+</tr>
+<tr>
+<td>joe</td><td>22</td><td>83</td>
+</tr>
+<tr>
+<td>sally</td><td>98</td><td>99</td>
+</tr>
+<tr>
+<td>charlie</td><td>21</td><td>56</td>
+</tr>
+<tr>
+<td>mary</td><td>23</td><td>89</td>
+</tr>
+<tr>
+<td>ann</td><td>19</td><td>51</td>
+</tr>
+</table></center>
+The goal of your spreadsheet reader is to separate the text and numerical portions of the spreadsheet. The parameter consumed by your spreadsheet reader is the name of the file; you can ask for up to three return variables: the first will hold all the numerical values in an array of doubles; the second will hold all the text data in cell arrays; and the third, if you request it, will hold both string and numerical data in cell arrays (try Exercise 8.1).  
+<div class="container">
+  <div class="sidebar_R">
+<h4>Exercise 8.1 Reading a Spreadsheet</h4>
+<code>% of course, the names of these variables<br>
+% have no meaning - it is the position of<br>
+% the variable that gives meaning to its<br>
+% resulting content. Think how much fun<br>
+% would have if you said [txt nums raw] <br>
+% instead of [nums txt raw]<br>
+% 
+>> [nums txt raw] = ...
+&nbsp;&nbsp;&nbsp;&nbsp;xlsread('grades.xlsx')<br>
+nums =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;&nbsp;78<br>
+&nbsp;&nbsp;&nbsp;&nbsp;22&nbsp;&nbsp;&nbsp;&nbsp;83<br>
+&nbsp;&nbsp;&nbsp;&nbsp;98&nbsp;&nbsp;&nbsp;&nbsp;99<br>
+&nbsp;&nbsp;&nbsp;&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;56<br>
+&nbsp;&nbsp;&nbsp;&nbsp;23&nbsp;&nbsp;&nbsp;&nbsp;89<br>
+&nbsp;&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;&nbsp;51<br>
+txt =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'name'&nbsp;&nbsp;&nbsp;&nbsp;'age'&nbsp;&nbsp;'grade'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'fred'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'joe'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'sally'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'charlie'&nbsp;&nbsp;&nbsp;&nbsp;''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'mary'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'ann'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''<br>
+raw =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'name'&nbsp;&nbsp;&nbsp;&nbsp;'age'&nbsp;&nbsp;'grade'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'fred'&nbsp;&nbsp;&nbsp;&nbsp;[ 19]&nbsp;&nbsp;&nbsp;&nbsp;[ 78]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'joe'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 22]&nbsp;&nbsp;&nbsp;&nbsp;[ 83]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'sally'&nbsp;&nbsp;&nbsp;[ 98]&nbsp;&nbsp;&nbsp;&nbsp;[ 99]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'charlie'&nbsp;[ 21]&nbsp;&nbsp;&nbsp;&nbsp;[ 56]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'mary'&nbsp;&nbsp;&nbsp;&nbsp;[ 23]&nbsp;&nbsp;&nbsp;&nbsp;[ 89]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'ann'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 19]&nbsp;&nbsp;&nbsp;&nbsp;[ 51]<br>
+</code>
+</div>
+<div class="container">
+The reader first determines the smallest rectangle on the spreadsheet containing all of the numerical data; we will refer to this as the “number rectangle.” Then it produces the following results:
+<ol>
+<li>The first returned result is an array with the same number of rows and columns as the number rectangle and containing the values of all the numeric data in that rectangle. If there are non-numeric values within that rectangle, they are replaced by <code>NaN</code>. <code>NaN</code> is an interesting artifact now in wide use in modern languages. It is the built-in name for anything that is not a number, but is itself an object of class <code>double</code>, and obeys all the rules of operating on <code>double</code> values:<br>
+<code>>> NaN * 2<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NaN<br>
+>> NaN / NaN<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NaN<br>
+>> 1 / NaN<br>
+ans =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NaN<br>
+</code>
+</li>
+<li>The second returned result is a cell array with the same size as the original spreadsheet, containing only the string data; to ensure the consistency of this cell array, all numbers present are replaced by the empty string.</li>
+<li>The third returned result is a cell array also with the same size as the original spreadsheet, containing both the strings and the numbers. Cells that are blank are presumed to be numerical, and are assigned as a cell containing an empty vector.</li>
+</ol>
+ Frequently, after processing data, you need to write the results back to a spreadsheet. Excel spreadsheets can be written using:<br>
+ <code>xlswrite(&lt;filename&gt;, &lt;array&gt;, &lt;sheet&gt;, &lt;range&gt;)</code><br>
+ where <code>&lt;filename&gt;</code> is the name of the file, <code>&lt;array&gt;</code> is the data source (a cell array), <code>&lt;sheet&gt;</code> is the sheet name, and <code>&lt;range&gt;</code> is the range of cells in Excel cell identity notation. The sheet name and range are optional.  
+</div>
 <h3><a name="8_3_3">8.3.3	Delimited Text Files</a></h3>
- If information is not available specifically in spreadsheet form, it can frequently be presented in text file form. If the data in a text file are numerical values only and are organized in a reasonable form, you can read the file directly into an array. It is necessary that the data values are separated (delimited) by commas, spaces, or tab characters. Rows in the data are separated as expected by the new-line character. These values might be saved in a file named nums.txt. This type of numerical data (not strings) in general delimited form can be read using dlmread(<file>,<delimiter>), where the delimiter parameter is a single character that can be used to specify an unusual delimiting character. However, the function can usually determine common delimiter situations without specifying the parameter.  The dlmread(...) function produces a numerical array containing the data values. Try reading delimited files in Exercise 8.2. Table 8.3 shows the content of the file nums.txt.  Notice that the array elements where data are not supplied are filled with zero.  Delimited data files can be written using: dlmwrite( <filename>, <array>, <dlm>) where <filename> is the name of the file, <array> is the data source (a numerical array), and <dlm> is the delimiting character. If  the  delimiting  character  is  not  specified,  it  is  presumed  to  be  a comma. The csvread(...) function is a special case of dlm read(...) where the delimiter is presumed to be a comma, and it produces a numerical array containing the data values. As noted above, the MATLAB version of csvread(...) has been enhanced so that if the data contain only numerical values,  it  will  return  an  array. However, if the data contain some   strings, it produces the three results specified above for xls read(...). The normal content of CSV files allows embedded strings to contain the comma character. This is accomplished by surrounding any such string with double quotes—for   example, "Jones, Tom" in a CSV file would prevent the embedded comma from separating this string into the two strings: 'Jones' and 'Tom'.  
+ If information is not available specifically in spreadsheet form, it can frequently be presented in text file form. If the data in a text file are numerical values only and are organized in a reasonable format, you can read the file directly into an array. It is necessary that the data values are separated by commas, spaces, or tab characters [See 6.3.2 about delimiters]. Rows in the data are separated as expected by a new-line character combination [See 8.4]. These values might be saved in a file named, for example, <code>nums.txt</code>. 
+<div class="container">
+  <div class="sidebar_R">
+<h4>Table 8.3: Delimited Data</h4>
+<code>
+19,78,42<br>
+22,83,100<br>
+98,99,34<br>
+21,56,12<br>
+23,89<br>
+19,51<br></code>
+<h4>Exercise 8.2: Reading delimited files</h4>
+<code>>> A = dlmread('nums.txt')<br>
+A =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;&nbsp;78&nbsp;&nbsp;&nbsp;&nbsp;42<br>
+&nbsp;&nbsp;&nbsp;&nbsp;22&nbsp;&nbsp;&nbsp;&nbsp;83&nbsp;&nbsp;&nbsp;&nbsp;100<br>
+&nbsp;&nbsp;&nbsp;&nbsp;98&nbsp;&nbsp;&nbsp;&nbsp;99&nbsp;&nbsp;&nbsp;&nbsp;34<br>
+&nbsp;&nbsp;&nbsp;&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;56&nbsp;&nbsp;&nbsp;&nbsp;12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;23&nbsp;&nbsp;&nbsp;&nbsp;89&nbsp;&nbsp;&nbsp;&nbsp;0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;&nbsp;51&nbsp;&nbsp;&nbsp;&nbsp;0<br>
+</code>
+</div>
+<div class="container">
+
+If the text file contains only representation of numbers and delimiters, it can be read using this:<br> <code>arr  = dlmread(&lt;file_name&gt;, &lt;delimiter&gt;)</code>,<br>
+ where the <code>delimiter</code> parameter is a single character that can be used to specify an unusual delimiting character. However, the function can usually determine common delimiter situations without specifying the parameter.  The <code>dlmread(...)</code> function produces a numerical array containing the data values.<br>
+Try reading delimited files in Exercise 8.2 where Table 8.3 shows the content of the file <code>nums.txt</code>.  Notice that the array elements where data are not supplied are filled with zero.<br>
+Delimited data files can be written using:<br>
+<code>dlmwrite(&lt;file_name&gt;, &lt;array&gt;, &lt;dlm&gt;)</code><br>
+where <code>&lt;filename&gt;</code> is the name of the file, <code>&lt;array&gt;</code> is the data source (a numerical array), and <code>&lt;dlm&gt;</code> is the delimiting character. If  the  delimiting  character  is  not  specified,  it  is  presumed  to  be  a comma.<br>
+ The <code>csvread(...)</code> function is a special case of <code>dlmread(...)</code> where the delimiter is presumed to be a comma, and it produces a numerical array containing the data values. <br>
+<br><b>Important Note:</b> It is best not to provide the delimiter character unless you just have to. Without it, MATLAB will assume that:
+<ul>
+<li>there may be more than one delimiting character, and</li>
+<li>all delimiters between numbers may be collected and treated as one delimiter.</li>
+</ul> 
+</div>
 <h2><a name="8_4">8.4 Lower-Level File I/O</a></h2>
- Some text files contain data in mixed format that are not readable by the high-level file reading functions. The MATLAB language provides a set of lower-level I/O functions that permit general-purpose text file reading and writing. The following is a partial discussion of these functions that is sufficient for most text file processing needs. In general, the file must be opened to return a value to be used by subsequent functions to identify its data stream. We usually refer to this identifier as the “file handle.” After the file contents have been manipulated, the file must be closed to complete the activity. Because these are lower-level functions used in combination to solve problems, we will need to discuss the behavior of several of them before we can show examples of their use.  
+We will assume here that the file in which we are interested contains text data in the form of ASCII character codes.  Files for which this is not the case have to be treated as binary files which we will not discuss further. The MATLAB language provides a set of lower-level I/O functions that permit general-purpose text file reading and writing. The following is a partial discussion of these functions that is sufficient for most text file processing needs. Recall in the discussion of the paper tape in 8.1 that once the tape has been loaded into the tape reader and begins to move (the file is opened), the individual characters are delivered to the calling program until it reached the end when the tape reader is stopped by the calling program (the file is closed). Today, text files are delivered on many kinds of media, but to the calling program, the same three features are required:<ol>
+<li>the file must be successfully opened,</li>
+<li>data characters must be received by the calling program, and</li>
+<li>the files should be closed.</li>
+</ol>
+<Although MATLAB may close the file automatically when your program exits, it is good practice to actually close the file yourself when you have finished reading it.<br>
+<b>The End-Of-File (EOF) Character:</b> The following question also arises: in the paper tape days, how do you know when you have reached the end of the data?  If you let the tape read until you reach the end of the physical tape, no fresh data will be passing the read heads and some kind of error condition will arise.  By convention, it was decided that a specific non-printable character called 'EOF' with ASCII value 26 would be written at the end of the data on the tape. When that character was read from the tape, the calling program is informed that the end of the tape has been reached and the tape can be stopped (the file closed). While the modern era has many different ways of delivering data from a file to your program, the need is still present to identify when there are no more data to process, and the EOF character is still used to terminate file reading.<br>
+<b>New Line Markers:</b> There is another need for special markers in a text file inherited again from the paper tape era.  The tape reader was at that time directly connected to a primitive typewriter style printer of which the classic example was called the ASR-33. Each character read from the tape was typed onto the paper and the carriage holding the print mechanism moved one place to the right waiting for the next character. When the carriage reached the 80th character position, it could no longer advance to the right.  If nothing special happened, all the remaining characters on the tape were printed at the same location - not really what you want. In order to continue printing legibly, two different actions were required, triggered by reading two different non-printable characters:
+<ul>
+<li>return the carriage to the first column by driving it all the way to the left, (CR, ASCII 13), and</li>
+<li>move the paper up so that the next character will type below the previous line (LF, ASCII 10).</li>
+</ul> 
+In the modern era, of course, there may be no printing carriage to move to the left or paper to move up, but initially, the CR/LF sequence was still required to begin the next line of text.  However, at some point, somebody said to themselves that it was wasting storage space to use two characters where only one action is required. Some people decided to leave off the CR, and some decided to leave off the LF, and so we are now blessed with three different possible end-of-line indicators: CR, LF, or CR/LF.  This dilemma is usually hidden from the user, but can occasionally cause issues when moving text files from an Apple computer to a Windows machine or a Unix machine.<br>
+In general, when reading a file, the file must be opened to return a value to be used by subsequent functions to identify its data stream. We usually refer to this identifier as the “file handle.” After the file contents have been manipulated, the file must be closed to complete the activity.   
 <h3><a name="8_4_1">8.4.1	Opening and Closing Files</a></h3>
- To open a file for reading or writing, use fh = fopen( <filename>, <purpose>) where fh is a file handle used in subsequent function calls to identify this particular input stream, <filename> is the name of the file, and <purpose> is a string specifying the purpose for opening the file. The most common purposes are 'r' to read the file, 'w' to write it, or 'a' to append to an existing file. See the help files for more complex situations. If the purpose is 'r', the file must already exist; if 'w' and the file already exists, it will be overwritten; if 'a' and the file already exists, the new data will be appended to the end. The consequence of failure to open the file is system dependent. In the standard version on a PC, this is indicated by returning a file handle of –1. To close the file, call fclose( fh ).  
+ To open a file for reading or writing, use this:<br>
+<code>fh = fopen( &lt;file_name&gt;, &lt;purpose&gt;)</code><br>
+ where <code>fh</code> is a file handle used in subsequent function calls to identify this particular input stream, <code>&lt;file_name&gt;</code> is the name of the file, and <code>&lt;purpose&gt;</code> is a string specifying the purpose for opening the file. The most common purposes are <code>'r'</code> to read the file, <code>'w'</code> to write it, or <code>'a'</code> to append to an existing file. See the help files for more complex situations. If the purpose is <code>'r'</code>, the file must already exist; if <code>'w'</code> and the file already exists, it will be overwritten; if <code>'a'</code> and the file already exists, the new data will be appended to the end. The consequence of failure to open the file is indicated by returning a file handle of –1 rather than a positive number. It is good practice to check the file handle upon return from a file open command.<br>
+To close the file, call <code>fclose( fh )</code>.  
 <h3><a name="8_4_2">8.4.2	Reading Text Files</a></h3>
- To read a file, three levels of support are provided: reading whole lines with or without the new-line character, parsing into tokens with delimiters, or parsing into cell arrays using a format string.  ■	To read a whole line including the new-line character, use str = fgets( fh ) that will return each line as a string until the end of the file, when the value –1 is returned instead of a string. To leave out each new-line character, use fgetl(...) instead (the last character is a lowercase L). ■	To parse each line into tokens (elementary text strings) separated by white space delimiters, use a combination of fgetl(...) and the tokenizer function [<tk>, <rest>] = strtok( <ln> ); where <tk> is a string token, <rest> is the remainder of the line, and <ln> is a string to be parsed into tokens.  ■	If you are using MATLAB, you could try to parse a line according to a specific format string into a cell array by using ca = textscan( fh, <format> ); where ca is the resulting cell array, fh is the file handle, and <format> is a format control string such as we used for sscanf(...) in Chapter 6.  
-<h3><a name="8_4_3">8.4.3	Examples of Reading Text Files</a></h3>
- To illustrate the use of these functions for reading a text file, the script shown in Listing 8.1 shows a script that will list any text file in the Command window. In Listing 8.1: Line 1: Asks the user for the name of a file. Line 2: Opens the file for reading and returns the file handle. Line 3: Initializes the while loop control variable. Line 4: When the file read reaches the end of the file, the reading function returns −1 instead of a string. Line 5: Reads a string, including the end of line character. Line 6: Classic loop-and-a-half logic that determines whether there is a line to process. Line 7: Displays that line if present.  Line 10: Closes the file when finished. As an example of the use of a tokenizer, consider the code shown in Listing 8.2, which performs the same function as Listing 8.1 but uses tokens.  Line 5: Uses fgetl(...) instead of fgets(...) because the tokenizer does not need the new-line character. Line 7: Initializes the resulting cell array. Line 8: The tokenizer will be finished when it leaves an empty line as the result. Line 9: Creates a token from the remains of the line and puts the remains back into the variable ln. Line 10: Adds the current token to the result. Line 12: Shows the tokens for one line. Line 15: Closes the file. Run the scripts in Listings 8.1 and 8.2. This will show the difference in output results between the conventional listing script and the tokenizing lister. With the tokenizer, we see each individual token (really, each word in a normal text file) separately listed.  
-<h3><a name="8_4_4">8.4.4	Writing Text Files</a></h3>
- Once a file has been opened for writing, the fprintf(...) function can be used to write to it by including its file handle as the first parameter. For example, Listing 8.3 is a minor alteration to Listing 8.1, copying a text file instead of listing it in the Command window.  In Listing 8.3: Line 2: Fetches the output file name. Line 4: Opens the output file for writing. Line 9: Adding oh as the first parameter to fprintf(...) redirects the output to the specified file. Line 13: Closes the output file.  
-<h2><a name="8_5">8.5	Engineering Example—Spreadsheet Data</a></h2>
+It is possible, but rarely appropriate, to read one character at a time from a text file using <code>fread(...)</code> or <code>fwrite(...)</code> and we will not consider that here.  Rather, we will make use of the presence of the New Line Markers (whatever they are) to read and write whole lines or more from the file.<br>
+To read a file, three levels of support are provided: reading whole lines with or without the new-line character, parsing into tokens with delimiters, or parsing into cell arrays using a format string:<ul>
+<li>To read a whole line including the new-line character, use <code>str = fgets( fh )</code> that will return each line as a string until the end of the file, when the value –1 is returned instead of a string. To leave out each new-line character, use <code>fgetl(...)</code> instead (the last character is a lowercase L).</li>
+<li>To parse each line into tokens (elementary text strings) separated by white space delimiters, use a combination of <code>fgetl(...)</code> and the tokenizer function <code>[&lt;tk&gt;, &lt;rest&gt;] = strtok( &lt;ln&gt; )</code>; where <code>&lt;tk&gt;</code> is a string token, <code>&lt;rest&gt;</code> is the remainder of the line, and <code>&lt;ln&gt;</code> is a string to be parsed into tokens.</li>
+<li>you could try to parse a line according to a specific format string into a cell array by using:
+<code>ca = textscan( fh, &lt;format&gt; );</code><br>
+where <code>ca</code> is the resulting cell array, <code>fh</code> is the file handle, and <code>&lt;format&gt;</code> is a format control string such as we used for <code>sscanf(...)</code> in para 6.3.2. 
+</ul> 
+When the read function finds the EOF character, instead of returning a string, it returns <code>-1</code>. This is actually the reason to exit a while loop processing the text which can conveniently be accomplished with the <code>ischar(...)</code> function.<br>
 
-■	Frequently, engineering data are provided in spreadsheets. Here we will adapt the structure assembly problem from Chapter 7. The script for that solution created the data using a constructor function. Consider the situation in which the data are provided in a spreadsheet such as that shown in Figure 8.3. We have to start by examining the layout of the data and the process necessary to extract what we need. Bearing in mind the three results returned from xlsread(...), first we determine which of the three is most appropriate:
-■	The {xlsread(...)} function is going to include all the numerical cells from the spreadsheet in the numerical array. This is awkward because there are numbers in the first column; and since the primary interest in this problem is not the numerical data, we will not use the numerical array directly.
-■	However, this is not exclusively a text processing problem. Since we need the numerical coordinates, the second, text-only result is not what we need.
-■	Therefore, in this particular application, we will process the raw data provided by csvread(...), giving both the string and numerical  data.
-The other concern is that there are a different number of connections on each row of the sheet. When a connection is present, it is a string. When it is not there, we refer to the behavior of the raw data to discover that the contents of empty cells appear as [] of type double.
+To illustrate the use of these functions for reading a text file, the script in Listing 8.1 shows a script that will list any text file in the Command window.<br>
+<h4>Listing 8.1: Script to list a text file</h4>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list_text(<font color="#c000c0">'../mercy.txt'</font>);<font color="#00c000"> % Specify the file and call our function to list it.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> list_text(fn);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fh = fopen( fn, <font color="#c000c0">'r'</font> ); <font color="#00c000">% open the file for reading and return the file handle.<br>
+% we will use a while loop since we do not know how many lines are in the file</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ln = <font color="#c000c0">''</font>; <font color="#00c000"> % initialize the while loop</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ischar( ln ) <font color="#00c000"> % as long as there is text remaining the line will be of type <code>char</code></font><br>
+<font color="#00c000"> % when the EOF is read, <code>fgets/l(...)</code> returns <code>-1</code>, not of type <code>char</code></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ln = fgetl( fh );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ischar( ln ) <font color="#00c000"> % don't process <code>ln</code> unless it's type char</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf( <font color="#c000c0">'%s\n'</font>, ln ); <font color="#00c000"> % use <code>fprintf(...)</code> to print the line</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fclose( fh );<font color="#00c000"> % close the file</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+As an example of the use of a strtok(...), consider the code shown in Listing 8.2, which performs the same function as Listing 8.1 but uses tokens.<br>
+<h4>Listing 8.2: Listing a file using tokens</h4>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list_text(<font color="#c000c0">'../mercy.txt'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> list_text(fn);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fh = fopen( fn, <font color="#c000c0">'r'</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ln = <font color="#c000c0">''</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ischar( ln )<br>
+<font color="#00c000">% to this point, the function is identical to Listing 8.1</font><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ln = fgetl( fh ); <font color="#00c000">% use fgetl(...) because strtok doesn't need the end-of-line marker.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ischar( ln )<br>
+<font color="#00c000">% once we have a line, we will use strtok(...) to strip off one word at a time</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = [];<br>
+<font color="#00c000">% again, we use a while loop because the number of words on a line vary.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty( ln )<br>
+<font color="#00c000">% keep going as long as there are characters on the line</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[tk, ln] = strtok( ln );<br>
+<font color="#00c000">% we simplify the logic by putting the rest of the line back in ln</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ca = [ca {tk}];<br>
+<font color="#00c000">% save all the tokens in a cell array</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#00c000">% display the cell array</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disp( ca );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fclose( fh );<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+Run the scripts in Listings 8.1 and 8.2. This will show the difference in output results between the conventional listing script and the tokenizing lister. With the tokenizer, we see each individual token (really, each word in a normal text file) separately listed.  
+<h3><a name="8_4_3">8.4.3	Writing Text Files</a></h3>
+ Once a file has been opened for writing, the <code>fprintf(...)</code>function can be used to write to the file by including its file handle as the first parameter. For example, Listing 8.3 is a minor alteration to Listing 8.1, copying a text file instead of listing it in the Command window.
+<h4>Listing 8.3: Script to copy a text file using fprintf</h4>
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;clear; clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;copy_text(<font color="#c000c0">'../mercy.txt'</font>,<font color="#c000c0">'../mercy_copy.txt')</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> copy_text(ifn, ofn)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ih = fopen( ifn, <font color="#c000c0">'r'</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;oh = fopen( ofn, <font color="#c000c0">'w'</font> );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ln = <font color="#c000c0">''</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ischar( ln )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ln = fgetl( ih );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ischar( ln )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf( oh, <font color="#c000c0">'%s\n'</font>, ln );<br>
+<font color="#00c000">% The '\n' on the end of the format control string inserts whatever line-end-marker your computer uses</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;fclose( ih );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fclose( oh );<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+  
+<h2><a name="8_5">8.5	Engineering Example — Spreadsheet Data</a></h2>
 
-We need a function that will read this file and produce the same model of the structure used in Chapter 7. Such a function is shown in Listing 8.4.
-In Listing 8.4:
-Line 1: The function consumes the file name and produces a structure array with the fields described in the following comments. Line 2: Reads the spreadsheet and keeps only the raw data.
-Line 3: Gets the rows and columns in the raw data; we need to ignore the top row and left column.
-Line 4: Initializes the output index for the structure array.
-Line 5: Ignoring the first row, traverses all the remaining rows. Line 6: The component name is in the second column.
-Line 7: The coordinates of the component are in the third and fourth columns.
-Lines 8–9: Initialize the search for the connections for this component. It is important to empty the array conn before each pass to avoid “inheriting” data from a previous row.
-Lines 10–11: Extract each item in turn from the row.
-Lines 12–14: If the item is not of class char, this is the blank cell at the end of the row; the break command exits the for loop moving across the row.
-Lines 15–16: Otherwise, it stores the connection and keeps going. Lines 18–20: When the connections are complete, it stores them in the structure, stores the structure in the structure array, and continues to the next row.
-Line 21: When the rows are completed, the data are ready to return to the calling script.
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="150" src="Fig_8_2.jpg" width="220" /></p></center>
+<figcaption><b><center>Fig 8.2: Spread Sheet Data</center></b></figcaption></figure>
 
-To test this function, replace the structure array construction in lines 1–22 of Listing 7.6 in Chapter 7 with the following line:
+Frequently, engineering data are provided in spreadsheets. Here we will adapt the structure assembly problem from Chapter 7. The script for that solution created the data using a constructor function. Consider the situation in which the data are provided in a spreadsheet such as that shown in Figure 8.2. To make it more interesting, we imagine that the spread sheet would have numerical information such as the node's coordinates and an index value which other users might need, but we don;t. We have to start by examining the layout of the data and the process necessary to extract what we need. Bearing in mind the three results returned from <code>[nums txt raw] = xlsread(...)</code>, first we invoke <code>xlsread(...)</code> in the Command Window to determine which of the three is most appropriate:
+<code><br>
+>> [nums txt raw] = xlsread('beams.xlsx')<br>
+<br>
+nums =<br>
+&nbsp;&nbsp;1.0000&nbsp;&nbsp;NaN&nbsp;&nbsp;0&nbsp;&nbsp;0<br>
+&nbsp;&nbsp;2.0000&nbsp;&nbsp;NaN&nbsp;&nbsp;10.0000&nbsp;&nbsp;0<br>
+&nbsp;&nbsp;3.0000&nbsp;&nbsp;NaN&nbsp;&nbsp;20.0000&nbsp;&nbsp;0<br>
+&nbsp;&nbsp;4.0000&nbsp;&nbsp;NaN&nbsp;&nbsp;30.0000&nbsp;&nbsp;0<br>
+&nbsp;&nbsp;5.0000&nbsp;&nbsp;NaN&nbsp;&nbsp;5.0000&nbsp;&nbsp;11.3200<br>
+&nbsp;&nbsp;6.0000&nbsp;&nbsp;NaN&nbsp;&nbsp;15.0000&nbsp;&nbsp;11.3200<br>
+&nbsp;&nbsp;7.0000&nbsp;&nbsp;NaN&nbsp;&nbsp;25.0000&nbsp;&nbsp;11.3200<br><br>
+txt =<br>
+&nbsp;&nbsp;8×8 cell array<br>
+&nbsp;&nbsp;{'index' }&nbsp;&nbsp;{'node'}&nbsp;&nbsp;{'x'     }&nbsp;&nbsp;{'y'     }&nbsp;&nbsp;{'connect to'}&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{0×0 char}<br>
+&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'A'   }&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'B'&nbsp;&nbsp;}&nbsp;&nbsp;{'E'&nbsp;&nbsp; }&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{0×0 char}<br>
+&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'B'   }&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'A'&nbsp;&nbsp;}&nbsp;&nbsp;{'C'&nbsp;&nbsp; }&nbsp;&nbsp;{'E'&nbsp;&nbsp; }&nbsp;&nbsp;{'F'&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'C'   }&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'B'&nbsp;&nbsp;}&nbsp;&nbsp;{'D'&nbsp;&nbsp; }&nbsp;&nbsp;{'F'&nbsp;&nbsp; }&nbsp;&nbsp;{'G'&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'D'   }&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'C'&nbsp;&nbsp;}&nbsp;&nbsp;{'G'&nbsp;&nbsp; }&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{0×0 char}<br>
+&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'E'   }&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'A'&nbsp;&nbsp;}&nbsp;&nbsp;{'B'&nbsp;&nbsp; }&nbsp;&nbsp;{'F'&nbsp;&nbsp; }&nbsp;&nbsp;{0×0 char}<br>
+&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'F'   }&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'B'&nbsp;&nbsp;}&nbsp;&nbsp;{'C'&nbsp;&nbsp; }&nbsp;&nbsp;{'E'&nbsp;&nbsp; }&nbsp;&nbsp;{'G'&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'G'   }&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{0×0 char}&nbsp;&nbsp;{'C'&nbsp;&nbsp;}&nbsp;&nbsp;{'D'&nbsp;&nbsp; }&nbsp;&nbsp;{'F'&nbsp;&nbsp; }&nbsp;&nbsp;{0×0 char}<br>
+<br>
+raw =<br>
 
-data = readStruct('Structure_data.xls');
-The script should then produce the same results as before.
+&nbsp;&nbsp;8×8 cell array<br>
+&nbsp;&nbsp;{'index'}&nbsp;&nbsp;{'node'}&nbsp;&nbsp;{'x' }&nbsp;&nbsp;{'y'&nbsp;&nbsp;  }&nbsp;&nbsp;{'connect to'}&nbsp;&nbsp;{[NaN]}&nbsp;&nbsp;{[NaN]}&nbsp;&nbsp;{[NaN]}<br>
+&nbsp;&nbsp;{[&nbsp;&nbsp;1]}&nbsp;&nbsp;{'A'   }&nbsp;&nbsp;{[ 0]}&nbsp;&nbsp;{[&nbsp;&nbsp;  0]}&nbsp;&nbsp;{'B'&nbsp;&nbsp;}&nbsp;&nbsp;{'E'  }&nbsp;&nbsp;{[NaN]}&nbsp;&nbsp;{[NaN]}<br>
+&nbsp;&nbsp;{[&nbsp;&nbsp;2]}&nbsp;&nbsp;{'B'   }&nbsp;&nbsp;{[10]}&nbsp;&nbsp;{[&nbsp;&nbsp;  0]}&nbsp;&nbsp;{'A'&nbsp;&nbsp;}&nbsp;&nbsp;{'C'  }&nbsp;&nbsp;{'E'  }&nbsp;&nbsp;{'F'  }<br>
+&nbsp;&nbsp;{[&nbsp;&nbsp;3]}&nbsp;&nbsp;{'C'   }&nbsp;&nbsp;{[20]}&nbsp;&nbsp;{[&nbsp;&nbsp;  0]}&nbsp;&nbsp;{'B'&nbsp;&nbsp;}&nbsp;&nbsp;{'D'  }&nbsp;&nbsp;{'F'  }&nbsp;&nbsp;{'G'  }<br>
+&nbsp;&nbsp;{[&nbsp;&nbsp;4]}&nbsp;&nbsp;{'D'   }&nbsp;&nbsp;{[30]}&nbsp;&nbsp;{[&nbsp;&nbsp;  0]}&nbsp;&nbsp;{'C'&nbsp;&nbsp;}&nbsp;&nbsp;{'G'  }&nbsp;&nbsp;{[NaN]}&nbsp;&nbsp;{[NaN]}<br>
+&nbsp;&nbsp;{[&nbsp;&nbsp;5]}&nbsp;&nbsp;{'E'   }&nbsp;&nbsp;{[ 5]}&nbsp;&nbsp;{[11.3200]}&nbsp;&nbsp;{'A'&nbsp;&nbsp;}&nbsp;&nbsp;{'B'  }&nbsp;&nbsp;{'F'  }&nbsp;&nbsp;{[NaN]}<br>
+&nbsp;&nbsp;{[&nbsp;&nbsp;6]}&nbsp;&nbsp;{'F'   }&nbsp;&nbsp;{[15]}&nbsp;&nbsp;{[11.3200]}&nbsp;&nbsp;{'B'&nbsp;&nbsp;}&nbsp;&nbsp;{'C'  }&nbsp;&nbsp;{'E'  }&nbsp;&nbsp;{'G'  }<br>
+&nbsp;&nbsp;{[&nbsp;&nbsp;7]}&nbsp;&nbsp;{'G'   }&nbsp;&nbsp;{[25]}&nbsp;&nbsp;{[11.3200]}&nbsp;&nbsp;{'C'&nbsp;&nbsp;}&nbsp;&nbsp;{'D'  }&nbsp;&nbsp;{'F'  }&nbsp;&nbsp;{[NaN]}<br>
+</code>
+<ul>
+<li>the <code>nums</code> values are going to include all the numerical cells from the spreadsheet omitting the first row and columns E-H which is exactly what we don't want. It also, because it returns a <code>double</code> array,  replaces any strings with <code>NaN</code>.</li>
+<li>the <code>txt</code> values include all the text we need to solve the problem but replaces the numerical values with an empty cell array. However, since we might conceptually need to use the numerical values, this is not exclusively a text processing problem so the second, text-only result is not what we need.</li>
+<li>Therefore, in this particular application, we will process the <code>raw</code> data provided by  <code>xlsread(...) </code>, giving both the string and numerical data.</li>
+</ul>
+The other concern is that there are a different number of connections on each row of the sheet. Our solution to the beams problem requires the connections to be placed in a cell array. When a connection is present, it is a string. When it is not present, we can see from the behavior of the raw data that the contents of empty cells appear as a cell containing NaN.<br>
+<b>Note:</b> If memory serves me correctly, previous versions of MATLAB put an empty cell array in the raw data when there were no data present. (sigh!)<br>
 
-Chapter Summary
+We need a function that will read this spread sheet and produce the same model of the structure used in Chapter 7. Such a function is shown in Listing 8.4.
+<h4>Listing 8.4: Reading structure data</h4>
+<code><strong>
+<font color="#0000ff">function</font> data = readStruct(filename)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% read a spreadsheet and produce a structure array:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% - index - the first column values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% - name - the name of each node</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% - pos - columns 3 and 4 in a vector</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% - connect - cell array with the remaining data on the row</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[~,~,raw] = xlsread(filename);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Read the spreadsheet and keep only the raw data.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[rows cols] = size(raw);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%  Find the size of the raw data</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;out = <font color="#ff8000">1</font>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% index of the structure array returned</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> row = <font color="#ff8000">2</font>:rows;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Iterate across the rows except the first row</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.index = raw{row,<font color="#ff8000">1</font>};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The first column is the numerical index</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.name = raw{row,<font color="#ff8000">2</font>};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The second column is the node name</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.pos = [raw{row,<font color="#ff8000">3</font>} raw{row,<font color="#ff8000">4</font>}];<font color="#00A000">% Columns 3 and 4 are the numerical position of the node [we don't need this]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cni = <font color="#ff8000">1</font>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Index of the connecting nodes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conn = {};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Collect the connected nodes here</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> col = <font color="#ff8000">5</font>:cols&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Iterate across the remaining columns</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item = raw{row, col};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Fetch each item </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~ischar(item)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% If it is not a string, </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ...  stop processing the row</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><font color="#00A000"></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conn{cni} = item;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Otherwise, save the connected node </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cni = cni + <font color="#ff8000">1</font>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% ... and bump the index of connections</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.connect = conn;<font color="#00A000">% Store the cell array of connections</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data(out) = str;<font color="#00A000">% Store this structure</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out = out + <font color="#ff8000">1</font>;<font color="#00A000">% ... and increment the structure index</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+
+To test this function, replace the structure array construction in lines 1–22 of Listing 7.6 in Chapter 7 with the following line:<br><br>
+<code>data = readStruct('beams.xlsx');</code><br><br>
+The script should then produce the same results as before.<br>
+
+<h2>Chapter Summary</h2>
 
 We have described three levels of capability for reading and writing files:
-■	The save and load operators allow you to save variables from the workspace and restore them to the workspace
-■	Specialized functions read and write spreadsheets and delimited text files
-■	Lower-level functions provide the ability to open and close files, and to read and write text files in any form that is required
+<ul>
+<li>The save and load operators allow you to save variables from the workspace and restore them to the workspace</li>
+<li>Specialized functions read and write spreadsheets and delimited text files</li>
+<li>Lower-level functions provide the ability to open and close files, and to read and write text files in any form that is required</li>
+</ul>
 
 [Special Characters]
 

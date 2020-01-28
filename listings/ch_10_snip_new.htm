@@ -1,0 +1,11 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;ins = <font color="#ff8000">1</font>;  <font color="#00A000">% initialize the result<br></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% set up the first pass of the while loop</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ins <= length(v) && before(item, v(ins))<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% you provide a function before(a, b) that returns<br></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   true if a comes before b in your ordering<br></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ins = ins + <font color="#ff8000">1</font>; <font color="#00A000">% next value<br></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% when you find the right place, concatenate the three parts</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = [v(<font color="#ff8000">1</font>:ins-<font color="#ff8000">1</font>) item v(ins:end)]<br><br><br>
+</strong></code>
