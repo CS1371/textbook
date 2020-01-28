@@ -4,6 +4,7 @@ clc
     
     dbg = fopen('debug.log','w');
 
+%     format('ch_10_snip.m');
 %     format('test_coloring.m');
 %     format('all_run.m');
 %     format('all_run_really.m');
@@ -36,8 +37,8 @@ clc
 %     format('listing_05_7.m');
 %     format('listing_05_8.m');
 %     format('listing_05_9.m');
-%      format('listing_06_1.m');
-     format('listing_06_2.m');
+%     format('listing_06_1.m');
+%     format('listing_06_2.m');
 %     format('listing_07_1.m');
 %     format('listing_07_2.m');
 %     format('listing_07_3.m');
@@ -55,7 +56,8 @@ clc
 %     format('listing_09_5.m');
 %     format('listing_09_6.m');
 %     format('listing_09_7.m');
-%     format('listing_10_1.m');
+%     format('listing_09_8.m');
+%    format('listing_10_1.m');
 %     format('listing_11_1.m');
 %     format('listing_11_10.m');
 %     format('listing_11_11.m');
@@ -63,7 +65,7 @@ clc
 %     format('listing_11_2.m');
 %     format('listing_11_3.m');
 %     format('listing_11_4.m');
-%     format('listing_11_5.m');
+     format('listing_11_5.m');
 %     format('listing_11_6.m');
 %     format('listing_11_7.m');
 %     format('listing_11_8.m');

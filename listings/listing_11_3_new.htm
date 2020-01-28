@@ -1,16 +1,25 @@
 <code><strong>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Parametric plots</font><br>
 <font color="#0000ff">function</font> main<br>
-&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   The particular transformation we use here requires a circle </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   with a radius, r, slightly greater than 1 offset by a small </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   distance, g, from the x-axis, passing through the point (?1, 0).</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   We need theta from - to 2pi inclusive to form a complete circle.</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;th = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">2</font>*pi, <font color="#ff8000">40</font>);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;r = <font color="#ff8000">1.1</font>; g = <font color="#ff8000">.1</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;cx = sqrt(r^<font color="#ff8000">2</font>-g^<font color="#ff8000">2</font>) - <font color="#ff8000">1</font>; cy = g;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% compute the center of the circle passing through the point (?1, 0)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cx = sqrt(r^<font color="#ff8000">2</font>-g^<font color="#ff8000">2</font>) - <font color="#ff8000">1</font>; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;cy = g;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% A standard polar-to-Cartesian coordinate transformation </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% computing the coordinates of the circle</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;x = r*cos(th) + cx;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;y = r*sin(th) + cy;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;plot( x, y, <font color="#c000c0">'r'</font> )<br>
 &nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
 &nbsp;&nbsp;&nbsp;&nbsp;grid on, hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The Joukowski transformation is easiest when expressed in </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% complex terms: if z is the path around the required circle, </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% w = z + 1/z traces a very credible looking airfoil shape.</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;z = complex(x, y);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;w = z + <font color="#ff8000">1</font>./z;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;plot( real(w), imag(w), <font color="#c000c0">'k'</font> );<br>

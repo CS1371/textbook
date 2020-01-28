@@ -1,8 +1,8 @@
 % The Fibonacci function
 function main
     tic
-    res = fib(32);
-    fprintf('fib(32) took %1.4f seconds\n', toc);
+    res = fib(35);
+    fprintf('fib(35) took %1.4f seconds; answer = %d\n', toc, res);
 end
 function result = fib(N)
     % recursive computation the Nth Fibonacci number
