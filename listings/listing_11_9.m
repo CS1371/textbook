@@ -1,12 +1,16 @@
 % Constructing a sphere
 function main
-    pause(1)
-    figure
-    facets = 120; radius = 1;
+clear
+clc
+close all
+    facets = 120;
     [xx yy zz] = sphere(facets-1);
     surf(xx, yy, zz);
     shading interp
     colormap copper
-    axis equal, axis tight, axis off
+    axis equal, axis tight
+    xlabel('X')
+    ylabel('Y')
+    zlabel('Z')
     lightangle(60, 45)
 end

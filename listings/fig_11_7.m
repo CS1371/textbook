@@ -1,11 +1,8 @@
-% Simple solid cube
+% Figure 11.7 done automatically
 function main
-% Basic geometry of the plaid
-% 5 columns because we need to close the squares
-% The first row of xx, yy and zz defines the point P.
-% the last row of xx, yy and zz defines the point Q
-% the second and third rows are the top and bottom
-% of the cube itself.
+clear
+clc
+close all
     xx = [  0  0  0  0  0  % P-P-P-P-P
            -1 -1  1  1 -1  % A-B-C-D-A
            -1 -1  1  1 -1  % E-F-G-H-E
@@ -18,8 +15,6 @@ function main
             1  1  1  1  1  % A-B-C-D-A
            -1 -1 -1 -1 -1  % E-F-G-H-E
            -1 -1 -1 -1 -1] % Q-Q-Q-Q-Q
-% these commands define where the letters A - G
-%     and P will be drawn.
     A = [xx(2,1) yy(2,1) zz(2,1)];
     B = [xx(2,2) yy(2,2) zz(2,2)];
     C = [xx(2,3) yy(2,3) zz(2,3)];
@@ -27,22 +22,25 @@ function main
     E = [xx(3,1) yy(3,1) zz(3,1)];
     F = [xx(3,2) yy(3,2) zz(3,2)];
     G = [xx(3,3) yy(3,3) zz(3,3)];
+    H = [xx(3,4) yy(3,4) zz(3,4)];
     P = [xx(1,1) yy(1,1) zz(1,1)];
-    % this surf function fills in the solid facets.
-    surf(xx, yy, zz)
-    % this chooses the strategy for coloring the surfaces
-    colormap copper
-    % these two makes the axes have the same spacing
-    % and prevents the axis display
-    axis equal
-    axis off
-    % This smoothes the color transitions
-    shading interp
-    % This defines the direction from which to view the cube
-    view(-31, 22)
-    % this hold the cube while the letters are drawn.
-    hold on
-    % These commands draw the visible letters.
+    Q = [xx(4,1) yy(4,2) zz(4,3)];
+    plot_line(A, B, 'b');
+    plot_line(A, C, 'b');
+    plot_line(B, C, 'b');
+    plot_line(B, D, 'b');
+    plot_line(C, D, 'b');
+    plot_line(D, A, 'b');
+    plot_line(A, E, 'b');
+    plot_line(E, F, 'b');
+    plot_line(F, B, 'b');
+    plot_line(C, G, 'b');
+    plot_line(F, G, 'b');
+    plot_line(D, H, 'b--');
+    plot_line(F, H, 'b--');
+    plot_line(E, G, 'b--');
+    plot_line(H, G, 'b--');
+    plot_line(H, E, 'b--');
     plot_text(A + [0, 0, 0.3], 'A');
     plot_text(B + [0, 0.1, 0.3], 'B');
     plot_text(C + [0.1, 0, 0], 'C');
@@ -50,14 +48,23 @@ function main
     plot_text(E + [-0.3, 0, 0], 'E');
     plot_text(F + [-0.3, -0.1, 0], 'F');
     plot_text(G + [0, -0.2, 0], 'G');
-    plot_text(P + [0.1, 0.3, 0.1], 'P');
-    % This shines a light on the surface from the specified
-    %   anfgles in degrees.
-    lightangle(20, 45)
+    plot_text(H + [0.1, 0, 0.1], 'H');
+    plot_text(P + [0.1, 0.3, 0], 'P');
+    plot_text(Q + [0, 0, -0.1], 'Q');
+    axis([-1.5 1.5 -1.5 1.5 -1.5 1.5])
+    xlabel('X')
+    ylabel('Y')
+    zlabel('Z')
 end
 
-% a helper functiojn to draw the letters
 function plot_text(A, str)
     text(A(1), A(2), A(3), str);
 end
-
+    
+function plot_line(A, B, clr)
+    x = [A(1), B(1)]; 
+    y = [A(2), B(2)]; 
+    z = [A(3), B(3)]; 
+    plot3(x, y, z, clr)
+    hold on
+end

@@ -273,15 +273,198 @@ Plotting is not restricted to the situation where the data along one axis are th
 &nbsp;&nbsp;&nbsp;&nbsp;text(x(N),y(N),z(N), <font color="#c000c0">'end'</font>);<br>
 </strong></code>  
 <h3><a name="11_3_3">11.3.3	Other 3-D Plot Capabilities</a></h3>
- If you are using MATLAB, you can also create some more exotic 3-D plots that are not necessary to understand the basic principles of plotting, but are powerful methods for visualizing real data: ■	bar3(x, y) produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with >> help bar3. ■	barh3(x, y) produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with >> help barh. ■	pie3(y) makes a 3-D pie chart of the values in y. For more options, see >> help pie3.  
+ If you are using MATLAB, you can also create some more exotic 3-D plots that are not necessary to understand the basic principles of plotting, but are powerful methods for visualizing real data: <ul>
+<li><code>bar3(x, y)</code> produces a bar graph with the values in <code>y</code> positioned at the horizontal locations in <code>x</code>. The options available can be studied with<br>
+<code>>> help bar3.</code>
+<li><code>barh3(x, y)</code> produces a bar graph with the values in <code>y</code> positioned at the horizontal locations in <code>x</code>. The options available can be studied with <br>
+<code>>> help barh.</code>
+<li><code>pie3(y)</code> makes a 3-D pie chart of the values in <code>y</code>. For more options, see<br>
+<code>>> help pie3.</code> 
+</ul> 
 <h2><a name="11_4">11.4 Surface Plots</a></h2>
  In Section 11.3.2, we saw that data can be generated for all three axes based on one linear parameter. However, more dramatic graphics are produced by a different group of 3-D graphics functions that produce images based on mapping a 2-D surface. The underlying 2-D surface is sometimes referred to as plaid because of its conceptual similarity to a Scottish tartan pattern. To design such a pattern, one needs only to specify the color sequence of the horizontal and vertical threads. In the same way, we specify a plaid by defining vectors of the row and column data configurations.  
 <h3><a name="11_4_1">11.4.1	Basic Capabilities</a></h3>
- Three fundamental functions are used to create 3-D surface plots: ■	meshgrid(x, y) accepts the x1*m and y1*n vectors that bound the edges of the plaid and replicates the rows and columns appropriately to produce xxn*m and yyn*m, containing the x and y values (respectively) of the complete plaid. This enables us in general to compute mappings for the 3-D coordinates of the figure we want to plot. ■	mesh(xx, yy, zz) plots the surface as white facets outlined by colored lines. The line coloring uses one of many color maps (listed in Appendix A), where the color is selected in proportion to the zz parameter. You can turn the white facets transparent with the command hidden off. ■	surf(xx, yy, zz) plots the surface as colored facets outlined by black lines. The line coloring by default is selected in proportion to the zz parameter. You can remove the lines by using one of a number of shading commands listed in Appendix A.  
+ Three fundamental functions are used to create 3-D surface plots:<ul>
+ <code>[xx, yy] = meshgrid(x, y)</code> accepts the <code>x<sub>1*m</sub></code> and <code>y<sub>1*n</sub></code> vectors that bound the edges of the plaid and replicates the rows and columns appropriately to produce <code>xx<sub>n*m</sub></code> and <code>yy<sub>n*m</sub></code>, containing the <code>x</code> and <code>y</code> values (respectively) of the complete plaid. This enables us in general to compute mappings for the 3-D coordinates of the figure we want to plot.
+ <li><code>mesh(xx, yy, zz)</code> plots the surface as white facets outlined by colored lines. The line coloring uses one of many color maps (listed in Appendix A), where the color is selected in proportion to the <code>zz</code> parameter. You can turn the white facets transparent with the command <code>hidden off</code>.
+ <li><code>surf(xx, yy, zz)</code> plots the surface as colored facets outlined by black lines. The line coloring by default is selected in proportion to the <code>zz</code> parameter. You can remove the lines by using one of a number of shading commands listed in Appendix A.
+ <br><br><br><br><br>
+</ul> 
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="280" src="Fig_11_6.jpg" width="300" /></p></center>
+<figcaption><b><center>Fig 11.6: geometry of a cube</center></b></figcaption></figure>
 <h3><a name="11_4_2">11.4.2	Simple Exercises</a></h3>
- We will consider some simple situations that illustrate many of the features of surface drawing. Drawing a Cube In the first example, in order to understand the underlying logic, we will develop the basic concept of drawing surfaces without the help of the meshgrid(...) function. Figure 11.7 shows the coordinates of a cube of side 2 units centered at the origin. Listing 11.6 shows the code that plots a cube from scratch. Figure 11.8 shows the results from this script. To define the top and bottom of the cube, we must add the points P and Q. Although only one point each is required to define P and Q, the array must have the same number of columns in each row. Therefore, P and Q must be replicated five times to keep the arrays rectangular.  One could think about the way the surf(...) function works by drawing the line defined by the top row of the xx, yy, and zz arrays. Then it locates the line defined by the next row and makes a smooth surface between the two lines. Physically, this has the following effect:  ■	Beginning at point P, it draws expanding squares until it reaches ABCD ■	“Sliding down” the sides of the cube to EFGH ■	Shrinking that square down to the point Q In Listing 11.6: Lines 1–12: Establish the plaid defining the point P, the A-B-C-D plane, the E-F-G-H plane, and the point Q. Notice that the first corner is repeated on each row to close the figure shape. Lines 13–18: Plot the cube top, sides, and bottom. A Simple Parabolic Dish  The simplest surface plots are obtained by defining a z value for each point on an x-y plaid. We will continue with a simple example illustrating the use of meshgrid(...) to define the plaid. Consider how we might plot the data shown in Figure 11.9. Before we look at the code, consider what the picture represents. Clearly, the independent variables are x and y, each covering the range from −3 to 3, each having seven discrete values. As the label indicates, the z values are calculated as the sum of x2 and y2. There are not, however, 14 z values as the range of x and y values might suggest, but 49! In order to plot the 3-D shape of our parabolic bowl, we must have a z value for every point on the x-y surface. Each of these points has a value of x corresponding to the reading on the x-axis, and a value of y from the y-axis. Therefore, the process of creating this plot has three parts:  1.	Develop the underlying plaid specifying the x-y location of every point on the x-y plane. 2.	Calculate the z values from the plaid. 3.	Call a plotting function that will accept the plaid and these z values to produce the required plot.  The code to accomplish this is shown in Listing 11.7. In Listing 11.7: Line 1: The x and y vectors define the edges of the plaid. Line 2: Generates the plaid. Line 3: In this particular example, we map only the z coordinate, leaving the plaid (xx and yy) as the x and y coordinates of the figure. Line 4: mesh(...) is one of the many functions that represent 3-D mappings of a plaid in different ways. Notice in the figure that the faces between line segments are solid white, and the line colors change with the z coordinate. Lines 5–7: Annotate the plot.  Try Exercise 11.1 and make your observations.  Manipulating Plots  Thoughtful students might develop their own tests to investigate the behavior of the following tools:  ■	The function surfc(xx, yy, zz) puts contour lines on the x-y plane base. ■	The function view(az, el) changes the viewing angle. This is useful to capture a specific view angle after you have used the rotation tool to select a good presentation of the data. ■	The command colorbar allows you to show how the colors are quantified on the plot. ■	Adding a 4th parameter to surf(xx, yy, zz, yy) overrides the default color direction z with, in this case, the y direction. ■	The 4th parameter can also be a function like del2(zz) that computes the second derivative, or curvature, of the plot, so now the coloring highlights the areas of maximum curvature. ■	The 4th parameter can also be an image (see Chapter 13) that will appear to be pasted onto the plotting surface. ■	For an eye-catching effect, add the line lightangle(60, 45) at the bottom of the script. This illuminates the surface with a light at the specified azimuth and elevation angle (degrees). The resulting faceted appearance can be alleviated by decreasing the granularity of the underlying plaid coordinates.  
+We will consider some simple situations that illustrate many of the features of surface drawing.<br>
+<b>Draw a cube</b>: In this example, in order to understand the underlying logic, we will develop the basic concept of drawing a cube without the help of the <code>meshgrid(...)</code> function. Figure 11.6 shows the coordinates of a cube of side 2 units centered at the origin drawn with simple line plots and Figure 11.7 shows the same cube drawn as a solid object. Before we descend into specifics, you need to understand specifically in the case of this cube how the <code>surf(...)</code> function works. Visualize four pens that can draw in 3-D space attached to the tops of your forefingers and thumbs respectively.Put your forefingers and thumbs together at the point P, and then slide them out to the points A, B, C and D. The <code>surf(...)</code>function fills in a surface between the lines you drew making the top of the cube. Now slide your fingers and thumbs down the sides of the cube to the points E, F, G and H. Filling in those surfaces draws the sides of the cube.  Finally, draw the bottom by sliding your fingers and thumbs across the bottom of the cube to its center at Q.  <br>To define the sides of the cube, we need to draw four lines to complete the horizontal square, thereby needing five columns with the first column repeated at the last column.  To define the top and bottom of the cube, we must add the points P and Q at the centers of the top and bottom. Although only one point each is required to define P and Q, the array must have the same number of columns in each row. Therefore, P and Q must be replicated five times to keep the arrays rectangular.
+Listing 11.6 shows the code that plots this cube from scratch.  
+<h3>Listing 11.6: Drawing a solid cube</h3>
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="250" src="Fig_11_7.jpg" width="350" /></p></center>
+<figcaption><b><center>Fig 11.7: cube with solid fill</center></b></figcaption></figure>
+<code><strong>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Basic geometry of the plaid</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 5 columns because we need to close the squares</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The first row of xx, yy and zz defines the point P.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the last row of xx, yy and zz defines the point Q</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the second and third rows are the top and bottom</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% of the cube itself.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;xx = [  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#00A000">% P-P-P-P-P</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#00A000">% A-B-C-D-A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#00A000">% E-F-G-H-E</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>] <font color="#00A000">% Q-Q-Q-Q-Q</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;yy = [  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#00A000">% P-P-P-P-P</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#00A000">% A-B-C-D-A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#00A000">% E-F-G-H-E</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>] <font color="#00A000">% Q-Q-Q-Q-Q</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;zz = [  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#00A000">% P-P-P-P-P</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#00A000">% A-B-C-D-A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#00A000">% E-F-G-H-E</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>] <font color="#00A000">% Q-Q-Q-Q-Q</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% these commands define where the letters A - G</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     and P will be drawn.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [xx(<font color="#ff8000">2</font>,<font color="#ff8000">1</font>) yy(<font color="#ff8000">2</font>,<font color="#ff8000">1</font>) zz(<font color="#ff8000">2</font>,<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;B = [xx(<font color="#ff8000">2</font>,<font color="#ff8000">2</font>) yy(<font color="#ff8000">2</font>,<font color="#ff8000">2</font>) zz(<font color="#ff8000">2</font>,<font color="#ff8000">2</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C = [xx(<font color="#ff8000">2</font>,<font color="#ff8000">3</font>) yy(<font color="#ff8000">2</font>,<font color="#ff8000">3</font>) zz(<font color="#ff8000">2</font>,<font color="#ff8000">3</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;D = [xx(<font color="#ff8000">2</font>,<font color="#ff8000">4</font>) yy(<font color="#ff8000">2</font>,<font color="#ff8000">4</font>) zz(<font color="#ff8000">2</font>,<font color="#ff8000">4</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;E = [xx(<font color="#ff8000">3</font>,<font color="#ff8000">1</font>) yy(<font color="#ff8000">3</font>,<font color="#ff8000">1</font>) zz(<font color="#ff8000">3</font>,<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;F = [xx(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>) yy(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>) zz(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;G = [xx(<font color="#ff8000">3</font>,<font color="#ff8000">3</font>) yy(<font color="#ff8000">3</font>,<font color="#ff8000">3</font>) zz(<font color="#ff8000">3</font>,<font color="#ff8000">3</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;P = [xx(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) yy(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) zz(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this surf function fills in the solid facets.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this chooses the strategy for coloring the surfaces</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;colormap copper<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% these two makes the axes have the same spacing</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% and prevents the axis display</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This smoothes the color transitions</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This defines the direction from which to view the cube</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">31</font>, <font color="#ff8000">22</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this hold the cube while the letters are drawn.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% These commands draw the visible letters.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(A + [<font color="#ff8000">0</font>, <font color="#ff8000">0</font>, <font color="#ff8000">0.3</font>], <font color="#c000c0">'A'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(B + [<font color="#ff8000">0</font>, <font color="#ff8000">0.1</font>, <font color="#ff8000">0.3</font>], <font color="#c000c0">'B'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(C + [<font color="#ff8000">0.1</font>, <font color="#ff8000">0</font>, <font color="#ff8000">0</font>], <font color="#c000c0">'C'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(D + [<font color="#ff8000">0</font>, <font color="#ff8000">0</font>, <font color="#ff8000">0.2</font>], <font color="#c000c0">'D'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(E + [-<font color="#ff8000">0.3</font>, <font color="#ff8000">0</font>, <font color="#ff8000">0</font>], <font color="#c000c0">'E'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(F + [-<font color="#ff8000">0.3</font>, -<font color="#ff8000">0.1</font>, <font color="#ff8000">0</font>], <font color="#c000c0">'F'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(G + [<font color="#ff8000">0</font>, -<font color="#ff8000">0.2</font>, <font color="#ff8000">0</font>], <font color="#c000c0">'G'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(P + [<font color="#ff8000">0.1</font>, <font color="#ff8000">0.3</font>, <font color="#ff8000">0.1</font>], <font color="#c000c0">'P'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This shines a light on the surface from the specified</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   anfgles in degrees.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">20</font>, <font color="#ff8000">45</font>)<br>
+<font color="#0000ff">end</font><br>
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="250" src="Fig_11_8.jpg" width="350" /></p></center>
+<figcaption><b><center>Fig 11.8: a parabolic dish</center></b></figcaption></figure>
+<br>
+<font color="#00A000">% a helper function to draw the letters</font><br>
+<font color="#0000ff">function</font> plot_text(A, str)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text(A(<font color="#ff8000">1</font>), A(<font color="#ff8000">2</font>), A(<font color="#ff8000">3</font>), str);<br>
+<font color="#0000ff">end</font><br>
+<br>
+</strong></code>
+
+<b>A Simple Parabolic Dish</b>:  The simplest surface plots are obtained by defining
+a z value for each point on an x-y plaid. We will continue with a simple
+example illustrating the use of <code>meshgrid(...)</code> to define the plaid. Consider
+how we might plot the data shown in Figure 11.8 . Before we look at the code,
+consider what the picture represents. The independent variables are <code>x</code>
+and <code>y</code>, each covering the range from −3 to 3, each having seven discrete
+values. As the title indicates, the <code>z</code> values are calculated as the sum of <code>x<sup>2</sup></code> and
+<code>y<sup>2</sup></code>. However, we don't need 14 <code>z</code> values as the range of <code>x</code> and <code>y</code> values might
+suggest, but <code>49</code>! In order to plot the 3-D shape of our parabolic bowl, we must
+have a <code>z</code> value for every point on the <code>x-y</code> surface. Each of these points has values of <code>x</code> and <code>y</code> corresponding to the intersections of the <code>x</code> and <code>y</code> vectors. Therefore, the process of creating this plot has three parts: 
+<ol>
+<li>Develop the underlying plaid specifying the x-y location of every
+point on the x-y plane.
+<li>Calculate the z values from the plaid.
+<li>Call a plotting function that will accept the plaid and these z
+values to produce the required plot.
+</ol>
+The code to accomplish this is shown in Listing 11.7.
+<h3>Listing 11.6: Drawing a parabolic dish</h3>
+<code><strong>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% define the x and y vectors</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;x=-<font color="#ff8000">3</font>:<font color="#ff8000">3</font>; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;y =-<font color="#ff8000">3</font>:<font color="#ff8000">3</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% produce the x and y values at each intersection</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% as a 7 x 7 array</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% as usual, the variable names are optional.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the author tends to use the double letter values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% to remind us that these are 2-D arrays</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[xx,yy]=meshgrid(x,y);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% compute the z values at each x-y intersection</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;zz=xx.^<font color="#ff8000">2</font> + yy.^<font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% plot the data with colored lines and white facets</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;mesh(xx,yy,zz)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis tight<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'z = x^2 + y^2'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x'</font>),ylabel(<font color="#c000c0">'y'</font>),zlabel(<font color="#c000c0">'z'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">30</font>, <font color="#ff8000">30</font>)<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="250" src="Fig_11_9.jpg" width="350" /></p></center>
+<figcaption><b><center>Fig 11.9: a cylinder</center></b></figcaption></figure>
+  
 <h3><a name="11_4_3">11.4.3	3-D Parametric Surfaces</a></h3>
- Cylinder Consider first the construction of a cylinder as illustrated in Figure 11.10. One could consider this figure as a sheet of paper rolled up in a circular shape. We could visualize that piece of paper as a plaid of values, not of x-y in this case, but perhaps x − u. The range of x would be from 0 to the length of the cylinder, and the range of u would be 0 to 360°.  To plot this, one would then merely need to create a plaid in x and u, and then decide on the mapping from u to the y and z values of the cylinder. The resulting picture is shown in Figure 11.11, and the code is shown in Listing 11.8. In Listing 11.8: Line 1: Constants to define the smoothness of the cylinder. Lines 2–4: Define a plaid in x and u. Note that only two points are needed in the x direction because that contour is straight. Lines 5 and 6: The circular cross-section is achieved by using the parametric definition of a circle of a given radius. Line 9: Changes the color to a pleasant metallic scale. Line 10: Squares up and removes the axes. Line 11: Illuminates the figure. Line 12: Sets the transparency of the surface so that a portion of the hidden details can show through.  Sphere Now, we construct a sphere as shown in Figure 11.12, starting with the cylinder. However, instead of using a constant radius in the x direction, we will calculate the radius in that direction by rotating a second angle, c, from 0 to 180°. Think of this as mapping or “wrapping” a plaid with two angles as the independent variables around the sphere. The coordinate in the x direction would be r cos c, and the radii of the y-z circles would be r sin c. The code for drawing this sphere is shown in Listing 11.9. In Listing 11.9: Line 1: The radius set here is the sphere radius. Lines 2 and 3: Set the ranges of u and c. Line 4: Builds the plaid in u and c. Line 5: As c rotates, the value of x varies as its cosine. Lines 6 and 7: The radius of rotation about the x-axis varies as the sine of c. Lines 8–12: Draw and annotate the plot.  
+<strong>Cylinder</strong>: Consider first the construction of a cylinder. One could consider this as a sheet of paper rolled up in a cylindrical shape. We could visualize that piece of paper as a plaid of values, not of <code>x-y</code>, but perhaps <code>x−&theta;</code> where the range of <code>x</code> would be from 0 to the length of the cylinder, and the range of <code>&theta;</code> would be <code>0</code> to <code>360°</code>.  To plot this, one would then merely need to create a plaid in <code>x</code> and <code>&theta;</code>, and then decide on the mapping from <code>x-&theta;</code> to the <code>y</code> and <code>z</code> values of the cylinder. <br>
+Fortunately for us, however, the Matlab folks have provided a function named <code>cylinder</code> that takes two parameters: a vector or radius values along the length of the cylinder and the number of points around the circumference. We will see later how to generalize this, but for now, we use it in one line of code to compute the <code>xx</code>, <code>yy</code> and <code>zz</code> values that will draw a cylinder.
+<br>
+The resulting picture is shown in Figure 11.9, and the code is shown in Listing 11.8. 
+<h3>Listing 11.8: Constructing a cylinder</h3>
+<code><strong>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">120</font>; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;len = <font color="#ff8000">2</font>; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;radius = <font color="#ff8000">0.5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Notice that we re-ordered the output parameters</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   in order to orient the x axis horizontally</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[zz yy xx] = cylinder(radius, facets);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xx = xx .* len;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;colormap copper<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'X'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Y'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'Z'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">60</font>, <font color="#ff8000">45</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alpha(<font color="#ff8000">0.8</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">20</font>, <font color="#ff8000">35</font>)<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
+
+<br>
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="250" src="Fig_11_10.jpg" width="350" /></p></center>
+<figcaption><b><center>Fig 11.10: a simple sphere</center></b></figcaption></figure>
+<strong>Sphere</strong>: Now, we construct a sphere as shown in Figure 11.10. Conceptually, we could start with a cylinder but instead of using a constant radius in the x direction, we will calculate the radius in that direction by rotating a second angle from 0 to 180°. Again, however, the Mathworks folks have taken all the fun and math out of this by providing the <code>sphere(N)</code> function where the parameter determines the number of facets around the face of the sphere.<br> The code for drawing this sphere is shown in Listing 11.9.   
+<h3>Listing 11.8: Constructing a sphere</h3>
+<code><strong>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">120</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[xx yy zz] = sphere(facets-<font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;colormap copper<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal, axis tight<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'X'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Y'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'Z'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">60</font>, <font color="#ff8000">45</font>)<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
 <h3><a name="11_4_4">11.4.4	Bodies of Rotation</a></h3>
  The cylinder and sphere drawn in the above section are special cases of a more general form of solid body. Bodies of rotation are created in general by rotating a general function v = f(u) defined over a range of u values about the x or z axes. Note: this is perfectly general because rotating such a function about the y-axis would result merely in “smearing” the function across a flat surface in the x-z plane. We use z rather than y for the dependent variable here because in our 3-D plots, the z-axis is drawn as the vertical axis. In general, we make no claims about the nature of f(). It could be a rational function, or merely a “lookup table” specifying a value of v for every u.  Rotating Continuous Functions First, we consider rotating a continuous function v = f(u) about the x and z axes.  ■	To rotate v = f(u) about the x-axis, we could consider this equation as r = f(x). Figure 11.13 shows the logic of this rotation. The independent variable is x, and the values of y and z are computed as the usual polar-to-Cartesian conversion: y = r cos(u) z = r sin(u)  Notice that these are the two axes about which we are not rotating. ■	To rotate v = f(u) about the z-axis, we could consider this equation as z = f(r). Figure 11.14 shows the logic of this rotation. The independent variable is now r, and the values of x and y are computed as the usual polar-to-Cartesian conversion: x = r cos(u) y = r sin(u) Notice again that these are the two axes about which we are not rotating. Notice also a simple rule of thumb: if you rewrite v = f(u) correctly for each rotation, the independent variable is always the parameter of f(...). Figure 11.15 shows the result of the rotations generated by the code shown in Listing 11.10.  In Listing 11.10: Lines 1–4: Set up the plaid of u, the independent variable for the function, and u for the rotations. Lines 6–13: Compute the rotation about the x-axis. Notice that when rotating about a specific axis, that axis must be treated separately; the other two axes will always have the form of a polar-to-Cartesian transformation. In rotating about the x-axis, since u is the independent variable for our function, we only need to compute the yy and zz values. Line 10: We use the fourth parameter to surf(...) to set the direction of color variation. Lines 15–22: Compute the z-axis rotation. Some apparent sleight of hand is necessary here. In this case, the axis containing the independent variable is being rotated about the z-axis. Because the radius of the rotated surface is the original independent variable, uu, we copy uu to the variable radius. Then we define xx together with yy as the polar-to-Cartesian transformation to achieve the rotation. In this case, the z value of the surface is f(u), u . Rotating Discrete Functions There is no need to restrict ourselves to continuous functions as the profiles for bodies of rotation. Figure 11.16 shows the 2-D profile of a fictitious machine part and the picture created when that profile is rotated about the x-axis. The figure was generated by the code shown in Listing 11.11. In Listing 11.11: Lines 1–9: Define and plot the initial 2-D profile. Lines 10–22: Perform the rotation about the x-axis. The only unusual idea here is how to turn this discrete collection of points into the equivalent of v = f(u). Line 12 shows an elegant way to solve this dilemma. After going through the meshgrid(..) to produce a plaid of xx and tth, we run meshgrid(...) again, but keeping only the first result, rr.  Rotating about an Arbitrary Axis Bodies of rotation are not confined to rotating about the x, y, or z axes. The simplest approach to rotating z = f(x) about an arbitrary axis is as follows:  ■	Calculate the matrix that will place your axis of rotation along the x-axis (see Chapter 12) ■	Transform u and v with that rotation ■	Rotate the transformed u and v about the x-axis ■	Invert the transformation on the resulting surface  
 <h3><a name="11_4_5">11.4.5	Other 3-D Surface Plot Capabilities</a></h3>
