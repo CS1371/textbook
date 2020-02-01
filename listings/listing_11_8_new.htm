@@ -1,15 +1,21 @@
 <code><strong>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Constructing a cylinder</font><br>
 <font color="#0000ff">function</font> main<br>
-&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
-&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">120</font>; len = <font color="#ff8000">2</font>; radius = <font color="#ff8000">1</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[zz yy xx] = cylinder(radius,<font color="#ff8000">120</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">120</font>; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;len = <font color="#ff8000">2</font>; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;radius = <font color="#ff8000">0.5</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[zz yy xx] = cylinder(radius, facets);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;xx = xx .* len;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
-&nbsp;&nbsp;&nbsp;&nbsp;colormap bone<br>
-&nbsp;&nbsp;&nbsp;&nbsp;axis equal,axis tight,axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;colormap copper<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'Z'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Y'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'X'</font>)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">60</font>, <font color="#ff8000">45</font>)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;alpha(<font color="#ff8000">0.8</font>)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">20</font>, <font color="#ff8000">35</font>)<br>

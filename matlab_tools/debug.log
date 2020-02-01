@@ -1,122 +1,175 @@
 
 
-Processing file ../listings/listing_11_5.m
-process >% First sub_plot: a spiral<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% First sub_plot: a spiral</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% First sub_plot: a spiral</font><br><
-process >subplot(1, 2, 1)<
+Processing file ../listings/listing_11_13.m
+process >% Map data analysis<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Map data analysis</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Map data analysis</font><br><
+process >function main<
+see parens = 0
+coloring gives ><font color="#0000ff">function</font> main<br><
+replace_stuff gives ><font color="#0000ff">function</font> main<br><
+process >clear<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;clear<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;clear<br><
+process >clc<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;clc<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;clc<br><
+process >close all<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;close all<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;close all<br><
+process >% draw the streets<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% draw the streets</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% draw the streets</font><br><
+process >raw = dlmread('atlanta.txt');<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">1</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">1</font>)<br><
-process >% theta is the independent variable<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% theta is the independent variable</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% theta is the independent variable</font><br><
-process >theta = 0:0.1:10üpi;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;theta = <font color="#ff8000">0</font>:<font color="#ff8000">0.1</font>:<font color="#ff8000">10</font>üpi;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;theta = <font color="#ff8000">0</font>:<font color="#ff8000">0.1</font>:<font color="#ff8000">10</font>.*pi;<br><
-process >plot3(sin(theta),cos(theta),theta)<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;raw = dlmread(<font color="#c000c0">'atlanta.txt'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;raw = dlmread(<font color="#c000c0">'atlanta.txt'</font>);<br><
+process >streets = raw(:,3:7);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;streets = raw(:,<font color="#ff8000">3</font>:<font color="#ff8000">7</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;streets = raw(:,<font color="#ff8000">3</font>:<font color="#ff8000">7</font>);<br><
+process >[rows,cols] = size(streets)<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[rows,cols] = size(streets)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[rows,cols] = size(streets)<br><
+process >colors = 'rgbkcmo';<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;colors = <font color="#c000c0">'rgbkcmo'</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;colors = <font color="#c000c0">'rgbkcmo'</font>;<br><
+process >for in = 1:rows<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:rows<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:rows<br><
+process >x = streets(in,[1 3])/1000000;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = streets(in,[<font color="#ff8000">1</font> <font color="#ff8000">3</font>])/<font color="#ff8000">1000000</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = streets(in,[<font color="#ff8000">1</font> <font color="#ff8000">3</font>])/<font color="#ff8000">1000000</font>;<br><
+process >y = streets(in,[2 4])/1000000;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = streets(in,[<font color="#ff8000">2</font> <font color="#ff8000">4</font>])/<font color="#ff8000">1000000</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = streets(in,[<font color="#ff8000">2</font> <font color="#ff8000">4</font>])/<font color="#ff8000">1000000</font>;<br><
+process >col = streets(in,5);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = streets(in,<font color="#ff8000">5</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = streets(in,<font color="#ff8000">5</font>);<br><
+process >col(col < 1) = 7;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col(col < <font color="#ff8000">1</font>) = <font color="#ff8000">7</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col(col < <font color="#ff8000">1</font>) = <font color="#ff8000">7</font>;<br><
+process >col(col > 6) = 7;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col(col > <font color="#ff8000">6</font>) = <font color="#ff8000">7</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col(col > <font color="#ff8000">6</font>) = <font color="#ff8000">7</font>;<br><
+process >plot(x,y,colors(col));<
 set parens = 1
 set parens = 2
 set parens = 1
-set parens = 2
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot(x,y,colors(col));<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot(x,y,colors(col));<br><
+process >hold on<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold on<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold on<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >% plot the travel times<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% plot the travel times</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% plot the travel times</font><br><
+process >tt = dlmread('ttimes.txt');<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;plot3(sin(theta),cos(theta),theta)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;plot3(sin(theta),cos(theta),theta)<br><
-process >title('parametric curve based on angle');<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;tt = dlmread(<font color="#c000c0">'ttimes.txt'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;tt = dlmread(<font color="#c000c0">'ttimes.txt'</font>);<br><
+process >[rows,cols] = size(tt)<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'parametric curve based on angle'</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'parametric curve based on angle'</font>);<br><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[rows,cols] = size(tt)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[rows,cols] = size(tt)<br><
+process >for in = 1:rows<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:rows<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:rows<br><
+process >r = tt(in, 1); c = tt(in, 2);<
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = tt(in, <font color="#ff8000">1</font>); c = tt(in, <font color="#ff8000">2</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = tt(in, <font color="#ff8000">1</font>); c = tt(in, <font color="#ff8000">2</font>);<br><
+process >xc(r,c) = tt(in, 4)/1000000;<
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xc(r,c) = tt(in, <font color="#ff8000">4</font>)/<font color="#ff8000">1000000</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xc(r,c) = tt(in, <font color="#ff8000">4</font>)/<font color="#ff8000">1000000</font>;<br><
+process >yc(r,c) = tt(in, 5)/1000000;<
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yc(r,c) = tt(in, <font color="#ff8000">5</font>)/<font color="#ff8000">1000000</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yc(r,c) = tt(in, <font color="#ff8000">5</font>)/<font color="#ff8000">1000000</font>;<br><
+process >zc(r,c) = tt(in, 6);<
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zc(r,c) = tt(in, <font color="#ff8000">6</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zc(r,c) = tt(in, <font color="#ff8000">6</font>);<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >surf(xc, yc, zc)<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;surf(xc, yc, zc)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;surf(xc, yc, zc)<br><
+process >shading interp<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br><
+process >alpha(.5)<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;alpha(<font color="#ff8000">.5</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;alpha(<font color="#ff8000">.5</font>)<br><
 process >grid on<
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
-process >% second sub_plot: Brownian Motion<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% second sub_plot: Brownian Motion</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% second sub_plot: Brownian Motion</font><br><
-process >subplot(1, 2, 2)<
+process >axis tight<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;axis tight<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;axis tight<br><
+process >xlabel('Longitude')<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">2</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">2</font>)<br><
-process >% number of points on the trace<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% number of points on the trace</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% number of points on the trace</font><br><
-process >N = 20;<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;N = <font color="#ff8000">20</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;N = <font color="#ff8000">20</font>;<br><
-process >% velocity changes are random impulses<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% velocity changes are random impulses</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% velocity changes are random impulses</font><br><
-process >dvx = rand(1, N) - 0.5 % random v changes<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'Longitude'</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'Longitude'</font>)<br><
+process >ylabel('Latitude')<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;dvx = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font> <font color="#00A000">% random v changes</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;dvx = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font> <font color="#00A000">% random v changes</font><br><
-process >dvy = rand(1, N) - 0.5<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Latitude'</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Latitude'</font>)<br><
+process >zlabel('Travel Time (min)')<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;dvy = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;dvy = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br><
-process >dvz = rand(1, N) - 0.5<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'Travel Time (min)'</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'Travel Time (min)'</font>)<br><
+process >view(-30, 45)<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;dvz = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;dvz = rand(<font color="#ff8000">1</font>, N) - <font color="#ff8000">0.5</font><br><
-process >% double integration to change accelerations into positions <
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% double integration to change accelerations into positions </font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% double integration to change accelerations into positions </font><br><
-process >x = cumsum(cumsum(dvx)); <
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;x = cumsum(cumsum(dvx)); <br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;x = cumsum(cumsum(dvx)); <br><
-process >y = cumsum(cumsum(dvy));<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;y = cumsum(cumsum(dvy));<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;y = cumsum(cumsum(dvy));<br><
-process >z = cumsum(cumsum(dvz));<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;z = cumsum(cumsum(dvz));<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;z = cumsum(cumsum(dvz));<br><
-process >plot3(x,y,z)<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;plot3(x,y,z)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;plot3(x,y,z)<br><
-process >grid on<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
-process >title('all 3 axes varying with parameter t')<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'all 3 axes varying with parameter t'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'all 3 axes varying with parameter t'</font>)<br><
-process >% text labels for the start and end of the trace<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% text labels for the start and end of the trace</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% text labels for the start and end of the trace</font><br><
-process >text(0,0,0, 'start');<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;text(<font color="#ff8000">0</font>,<font color="#ff8000">0</font>,<font color="#ff8000">0</font>, <font color="#c000c0">'start'</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;text(<font color="#ff8000">0</font>,<font color="#ff8000">0</font>,<font color="#ff8000">0</font>, <font color="#c000c0">'start'</font>);<br><
-process >text(x(N),y(N),z(N), 'end');<
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 2
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;text(x(N),y(N),z(N), <font color="#c000c0">'end'</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;text(x(N),y(N),z(N), <font color="#c000c0">'end'</font>);<br><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">30</font>, <font color="#ff8000">45</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">30</font>, <font color="#ff8000">45</font>)<br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><

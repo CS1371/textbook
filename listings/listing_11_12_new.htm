@@ -1,39 +1,29 @@
 <code><strong>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Map data analysis</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Rotating an irregular shape</font><br>
 <font color="#0000ff">function</font> main<br>
-&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% draw the streets</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;raw = dlmread(<font color="#c000c0">'../atlanta.txt'</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;streets = raw(:,<font color="#ff8000">3</font>:<font color="#ff8000">7</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[rows,cols] = size(streets)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;colors = <font color="#c000c0">'rgbkcmo'</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:rows<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = streets(in,[<font color="#ff8000">1</font> <font color="#ff8000">3</font>])/<font color="#ff8000">1000000</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = streets(in,[<font color="#ff8000">2</font> <font color="#ff8000">4</font>])/<font color="#ff8000">1000000</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = streets(in,<font color="#ff8000">5</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col(col < <font color="#ff8000">1</font>) = <font color="#ff8000">7</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col(col > <font color="#ff8000">6</font>) = <font color="#ff8000">7</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot(x,y,colors(col));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;u = [<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">3</font> <font color="#ff8000">3</font> <font color="#ff8000">1.75</font> <font color="#ff8000">1.75</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">1.75</font> <font color="#ff8000">1.75</font> <font color="#ff8000">3</font> <font color="#ff8000">4</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">5.25</font> <font color="#ff8000">5.25</font> <font color="#ff8000">5</font> <font color="#ff8000">5</font> <font color="#ff8000">5.25</font> <font color="#ff8000">5.25</font> <font color="#ff8000">3</font> <font color="#ff8000">3</font> <font color="#ff8000">6</font> <font color="#ff8000">6</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = [<font color="#ff8000">0</font> <font color="#ff8000">.5</font> <font color="#ff8000">.5</font> <font color="#ff8000">.502</font> <font color="#ff8000">.502</font> <font color="#ff8000">.55</font> <font color="#ff8000">.55</font> <font color="#ff8000">1.75</font> <font color="#ff8000">1.75</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.5</font> <font color="#ff8000">2.5</font> <font color="#ff8000">1.5</font> <font color="#ff8000">1.5</font> <font color="#ff8000">1.4</font> <font color="#ff8000">1.4</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">.55</font> <font color="#ff8000">.55</font> <font color="#ff8000">.502</font> <font color="#ff8000">.502</font> <font color="#ff8000">.5</font> <font color="#ff8000">.5</font> <font color="#ff8000">0</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(u, v, <font color="#c000c0">'k'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal, axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">200</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[zz yy xx] = cylinder(v,<font color="#ff8000">300</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(u)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xx(ndx,:) = u(ndx);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% plot the travel times</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;tt = dlmread(<font color="#c000c0">'../ttimes.txt'</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[rows,cols] = size(tt)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:rows<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = tt(in, <font color="#ff8000">1</font>); c = tt(in, <font color="#ff8000">2</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xc(r,c) = tt(in, <font color="#ff8000">4</font>)/<font color="#ff8000">1000000</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yc(r,c) = tt(in, <font color="#ff8000">5</font>)/<font color="#ff8000">1000000</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zc(r,c) = tt(in, <font color="#ff8000">6</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;surf(xc, yc, zc)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
-&nbsp;&nbsp;&nbsp;&nbsp;alpha(<font color="#ff8000">.5</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;grid on<br>
-&nbsp;&nbsp;&nbsp;&nbsp;axis tight<br>
-&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'Longitude'</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Latitude'</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'Travel Time (min)'</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">30</font>, <font color="#ff8000">45</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal, axis tight, axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;colormap bone<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">60</font>, <font color="#ff8000">45</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">140</font>, <font color="#ff8000">45</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alpha(<font color="#ff8000">0.8</font>)<br>
 <font color="#0000ff">end</font><br>
 </strong></code>

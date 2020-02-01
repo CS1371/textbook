@@ -1,25 +1,65 @@
 <code><strong>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Simple solid cube</font><br>
 <font color="#0000ff">function</font> main<br>
-&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Basic geometry of the plaid</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% 5 columns because we need to close the squares</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% The first row of xx, yy and zz defines the point P.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the last row of xx, yy and zz defines the point Q</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the second and third rows are the top and bottom</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% of the cube itself.</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;xx = [  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#00A000">% P-P-P-P-P</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font> <font color="#00A000">% A-B-C-D-A</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font> <font color="#00A000">% E-F-G-H-E</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>] <font color="#00A000">% Q-Q-Q-Q-Q</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#00A000">% A-B-C-D-A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#00A000">% E-F-G-H-E</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>] <font color="#00A000">% Q-Q-Q-Q-Q</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;yy = [  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#00A000">% P-P-P-P-P</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#00A000">% A-B-C-D-A</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#00A000">% E-F-G-H-E</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>] <font color="#00A000">% Q-Q-Q-Q-Q</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#00A000">% A-B-C-D-A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#00A000">% E-F-G-H-E</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>  <font color="#ff8000">0</font>] <font color="#00A000">% Q-Q-Q-Q-Q</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;zz = [  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#00A000">% P-P-P-P-P</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#ff8000">1</font> <font color="#00A000">% A-B-C-D-A</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> <font color="#00A000">% E-F-G-H-E</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#ff8000">1</font>  <font color="#00A000">% A-B-C-D-A</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>  <font color="#00A000">% E-F-G-H-E</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font> -<font color="#ff8000">1</font>] <font color="#00A000">% Q-Q-Q-Q-Q</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% these commands define where the letters A - G</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     and P will be drawn.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A = [xx(<font color="#ff8000">2</font>,<font color="#ff8000">1</font>) yy(<font color="#ff8000">2</font>,<font color="#ff8000">1</font>) zz(<font color="#ff8000">2</font>,<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;B = [xx(<font color="#ff8000">2</font>,<font color="#ff8000">2</font>) yy(<font color="#ff8000">2</font>,<font color="#ff8000">2</font>) zz(<font color="#ff8000">2</font>,<font color="#ff8000">2</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C = [xx(<font color="#ff8000">2</font>,<font color="#ff8000">3</font>) yy(<font color="#ff8000">2</font>,<font color="#ff8000">3</font>) zz(<font color="#ff8000">2</font>,<font color="#ff8000">3</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;D = [xx(<font color="#ff8000">2</font>,<font color="#ff8000">4</font>) yy(<font color="#ff8000">2</font>,<font color="#ff8000">4</font>) zz(<font color="#ff8000">2</font>,<font color="#ff8000">4</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;E = [xx(<font color="#ff8000">3</font>,<font color="#ff8000">1</font>) yy(<font color="#ff8000">3</font>,<font color="#ff8000">1</font>) zz(<font color="#ff8000">3</font>,<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;F = [xx(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>) yy(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>) zz(<font color="#ff8000">3</font>,<font color="#ff8000">2</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;G = [xx(<font color="#ff8000">3</font>,<font color="#ff8000">3</font>) yy(<font color="#ff8000">3</font>,<font color="#ff8000">3</font>) zz(<font color="#ff8000">3</font>,<font color="#ff8000">3</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;P = [xx(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) yy(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>) zz(<font color="#ff8000">1</font>,<font color="#ff8000">1</font>)];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this surf function fills in the solid facets.</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;colormap bone<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this chooses the strategy for coloring the surfaces</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;colormap copper<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% these two makes the axes have the same spacing</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% and prevents the axis display</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;axis equal<br>
-&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
-&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">36</font>, <font color="#ff8000">44</font>)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This smoothes the color transitions</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This defines the direction from which to view the cube</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">31</font>, <font color="#ff8000">22</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% this hold the cube while the letters are drawn.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% These commands draw the visible letters.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(A + [<font color="#ff8000">0</font>, <font color="#ff8000">0</font>, <font color="#ff8000">0.3</font>], <font color="#c000c0">'A'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(B + [<font color="#ff8000">0</font>, <font color="#ff8000">0.1</font>, <font color="#ff8000">0.3</font>], <font color="#c000c0">'B'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(C + [<font color="#ff8000">0.1</font>, <font color="#ff8000">0</font>, <font color="#ff8000">0</font>], <font color="#c000c0">'C'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(D + [<font color="#ff8000">0</font>, <font color="#ff8000">0</font>, <font color="#ff8000">0.2</font>], <font color="#c000c0">'D'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(E + [-<font color="#ff8000">0.3</font>, <font color="#ff8000">0</font>, <font color="#ff8000">0</font>], <font color="#c000c0">'E'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(F + [-<font color="#ff8000">0.3</font>, -<font color="#ff8000">0.1</font>, <font color="#ff8000">0</font>], <font color="#c000c0">'F'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(G + [<font color="#ff8000">0</font>, -<font color="#ff8000">0.2</font>, <font color="#ff8000">0</font>], <font color="#c000c0">'G'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot_text(P + [<font color="#ff8000">0.1</font>, <font color="#ff8000">0.3</font>, <font color="#ff8000">0.1</font>], <font color="#c000c0">'P'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% This shines a light on the surface from the specified</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   anfgles in degrees.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">20</font>, <font color="#ff8000">45</font>)<br>
 <font color="#0000ff">end</font><br>
+<br>
+<font color="#00A000">% a helper functiojn to draw the letters</font><br>
+<font color="#0000ff">function</font> plot_text(A, str)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text(A(<font color="#ff8000">1</font>), A(<font color="#ff8000">2</font>), A(<font color="#ff8000">3</font>), str);<br>
+<font color="#0000ff">end</font><br>
+<br>
 </strong></code>

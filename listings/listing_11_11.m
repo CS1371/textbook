@@ -1,28 +1,29 @@
-% Rotating an irregular shape
+% Drawing a Donut
 function main
-    pause(1)
-    figure
-    u = [0 0 3 3 1.75 1.75 2 2 1.75 1.75 3 4 ...
-        5.25 5.25 5 5 5.25 5.25 3 3 6 6];
-    v = [0 .5 .5 .502 .502 .55 .55 1.75 1.75 ...
-        2.5 2.5 1.5 1.5 1.4 1.4 ...
-        .55 .55 .502 .502 .5 .5 0];
-    subplot(1, 2, 1)
-    plot(u, v, 'k')
-    axis ([-1 7 -1 3]), axis equal, axis off
-    title('2-D profile')
-    facets = 200;
-    subplot(1, 2, 2)
-    [zz yy xx] = cylinder(v,300);
-    for ndx = 1:length(u)
-        xx(ndx,:) = u(ndx);
-    end
+clear
+clc
+close all
+    % we draw a donut by first creating its cross-section,
+    % a circle displaced from the origin of coordinates
+    % in the x-z plane
+    % we will need a plaid consisting of two angles:
+    % - one for creating the circle
+    % - one for rotating the section
+    N = 200;
+    r = 1;  % the circle radius
+    R = 3; % the donut radius
+    th = linspace(0, 2*pi, N);
+    [tth1 tth2] = meshgrid(th, th);
+    %  make the circle
+    rr = R + r.*cos(tth1);
+    zz = r.*sin(tth1);
+    % now, rotate it
+    xx = rr.*cos(tth2);
+    yy = rr.*sin(tth2);
     surf(xx, yy, zz);
     shading interp
-    axis square, axis tight, axis off
-    colormap bone
+    axis equal;axis tight; axis off
+    colormap copper
     lightangle(60, 45)
     lightangle(140, 45)
-    alpha(0.8)
-    title('rotated object')
 end

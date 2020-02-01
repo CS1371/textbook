@@ -1,12 +1,30 @@
-% Constructing a sphere
+% Rotating v = u^2 about the x axes
 function main
-    pause(1)
-    figure
-    facets = 120; radius = 1;
-    [xx yy zz] = sphere(facets-1);
-    surf(xx, yy, zz);
+clear
+clc
+close all
+    N = 200;
+    u = linspace(0, 5, N);
+    v = f(u);
+    % rotate about the x-axis
+    [yy zz xx] = cylinder(v, N - 1);
+    % change the length of the cylinder
+    xx = xx .* 5;
+    surf(xx, yy, zz, xx);
     shading interp
     colormap copper
-    axis equal, axis tight, axis off
-    lightangle(60, 45)
+    xlabel('X'); ylabel('Y'); zlabel('Z')
+    view(30, 20)
+    hold on
+    % draw axis of rotation
+    x = [0 5];
+    y = [0 0];
+    z = [0 0];
+    plot3(x, y, z, 'k--')
+    lightangle(0, 45)
 end
+
+function v = f(u)
+    v = u.^2;
+end
+

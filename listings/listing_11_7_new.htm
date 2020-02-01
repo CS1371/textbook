@@ -1,14 +1,25 @@
 <code><strong>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Simple surface plot</font><br>
 <font color="#0000ff">function</font> main<br>
-&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x=-<font color="#ff8000">3</font>:<font color="#ff8000">3</font>; y = x ;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% define the x and y vectors</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;x=-<font color="#ff8000">3</font>:<font color="#ff8000">3</font>; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;y =-<font color="#ff8000">3</font>:<font color="#ff8000">3</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% produce the x and y values at each intersection</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% as a 7 x 7 array</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% as usual, the variable names are optional.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% the author tends to use the double letter values</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% to remind us that these are 2-D arrays</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;[xx,yy]=meshgrid(x,y);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% compute the z values at each x-y intersection</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;zz=xx.^<font color="#ff8000">2</font> + yy.^<font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% plot the data with colored lines and white facets</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;mesh(xx,yy,zz)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;axis tight<br>
 &nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'z = x^2 + y^2'</font>)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x'</font>),ylabel(<font color="#c000c0">'y'</font>),zlabel(<font color="#c000c0">'z'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">30</font>, <font color="#ff8000">30</font>)<br>
 <font color="#0000ff">end</font><br>
 </strong></code>
