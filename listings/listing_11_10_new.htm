@@ -1,16 +1,36 @@
 <code><strong>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Rotating v = u^2 about the x axes</font><br>
-<font color="#0000ff">function</font> main<br>
-&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
-&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">100</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;u = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">5</font>, facets);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;usq = u .^ <font color="#ff8000">2</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% rotate about the x-axis</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;[zz yy xx] = cylinder(usq);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Rotating v = u^2 about the z axes</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = <font color="#ff8000">200</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Using the analogy of a sheet of paper wrapped into a cylinder</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% and taped, we see that we need a plaid in z and theta, the angle</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% of rotation</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;u = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">1</font>, N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;th = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">2</font>*pi, N);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% we now compute tht plaid coordinates:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;[uu, tth] = meshgrid(u, th);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% now, the cartesian conversion gives us the cylinder we want:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;rr = uu;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zz = f(rr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xx = rr.*cos(tth);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yy = rr.*sin(tth);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz, xx);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;shading interp, axis tight<br>
-&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'x'</font>), ylabel(<font color="#c000c0">'y'</font>), zlabel(<font color="#c000c0">'z'</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;title(<font color="#c000c0">'u^2 rotated about the x-axis'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;colormap copper<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'X'</font>); ylabel(<font color="#c000c0">'Y'</font>); zlabel(<font color="#c000c0">'Z'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">30</font>, <font color="#ff8000">20</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hold on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% draw axis of rotation</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = [<font color="#ff8000">0</font> <font color="#ff8000">0</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y = [<font color="#ff8000">0</font> <font color="#ff8000">0</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z = [<font color="#ff8000">0</font> <font color="#ff8000">1</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot3(x, y, z, <font color="#c000c0">'k--'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lightangle(-<font color="#ff8000">60</font>, <font color="#ff8000">45</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> v = f(u)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = u.^<font color="#ff8000">2</font>;<br>
 <font color="#0000ff">end</font><br>
+<br>
 </strong></code>

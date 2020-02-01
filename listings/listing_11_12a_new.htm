@@ -1,0 +1,36 @@
+<code><strong>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Rotating an irregular shape</font><br>
+<font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;close all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;u = [<font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">3</font> <font color="#ff8000">3</font> <font color="#ff8000">1.75</font> <font color="#ff8000">1.75</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">1.75</font> <font color="#ff8000">1.75</font> <font color="#ff8000">3</font> <font color="#ff8000">4</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">5.25</font> <font color="#ff8000">5.25</font> <font color="#ff8000">5</font> <font color="#ff8000">5</font> <font color="#ff8000">5.25</font> <font color="#ff8000">5.25</font> <font color="#ff8000">3</font> <font color="#ff8000">3</font> <font color="#ff8000">6</font> <font color="#ff8000">6</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = [<font color="#ff8000">0</font> <font color="#ff8000">.5</font> <font color="#ff8000">.5</font> <font color="#ff8000">.502</font> <font color="#ff8000">.502</font> <font color="#ff8000">.55</font> <font color="#ff8000">.55</font> <font color="#ff8000">1.75</font> <font color="#ff8000">1.75</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.5</font> <font color="#ff8000">2.5</font> <font color="#ff8000">1.5</font> <font color="#ff8000">1.5</font> <font color="#ff8000">1.4</font> <font color="#ff8000">1.4</font> <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">.55</font> <font color="#ff8000">.55</font> <font color="#ff8000">.502</font> <font color="#ff8000">.502</font> <font color="#ff8000">.5</font> <font color="#ff8000">.5</font> <font color="#ff8000">0</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">1</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;plot(u, v, <font color="#c000c0">'k'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal, axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;facets = <font color="#ff8000">200</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subplot(<font color="#ff8000">1</font>, <font color="#ff8000">2</font>, <font color="#ff8000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;th = linspace(<font color="#ff8000">0</font>, <font color="#ff8000">2</font>*pi);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[uu tth] = meshgrid(u, th);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;vv = meshgrid(v, th);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xx = uu;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rr = vv;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yy = rr.*cos(tth);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zz = rr.*sin(tth);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     [zz yy xx] = cylinder(v,300);</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     for ndx = 1:length(u)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         xx(ndx,:) = u(ndx);</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;surf(xx, yy, zz);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis equal, axis tight, axis off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;colormap bone<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">60</font>, <font color="#ff8000">45</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lightangle(<font color="#ff8000">140</font>, <font color="#ff8000">45</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alpha(<font color="#ff8000">0.8</font>)<br>
+<font color="#0000ff">end</font><br>
+</strong></code>
