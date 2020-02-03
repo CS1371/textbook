@@ -1,7 +1,6 @@
 % Playing the piano
-% Playing the piano
 function main
-    [note Fs] = audioread('../instr_piano.wav');
+    [note Fs] = audioread('../Text/instr_piano.wav');
     N = length(note);
     half_note = 2.^(1/12);
     fprintf('middle C on the piano\n')
@@ -47,7 +46,7 @@ function main
         pause(seconds)
     end
 	play_steps(note)
-    run('../ramblinWreck')   % fetch the score
+    run('../Text/ramblinWreck')   % fetch the score
     fprintf('play a tune using music notation for pitch\n')
     solo = play_part(soloPart,'organ', 180);
     t = 0.75 * length(solo) ./ Fs;
@@ -93,6 +92,7 @@ function main
     pause(length(wreck)./Fs)
     audiowrite('new_wreck.wav', wreck, Fs)
 end
+
 function play_steps(note)
 	global Fs
     half_note = 2.^(1/12);
@@ -126,7 +126,7 @@ function play_steps(note)
 end
 function part = play_part( score, instr, rate)
     global Fs;
-    fname = ['../instr_' instr '.wav'];
+    fname = ['../Text/instr_' instr '.wav'];
     [note Fs] = audioread(fname);
     note = [note; zeros(200000,1)];
     lngth = overall(score);

@@ -1,7 +1,7 @@
 % Country analysis
-clear
-clc
-findBestCountry
+function main
+    findBestCountry
+end
 
 function findBestCountry
     % build the country array

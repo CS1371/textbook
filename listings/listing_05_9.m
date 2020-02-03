@@ -1,6 +1,6 @@
 % listing_05_9
 % Script to compute liquid levels
-% clear; clc
+function main
     % Initialize another_tank to start the while loop code.
     another_tank = true;
     while another_tank
@@ -60,4 +60,5 @@
             another_tank = true;
         end
     end
+end
 

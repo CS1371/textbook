@@ -1,7 +1,8 @@
 % listing_08_4
 % Reading structure data
-clear; clc
+function main
     adj = readStruct('beams.xlsx')
+end
 
 function data = readStruct(filename)
     % read a spreadsheet and produce a

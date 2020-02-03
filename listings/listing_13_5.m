@@ -1,8 +1,6 @@
 % Edge detection
 function main
-    pause(1)
-    figure
-    pic = imread('../C-130.jpg');
+    pic = imread('../Text/C-130.jpg');
     imshow(pic)
     figure
     [rows, cols, cl] = size(pic);

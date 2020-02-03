@@ -14,6 +14,7 @@ function main
         grid on
     end
 end
+
 function pt = findZero(x)
     % x is a lower-upper pair guaranteed to have
     % y values of opposite sign

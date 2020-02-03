@@ -1,7 +1,5 @@
 % Breadth-first graph traversal
 function main
-	pause(1)
-	figure
     A = makeGraph
     % Constructs an adjacency matrix
     start = 5;
@@ -32,6 +30,7 @@ function main
     end % while q not empty
     fprintf('\n');
 end
+
 function A = makeGraph
     % edge weights
     cost = [2 2 2 2 2 3 3 3 3 1 2 1 3];
@@ -57,6 +56,7 @@ function A = makeGraph
         10 2];	% H
     A = grAdjacency( node, cost, dir )
 end
+
 function A = grAdjacency( node, cost, dir )
     % compute an adjacency matrix.
     % it should contain the weight from one
@@ -95,10 +95,12 @@ function A = grAdjacency( node, cost, dir )
     end
     A = sparse( ip, jp, tp );
 end
+
 function q = qEnq(q, data)
     % enqueue onto a queue
     q = [q {data}];
 end
+
 function [q ans] = qDeq(q)
     % dequeue
     ans = q{1};

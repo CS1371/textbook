@@ -1,12 +1,13 @@
 %  listing_09_2
 % script using exception processing
-clear; clc
+function main
     triangle([3, 4, 5])
 	try
 	   triangle([3, 6, 5])
 	catch exc
 	      er = getReport(exc)
-	end
+    end
+end
 
 function triangle(side)
 	a = side(1); b = side(2); c = side(3); 

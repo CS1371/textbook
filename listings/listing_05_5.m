@@ -1,6 +1,6 @@
 % listing_05_5
 % Example of a for statement
-clear; clc
+function main
     % Create a vector A with six elements.
     A = [6 12 6 91 13 6] % initial vector
     % The tidiest way to find limits of a collection of numbers
@@ -24,3 +24,4 @@ clear; clc
     % in the Command window:
     % > help fprintf
     fprintf('max(A) is %d\n', theMax);
+end

@@ -1,7 +1,5 @@
 % Code for Dijkstra’s algorithm
 function grDijkstra
-    pause(1)
-    figure
     [A coord] = makeGraph; % call script to make the graph:
     gplot(A, coord, 'ro-')
     hold on
@@ -42,6 +40,7 @@ function grDijkstra
     % If we reach here we never found a path
     D = [];
 end
+
 function showCosts(co, A)
 	n = length(A);
 	for r = 1:n
@@ -56,6 +55,7 @@ function showCosts(co, A)
         end
     end
 end
+
 function [A coord] = makeGraph
     % edge weights
     cost = [24 19 15 19 19 19 27 27 27 70 18 15 31 19 27 27];
@@ -87,6 +87,7 @@ function [A coord] = makeGraph
                 1 7];	% K
     A = grAdjacency( node, cost, dir );
 end
+
 function A = grAdjacency( node, cost, dir )
     % compute an adjacency matrix.
     % it should contain the weight from one
@@ -125,6 +126,7 @@ function A = grAdjacency( node, cost, dir )
     end
     A = sparse( ip, jp, tp );
 end
+
 function pq = pqEnq(pq, item)
     % enqueue in order to a queue
     in = 1;
@@ -138,20 +140,24 @@ function pq = pqEnq(pq, item)
     end
     pq = [pq(1:at-1) {item} pq(at:end)];
 end
+
 function [q ans] = qDeq(q)
     % dequeue
     ans = q{1};
     q = q(2:end);
 end
+
 function ret = Path(nodes, len)
     % Path constructor
     ret.nodes = nodes;
     ret.key = len;
 end
+
 function ret = pthGetLast(apath)
     % Returns number of last node on a path
     ret = apath.nodes(end);
 end
+
 function ans = is_before(a, b)
     acl = class(a);
     ans = false;

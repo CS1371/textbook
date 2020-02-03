@@ -1,10 +1,11 @@
 % listing_05_1
 % if statement example
-clear; clc; close all
+function main
     day(1)
     day(5)
     day(6)
     day(7)
+end
 
 function day(day)
     % The first logical expression determines whether day is 7.

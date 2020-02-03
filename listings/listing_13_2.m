@@ -1,9 +1,7 @@
 % Replacing the gray sky
 function main
-    pause(1)
-    figure
-    v = imread('../Vienna.jpg');
-    w = imread('../Witney.jpg');
+    v = imread('../Text/Vienna.jpg');
+    w = imread('../Text/Witney.jpg');
     image(w)
     figure
     thres = 160;

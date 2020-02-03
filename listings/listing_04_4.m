@@ -1,6 +1,6 @@
 % listing_04_5
 % moving earth
-clear; clc; close all
+function main
     % lay out scenery for road cut
     
     global x
@@ -129,6 +129,7 @@ clear; clc; close all
     surf(x, y+dy, top+dz, img);  % embankment removed
     view(78,16)
     saveas(gcf,'cutting_removed.jpg')
+end
 
 function removeCutSurface
     global x

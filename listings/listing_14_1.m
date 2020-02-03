@@ -10,7 +10,7 @@ function main
     %       - change frequency
     % 2. slicing sounds
     %       - construct "frankly, Bond, I don't give a damn - beam me up"
-    [give, Fs] = audioread('../sp_givdamn2.wav');
+    [give, Fs] = audioread('../Text/sp_givdamn2.wav');
     plot(give)
     figure
     fprintf('read and play a sound\n')
@@ -48,9 +48,9 @@ function main
 	give = give .* 4;
     frankly = give(1:5500);
     damn = give(11500:end);
-    [bond, bFs] = audioread('../sp_bond.wav');
+    [bond, bFs] = audioread('../Text/sp_bond.wav');
     bond = bond(1000:6000);
-    [beam, bmFs] = audioread('../sp_beam.wav');
+    [beam, bmFs] = audioread('../Text/sp_beam.wav');
     beam = beam.*2;  % make beam louder
     speech = [frankly
         zeros(2000, 1)

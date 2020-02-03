@@ -1,6 +1,5 @@
 % listing_02_2
 % Script to compute the spacecraft's velocity
-clear; clc
     % Define general knowledge with meaningful variable names to enable
     % subsequent use of these values without ambiguity.
     cmPerInch = 2.54;	% general knowledge

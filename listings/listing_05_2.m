@@ -1,11 +1,12 @@
 % listing_05_2
 % Function with if statements
-clear; clc
+function main
     letter(92)
     letter(80)
     letter(79.9)
     letter(65)
     letter(21)
+end
 
 function letter(grade)
     % The first logical expression looks for the grade that earns an A.

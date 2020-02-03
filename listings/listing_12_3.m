@@ -1,7 +1,5 @@
 % Rotating a solid cube
 function main
-    pause(1)
-    figure
     xx = [ 0 0 0 0 0;
         -1 -1 1 1 -1;
         -1 -1 1 1 -1;

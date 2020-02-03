@@ -1,6 +1,6 @@
 % Updated world data analysis
 function main
-    worldData = buildData('../World_data.xls');
+    worldData = buildData('../Text/World_data.xls');
     n = 20;
     bestn = findBestn(worldData, n);
     fprintf('best %d countries are:\n', n)
@@ -8,6 +8,7 @@ function main
         fprintf('%s\n', worldData(best).name)
     end
 end
+
 function bestn = findBestn(worldData, n)
     % find the indices of the n best countries
     % according to the criterion in the function fold
@@ -22,6 +23,7 @@ function bestn = findBestn(worldData, n)
     % filter these to keep the best 10
     bestn = order(end-n+1:end);
 end
+
 function ans = fold(st)
     % s1 is the rate of growth of population
     pop = st.pop(~isnan(st.pop));
@@ -35,6 +37,7 @@ function ans = fold(st)
     % the gdp grows than the population
     ans = s2 - s1;
 end
+
 function sl = slope(x, y)
     % Estimate the slope of a curve
     if length(x) == 0 || x(end) == x(1)
@@ -44,6 +47,7 @@ function sl = slope(x, y)
         sl = coef(1);
     end
 end
+
 function worldData = buildData(name)
     % read the spreadsheet into a data array
     % and a text cell array

@@ -3,6 +3,7 @@ function main
     vec = round((rand(1,9)-0.5) .* 100);
     vs = quicksort(vec, 1, length(vec));
 end
+
 function a = quicksort(a, from, to)
     % This function sorts a column array,
     % using the quick sort algorithm
@@ -12,6 +13,7 @@ function a = quicksort(a, from, to)
         a = quicksort(a, p + 1, to);
     end
 end
+
 function [a lower] = partition(a, from, to)
     % This function partitions a vector
     pivot = a(from); i = from - 1; j = to + 1;

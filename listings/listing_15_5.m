@@ -1,8 +1,6 @@
 % Removing the power line from the sky
 function main
-    pause(1)
-    figure
-    p = imread('../Witney.jpg');
+    p = imread('../Text/Witney.jpg');
     [rows, cols, clrs] = size(p);
     x = 1:cols;
     sky = p;

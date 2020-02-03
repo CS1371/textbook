@@ -1,8 +1,5 @@
 % Drawing a Donut
 function main
-clear
-clc
-close all
     % we draw a donut by first creating its cross-section,
     % a circle displaced from the origin of coordinates
     % in the x-z plane

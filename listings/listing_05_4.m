@@ -1,10 +1,11 @@
 % listing_05_4
 % find the days in a month
-clear; clc
+function main
     jan = month_days(1, NaN)
     apr = month_days(4, NaN)
     feb_l = month_days(2, true)
     feb_nl = month_days(2, false)
+end
 
 function days = month_days(month, leap)
     % All tests refer to the value of the variable month.

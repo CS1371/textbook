@@ -1,7 +1,5 @@
 % Prim's Algorithm to compute a MST
 function prims
-	pause(1)
-	figure
     [A coord] = makeGraph
     start = 1;
     gplot(A, coord, 'ro-')
@@ -43,6 +41,7 @@ function prims
     gplot(result, coord, 'gx--')
 	title('MST with Prim''s Algorithm')
 end
+
 function showCosts(co, A)
 	n = length(A);
 	for r = 1:n
@@ -57,6 +56,7 @@ function showCosts(co, A)
         end
     end
 end
+
 function [A coord] = makeGraph
     % edge weights
     cost = [24 19 15 19 19 19 27 27 27 70 18 15 31 19 27 27];
@@ -88,6 +88,7 @@ function [A coord] = makeGraph
                 1 7];	% K
     A = grAdjacency( node, cost, dir );
 end
+
 function A = grAdjacency( node, cost, dir )
     % compute an adjacency matrix.
     % it should contain the weight from one

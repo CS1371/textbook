@@ -2,22 +2,20 @@
 function main
     global note
     global Fs
-	pause(1)
-	figure
-    [Y f] = compute('../instr_violin.wav');
+    [Y f] = compute('../Text/instr_violin.wav');
     subplot(3, 1, 1)
     ne = round(length(f) / 4);
     plot(f(1:ne), Y(1:ne))
     xlabel('frequency(Hz)');
     ylabel('sound energy (relative)');
     title('frequency spectrum of violin')
-    [Y f] = compute('../instr_tpt.wav');
+    [Y f] = compute('../Text/instr_tpt.wav');
     subplot(3, 1, 2)
     plot(f(1:end/4), Y(1:end/4))
     xlabel('frequency(Hz)');
     ylabel('sound energy (relative)');
     title('frequency spectrum of trumpet')
-    [Y f] = compute('../trainwhistle.wav');
+    [Y f] = compute('../Text/trainwhistle.wav');
     subplot(3, 1, 3)
     n = round(length(f)/10);
     plot(f(1:n), Y(1:n))
@@ -26,6 +24,7 @@ function main
     title('frequency spectrum of whistle')
 	play_steps(note)
 end
+
 function [Y, f] = compute( name )
     global note
     global Fs   
@@ -37,7 +36,7 @@ function [Y, f] = compute( name )
     f = (1:N) * Fs / (2*N);
     pause(length(note)./Fs)
 end
-% Listing_14_2  play a tune using half_step count
+
 function play_steps(note)
 	global Fs
     half_note = 2.^(1/12);

@@ -1,7 +1,5 @@
 % Simulating stars
 function main
-    pause(1)
-    figure
     nst = 20; th = 0;
     for ndx = 1:nst
         pos(ndx,:) = rand(1,2)*10;
@@ -22,6 +20,7 @@ function main
         pause(0.1)
     end
 end
+
 function star(pt, sc, v, th)
     % draw a star at pt(1), pt(2),
     % scaled with sc, at angle v*th
@@ -29,6 +28,7 @@ function star(pt, sc, v, th)
     hold on
     triangle(-1, v*th, pt, sc)
 end
+
 function triangle( up, th, pt, sc )
     pts = [-.5	.5	0	-.5;	% x values
         -.289 -.289 .577 -.289]; % y values

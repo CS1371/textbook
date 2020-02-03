@@ -1,7 +1,5 @@
 % Depth-first graph search
 function grDFS
-	pause(1)
-	figure
     [A coord] = makeGraph; % call script to make the graph:
     gplot(A, coord, 'ro-')
     hold on
@@ -37,6 +35,7 @@ function grDFS
     % if we reach here we never found a path
     D = [];
 end
+
 function showCosts(co, A)
 	n = length(A);
 	for r = 1:n
@@ -51,6 +50,7 @@ function showCosts(co, A)
         end
     end
 end
+
 function [A coord] = makeGraph
     % edge weights
     cost = [24 19 15 19 19 19 27 27 27 70 18 15 31 19 27 27];
@@ -82,6 +82,7 @@ function [A coord] = makeGraph
                 1 7];	% K
     A = grAdjacency( node, cost, dir );
 end
+
 function A = grAdjacency( node, cost, dir )
     % compute an adjacency matrix.
     % it should contain the weight from one
@@ -120,10 +121,12 @@ function A = grAdjacency( node, cost, dir )
     end
     A = sparse( ip, jp, tp );
 end
+
 function s = push(s, data)
     % push onto a stack
     s = [s {data}];
 end
+
 function [s ans] = pop(s)
     % pop off a stack
     ans = s{end};
