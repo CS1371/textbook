@@ -1,6 +1,6 @@
 % listing_04_2
 % Script to solve vector problems
-clear; clc; close all
+function main
     % Typical initial values for the problem.
     PA = [0 1 1];
     PB = [1 1 0];
@@ -36,6 +36,7 @@ clear; clc; close all
     my_quiv(P, mom, 'c:', 'momentum', true)   % P-mom
     axis([-1 5 -1 4 -6 3])
     grid off
+end
     
 function my_quiv(A, B, ln, txt, fwd)
     fprintf('[%d %d %d] -> [%d %d %d] %s %s\n', ...

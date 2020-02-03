@@ -3,6 +3,7 @@ function main
     vec = round((rand(1,9)-0.5) .* 100);
     vs = mergesort(vec);
 end
+
 function b = mergesort(a)
     % This function sorts a column array,
     % using the merge sort algorithm
@@ -14,6 +15,7 @@ function b = mergesort(a)
         b = merge(first, second);
     end
 end
+
 function b = merge(first, second)
     %	Merges two sorted arrays
     i1 = 1; i2 = 1; out = 1;

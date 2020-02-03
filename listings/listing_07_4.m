@@ -1,6 +1,6 @@
 %  listing_07_4
 % Building a structure array using struct(...)
-clear; clc
+function main
     genres = {'Blues', 'Classical', 'Country' };
     artists = {'Clapton, Eric', 'Bocelli, Andrea', 'Twain, Shania' };
     years = { 2004, 2017, 1984 };
@@ -11,4 +11,5 @@ clear; clc
         'year', years, ...
         'stars', stars, ...
         'price', prices)
+end
 

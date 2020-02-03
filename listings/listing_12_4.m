@@ -1,7 +1,5 @@
 % Plotting line intersections
 function main
-    pause(1)
-    figure
     % equations are y = m1 x + c1
     % y = m2 x + c2
     % in matrix form:

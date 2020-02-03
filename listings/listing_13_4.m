@@ -1,8 +1,6 @@
 % Rotating a globe
 function main
-	pause(1)
-    figure
-    WM = imread('../earthmap_s.jpg');
+    WM = imread('../Text/earthmap_s.jpg');
     WM(:,end+1,:) = WM(:,1,:);
     snow = mean( mean(WM(1,:,:)));
     [WMr, WMc, clr] = size(WM);

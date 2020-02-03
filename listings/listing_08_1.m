@@ -1,7 +1,8 @@
 % listing_08_1
 % Script to list a text file
-clear; clc
-    list_text('../mercy.txt');
+function main
+    list_text('../Text/mercy.txt');
+end
 
 function list_text(fn);
     fh = fopen( fn, 'r' );

@@ -3,6 +3,7 @@ function main
     vec = round((rand(1,7)-0.5) .* 100);
     vs = insertionsort(vec);
 end
+
 function b = insertionsort(a)
     % This function sorts a column vector,
     % using the insertion sort algorithm
@@ -12,6 +13,7 @@ function b = insertionsort(a)
         i = i + 1;
     end
 end
+
 function a = insert(a, v)
     % insert the value v into column vector a
     i = 1; sz = length(a); done = false;

@@ -1,6 +1,6 @@
 % listing_04_3
 % Array manipulation script
-clear; clc
+function main
     % Create a 2 X 4 array A.
     A = [2 5 7 3
         1 3 4 2]
@@ -42,3 +42,4 @@ clear; clc
     % As illustrated in the lines, it is not necessary to use find(...)
     % before indexing an array. However, this command does work.
     A(small_index) = A(small_index) + 100
+end

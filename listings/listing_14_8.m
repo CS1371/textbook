@@ -143,6 +143,7 @@ function play( score, instr, rate)
 	pause(length(music) ./ Fs)
     audiowrite([inputname(1) '_' inputname(2) '.wav'], music, Fs )
 end
+
 function [pitch, muted] = getPitch(note)
 % Get the pitch of a note in ascii form
     half = 2.^(1/12);
@@ -183,6 +184,7 @@ function [pitch, muted] = getPitch(note)
     power = power + 12 * diff;
     pitch = half .^ power;
 end
+
 function sum = overall(score)
     sum = 0;
     N = length(score);

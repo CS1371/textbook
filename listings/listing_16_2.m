@@ -4,6 +4,7 @@ function main
     b = round((rand(1,7)-0.5) .* 100);
     bubblesort();
 end
+
 function bubblesort()
     % This function sorts the column array b in place,
     % using the bubble sort algorithm

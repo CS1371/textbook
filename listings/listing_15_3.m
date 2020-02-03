@@ -1,7 +1,5 @@
 % Eyeball linear estimation
 function main
-    pause(1)
-    figure
     x = 0:5;
     y = [0 20 60 68 77 110];
     y2 = 20 * x;

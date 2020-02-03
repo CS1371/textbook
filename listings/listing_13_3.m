@@ -1,7 +1,8 @@
 % Making a kaleidoscope
 function main
-    kaleidoscope('../tree.jpg')
+    kaleidoscope('../Text/tree.jpg')
 end
+
 function kaleidoscope(name)
     % Making a kaleidoscope
     % usage: kaleidoscope(file_name)
@@ -20,6 +21,7 @@ function kaleidoscope(name)
     img = buildIt(buildIt(pic));
     subplot(1,2,2); imshow(img)
 end
+
 function img = buildIt(img)
     % helper function to do the manipulations
     %	top left	top right

@@ -1,8 +1,9 @@
 % listing_09_4
 % Recursive palindrome detector
-clear; clc
+function main
     good = isPal('Can I attain a C?')
     bad = ~isPal('Can I attain an A?')
+end
 
 function res = isPal(str)
     str = lower(str);     % remove all upper case

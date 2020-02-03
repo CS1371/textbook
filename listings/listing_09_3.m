@@ -1,11 +1,12 @@
 % listing_09_3
 % Wrapper implementation for the factorial function
-clear; clc
+function main
     r1 = fact(10);
     try, r2 = fact(-3);
     catch exc, er = getReport(exc),	end
     try, r2 = fact(-3);
     catch exc, er = getReport(exc),	end
+end
 
 function result = fact(N)
     % computation of N!
@@ -15,6 +16,7 @@ function result = fact(N)
         result = r_fact(N);
     end
 end
+
 function result = r_fact(N)
     % recursive computation of N!
     fprintf('fact( %d )\n', N);

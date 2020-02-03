@@ -666,33 +666,33 @@ Your browser does not support the video tag.
  Two new features introduced with MATLAB 7.6 (R2008a) allow you to interact with the data presented in a plot. Brushing allows you to select portions of the data presented in a plot and make changes to the values presented. Linking allows you to connect the plotted data to the underlying data source, so that when you make changes to the plotted data, these changes are reflected in the data source. Whereas these tools allow the user to change the appearance of data presentations interactively, a careful user would return to the original tools that created the plots and explicitly insert the logic that changes the appearance of the results. This provides a traceable set of programs that show exactly how the data were generated.  
 <h2><a name="11_6">11.6  Engineering Example—Visualizing Geographic Data</a></h2>
 
-You have been given two files of data: atlanta.txt, which presents the streets of Atlanta in graphical form, and ttimes.txt, which gives the travel times between Atlanta suburbs and the city center. You have been asked to present these data sets in a manner that will help to visualize and validate the data.
+You have been given two files of data: "atlanta.txt", which presents the streets of Atlanta in graphical form, and "ttimes.txt", which gives the travel times between Atlanta suburbs and the city center. You have been asked to present these data sets in a manner that will help to visualize and validate the data.
 
 <h3>11.6.1	Analyzing the Data</h3>
 First, we proceed to determine the nature of the data by opening the files and examining their format and content.<br>
 
-1.	Determine the file format: the first step is to open the data files in a plain text editor. The format appears to be consistent with that of a text file delimited by tab characters. Since there are no strings in the files, it should be suitable to be read using the built-in <code>dlmread(...)</code> function. Of course, the down side of being able to read the files easily is that we have no idea what they contain, and we need to spend some quality time figuring that out.
+1.	<b>Determine the file format</b>: the first step is to open the data files in a plain text editor. The format appears to be consistent with that of a text file delimited by tab characters. Since there are no strings in the files, it should be suitable to be read using the built-in <code>dlmread(...)</code> function. Of course, the down side of being able to read the files easily is that we have no idea what they contain, and we need to spend some quality time figuring that out.
 <center><figure style=margin-left: 10px; margin_bottom: 5px">
 <p><img alt="image" height="100" src="Table_11_1.jpg" width="600" /></p></center>
 <figcaption><b><center>Table 11.1: part of the file "atlanta.txt"</center></b></figcaption></figure></center>
 <br>
-2.	Discern the street map file content: Table 11.1 shows the first few lines of the file "atlanta.txt" simplified by omitting certain irrelevant columns. The numbers in columns 2-5 are pairs, the first of the pair being a large negative number, and the second a smaller positive number. Assuming that each row of this file is a street segment, these could be the x-y coordinates of the ends of a line. A little thought confirms this guess when we realize that the latitude of Atlanta is around −84° relative to the Greenwich meridian, and its longitude is around 33° north of the equator — clearly, the values in these columns are 1,000,000 times the latitude and longitude of points within the city, probably each end of street segments. Column 6 contains numbers mostly in the range 1–6, which could indicate the type of street. We could explore this idea by coloring each line according to that value.<br>
+2.	<b>Discern the street map file content</b>: Table 11.1 shows the first few lines of the file &quot;atlanta.txt&quot; simplified by omitting certain irrelevant columns. The numbers in columns 2-5 are pairs, the first of the pair being a large negative number, and the second a smaller positive number. Assuming that each row of this file is a street segment, these could be the x-y coordinates of the ends of a line. A little thought confirms this guess when we realize that the latitude of Atlanta is around -84&deg; relative to the Greenwich meridian, and its longitude is around 33&deg; north of the equator - clearly, the values in these columns are 1,000,000 times the latitude and longitude of points within the city, probably each end of street segments. Column 6 contains numbers mostly in the range 1-6, which could indicate the type of street. We could explore this idea by coloring each line according to that value.<br>
 <center><figure style=margin-left: 10px; margin_bottom: 5px">
 <p><img alt="image" height="100" src="Table_11_2.jpg" width="350" /></p></center>
 <figcaption><b><center>Table 11.2: part of the file "ttimes.txt"</center></b></figcaption></figure></center>
 <br>
-3.	Discern the travel time file content: Table 11.2 shows the first few lines of the file ttimes.txt simplified by omitting certain irrelevant columns. The same latitude/longitude values occur in columns 4 and 5, but they are not repeated, suggesting that the data in this file are in a different form. Examining the first two columns, the numbers in column 2 cycle repeatedly from 1 to 75, with column 1 counting the number of cycles up to 75. Furthermore, the values in column 5 are the same whenever column 1 is the same, and the values in column 4 are the same whenever the value in column 2 matches. This seems to be much like the plaid that results from a meshgrid(...) function call. The values in column 6 then become evident — they would be the z values of the plaid, and it seems reasonable to assume that they represent the travel time in minutes.<br>
+3.	<b>Discern the travel time file content</b>: Table 11.2 shows the first few lines of the file "ttimes.txt" simplified by omitting certain irrelevant columns. The same latitude/longitude values occur in columns 4 and 5, but they are not repeated, suggesting that the data in this file are in a different form. Examining the first two columns, the numbers in column 2 cycle repeatedly from 1 to 75, with column 1 counting the number of cycles up to 75. Furthermore, the values in column 5 are the same whenever column 1 is the same, and the values in column 4 are the same whenever the value in column 2 matches. This seems to be much like the plaid that results from a meshgrid(...) function call. The values in column 6 then become evident — they would be the z values of the plaid, and it seems reasonable to assume that they represent the travel time in minutes.<br>
 
 <h3>11.6.2	Displaying the Data</h3>
 With this much understanding of the data sources, we proceed to solve the problem of presenting the data. The script shown in Listing 11.13 shows the code used to visualize these data files and Figure 11.18 shows the resulting plot.
-<center><h3></h3></center>
-<h3>Listing 11.13: travel times in Atlanta</h3><code><strong>
- <center><figure style="float: right; margin-left: 10px; margin_bottom: 5px">
- <figcaption><b><center>Figure 11.18: travel times in Atlanta</center></b></figcaption>
+ <center><figure style="margin-left: 10px; margin_bottom: 5px">
 <p><video width="560" height="420" controls>
 <source src="atlanta.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video></p></center>
+<center><h3>Figure 11.18: travel times in Atlanta</h3></center>
+
+<h3>Listing 11.13: travel times in Atlanta</h3><code><strong>
 <font color="#0000ff">function</font> main<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% draw the streets</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;raw = dlmread(<font color="#c000c0">'atlanta.txt'</font>);<br>
@@ -728,20 +728,17 @@ Your browser does not support the video tag.
 &nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">30</font>, <font color="#ff8000">45</font>)<br>
 <font color="#0000ff">end</font><br>
 </strong></code>
- As a credibility check, play the video clip to see the plot rotated to look straight down on the map. The travel time surface shows “valleys” of low travel times that follow the paths of the major expressways through the city.
+ As a credibility check, play the video clip to see the plot rotated to look straight down on the map. The travel time surface shows &quot;valleys&quot; of low travel times that follow the paths of the major expressways through the city.
 
 <h2>Chapter Summary</h2>
 
 This chapter presented the principles and practice of plotting:<ul>
-<li>Basic 2-D line plots are accomplished by using plot(x,y), where x is the independent variable and y the dependent variable
-<li>2-D parametric plots are accomplished by using plot(x,y), where both x and y are dependent on another independent variable
-<li>3-D line and parametric plots are accomplished by using plot3(x,y,z)
-<li>Basic 3-D surface plots are accomplished by building a plaid using
-[xx yy] = meshgrid(x,y), computing the zz layer as a function of
-xx and yy, and then plotting the surface using mesh(xx, yy, zz) or
-surf(xx, yy, zz)
-<li>Parametric surface plots, like parametric line plots, are achieved by building the plaid with two independent variables and making xx, yy, and zz functions of those independent variables
-<li>Bodies of rotation are a special case of parametric surface plots where one of the independent variables is an angle with values between 0 and 2p.
+<li>Basic 2-D line plots are accomplished by using <code>plot(x,y)</code>, where <code>x</code> is the independent variable and <code>y</code> the dependent variable
+<li>2-D parametric plots are accomplished by using <code>plot(x,y)</code>, where both <code>x</code> and <code>y</code> are dependent on another independent variable
+<li>3-D line and parametric plots are accomplished by using <code>plot3(x,y,z)</code>
+<li>Basic 3-D surface plots are accomplished by building a plaid using <code>[xx yy] = meshgrid(x,y)</code>, computing the <code>zz</code> layer as a function of <code>xx</code> and <code>yy</code>, and then plotting the surface using <code>mesh(xx, yy, zz)</code> or <code>surf(xx, yy, zz)</code>
+<li>Parametric surface plots, like parametric line plots, are achieved by building the plaid with two independent variables and making <code>xx</code>, <code>yy</code>, and <code>zz</code> functions of those independent variables
+<li>Bodies of rotation are a special case of parametric surface plots where one of the independent variables is an angle with values between <code>0</code> and <code>2&pi;</code>.
 </ul>
 
 

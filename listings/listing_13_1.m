@@ -1,8 +1,6 @@
 % Exploring the sky situation
 function main
-    pause(1)
-    figure
-    v = imread('../Vienna.jpg');
+    v = imread('../Text/Vienna.jpg');
     image(v)
     figure
     row = 400;

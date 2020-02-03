@@ -1,7 +1,8 @@
 % listing_03_2
 % test the cylinder function with multiple results
-clear; clc
+function main
     [a v] = my_cylinder(1, 6)
+end
 
 function [area, volume] = my_cylinder(height, radius)
     % function to compute the area and volume of a cylinder

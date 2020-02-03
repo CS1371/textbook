@@ -1,6 +1,6 @@
 % listing_05_8
 % Loop-and-a-half example
-clear; clc
+function main
     % Initialize the radius value to allow the loop to be entered
     % the first time.
     R = 1;
@@ -27,3 +27,4 @@ clear; clc
                 area, circum);
         end
     end
+end

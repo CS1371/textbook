@@ -1,7 +1,8 @@
 % listing_08_3
 % Script to copy a text file
-clear; clc
-    copy_text('../mercy.txt','../mercy_copy.txt')
+function main
+    copy_text('../Text/mercy.txt','../Text/mercy_copy.txt')
+end
 
 function copy_text(ifn, ofn)
     ih = fopen( ifn, 'r' );

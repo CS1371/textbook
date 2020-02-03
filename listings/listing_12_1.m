@@ -1,9 +1,7 @@
 % Script to rotate a line
 function main
-    pause(1)
-    figure
-    pts =	[3, 10
-        1, 3];
+    pts = [3, 10
+           1, 3];
     plot(pts(1,:), pts(2,:))
     axis ([0 10 0 10]), axis equal
     hold on
