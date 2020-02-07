@@ -1,49 +1,33 @@
-% Rotating a solid cube
-function main
-    xx = [ 0 0 0 0 0;
-        -1 -1 1 1 -1;
-        -1 -1 1 1 -1;
-        0 0 0 0 0]
-    yy = [ 0 0 0 0 0;
-        -1 1 1 -1 -1;
-        -1 1 1 -1 -1;
-        0 0 0 0 0]
-    zz = [ 1 1 1 1 1;
-        1 1 1 1 1;
-        -1 -1 -1 -1 -1;
-        -1 -1 -1 -1 -1]
-    [r c] = size(xx);
-    ln = r*c; % length of reshaped vector
-    th = 0; ph = 0; ps = 0;
-    dth = 0.05; dph = 0.03; dps = 0.01;
-    go = true
-    while go
-        surf(xx+4, yy, zz)
-        shading interp; colormap autumn
-        hold on; alpha(0.5)
-        Rz = [cos(th) -sin(th)  0
-            sin(th) cos(th) 0
-            0	0	1];
-        Ry = [cos(ph)	0	-sin(ph)
-            0	1	0
-            sin(ph)	0 cos(ph)];
-        Rx = [ 1	0	0
-            0	cos(ps) -sin(ps)
-            0	sin(ps) cos(ps)];
-        P(1,:) = reshape(xx, 1, ln);
-        P(2,:) = reshape(yy, 1, ln);
-        P(3,:) = reshape(zz, 1, ln);
-        Q = Rx*Ry*Rz*P;
-        qx = reshape(Q(1,:), r, c);
-        qy = reshape(Q(2,:), r, c);
-        qz = reshape(Q(3,:), r, c);
-        surf(qx, qy, qz)
-        shading interp
-        axis equal; axis off; hold off
-        axis([-2 6 -2 2 -2 2])
-        lightangle(40, 65); alpha(0.5)
-        th = th+dth; ph = ph+dph; ps = ps+dps;
-        go = ps < pi/4
-        pause(0.03)
-    end
+function star(pt, sc, v, th)
+    % Draws one star at location [pt(1), pt(2)] with scale sc, rotation
+    % speed v, and angle th
+    
+    % Invoke the helper function triangle(...) to draw two rotating
+    % triangles rotating in opposite directions
+    triangle(1, v*th, pt, sc)
+    hold on
+    
+    % Function to draw one triangle with the following parameters: up, with
+    % values 1 for upright and -1 for point down; th, the scaled rotation
+    % angle; and pt and sc, which are passed directly through the star(...)
+    % function
+    triangle(-1, v*th, pt, sc)
+end
+
+function triangle( up, th, pt, sc )
+    % Coordinates of an equilateral triangle
+    pts = [-.5	.5	0	-.5;	% x values
+        -.289 -.289 .577 -.289]; % y values
+    
+    % Computes the rotation matrix and applies the scaling factor
+    A = sc * [cos(th), -sin(th); sin(th), cos(th)];
+    
+    % Rotates and scales the points of the triangle
+    thePts = A * pts;
+    
+    % Call the function fill(...) to fill the triangle, offsetting the x
+    % and y coordinates by the original location of the triangle, and
+    % scaling y by the up multiplier to invert the triangle if necessary.
+    fill( thePts(1,:) + pt(1), ...
+        up*thePts(2,:) + pt(2), 1);
 end
