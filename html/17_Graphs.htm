@@ -323,6 +323,9 @@ For the following three algorithms, we will see two artifacts: <ul>
 <li> the contents of the collection at the end of each of the algorithms in the simple case.  
 </ul>
 A serious student will want to trace through the template in Listing 17.3 referring to the animations in order to construct the contents of each collection.
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="170" src="DFS.jpg" width="140" /></p></center>
+<figcaption><b><center>Fig 17.8: Stack after the first DFS search </center></b></figcaption></figure>
 
 <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
 <p><video width="560" height="350" controls>
@@ -332,11 +335,10 @@ Your browser does not support the video tag.
 <figcaption><b><center>Fig 17.7: Animation of the DFS Algorithm</center></b></figcaption></figure>
 <h3><a name="17_6_1">17.6.1	Depth-First Search (DFS)</a></h3>
 The depth-first path search algorithm uses a stack for the <code>&lt;collection&gt;</code> and <code>&lt;push(...)&gt;</code> and <code>&lt;pop(...)&gt;</code> as the functions to add and remove a path from the stack. As we observe the behavior of the DFS algorithm, it is clearly the fastest of the three algorithms, but makes no claim at all about the efficiency of the resulting path. As long as there is any connectivity between the starting and ending nodes, this will find a path. <br>
-<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
-<p><img alt="image" height="170" src="DFS.jpg" width="140" /></p></center>
-<figcaption><b><center>Fig 17.8: Stack after the first DFS search </center></b></figcaption></figure>
 As you study the small graph, you would be right to "ask why bother with the stack at all?" since at every cycle through the template, the algorithm always takes the last element pushed onto the stack. As you will see on a careful study of the DFS algorithm on the larger graph, the stack is there to resolve the problem of cul-de-sacs. As in real streets that have no outlet, a cul-de-sac can be a physical constraint. However, there can also be logical cul-de-sacs where a street closes a loop and has no other outlet. The rule to eliminate cycles will also see this geometry as a virtual cul-de-sac.  In either case, the paths on the stack can be popped off until the algorithm reaches a node with an alternative path to proceed. The logic of template in Listing 17.3 will exit from the while loop if there are no more feasible paths on the stack.
-<br><br><br><br><br><br>
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="170" src="BFS.jpg" width="140" /></p></center>
+<figcaption><b><center>Fig 17.10: Queue after the first BFS search </center></b></figcaption></figure>
 <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
 <p><video width="560" height="350" controls>
 <source src="BFS.mp4" type="video/mp4">
@@ -346,11 +348,17 @@ Your browser does not support the video tag.
 
 <h3><a name="17_6_2">17.6.2	Breadth-First Search (BFS)</a></h3>
  Frequently, we actually need the path with the smallest number of nodes between the starting and ending nodes. For example, because changing trains involves walking and waiting, the best path on an urban transit system map is that with the fewest changes, even if the resulting path is longer. To search for the path with the least nodes, we need an algorithm that performs a Breadth-First Search (BFS) on a graph. We will use the template in Listing 17.3 where the <code>&lt;collection&gt;</code> is a <code>&lt;queue&gt;</code>, the <code>&lt;add&gt;</code> method is <code>&lt;enqueue(...)&gt;</code> and the &lt;remove(...)&gt; method is <code>&lt;dequeue(...)&gt;</code>. 
- <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
-<p><img alt="image" height="170" src="BFS.jpg" width="140" /></p></center>
-<figcaption><b><center>Fig 17.10: Queue after the first BFS search </center></b></figcaption></figure>
 As you observe the animations in Figure 17.9, especially the larger graph, you will see a characteristic rotating search mimicking the ripples on a pond when a pebble is dropped in. This behavior is caused by using the <code>&lt;queue(...)&gt;</code> and will result in the path with the least number of nodes although it may not be the shortest one.  In fact, on the small graph animation, while there is a path with lower cost that uses one more node, the BFS algorithm can't find it. Figure 17.9 shows animations of the same two problems using the BFS algorithm - a better approach in that it computes the path with the least number of nodes, but does not guarantee the best cost.  In fact, neither DFS nor BFS take cost into account, but merely use it as an observer.  Figure 17.10 shows to state of the queue at the end of the first animation.
  <br><br>
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="600" src="Opt_p_q.jpg" width="250" /></p></center>
+<figcaption><b><center>Fig 17.12: Priority Queue after the first search </center></b></figcaption></figure>
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><video width="560" height="350" controls>
+<source src="Optimal.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></p></center>
+<figcaption><b><center>Fig 17.11: Animation of Dijkstra's Algorithm</center></b></figcaption></figure>
 <h3><a name="17_6_3">17.6.3	Dijkstra’s Algorithm</a></h3>
  Although the minimal number of nodes is sometimes the right answer, frequently there is a path that uses more nodes but has a smaller overall cost. This is evident from a quick glance at Figure 17.5: the path 1-0-5-6-7 has a lower cost than the path 1-0-4-7 found by the BFS algorithm, which actually ignores the edge weights. Many algorithms exist for finding the optimal path through a graph. Here we illustrate the algorithm attributed to the Dutch computer scientist Dr. Edsger Dijkstra. Perhaps it is not the most efficient algorithm; but for our purposes, this approach has the virtue of being a minor extension to the while loop algorithm described in Listing 17.3.  The major differences arise from the use of a priority queue in place of the normal queue used in the BFS algorithm. <ul>
  <li> As previously noted, priority queues differ from basic queues only to the extent that the <code>&lt;enqueue(...)&gt;</code> method puts the data in order, rather than at the tail of the queue. The ordering criterion required by the algorithm is to place the paths in increasing order of path cost. While we have not explicitly dealt with the Big O of these algorithms, it is clear in the micro sense that inserting at the end of a queue is O(1) while inserting in order in a priority queue is O(N) where N is the worst case of queue length. 
@@ -358,44 +366,66 @@ As you observe the animations in Figure 17.9, especially the larger graph, you w
 <li> we have to change the exit strategy in the template shown in Listing 17.2.  For DFS and BFS, once a path has been added to their collections, there is no possibility of a "better" path being inserted ahead of that result. Hence, it is fine to perform the exit test when inserting each child node.  However, this is not the case for the Dijkstra algorithm; better paths can be inserted before any of the paths entered. In a formal sense, it is safe to perform the exit test when a path is dequeued. However, when preparing the somewhat intimidating view of the priority view when the algorithm completed, we shortened that queue by realizing that the algorithm may be stopped when a path of cost N to the end is enqueued if it is logically impossible for the next step on any of the surviving shorter paths to reach the ending node with a cost less than N.
 </ul> 
 Figures 17.11 and 17.12 show the animations for the same two problems and the resulting priority queue for the smaller case. While this algorithm does compute the path with the lowest cost, it does so at considerable extra computation cost, as is evident from the run time of the second animation, the increased Big O if the enqueue method and the enormous amount of extra stuff packed into the priority queue in Figure 17.12.
+<br><br>
+<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><video width="560" height="350" controls>
+<source src="Greedy.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></p></center>
+<figcaption><b><center>Fig 17.13: Animation of a Greedy Algorithm</center></b></figcaption></figure>
 <h3><a name="17_6_4">17.6.4	An Approximation Algorithm</a></h3>
- When a graph is very large, the computation complexity of the exact solutions (roughly O(N2)) becomes unmanageable. The A* algorithm is one of many popular approximation techniques that will produce a solution, but is not guaranteed to produce the best, and its computational complexity is roughly O(N). This algorithm is quite simple:  1.	Beginning at the starting node, it evaluates the result of traveling along each of the feasible edges to an adjacent node (eliminating cyclic paths). The evaluation takes the form of summing the cost of that edge and an estimate of the cost from that node to the destination. On a street map, for example, the estimated cost of each step would be the length of the edge and the straight-line distance from the new node to the destination. 2.	It selects the step with the least cost, adds the node reached to the path, and repeats step 1 until the destination is reached. 3.	Back-tracking is sometimes necessary if a node is reached from which there are no feasible paths, such as driving into a dead end street. 4.	Complete failure is also possible, as it is for the other algorithms, if no physical path exists between the origin and destination nodes.  Listing 17.14 shows the code that implements a greedy algorithm. Notice that some additional information is necessary to effectively compute the estimated cost from a node to the destination. In our example, we can use the location of each node, but in general, that location may not be readily available.  In Listing 17.14:  Lines 2 and 3: We will maintain two lists—the current path and the visited list indicating all the nodes that have been visited. This provides for the case when back-tracking is necessary to avoid revisiting the dead end. Lines 4–29: Continue until the target node is reached.  Lines 5 and 6: Find the nodes that can be reached from the current node. Lines 7 and 8: Initialize the storage for the best next step. Lines 9–19: Iterate across all possibilities. Line 10: Only considers nodes not on the visited list. Lines 11–13: The cost of this step is the sum of the actual cost of one step and the estimate of the remaining cost given in this case by the distance between the nodes (invoking the helper function at lines 35–39). Lines 14–17: Check for improvement in the best cost. Lines 20 and 21: Check for a dead end. Lines 22 and 23: Check for total failure—we have backed up beyond the starting node. Lines 26 and 27: Add a successful node to the current path (from which it might later be remove by backing up) and the visited nodes from which it is never removed. Lines 30–33: Prepare the results as a sparse matrix for plotting. Lines 35–39: Helper function calculating the distance between the specified points. The A* path from A to H is shown in Figure 17.9. Note that in this simple case, it found the same path as the BFS, but that is not necessarily the case in a more complex test.  
+As we progressed from DFS to BFS to Dijkstra's algorithm, the answers became more precise, but the computational cost was increasing.  Even for a really small proportion of the streets in the Atlanta metropolitan area, the solution became unpleasantly slow. Yet, the Satellite Navigation system on any car  can compute the route from somewhere in the Atlanta, Georgia area to the suburbs of Los Angeles, California in a second or less. To understand how this can work, we need to look at a fundamental change in the path computation algorithm and then, in Section 17.6.5 examine some additions to that algorithm to improve the efficiency and remove some occasional strange behavior. <br>
+First, we change the fundamental algorithm - we will give up the desire for an exact solution and settle for a strategy that gives us a good enough answer most of the time.  There are many such algorithms that are collectively referred to as "Greedy" algorithms. A greedy algorithm will produce a solution as long as the graph has sufficient continuity, but is not guaranteed to produce the best. In addition to the cost of each edge, it also requires that each node be aware of its geographic location. Figure 17.13 shows the usual animations using a crude greedy algorithm.  Don't blink - you might miss it all.
+The algorithm is quite simple:
+<ol>
+<li>Beginning at the starting node, it evaluates the result of traveling along each of the feasible edges to a child node eliminating cyclic paths. The evaluation takes the form of summing the cost of that edge and an estimate of the cost from that node to the destination. On a street map, for example, the estimated cost of each step would be the length of the edge and the straight-line distance from the new node to the destination.
+<br><br><br><br>
+ <figure style="float: right; margin-left: 10px; margin_bottom: 5px">
+<p><img alt="image" height="300" src="greedy.jpg" width="350" /></p></center>
+<figcaption><b><center>Fig 17.13: greedy algorithm at work </center></b></figcaption></figure>
+<li>It selects the step with the least cost, adds the node reached to the path, and repeats step 1 until the destination is reached, only back-tracking when it hits a physical or logical cul-de-sac.
+<li>Back-tracking is sometimes necessary if a node is reached from which there are no feasible paths, such as driving into a physical or logical cul-de-sac.
+<li>Complete failure is possible, as it is for the other algorithms, if no physical path exists between the origin and destination nodes.
+<li> it is also possible to produce a really silly answer. For example, consider the local street situation shown in Figure 17.13. This is a caricature of my first experiment on the first car I bought that had GPS. Suppose I were to ask for a route from my home to some destination to the South. The path would start with A - D, and it would try and reject B and C when they reached their respective cul-de-sacs. To choose between the remaining children E and J, it would choose E because with any destination to the South, D - E plus E to the destination is shorter. But what about a destination to the North? D - J is then better than D - E, so on my first test of my new Nav system, the stupid thing wants me to go around the loop D - J - K - L - F ...! 
+</ol> 
+
 <h3><a name="17_6_5">17.6.5	Serious Path Finding Algorithms</a></h3>
-We have seen earlier that theoretical algorithms are OK for small problems, but for commercial algorithms that process large quantities of data, much care must be taken to ensure that the algorithm covers the nasty cases that make algorithms look foolish.
+We have seen earlier that theoretical algorithms are OK for small problems, but for commercial algorithms that process large quantities of data, much care must be taken to ensure that the algorithm is fast enough and covers the nasty cases that make algorithms look foolish. <ul>
+<li><b>"Layering" the problem</b>: Returning to the Sat Nav problem of finding a path from a house in Atlanta to a house in Los Angeles, if you were personally planning that route, you would not need to consider all the surface streets across the country. Rather, you would probably use a greedy algorithm to compute the route from the starting place to the nearest expressway on ramp, and from the destination to the nearest off ramp. The remains of the trip would be taken care of with a greedy algorithm on expressways only from the selected on ramp to the selected off ramp, and then stitch the three paths together.
+<li>
+<b>Informed Search</b>: A number of researchers have enhanced the basic greedy algorithm to avoid the silly solutions.  A* is one such algorithm. It uses heuristics to maintain a small number of competing paths until they either became to costly or merged to a point where the best can be selected. One aspect of the algorithm design is choosing how many paths to maintain. This becomes a trade-off between computational speed and the need to avoid ridiculous behavior.  A normal greedy algorithm is the fast end of that spectrum and algorithms like Dijkstra's is the slow end.
+</ul> 
 <h2><a name="17_7">17.7	Engineering Applications</a></h2>
  Many practical engineering problems can be characterized as graph search problems.  
 <h3><a name="17_7_1">17.7.1	Simple Applications</a></h3>
 MSTs are used by utility companies to find the least amount of cable that must be used to wire a subdivision.  Approximate path finding is used, for example, in navigation systems that use GPS to find the current position of the vehicle and an approximate, greedy algorithm to determine the route to a destination.  Exact path finding is used to optimize the flight profile of commercial aircraft outside FAA-managed air space and can save as much as 10% of the fuel burned on every flight.  
 <h3><a name="17_7_2">17.7.2	Complex Extensions</a></h3>
-In addition to the obvious examples above, consider these examples:
+In addition to the obvious examples above, consider these examples:<ul>
 
-■	designing printed circuit boards is a complex extension of path finding
-■	stresses in a redundant structure like an aircraft wing seek a path that is in some sense optimal, and
-■	the “traveling salesperson problem” is an unpleasant extension of path finding in which the objective is to find the shorted linear path that connects all of the nodes of a graph visiting each exactly once. For example, designing routes for garbage collection or school buses.
+<li>designing printed circuit boards is a complex extension of path finding
+<li>stresses in a redundant structure like an aircraft wing seek a path that is in some sense optimal, and
+<li>the 'traveling salesperson problem" is an unpleasant extension of path finding in which the objective is to find the shorted linear path that connects all of the nodes of a graph visiting each exactly once. For example, designing routes for garbage collection or school buses.
+</ul>
+Each of these belongs to a large class of problems called N-P Complete problems, a continued topic of research in many industrial engineering communities.
+<h2>Chapter Summary</h2>
 
-Each of these belongs to a large class of problems called N-P Complete problems, a continued topic of research in many communities.
-
-
-
-
-Chapter Summary
-
-This chapter demonstrated effective algorithms for finding good paths through a graph, and included the following:
-■	How to construct and use queues and priority queues as the underlying mechanism for graph traversal
-■	The basic use of an adjacency matrix for defining a graph
-■	Prim’s algorithm for finding the minimum spanning tree of a graph
-■	Breadth-first and Dijkstra’s algorithms for finding exact paths
+This chapter demonstrated effective algorithms for finding good paths through a graph, and included the following:<ul>
+<li>How to construct and use queues and priority queues as the underlying mechanism for graph traversal
+<li>Prim’s algorithm for finding the minimum spanning tree of a graph
+<li>Depth-first, Breadth-first and Dijkstra’s algorithms for finding exact paths
 through a graph
-■	A greedy algorithm for finding approximate paths that are “good
-enough”
+<li>A greedy algorithm for finding approximate paths that are "goo enough."
 
 
-Programming Project
+<h2>Programming Project</h2>
 
-We would like to validate the assertion that the London Underground is designed to have at most two train changes between any pair of stations. Download the underground map from http://content.tfl.gov.uk/standard-tube-map.pdf. Then, using the methodology of Section 17.2.3, construct a graph representing the major routes in that system. You will not need all the stations identified for this exercise—only one station per track segment between transfer stations.
-a.	Write a function that will determine the number of train changes to travel between any pair of stations using a breadth-first search to minimize the number of changes.
-b.	Iterate across every pair of stations and find the station pair with the maximum number of train changes.
-Then, for comparison, go to http://metromap.fr/en for the equivalent map of thre Paris metro.  
+Suppose that we would like to validate the assertion that the London Underground is designed to have at most two train changes between any pair of stations. <ul>
+<li>Download the underground map from http://content.tfl.gov.uk/standard-tube-map.pdf. 
+<li>Then, construct a graph representing the major routes in that system. You will not need all the stations identified for this exercise - only one station per track segment between transfer stations.
+<li>Write some code that will determine the number of train changes to travel between any pair of stations using a breadth-first search to minimize the number of changes.
+<li>Iterate across every pair of stations and find the station pair with the maximum number of train changes.
+<li>Then, for comparison, go to http://metromap.fr/en for the equivalent map of the Paris metro. 
+</ul> 
 
 
 <table align="center"> 
