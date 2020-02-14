@@ -1,73 +1,66 @@
-% Plotting the spectrum of one instrument
-function main
-    [piano Fs] = audioread('..\Text/instr_piano.wav');
-    frq = 261
-    duration = length(piano)/Fs;   % sec
-    
-    t = linspace(0, duration, Fs * duration);
-    totalLength = Fs * duration;
-    w = 2 * pi * frq;
-    Y = fft(piano);
-    N = 10000;
-    Y = Y(1:N);
-    f = 1:N;
-    df = Fs/length(piano);
-    f = f .* df;
-    plot(f, abs(Y))
-    val = max(abs(Y));
-    thr = 150;
-    ndx = 1;
-    while val > thr;
-        [val where] = max(abs(Y));
-        C(ndx) = Y(where);
-        loc(ndx) = where;
-        fr = where - 50;
-        to = where + 50;
-        if fr < 1, fr = 1, end
-        if to > N, to = N, end
-        Y(where-50:where+50) = 0;
-        ndx = ndx + 1;
-    end
-    % sort the coefficients
-    [junk ndx] = sort(loc);
-    coeff = C(ndx);
-    note = zeros(1, Fs * duration);
-    pianoLength = length(piano);
-    for ndx = 1:length(coeff)
-        note = note + real(coeff(ndx)) .* cos(ndx * w * t);
-        note = note + imag(coeff(ndx)) .* sin(ndx * w * t);
-    end
-    % scale it to +/- 1
-    amp = max(abs(note));
-    note = note / amp;
-    % check fft of note (wrong!)
-    figure
-    Y = fft(note);
-    Y = Y(1:N);
-    plot(f, abs(Y))
-    figure
-    plot(piano)
-    % calc the amp shape of the piano
-    % chop into pieces (20 samples per sec)
-    size = Fs/30;
-    place = size+1;
-    ndx = 1;
-    while place < pianoLength - size
-        val(ndx) = max(piano((place-size):(place+size)));
-        loc(ndx) = place;
-        ndx = ndx + 1;
-        place = place + size*2;
-    end
-    hold on
-    plot(loc, val, 'r*')
-    % curve fit the points
-    cf = polyfit(loc, val, 8);
-    ampmod = polyval(cf, 1:totalLength);
-    plot(1:totalLength, ampmod, 'c')
-    note = note .* ampmod;
-    sound(note, Fs)
-    tmax = length(note) / Fs;
-    pause(tmax)
-    sound(piano, Fs)
-	pause(length(piano) ./ Fs)
+% Listing 14.6: Synthesizing a Piano
+
+% Read the sound file and compute the representative parameters.
+[snd Fs] = wavread('instr_piano.wav');
+N = length(snd)
+sound(snd, Fs)
+tMax = N / Fs
+dt = 1 / Fs
+
+% Perform the FFT and compute its representative parameters
+% and Ns, the number of samples we are interested in.
+Y = fft(snd);
+Ns = N/4;
+fMax = Fs/4;
+df = fMax / Ns;
+
+%Compute a vector of the frequencies and extract the real
+% and imaginary coefficients.
+f = ((1:Ns) - 1) * df;
+rl = real(Y(1:Ns));
+im = imag(Y(1:Ns));
+
+% Plot the coefficient absolute values (see Figure 14.11 ).
+plot(f, abs(Y(1:Ns)))
+xlabel('frequency (Hz)')
+ylabel('real amplitude')
+zlabel('imag amplitude')
+amps = abs(Y(1:end/2)); % Stores the absolute values of the coefficients.
+
+Nc = 25;
+for ndx = 1:Nc
+    % Extract the 25 largest coefficients by first finding the
+    % maximum absolute coefficient
+    [junk where] = max(amps);
+    % Save the frequency and complex amplitudes
+    C(ndx).freq = where;
+    C(ndx).coeff = Y(where);
+    % Remove that peak from the amplitude vector
+    amps(where-25:where+25) = 0;
 end
+
+% Sort the complex coefficients in frequency order.
+frq = [C.freq];
+[frq order] = sort(frq);
+sortedStr = C(order);
+
+% Set up the time trace parameters and storage.
+Nt = 25;
+t = (1:2*Fs) * dt;
+f = zeros(1, length(t));
+
+% Build the sound file composed of the real coefficients
+% times the cosine of the frequency and the imaginary coefficients times
+% the sine of the frequency.
+for ndx = 1:Nt
+    w = frq(ndx) * df * 2 * pi;
+    ct = cos(w*t);
+    st = sin(w*t);
+    Cf = sortedStr(ndx).coeff;
+    f = f + real(Cf) * ct + imag(Cf) * st;
+end
+
+% Scale and play the sound
+% Amplitude shaping goes here
+sf = f ./ max(f);
+sound(sf, Fs)
