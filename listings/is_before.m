@@ -4,8 +4,10 @@ function ans = is_before(a, b)
     ans = false;
     if isa(b, acl)
         switch acl
-            case 'double'
+            case {'double' 'logical' 'uint8'}
                 ans = a < b;
+            case 'char'
+                ans = strcmp(a,b);
             case 'struct'
                 if isfield(a, 'key')
                     ans = a.key < b.key;

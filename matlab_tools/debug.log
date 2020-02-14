@@ -1,175 +1,598 @@
 
 
-Processing file ../listings/listing_11_13.m
-process >% Map data analysis<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Map data analysis</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Map data analysis</font><br><
+Processing file ../listings/listing_17_1.m
 process >function main<
 see parens = 0
 coloring gives ><font color="#0000ff">function</font> main<br><
 replace_stuff gives ><font color="#0000ff">function</font> main<br><
-process >clear<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;clear<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;clear<br><
-process >clc<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;clc<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;clc<br><
-process >close all<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;close all<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;close all<br><
-process >% draw the streets<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% draw the streets</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% draw the streets</font><br><
-process >raw = dlmread('atlanta.txt');<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;raw = dlmread(<font color="#c000c0">'atlanta.txt'</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;raw = dlmread(<font color="#c000c0">'atlanta.txt'</font>);<br><
-process >streets = raw(:,3:7);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;streets = raw(:,<font color="#ff8000">3</font>:<font color="#ff8000">7</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;streets = raw(:,<font color="#ff8000">3</font>:<font color="#ff8000">7</font>);<br><
-process >[rows,cols] = size(streets)<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[rows,cols] = size(streets)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[rows,cols] = size(streets)<br><
-process >colors = 'rgbkcmo';<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;colors = <font color="#c000c0">'rgbkcmo'</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;colors = <font color="#c000c0">'rgbkcmo'</font>;<br><
-process >for in = 1:rows<
-see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:rows<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:rows<br><
-process >x = streets(in,[1 3])/1000000;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = streets(in,[<font color="#ff8000">1</font> <font color="#ff8000">3</font>])/<font color="#ff8000">1000000</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = streets(in,[<font color="#ff8000">1</font> <font color="#ff8000">3</font>])/<font color="#ff8000">1000000</font>;<br><
-process >y = streets(in,[2 4])/1000000;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = streets(in,[<font color="#ff8000">2</font> <font color="#ff8000">4</font>])/<font color="#ff8000">1000000</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = streets(in,[<font color="#ff8000">2</font> <font color="#ff8000">4</font>])/<font color="#ff8000">1000000</font>;<br><
-process >col = streets(in,5);<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = streets(in,<font color="#ff8000">5</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = streets(in,<font color="#ff8000">5</font>);<br><
-process >col(col < 1) = 7;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col(col < <font color="#ff8000">1</font>) = <font color="#ff8000">7</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col(col < <font color="#ff8000">1</font>) = <font color="#ff8000">7</font>;<br><
-process >col(col > 6) = 7;<
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col(col > <font color="#ff8000">6</font>) = <font color="#ff8000">7</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col(col > <font color="#ff8000">6</font>) = <font color="#ff8000">7</font>;<br><
-process >plot(x,y,colors(col));<
+process >%    Test a Stack<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    Test a Stack</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    Test a Stack</font><br><
+process >stack = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;stack = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;stack = [];<br><
+process >rv = round(rand(1,6)*100 - 25);<
 set parens = 1
 set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot(x,y,colors(col));<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot(x,y,colors(col));<br><
-process >hold on<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold on<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hold on<br><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;rv = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">6</font>)*<font color="#ff8000">100</font> - <font color="#ff8000">25</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;rv = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">6</font>)*<font color="#ff8000">100</font> - <font color="#ff8000">25</font>);<br><
+process >stack = pushvec(stack, rv);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;stack = pushvec(stack, rv);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;stack = pushvec(stack, rv);<br><
+process >sv = popvec(stack); <
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;sv = popvec(stack); <br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;sv = popvec(stack); <br><
+process >if length(rv) == length(sv) ...<
+see parens = 0
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(rv) == length(sv) <font color="#ff8000">...</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(rv) == length(sv) <font color="#ff8000">...</font><br><
+process >&& all(sv == rv(end:-1:1))<
+set parens = 1
+set parens = 2
+see parens = 2
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&& all(sv == rv(end:-<font color="#ff8000">1</font>:<font color="#ff8000">1</font>))<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&& all(sv == rv(end:-<font color="#ff8000">1</font>:<font color="#ff8000">1</font>))<br><
+process >fprintf('Stack good\n');<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Stack good\n'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Stack good\n'</font>);<br><
+process >else<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
+process >fprintf('Stack bad!!!\n');<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Stack bad!!!\n'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Stack bad!!!\n'</font>);<br><
 process >end<
 see parens = 0
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >% plot the travel times<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% plot the travel times</font><br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% plot the travel times</font><br><
-process >tt = dlmread('ttimes.txt');<
+process >%    Test a Queue<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    Test a Queue</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    Test a Queue</font><br><
+process >rv = round(rand(1,5)*100 - 25);<
+set parens = 1
+set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;tt = dlmread(<font color="#c000c0">'ttimes.txt'</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;tt = dlmread(<font color="#c000c0">'ttimes.txt'</font>);<br><
-process >[rows,cols] = size(tt)<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;rv = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">5</font>)*<font color="#ff8000">100</font> - <font color="#ff8000">25</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;rv = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">5</font>)*<font color="#ff8000">100</font> - <font color="#ff8000">25</font>);<br><
+process >q = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;q = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;q = [];<br><
+process >q = enqvec(q, rv);<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;[rows,cols] = size(tt)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;[rows,cols] = size(tt)<br><
-process >for in = 1:rows<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;q = enqvec(q, rv);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;q = enqvec(q, rv);<br><
+process >sv = deqvec(q); <
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;sv = deqvec(q); <br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;sv = deqvec(q); <br><
+process >if length(rv) == length(sv) ...<
 see parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:rows<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> in = <font color="#ff8000">1</font>:rows<br><
-process >r = tt(in, 1); c = tt(in, 2);<
 set parens = 1
 set parens = 0
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = tt(in, <font color="#ff8000">1</font>); c = tt(in, <font color="#ff8000">2</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = tt(in, <font color="#ff8000">1</font>); c = tt(in, <font color="#ff8000">2</font>);<br><
-process >xc(r,c) = tt(in, 4)/1000000;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(rv) == length(sv) <font color="#ff8000">...</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(rv) == length(sv) <font color="#ff8000">...</font><br><
+process >&& all(sv == rv) <
 set parens = 1
 set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&& all(sv == rv) <br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&& all(sv == rv) <br><
+process >fprintf('Queue good\n');<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xc(r,c) = tt(in, <font color="#ff8000">4</font>)/<font color="#ff8000">1000000</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xc(r,c) = tt(in, <font color="#ff8000">4</font>)/<font color="#ff8000">1000000</font>;<br><
-process >yc(r,c) = tt(in, 5)/1000000;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Queue good\n'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Queue good\n'</font>);<br><
+process >else<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
+process >fprintf('Queue bad!!!\n');<
 set parens = 1
 set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yc(r,c) = tt(in, <font color="#ff8000">5</font>)/<font color="#ff8000">1000000</font>;<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yc(r,c) = tt(in, <font color="#ff8000">5</font>)/<font color="#ff8000">1000000</font>;<br><
-process >zc(r,c) = tt(in, 6);<
-set parens = 1
-set parens = 0
-set parens = 1
-set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zc(r,c) = tt(in, <font color="#ff8000">6</font>);<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zc(r,c) = tt(in, <font color="#ff8000">6</font>);<br><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Queue bad!!!\n'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Queue bad!!!\n'</font>);<br><
 process >end<
 see parens = 0
 coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
 replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
-process >surf(xc, yc, zc)<
+process >%    Test a Priority Queue<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    Test a Priority Queue</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    Test a Priority Queue</font><br><
+process >rv = round(rand(1,5)*100 - 25);<
+set parens = 1
+set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;surf(xc, yc, zc)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;surf(xc, yc, zc)<br><
-process >shading interp<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;shading interp<br><
-process >alpha(.5)<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;rv = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">5</font>)*<font color="#ff8000">100</font> - <font color="#ff8000">25</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;rv = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">5</font>)*<font color="#ff8000">100</font> - <font color="#ff8000">25</font>);<br><
+process >pq = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;pq = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;pq = [];<br><
+process >pq = pqenqvec(pq, rv);<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;alpha(<font color="#ff8000">.5</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;alpha(<font color="#ff8000">.5</font>)<br><
-process >grid on<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;grid on<br><
-process >axis tight<
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;axis tight<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;axis tight<br><
-process >xlabel('Longitude')<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;pq = pqenqvec(pq, rv);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;pq = pqenqvec(pq, rv);<br><
+process >sv = deqvec(pq); <
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'Longitude'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;xlabel(<font color="#c000c0">'Longitude'</font>)<br><
-process >ylabel('Latitude')<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;sv = deqvec(pq); <br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;sv = deqvec(pq); <br><
+process >if length(rv) == length(sv) ...<
+see parens = 0
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Latitude'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ylabel(<font color="#c000c0">'Latitude'</font>)<br><
-process >zlabel('Travel Time (min)')<
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'Travel Time (min)'</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;zlabel(<font color="#c000c0">'Travel Time (min)'</font>)<br><
-process >view(-30, 45)<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(rv) == length(sv) <font color="#ff8000">...</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(rv) == length(sv) <font color="#ff8000">...</font><br><
+process >&& all(diff(sv) >= 0) <
+set parens = 1
+set parens = 2
 set parens = 1
 set parens = 0
-coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">30</font>, <font color="#ff8000">45</font>)<br><
-replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;view(-<font color="#ff8000">30</font>, <font color="#ff8000">45</font>)<br><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&& all(diff(sv) >= <font color="#ff8000">0</font>) <br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&& all(diff(sv) >= <font color="#ff8000">0</font>) <br><
+process >fprintf('Priority Queue good\n');<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Priority Queue good\n'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Priority Queue good\n'</font>);<br><
+process >else<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
+process >fprintf('Priority Queue bad!!!\n');<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Priority Queue bad!!!\n'</font>);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Priority Queue bad!!!\n'</font>);<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
 process >end<
 see parens = 0
 coloring gives ><font color="#0000ff">end</font><br><
 replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function ans = is_before(a, b)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> ans = is_before(a, b)<br><
+replace_stuff gives ><font color="#0000ff">function</font> ans = is_before(a, b)<br><
+process >acl = class(a);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;acl = class(a);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;acl = class(a);<br><
+process >ans = false;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ans = false;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ans = false;<br><
+process >if isa(b, acl)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> isa(b, acl)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> isa(b, acl)<br><
+process >switch acl<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">switch</font> acl<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">switch</font> acl<br><
+process >case {'double' 'logical' 'uint8'}<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#c000c0">'double'</font> 'logical' <font color="#c000c0">'uint8'</font>}<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#c000c0">'double'</font> 'logical' <font color="#c000c0">'uint8'</font>}<br><
+process >ans = a < b;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = a < b;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = a < b;<br><
+process >case 'char'<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'char'</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'char'</font><br><
+process >ans = strcmp(a,b);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = strcmp(a,b);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = strcmp(a,b);<br><
+process >case 'struct'<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'struct'</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'struct'</font><br><
+process >if isfield(a, 'key')<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> isfield(a, <font color="#c000c0">'key'</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> isfield(a, <font color="#c000c0">'key'</font>)<br><
+process >ans = a.key < b.key;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = a.key < b.key;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = a.key < b.key;<br><
+process >elseif isfield(a, 'dod')<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> isfield(a, <font color="#c000c0">'dod'</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> isfield(a, <font color="#c000c0">'dod'</font>)<br><
+process >ans = age(a) < age(b);<
+set parens = 1
+set parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = age(a) < age(b);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = age(a) < age(b);<br><
+process >else<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br><
+process >error('comparing unknown structures')<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'comparing unknown structures'</font>)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'comparing unknown structures'</font>)<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >otherwise<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">otherwise</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">otherwise</font><br><
+process >error(['can''t compare ' acl 's'])<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error([<font color="#c000c0">'can'</font><font color="#c000c0">'t compare '</font> acl <font color="#c000c0">'s'</font>])<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error([<font color="#c000c0">'can'</font><font color="#c000c0">'t compare '</font> acl <font color="#c000c0">'s'</font>])<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process ><
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<br><
+process >function v = popvec(stk)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> v = popvec(stk)<br><
+replace_stuff gives ><font color="#0000ff">function</font> v = popvec(stk)<br><
+process >% pop a vector from a stack<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% pop a vector from a stack</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% pop a vector from a stack</font><br><
+process >v = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;v = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;v = [];<br><
+process >while ~isempty(stk)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty(stk)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty(stk)<br><
+process >[stk val] = pop(stk);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[stk val] = pop(stk);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[stk val] = pop(stk);<br><
+process >v = [v val];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = [v val];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = [v val];<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function stk = pushvec(stk, V)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> stk = pushvec(stk, V)<br><
+replace_stuff gives ><font color="#0000ff">function</font> stk = pushvec(stk, V)<br><
+process >% push a vector onto a stack<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% push a vector onto a stack</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% push a vector onto a stack</font><br><
+process >for v = V<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> v = V<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> v = V<br><
+process >stk = push(stk, v);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk = push(stk, v);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk = push(stk, v);<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function v = deqvec(q)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> v = deqvec(q)<br><
+replace_stuff gives ><font color="#0000ff">function</font> v = deqvec(q)<br><
+process >% dequeue a vector from a queue<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dequeue a vector from a queue</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dequeue a vector from a queue</font><br><
+process >v = [];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;v = [];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;v = [];<br><
+process >while ~isempty(q)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty(q)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty(q)<br><
+process >[q val] = deq(q);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[q val] = deq(q);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[q val] = deq(q);<br><
+process >v = [v val];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = [v val];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = [v val];<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function q = enqvec(q, V)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> q = enqvec(q, V)<br><
+replace_stuff gives ><font color="#0000ff">function</font> q = enqvec(q, V)<br><
+process >% enqueue a vector on a queue<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue a vector on a queue</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue a vector on a queue</font><br><
+process >for v = V<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> v = V<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> v = V<br><
+process >q = enq(q, v);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = enq(q, v);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = enq(q, v);<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function q = pqenqvec(q, V)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> q = pqenqvec(q, V)<br><
+replace_stuff gives ><font color="#0000ff">function</font> q = pqenqvec(q, V)<br><
+process >% enqueue a vector on a priority queue<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue a vector on a priority queue</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue a vector on a priority queue</font><br><
+process >for v = V<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> v = V<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> v = V<br><
+process >q = pqenq(q, v);<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = pqenq(q, v);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = pqenq(q, v);<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function s = push(s, data)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> s = push(s, data)<br><
+replace_stuff gives ><font color="#0000ff">function</font> s = push(s, data)<br><
+process >% push an item onto a stack<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% push an item onto a stack</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% push an item onto a stack</font><br><
+process >s = [s {data}];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;s = [s {data}];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;s = [s {data}];<br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function [s ans] = pop(s)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> [s ans] = pop(s)<br><
+replace_stuff gives ><font color="#0000ff">function</font> [s ans] = pop(s)<br><
+process >% pop an item off a stack<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% pop an item off a stack</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% pop an item off a stack</font><br><
+process >ans = s{end};<
+see parens = 0
+coloring gives >ans = s{<font color="#0000ff">end</font>};<br><
+replace_stuff gives >ans = s{<font color="#0000ff">end</font>};<br><
+process >s = s(1:(end-1));<
+set parens = 1
+set parens = 2
+see parens = 2
+set parens = 1
+set parens = 0
+coloring gives >s = s(<font color="#ff8000">1</font>:(end-<font color="#ff8000">1</font>));<br><
+replace_stuff gives >s = s(<font color="#ff8000">1</font>:(end-<font color="#ff8000">1</font>));<br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function q = enq(q, data)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> q = enq(q, data)<br><
+replace_stuff gives ><font color="#0000ff">function</font> q = enq(q, data)<br><
+process >% enqueue onto a queue<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue onto a queue</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue onto a queue</font><br><
+process >q = [q {data}];<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;q = [q {data}];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;q = [q {data}];<br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function [q ans] = deq(q)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> [q ans] = deq(q)<br><
+replace_stuff gives ><font color="#0000ff">function</font> [q ans] = deq(q)<br><
+process >% dequeue an item from a queue<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dequeue an item from a queue</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dequeue an item from a queue</font><br><
+process >ans = q{1};<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;ans = q{<font color="#ff8000">1</font>};<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;ans = q{<font color="#ff8000">1</font>};<br><
+process >q = q(2:end);<
+set parens = 1
+see parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;q = q(<font color="#ff8000">2</font>:end);<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;q = q(<font color="#ff8000">2</font>:end);<br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
+process >function pq = pqenq(pq, item)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives ><font color="#0000ff">function</font> pq = pqenq(pq, item)<br><
+replace_stuff gives ><font color="#0000ff">function</font> pq = pqenq(pq, item)<br><
+process >% enqueue in order to a priority queue<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue in order to a priority queue</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue in order to a priority queue</font><br><
+process >in = 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;in = <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;in = <font color="#ff8000">1</font>;<br><
+process >at = length(pq)+1;<
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;at = length(pq)+<font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;at = length(pq)+<font color="#ff8000">1</font>;<br><
+process >while in <= length(pq)<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> in <= length(pq)<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> in <= length(pq)<br><
+process >if is_before(item, pq{in})<
+see parens = 0
+set parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> is_before(item, pq{in})<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> is_before(item, pq{in})<br><
+process >at = in;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = in;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = in;<br><
+process >break;<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >in = in + 1;<
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in = in + <font color="#ff8000">1</font>;<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in = in + <font color="#ff8000">1</font>;<br><
+process >end<
+see parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br><
+process >pq = [pq(1:at-1) {item} pq(at:end)];<
+set parens = 1
+set parens = 0
+set parens = 1
+see parens = 1
+set parens = 0
+coloring gives >&nbsp;&nbsp;&nbsp;&nbsp;pq = [pq(<font color="#ff8000">1</font>:at-<font color="#ff8000">1</font>) {item} pq(at:end)];<br><
+replace_stuff gives >&nbsp;&nbsp;&nbsp;&nbsp;pq = [pq(<font color="#ff8000">1</font>:at-<font color="#ff8000">1</font>) {item} pq(at:end)];<br><
+process >end<
+see parens = 0
+coloring gives ><font color="#0000ff">end</font><br><
+replace_stuff gives ><font color="#0000ff">end</font><br><
+process ><
+coloring gives ><br><
+replace_stuff gives ><br><
