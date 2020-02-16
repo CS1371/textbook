@@ -86,7 +86,7 @@
         </ul>
 
         <!-- Interpolation -->
-        <h2><a name="15_1">15.1  Interpolation</a></h2>
+        <h2 id="15_1">15.1  Interpolation</h2>
         <div class="container clearfix">
           <div class="float-sm-right card">
               <img src="Fig_15_1.JPG" alt="Figure 15.1" class="fig card-image">
@@ -99,12 +99,12 @@
 
 
         <!-- Linear Interpolation -->
-        <h3><a name="15_1_1">15.1.1 Linear Interpolation</a></h3>
+        <h3 id="15_1_1">15.1.1 Linear Interpolation</h3>
         <div class="container">
             <p>Linear interpolation is one of the most common techniques for estimating data values between two given data points. With this technique, we assume that the function between the points can be represented by a straight line drawn between the points, as shown in Figure 15.2.</p>
             <p>Since we can find the equation of a straight line defined by the two known points, we can find \(y\) for any value of \(x\). The closer the points are to each other, the more accurate our approximation is likely to be. Of course, we could use this equation to extrapolate points past our collected data. This is rarely wise, however, and often leads to significant errors. The function that performs linear interpolation is as follows:</p>
-            <p><span class="code">new_y = interpl(x, y, new_x)</span></p>
-            <p>where the vectors <span class="code">x</span> and <span class="code">y</span> contain the original data values and the vector <span class="code">new_x</span> contains the point(s) for which we want to compute interpolated <span class="code">new_y</span> values. The <span class="code">x</span> values should be in ascending order, and the <span class="code">new_x</span> values should be within the range of the original <span class="code">x</span> values. Note that the last character in the name <span class="code">interpl</span> is the numeric 1 (one), not a lowercase L.</p>
+            <p><code>new_y = interpl(x, y, new_x)</code></p>
+            <p>where the vectors <code>x</code> and <code>y</code> contain the original data values and the vector <code>new_x</code> contains the point(s) for which we want to compute interpolated <code>new_y</code> values. The <code>x</code> values should be in ascending order, and the <code>new_x</code> values should be within the range of the original <code>x</code> values. Note that the last character in the name <code>interpl</code> is the numeric 1 (one), not a lowercase L.</p>
             <div class="row">
                 <div class="col-sm-6">
                     <img src="Fig_15_2.JPG" alt="Figure 15.2" class="fig">
@@ -115,29 +115,29 @@
                     <p class = "figure-name">Figure 15.3: Linear Interpolation</p>
                 </div>
             </div>
-            <p>The use of <span class="code">interpl(...)</span> is demonstrated in Listing 15.1.</p>
+            <p>The use of <code>interpl(...)</code> is demonstrated in Listing 15.1.</p>
             <div id="listing_15_1" class="listing">[Listing 15.1]</div>
             <p>The MATLAB language allows us to provide a fourth parameter to the interp1 function that must be a string that modifies its behavior. The choices are as follows:</p>
             <ul style="list-style-type:none">
-                <li><span class="code">'nearest'</span> nearest neighbor interpolation </li>
-                <li><span class="code">'1inear'</span> linear interpolation—the default</li>
-                <li><span class="code">'spline'</span> piecewise cubic spline interpolation (see Section 15.1.2)</li>
-                <li><span class="code">'pchip'</span> shape-preserving piecewise cubic interpolation</li>
-                <li><span class="code">'cubic'</span> same as <span class="code">'pchip'</span></li>
-                <li><span class="code">'v5cubic'</span> cubic interpolation that does not extrapolate, and uses <span class="code">'spline'</span> if <span class="code">x</span> is not equally spaced </li>
+                <li><code>'nearest'</code> nearest neighbor interpolation </li>
+                <li><code>'1inear'</code> linear interpolation—the default</li>
+                <li><code>'spline'</code> piecewise cubic spline interpolation (see Section 15.1.2)</li>
+                <li><code>'pchip'</code> shape-preserving piecewise cubic interpolation</li>
+                <li><code>'cubic'</code> same as <code>'pchip'</code></li>
+                <li><code>'v5cubic'</code> cubic interpolation that does not extrapolate, and uses <code>'spline'</code> if <code>x</code> is not equally spaced </li>
             </ul>
-            <p>The MATLAB language also provides for two-dimensional (<span class="code">interp2</span>) and three-dimensional (<span class="code">interp3</span>) interpolation functions, which are not discussed here.</p>
+            <p>The MATLAB language also provides for two-dimensional (<code>interp2</code>) and three-dimensional (<code>interp3</code>) interpolation functions, which are not discussed here.</p>
         </div>
 
         <!-- Cubic Spline Interpolation -->
-        <h3><a name="15_1_2">15.1.2	Cubic Spline Interpolation</a></h3>
+        <h3 id="15_1_2">15.1.2	Cubic Spline Interpolation</h3>
         <div class="container">
           <p>A <b>cubic spline</b> is a smooth curve constructed to go through a set of points. The curve between each pair of  points is a third-degree polynomial that has the general form:</p>
           $$ {x = a_{x0}{t^3} + a_{x1}{t^2} + a_{x2}{t} + a_{x3}} and {y = a_{y0}{t^3} + a_{y1}{t^2} + a_{y2}{t} + a_{y3}} $$
-          <p>where <span class="code">t</span> is a parameter ranging from 0 to 1 between each pair of points. The coefficients are computed so that this provides a smooth curve between pairs of points and a smooth transition between the adjacent curves. Figure 15.4 shows a cubic spline smoothly connecting six points using a total of five different cubic equations.</p>
+          <p>where <code>t</code> is a parameter ranging from 0 to 1 between each pair of points. The coefficients are computed so that this provides a smooth curve between pairs of points and a smooth transition between the adjacent curves. Figure 15.4 shows a cubic spline smoothly connecting six points using a total of five different cubic equations.</p>
           <p>The function that performs linear interpolation is as follows:</p>
-          <p><span class="code">new_y = spline(x, y, new_x);</span></p>
-          <p>where the vectors <span class="code">x</span> and <span class="code">y</span> contain the original data values, and the vector <span class="code">x_new</span> contains the point(s) for which we want to compute interpolated <span class="code">y_new</span> values. The <span class="code">x</span> values should be in ascending order, and while the <span class="code">x_new</span> values should be within the range of the <span class="code">x</span> values, this function will attempt to extrapolate outside that range.</p>
+          <p><code>new_y = spline(x, y, new_x);</code></p>
+          <p>where the vectors <code>x</code> and <code>y</code> contain the original data values, and the vector <code>x_new</code> contains the point(s) for which we want to compute interpolated <code>y_new</code> values. The <code>x</code> values should be in ascending order, and while the <code>x_new</code> values should be within the range of the <code>x</code> values, this function will attempt to extrapolate outside that range.</p>
           <p>The curve in Figure 15.4 was created using the code shown in Listing 15.2.</p>
           <div class="container clearfix">
             <div class="card float-right">
@@ -158,35 +158,35 @@
         </div>
 
         <!-- Extrapolation -->
-        <h3><a name="15_1_3">15.1.3	Extrapolation</a></h3>
+        <h3 id="15_1_3">15.1.3	Extrapolation</h3>
         <div class="container">
-          <p>A note of caution about extrapolation - attempting to infer the values of data points outside the range of data provided is problematic at best and usually gives misleading results. Although logically your code may allow you to, you should never do it. The interp1 and spline functions behave differently in this respect. As we saw previously, the interp1 function refuses to supply results outside the range of the original <span class="code">x</span> data. If you try, for every <span class="code">new_x</span> value outside the range of the original <span class="code">x</span> values, it will return <span class="code">NaN</span> — not a number.</p>
+          <p>A note of caution about extrapolation - attempting to infer the values of data points outside the range of data provided is problematic at best and usually gives misleading results. Although logically your code may allow you to, you should never do it. The interp1 and spline functions behave differently in this respect. As we saw previously, the interp1 function refuses to supply results outside the range of the original <code>x</code> data. If you try, for every <code>new_x</code> value outside the range of the original <code>x</code> values, it will return <code>NaN</code> — not a number.</p>
           <div class="row">
               <div class="col-sm-8">
-                  <p>This is actually quite nice because if you accidentally request interpolated data like this, the plot programs ignore <span class="code">NaN</span> values. The spline function, however, has no such scruples and allows you to request any <span class="code">x</span> values you want, using the equation of the closest line segment. So considering Figure 15.4, if you asked for the value at <span class="code">x = -3</span>, it would use the segment between 0 and 1, which has a violent upswing at the lower end (see Exercise 15.1).</p>
+                  <p>This is actually quite nice because if you accidentally request interpolated data like this, the plot programs ignore <code>NaN</code> values. The spline function, however, has no such scruples and allows you to request any <code>x</code> values you want, using the equation of the closest line segment. So considering Figure 15.4, if you asked for the value at <code>x = -3</code>, it would use the segment between 0 and 1, which has a violent upswing at the lower end (see Exercise 15.1).</p>
                   <p>This might be what you want, but it looks odd! Chances are the data are not as accurate as you thought, and you probably need to fit a curve to the data, as explained in the following section.</p>
               </div>
               <div class="col-sm-4 exercise">
                   <p>Exercise 15.1: The Evils of Extrapolation</p>
                   <p>After running the script in Listing 15.1, enter this code:</p>
-                  <span class="code">
+                  <code>
                   <p>>> spline(x, y, -3)
                       <br> ans =
                       <br>&nbsp;&nbsp;&nbsp;&nbsp; 813.3333</p>
-                  </span>
+                  </code>
               </div>
           </div>
         </div>
 
 
         <!-- Curve Fitting -->
-        <h2><a name="15_2">15.2 Curve Fitting</a></h2>
+        <h2 id="15_2">15.2 Curve Fitting</h2>
         <p>There are occasions where the data acquisition facilities add some amount of noise to the data. To minimize the effects of the noise, we can smooth the data by computing the coefficients of a polynomial function that best match the data. The choice of the order of the polynomial must be made by the users, depending upon their understanding of the underlying physics that generated the data.</p>
         <p>For example, assume that we have a set of data points collected from an experiment. After plotting the data points, we find that they generally fall in a straight line. However, if we were to try to draw a straight line through the points, probably only a couple of the points would fall exactly on the line. A least squares curve fitting method could be used to find the straight line that is the closest to the points, by minimizing the distance from each point to the straight line. Although this line can be considered a "best fit" to the data points, it is possible that none of the points would actually fall on the line of best fit. (Note that this method is different from interpolation, because the lines used in interpolation actually fall on all of the original data points.)</p>
         <p>In the following section, we will discuss fitting a straight line to a set of data points, and then we will discuss fitting a polynomial of higher order.</p>
 
         <!-- Linear Regression -->
-        <h3><a name="15_2_1">15.2.1 Linear Regression</a></h3>
+        <h3 id="15_2_1">15.2.1 Linear Regression</h3>
         <div class="container">
           <div class="container clearfix">
             <div class="card float-right">
@@ -198,22 +198,22 @@
           </div>
             <div id="listing_15_3" class="listing">[Listing 15.3]</div>
             <p>We really need the ability to compare the quality of the fit of this line to other possible estimates, so we compute the difference between the actual y value and the value calculated from the estimate:</p>
-            <p><span class="code">>> dy = [0, 0, 20, 8, -3, 10]</span></p>
+            <p><code>>> dy = [0, 0, 20, 8, -3, 10]</code></p>
             <p>It turns out that the best way to make this comparison is by the <b>least squares technique</b>, whereby the measure of the quality of the fit is the sum of the squared differences between the actual data points and the linear estimates. This sum can be computed with the following command:</p>
-            <p><span class="code">>> sum_sq = sum(dy.^2)</span></p>
-            <p>For the above set of data, the value of <span class="code">sum_sq</span> is <span class="code">573</span>. As we will see, MATLAB can automatically produce the best linear fit shown in Figure 15.6 whose sum of squares is <span class="code">356.82</span>, a significant improvement over our original guess. This result was achieved by running Exercise 15.2.</p>`
+            <p><code>>> sum_sq = sum(dy.^2)</code></p>
+            <p>For the above set of data, the value of <code>sum_sq</code> is <code>573</code>. As we will see, MATLAB can automatically produce the best linear fit shown in Figure 15.6 whose sum of squares is <code>356.82</code>, a significant improvement over our original guess. This result was achieved by running Exercise 15.2.</p>`
             <div class="row">
                 <div class="col-sm-6 exercise">
                   <div class="container">
                     <p>Exercise 15.2: Optimal linear fit</p>
                     <p>Again using the data from Section 15.1.1:</p>
-                    <span class="code">
+                    <code>
                     >> x=0:5;
                     <br>>> y=[0, 20, 60, 68, 77, 110];
                     <br>>> polyfit(x, y, 1)
                     <br>ans =
                     <br>&nbsp;&nbsp;&nbsp;&nbsp;20.8286 3.7619
-                    </span>
+                    </code>
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -224,20 +224,20 @@
         </div>
 
         <!-- Polynomial Regression -->
-        <h3><a name="15_2_2">15.2.2	Polynomial Regression</a></h3>
+        <h3 id="15_2_2">15.2.2	Polynomial Regression</h3>
         <div class="container">
             <p>Linear regression is a special case of the polynomial regression technique. Recall that a polynomial with one variable can be written by using the following formula:</p>
             $$ f(x) = a_0{x^n} + a_1{x^{n-1}} + a_2{x^{n-2}} + a_3{x^{n-3}} + ... a_{n-1}x + a_n $$
             <p>The degree of a polynomial is equal to the largest value used as an exponent. MATLAB provides a pair of functions to compute the coefficients of the best fit to a set of data and then interpolate on those coefficients to produce the data to plot:</p>
             <ul>
-                <li><span class="code">coef = polyfit(x, y, n)</span> computes the coefficients of the polynomial of degree <span class="code">n</span> that best matches the given <span class="code">x</span> and <span class="code">y</span> values. The function returns the coefficients, <span class="code">coef</span>, in descending powers of <span class="code">x</span>. For the least squares calculation to work, the length of <span class="code">x</span> should be greater than <span class="code">n - 1</span>. If this is not the case, the coefficients are still computed, but the curve passes through all the data points.</li>
-                <li><span class="code">new_y = polyval(coef, new_x)</span> can then be used to interpolate the polynomial defined by these coefficients for the <span class="code">new_y</span> value(s) corresponding to any <span class="code">new_x</span> value(s).</li>
+                <li><code>coef = polyfit(x, y, n)</code> computes the coefficients of the polynomial of degree <code>n</code> that best matches the given <code>x</code> and <code>y</code> values. The function returns the coefficients, <code>coef</code>, in descending powers of <code>x</code>. For the least squares calculation to work, the length of <code>x</code> should be greater than <code>n - 1</code>. If this is not the case, the coefficients are still computed, but the curve passes through all the data points.</li>
+                <li><code>new_y = polyval(coef, new_x)</code> can then be used to interpolate the polynomial defined by these coefficients for the <code>new_y</code> value(s) corresponding to any <code>new_x</code> value(s).</li>
             </ul>
             <p>Note that there is nothing to prevent you from using these coefficients for extrapolation.</p>
             <p>Exercise 15.2 illustrates fitting the best straight line to the data used in Section 15.1.1, indicating that the first-order polynomial that best fits our data is as follows:</p>
             $$ f(x) = 20.8286x + 3.7169 $$
-            <p>We could interpolate the values of new_x with: <span class="code">new_y = coef(1) * new_x + coef(2)</span> or we could use the function polyval: <span class="code">new_y = polyfit(coef, new_x)</span> </p>
-            <p>We can use our new understanding of the <span class="code">polyfit</span> and <span class="code">polyval</span> functions to write a program to study the improvement in the curve fit as <span class="code">n</span> increases, as shown in Listing 15.4.</p>
+            <p>We could interpolate the values of new_x with: <code>new_y = coef(1) * new_x + coef(2)</code> or we could use the function polyval: <code>new_y = polyfit(coef, new_x)</code> </p>
+            <p>We can use our new understanding of the <code>polyfit</code> and <code>polyval</code> functions to write a program to study the improvement in the curve fit as <code>n</code> increases, as shown in Listing 15.4.</p>
             <div id="listing_15_4" class="listing">[Listing 15.4]</div>
             <p>The results are shown in Figure 15.7. Notice that with six points, the fifth-order fit goes through all the data points.</p>
             <img src="Fig_15_7.png" alt="Figure 15.7" class="fig-wide">
@@ -246,7 +246,7 @@
 
 
         <!-- Practical Application -->
-        <h3><a name="15_2_3">15.2.3 Practical Application</a></h3>
+        <h3 id="15_2_3">15.2.3 Practical Application</h3>
         <div class="container">
             <p>We return briefly to the problem of replacing the blue sky in Chapter 13. The sky we used to replace the gray skies of Vienna has a power line we need to remove. We can use polynomial curve fitting to create an artificial sky with exactly the same color characteristics as the blue sky in the cottage picture, but without the wire. This is possible because each row of the image has so much data that define its color profile that the presence of the wire is a minor amount of "noise." We merely need to process each row of the sky, fit a second-order curve to it, interpolate a new sky row from the parameters, and replace the row in the sky. The code to perform this is shown in Listing 15.5.</p>
             <div id="listing_15_5" class="listing">[Listing 15.5]</div>
@@ -265,7 +265,7 @@
 
 
         <!-- Numerical Integration -->
-        <h2><a name="15_3">15.3 Numerical Integration</a></h2>
+        <h2 id="15_3">15.3 Numerical Integration</h2>
         <div class="container clearfix">
             <div class="card float-right">
               <img src="Fig_15_10.jpg" alt="Figure 15.10" class="fig card-image">
@@ -282,7 +282,7 @@
 
 
         <!-- Determination of the Complete Integral -->
-        <h3><a name="15_3_1">15.3.1 Determination of the Complete Integral</a></h3>
+        <h3 id="15_3_1">15.3.1 Determination of the Complete Integral</h3>
         <p>Two of the most common numerical integration techniques estimate \(f(x)\) either with a set of piecewise linear functions or with a set of piecewise parabolic functions. If we use piecewise linear functions, we can compute the area of the trapezoids that compose the area under the piecewise linear function. This technique is called the <b>trapezoidal rule</b>. If we use piecewise quadratic functions, we can compute and add the areas of these components. This technique is called <b>Simpson's rule</b>.</p>
 
 
@@ -307,13 +307,13 @@
         </div>
 
         <!-- Continuous Integration Problems -->
-        <h3><a name="15_3_2">15.3.2 Continuous Integration Problems</a></h3>
+        <h3 id="15_3_2">15.3.2 Continuous Integration Problems</h3>
         <div class="container">
             <p>We now consider a slightly different scenario. If \(f(t)\) is the rate of change of \(F(t)\) defined as \(f(t) = dF(t)/dt\), then given \(f(t)\), we can find the indefinite integral \(F(t)\) according to the following formula:</p>
             $$ F(t) = \int\limits_{t_0}^t f(x) dt $$
             <p>For example, we might be given data that represent the velocity of a sounding rocket, such as is plotted in Figure 15.12. We need to approximate the altitude of the rocket over time by integrating this data.</p>
-            <p>To perform this kind of integral, the MATLAB language provides the function <span class="code">F = cumsum(f)</span> that computes the cumulative sum of the vector <span class="code">f</span>. The result, <span class="code">F</span>, is a vector of the same length as <span class="code">f</span> where <span class="code">F(i)</span> is the sum of <span class="code">f(1:i)</span>. If the data values, <span class="code">f</span>, are regularly sampled at a rate <span class="code">&Delta;t</span>, the integral is found by multiplying <span class="code">cumsum(f)</span> by the time interval, <span class="code">&Delta;t</span>. If they are not regularly sampled, you have to compute the <span class="code">cumsum(...)</span> of the scalar product of <span class="code">f</span> and the vector of time differences.</p>
-            <p>To compute a more accurate integral, especially if the samples are not regularly spaced along the independent axis, MATLAB also provides the function <span class="code">cumtrapz(t, f)</span> where <span class="code">t</span> is the independent parameter and <span class="code">f</span> the dependent parameter. The function uses trapezoidal integration to calculate the indefinite integral <span class="code">F(t)</span>.</p>
+            <p>To perform this kind of integral, the MATLAB language provides the function <code>F = cumsum(f)</code> that computes the cumulative sum of the vector <code>f</code>. The result, <code>F</code>, is a vector of the same length as <code>f</code> where <code>F(i)</code> is the sum of <code>f(1:i)</code>. If the data values, <code>f</code>, are regularly sampled at a rate <code>&Delta;t</code>, the integral is found by multiplying <code>cumsum(f)</code> by the time interval, <code>&Delta;t</code>. If they are not regularly sampled, you have to compute the <code>cumsum(...)</code> of the scalar product of <code>f</code> and the vector of time differences.</p>
+            <p>To compute a more accurate integral, especially if the samples are not regularly spaced along the independent axis, MATLAB also provides the function <code>cumtrapz(t, f)</code> where <code>t</code> is the independent parameter and <code>f</code> the dependent parameter. The function uses trapezoidal integration to calculate the indefinite integral <code>F(t)</code>.</p>
             <div class="row">
                 <div class="col-sm-6">
                     <img src="Fig_15_12.png" alt="Figure 15.12" class="fig">
@@ -324,23 +324,23 @@
                     <p class="figure-name">Figure 15.12: Rocket velocity and amplitude</p>
                 </div>
             </div>
-            <p>Listing 15.8 shows the function that computes this continuous integral, making use of <span class="code">cumsum(...)</span>.</p>
+            <p>Listing 15.8 shows the function that computes this continuous integral, making use of <code>cumsum(...)</code>.</p>
             <p>Figure 15.13 shows the resulting plot. The results displayed in the Command window are:</p>
-            <p><span class="code">cumsum height: 1848.5 <br>trapezoidal height: 1811.85 <br>Simpson's Rule height: 1811.14</span></p>
+            <p><code>cumsum height: 1848.5 <br>trapezoidal height: 1811.85 <br>Simpson's Rule height: 1811.14</code></p>
             <p>The continuous integration produces results within 2% of the "accurate" integration techniques.</p>
             <div id="listing_15_8" class="listing">[Listing 15.8]</div>
         </div>
 
 
         <!-- Numerical Differentiation -->
-        <h2><a name="15_4">15.4  Numerical Differentiation</a></h2>
+        <h2 id="15_4">15.4  Numerical Differentiation</h2>
         <p>The derivative of a function \(f(x)\) is defined to be a function \(f'(x)\) that is equal to the rate of change of \(f(x)\) with respect to \(x\). The derivative can be expressed as a ratio, with the change in \(f(x)\) indicated by \(df(x)\) and the change in \(x\) indicated by \(dx\), giving us the following:</p>
         $$ f'(x) = \frac{df(x)}{dx} $$
         <p>There are many physical processes for which we want to measure the rate of change of a variable. For example, velocity is the rate of change of position (as in meters per second), and acceleration is the rate of change of velocity (as in meters per second squared).</p> <p>The derivative \(f'(x)\) can be described graphically as the slope of the function \(f(x)\), which is defined to be the slope of the tangent line to the function at the specified point. Thus, the value of \(f'(x)\) at the point \(a\) is \(f'(a)\), and it is equal to the slope of the tangent line at the point \(a\).</p>
 
 
         <!-- Difference Expressions -->
-        <h3><a name="15_4_1">15.4.1	Difference Expressions</a></h3>
+        <h3 id="15_4_1">15.4.1	Difference Expressions</h3>
         <p>In general, numerical differentiation techniques estimate the derivative of a function at a point \(x_k\) by approximating the slope of the tangent line at \(x_k\) using values of the function at points near \(x_k\). The approximation of the slope of the tangent line can be done in several ways, as shown in Figure 15.14.</p>
         <ul>
             <li><i>Backward Difference:</i> Figure 15.14(a) assumes that the derivative at \(x_k\) is estimated by computing the slope of the line between \(f(k_{x - 1})\) and \(f(x_k)\)</li>
@@ -352,28 +352,28 @@
         <p class="figure-name">Figure 15.14: Difference Techniques</p>
 
         <!-- Analytical Operations -->
-        <h2><a name="15_5">15.5 Analytical Operations</a></h2>
+        <h2 id="15_5">15.5 Analytical Operations</h2>
         <p>We return to the discussion of fitting a polynomial to some raw data in Section 15.2.2. We approximated a polynomial fit with the following expression:</p>
         $$ f(x) = a_0{x^n} + a_1{x^{n-1}} + a_2{x^{n-2}} + a_3{x^{n-3}} + ... + a_{n-1}{x} + a_n $$
         <p>Since this is an analytical expression, even if some or all of the coefficients are complex, we can integrate it to estimate the integral of the raw data and differentiate it to estimate the slope of the raw data.</p>
 
         <!-- Analytical Integration -->
-        <h3><a name="15_5_1">15.5.1	Analytical  Integration</a></h3>
+        <h3 id="15_5_1">15.5.1	Analytical  Integration</h3>
         <p>The expression for F(x), the integral of f(x) with respect to x, is given by:</p>
         $$ F(x) = a_0{x^{n+1}}/{n+1} + a_1{x^n}/n + a_2{x^{n-1}}/{n-1} + a_3{x^{n-2}}/{n-2} + ... + a_{n-1}{x^2}/2 + a_n{x} + K $$
         <p>Note that an arbitrary constant, K, is always required for analytical integration representing the starting value F(0).</p>
 
         <!-- Analytical Differentiation -->
-        <h3><a name="15_5_2">15.5.2	Analytical Differentiation</a></h3>
+        <h3 id="15_5_2">15.5.2	Analytical Differentiation</h3>
         <p>The expression for f’(x), the integral of f(x) with respect to x, is given by:</p>
         $$ f'(x) = na_0{x^{n-1}} + (n-1)a_1{x^{n-2}} + (n-2)a_2{x^{n-3}} + (n-3)a_3{x^{n-4}} + a_{n-1} $$
 
         <!-- Implementation -->
-        <h2><a name="15_6">15.6  Implementation</a></h2>
+        <h2 id="15_6">15.6  Implementation</h2>
         <div class="container">
-            <p>To facilitate differentiation, the MATLAB language defines the <span class="code">diff(...)</span> function, which computes differences between adjacent values in a vector, generating a new vector with one less value than the original:</p>
-            <p><span class="code">dv = diff(V) returns [V(2)-V(1), V(3)-V(2), ..., V(n)-V(n-1)]</span></p>
-            <p>An approximate derivative \(dy/dx\) can be computed by using <span class="code">diff(y)./ diff(x)</span>. Depending on the application, this can be used to compute the forward, backward, or central difference approximation. The solution to the forward difference is shown in Listing 15.9.</p>
+            <p>To facilitate differentiation, the MATLAB language defines the <code>diff(...)</code> function, which computes differences between adjacent values in a vector, generating a new vector with one less value than the original:</p>
+            <p><code>dv = diff(V) returns [V(2)-V(1), V(3)-V(2), ..., V(n)-V(n-1)]</code></p>
+            <p>An approximate derivative \(dy/dx\) can be computed by using <code>diff(y)./ diff(x)</code>. Depending on the application, this can be used to compute the forward, backward, or central difference approximation. The solution to the forward difference is shown in Listing 15.9.</p>
             <p>The results are shown in Figure 15.15. Since the original data were generated from a series of coefficients, we could also plot the exact value of the slope using the result of Section 15.5.2.</p>
             <div class="row">
                 <div class="col-sm-6">
@@ -387,7 +387,7 @@
         </div>
 
         <!-- Engineering Example -->
-        <h2><a name="15_7">15.7  Engineering Example - Shaping the Synthesizer Notes</a></h2>
+        <h2 id="15_7">15.7  Engineering Example - Shaping the Synthesizer Notes</h2>
         <div class="container">
           <div class="container clearfix">
               <div class="card float-right">
@@ -403,12 +403,12 @@
         </div>
 
         <!-- Chapter Summary -->
-        <h2><a name="15_Chapter_Summary">Chapter Summary</a></h2>
+        <h2 id="15_Chapter_Summary">Chapter Summary</h2>
         <p><i>In this chapter, we saw the implementations of four common numerical techniques:</i></p>
         <ul>
-            <li>We can estimate data points between given data values using linear <span class="code">(interp1/2/3)</span> or spline interpolation</li>
+            <li>We can estimate data points between given data values using linear <code>(interp1/2/3)</code> or spline interpolation</li>
             <li>We can smooth noisy data by fitting polynomial curves of suitable order to the raw data</li>
-            <li>Given, for example, the velocity of an object over time, we can determine its position by integrating using <span class="code">cumtrapz(...)</span> or <span class="code">cumsum(...)</span></li>
+            <li>Given, for example, the velocity of an object over time, we can determine its position by integrating using <code>cumtrapz(...)</code> or <code>cumsum(...)</code></li>
             <li>We can differentiate to generate its acceleration</li>
         </ul>
 
@@ -431,6 +431,6 @@
         </tbody>
         </table>
 
-        <p align="center"><font size="1">This Web Page was Built with PageBreeze </font><a href="http://pagebreeze.com" target="_blank"><font size="1">Free HTML Editor</font></a><font size="1"> </font></p>
+        
     </body>
 </html>
