@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>13_Images.htm</title>
-`        <script async src="./javascript/index.js"></script>
+    <script async src="./javascript/index.js"></script>
     <!-- include bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -56,11 +56,13 @@
 
 <!-- Introduction -->
 <h1>Introduction</h1>
- <p>The graphical techniques we have seen so far have been 2-D and 3-D plots, whose basic concept is to write in places on the screen where data are required and to leave the rest of the screen blank. These presentations are easily generated when we have a mathematical model of the data and wish to represent it graphically. However, many sensors observing the world do not have that underlying model of the data. Rather, they passively generate 2-D repr that we see as images, leaving the interpretation of those images to an observer. This kind of presentation is exemplified by a digital photogra includes images from many other sources like radar or X-ray machines.</p>
- <p>This chapter discusses some of the elementary processes that can be images in order to begin to extract meaning from them.</p>
+<div class="container">
+    <p>The graphical techniques we have seen so far have been 2-D and 3-D plots, whose basic concept is to write in places on the screen where data are required and to leave the rest of the screen blank. These presentations are easily generated when we have a mathematical model of the data and wish to represent it graphically. However, many sensors observing the world do not have that underlying model of the data. Rather, they passively generate 2-D repr that we see as images, leaving the interpretation of those images to an observer. This kind of presentation is exemplified by a digital photogra includes images from many other sources like radar or X-ray machines.</p>
+    <p>This chapter discusses some of the elementary processes that can be images in order to begin to extract meaning from them.</p>
+</div>
 
  <!-- Nature of an Image -->
-<h2><a name="13_1">13.1  Nature of an Image</a></h2>
+<h2 id="13_1">13.1  Nature of an Image</h2>
 <div class="container clearfix">
     <div class="float-sm-right card">
         <img src="Fig_13_1.JPG" alt="Figure 13.1" class="fig card-img">
@@ -72,56 +74,68 @@
  </div>
 
  <!-- Images Types -->
-<h2><a name="13_2">13.2 Image Types</a></h2>
-<div class="container clearfix">
+<h2 id="13_2">13.2 Image Types</h2>
+<div class="container">
     <p>Our sources for images to process are data files captured by imaging devices such as cameras, scanners, and graphic arts systems, and these image files are provided in a wide variety of formats. According to the MATLAB documentation, it recognizes files in TIFF, PNG, HDF, BMP, JPEG (JPG), GIF, PCX, XWD, CUR, and ICO formats. The various file formats are usually identified by their file extensions. While this seems a bewildering collection of formats, MATLAB provides one image reading function that converts these file formats to one of three internal representations: true color, gray scale, or color mapped images. In the MATLAB implementation, we will confine our interests to two formats: .png files when absolute color fidelity is required and .jpg files that offer better compression ratios to give a smaller file size for a given image.</p>
+</div>
 
  <!-- True Color Images -->
-    <h3><a name="13_2_1">13.2.1	True Color Images</a></h3>
-    <div class="float-sm-right card">
-        <img src="Fig_13_2.JPG" alt="Figure 13.2" class="fig card-img">
-        <p class="figure-name card-title">Figure 13.2: A True Color Image</p>
-    </div>
+<h3 id="13_2_1">13.2.1	True Color Images</h3>
+<div class="container">
      <p>True color images are stored according to the scheme shown in Figure 13.2 as an M*N*3 array where every pixel is directly stored as <code>uint8</code> values in three layers of the 3-D array. The first layer contains the red value, the second layer the green value, and the third layer the blue value. The advantage of this approach, as the name suggests, is that every pixel can be represented as its true color value without compromise. The only disadvantage is the size of the image in memory because there are three color values for every pixel.</p>
+     <div class="card">
+         <img src="Fig_13_2.JPG" alt="Figure 13.2" class="fig card-img">
+         <p class="figure-name card-title">Figure 13.2: A True Color Image</p>
+     </div>
+ </div>
 
-     <!-- Gray Scale Images -->
-    <h3><a name="13_2_2">13.2.2	Gray Scale Images</a></h3>
+ <!-- Gray Scale Images -->
+<h3 id="13_2_2">13.2.2	Gray Scale Images</h3>
+<div class="container">
      <p>Gray scale images are also directly stored, but save the black-to-white intensity value for each pixel as a single <code>uint8</code> value rather than three values. The function <code>imread(...)</code> will read an existing gray scale image into a 2 dimensional array, and the function <code>rgb2gray(...)</code> will convert a true color image to gray scale.</p>
+ </div>
 
-     <!-- Color Mapped Images -->
-    <h3><a name="13_2_3">13.2.3	Color Mapped Images</a></h3>
+ <!-- Color Mapped Images -->
+<h3 id="13_2_3">13.2.3	Color Mapped Images</h3>
+<div class="container clearfix">
     <div class="float-sm-left card">
         <img src="Fig_13_3.JPG" alt="Figure 13.3" class="fig card-img">
         <p class="figure-name card-title">Figure 13.3: A Color Mapped Image</p>
     </div>
      <p>Color mapped, or indexed, images keep a separate color map either 256 items long (for maximum economy of memory) or up to 32,768 items long. Each item in the color map contains the red, blue, and green values of a color, respectively. As illustrated in Figure 13.3, the image itself is stored as an M x N array of indices into the color map. So, for example, a certain pixel index might contain the value 143. The color to be shown at that pixel location would be the 143rd color set (RGB) on the color map.</p>
      <p>If the color map is restricted to 256 colors, each pixel can be drawn at the same color resolution as a true color image, as three 8-bit values, but the choice of colors is very restricted, and normal pictures of scenery—sky, for instance—take on a “layered color” appearance. Color mapped images can be used effectively, however, to store “cartoon pictures” economically where limited color choices are not a problem. Using a larger color map provides a larger, but still sometimes restrictive, range of color choices; but since the indices in the picture array must be 16-bit values and the color map is larger, the memory size advantages of this method of storage are diminished. Computationally, it is possible to convert a color mapped image to true color, but true color or black-and-white images cannot normally be converted to color mapped format without loss of fidelity in the color representation.</p>
+ </div>
 
-     <!-- Preferred Image Format -->
-    <h3><a name="13_2_4">13.2.4	Preferred Image Format</a></h3>
+ <!-- Preferred Image Format -->
+<h3 id="13_2_4">13.2.4	Preferred Image Format</h3>
+<div class="container">
      <p>In order to avoid confusion in the format of images, we will confine our discussions to one specific image file format that is prevalent at the time of writing and that provides a nice compromise between economy of storage as an image file and accessibility within MATLAB. We will discuss files compressed according to a standard algorithm originally proposed by the Joint Photographic Experts Group (JPEG). When MATLAB reads JPEG images, they are decoded as true color images; when MATLAB writes them, they are again encoded in compressed form. The file size for a typical JPEG file is 30 times less than the size you would need to store the M x N x 3 bytes of the image. As we will see later, however, this compression does not come without cost.</p>
 </div>
 
  <!-- Reading, Displaying, Writing Images -->
-<h2><a name="13_3">13.3	Reading, Displaying, and Writing Images</a></h2>
- <p>MATLAB uses one image reading function, <code>imread(...)</code>, for all image file types. To read a file named <code>myPicture.jpg</code>, we use the following command:</p>
- <p><code>>> pic = imread('myPicture.jpg', 'jpg')</code></p>
- <p>where the result, <code>pic</code>, is an M x N x 3 <code>uint8</code> array of pixel color values, and the second parameter, <code>'jpg'</code>, provides the format of the file explicitly. This parameter is optional; MATLAB usually infers the file format correctly from the file contents.</p>
- <p>Once the picture has been read, you can display it in a figure window with fixed size and axes visible by using the following command:</p>
- <p><code>>> image(pic)</code></p>
- <p>This actually stretches or shrinks the image to fit the size of the normal plot figure, a behavior you normally desire; however, occasionally, you want the plot figure to match the actual image size (or at least, preserving its aspect ratio). Releases of MATLAB after R2008a provide the <code>imshow(...)</code> function, which presents the image without stretching, shrinking, or axes (unless the figure window is too small).</p>
- <p>Similarly, there is one function for writing files: <code>imwrite(...)</code>, which can be used to write most common file formats. If we have made some changes to pic, the internal representation of the image, we could write a new version to the disk by using the following:</p>
- <p><code>>> imwrite( pic, 'newPicture.jpg', 'jpg')</code></p>
- <p>where the third parameter, <code>'jpg'</code>, is required to specify the output format of the file.</p>
+<h2 id="13_3">13.3	Reading, Displaying, and Writing Images</h2>
+<div class="container">
+    <p>MATLAB uses one image reading function, <code>imread(...)</code>, for all image file types. To read a file named <code>myPicture.jpg</code>, we use the following command:</p>
+    <p><code>>> pic = imread('myPicture.jpg', 'jpg')</code></p>
+    <p>where the result, <code>pic</code>, is an M x N x 3 <code>uint8</code> array of pixel color values, and the second parameter, <code>'jpg'</code>, provides the format of the file explicitly. This parameter is optional; MATLAB usually infers the file format correctly from the file contents.</p>
+    <p>Once the picture has been read, you can display it in a figure window with fixed size and axes visible by using the following command:</p>
+    <p><code>>> image(pic)</code></p>
+    <p>This actually stretches or shrinks the image to fit the size of the normal plot figure, a behavior you normally desire; however, occasionally, you want the plot figure to match the actual image size (or at least, preserving its aspect ratio). Releases of MATLAB after R2008a provide the <code>imshow(...)</code> function, which presents the image without stretching, shrinking, or axes (unless the figure window is too small).</p>
+    <p>Similarly, there is one function for writing files: <code>imwrite(...)</code>, which can be used to write most common file formats. If we have made some changes to pic, the internal representation of the image, we could write a new version to the disk by using the following:</p>
+    <p><code>>> imwrite( pic, 'newPicture.jpg', 'jpg')</code></p>
+    <p>where the third parameter, <code>'jpg'</code>, is required to specify the output format of the file.</p>
+</div>
 
 
  <!-- Operating on Images -->
-<h2><a name="13_4">13.4	Operating on Images</a></h2>
-<div class="container clearfix">
+<h2 id="13_4">13.4	Operating on Images</h2>
+<div class="container">
      <p>Since images are stored as arrays, it is not surprising that we can employ the normal operations of creation, manipulation, slicing, and concatenation. We will note one particular matrix operation that will be of great value before examining some applications of array manipulation related to image processing.</p>
+ </div>
 
-     <!-- Stretching or Shrinking Images -->
-    <h3><a name="13_4_1">13.4.1	Stretching or Shrinking Images</a></h3>
+ <!-- Stretching or Shrinking Images -->
+<h3><a name="13_4_1">13.4.1	Stretching or Shrinking Images</a></h3>
+<div class="container">
      <p>In earlier chapters we have seen the basic ability to use index vectors to extract rows and columns from an array. Now we extend these ideas to understand how to uniformly shrink or stretch an array to match an exact size. Consider, for example, <code>A</code>, a <code>rows x cols</code> array. Assume for a moment that the vertical size is good, but we want to stretch or shrink the image horizontally to <code>newRows</code>—a number that might be larger or smaller than <code>rows</code>. We use <code>linspace(...)</code> to create an index vector as follows:</p>
      <p><code>>> rowVector = linspace(1, rows, newRows)</code></p>
      <p>where the third parameter is the desired size of the new array. In general, this index vector will contain fractional values, but MATLAB will truncate the index values. We can round the results as follows:</p>
@@ -131,10 +145,11 @@
      <p>Clearly, this can be applied to both dimensions simultaneously, as shown in Exercise 13.1.</p>
      <span class="exercise">Exercise 13.1</span>
      <p>In this exercise, first we read an image and determine its size. Note that with 3-D images, you must give to the <code>size(...)</code> function three variables. Then we illustrate the “normal” slicing operations by reducing the image to the even rows, and every third column. Next, we generalize this image slicing by stretching the number of rows by a factor 1.43 and shrinking the number of columns by a factor 0.75. This is accomplished by building a row index vector, <code>rowVec</code>, and a column index vector, <code>colVec</code>, according to the algorithm above. The stretching is achieved by repeating selected values in the index vector, and shrinking is achieved by omitting some.</p>
+ </div>
 
-     <!-- Color Masking -->
-    <h3><a name="13_4_2">13.4.2	Color Masking</a></h3>
-    <div class="container">
+ <!-- Color Masking -->
+<h3 id="13_4_2">13.4.2	Color Masking</h3>
+<div class="container clearfix">
      <p>As an example of image manipulation, consider the image shown in Figure 13.4. This is a 2400 x 1600 JPEG image that can be taken with any good digital camera. However, the appearance of the Vienna garden is somewhat marred by the fact that the sky is gray, not blue. Fortunately, we have a picture of a cottage, as shown in Figure 13.5, with a nice, clear blue sky. So our goal is to replace the gray sky in the Vienna garden with the blue sky from the cottage picture.</p>
     <div class="row">
         <div class="col-sm-6 card">
@@ -184,27 +199,28 @@
         </div>
  </div>
 
-     <!-- Creating a Kaleidoscope -->
-    <h3><a name="13_4_3">13.4.3	Creating a Kaleidoscope</a></h3>
-    <div class="container clearfix">
-         <p>Originally, a kaleidoscope was a cardboard tube in which a number of mirrors were arranged in such a manner that one image—usually, a collection of colored beads—was reflected to produce a symmetrical collection of images. We will replicate that general idea using MATLAB. Figure 13.9 illustrates the geometric manipulation necessary to create one particular kaleidoscope picture. We start with an arbitrary image and use shrinking or stretching to generate a square picture—the ‘F’ in the figure. We then mirror it horizontally and concatenate it horizontally with the original image. We then mirror these two images vertically and concatenate them vertically. Finally, we take that compound image and repeat the process to produce the 4x4 image array on the right side.</p>
-         <p>Figure 13.10 shows the original image and the results. The overall logic flow of the solution matches that shown in Figure 13.9.</p>
-         <p>Listing 13.3 shows the code that makes the kaleidoscope.</p>
-         <div class="row">
-             <div class="col-sm-6 card">
-                 <img src="Fig_13_9.jpg" alt="Figure 13.9" class="fig-wide card-img">
-                 <p class="figure-name card-title">Figure 13.9: Logic for the kaleidoscope</p>
-             </div>
-             <div class="col-sm-6 card">
-                 <img src="Fig_13_10.jpg" alt="Figure 13.10" class="fig-wide card-img">
-                 <p class="figure-name card-title">Figure 13.10: The kaleidoscope</p>
-             </div>
-         </div>
-        <span class="listing">Listing 13.4</span>
+ <!-- Creating a Kaleidoscope -->
+<h3 id="13_4_3">13.4.3	Creating a Kaleidoscope</h3>
+<div class="container clearfix">
+    <p>Originally, a kaleidoscope was a cardboard tube in which a number of mirrors were arranged in such a manner that one image—usually, a collection of colored beads—was reflected to produce a symmetrical collection of images. We will replicate that general idea using MATLAB. Figure 13.9 illustrates the geometric manipulation necessary to create one particular kaleidoscope picture. We start with an arbitrary image and use shrinking or stretching to generate a square picture—the ‘F’ in the figure. We then mirror it horizontally and concatenate it horizontally with the original image. We then mirror these two images vertically and concatenate them vertically. Finally, we take that compound image and repeat the process to produce the 4x4 image array on the right side.</p>
+    <p>Figure 13.10 shows the original image and the results. The overall logic flow of the solution matches that shown in Figure 13.9.</p>
+    <p>Listing 13.3 shows the code that makes the kaleidoscope.</p>
+    <div class="row">
+     <div class="col-sm-6 card">
+         <img src="Fig_13_9.jpg" alt="Figure 13.9" class="fig-wide card-img">
+         <p class="figure-name card-title">Figure 13.9: Logic for the kaleidoscope</p>
      </div>
+     <div class="col-sm-6 card">
+         <img src="Fig_13_10.jpg" alt="Figure 13.10" class="fig-wide card-img">
+         <p class="figure-name card-title">Figure 13.10: The kaleidoscope</p>
+     </div>
+    </div>
+    <span class="listing">Listing 13.4</span>
+</div>
 
-    <!-- Images on a Surface -->
-    <h3><a name="13_4_4">13.4.4 Images on a Surface</a></h3>
+<!-- Images on a Surface -->
+<h3 id="13_4_4">13.4.4 Images on a Surface</h3>
+<div class="container clearfix">
     <div class="float-sm-right card">
         <img src="../Text/earthmap_s.jpg" alt="Figure 13.11" class="fig card-img">
         <p class="figure-name card-title">Figure 13.11: Map Projection</p>
@@ -212,11 +228,11 @@
      <p>In Chapter 11 we saw how to create a surface representing solid objects and, in particular, how to create a spherical image that rotates with lighting.</p>
      <p>Spectacular effects can be created by “pasting” images onto these surfaces, as will be illustrated in this last example. Here, we are given an image of the surface of the earth using Mercator projection, shown in Figure 13.11<sup><a href="#footnote">[1]</a></sup>. It is important to use the Mercator projection, named for the sixteenth-century Flemish cartographer Gerardus Mercator, because this projection keeps the lines of latitude and longitude on a rectangular grid. This allows a correct representation of the map as it is pasted onto the spherical surface. However, it also presents a challenge because in this projection, the north and south poles would be stretched to infinite length across the top and bottom of the map. This map, therefore, leaves off the region near the poles, and we have to replace those regions.</p>
      <p>The objective of this exercise is to paste this image onto a rotating globe. The trick to accomplishing this is to use a feature of the <code>surf(...)</code> function, whereby the image is supplied in a specific form as the fourth parameter, as follows:</p>
+     <p><code>surf(xx, yy, zz, img)</code></p>
      <div class="float-sm-right">
          <video controls class="fig"><source src="Fig_13_12.mp4" type="video/mp4">Figure 13.12</video>
          <p class="figure-name">Figure 13.12: Globe</p>
      </div>
-     <p><code>surf(xx, yy, zz, img)</code></p>
      <p>It will replace the normal coloring scheme of the surface with the image under the following conditions:</p>
      <uL>
          <li>The rows and columns of the image match the rows and columns of the <code>xx, yy, zz</code> plaid</li>
@@ -229,7 +245,7 @@
 </div>
 
 <!-- Engineering Example -->
-<h2><a name="13_5">13.5  Engineering Example—Detecting Edges</a></h2>
+<h2 id="13_5">13.5  Engineering Example—Detecting Edges</h2>
 <div class="container clearfix">
     <p>While images are powerful methods of delivering information to the human eye, they have limitations when being used by computer programs. Our eyes have an astonishing ability to interpret the content of an image, such as the one shown in Figure 13.13. Even a novice observer would have no difficulty seeing that it is a picture of an aircraft in flight. An experienced observer would be able to identify the type of aircraft as a Lockheed C-130 and perhaps some other characteristics of the aircraft.</p>
     <div class="row">
@@ -254,13 +270,15 @@
 
 
 <h2>Chapter Summary</h2>
-<p><i>This chapter covered the following:</i></p>
-<ul>
-    <li>Images represented internally in bit-mapped, gray scale, or true color form</li>
-    <li>Image files that come in a large variety of formats; MATLAB provides a single reader function and a single writer function to manipulate all the common image types</li>
-    <li>Common operations on images, including cropping, stretching or shrinking, and concatenating and pasting an image onto a surface</li>
-    <li>An engineering example showing how edge detection begins the process of extracting meaning from an image</li>
-</ul>
+<div class="container clearfix">
+    <p><i>This chapter covered the following:</i></p>
+    <ul>
+        <li>Images represented internally in bit-mapped, gray scale, or true color form</li>
+        <li>Image files that come in a large variety of formats; MATLAB provides a single reader function and a single writer function to manipulate all the common image types</li>
+        <li>Common operations on images, including cropping, stretching or shrinking, and concatenating and pasting an image onto a surface</li>
+        <li>An engineering example showing how edge detection begins the process of extracting meaning from an image</li>
+    </ul>
+</div>
 
 <!--
 [Special Characters]
