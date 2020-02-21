@@ -1,4 +1,3 @@
-
 % Rotating a solid cube
 function main
     % Build coordinates of the cube centered at the origin.

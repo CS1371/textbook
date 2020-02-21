@@ -1,4 +1,3 @@
-
 % Plotting line intersections
 function main
     % equations are y = m1 x + c1
