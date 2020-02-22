@@ -1,8 +1,5 @@
 % Spline interpolation
 function main
-    pause(1)
-    figure
-    
     % Show original x and y values
     x = 0:5;
     y = [0, 20, 60, 68, 77, 110];

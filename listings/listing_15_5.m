@@ -1,9 +1,7 @@
 % Removing the power line from the sky
 function main
-    pause(1)
-    figure
     % Read the original cottage picture
-    p = imread('../Witney.jpg');
+    p = imread('../Text/Witney.jpg');
     % Obtain its sizes
     [rows, cols, clrs] = size(p);
     % Get x values for the curve fitting

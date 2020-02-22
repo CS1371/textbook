@@ -1,8 +1,5 @@
 % Higher-order fits
 function main
-    pause(1)
-    figure
-    
     % Set up the data sets
     x = 0:5;
     fine_x = 0:.1:5;

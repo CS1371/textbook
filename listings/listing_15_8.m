@@ -1,7 +1,5 @@
 % Integrating rocket velocity
 function main
-    pause(1)
-    figure
     % Generate the original velocity data
     v =[ 0.0 15.1 25.1 13.7 22.2 41.7 ...
         39.8 54.8 57.6 62.6 61.6 63.9 69.6 ...

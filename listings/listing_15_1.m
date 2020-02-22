@@ -1,8 +1,6 @@
 % Linear interpolation
 function main
     % Use data illustrated in Figure 15.2
-    pause(1)
-    figure
     x = 0:5;
     y = [0, 20, 60, 68, 77, 110];
     plot(x, y, 'r+')
