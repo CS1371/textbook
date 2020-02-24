@@ -1,5 +1,3 @@
-% Listing 14.3: FFT of a sine wave
-
 % Set up the time domain signal
 dt = 1/400 % sampling period (sec)
 pts = 10000 % number of points

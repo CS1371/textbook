@@ -1,31 +1,69 @@
-% Listing 14.4: Plotting the spectrum of one instrument
+function main
+    global note
+    global Fs
+    [Y f] = compute('../Text/instr_violin.wav');
+    subplot(3, 1, 1)
+    ne = round(length(f) / 4);
+    plot(f(1:ne), Y(1:ne))
+    xlabel('frequency(Hz)');
+    ylabel('sound energy (relative)');
+    title('frequency spectrum of violin')
+    [Y f] = compute('../Text/instr_tpt.wav');
+    subplot(3, 1, 2)
+    plot(f(1:end/4), Y(1:end/4))
+    xlabel('frequency(Hz)');
+    ylabel('sound energy (relative)');
+    title('frequency spectrum of trumpet')
+    [Y f] = compute('../Text/trainwhistle.wav');
+    subplot(3, 1, 3)
+    n = round(length(f)/10);
+    plot(f(1:n), Y(1:n))
+    xlabel('frequency(Hz)');
+    ylabel('sound energy (relative)');
+    title('frequency spectrum of whistle')
+	play_steps(note)
+end
 
-% Shows a function consuming two strings: the name of the instrument and
-% the title of the plot.
-function inst(name, ttl)
-    % plot the spectrum of the instrument with
-    % the given name, with the given plot title
+function [Y, f] = compute( name )
+    global note
+    global Fs   
+    [note Fs] = audioread(name);
+    sound(note, Fs)
+    N = round(length(note) / 2);
+    Y = abs(fft(note)) / N;
+    Y = Y(1:N);
+    f = (1:N) * Fs / (2*N);
+    pause(length(note)./Fs)
+end
 
-    % Read the file and set up plot parameters
-    [x, Fs] = wavread([ 'instr_' name '.wav' ]);
-    N = length(x);
-    dt = 1/Fs; % sampling period (sec)
-    t = (1:N) * dt; % time array for plotting
-
-    % Perform the FFT and computes the absolute value.
-    Y = abs(fft(x)); % perform the transform
-
-    % Scale the plot to be a percentage of the maximum energy at any frequency.
-    mx = max(Y);
-    Y = Y * 100 / mx;
-
-    % Set up and plot the first 10% of the spectrum.
-    df = 1 / t(end) ; % the frequency interval
-    fmax = df * N / 2 ;
-    f = (1:N) * 2 * fmax / N;
-    up = floor(N/10);
-    plot(f(1:up), Y(1:up) );
-    title(ttl)
-    xlabel( 'Frequency (Hz)' )
-    ylabel( 'Energy' )
+function play_steps(note)
+	global Fs
+    half_note = 2.^(1/12);
+    N = length(note)/10;
+    fprintf('play a tune using half_step count for pitch\n')
+    notes = [   4  2
+        2  1
+        0  2
+        0  1
+        0  2
+        2  1
+        4  2
+        4  1
+        4  1
+        2  1
+        0  1
+        2  1
+        4  1
+        2  1
+        0  2
+        -1  1
+        0  4];
+    for ndx = 1:length(notes)
+        nt = notes(ndx, 1);
+        dur = notes(ndx, 2);
+        mult = half_note .^ nt;
+        sampler = floor(linspace(1, N, N / mult));
+        sound(note(sampler), Fs)
+        pause(0.2*dur)
+    end
 end
