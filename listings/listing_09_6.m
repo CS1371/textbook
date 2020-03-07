@@ -1,3 +1,4 @@
+% Listing 9.6: Finding Zeros of a Function
 % Recursive Root Finding
 function main
     px = linspace(-7, 9, 100);
