@@ -71,8 +71,8 @@ clc
 %     format('listing_11_8.m');
 %     format('listing_11_9.m');
 %     format('listing_11_10.m');
-%    format('listing_11_11.m');
-     format('listing_11_13.m');
+%     format('listing_11_11.m');
+%     format('listing_11_13.m');
 %     format('listing_12_1.m');
 %     format('listing_12_2.m');
 %     format('listing_12_3.m');
@@ -104,7 +104,7 @@ clc
 %     format('listing_16_3.m');
 %     format('listing_16_4.m');
 %     format('listing_16_5.m');
-%     format('listing_17_1.m');
+     format('listing_17_1.m');
 %     format('listing_17_2.m');
 %     format('listing_17_3.m');
 %     format('listing_17_4.m');
