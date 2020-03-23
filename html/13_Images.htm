@@ -192,7 +192,7 @@
              <p>From this we conclude that pixel replacement will probably not solve our wire problem. We will take a different approach to solve this problem in Chapter 15.</p>
          </div>
          <div class="col-sm-4">
-             <div class="card common-pitfalls">
+             <div class="card common-pitfalls common-pitfalls-col">
                  <p class="card-title">Common Pitfalls 13.1</p>
                  <p class="card-text">Be careful requesting the size of 3-D (and more) arrays. If you leave off variables—as here, you might be tempted not to ask for the number of colors because you know it’s three—the <code>size(...)</code> function multiplies together the remaining dimension sizes. So if img is sized 1200 * 1600, <code>[r,c] = size(img)</code> would return <code>r = 1200</code> and <code>c = 4800</code>! If you provide to only one variable, it returns a vector of the sizes of each dimension of the array. So <code>v = size(img)</code> returns <code>[1200 1600 3]</code>.</p>
              </div>
