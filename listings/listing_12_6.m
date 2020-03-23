@@ -1,13 +1,16 @@
-% Analyzing an electrical circuit
+% Analyzing ceramic composition
 function main
-    R1 = 100; R2 = 200; R3 = 300;
-    R4 = 400; R5 = 500;
-    V1 = 10; V2 = 5;
-    A = [R1+R4	-R4	0
-        -R4	R2+R4+R5 -R5
-        0	-R5	R3+R5];
-    B = [V1; 0; -V2];
-    curr = inv(A) * B
-    fprintf('drop across R1 is %6.2f volts\n', ...
-        curr(1) * R1 );
+    % Matrix A is the transpose of the original data table
+    A = [0.6950	0.8970 0.0670 0.6920
+        0.1750	0.0372	0.0230	0.0160
+        0.0080	0.0035	0.0600	0.0250
+        0.1220	0.0623	0.8500	0.2670]
+    
+    % Shows the required composition in kilograms
+    B = [67 5 2	26].'
+    
+    % Shows the computed weights of the raw materials in kg, which produces
+    % the following result:
+        % W = [16.0083, 35.3043, 15.1766 33.5108]
+    W = (inv(A) * B).'
 end
