@@ -1,8 +1,5 @@
 % Rotating an irregular shape
 function main
-clear
-clc
-close all
     u = [0 0 3 3 1.75 1.75 2 2 1.75 1.75 3 4 ...
         5.25 5.25 5 5 5.25 5.25 3 3 6 6];
     v = [0 .5 .5 .502 .502 .55 .55 1.75 1.75 ...

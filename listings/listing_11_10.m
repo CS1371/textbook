@@ -1,7 +1,5 @@
 % Rotating v = u^2 about the z axes
-clear
-clc
-close all
+function main
     N = 200;
     % Using the analogy of a sheet of paper wrapped into a cylinder
     % and taped, we see that we need a plaid in z and theta, the angle
@@ -27,6 +25,7 @@ close all
     z = [0 1];
     plot3(x, y, z, 'k--')
     lightangle(-60, 45)
+end
 
 function v = f(u)
     v = u.^2;

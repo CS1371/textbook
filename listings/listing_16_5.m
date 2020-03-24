@@ -1,27 +1,45 @@
 % Updated world data analysis
+
+% Wraps the script in a pseudo-function to allow the helper
+% functions to reside in the same file.
 function main
-    worldData = buildData('../World_data.xls');
+    % Reads in the world data
+    worldData = buildData('../Text/World_data.xls');
+    % Selects the number of countries to represent
     n = 20;
+    % Calls the function that will return the indices of the n best
+    % countries.
     bestn = findBestn(worldData, n);
+    % Print the list of country names in reverse order (the best first).
     fprintf('best %d countries are:\n', n)
     for best = bestn(end:-1:1)
         fprintf('%s\n', worldData(best).name)
     end
 end
+
+% Show an updated version of the original function to return
+% the indices of the n best countries.
 function bestn = findBestn(worldData, n)
     % find the indices of the n best countries
     % according to the criterion in the function fold
     % we first map world data to add the field growth
+    
+    % Map the worldData structure array, adding to each a
+    % field called growth that contains the criterion specified in the fold
+    % function.
     for ndx = 1:length(worldData)
         cntry = worldData(ndx);
         worldData(ndx).growth = fold(cntry);
     end
-    % now, sort on this criterion
+    % Extract and sort the values of growth for each country.
     values = [worldData.growth];
     [junk order] = sort(values);
-    % filter these to keep the best 10
+    % Filter these to keep the best 10. Returns the last n countries that 
+    % will have the highest growth values.
     bestn = order(end-n+1:end);
 end
+
+% The fold function unchanged from Chapter 10.
 function ans = fold(st)
     % s1 is the rate of growth of population
     pop = st.pop(~isnan(st.pop));
@@ -35,15 +53,20 @@ function ans = fold(st)
     % the gdp grows than the population
     ans = s2 - s1;
 end
+
+% The modified slope function from Chapter 10 .
 function sl = slope(x, y)
     % Estimate the slope of a curve
     if length(x) == 0 || x(end) == x(1)
         error('bad data')
     else
+        % Use polyfit to compute an accurate slope and return it to the 
+        % calling function.
         coef = polyfit(x, y, 1);
         sl = coef(1);
     end
 end
+
 function worldData = buildData(name)
     % read the spreadsheet into a data array
     % and a text cell array

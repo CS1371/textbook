@@ -1,8 +1,7 @@
-% Code for Greedy algorithm
-function D = Greedy
-    pause(1)
-    figure
-    [A coord] = makeGraph; % call script to make the graph:
+% Prim's Algorithm to compute a MST
+function prims
+    [A coord] = makeGraph
+    start = 1;
     gplot(A, coord, 'ro-')
     hold on
     for index = 1:length(coord)
@@ -10,48 +9,39 @@ function D = Greedy
         text(coord(index,1) + 0.2, ...
             coord(index,2) + 0.3, str);
     end
-	showCosts(coord, A);
+	showCosts(coord, A)
     axis([0 11 0 10]); axis off; hold on
-    start = 2
-    target = 8
-    % initial path
-    current = start;
-    visited = start;
-    while current(end) ~= target
-        thisNode = current(end);
-        % get possible paths from here
-        children = find(A(thisNode,:) ~= 0);
-        best = inf;
-        node = -1; % no node seleected yet
-        for thisChild = children
-            if ~any(thisChild == visited)
-                edgeCost = A(thisNode, thisChild);
-                estimate = dist(thisChild, target, coord);
-                cost = edgeCost + estimate;
-                if cost < best
-                    best = cost;
-                    node = thisChild;
+    N = start;
+    running = true;
+    result = sparse([0]);
+    while running
+        % find the smallest edge
+        best = 10000;
+        running = false;
+        for ndx = 1:length(N)
+            node = N(ndx);
+            next = find(A(node,:) > 0);
+            for nxt = 1:length(next)
+                nxtn = next(nxt);
+                if ~any(N == nxtn)
+                    running = true;
+                    if A(node, nxtn) < best
+                        best = A(node, nxtn);
+                        from = node;
+                        to = nxtn;
+                    end
                 end
-            end % if ~any(thisChild == current)
-        end % for thisChild = children
-        if node == -1
-            % dead end -> back up one
-            current = current(1:end-1);
-            if length(current == 0)
-                error('path failed')
             end
-        else
-            current = [current node];
-            visited = [visited node]; %
+        end
+        if running
+            N = [N to];
+            result(from, to) = 1;
         end
     end
-    D = sparse([0]);
-    for it = 1:length(current)-1
-        D(current(it), current(it+1)) = 1;
-    end
-    gplot(D, coord, 'gx--')
-    title('Greedy Search from B to H')
+    gplot(result, coord, 'gx--')
+	title('MST with Prim''s Algorithm')
 end
+
 function showCosts(co, A)
 	n = length(A);
 	for r = 1:n
@@ -66,6 +56,7 @@ function showCosts(co, A)
         end
     end
 end
+
 function [A coord] = makeGraph
     % edge weights
     cost = [24 19 15 19 19 19 27 27 27 70 18 15 31 19 27 27];
@@ -97,6 +88,7 @@ function [A coord] = makeGraph
                 1 7];	% K
     A = grAdjacency( node, cost, dir );
 end
+
 function A = grAdjacency( node, cost, dir )
     % compute an adjacency matrix.
     % it should contain the weight from one
@@ -134,10 +126,4 @@ function A = grAdjacency( node, cost, dir )
         end
     end
     A = sparse( ip, jp, tp );
-end
-function res = dist(a, b, coord)
-    from = coord(a,:);
-    to = coord(b,:);
-    res = sqrt((from(1)-to(1)).^2 + (from(2)-to(2)).^2);
-	res = res .* 10;  % costs are 10 * separation
 end

@@ -1,6 +1,6 @@
 % listing_05_7
 % while statement example
-clear; clc
+function main
     %% Create a test vector and initialize the answers as before.
     A = floor(rand(1,10)*100)
     theMax = A(1); theIndex = 1;
@@ -20,3 +20,4 @@ clear; clc
     end
     fprintf('the max value in A is %d at %d\n', ...
         theMax, theIndex);
+end

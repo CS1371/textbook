@@ -1,8 +1,5 @@
 % Constructing a cylinder
 function main
-clear
-clc
-close all
     facets = 120; 
     len = 2; 
     radius = 0.5;

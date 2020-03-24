@@ -1,7 +1,8 @@
 % listing_07_2
 % Cell array processing example
-clear; clc
+function main
     it = totalNums({1:3 {4 9} 42 {{{4}}}})
+end
 
 function ans = totalNums(ca)
     % count the numbers in a cell array

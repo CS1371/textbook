@@ -1,6 +1,6 @@
 % listing_05_3
 %  The if statement with a logical vector
-clear; clc
+function main
     % Make the variable A a logical vector.
     A = [true true false]
     % Using this as a logical expression, MATLAB internally converts
@@ -14,3 +14,4 @@ clear; clc
     if A
         % this code block will now execute.
     end
+end

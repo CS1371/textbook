@@ -1,8 +1,5 @@
 % Map data analysis
 function main
-clear
-clc
-close all
     % draw the streets
     raw = dlmread('atlanta.txt');
     streets = raw(:,3:7);

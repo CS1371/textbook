@@ -1,8 +1,6 @@
 % Plotting the spectrum of one instrument
 function main
-    pause(1)
-    figure
-    [piano Fs] = audioread('..\instr_piano.wav');
+    [piano Fs] = audioread('..\Text/instr_piano.wav');
     frq = 261
     duration = length(piano)/Fs;   % sec
     

@@ -1,3 +1,4 @@
+% Listing 9.6: Finding Zeros of a Function
 % Recursive Root Finding
 function main
     px = linspace(-7, 9, 100);
@@ -14,6 +15,7 @@ function main
         grid on
     end
 end
+
 function pt = findZero(x)
     % x is a lower-upper pair guaranteed to have
     % y values of opposite sign

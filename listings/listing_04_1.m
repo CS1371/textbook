@@ -1,6 +1,6 @@
 % listing_04_1
 % Vector indexing script
-clear; clc
+function main
     % Create a vector A with six elements.
     A = [2 5 7 1 3 4];
     % When predefining an index vector, if you want to refer to the size of a
@@ -50,3 +50,4 @@ clear; clc
     % because it is applying the logical operator to A twice. It is better to
     % use the form above.
     A(A < 10) = A(A < 10) + 10
+end

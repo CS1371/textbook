@@ -1,8 +1,5 @@
 % Simple surface plot
 function main
-clear
-clc
-close all
 % define the x and y vectors
     x=-3:3; 
     y =-3:3;

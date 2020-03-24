@@ -1,7 +1,8 @@
 % listing_09_1
 % Function to compute N factorial
-clear; clc
+function main
     res = fact(12)
+end
 
 function result = fact(N)
     % recursive computation of N!

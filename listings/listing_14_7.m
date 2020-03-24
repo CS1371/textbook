@@ -1,6 +1,6 @@
 % Script to plot eight-instrument spectra
 function main
-    [y Fs] = audioread('../instr_tpt.wav');
+    [y Fs] = audioread('../Text/instr_tpt.wav');
     sound(y, Fs)
     N = length(y);
     pause(N./Fs)

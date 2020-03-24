@@ -1,8 +1,5 @@
 % Rotating v = u^2 about the x axes
 function main
-clear
-clc
-close all
     N = 200;
     u = linspace(0, 5, N);
     v = f(u);

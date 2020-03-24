@@ -1,108 +1,136 @@
 <code><strong>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Breadth-first graph traversal</font><br>
 <font color="#0000ff">function</font> main<br>
-&nbsp;&nbsp;&nbsp;&nbsp;pause(<font color="#ff8000">1</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;figure<br>
-&nbsp;&nbsp;&nbsp;&nbsp;A = makeGraph<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Constructs an adjacency matrix</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;start = <font color="#ff8000">5</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% start is a node number (in this case, 'E')</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Create a queue and</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue a path containing home</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;q = qEnq([], start);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% initialize the visited list</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;visited = start;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% initialize the result</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'trace: '</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% While the queue is not empty</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty(q)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Dequeue a path</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[q thisNode] = qDeq(q);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Traverse the children of this node</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'%s - '</font>, char(<font color="#c000c0">'A'</font>+thisNode-<font color="#ff8000">1</font>) );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children = find(thisNode ~= <font color="#ff8000">0</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> aChild = children<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% If the child is not on the path</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> ~any(aChild == visited)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Enqueue the new path</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = qEnq(q, aChild);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% add to the visited list</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visited = [visited aChild];<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <font color="#00A000">% if ~any(eachchild == current)</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <font color="#00A000">% for eachchild = children</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font> <font color="#00A000">% while q not empty</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    Test a Stack</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;stack = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rv = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">6</font>)*<font color="#ff8000">100</font> - <font color="#ff8000">25</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stack = pushvec(stack, rv);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sv = popvec(stack); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(rv) == length(sv) <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&& all(sv == rv(end:-<font color="#ff8000">1</font>:<font color="#ff8000">1</font>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Stack good\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Stack bad!!!\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    Test a Queue</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;rv = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">5</font>)*<font color="#ff8000">100</font> - <font color="#ff8000">25</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;q = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;q = enqvec(q, rv);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sv = deqvec(q); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(rv) == length(sv) <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&& all(sv == rv) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Queue good\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Queue bad!!!\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    Test a Priority Queue</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;rv = round(rand(<font color="#ff8000">1</font>,<font color="#ff8000">5</font>)*<font color="#ff8000">100</font> - <font color="#ff8000">25</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pq = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pq = pqenqvec(pq, rv);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sv = deqvec(pq); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(rv) == length(sv) <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&& all(diff(sv) >= <font color="#ff8000">0</font>) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Priority Queue good\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'Priority Queue bad!!!\n'</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 <font color="#0000ff">end</font><br>
-<font color="#0000ff">function</font> A = makeGraph<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% edge weights</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;cost = [<font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">3</font> <font color="#ff8000">3</font> <font color="#ff8000">3</font> <font color="#ff8000">3</font> <font color="#ff8000">1</font> <font color="#ff8000">2</font> <font color="#ff8000">1</font> <font color="#ff8000">3</font>];<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% edge directions</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;dir = [<font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font> <font color="#ff8000">2</font>];<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% connectivity</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;node = [ <font color="#ff8000">1</font> <font color="#ff8000">2</font> <font color="#ff8000">3</font> <font color="#ff8000">4</font> <font color="#ff8000">5</font>; <font color="#ff8000">...</font> <font color="#00A000">% edges from A</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> <font color="#ff8000">6</font> <font color="#ff8000">7</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>; <font color="#ff8000">...</font> <font color="#00A000">% edges from B</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2</font> <font color="#ff8000">7</font> <font color="#ff8000">8</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>; <font color="#ff8000">...</font> <font color="#00A000">% edges from C</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3</font> <font color="#ff8000">8</font> <font color="#ff8000">9</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>; <font color="#ff8000">...</font> <font color="#00A000">% edges from D</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4</font> <font color="#ff8000">11</font> <font color="#ff8000">13</font> <font color="#ff8000">9</font> <font color="#ff8000">0</font>; <font color="#ff8000">...</font> <font color="#00A000">% edges from E</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">5</font> <font color="#ff8000">6</font> <font color="#ff8000">10</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>; <font color="#ff8000">...</font> <font color="#00A000">% edges from F</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">10</font> <font color="#ff8000">11</font> <font color="#ff8000">12</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>; <font color="#ff8000">...</font> <font color="#00A000">% edges from G</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">12</font> <font color="#ff8000">13</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font> <font color="#ff8000">0</font>]; <font color="#00A000">% edges from H</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% coordinates</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;coord = [ <font color="#ff8000">5</font> <font color="#ff8000">6</font>; <font color="#ff8000">...</font> <font color="#00A000">% A</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3</font> <font color="#ff8000">9</font>; <font color="#ff8000">...</font> <font color="#00A000">% B</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1</font> <font color="#ff8000">6</font>; <font color="#ff8000">...</font> <font color="#00A000">% C</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3</font> <font color="#ff8000">1</font>; <font color="#ff8000">...</font> <font color="#00A000">% D</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6</font> <font color="#ff8000">2</font>; <font color="#ff8000">...</font> <font color="#00A000">% E</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6</font> <font color="#ff8000">8</font>; <font color="#ff8000">...</font> <font color="#00A000">% F</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">9</font> <font color="#ff8000">7</font>; <font color="#ff8000">...</font> <font color="#00A000">% G</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">10</font> <font color="#ff8000">2</font>]; <font color="#00A000">% H</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;A = grAdjacency( node, cost, dir )<br>
-<font color="#0000ff">end</font><br>
-<font color="#0000ff">function</font> A = grAdjacency( node, cost, dir )<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% compute an adjacency matrix.</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% it should contain the weight from one</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% node to another (0 if the nodes</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% are not connected)</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;[m cols] = size(node);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;n = length(cost);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;k = <font color="#ff8000">0</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% iterate across the edges</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% finding the nodes at each end of the edge</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> is = <font color="#ff8000">1</font>:n<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv = <font color="#ff8000">0</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ir = <font color="#ff8000">1</font>:m<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ic = <font color="#ff8000">1</font>:cols<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> node(ir, ic) == is<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv = iv + <font color="#ff8000">1</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> iv > <font color="#ff8000">2</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'bad intersection matrix'</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ij(iv) = ir;<br>
+<br>
+<font color="#0000ff">function</font> ans = is_before(a, b)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;acl = class(a);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ans = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> isa(b, acl)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">switch</font> acl<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#c000c0">'double'</font> 'logical' <font color="#c000c0">'uint8'</font>}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = a < b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'char'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = strcmp(a,b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'struct'</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> isfield(a, <font color="#c000c0">'key'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = a.key < b.key;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">elseif</font> isfield(a, <font color="#c000c0">'dod'</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans = age(a) < age(b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(<font color="#c000c0">'comparing unknown structures'</font>)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">otherwise</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error([<font color="#c000c0">'can'</font><font color="#c000c0">'t compare '</font> acl <font color="#c000c0">'s'</font>])<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> iv ~= <font color="#ff8000">2</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(sprintf(<font color="#c000c0">'didn'</font><font color="#c000c0">'t find both ends of edge %d'</font>, is));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = cost(is);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> dir(is) ~= -<font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k = k + <font color="#ff8000">1</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip(k) = ij(<font color="#ff8000">1</font>); jp(k) = ij(<font color="#ff8000">2</font>); tp(k) = t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> dir(is) ~= <font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k = k + <font color="#ff8000">1</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip(k) = ij(<font color="#ff8000">2</font>); jp(k) = ij(<font color="#ff8000">1</font>); tp(k) = t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;A = sparse( ip, jp, tp );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<font color="#0000ff">function</font> v = popvec(stk)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% pop a vector from a stack</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty(stk)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[stk val] = pop(stk);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = [v val];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
 <font color="#0000ff">end</font><br>
-<font color="#0000ff">function</font> q = qEnq(q, data)<br>
+<br>
+<font color="#0000ff">function</font> stk = pushvec(stk, V)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% push a vector onto a stack</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> v = V<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk = push(stk, v);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> v = deqvec(q)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dequeue a vector from a queue</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> ~isempty(q)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[q val] = deq(q);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = [v val];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> q = enqvec(q, V)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue a vector on a queue</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> v = V<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = enq(q, v);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> q = pqenqvec(q, V)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue a vector on a priority queue</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> v = V<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = pqenq(q, v);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> s = push(s, data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% push an item onto a stack</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;s = [s {data}];<br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> [s ans] = pop(s)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% pop an item off a stack</font><br>
+ans = s{<font color="#0000ff">end</font>};<br>
+s = s(<font color="#ff8000">1</font>:(end-<font color="#ff8000">1</font>));<br>
+<font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> q = enq(q, data)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue onto a queue</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;q = [q {data}];<br>
 <font color="#0000ff">end</font><br>
-<font color="#0000ff">function</font> [q ans] = qDeq(q)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dequeue</font><br>
+<br>
+<font color="#0000ff">function</font> [q ans] = deq(q)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% dequeue an item from a queue</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;ans = q{<font color="#ff8000">1</font>};<br>
 &nbsp;&nbsp;&nbsp;&nbsp;q = q(<font color="#ff8000">2</font>:end);<br>
 <font color="#0000ff">end</font><br>
+<br>
+<font color="#0000ff">function</font> pq = pqenq(pq, item)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% enqueue in order to a priority queue</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;in = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = length(pq)+<font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">while</font> in <= length(pq)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> is_before(item, pq{in})<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = in;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in = in + <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;pq = [pq(<font color="#ff8000">1</font>:at-<font color="#ff8000">1</font>) {item} pq(at:end)];<br>
+<font color="#0000ff">end</font><br>
+<br>
 </strong></code>

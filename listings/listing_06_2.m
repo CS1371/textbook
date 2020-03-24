@@ -1,6 +1,6 @@
 % listing_06_1
 % Encryption
-clear; clc
+function main
     txt = [ 'The quality of mercy is not strain''d' ];
     fprintf('original text: %s\n', txt);
     seed = 1234578;
@@ -24,6 +24,7 @@ clear; clc
         good = 'not matched';
     end
     fprintf('decrypted text with bad generator: %s (%s)\n', back, good);
+end
 
 function res = encrypt(txt, seed)
 % encrypt txt with the 'twister' generator and the given seed

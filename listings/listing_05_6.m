@@ -1,6 +1,6 @@
 % listing_05_6
 % for statement using indexing
-clear; clc
+function main
     % Generalize the creation of the vector A using the rand(...)
     % function to create a vector with 10 elements each
     % between 0 and 100. The floor(...) function rounds
@@ -28,3 +28,4 @@ clear; clc
     % that the logic is continued onto the next line.
     fprintf('the max value in A is %d at %d\n', ...
         theMax, theIndex);
+end

@@ -1,7 +1,5 @@
 %  FFT of a sine wave
 function main
-    pause(1)
-    figure
     % fundamental relationships
     %       N samples
     %       Fs - sampling frequency
@@ -28,7 +26,7 @@ function main
     plot(f(1:ns), real(Y(1:ns)))
     %
     figure
-    [tpt, Fs] = audioread('../instr_tpt.wav');
+    [tpt, Fs] = audioread('../Text/instr_tpt.wav');
     N = length(tpt);
     sound(tpt, Fs)
     tmax = N/Fs;
@@ -43,6 +41,6 @@ function main
     figure
     plot3(f(1:ns), real(Y(1:ns)), imag(Y(1:ns)))
     grid on
-    [note Fs] = audioread('../trainwhistle.wav');
+    [note Fs] = audioread('../Text/trainwhistle.wav');
     N = length(note);
 end
