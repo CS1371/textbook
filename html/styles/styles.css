@@ -4,9 +4,50 @@ code {
 
 body {
     font-family: Helvetica, sans-serif;
-    padding: 5% 20%;
+    background-color: white;
+}
+
+nav {
+  padding: 5% 0 5% 1%;
+  position: fixed;
+  width: 300px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow-x: wrap;
+  overflow-y: scroll;
+  text-align: left;
+}
+
+.secnav {
+  padding: 0 0 0 2%;
+}
+
+.subnav {
+  margin: 0 0 0 4%;
+}
+
+.nav-link {
+  margin: 0 0 0 3%;
+  width: 275px;
+  overflow-x: wrap;
+}
+
+/**Fix scrolling for navbar**/
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-scroll {
+  -ms-overflow-style: none;
+}
+
+.content {
+    padding: 5% 20% 5% 0;
+    margin-left: 350px;
     text-align: justify;
 }
+
 
 h1 {
     font-size: 1.5em;
