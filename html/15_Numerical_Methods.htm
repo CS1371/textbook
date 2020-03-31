@@ -1,8 +1,6 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <meta name="GENERATOR" content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)">
-        <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" >
         <title>15_Numerical_Methods</title>
         <!-- include bootstrap -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,85 +18,7 @@
 
 <body>
 
-<div class="nav-obj">
-  <nav class="nav sidenav nav-scroll navbar-dark bg-dark">
-  <ul class="navbar-nav">
-  <li class="nav-item">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15">15. Numerical Methods&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_15" data-toggle="collapse"></span></a>
-  <ul class="list-unstyled collapse" id="sec_15">
-  <li class="nav-item secnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_1">15.1 Interpolation&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_15_1" data-toggle="collapse"></span></a>
-  <ul class="list-unstyled collapse" id="sub_15_1">
-  <li class="nav-item subnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_1_1">15.1.1 Linear Interpolation</a>
-  </li>
-  <li class="nav-item subnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_1_2">15.1.2 Cubic Spline Interpolation</a>
-  </li>
-  <li class="nav-item subnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_1_3">15.1.3 Extrapolation</a>
-  </li>
-  </ul>
-  </li>
-  <li class="nav-item secnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_2">15.2 Curve Fitting&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_15_2" data-toggle="collapse"></span></a>
-  <ul class="list-unstyled collapse" id="sub_15_2">
-  <li class="nav-item subnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_2_1">15.2.1 Linear Regression</a>
-  </li>
-  <li class="nav-item subnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_2_2">15.2.2 Polynomial Regression</a>
-  </li>
-  <li class="nav-item subnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_2_3">15.2.3 Practical Application</a>
-  </li>
-  </ul>
-  </li>
-  <li class="nav-item secnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_3">15.3 Numerical Integration&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_15_3" data-toggle="collapse"></span></a>
-  <ul class="list-unstyled collapse" id="sub_15_3">
-  <li class="nav-item subnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_3_1">15.3.1 Determination of the Complete Integral</a>
-  </li>
-  <li class="nav-item subnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_3_2">15.3.2 Continuous Integration Problems</a>
-  </li>
-  </ul>
-  </li>
-  <li class="nav-item secnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_4">15.4 Numerical Differentiation&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_15_4" data-toggle="collapse"></span></a>
-  <ul class="list-unstyled collapse" id="sub_15_4">
-  <li class="nav-item subnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_4_1">15.4.1 Difference Expressions</a>
-  </li>
-  </ul>
-  </li>
-  <li class="nav-item secnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_5">15.5 Analytical Operations&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_15_5" data-toggle="collapse"></span></a>
-  <ul class="list-unstyled collapse" id="sub_15_5">
-  <li class="nav-item subnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_5_1">15.5.1 Analytical Integration</a>
-  </li>
-  <li class="nav-item subnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_5_2">15.5.2 Analytical Differentiation</a>
-  </li>
-  </ul>
-  </li>
-  <li class="nav-item secnav">
-  <li class="nav-item secnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_6">15.6 Implementation</a>
-  </li>
-  <li class="nav-item secnav">
-  <li class="nav-item secnav">
-  <a class="nav-link" href="15_Numerical_Methods.htm#15_7">15.7 Engineering Example - Shaping the Synthesizer Notes</a>
-  </li>
-  </ul>
-  </li>
-  </ul>
-  </nav>
-
-
-</div>
+<div class="nav-obj">#nav_obj#</div>
 
 <div class="content">
   <h1 id="15" align="center">Chapter 15: Numerical Methods</h1>
@@ -240,18 +160,16 @@
                   <p class="figure-name card-title">Figure 15.6: Linear Curve Fit</p>
               </div>
           </div>
-      </div>
-      <div class="container">
           <p>Linear regression is the process that determines the linear equation that is the best fit to a set of data points in terms of minimizing the sum of the squared distances between the line and the data points. To understand this process, first we consider the same set of data values used previously and attempt to "eyeball" a straight line through the data. Assume, for example, that \(y = 20x\) is a good estimate of the curve. Listing 15.3 shows the code to plot the points and this estimate.</p>
           <p>Looking at the results in Figure 15.5, it appears that \(y = 20x\) is a reasonable estimate of a line through the points.</p>
-          <div id="listing_15_3" class="listing">#listing_15_3#</div>
           <p>We really need the ability to compare the quality of the fit of this line to other possible estimates, so we compute the difference between the actual y value and the value calculated from the estimate:</p>
           <p><code>>> dy = [0, 0, 20, 8, -3, 10]</code></p>
           <p>It turns out that the best way to make this comparison is by the <b>least squares technique</b>, whereby the measure of the quality of the fit is the sum of the squared differences between the actual data points and the linear estimates. This sum can be computed with the following command:</p>
           <p><code>>> sum_sq = sum(dy.^2)</code></p>
-          <p>For the above set of data, the value of <code>sum_sq</code> is <code>573</code>. As we will see, MATLAB can automatically produce the best linear fit shown in Figure 15.6 whose sum of squares is <code>356.82</code>, a significant improvement over our original guess. This result was achieved by running Exercise 15.2.</p>`
-          <div class="exercise">#exercise_15_2#</div>
-      </div>
+          <p>For the above set of data, the value of <code>sum_sq</code> is <code>573</code>. As we will see, MATLAB can automatically produce the best linear fit shown in Figure 15.6 whose sum of squares is <code>356.82</code>, a significant improvement over our original guess. This result was achieved by running Exercise 15.2.</p>
+        </div>
+        <div id="listing_15_3" class="listing">#listing_15_3#</div>
+        <div class="exercise">#exercise_15_2#</div>
     </div>
 
     <div class="chp-subsection" data-sub-num="2" data-sub-name="Polynomial Regression">
