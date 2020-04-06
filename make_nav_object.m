@@ -3,9 +3,13 @@ files = dir('*.htm');
 
 % Initialize navbar and chapter list
 navobj = '<nav class="nav sidenav nav-scroll navbar-dark bg-dark">\n';
-navobj = [navobj '<ul class="navbar-nav">\n']; 
+navobj = [navobj '<ul class="navbar-nav">\n'];
 
-for i = [1 2 9:17]
+% Add preface
+navobj = [navobj '<li class="nav-item">\n'];
+navobj = [navobj '<a class="nav-link" href="Preface.htm">Preface</a></li>\n'];
+
+for i = 1:17
     % Find chapter information
     filename = files(i).name;
     text = fileread(filename);
@@ -91,4 +95,3 @@ navobj = [navobj '</ul>\n'];
 navobj = [navobj '</nav>\n'];
 
 cd ..
-
