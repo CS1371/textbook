@@ -41,6 +41,10 @@
     <li><a href="#14_5_3">14.5.3  Simple Spectral Analysis</a>
 </ul>
 <li><a href="#14_6">14.6  Frequency Domain Operations</a>
+<ul>
+    <li><a href="#14_6_1">14.6.1 Details of the Spectral Data</a>
+    <li><a href="#14_6_2">14.6.2 Notes Fading with Time</a>
+	</ul>
 <li><a href="#14_7">14.7    Engineering Example— Music Synthesizer</a>
 </ul>
 
@@ -347,66 +351,37 @@
             <img src="Fig_14_12.JPG" alt="Figure 14.12" class="fig card-img">
             <p class="figure-name card-title">Figure 14.12: trumpet time history</p>
         </div>
-        <p>Talk about trumpet time history </p>
+        <p>Many instruments have a relatively constant amplitude when played.  For example, a trumpet's amplitude is controlled by the musician's breath, and could be assumed to be constant over the duration of the note as illustrated in Figure 14.12. If this is the case, everything necessary to make a synthesizer has been accomplished. Listing 15.6 was used to generate this figure, together with the frequency spectrum not repeated here.</p>
+    </div>
+    <div class="listing">Listing 14.6
+	</div>
 </div>
     <div class="container clearfix">
         <div class="float-sm-right card">
             <img src="Fig_14_13.JPG" alt="Figure 14.13" class="fig card-img">
             <p class="figure-name card-title">Figure 14.13: piano time history</p>
         </div>
-        <p>Talk about piano time history</p>
-    </div>
-    <div class="listing">Listing 14.6
-	</div>
-</div>
-
-<h2 id="14_9">14.9 xxxxx</h2>
-    <div class="container clearfix">
-        <div class="float-sm-right card">
-            <img src="Fig_14_8.JPG" alt="Figure 14.8" class="fig card-img">
-            <p class="figure-name card-title">Figure 14.8: Instrument Spectra</p>
-        </div>
-        <p>Talk about Listing 14.7</p>
+        <p>Some instruments, however, are played by striking a string, for example, and the allowing the reverberation of the sound to continue, gradually fading over time.  Figure 14.13 illustrates the changes over time when a piano note is played. In order to apply a profile over time to our synthetic piano note, we need to reach ahead to Chapter 15 to use curve fitting to model the shape of the sound decay.  We will merely report the general steps here and refer the reader to section 15.2 for the details.<ul>
+<li>		In general, we need first to define some data points shown as red plus signs that define the decay.</li>
+<li>  We then use the tools of chapter 15 to compute a small number of coefficients that force a polynomial curve to best fit these data points shown as the cyan colored curve.  </li>
+<li>Finally, we generate that curve and multiply the sound at each sample point by the interpolated value of that curve.</li> 
+</ul></p>
     </div>
     <div class="listing">Listing 14.7
 	</div>
 </div>
 
-<h2 id="14_9">14.9 xxxxx</h2>
-    <div class="container clearfix">
-        <div class="float-sm-right card">
-            <img src="Fig_14_8.JPG" alt="Figure 14.8" class="fig card-img">
-            <p class="figure-name card-title">Figure 14.8: Instrument Spectra</p>
-        </div>
-        <p>Talk about Listing 14.7</p>
-    </div>
-    <div class="listing">Listing 14.7
-	</div>
-</div>
-
-<h2 id="14_9">14.9 xxxxx</h2>
-    <div class="container clearfix">
-        <div class="float-sm-right card">
-            <img src="Fig_14_8.JPG" alt="Figure 14.8" class="fig card-img">
-            <p class="figure-name card-title">Figure 14.8: Instrument Spectra</p>
-        </div>
-        <p>Talk about Listing 14.7</p>
-    </div>
-    <div class="listing">Listing 14.7
-	</div>
-</div>
 
  <!-- Engineering Example -->
 <h2 id="14_7">14.7 Engineering Example—Music Synthesizer</h2>
 <div class="container">
-    <p>A music synthesizer is an electronic instrument with a piano style keyboard that is able to simulate the sound of multiple instruments. Unlike the instrument sounds we have used so far, the instrument sounds are not stored as large time histories. Rather, they are stored as the Fourier coefficients  similar to those illustrated in Figure 14.8. The sound is then reconstructed by multiplying sin or cosine waves of the right frequency by the stored coefficients. For some instruments, this is sufficient. Other instruments such as pianos need to have the amplitude of the resulting sound modified to match a typical profile. Listings 14.8 illustrates a possible technique for extracting the most important Fourier coefficients from the piano sound. The result will be a little disappointing because the sound does not fade with time. We will need some techniques from the next chapter to complete the story.</p>
-    <p>We will complete this synthesis for a piano sound in the next chapter.</p>
+    <p>A music synthesizer is an electronic instrument with a piano style keyboard that is able to simulate the sound of multiple instruments. Unlike the instrument sounds we have used so far, the instrument sounds are not stored as large time histories. Rather, they are stored as the Fourier coefficients  similar to those illustrated in Figure 14.11. The sound is then reconstructed by multiplying sin or cosine waves of the right frequency by the stored coefficients. For some instruments, this is sufficient. Other instruments such as pianos need to have the amplitude of the resulting sound modified to match a typical profile. Listings 14.8 illustrates a possible technique for extracting the most important Fourier coefficients from the piano sound. We would then apply the fading curve created in section 14.6.2 above to each note and create the music from the individual notes.</p>
     <div class="listing">Listing 14.8</div>
 </div>
 
     <div class="row">
         <div class="col-sm-4">
-            <audio controls><source src="humoresque_1.wav" type="audio/wav">Violin Frequency Spectrum</audio>
+            <audio controls><source src="humoresque_1.wav" type="audio/wav">Anton Dvorak: "Humoresque"</audio>
             <p class="figure-name">Anton Dvorak: "Humoresque"</p>
         </div>
     </div>
