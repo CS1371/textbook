@@ -9,9 +9,10 @@ function copy_text(ifn, ofn)
     oh = fopen( ofn, 'w' );
     ln = '';
     while ischar( ln )
-        ln = fgets( ih );
+        ln = fgetl( ih );
         if ischar( ln )
-            fprintf( oh, ln );
+            fprintf( oh, '%s\n', ln );
+% The '\n' on the end of the format control string inserts whatever line-end-marker your computer uses
         end
     end
     fclose( ih );
