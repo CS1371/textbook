@@ -45,6 +45,8 @@ function main
     Y = fft(note);
     Y = Y(1:N);
     plot(f, abs(Y))
+    xlabel('frequency (Hz)')
+    ylabel('sound energy')
     figure
     plot(piano)
     % calc the amp shape of the piano
@@ -64,6 +66,8 @@ function main
     cf = polyfit(loc, val, 8);
     ampmod = polyval(cf, 1:totalLength);
     plot(1:totalLength, ampmod, 'c')
+    xlabel('time (sec)')
+    ylabel('sound amplitude')
     note = note .* ampmod;
     sound(note, Fs)
     tmax = length(note) / Fs;

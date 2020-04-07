@@ -24,6 +24,8 @@ function main
     f = linspace(0, Fs, N);
     ns = N / 10;
     plot(f(1:ns), real(Y(1:ns)))
+    xlabel( 'frequency (Hz)')
+    ylabel('sound energy')
     %
     figure
     [tpt, Fs] = audioread('../Text/instr_tpt.wav');
@@ -36,6 +38,7 @@ function main
     ns = 20000;
     f = linspace(0, fmax, N);
     plot(f(1:ns), abs(Y(1:ns)));
+    xlabel('frequency (Hz)')
     grid on
     pause(1)
     figure

@@ -5,6 +5,8 @@ function main
     N = length(y);
     pause(N./Fs)
     plot(y)
+    xlabel('time (sec)')
+    ylabel('sound amplitude')
     figure
     Y = fft(y) / (N/2);
     f = (1:N) * Fs / N;

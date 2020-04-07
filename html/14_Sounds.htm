@@ -45,6 +45,7 @@
 </ul>
 
 <!-- Chapter Objectives -->
+
 <h1>Chapter Objectives</h1>
 <div class="container">
 <p>This chapter discusses the following:</p>
@@ -216,7 +217,7 @@
     <table class="table">
      <tr>
          <td><code>N</code></td>
-         <td>the number of samples Fs</td>
+         <td>the number of samples</td>
      </tr>
      <tr>
          <td><code>F<sub>s</sub></code></td>
@@ -231,7 +232,7 @@
          <td>the maximum time is N x &Delta;t</td>
      </tr>
     </table>
-    <p>The FFT consumes a file with these characteristics and produces a frequency spectrum with a corresponding set of characteristics. The frequency spectrum consists of the same number, <code>N</code>, of data points, each of which is a complex value with real and imaginary parts. (While many displays actually plot the magnitude of the spectrum values, to accomplish the inverse transform, the complex values must be retained.) The frequency values are "folded" on the plot so that zero frequency occurs at either end of the spectrum, and the maximum frequency occurs in the middle, at spectrum data point <code>N/2</code>.</p>
+    <p>The FFT consumes a file describing the time history of the sound sampled at regular intervals &Delta;t and produces a frequency spectrum with a corresponding set of characteristics. The frequency spectrum consists of the same number, <code>N</code>, of data points, each of which is a complex value with real and imaginary parts. (While many displays actually plot the magnitude of the spectrum values, to accomplish the inverse transform, the complex values must be retained.) The frequency values are "folded" on the plot so that zero frequency occurs at either end of the spectrum, and the maximum frequency occurs in the middle, at spectrum data point <code>N/2</code>.</p>
     <p>The equivalent characteristics for the spectrum data are as follows:</p>
     <table class="table">
      <tr>
@@ -277,7 +278,8 @@
  <!-- Frequency Domain Operations -->
 <h2 id="14_6">14.6  Frequency Domain Operations</h2>
 <div class="container">
-    <p>As a typical example of operating in the frequency domain, we will consider analyzing the spectral quality of different musical instruments. The intent of this section is to develop a plot showing the spectra of a selection of different musical instruments. <!--We will first build a function that plots the spectrum for a single instrument and then build the script to create all the plots.--> Listing 14.4 shows a function that reads the .wav file of an instrument, some of which are from the music samples in the University of Miami’s Audio and Signal Processing Laboratory<a href = "http://chronos.ece.miami.edu/~dasp/samples/samples.html">[1]</a>. <!--All the instruments are carefully playing a note at about 260 Hz.--></p>
+    <p>This section is intended to set up the process of building a synthesizer that will replicate with a reasonable level of fidelity the sound of a piano without resorting, as we did above, to reading and manipulating a piano time history. To do this, we must understand the basics of the frequency spectrum of the instrument and shaping its time history.
+	<p>As a typical example of operating in the frequency domain, we will consider analyzing the spectral quality of different musical instruments. The intent of this section is to develop a plot showing the spectra of a selection of different musical instruments. <!--We will first build a function that plots the spectrum for a single instrument and then build the script to create all the plots.--> Listing 14.4 shows a function that reads the .wav file of an instrument. The author is deeply indebted to the University of Miami's Audio and Signal Processing Laboratory who gave permission to use their musical instrument sound collection.  This provided us with a series of sound traces recording different instruments.  All were recorded in a quiet room playing the same musical note giving us clean, pure recordings of a large number of instruments. http://chronos.ece.miami.edu/~dasp/samples/samples.html. <!--All the instruments are carefully playing a note at about 260 Hz.--></p>
     <div class="row">
         <div class="col-sm-4">
             <audio controls><source src="../Text/instr_violin.wav" type="audio/wav">Violin Frequency Spectrum</audio>
@@ -301,10 +303,97 @@
         <ul>
         <li>None of the instruments produce a pure tone. The lowest frequency at which there is energy is usually called the fundamental frequency, and successive peaks to the right at multiples of the fundamental frequency are referred to, for example, as the first, second, and third harmonics.</li>
         <li>Several instruments have much more energy in the harmonics than in the fundamental frequency.</li>
-        <!--<li>"Families" of instruments have similar spectral shapes—the strings, for example, have strong fundamental and second harmonic energy. In principle, these characteristic spectral "signatures" can be used to synthesize the sound of instruments, and even to identify individual instruments when played in groups.</li>-->
+        <li>"Families" of instruments have similar spectral shapes—the strings, for example, have strong fundamental and second harmonic energy. In principle, these characteristic spectral "signatures" can be used to synthesize the sound of instruments, and even to identify individual instruments when played in groups.</li>
         </ul>
     </div>
     <div class="listing">Listing 14.4</div>
+</div>
+<h3 id="14_6_1">14.6.1 Details of the Spectral Data</h3>
+
+    <div class="container clearfix">
+        <div class="float-sm-right card">
+            <img src="Fig_14_9.JPG" alt="Figure 14.9" class="fig card-img">
+            <p class="figure-name card-title">Figure 14.9: Instrument Spectra</p>
+        </div>
+        <p>We will now look carefully at the characteristics of the Frequency Spectrum using the code in Listing 14.5.  The first view we create is the spectrum plot of a sine wave at 261.6 Hz which musicians would recognize as Middle C.  Since all the sound energy is at that one frequency, the spectrum is a vertical line at 261.6 Hz.  The scaling on the vertical axis is complicated and irrelevant to this discussion. Consider the vertical axis to show the relative amounts of energy as a function of frequency. Note that the FFT function is assuming that the sound being analyzed is the sum of a number of sine waves at different frequencies.  The task of the FFT is to separate out and display the sound energy at each frequency.  In this example, there is only one frequency.</p>
+</div>
+    <div class="container clearfix">
+        <div class="float-sm-right card">
+            <img src="Fig_14_10.JPG" alt="Figure 14.10" class="fig card-img">
+            <p class="figure-name card-title">Figure 14.10: Spectrum of a trumpet</p>
+        </div>
+        <p>In this next example, we will plot the absolute values of the frequency spectrum of a trumpet playing the same note at 261.6 Hz. Notice some interesting characteristics of this spectrum: 
+		<ul>
+		<li>There is some energy at 261.6 Hz (normally called the "fundamental frequency" - the note intended to to be played by the musician.)  </li>
+		<li>However, the bulk of the sound energy is at higher frequencies.</li>
+		<li>"Musical" sounds in general are composed of energy at the fundamental frequency combined with energy at integer multipliers of the fundamental frequency referred to as the "harmonics." Contrast this with the "dirty" looking frequency spectrum of the train whistle in Figure 14.8 that is not normally classed as "musical"</li>
+<li>		Notice with the trumpet that the maximum energy is in the 4th harmonic and the first ten harmonics all have more energy than the fundamental.  This gives the trumpet its "brilliant" sound.
+		</ul>
+</div>
+</div>
+    <div class="container clearfix">
+        <div class="float-sm-right card">
+            <img src="Fig_14_11.JPG" alt="Figure 14.11" class="fig card-img">
+            <p class="figure-name card-title">Figure 14.11: The Spectrum is actually complex</p>
+        </div>
+        <p>In this next example, we will plot the real and imaginary parts of the same trumpet frequency spectrum. Notice that the physical mechanics of the shape of the trumpet has created frequency spectrum values that are "out of phase" with other spectrum values.  We will not really be concerned with this except to observe that we need to reproduce the phase as well as the magnitude of the energy if we are to produce a faithful reproduction of the spectrum of an instrument.
+    </div>
+    <div class="listing">Listing 14.5
+	</div>		
+</div>
+<h2 id="14_6_2">14.6.2 Notes fading with time</h2>
+    <div class="container clearfix">
+        <div class="float-sm-right card">
+            <img src="Fig_14_12.JPG" alt="Figure 14.12" class="fig card-img">
+            <p class="figure-name card-title">Figure 14.12: trumpet time history</p>
+        </div>
+        <p>Talk about trumpet time history </p>
+</div>
+    <div class="container clearfix">
+        <div class="float-sm-right card">
+            <img src="Fig_14_13.JPG" alt="Figure 14.13" class="fig card-img">
+            <p class="figure-name card-title">Figure 14.13: piano time history</p>
+        </div>
+        <p>Talk about piano time history</p>
+    </div>
+    <div class="listing">Listing 14.6
+	</div>
+</div>
+
+<h2 id="14_9">14.9 xxxxx</h2>
+    <div class="container clearfix">
+        <div class="float-sm-right card">
+            <img src="Fig_14_8.JPG" alt="Figure 14.8" class="fig card-img">
+            <p class="figure-name card-title">Figure 14.8: Instrument Spectra</p>
+        </div>
+        <p>Talk about Listing 14.7</p>
+    </div>
+    <div class="listing">Listing 14.7
+	</div>
+</div>
+
+<h2 id="14_9">14.9 xxxxx</h2>
+    <div class="container clearfix">
+        <div class="float-sm-right card">
+            <img src="Fig_14_8.JPG" alt="Figure 14.8" class="fig card-img">
+            <p class="figure-name card-title">Figure 14.8: Instrument Spectra</p>
+        </div>
+        <p>Talk about Listing 14.7</p>
+    </div>
+    <div class="listing">Listing 14.7
+	</div>
+</div>
+
+<h2 id="14_9">14.9 xxxxx</h2>
+    <div class="container clearfix">
+        <div class="float-sm-right card">
+            <img src="Fig_14_8.JPG" alt="Figure 14.8" class="fig card-img">
+            <p class="figure-name card-title">Figure 14.8: Instrument Spectra</p>
+        </div>
+        <p>Talk about Listing 14.7</p>
+    </div>
+    <div class="listing">Listing 14.7
+	</div>
 </div>
 
  <!-- Engineering Example -->
@@ -314,6 +403,14 @@
     <p>We will complete this synthesis for a piano sound in the next chapter.</p>
     <div class="listing">Listing 14.8</div>
 </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <audio controls><source src="humoresque_1.wav" type="audio/wav">Violin Frequency Spectrum</audio>
+            <p class="figure-name">Anton Dvorak: "Humoresque"</p>
+        </div>
+    </div>
+ 
 
 <!-- Chapter Summary -->
 <h2>Chapter Summary</h2>
