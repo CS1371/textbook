@@ -2,17 +2,15 @@
 % Exercises with sound
 function main
     global Fs
-	hear = false;
+	hear = true;
     % 1. playing back sound
     %       - read "give a damn" speech
     %       - play it
     %       - change amplitude
     %       - change frequency    % 2. slicing sounds
     %       - construct "frankly, Bond, I don't give a damn - beam me up"
-    [give, Fs] = audioread('../Text/sp_givdamn2.wav');
-    plot(give)
-    figure
     fprintf('read and play a sound\n')
+    [give, Fs] = audioread('../Text/sp_givdamn2.wav');
     t = (1:length(give)) ./ Fs;
     plot(t, give)
     title('Plot of Rhett speech')
@@ -61,5 +59,6 @@ function main
 	if hear
     sound(speech, Fs);
     pause(length(speech) ./ Fs)
-	end
+    end
+    audiowrite('../Text/speech.wav', speech, Fs)
 end
