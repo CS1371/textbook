@@ -137,7 +137,7 @@
       <h3 id="12_3_1">12.3.1	Matrix Multiplication</h3>
       <div class="container">
           <p>Matrix multiplication is accomplished by using the “normal” multiplication symbol, as illustrated in Exercise 12.1.</p>
-          <span class="exercise">Exercise 12.1</span>
+          <div class="exercise">#exercise_12_1#</div>
       </div>
     </div>
 
@@ -152,7 +152,7 @@
               <li><code>B = C / A</code> — apparently performing the same operation, but <em>giving different answers</em></li>
           </ul>
           <p>The order in which the matrix multiply is done affects the value of the result; therefore, care must be taken to ensure that the appropriate inversion or division is used. Study the results of Exercise 12.2 carefully.</p>
-          <span class="exercise">Exercise 12.2</span>
+          <div class="exercise">#exercise_12_2#</div>
       </div>
     </div>
   </div>
@@ -188,7 +188,7 @@
           <p><b>Rotating a Line</b> Listing 12.1 illustrates a simple script to rotate a line about the origin.</p>
           <p>Figure 12.5 shows the plot resulting from this script.</p>
           <span class="listing">Listing 12.1</span>
-          <div class="row">
+          <div class="card-deck">
               <div class="col-sm-6 card">
                   <img src="Fig_12_5.JPG" alt="Figure 12.5" class="fig card-img">
                   <p class="figure-name card-title">Figure 12.5: Line Rotations</p>
@@ -200,8 +200,8 @@
           </div>
           <p><b>Twinkling Stars</b> As a second example, consider the problem of simulating twinkling stars. One way to accomplish this is to draw two triangles for each star rotating in opposite directions. The script shown in Listing 12.2 accomplishes this.<p>
           <p>The results of this script are shown in Figure 12.6.</p>
-          <span class="listing">Listing 12.2</span>
-          <span class="listing">Listing 12.3</span>
+          <div class="listing">#listing_12_2#</div>
+          <div class="listing">#listing_12_3#</div>
       </div>
     </div>
 
@@ -223,7 +223,7 @@
           </div>
           <p>An example of a script to rotate the solid cube drawn in Chapter 11 is shown in Listing 12.4. The major problem with rotating solid objects is that the coordinates of the object are defined as arrays of points. However, the rotation matrices need each set of coordinates in single rows. To accomplish this, we will use the <code>reshape(...)</code> function to transform the coordinates to and from the row vectors necessary for the coordinate rotation.</p>
           <p>The results after running this script are shown in Figure 12.7. Notice that the mechanization of the top face has caused a "wrapped parcel" effect on the light reflections off that surface.</p>
-          <span class="listing">Listing 12.4</span>
+          <div class="listing">#listing_12_4#</div>
       </div>
     </div>
   </div>
@@ -262,7 +262,7 @@
           <p><code>V = A \ c</code></p>
           <p>Recall that back divide, like the <code>inv(...)</code> function, will fail to produce a result if the matrix is singular, that is, has two rows or columns that have a linear relationship. In the specific example of two intersecting lines, this singularity occurs when the two lines are parallel, in which case there is no point of intersection. Listing 12.5 shows the solution to a pair of simultaneous equations.</p>
           <p>Figure 12.8 shows the result of this script.</p>
-          <span class="listing">Listing 12.5</span>
+          <div class="listing">#listing_12_5#</div>
       </div>
     </div>
   </div>
@@ -344,7 +344,7 @@
           <p>which can be solved as usual by:</p>
           <p><code>I = A \ V</code></p>
           <p>The script to accomplish this is shown in Listing 12.7.</p>
-          <span class="listing">Listing 12.7</span>
+          <div class="listing">#listing_12_7#</div>
       </div>
     </div>
   </div>

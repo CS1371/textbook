@@ -67,12 +67,12 @@
           <p>Since we can find the equation of a straight line defined by the two known points, we can find \(y\) for any value of \(x\). The closer the points are to each other, the more accurate our approximation is likely to be. Of course, we could use this equation to extrapolate points past our collected data. This is rarely wise, however, and often leads to significant errors. The function that performs linear interpolation is as follows:</p>
           <p><code>new_y = interpl(x, y, new_x)</code></p>
           <p>where the vectors <code>x</code> and <code>y</code> contain the original data values and the vector <code>new_x</code> contains the point(s) for which we want to compute interpolated <code>new_y</code> values. The <code>x</code> values should be in ascending order, and the <code>new_x</code> values should be within the range of the original <code>x</code> values. Note that the last character in the name <code>interpl</code> is the numeric 1 (one), not a lowercase L.</p>
-          <div class="row">
-              <div class="col-sm-6 card">
+          <div class="card-deck">
+              <div class="card">
                   <img src="Fig_15_2.JPG" alt="Figure 15.2" class="fig card-image">
                   <p class="figure-name card-title">Figure 15.2: Interpolation Raw Data</p>
               </div>
-              <div class="col-sm-6 card">
+              <div class="card">
                   <img src="Fig_15_3.JPG" alt="Figure 15.3" class="fig card-image">
                   <p class = "figure-name card-title">Figure 15.3: Linear Interpolation</p>
               </div>
@@ -103,13 +103,13 @@
           <p><code>new_y = spline(x, y, new_x);</code></p>
           <p>where the vectors <code>x</code> and <code>y</code> contain the original data values, and the vector <code>x_new</code> contains the point(s) for which we want to compute interpolated <code>y_new</code> values. The <code>x</code> values should be in ascending order, and while the <code>x_new</code> values should be within the range of the <code>x</code> values, this function will attempt to extrapolate outside that range.</p>
           <p>The curve in Figure 15.4 was created using the code shown in Listing 15.2.</p>
-          <div class="row">
-              <div class="col-sm-6 card">
+          <div class="card-deck">
+              <div class="card">
                   <img src="Fig_15_4.png" alt="Figure 15.4" class="fig card-image">
                   <p class="figure-name card-title">Figure 15.4: Cubic Spline Interpolation</p>
               </div>
                 <!-- Style Points -->
-                <div class="col-sm-6 card style-points style-points-col">
+                <div class="card style-points style-points-col">
                   <p class="card-title">Style Points 15.1</p>
                   <p class="card-text">
                       <p>A good convention to adopt is shown in Figure 15.4:</p>
@@ -203,12 +203,12 @@
       <div class="container">
           <p>We return briefly to the problem of replacing the blue sky in Chapter 13. The sky we used to replace the gray skies of Vienna has a power line we need to remove. We can use polynomial curve fitting to create an artificial sky with exactly the same color characteristics as the blue sky in the cottage picture, but without the wire. This is possible because each row of the image has so much data that define its color profile that the presence of the wire is a minor amount of "noise." We merely need to process each row of the sky, fit a second-order curve to it, interpolate a new sky row from the parameters, and replace the row in the sky. The code to perform this is shown in Listing 15.5.</p>
           <div id="listing_15_5" class="listing">#listing_15_5#</div>
-          <div class="row">
-              <div class="col-sm-6 card">
+          <div class="card-deck">
+              <div class="card">
                   <img src="../listings/sky.jpg" alt="Figure 15.8" class="fig card-image">
                   <p class="figure-name card-title">Figure 15.8: Updated Sky</p>
               </div>
-              <div class="col-sm-6 card">
+              <div class="card">
                   <img src="../listings/newVienna.jpg" alt="Figure 15.9" class="fig card-image">
                   <p class="figure-name card-title">Figure 15.9: Updated Picture</p>
               </div>
@@ -266,12 +266,12 @@
           <p>For example, we might be given data that represent the velocity of a sounding rocket, such as is plotted in Figure 15.12. We need to approximate the altitude of the rocket over time by integrating this data.</p>
           <p>To perform this kind of integral, the MATLAB language provides the function <code>F = cumsum(f)</code> that computes the cumulative sum of the vector <code>f</code>. The result, <code>F</code>, is a vector of the same length as <code>f</code> where <code>F(i)</code> is the sum of <code>f(1:i)</code>. If the data values, <code>f</code>, are regularly sampled at a rate <code>&Delta;t</code>, the integral is found by multiplying <code>cumsum(f)</code> by the time interval, <code>&Delta;t</code>. If they are not regularly sampled, you have to compute the <code>cumsum(...)</code> of the scalar product of <code>f</code> and the vector of time differences.</p>
           <p>To compute a more accurate integral, especially if the samples are not regularly spaced along the independent axis, MATLAB also provides the function <code>cumtrapz(t, f)</code> where <code>t</code> is the independent parameter and <code>f</code> the dependent parameter. The function uses trapezoidal integration to calculate the indefinite integral <code>F(t)</code>.</p>
-          <div class="row">
-              <div class="col-sm-6 card">
+          <div class="card-deck">
+              <div class="card">
                   <img src="Fig_15_12.png" alt="Figure 15.12" class="fig card-image">
                   <p class="figure-name card-title">Figure 15.12: Velocity of a rocket</p>
               </div>
-              <div class="col-sm-6 card">
+              <div class="card">
                   <img src="Fig_15_13.png" alt="Figure 15.13" class="fig card-image">
                   <p class="figure-name card-title">Figure 15.12: Rocket velocity and amplitude</p>
               </div>
@@ -362,18 +362,16 @@
     <!-- Engineering Example -->
     <h2 id="15_7">15.7  Engineering Example - Shaping the Synthesizer Notes</h2>
     <div class="container clearfix">
-        <div class="card float-right">
+        <div class="card float-sm-right">
           <img src="Fig_15_16.png" alt="Figure 15.16" class="fig card-image">
           <p class="figure-name card-title">Figure 15.16: Piano note time history</p>
         </div>
-    </div>
-    <div class="container">
         <p>As discussed in Chapter 14, we can synthesize the frequency content of an instrument by selecting an appropriate number of coefficients from the energy spectrum, multiplying each by an appropriate sine or cosine wave and summing the results. This gives a time trace with constant amplitude, which is fine for an instrument like a trumpet, but notes played on other instruments like a piano have a very non-linear time profile as shown in Figure 15.16. That same figure has two overlays indicating how to develop the decay profile typical of a piano note. First, we choose a modest number of samples that describe the envelope of the sound (marked by red * symbols). Then, we perform a high-order curve fit on that data and check its accuracy by plotting it as the solid line on the same figure.</p>
         <p>To demonstrate the essence of this capability, we begin with Listing 14.6 from Chapter 14, reading the file 'instr_piano.wav' instead of 'instr_tpt.wav.' Now, we insert the code in Listing 15.10 in place of the last two lines of Listing 14.6.</p>
+    </div>
         <div id="listing_15_10" class="listing">#listing_15_10#</div>
         <p>In conclusion, with these two engineering examples, we have shown how the essence of the sound of a musical instrument can be derived from the actual sound of an instrument and captured as a small set of complex amplitudes with their frequency value and an even smaller set of real coefficients of the function that multiplies the amplitude over time.</p>
         <p>To construct from these data a real music synthesizer, one need only to detect that a keyboard note has been pressed, determine the required frequency, and play the synthesized note until the key is released. If the synthesizer is equipped to specify that the sustain pedal is depressed, the piano sound should not be cut off, but allowed to fade into silence.</p>
-    </div>
   </div>
 
   <!-- Chapter Summary -->
