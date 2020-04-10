@@ -1,50 +1,77 @@
-% Script to plot eight-instrument spectra
+% Plotting the spectrum of one instrument
 function main
-    [y Fs] = audioread('../Text/instr_tpt.wav');
-    sound(y, Fs)
-    N = length(y);
-    pause(N./Fs)
-    plot(y)
+    [piano Fs] = audioread('..\Text/instr_piano.wav');
+    frq = 261
+    duration = length(piano)/Fs;   % sec
+    
+    t = linspace(0, duration, Fs * duration);
+    totalLength = Fs * duration;
+    w = 2 * pi * frq;
+    Y = fft(piano);
+    N = 10000;
+    Y = Y(1:N);
+    f = 1:N;
+    df = Fs/length(piano);
+    f = f .* df;
+    plot(f, abs(Y))
+    val = max(abs(Y));
+    thr = 150;
+    ndx = 1;
+    while val > thr;
+        [val where] = max(abs(Y));
+        C(ndx) = Y(where);
+        loc(ndx) = where;
+        fr = where - 50;
+        to = where + 50;
+        if fr < 1, fr = 1, end
+        if to > N, to = N, end
+        Y(where-50:where+50) = 0;
+        ndx = ndx + 1;
+    end
+    % sort the coefficients
+    [junk ndx] = sort(loc);
+    coeff = C(ndx);
+    note = zeros(1, Fs * duration);
+    pianoLength = length(piano);
+    for ndx = 1:length(coeff)
+        note = note + real(coeff(ndx)) .* cos(ndx * w * t);
+        note = note + imag(coeff(ndx)) .* sin(ndx * w * t);
+    end
+    % scale it to +/- 1
+    amp = max(abs(note));
+    note = note / amp;
+    % check fft of note (wrong!)
     figure
-    Y = fft(y) / (N/2);
-    f = (1:N) * Fs / N;
-    plot3(f(1:end/4), real(Y(1:end/4)), imag(Y(1:end/4)))
-    grid on
-    xlabel('frequency')
-    ylabel('real part')
-    zlabel('imag part')
-    absY = abs(Y(1:end/4));
-    af = f(1:end/4);
+    Y = fft(note);
+    Y = Y(1:N);
+    plot(f, abs(Y))
+    xlabel('frequency (Hz)')
+    ylabel('sound energy')
     figure
-    plot(af, absY)
-    % find the peaks
-    nFreq = 40;
-    for ndx = 1:nFreq
-        [junk where] = max(absY);
-        frq = where * Fs / N;
-        rl = real(Y(where));
-        im = imag(Y(where));
-        absY(where-50:where+50) = 0;
-        coef(ndx,1) = frq/1000;
-        coef(ndx,2) = rl;
-        coef(ndx,3) = im;
+    plot(piano)
+    % calc the amp shape of the piano
+    % chop into pieces (20 samples per sec)
+    size = Fs/30;
+    place = size+1;
+    ndx = 1;
+    while place < pianoLength - size
+        val(ndx) = max(piano((place-size):(place+size)));
+        loc(ndx) = place;
+        ndx = ndx + 1;
+        place = place + size*2;
     end
-    % now, reconstruct the sound, one spike at a time
-    [~, order] = sort(coef(:,1));
-    for ndx = 1:3
-        coef(:,ndx) = coef(order,ndx);
-    end
-    nSynth = 3*Fs;
-    synth = zeros(nSynth,1);
-    t = (0:nSynth - 1) ./ Fs;
-    snd = zeros(nSynth, 1);
-    for ndx = 1:length(coef)
-        w = coef(ndx,1) .* 2000 .* pi;
-        note = coef(ndx,2) .* cos(w.*t) + coef(ndx,3) .* sin(w*t);
-        snd = snd + note';
-    end
-    mx = max(abs(snd));
-    sound(snd./mx, Fs)
-    pause(t(end));
-    coef
+    hold on
+    plot(loc, val, 'r*')
+    % curve fit the points
+    cf = polyfit(loc, val, 8);
+    ampmod = polyval(cf, 1:totalLength);
+    plot(1:totalLength, ampmod, 'c')
+    xlabel('time (sec)')
+    ylabel('sound amplitude')
+    note = note .* ampmod;
+    sound(note, Fs)
+    tmax = length(note) / Fs;
+    pause(tmax)
+    sound(piano, Fs)
+	pause(length(piano) ./ Fs)
 end
