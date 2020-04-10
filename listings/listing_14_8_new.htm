@@ -1,148 +1,208 @@
 <code><strong>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Synthesizing a piano</font><br>
 <font color="#0000ff">function</font> main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> N<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> note<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Fs<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> music<br>
-&nbsp;&nbsp;&nbsp;&nbsp;trumpet = [        <font color="#ff8000">0.2620</font>    <font color="#ff8000">0.0396</font>   -<font color="#ff8000">0.0148</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0.5239</font>    <font color="#ff8000">0.0104</font>    <font color="#ff8000">0.0796</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0.7854</font>    <font color="#ff8000">0.1424</font>    <font color="#ff8000">0.0327</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1.0210</font>    <font color="#ff8000">0.0001</font>   -<font color="#ff8000">0.0013</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1.0474</font>   -<font color="#ff8000">0.0628</font>    <font color="#ff8000">0.1309</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1.2844</font>   -<font color="#ff8000">0.0018</font>    <font color="#ff8000">0.0005</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1.3089</font>   -<font color="#ff8000">0.0311</font>    <font color="#ff8000">0.1919</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1.5464</font>    <font color="#ff8000">0.0010</font>    <font color="#ff8000">0.0017</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1.5709</font>   -<font color="#ff8000">0.1093</font>   -<font color="#ff8000">0.0044</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1.8079</font>    <font color="#ff8000">0.0011</font>   -<font color="#ff8000">0.0011</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">1.8324</font>   -<font color="#ff8000">0.0336</font>    <font color="#ff8000">0.1103</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.0699</font>   -<font color="#ff8000">0.0007</font>    <font color="#ff8000">0.0011</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.0944</font>   -<font color="#ff8000">0.0646</font>   -<font color="#ff8000">0.0306</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.3314</font>    <font color="#ff8000">0.0010</font>    <font color="#ff8000">0.0005</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.3559</font>   -<font color="#ff8000">0.0111</font>    <font color="#ff8000">0.0609</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.5924</font>   -<font color="#ff8000">0.0002</font>   -<font color="#ff8000">0.0010</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.6173</font>    <font color="#ff8000">0.0458</font>    <font color="#ff8000">0.0104</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.8549</font>   -<font color="#ff8000">0.0001</font>    <font color="#ff8000">0.0011</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.8793</font>   -<font color="#ff8000">0.0256</font>    <font color="#ff8000">0.0544</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3.1408</font>    <font color="#ff8000">0.0171</font>    <font color="#ff8000">0.0257</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3.3783</font>   -<font color="#ff8000">0.0012</font>    <font color="#ff8000">0.0002</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3.4028</font>   -<font color="#ff8000">0.0098</font>    <font color="#ff8000">0.0389</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3.6643</font>    <font color="#ff8000">0.0116</font>    <font color="#ff8000">0.0076</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">3.9263</font>   -<font color="#ff8000">0.0076</font>    <font color="#ff8000">0.0061</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4.1878</font>   -<font color="#ff8000">0.0032</font>    <font color="#ff8000">0.0044</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4.4497</font>   -<font color="#ff8000">0.0038</font>   -<font color="#ff8000">0.0050</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4.7112</font>   -<font color="#ff8000">0.0057</font>    <font color="#ff8000">0.0022</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4.9732</font>   -<font color="#ff8000">0.0025</font>   -<font color="#ff8000">0.0042</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">5.2347</font>   -<font color="#ff8000">0.0066</font>    <font color="#ff8000">0.0013</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">5.4962</font>   -<font color="#ff8000">0.0007</font>    <font color="#ff8000">0.0051</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">5.7582</font>   -<font color="#ff8000">0.0055</font>    <font color="#ff8000">0.0002</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6.0197</font>   -<font color="#ff8000">0.0020</font>    <font color="#ff8000">0.0039</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6.2816</font>   -<font color="#ff8000">0.0041</font>   -<font color="#ff8000">0.0010</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6.5431</font>   -<font color="#ff8000">0.0020</font>    <font color="#ff8000">0.0028</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6.8051</font>   -<font color="#ff8000">0.0027</font>   -<font color="#ff8000">0.0012</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">7.0666</font>   -<font color="#ff8000">0.0018</font>    <font color="#ff8000">0.0019</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">7.3286</font>   -<font color="#ff8000">0.0017</font>   -<font color="#ff8000">0.0012</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">7.5901</font>   -<font color="#ff8000">0.0017</font>    <font color="#ff8000">0.0010</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">7.8520</font>   -<font color="#ff8000">0.0008</font>   -<font color="#ff8000">0.0012</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">8.1135</font>   -<font color="#ff8000">0.0014</font>    <font color="#ff8000">0.0001</font>];<br>
-&nbsp;&nbsp;&nbsp;&nbsp;america = { <font color="#c000c0">'G4'</font> <font color="#ff8000">1</font>      <font color="#00A000">%  O</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1.5</font>    <font color="#00A000">% beautiful</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E4'</font> <font color="#ff8000">0.5</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E4'</font> <font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% for</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1.5</font>    <font color="#00A000">% spacious</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D4'</font> <font color="#ff8000">0.5</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% skies</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% for</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'F4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% amber</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% waves</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% of</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">3</font>      <font color="#00A000">% grain</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% for</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1.5</font>    <font color="#00A000">% purple</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E4'</font> <font color="#ff8000">0.5</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% mountains'</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1.5</font>    <font color="#00A000">% majesties</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D4'</font> <font color="#ff8000">0.5</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D4'</font> <font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font>      <font color="#00A000">% above</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'CS5'</font> <font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font>      <font color="#00A000">% the</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E5'</font> <font color="#ff8000">1</font>      <font color="#00A000">% fruited</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">3</font>      <font color="#00A000">% plain</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% America,</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E5'</font> <font color="#ff8000">1.5</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E5'</font> <font color="#ff8000">0.5</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C5'</font> <font color="#ff8000">1</font>      <font color="#00A000">% America,</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C5'</font> <font color="#ff8000">1.5</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B4'</font> <font color="#ff8000">0.5</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B4'</font> <font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C5'</font> <font color="#ff8000">1</font>      <font color="#00A000">% God</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font>      <font color="#00A000">% send</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% His</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% grace</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% on</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C5'</font> <font color="#ff8000">3</font>      <font color="#00A000">% thee</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C5'</font> <font color="#ff8000">1</font>      <font color="#00A000">% and</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C5'</font> <font color="#ff8000">1.5</font>    <font color="#00A000">% crown</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">0.5</font>      <font color="#00A000">% thy</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% good</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C5'</font> <font color="#ff8000">1</font>      <font color="#00A000">% with</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C5'</font> <font color="#ff8000">1.5</font>    <font color="#00A000">% brotherhood</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">0.5</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% from</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% sea</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C5'</font> <font color="#ff8000">1</font>      <font color="#00A000">% to</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1</font>      <font color="#00A000">% shining</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C5'</font> <font color="#ff8000">8</font> };   <font color="#00A000">% sea</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;play(america, trumpet, <font color="#ff8000">150</font>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-<font color="#0000ff">end</font><br>
-<font color="#0000ff">function</font> play( score, instr, rate)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Fs;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> music;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> tempo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> song<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> total_time<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Fs = <font color="#ff8000">44100</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;tmax = <font color="#ff8000">3</font>;   <font color="#00A000">% sec</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;N = tmax * Fs;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;t = (<font color="#ff8000">1</font>:N) /Fs;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% play middle C with a synthetic instrument</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;freq = <font color="#ff8000">261</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;w = <font color="#ff8000">2</font> * pi * freq;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;note = zeros(<font color="#ff8000">1</font>,N);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(instr)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w = instr(ndx, <font color="#ff8000">1</font>) * <font color="#ff8000">2000</font> * pi;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rl = instr(ndx, <font color="#ff8000">2</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;im = instr(ndx, <font color="#ff8000">3</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note = note + rl * cos(w * t);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note = note + im * sin(w * t);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;note = synthetic_piano;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N = length(note);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;halfStep = <font color="#ff8000">2</font> .^ (<font color="#ff8000">1</font>/<font color="#ff8000">12</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;treble = {<font color="#c000c0">'G4'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B4'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'FS5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'FS5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B4'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">16</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B4'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'FS5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'FS5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G5'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'A4'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D5'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G4'</font> <font color="#ff8000">16</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bass = { <font color="#c000c0">'G2'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B2'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C4'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G2'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B2'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'FS3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G2'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B2'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G3'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'C4'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B2'</font> <font color="#ff8000">4</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'E3'</font> <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'EF3'</font> <font color="#ff8000">2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D3'</font> <font color="#ff8000">8</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G2'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D3'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'B3'</font> <font color="#ff8000">3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'D3'</font> <font color="#ff8000">1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#c000c0">'G2'</font> <font color="#ff8000">4</font> };<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tempo = <font color="#ff8000">500</font> / <font color="#ff8000">60</font>;  <font color="#00A000">% number of beats in a second</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;beats = <font color="#ff8000">0</font>;         <font color="#00A000">% total beats</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(treble)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beats = beats + treble{ndx,<font color="#ff8000">2</font>};<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;note = [note'; zeros(<font color="#ff8000">200000</font>,<font color="#ff8000">1</font>)];<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Ns = length(note);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;dt = <font color="#ff8000">60</font>/rate;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;where = <font color="#ff8000">1</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;samples = Fs * dt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;lngth = overall(score);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;maxSize = Ns + Fs * lngth * <font color="#ff8000">60</font> / rate;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;music = zeros(maxSize,<font color="#ff8000">1</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(score)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name = score{ndx, <font color="#ff8000">1</font>};<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dur = score{ndx, <font color="#ff8000">2</font>};<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pitch = getPitch(name);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num = samples * dur;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index = ceil(linspace(<font color="#ff8000">1</font>, Ns, Ns/pitch));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notes = note(index(<font color="#ff8000">1</font>:num));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;music(where:(where+num-<font color="#ff8000">1</font>)) = music(where:(where+num-<font color="#ff8000">1</font>))  + notes;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where = where + num;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;total_time = beats ./ tempo;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Nt = total_time .* Fs;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Nt = Nt + N + N;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;song = zeros(Nt,<font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tic<br>
+&nbsp;&nbsp;&nbsp;&nbsp;play_score(treble, <font color="#ff8000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;play_score(bass, <font color="#ff8000">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(song, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(total_time)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;audiowrite(<font color="#c000c0">'humoresque_1.wav'</font>, song, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#c000c0">'playing time %0.3f\n'</font>, toc)<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> play_score(notes, col)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> N<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> note<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Fs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> tempo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> total_time<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> song<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at = <font color="#ff8000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(notes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name = notes{ndx, <font color="#ff8000">1</font>};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dur = notes{ndx, <font color="#ff8000">2</font>};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%   translate 'G4' to nt</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[mult, muted] = getPitch(name);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%    - number of half steps above middle C</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%     mult = halfStep .^ nt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sampler = floor(linspace(<font color="#ff8000">1</font>, N, N / mult));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;play = note(sampler);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%         sound(play, Fs)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">%       copy play at at</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> at + length(play) > length(song)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;play = play(<font color="#ff8000">1</font>:(length(song) - at - <font color="#ff8000">1</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% limit length of note to note duration</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nn = round(Fs .* dur ./ tempo);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if</font> length(play) > nn<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;play = play(<font color="#ff8000">1</font>:nn);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">try</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;song(at : (at + length(play) - <font color="#ff8000">1</font>), col) = <font color="#ff8000">...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;song(at : (at + length(play) - <font color="#ff8000">1</font>), col) + play;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">catch</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ouch = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at = at + nn;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;music = music(music ~= <font color="#ff8000">0</font>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;sound(music, Fs);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;pause(length(music) ./ Fs)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;audiowrite([inputname(<font color="#ff8000">1</font>) <font color="#c000c0">'_'</font> inputname(<font color="#ff8000">2</font>) <font color="#c000c0">'.wav'</font>], music, Fs )<br>
+<font color="#0000ff">end</font><br>
+<font color="#0000ff">function</font> note = synthetic_piano<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">global</font> Fs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% create a piano note playing middle C</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;coeff =[ -<font color="#ff8000">2.7871</font> <font color="#ff8000">2.8145</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">3.1836</font> <font color="#ff8000">0.2835</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">0.7267</font> <font color="#ff8000">1.2517</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">0.4538</font> <font color="#ff8000">0.4381</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">0.7132</font> <font color="#ff8000">0.2829</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0.6205</font> <font color="#ff8000">0.2548</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">0.5155</font> <font color="#ff8000">0.4718</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0.2322</font> <font color="#ff8000">0.3237</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">0.1586</font> <font color="#ff8000">0.1278</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">0.1321</font> <font color="#ff8000">0.0467</font>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;coeff = coeff .* <font color="#ff8000">1000</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shape = [   <font color="#ff8000">1.102058e</font>-<font color="#ff8000">37</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">4.114411e</font>-<font color="#ff8000">32</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">6.294645e</font>-<font color="#ff8000">27</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">5.028251e</font>-<font color="#ff8000">22</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">2.195125e</font>-<font color="#ff8000">17</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">4.919492e</font>-<font color="#ff8000">13</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">4.704579e</font>-<font color="#ff8000">09</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<font color="#ff8000">3.395830e</font>-<font color="#ff8000">05</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff8000">9.247657e</font>-<font color="#ff8000">01</font> ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;duration = <font color="#ff8000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;note = zeros(<font color="#ff8000">1</font>, Fs * duration);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;frq = <font color="#ff8000">261</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t = linspace(<font color="#ff8000">0</font>, duration, Fs * duration);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;totalLength = Fs * duration;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;w = <font color="#ff8000">2</font> * pi * frq;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> ndx = <font color="#ff8000">1</font>:length(coeff)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note = note + coeff(ndx, <font color="#ff8000">1</font>) .* cos(ndx * w * t);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note = note + coeff(ndx, <font color="#ff8000">2</font>) .* sin(ndx * w * t);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% scale it to +/- 1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;amp = max(abs(note));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;note = note / amp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ampmod = polyval(shape, <font color="#ff8000">1</font>:totalLength);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;note = note .* ampmod;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;note = note';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound(note, Fs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pause(length(note)./Fs)<br>
 <font color="#0000ff">end</font><br>
 <font color="#0000ff">function</font> [pitch, muted] = getPitch(note)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% Get the pitch of a note in ascii form</font><br>
@@ -159,7 +219,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'D'</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">2</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> {<font color="#c000c0">'DS'</font> 'EF'}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">3</font>;        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">3</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'E'</font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = <font color="#ff8000">4</font>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">case</font> <font color="#c000c0">'F'</font><br>
@@ -184,11 +244,4 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power = power + <font color="#ff8000">12</font> * diff;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pitch = half .^ power;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-<font color="#0000ff">function</font> sum = overall(score)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;sum = <font color="#ff8000">0</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;N = length(score);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for</font> it = <font color="#ff8000">1</font>:N<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum = sum + score{it,<font color="#ff8000">2</font>};<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">end</font><br>
-<font color="#0000ff">end</font><br>
 </strong></code>

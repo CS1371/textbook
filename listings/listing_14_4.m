@@ -1,4 +1,3 @@
-% Building a tune file_name
 function main
     global note
     global Fs
