@@ -9,10 +9,10 @@ function main
         'Bocelli, Andrea', 'Andrea', 2004, 4.6, 14.89 );
     cds(3) = makeCD( 'Country', 'Twain, Shania', ...
         'Greatest Hits', 2004, 3.9, 13.49 );
-newCD = makeCD( 'Oldies', 'Greatest Hits', ...
+    newCD = makeCD( 'Oldies', 'Greatest Hits', ...
          'Ricky Nelson', 2005, 5, 15.79 );
      cds(end+2) = newCD;
-    cds
+     cds
 end
 
 function ans = makeCD(gn, ar, ti, yr, st, pr)

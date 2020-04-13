@@ -1,4 +1,4 @@
-% listing_06_1
+% listing_06_2
 % Encryption
 function main
     txt = [ 'The quality of mercy is not strain''d' ];

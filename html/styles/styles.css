@@ -4,9 +4,55 @@ code {
 
 body {
     font-family: Helvetica, sans-serif;
-    padding: 5% 20%;
+    background-color: white;
+}
+
+nav {
+  padding: 5% 0 5% 1%;
+  position: fixed;
+  width: 300px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow-x: wrap;
+  overflow-y: scroll;
+  text-align: left;
+}
+
+.secnav {
+  padding: 0 0 0 2%;
+}
+
+.subnav {
+  margin: 0 0 0 4%;
+}
+
+.nav-link {
+  margin: 0 0 0 3%;
+  width: 275px;
+  overflow-x: wrap;
+}
+
+/**Fix scrolling for navbar**/
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-scroll {
+  -ms-overflow-style: none;
+}
+
+.content {
+    padding: 5% 20% 5% 0;
+    margin-left: 350px;
     text-align: justify;
 }
+
+.title_img {
+  padding: 0;
+  margin: 0;
+}
+
 
 h1 {
     font-size: 1.5em;
@@ -27,8 +73,10 @@ p {
     font-size: 1em;
 }
 
-.listing, .exercise, .style {
-    /**Need to style**/
+.listing, .exercise, .template, .data {
+    height: 350px;
+    overflow-y: scroll;
+    margin: 2%
 }
 
 .figure-name {
@@ -43,7 +91,7 @@ p {
 
 .card {
   border: none;
-  margin: auto;
+  margin: 0 2%;
 }
 
 .card-title {
@@ -75,7 +123,7 @@ p {
 .fig-long {
     width: auto;
     height: 275px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 video {
@@ -89,19 +137,25 @@ video {
 
 .common-pitfalls, .style-points, .technical-insights {
     background: #DCDCDC;
-    margin: 2%;
+    margin: 0 2%;
     padding: 2%;
     font-size: .95em;
     width: 450px;
 }
 
-common-pitfalls-col, style-points-col {
+.common-pitfalls-col, .style-points-col {
     width: auto;
     margin: 0;
 }
 
 audio {
   width: 100%;
+  padding: 2%;
+  margin: auto;
+}
+
+.audio-float {
+  width: 400px;
 }
 
 /**.container {
