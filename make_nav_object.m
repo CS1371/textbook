@@ -2,14 +2,14 @@ cd html
 files = dir('*.htm');
 
 % Initialize navbar and chapter list
-navobj = '<nav class="nav sidenav nav-scroll navbar-dark bg-dark">\n';
-navobj = [navobj '<ul class="navbar-nav">\n'];
+navobj = '<nav class="nav sidenav nav-scroll navbar-dark bg-dark">';
+navobj = [navobj '<ul class="navbar-nav">'];
 
 % Add preface
-navobj = [navobj '<li class="nav-item">\n'];
-navobj = [navobj '<a class="nav-link" href="Preface.htm">Preface</a></li>\n'];
+navobj = [navobj '<li class="nav-item">'];
+navobj = [navobj '<a class="nav-link" href="Preface.htm">Preface</a></li>'];
 
-for i = 1:17
+for i = [1:2 3:17]
     % Find chapter information
     filename = files(i).name;
     text = fileread(filename);
@@ -23,15 +23,16 @@ for i = 1:17
     chp_section_num = getAttribute(chp_section_tree, 'data-sect-num');
     
     % Add overall chapter to navbar
-    navobj = [navobj '<li class="nav-item">\n'];
+    navobj = [navobj '<li class="nav-item">'];
+    navobj = [navobj '<div class="nav-link">'];
     % Add reference for overall chapter 
-    reference = sprintf(['<a class="nav-link" href="%s#%d">%d %s&nbsp;&nbsp;'], ...
+    reference = sprintf(['<a href="%s#%d">%d %s&nbsp;&nbsp;</a>'], ...
         filename,chp_num, chp_num,chp_name);
     dropdown = sprintf('<span class="dropdown-toggle" data-target="#sec_%d" data-toggle="collapse"></span>',chp_num);
-    navobj = [navobj reference dropdown '</a>\n']; 
+    navobj = [navobj reference dropdown '</div>']; 
     
     % Add chapter sections
-    navobj = [navobj sprintf('<ul class="list-unstyled collapse" id="sec_%d">\n', chp_num)];  
+    navobj = [navobj sprintf('<ul class="list-unstyled collapse" id="sec_%d">', chp_num)];  
     
     for i = 1:length(chp_section_tree)
         % Find if has subsections 
@@ -41,15 +42,16 @@ for i = 1:17
         attr = getAttribute(findElement(chp_section_tree(i), 'H2'), 'id');
         
         % Print list item for section
-            navobj = [navobj '<li class="nav-item secnav">\n'];
+            navobj = [navobj '<li class="nav-item secnav">'];
         
         % Implement another dropdown menu
         if ~isempty(chp_sub_tree)             
             % Print reference
-            reference = sprintf('<a class="nav-link" href="%s#%s">%d.%s %s&nbsp;&nbsp;', ...
+            navobj = [navobj '<div class="nav-link">'];
+            reference = sprintf('<a href="%s#%s">%d.%s %s&nbsp;&nbsp;</a>', ...
                 filename, attr, chp_num, chp_section_num(i), chp_section_names(i));
             dropdown = sprintf('<span class="dropdown-toggle" data-target="#sub_%d_%d" data-toggle="collapse"></span>',chp_num, i);
-            navobj = [navobj reference dropdown '</a>\n'];
+            navobj = [navobj reference dropdown '</div>'];
             
             % Create next layer of navbar for subsections
             % Get subsection data
@@ -57,41 +59,43 @@ for i = 1:17
             chp_sub_num = getAttribute(chp_sub_tree, 'data-sub-num');
 
             % Make new div for subsections
-            navobj = [navobj sprintf('<ul class="list-unstyled collapse" id="sub_%d_%d">\n',chp_num,i)];
+            navobj = [navobj sprintf('<ul class="list-unstyled collapse" id="sub_%d_%d">',chp_num,i)];
 
             for j = 1:length(chp_sub_tree) 
                 % Make list element
-                navobj = [navobj '<li class="nav-item subnav">\n'];
+                navobj = [navobj '<li class="nav-item subnav">'];
+                navobj = [navobj '<div class="nav-link">'];
                 % Make reference 
                 attr = getAttribute(findElement(chp_sub_tree(j), 'H3'), 'id');
-                reference = sprintf('<a class="nav-link" href="%s#%s">%d.%s.%s %s</a>',filename,attr, ...
+                reference = sprintf('<a href="%s#%s">%d.%s.%s %s</a>',filename,attr, ...
                     chp_num, chp_section_num(i), chp_sub_num(j), chp_sub_names(j));
-                navobj = [navobj reference '\n'];
-                navobj = [navobj '</li>\n'];
+                navobj = [navobj reference '</div>'];
+                navobj = [navobj '</li>'];
             end
             
             % Close list for subsection
-            navobj = [navobj '</ul>\n'];
+            navobj = [navobj '</ul>'];
         else
-            navobj = [navobj '<li class="nav-item secnav">\n'];
-            reference = sprintf(['<a class="nav-link" href="%s#%s">%d.%s %s</a>'], ...
+            navobj = [navobj '<li class="nav-item secnav">'];
+            navobj = [navobj '<div class="nav-link">'];
+            reference = sprintf('<a href="%s#%s">%d.%s %s</a>', ...
                 filename, attr, chp_num, chp_section_num(i), chp_section_names(i));
-            navobj = [navobj reference '\n'];
+            navobj = [navobj reference '</div>'];
         end
         % Close list elem for sections
-        navobj = [navobj '</li>\n'];
+        navobj = [navobj '</li>'];
     end
     
     % Close list for sections
-    navobj = [navobj '</ul>\n'];
+    navobj = [navobj '</ul>'];
     
     % Close list elem for chapter
-    navobj = [navobj '</li>\n'];
+    navobj = [navobj '</li>'];
     
 end
 
 % Close chapter list and overall nav
-navobj = [navobj '</ul>\n'];
-navobj = [navobj '</nav>\n'];
+navobj = [navobj '</ul>'];
+navobj = [navobj '</nav>'];
 
 cd ..
