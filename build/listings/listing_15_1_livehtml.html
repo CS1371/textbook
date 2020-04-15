@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2019b"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S1 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Listing 15.1: Linear interpolation</span></h3><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% Linear interpolation</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>main</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Use data illustrated in Figure 15.2</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    x = 0:5;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    y = [0, 20, 60, 68, 77, 110];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    plot(x, y, </span><span style="color: rgb(160, 32, 240);">'r+'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    hold </span><span style="color: rgb(160, 32, 240);">on</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Take single interpolated reading from data at x = 1.5</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    fprintf(</span><span style="color: rgb(160, 32, 240);">'value at 1.5 is %2.2f\n'</span><span>, interp1(x, y ,1.5));</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Plot points spaced 0.241 points apart on x-axis marked with circles</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% (shown in Figure 15.3). Notice that the circles fall on the straight</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% lines between the given data values.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    new_x = 0:0.241:5;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    new_y = interp1(x,y,new_x);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Document the plot</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    plot(new_x, new_y, </span><span style="color: rgb(160, 32, 240);">'o'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    grid </span><span style="color: rgb(160, 32, 240);">on</span><span>, axis([-1,6,-20,120])</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    title(</span><span style="color: rgb(160, 32, 240);">'Linear Interpolation Plot'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    xlabel(</span><span style="color: rgb(160, 32, 240);">'x values'</span><span>) ; ylabel(</span><span style="color: rgb(160, 32, 240);">'y values'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Attempt to extrapolate to the point x = 7 and see that NaN (Not a</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Number) is returned because interp1 refuses to extrapolate outside</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% the original range of x values. </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    fprintf(</span><span style="color: rgb(160, 32, 240);">'value at 7 is %2.2f\n'</span><span>, interp1(x, y ,7));</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+% Listing 15.1: Linear interpolation
+
+% Linear interpolation
+function main
+    % Use data illustrated in Figure 15.2
+    x = 0:5;
+    y = [0, 20, 60, 68, 77, 110];
+    plot(x, y, 'r+')
+    hold on
+    
+    % Take single interpolated reading from data at x = 1.5
+    fprintf('value at 1.5 is %2.2f\n', interp1(x, y ,1.5));
+    
+    % Plot points spaced 0.241 points apart on x-axis marked with circles
+    % (shown in Figure 15.3). Notice that the circles fall on the straight
+    % lines between the given data values.
+    new_x = 0:0.241:5;
+    new_y = interp1(x,y,new_x);
+    
+    % Document the plot
+    plot(new_x, new_y, 'o')
+    grid on, axis([-1,6,-20,120])
+    title('Linear Interpolation Plot')
+    xlabel('x values') ; ylabel('y values')
+    
+    % Attempt to extrapolate to the point x = 7 and see that NaN (Not a
+    % Number) is returned because interp1 refuses to extrapolate outside
+    % the original range of x values. 
+    fprintf('value at 7 is %2.2f\n', interp1(x, y ,7));
+end
+##### SOURCE END #####
+--></body></html>

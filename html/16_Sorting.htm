@@ -61,7 +61,7 @@
           <p><b>O(1)—Independent of N</b> O(1) describes the ideal case of an algorithm or logical step whose amount of work is independent of the amount of data. The most obvious example is accessing or modifying an entry in a vector. Since all good languages permit direct access to elements of a vector, the work of these simple operations is independent of the size of the vector.</p>
           <p><b>O(N)—Linear</b> with N O(N) describes an algorithm whose performance is linearly related to N. Copying a cell array of size N is an obvious example, as is searching for a specific piece of data in such a cell array. One might argue that occasionally one would find the data as the first element. There is an equal chance that we would be unlucky and find the item as the last element. On average, we would claim that the performance of this search is the mean of these numbers: (N+1) / 2. However, applying the simplification rules above, we first reject the 1 as being N to a lower power, leaving N/2, and then reject the constant multiplier, leaving O(N) for a linear search.</p>
           <div class="float-sm-right card">
-               <img src="Fig_16_1.JPG" alt="Figure 16.1" class="fig card-img">
+               <img src="..\Images\Fig_16_1.JPG" alt="Figure 16.1" class="fig card-img">
                <p class="figure-name card-title">Figure 16.1: Binary Search</p>
            </div>
           <p><b>O(logN)—Binary Search</b> Consider searching for a number - say, 86 - in a sorted vector such as that shown in Figure 16.1. One could use a linear search without taking advantage of the ordering of the data. However, a better algorithm might be as follows:</p>
@@ -153,7 +153,7 @@
       <h3 id="16_2_1">16.2.1 Insertion Sort</h3>
       <div class="container clearfix">
           <div class="float-sm-right card">
-               <img src="Fig_16_2.JPG" alt="Figure 16.2" class="fig card-img">
+               <img src="..\Images\Fig_16_2.JPG" alt="Figure 16.2" class="fig card-img">
                <p class="figure-name card-title">Figure 16.2: Insertion Sort in Progress</p>
            </div>
           <p>Insertion sort is perhaps the most obvious sorting technique. Given the original collection of objects to sort, it begins by initializing an empty collection. For example, if the collection were a vector, you might allocate a new vector of the same size and initialize an “output index” to the start of that vector. Then the algorithm traverses the original vector, inserting each object from that vector in order into the new vector. This usually requires "shuffling" the objects in the new vector to make room for the new object.</p>
@@ -170,7 +170,7 @@
       <h3 id="16_2_2">16.2.2 Bubble Sort</h3>
       <div class="container clearfix">
           <div class="float-sm-right card">
-               <img src="Fig_16_3.JPG" alt="Figure 16.3" class="fig card-img">
+               <img src="..\Images\Fig_16_3.JPG" alt="Figure 16.3" class="fig card-img">
                <p class="figure-name card-title">Figure 16.3: Bubble Sort</p>
            </div>
           <p>Where insertion sort is easy to visualize, it is normally implemented by creating a new collection and growing that new collection as the algorithm proceeds. Bubble sort is conceptually the easiest sorting technique to visualize and is usually accomplished by rearranging the items in a collection in place. Given the original collection of N objects to sort, it makes (N - 1) major passes through the data. The first major pass examines all N objects in a minor pass, and subsequent passes reduce the number of examinations by 1. On each minor pass through the data, beginning with the first data item and moving incrementally through the data, the algorithm checks to see whether the next item is smaller than the current one. If so, the two items are swapped in place in the array.</p>
@@ -185,7 +185,7 @@
       <h3 id="16_2_3">16.2.3	Quick Sort</h3>
       <div class="container clearfix">
           <div class="float-sm-right card">
-               <img src="Fig_16_4.JPG" alt="Figure 16.4" class="fig card-img">
+               <img src="..\Images\Fig_16_4.JPG" alt="Figure 16.4" class="fig card-img">
                <p class="figure-name card-title">Figure 16.4: Quick Sort</p>
            </div>
           <p>As its name suggests, the quick sort algorithm is one of the fastest sorting algorithms. Like Bubble Sort, it is designed to sort an array "in place."" The quick sort algorithm is recursive and uses an elegant approach to subdividing the original vector. Figure 16.4 illustrates this process. The algorithm proceeds as follows:</p>
@@ -207,7 +207,7 @@
       <h3 id="16_2_4">16.2.4	Merge Sort</h3>
       <div class="container">
           <div class="float-sm-right card">
-               <img src="Fig_16_5.JPG" alt="Figure 16.5" class="fig card-img">
+               <img src="..\Images\Fig_16_5.JPG" alt="Figure 16.5" class="fig card-img">
                <p class="figure-name card-title">Figure 16.5: Merge Sort</p>
            </div>
           <p>Merge sort is another O(N log N) algorithm that achieves speed by dividing the original vector into two "equal" halves. It is difficult at best to perform a merge sort in place in a collection. Equality, of course, is not possible when there is an odd number of objects to be sorted, in which case the length of the "halves" will differ by at most 1. The heart of the merge sort algorithm is the technique used to reunite two smaller sorted vectors. This function is called "merge." Its objective is to merge two vectors that have been previously sorted. Since the two vectors are sorted, the smallest object can only be at the front of one of these two vectors. The smallest item is removed from its place and added to the result vector. This merge process continues until one of the two halves is empty, in which case the remaining half (whose values all exceed those in the result vector) is copied into the result.</p>
@@ -219,7 +219,7 @@
           </ul>
           <p>The code for merge sort is shown in Listing 16.4.</p>
       </div>
-      <div class="listing">#listing_16_4</div>
+      <div class="listing">#listing_16_4#</div>
     </div>
 
     <div class="chp-subsection" data-sub-num="5" data-sub-name="Radix Sort">
@@ -227,7 +227,7 @@
       <h3 id="16_2_5">16.2.5	Radix Sort</h3>
       <div class="container clearfix">
           <div class="float-sm-right card">
-               <img src="Fig_16_6.JPG" alt="Figure 16.6" class="fig card-img">
+               <img src="..\Images\Fig_16_6.JPG" alt="Figure 16.6" class="fig card-img">
                <p class="figure-name card-title">Figure 16.6: Radix Sort</p>
            </div>
           <p>A discussion of sorting techniques would not be complete without discussing radix sort, commonly referred to as bucket sort. This is also an O(N log N) algorithm whose most obvious application is for sorting physical piles of papers, such as students' test papers. However, the same principle can be applied to sorting successively on the units, tens and hundreds digit of numbers (hence, the term radix sort). The process begins with a stack of unsorted papers, each with an identifier consisting of a number or a unique name. One pass is made through the stack separating the papers into piles based on the first digit or character of the identifier. Subsequent passes sort each of these piles by subsequent characters or digits until all the piles have a small number of papers that can be sorted by insertion or selection sorts. The piles can then be reassembled in order. Figure 16.6 illustrates the situation at the end of the second sorting pass when piles for the first digit have also been separated by the second digit.</p>
@@ -238,7 +238,6 @@
            <li>Once the first sorting pass is complete, one can use multi-processing (in the form of extra people) to perform the remaining passes in parallel, thereby reducing the effective performance to O(N) (given sufficient parallel resources)</li>
           </ul>
       </div>
-      <div class="listing">#listing_16_5#</div>
     </div>
   </div>
 
@@ -248,7 +247,7 @@
     <div class="container clearfix">
         <p>In order to perform a comparison of the performance of different algorithms, a script was written to perform each sort on a vector of increasing length containing random numbers. The script started with a length of 4 and continued doubling the length until it reached 262,144 (2<sup>18</sup>). To obtain precise timing measurements, each sort technique was repeated a sufficient number of times to obtain moderately accurate timing measurements with the internal millisecond clock. In order to eliminate common computation costs, it was necessary to measure the overhead cost of the loops themselves and subtract that time from the times of each sort algorithm. Note that in order to show the results of the system internal sort on the same chart, its execution time was multiplied by 1,000.</p>
         <div class="float-sm-right card">
-             <img src="Fig_16_7.png" alt="Figure 16.7" class="fig-wide card-img">
+             <img src="..\Images\Fig_16_7.png" alt="Figure 16.7" class="fig-wide card-img">
              <p class="figure-name card-title">Figure 16.7: Sort Study Results</p>
          </div>
         <p>Figure 16.7 shows a typical plot of the results of this analysis, illustrating the relative power of O(N log N) algorithms versus O(N<sup>2</sup>) algorithms. The plot on a log-log scale shows the relative time taken by the selection sort, insertion sort, bubble sort, merge sort, quick sort, and quick sort in place algorithms, together with the internal sort function. Also on the chart are plotted trend lines for O(N<sup>2</sup>) and O(N log N) processes. We can make the following observations from this chart:</p>
@@ -399,15 +398,6 @@
 [Problems]-->
 
 
-<table align="center">
-<tbody>
-<tr>
-<td><a href="15_Numerical_Methods.htm">previous</a></td>
-<td><a href="Contents.htm">home</a></td>
-<td><a href="17_Graphs.htm">next</a></td>
-</tr>
-</tbody>
-</table>
 
 </body>
 </html>

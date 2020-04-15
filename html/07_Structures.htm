@@ -53,7 +53,7 @@
     <h2 id="7_2">7.2	Cell Arrays</h2>
     <div class="container clearfix">
       <div class="card float-sm-right">
-           <img src="Fig_7_1.JPG" alt="Figure 7.1" class="fig card-img">
+           <img src="..\Images\Fig_7_1.JPG" alt="Figure 7.1" class="fig card-img">
            <p class="figure-name card-title">Figure 7.1: Conceptual Cell Array</p>
       </div>
       <p>Cell arrays, as the name suggests, have the general form of arrays and can be indexed numerically as arrays. However, each element of a cell array should be considered as a container in which one data object of any class can be stored. They can be treated as arrays of containers for the purpose of concatenation and slicing. However, if you wish to access or modify the contents of the containers, the cells must be accessed individually.</p>
@@ -135,7 +135,7 @@
          <li>Containing lists of possible values for switch/case statements, as we saw in Chapter 4</li>
          <li>Substituting for parameter lists in function calls.  For example, suppose you have a function largest(a, b, c) that consumes three variables and produces the largest of the three values provided. It can be used in the following styles, as shown in Listing 7.1.</li>
        </ul></p>
-       <div class="listing">#listing_7_1#</div>
+       <div class="listing">#listing_07_1#</div>
       </div>
     </div>
 
@@ -151,7 +151,7 @@
          <li>Individual test functions can be used in an <code>if... elseif</code> construct; examples of the individual test functions are <code>isa(item, 'class')</code>, <code>iscell(...)</code>, <code>ischar(...)</code>, <code>islogical(...)</code>, <code>isnumeric(...)</code>, and <code>isstruct(...)</code>. </li>
        </ul></p>
        <p>For example, suppose you are provided with a cell array and have been asked for a function that finds the total length of all the vectors it contains. The function might look like that shown in Listing 7.2.</p>
-       <div class="listing">#listing_7_2#</div>
+       <div class="listing">#listing_07_2#</div>
        <p>MATLAB provides two functions that can cast data between a cell array containing only numbers, <code>ca</code>, and a numerical array, <code>arr</code>:<br>
         <code>arr = cell2num(ca) % consumes a cell array and returns a numerical array<br>
         </code>and<br>
@@ -166,7 +166,7 @@
     <h2 id="7_3">7.3 Structures</h2>
     <div class="container clearfix">
       <div class="card float-sm-right">
-           <img src="Fig_7_2.JPG" alt="Figure 7.2" class="fig card-img">
+           <img src="..\Images\Fig_7_2.JPG" alt="Figure 7.2" class="fig card-img">
            <p class="figure-name card-title">Figure 7.2: Conceptual Structure Array</p>
       </div>
      <p>Where cell arrays implemented the concept of homogeneous collections as indexed collections, a structure provides for items to be accessed by field name rather than by indexing. Most modern languages implement the concept of a structure in a similar style. The data contained in a structure are referenced by field name, for example, <code>item1</code>. The rules for making a field name are the same as those for a variable. Fields of a structure, like the elements of a cell array, are heterogeneous — they can contain any MATLAB object. First, we will see how to construct and manipulate one structure, and then how to aggregate individual structures into an array of structures.</p>
@@ -233,7 +233,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;birth: [1x1 struct]<br>
         </code> <br>
         <p><b>Custom Constructor:</b>The <code>struct(...)</code> constructor is useful in general to create structures, but the need to repeat the field names makes this general-purpose approach a little annoying. We can create a special-purpose function that “knows” the necessary field names to create multiple structures in an organized way.  Listing 7.3 shows the code for a function that consumes parameters that describe a CD and assembles a structure containing those attributes by name.</p>
-        <div class="listing">#listing_7_3#</div>
+        <div class="listing">#listing_07_3#</div>
         <p>In Exercise 7.3, you can try your hand at using this function to construct a CD structure and then verify the structure contents.</p>
         <div class="exercise">#exercise_7_3#</div>
       </div>
@@ -253,10 +253,10 @@
       <div class="container">
         <p>Structure arrays can be created either by using MATLAB’s <code>struct(...)</code> function to build the whole structure array, or by using a custom function to create each individual structure.</p>
         <p>Built-in Constructor:</b> Listing 7.4 illustrates these concepts by implementing a collection of CDs as a structure array using the function <code>struct(...)</code> from Listing 7.3.</p>
-        <div class="listing">#listing_7_4#</div>
+        <div class="listing">#listing_07_4#</div>
         <p>When using the built-in <code>struct(...)</code> function to create a structure array, the form of the function call is identical to that used in Para 7.3.2. The only difference is the usage of the second parameter of each field_name/value pair. If the value is a cell array, the structure to be created becomes a structure array whose size (in the general sense) is the size of that cell array. Then, each field of the structure array receives the corresponding value from the cell array. If the field content is anything other than a cell array, the content of each structure array field becomes a copy of that item.  It is possible that the first field may not have a cell array as its value such as, for example, a last_name field. The first field whose value is a cell array will define the size of the structure array.  Subsequent fields may have the same size, but it is illegal for any subsequent fields to have cell array of a different size.</p>
         <p><b>Built-in Constructor:</b> Listing 7.5 illustrates these concepts by implementing a collection of CDs as a structure array using the function <code>makeCD(...)</code> from Listing 7.3.</p>
-        <div class="listing">#listing_7_5#</div>
+        <div class="listing">#listing_07_5#</div>
       </div>
     </div>
 
@@ -448,7 +448,7 @@
     <h2 id="7_6">7.6 Engineering Example: Assembling a Physical Structure</h2>
     <div class="container clearfix">
       <div class="card float-sm-right">
-           <img src="Fig_7_3.JPG" alt="Figure 7.3" class="fig card-img">
+           <img src="..\Images\Fig_7_3.JPG" alt="Figure 7.3" class="fig card-img">
            <p class="figure-name card-title">Figure 7.3: Simple Bridge Structure</p>
       </div>
       <p>Many large bridges today have steel frames as their basic structure. Engineers perform the analysis and design work for each steel component and deliver these designs to the steel company. The steel company manufactures all the components, and prepares them for delivery to the building site. At this point, each component is identified only by a unique identifier string stamped and/or chalked onto that component. For even a modest-sized bridge, this transportation may require a significant number of truckloads of components. The question we address here is how to decide the sequence in which the components are delivered to the building site so that components are available when needed, but not piled up waiting to be used.</p>
@@ -462,7 +462,7 @@
         E-A E-B E-F A-B B-F F-C F-G B-C C-G G-D C-D<br></code></p>
       <p>Although this seems to be simple problem, there is not a natural ordering of the components.  The goal of algorithm cited within the listing is to identify small groups of components that do have natural ordering and then schedule the beams that make up each group for delivery.</p>
     </div>
-    <div class="listing">#listing_7_6#</div>
+    <div class="listing">#listing_07_6#</div>
   </div>
 
   <!-- Chapter Summary -->
@@ -480,17 +480,6 @@
 </div>
 
 
-
-
-<table align="center">
-<tbody>
-<tr>
-<td><a href="06_Strings.htm">previous</a></td>
-<td><a href="Contents.htm">home</a></td>
-<td><a href="08_File_I_O.htm">next</a></td>
-</tr>
-</tbody>
-</table>
 
 
 </body>

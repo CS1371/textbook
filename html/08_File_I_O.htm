@@ -34,7 +34,7 @@
   <h1>Introduction</h1>
   <div class="container clearfix">
     <div class="float-sm-right card">
-      <img src="Fig_8_1.JPG" alt="Figure 8.1" class="fig card-image">
+      <img src="..\Images\Fig_8_1.JPG" alt="Figure 8.1" class="fig card-image">
       <p class="figure-name card-title">Figure 8.1: Paper Tape I/O</p>
     </div>
     <p>This chapter discusses files that contain workspace variables, spreadsheet data, and text. Subsequent chapters will discuss image files and sound files that have their own unique file access. MATLAB has the ability to process the many file formats currently in use. For information on the other file formats, consult the MATLAB help documentation for details of their usage.</p>
@@ -242,9 +242,9 @@
         </ul>
         <p>When the read function finds the EOF character, instead of returning a string, it returns <code>-1</code>. This is actually the reason to exit a while loop processing the text which can conveniently be accomplished with the <code>ischar(...)</code> function.</p>
         <p>To illustrate the use of these functions for reading a text file, the script in Listing 8.1 shows a script that will list any text file in the Command window.</p>
-        <div class="listing">#listing_8_1#</div>
+        <div class="listing">#listing_08_1#</div>
         <p>As an example of the use of a strtok(...), consider the code shown in Listing 8.2, which performs the same function as Listing 8.1 but uses tokens.</p>
-        <div class="listing">#listing_8_2#</div>
+        <div class="listing">#listing_08_2#</div>
         <p>Run the scripts in Listings 8.1 and 8.2. This will show the difference in output results between the conventional listing script and the tokenizing lister. With the tokenizer, we see each individual token (really, each word in a normal text file) separately listed.</p>
       </div>
     </div>
@@ -254,7 +254,7 @@
       <h3 id="8_4_3">8.4.3	Writing Text Files</h3>
       <div class="container">
         <p>Once a file has been opened for writing, the <code>fprintf(...)</code>function can be used to write to the file by including its file handle as the first parameter. For example, Listing 8.3 is a minor alteration to Listing 8.1, copying a text file instead of listing it in the Command window.</p>
-        <div class="listing">#listing_8_3#</div>
+        <div class="listing">#listing_08_3#</div>
       </div>
     </div>
   </div>
@@ -264,13 +264,13 @@
     <h2 id="8_5">8.5	Engineering Example &mdash; Spreadsheet Data</h2>
     <div class="container">
       <div class="float-sm-right card">
-        <img src="Fig_8_2.JPG" alt="Figure 8.2" class="fig card-image">
+        <img src="..\Images\Fig_8_2.JPG" alt="Figure 8.2" class="fig card-image">
         <p class="figure-name card-title">Figure 8.2: Spreadsheet Data</p>
       </div>
       <p>Frequently, engineering data are provided in spreadsheets. Here we will adapt the structure assembly problem from Chapter 7. The script for that solution created the data using a constructor function. Consider the situation in which the data are provided in a spreadsheet such as that shown in Figure 8.2. To make it more interesting, we imagine that the spreadsheet would have numerical information such as the node's coordinates and an index value which other users might need, but we don't. We have to start by examining the layout of the data and the process necessary to extract what we need. Based on the spreadsheet, there is both string and numerical data.</p>
       <p>The other concern is that there are a different number of connections on each row of the sheet. Our solution to the beams problem requires the connections to be placed in a cell array. When a connection is present, it is a string. When it is not present, we can see from the behavior of the raw data that the contents of empty cells appear as a cell containing <code>missiong</code>.</p>
       <p>We need a function that will read this spread sheet and produce the same model of the structure used in Chapter 7. Such a function is shown in Listing 8.4.</p>
-      <div class="listing">#listing_8_4#</div>
+      <div class="listing">#listing_08_4#</div>
       <p>To test this function, replace the structure array construction in lines 1–22 of Listing 7.6 in Chapter 7 with the following line:<br>
       <code>data = readStruct('beams.xlsx');</code><br>
       The script should then produce the same results as before.</p>
@@ -292,17 +292,5 @@
 [Problems]-->
 
 
-
-<table align="center">
-<tbody>
-<tr>
-<td><a href="07_Structures.htm">previous</a></td>
-<td><a href="Contents.htm">home</a></td>
-<td><a href="09_Recursion.htm">next</a></td>
-</tr>
-</tbody>
-</table>
-
-<p align="center"><font size="1">This Web Page was Built with PageBreeze </font><a href="http://pagebreeze.com" target="_blank"><font size="1">Free HTML Editor</font></a><font size="1"> </font></p>
 </body>
 </html>

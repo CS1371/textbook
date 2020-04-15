@@ -1,0 +1,486 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>07_Structures</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<meta http-equiv="Expires" content="0" />    <link rel="stylesheet" href="styles/styles.css" />
+<link rel="stylesheet" href="styles/styles.css" />
+<script async src="./javascript/index.js"></script>
+</head>
+<body>
+<div class="nav-obj"><nav class="nav sidenav nav-scroll navbar-dark bg-dark"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="Preface.htm">Preface</a></li><li class="nav-item"><a class="nav-link" href="01_Introduction.htm#1">1 Introduction&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_1" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_1"><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="01_Introduction.htm#1_1">1.1 Background</a></li><li class="nav-item secnav"><a class="nav-link" href="01_Introduction.htm#1_2">1.2 History of Computer Architectures&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_1_2" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_1_2"><li class="nav-item subnav"><a class="nav-link" href="01_Introduction.htm#1_2_1">1.2.1 Babbage�s Difference Engine</a></li><li class="nav-item subnav"><a class="nav-link" href="01_Introduction.htm#1_2_2">1.2.2 Colossus</a></li><li class="nav-item subnav"><a class="nav-link" href="01_Introduction.htm#1_2_3">1.2.3 The von Neumann Architecture</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="01_Introduction.htm#1_3">1.3 Modern Computer Software&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_1_3" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_1_3"><li class="nav-item subnav"><a class="nav-link" href="01_Introduction.htm#1_3_1">1.3.1 Operating Systems</a></li><li class="nav-item subnav"><a class="nav-link" href="01_Introduction.htm#1_3_2">1.3.2 Software Tools</a></li><li class="nav-item subnav"><a class="nav-link" href="01_Introduction.htm#1_3_3">1.3.3 Programming Languages</a></li><li class="nav-item subnav"><a class="nav-link" href="01_Introduction.htm#1_3_4">1.3.4 Running a Computer Program</a></li><li class="nav-item subnav"><a class="nav-link" href="01_Introduction.htm#1_3_5">1.3.5 Running an Interpreted Program</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="01_Introduction.htm#1_4">1.4 Anticipated Outcomes&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_1_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_1_4"><li class="nav-item subnav"><a class="nav-link" href="01_Introduction.htm#1_4_1">1.4.1 Introduction to MATLAB</a></li><li class="nav-item subnav"><a class="nav-link" href="01_Introduction.htm#1_4_2">1.4.2 Learning Programming Concepts</a></li><li class="nav-item subnav"><a class="nav-link" href="01_Introduction.htm#1_4_3">1.4.3 Problem-Solving Skills</a></li></ul></li></ul></li><li class="nav-item"><a class="nav-link" href="02_Basics.htm#2">2 Basics&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_2" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_2"><li class="nav-item secnav"><a class="nav-link" href="02_Basics.htm#2_1">2.1 Programming Language Background&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_2_1" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_2_1"><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_1_1">2.1.1 Abstraction</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_1_2">2.1.2 Algorithms</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_1_3">2.1.3 Programming Paradigms</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="02_Basics.htm#2_2">2.2 Basic Data Manipulation&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_2_2" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_2_2"><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_2_1">2.2.1 Starting and Stopping MATLAB</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_2_2">2.2.2 Assigning Values to Variables</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_2_3">2.2.3 Data Typing</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_2_4">2.2.4 Classes and Objects</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="02_Basics.htm#2_3">2.3 MATLAB User Interface&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_2_3" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_2_3"><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_3_1">2.3.1 Command Window</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_3_2">2.3.2 Command Window</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_3_3">2.3.3 Workspace Window</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_3_4">2.3.4 Current Folder Window</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_3_5">2.3.5 Variable Editor</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_3_6">2.3.6 Figure Window</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_3_7">2.3.7 Editor Window</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="02_Basics.htm#2_4">2.4 Scripts&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_2_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_2_4"><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_4_1">2.4.1 Text Files</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_4_2">2.4.2 Creating Scripts</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_4_3">2.4.3 The Current Directory</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_4_4">2.4.4 Running Scripts</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_4_5">2.4.5 Punctuating Scripts</a></li><li class="nav-item subnav"><a class="nav-link" href="02_Basics.htm#2_4_6">2.4.6 Debugging Scripts</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="02_Basics.htm#2_5">2.5 Engineering Example - Spacecraft Launch</a></li></ul></li><li class="nav-item"><a class="nav-link" href="03_Functions.htm#3">3 Functions&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_3" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_3"></ul></li><li class="nav-item"><a class="nav-link" href="04_Vectors.htm#4">4 Vectors&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_4"></ul></li><li class="nav-item"><a class="nav-link" href="05_Execution.htm#5">5 Execution&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_5" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_5"><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="05_Execution.htm#5_1">5.1 Concept: Code Blocks</a></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="05_Execution.htm#5_2">5.2 Conditional Execution in General</a></li><li class="nav-item secnav"><a class="nav-link" href="05_Execution.htm#5_3">5.3 if Statements&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_5_3" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_5_3"><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_3_1">5.3.1 General Template</a></li><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_3_2">5.3.2 MATLAB Implementation</a></li><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_3_3">5.3.3 Important Ideas</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="05_Execution.htm#5_4">5.4 switch Statements&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_5_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_5_4"><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_4_1">5.4.1 General Template</a></li><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_4_2">5.4.2 MATLAB Implementation</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="05_Execution.htm#5_5">5.5 Iteration in General</a></li><li class="nav-item secnav"><a class="nav-link" href="05_Execution.htm#5_6">5.6 for Loops&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_5_6" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_5_6"><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_6_1">5.6.1 General for Loop Template</a></li><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_6_2">5.6.2 MATLAB Implementation</a></li><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_6_3">5.6.3 Indexing Implementation</a></li><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_6_4">5.6.4 Breaking out of a for Loop</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="05_Execution.htm#5_7">5.7 while Loops&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_5_7" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_5_7"><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_7_1">5.7.1 General while Template</a></li><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_7_2">5.7.2 MATLAB while Loop Implementation</a></li><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_7_3">5.7.3 Loop-and-a-Half Implementation</a></li><li class="nav-item subnav"><a class="nav-link" href="05_Execution.htm#5_7_4">5.7.4 Breaking a while Loop</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="05_Execution.htm#5_8">5.8 Engineering Example - Computing Liquid Levels</a></li></ul></li><li class="nav-item"><a class="nav-link" href="06_Strings.htm#6">6 Strings&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_6" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_6"><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="06_Strings.htm#6_1">6.1 Character String Concepts: Mapping, Casting, Tokens, and Delimiting</a></li><li class="nav-item secnav"><a class="nav-link" href="06_Strings.htm#6_2">6.2 MATLAB Implementation&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_6_2" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_6_2"><li class="nav-item subnav"><a class="nav-link" href="06_Strings.htm#6_2_1">6.2.1 Slicing and Concatenating Strings</a></li><li class="nav-item subnav"><a class="nav-link" href="06_Strings.htm#6_2_2">6.2.2 Arithmetic and Logical Operations</a></li><li class="nav-item subnav"><a class="nav-link" href="06_Strings.htm#6_2_3">6.2.3 Useful Functions</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="06_Strings.htm#6_3">6.3 Format Conversion Functions&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_6_3" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_6_3"><li class="nav-item subnav"><a class="nav-link" href="06_Strings.htm#6_3_1">6.3.1 Conversion from Numbers to Strings</a></li><li class="nav-item subnav"><a class="nav-link" href="06_Strings.htm#6_3_2">6.3.2 Conversion from Strings to Numbers and Other Stuff</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="06_Strings.htm#6_4">6.4 Character String Operations&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_6_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_6_4"><li class="nav-item subnav"><a class="nav-link" href="06_Strings.htm#6_4_1">6.4.1 Simple Data Output: The disp(...) Function</a></li><li class="nav-item subnav"><a class="nav-link" href="06_Strings.htm#6_4_2">6.4.2 Complex Output</a></li><li class="nav-item subnav"><a class="nav-link" href="06_Strings.htm#6_4_3">6.4.3 Comparing Strings</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="06_Strings.htm#6_5">6.5 Arrays of Strings</a></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="06_Strings.htm#6_6">6.6 Engineering Example - Encryption</a></li></ul></li><li class="nav-item"><a class="nav-link" href="07_Structures.htm#7">7 Structures&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_7" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_7"><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="07_Structures.htm#7_1">7.1 Concept: Collecting Dissimilar Objects</a></li><li class="nav-item secnav"><a class="nav-link" href="07_Structures.htm#7_2">7.2 Cell Arrays&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_7_2" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_7_2"><li class="nav-item subnav"><a class="nav-link" href="07_Structures.htm#7_2_1">7.2.1 Creating Cell Arrays</a></li><li class="nav-item subnav"><a class="nav-link" href="07_Structures.htm#7_2_2">7.2.2 Accessing Cell Arrays</a></li><li class="nav-item subnav"><a class="nav-link" href="07_Structures.htm#7_2_3">7.2.3 Using Cell Arrays</a></li><li class="nav-item subnav"><a class="nav-link" href="07_Structures.htm#7_2_4">7.2.4 Processing Cell Arrays</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="07_Structures.htm#7_3">7.3 Structures&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_7_3" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_7_3"><li class="nav-item subnav"><a class="nav-link" href="07_Structures.htm#7_3_1">7.3.1 Constructing and Accessing One Structure</a></li><li class="nav-item subnav"><a class="nav-link" href="07_Structures.htm#7_3_2">7.3.2 Constructor Functions</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="07_Structures.htm#7_4">7.4 Structure Arrays&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_7_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_7_4"><li class="nav-item subnav"><a class="nav-link" href="07_Structures.htm#7_4_1">7.4.1 Constructing Structure Arrays</a></li><li class="nav-item subnav"><a class="nav-link" href="07_Structures.htm#7_4_2">7.4.2 Accessing Structure Arrays</a></li><li class="nav-item subnav"><a class="nav-link" href="07_Structures.htm#7_4_3">7.4.3 Manipulating Structures</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="07_Structures.htm#7_5">7.5 Comparing Cell Arrays to Structure Arrays</a></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="07_Structures.htm#7_6">7.6 Engineering Example: Assembling a Physical Structure</a></li></ul></li><li class="nav-item"><a class="nav-link" href="08_File_I_O.htm#8">8 File I O&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_8" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_8"><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="08_File_I_O.htm#8_1">8.1 Concept: Serial Input and Output (I/O)</a></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="08_File_I_O.htm#8_2">8.2 Workspace I/O</a></li><li class="nav-item secnav"><a class="nav-link" href="08_File_I_O.htm#8_3">8.3 High-Level I/O Functions&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_8_3" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_8_3"><li class="nav-item subnav"><a class="nav-link" href="08_File_I_O.htm#8_3_1">8.3.1 Exploration</a></li><li class="nav-item subnav"><a class="nav-link" href="08_File_I_O.htm#8_3_2">8.3.2 Spreadsheets</a></li><li class="nav-item subnav"><a class="nav-link" href="08_File_I_O.htm#8_3_3">8.3.3 Delimited Text Files</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="08_File_I_O.htm#8_4">8.4 Lower-Level File I/O&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_8_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_8_4"><li class="nav-item subnav"><a class="nav-link" href="08_File_I_O.htm#8_4_1">8.4.1 Opening and Closing Files</a></li><li class="nav-item subnav"><a class="nav-link" href="08_File_I_O.htm#8_4_2">8.4.2 Reading Text Files</a></li><li class="nav-item subnav"><a class="nav-link" href="08_File_I_O.htm#8_4_3">8.4.3 Writing Text Files</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="08_File_I_O.htm#8_5">8.5 Engineering Example - Spreadsheet Data</a></li></ul></li><li class="nav-item"><a class="nav-link" href="09_Recursion.htm#9">9 Recursion&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_9" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_9"><li class="nav-item secnav"><a class="nav-link" href="09_Recursion.htm#9_1">9.1 Concept: The Activation Stack&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_9_1" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_9_1"><li class="nav-item subnav"><a class="nav-link" href="09_Recursion.htm#9_1_1">9.1.1 A Stack</a></li><li class="nav-item subnav"><a class="nav-link" href="09_Recursion.htm#9_1_2">9.1.2 Activation Stack</a></li><li class="nav-item subnav"><a class="nav-link" href="09_Recursion.htm#9_1_3">9.1.3 Function Instances</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="09_Recursion.htm#9_2">9.2 Recursion Defined</a></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="09_Recursion.htm#9_3">9.3 Implementing a Recursive Function</a></li><li class="nav-item secnav"><a class="nav-link" href="09_Recursion.htm#9_4">9.4 Exceptions&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_9_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_9_4"><li class="nav-item subnav"><a class="nav-link" href="09_Recursion.htm#9_4_1">9.4.1 Historical Approaches</a></li><li class="nav-item subnav"><a class="nav-link" href="09_Recursion.htm#9_4_2">9.4.2 Generic Exception Implementation</a></li><li class="nav-item subnav"><a class="nav-link" href="09_Recursion.htm#9_4_3">9.4.3 MATLAB Implementation</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="09_Recursion.htm#9_5">9.5 Wrapper Functions</a></li><li class="nav-item secnav"><a class="nav-link" href="09_Recursion.htm#9_6">9.6 Examples of Recursion&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_9_6" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_9_6"><li class="nav-item subnav"><a class="nav-link" href="09_Recursion.htm#9_6_1">9.6.1 Detecting Palindromes</a></li><li class="nav-item subnav"><a class="nav-link" href="09_Recursion.htm#9_6_2">9.6.2 Fibonacci Series</a></li><li class="nav-item subnav"><a class="nav-link" href="09_Recursion.htm#9_6_3">9.6.3 Zeros of a Function</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="09_Recursion.htm#9_7">9.7 Engineering Example - Robot Arm Motion</a></li></ul></li><li class="nav-item"><a class="nav-link" href="10_Problem_Solving.htm#10">10 Problem Solving&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_10" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_10"><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="10_Problem_Solving.htm#10_1">10.1 Solving Simple Problems</a></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="10_Problem_Solving.htm#10_2">10.2 Assembling Solution Steps</a></li><li class="nav-item secnav"><a class="nav-link" href="10_Problem_Solving.htm#10_3">10.3 Summary of Operations&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_10_3" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_10_3"><li class="nav-item subnav"><a class="nav-link" href="10_Problem_Solving.htm#10_3_1">10.3.1 Basic Arithmetic Operations</a></li><li class="nav-item subnav"><a class="nav-link" href="10_Problem_Solving.htm#10_3_2">10.3.2 Inserting into a Collection</a></li><li class="nav-item subnav"><a class="nav-link" href="10_Problem_Solving.htm#10_3_3">10.3.3 Traversing a Collection</a></li><li class="nav-item subnav"><a class="nav-link" href="10_Problem_Solving.htm#10_3_4">10.3.4 Building a Collection</a></li><li class="nav-item subnav"><a class="nav-link" href="10_Problem_Solving.htm#10_3_5">10.3.5 Mapping a Collection</a></li><li class="nav-item subnav"><a class="nav-link" href="10_Problem_Solving.htm#10_3_6">10.3.6 Filtering a Collection</a></li><li class="nav-item subnav"><a class="nav-link" href="10_Problem_Solving.htm#10_3_7">10.3.7 Folding a Collection</a></li><li class="nav-item subnav"><a class="nav-link" href="10_Problem_Solving.htm#10_3_8">10.3.8 Searching a Collection</a></li><li class="nav-item subnav"><a class="nav-link" href="10_Problem_Solving.htm#10_3_9">10.3.9 Sorting a Collection</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="10_Problem_Solving.htm#10_4">10.4 Solving Larger Problems</a></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="10_Problem_Solving.htm#10_5">10.5 Engineering Example�Processing Geopolitical Data</a></li></ul></li><li class="nav-item"><a class="nav-link" href="11_Plotting.htm#11">11 Plotting&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_11" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_11"><li class="nav-item secnav"><a class="nav-link" href="11_Plotting.htm#11_1">11.1 Plotting in General&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_11_1" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_11_1"><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_1_1">11.1.1 A Figure - The Plot Container</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_1_2">11.1.2 Simple Functions for Enhancing Plots</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_1_3">11.1.3 Multiple Plots on One Figure - Subplots</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_1_4">11.1.4 Manually Editing Plots</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="11_Plotting.htm#11_2">11.2 2-D Plotting&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_11_2" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_11_2"><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_2_1">11.2.1 Simple Plots</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_2_2">11.2.2 Plot Options</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_2_3">11.2.3 Parametric Plots</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_2_4">11.2.4 Other 2-D Plot Capabilities</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="11_Plotting.htm#11_3">11.3 3-D Plotting&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_11_3" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_11_3"><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_3_1">11.3.1 Linear 3-D Plots</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_3_2">11.3.2 Linear Parametric 3-D Plots</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_3_3">11.3.3 Other 3-D Plot Capabilities</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="11_Plotting.htm#11_4">11.4 Surface Plots&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_11_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_11_4"><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_4_1">11.4.1 Basic Capabilities</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_4_2">11.4.2 Simple Exercises</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_4_3">11.4.3 3-D Parametric Surfaces</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_4_4">11.4.4 Bodies of Rotation</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_4_5">11.4.5 Other 3-D Surface Plot Capabilities</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_4_6">11.4.6 Assembling Compound Surfaces</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="11_Plotting.htm#11_5">11.5 Manipulating Plotted Data</a></li><li class="nav-item secnav"><a class="nav-link" href="11_Plotting.htm#11_6">11.6 Engineering Example - Visualizing Geographic Data&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_11_6" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_11_6"><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_6_1">11.6.1 Analyzing the Data</a></li><li class="nav-item subnav"><a class="nav-link" href="11_Plotting.htm#11_6_2">11.6.2 Displaying the Data</a></li></ul></li></ul></li><li class="nav-item"><a class="nav-link" href="12_Matrices.htm#12">12 Matrices&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_12" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_12"><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="12_Matrices.htm#12_1">12.1 Concept: Behavioral Abstraction</a></li><li class="nav-item secnav"><a class="nav-link" href="12_Matrices.htm#12_2">12.2 Matrix Operations&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_12_2" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_12_2"><li class="nav-item subnav"><a class="nav-link" href="12_Matrices.htm#12_2_1">12.2.1 Matrix Multiplication</a></li><li class="nav-item subnav"><a class="nav-link" href="12_Matrices.htm#12_2_2">12.2.2 Matrix Division</a></li><li class="nav-item subnav"><a class="nav-link" href="12_Matrices.htm#12_2_3">12.2.3 Matrix Exponentiation</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="12_Matrices.htm#12_3">12.3 Implementation&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_12_3" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_12_3"><li class="nav-item subnav"><a class="nav-link" href="12_Matrices.htm#12_3_1">12.3.1 Matrix Multiplication</a></li><li class="nav-item subnav"><a class="nav-link" href="12_Matrices.htm#12_3_2">12.3.2 Matrix Division</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="12_Matrices.htm#12_4">12.4 Rotating Coordinates&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_12_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_12_4"><li class="nav-item subnav"><a class="nav-link" href="12_Matrices.htm#12_4_1">12.4.1 2-D Rotation</a></li><li class="nav-item subnav"><a class="nav-link" href="12_Matrices.htm#12_4_2">12.4.2 3-D Rotation</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="12_Matrices.htm#12_5">12.5 Solving Simultaneous Linear Equations&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_12_5" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_12_5"><li class="nav-item subnav"><a class="nav-link" href="12_Matrices.htm#12_5_1">12.5.1 Intersecting Lines</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="12_Matrices.htm#12_6">12.2 Engineering Examples&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_12_6" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_12_6"><li class="nav-item subnav"><a class="nav-link" href="12_Matrices.htm#12_6_1">12.2.1 Ceramic Composition</a></li><li class="nav-item subnav"><a class="nav-link" href="12_Matrices.htm#12_6_2">12.2.2 Analyzing an Electrical Circuit</a></li></ul></li></ul></li><li class="nav-item"><a class="nav-link" href="13_Images.htm#13">13 Images&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_13" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_13"><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="13_Images.htm#13_1">13.1 Nature of an Image</a></li><li class="nav-item secnav"><a class="nav-link" href="13_Images.htm#13_2">13.2 Image Types&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_13_2" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_13_2"><li class="nav-item subnav"><a class="nav-link" href="13_Images.htm#13_2_1">13.2.1 True Color Images</a></li><li class="nav-item subnav"><a class="nav-link" href="13_Images.htm#13_2_2">13.2.2 Gray Scale Images</a></li><li class="nav-item subnav"><a class="nav-link" href="13_Images.htm#13_2_3">13.2.3 Color Mapped Images</a></li><li class="nav-item subnav"><a class="nav-link" href="13_Images.htm#13_2_4">13.2.4 Preferred Image Format</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="13_Images.htm#13_3">13.3 Reading, Displaying, and Writing Images</a></li><li class="nav-item secnav"><a class="nav-link" href="13_Images.htm#13_4">13.4 Operating on Images&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_13_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_13_4"><li class="nav-item subnav"><a class="nav-link" href="13_Images.htm#13_4_1">13.4.1 Stretching or Shrinking Images</a></li><li class="nav-item subnav"><a class="nav-link" href="13_Images.htm#13_4_2">13.4.2 Color Masking</a></li><li class="nav-item subnav"><a class="nav-link" href="13_Images.htm#13_4_3">13.4.3 Creating a Kaleidoscope</a></li><li class="nav-item subnav"><a class="nav-link" href="13_Images.htm#13_4_4">13.4.4 Images on a Surface</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="13_Images.htm#13_5">13.5 Engineering Example - Detecting Edges</a></li></ul></li><li class="nav-item"><a class="nav-link" href="14_Sounds.htm#14">14 Sounds&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_14" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_14"><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="14_Sounds.htm#14_1">14.1 The Physics of Sound</a></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="14_Sounds.htm#14_2">14.2 Recording and Playback</a></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="14_Sounds.htm#14_3">14.3 Implementation</a></li><li class="nav-item secnav"><a class="nav-link" href="14_Sounds.htm#14_4">14.4 Time Domain Operations&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_14_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_14_4"><li class="nav-item subnav"><a class="nav-link" href="14_Sounds.htm#14_4_1">14.4.2 Slicing and Concatenating Sounds</a></li><li class="nav-item subnav"><a class="nav-link" href="14_Sounds.htm#14_4_2">14.4.2 Musical Background</a></li><li class="nav-item subnav"><a class="nav-link" href="14_Sounds.htm#14_4_3">14.4.3 Changing Sound Frequency</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="14_Sounds.htm#14_5">14.5 The Fast Fourier Transform&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_14_5" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_14_5"><li class="nav-item subnav"><a class="nav-link" href="14_Sounds.htm#14_5_1">14.5.1 Background</a></li><li class="nav-item subnav"><a class="nav-link" href="14_Sounds.htm#14_5_2">14.5.2 Implementation</a></li><li class="nav-item subnav"><a class="nav-link" href="14_Sounds.htm#14_5_3">14.5.3 Simple Spectral Analysis</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="14_Sounds.htm#14_6">14.6 Frequency Domain Operations&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_14_6" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_14_6"><li class="nav-item subnav"><a class="nav-link" href="14_Sounds.htm#14_6_1">14.6.1 Details of the Spectral Data</a></li><li class="nav-item subnav"><a class="nav-link" href="14_Sounds.htm#14_6_2">14.6.2 Notes fading with time</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="14_Sounds.htm#14_7">14.7 Engineering Example - Music Synthesizer</a></li></ul></li><li class="nav-item"><a class="nav-link" href="15_Numerical_Methods.htm#15">15 Numerical Methods&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_15" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_15"><li class="nav-item secnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_1">15.1 Interpolation&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_15_1" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_15_1"><li class="nav-item subnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_1_1">15.1.1 Linear Interpolation</a></li><li class="nav-item subnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_1_2">15.1.2 Cubic Spline Interpolation</a></li><li class="nav-item subnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_1_3">15.1.3 Extrapolation</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_2">15.2 Curve Fitting&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_15_2" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_15_2"><li class="nav-item subnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_2_1">15.2.1 Linear Regression</a></li><li class="nav-item subnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_2_2">15.2.2 Polynomial Regression</a></li><li class="nav-item subnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_2_3">15.2.3 Practical Application</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_3">15.3 Numerical Integration&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_15_3" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_15_3"><li class="nav-item subnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_3_1">15.3.1 Determination of the Complete Integral</a></li><li class="nav-item subnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_3_2">15.3.2 Continuous Integration Problems</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_4">15.4 Numerical Differentiation&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_15_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_15_4"><li class="nav-item subnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_4_1">15.4.1 Difference Expressions</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_5">15.5 Analytical Operations&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_15_5" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_15_5"><li class="nav-item subnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_5_1">15.5.1 Analytical Integration</a></li><li class="nav-item subnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_5_2">15.5.2 Analytical Differentiation</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_6">15.6 Implementation</a></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="15_Numerical_Methods.htm#15_7">15.7 Engineering Example - Shaping the Synthesizer Notes</a></li></ul></li><li class="nav-item"><a class="nav-link" href="16_Sorting.htm#16">16 Sorting&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_16" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_16"><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="16_Sorting.htm#16_1">16.1 Measuring Algorithm Cost</a></li><li class="nav-item secnav"><a class="nav-link" href="16_Sorting.htm#16_2">16.2 Algorithms for Sorting Data&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_16_2" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_16_2"><li class="nav-item subnav"><a class="nav-link" href="16_Sorting.htm#16_2_1">16.2.1 Insertion Sort</a></li><li class="nav-item subnav"><a class="nav-link" href="16_Sorting.htm#16_2_2">16.2.2 Bubble Sort</a></li><li class="nav-item subnav"><a class="nav-link" href="16_Sorting.htm#16_2_3">16.2.3 Quick Sort</a></li><li class="nav-item subnav"><a class="nav-link" href="16_Sorting.htm#16_2_4">16.2.4 Merge Sort</a></li><li class="nav-item subnav"><a class="nav-link" href="16_Sorting.htm#16_2_5">16.2.5 Radix Sort</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="16_Sorting.htm#16_3">16.3 Performance Analysis</a></li><li class="nav-item secnav"><a class="nav-link" href="16_Sorting.htm#16_4">16.4 Applications of Sorting Algorithms&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_16_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_16_4"><li class="nav-item subnav"><a class="nav-link" href="16_Sorting.htm#16_4_1">16.4.1 Using sort(...)</a></li><li class="nav-item subnav"><a class="nav-link" href="16_Sorting.htm#16_4_2">16.4.2 Insertion Sort</a></li><li class="nav-item subnav"><a class="nav-link" href="16_Sorting.htm#16_4_3">16.4.3 Bubble Sort</a></li><li class="nav-item subnav"><a class="nav-link" href="16_Sorting.htm#16_4_4">16.4.4 Quick Sort</a></li><li class="nav-item subnav"><a class="nav-link" href="16_Sorting.htm#16_4_5">16.4.5 Merge Sort</a></li><li class="nav-item subnav"><a class="nav-link" href="16_Sorting.htm#16_4_6">16.4.6 Radix Sort</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="16_Sorting.htm#16_5">16.5 Engineering Example - A Selection of Countries</a></li></ul></li><li class="nav-item"><a class="nav-link" href="17_Graphs.htm#17">17 Graphs&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sec_17" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sec_17"><li class="nav-item secnav"><a class="nav-link" href="17_Graphs.htm#17_1">17.1 Stacks&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_17_1" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_17_1"><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_1_1">17.1.1 The Nature of a Stack</a></li><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_1_2">17.1.2 Implementing Stacks</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="17_Graphs.htm#17_2">17.2 Queues&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_17_2" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_17_2"><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_2_1">17.2.1 The Nature of a Queue</a></li><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_2_2">17.2.2 Implementing Queues</a></li><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_2_3">17.2.3 Priority Queues</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="17_Graphs.htm#">17.3 Testing Stacks and Queues</a></li><li class="nav-item secnav"><a class="nav-link" href="17_Graphs.htm#17_4">17.4 Graphs&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_17_4" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_17_4"><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_4_1">17.4.1 Graph Examples</a></li><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_4_2">17.4.2 Processing Graphs</a></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><a class="nav-link" href="17_Graphs.htm#17_5">17.5 Minimum Spanning Trees</a></li><li class="nav-item secnav"><a class="nav-link" href="17_Graphs.htm#17_6">17.6 Finding Paths through a Graph&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_17_6" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_17_6"><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_6_1">17.6.1 Depth-First Search</a></li><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_6_2">17.6.2 Breadth-First Search</a></li><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_6_3">17.6.3 Dijkstra's Algorithm</a></li><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_6_4">17.6.4 An Approximation Algorithm</a></li><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_6_5">17.6.5 Serious Path Finding Algorithms</a></li></ul></li><li class="nav-item secnav"><a class="nav-link" href="17_Graphs.htm#17_7">17.7 Engineering Applications&nbsp;&nbsp;<span class="dropdown-toggle" data-target="#sub_17_7" data-toggle="collapse"></span></a><ul class="list-unstyled collapse" id="sub_17_7"><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_7_1">17.7.1 Simple Applications</a></li><li class="nav-item subnav"><a class="nav-link" href="17_Graphs.htm#17_7_2">17.7.2 Complex Extensions</a></li></ul></li></ul></li></ul></nav></div>
+
+<div class="content">
+  <h1 id="7" align="center">Chapter 7: Cell Arrays and Structures</h1>
+
+  <!-- Chapter Objectives -->
+  <h2>Chapter Objectives</h2>
+  <div class="container">
+    <p>This chapter discusses the nature, implementation, and behavior of collections that may contain data items of any class, size, or shape. We will deal with two different heterogeneous storage mechanisms:
+      <ul>
+      <li>Those accessed by index (cell arrays) </li>
+      <li>Those accessed by field name (structures) </li>
+      </ul>
+    In addition, we will consider collecting structures into arrays of structures.</p>
+  </div>
+
+  <!-- Introduction -->
+  <h1>Introduction</h1>
+  <div class="container">
+     <p>This chapter covers data collections that are more general and flexible than the <b>homogeneous</b> arrays we have considered so far. Conceptually, <b>heterogeneous</b> collections may contain objects of any type, rather than just numbers. Consequently, none of the collective operations defined for numerical arrays can be applied to cell arrays or structures. To perform most operations on their contents, the items must be extracted one at a time and replaced if necessary. We will consider three different mechanisms for building heterogeneous collections:
+     <ul>
+     <li>you access components of a <b>cell array</b> with a numerical index;</li>
+     <li>you access components of a <b>structure</b> with a symbolic field name; and</li>
+     <li>you access components of a <b>structure array</b> by way of a numerical index to reach a specific structure then a symbolic field name.</li>
+    </ul></p>
+  </div>
+
+  <div class="chp-section" data-sect-num="1" data-sect-name="Concept: Collecting Dissimilar Objects">
+    <!-- Collecting Dissimilar Objects -->
+    <h2 id="7_1">7.1	Concept: Collecting Dissimilar Objects</h2>
+    <div class="container">
+      <p>Heterogeneous collections permit objects of different data types to be grouped in a collection. They allow data abstraction to apply to a much broader range of content. However, the fact that the contents of these collections may be of any data type severely restricts the operations that can be performed on the collections as a whole. Whereas a significant number of arithmetic and logical operations can be performed on whole number arrays, algorithms that process heterogeneous collections almost always deal with the data contents one item at a time.</p>
+      <p><b>Insignificant Footnote:</b> There is a fundamental aspect of computing that is carefully hidden by the Matlab but fully exposed in other languages especially Java. That aspect is this: computer languages that deal with complex concepts such as the subject of this chapter actually need to implement the classes that define behavior in a hierarchy.  At the root of that hierarchy in Java is a class called Object, and all Java classes actually respond as if they were Objects in addition to their specific behavior.  Matlab hides exactly the same behavior. Hence, while we discuss these collections as if they were heterogeneous, because of this hierarchy, the Matlab infrastructure treats them as homogeneous collections of Objects.</p>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="2" data-sect-name="Cell Arrays">
+    <!-- Cell arrays -->
+    <h2 id="7_2">7.2	Cell Arrays</h2>
+    <div class="container clearfix">
+      <div class="card float-sm-right">
+           <img src="..\Images\Fig_7_1.JPG" alt="Figure 7.1" class="fig card-img">
+           <p class="figure-name card-title">Figure 7.1: Conceptual Cell Array</p>
+      </div>
+      <p>Cell arrays, as the name suggests, have the general form of arrays and can be indexed numerically as arrays. However, each element of a cell array should be considered as a container in which one data object of any class can be stored. They can be treated as arrays of containers for the purpose of concatenation and slicing. However, if you wish to access or modify the contents of the containers, the cells must be accessed individually.</p>
+      <p><b>Nomenclature:</b> Cells and cell arrays have dual meanings.  In one sense, the braces specify a <b>cell</b>, a <b>container</b> of whatever is inside the braces. The other sense suggests that within the cell is an arbitrary <b>collection of objects</b> we will refer to as a cell's <b>contents</b>.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Creating Cell Arrays">
+      <!-- Creating Cell Arrays -->
+      <h3 id="7_2_1">7.2.1	Creating Cell Arrays</h3>
+      <div class="container">
+        <p>Cell arrays may be constructed in the following ways:
+        <ul>
+          <li>By assigning values individually to a variable indexed with braces:<br>
+          <code>>> A{1} = 42<br>
+          A =<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;[42] </li></code>
+          <li>By assigning anything contained within braces individually to a variable normally indexed with parentheses:<br>
+          <code>>> B(1) = {[4 6]};<br>
+          B =<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;[1x2 double] </code></li>
+          <li>By concatenating cell contents using braces <code>{. . .}:<br>
+          >> C = {3, [1,2,3], 'abcde'}<br>
+          C = <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;[3] [1x3 double] 'abcde'</li></code>
+          <li>By concatenating cell containers:<br>
+          <code>>> D = [A B C {'xyz'}]<br>
+          D = <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;[42] [1x2 double] [3] [1x3 double] 'abcde' 'xyz'</li> </code>
+          </ul>
+          <p>Based on these examples, we observe the following:
+          <ul>
+            <li>A cell array can contain any legal MATLAB object</li>
+            <li>Just as with numerical arrays, cell arrays can be created "on the fly" by assigning values to an indexed variable. </li>
+            <li> When the values from a cell array are displayed, their appearance is different from that of the contents of a numerical array.
+            <ul>
+            <li>Individual numbers, vectors and arrays are shown in brackets, for example, <code>[1 2 3];</code></li>
+            <li>larger numerical arrays display their size, for example, <code>[2&#215;3 double]</code>; and</li>
+            <li>character strings are displayed with the enclosing quotes, for example, <code>'abcde'</code>. </li>
+          </ul></p>
+        </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Accessing Cell Arrays">
+      <!-- Accessing Cell Arrays -->
+      <h3 id="7_2_2">7.2.2	Accessing Cell Arrays</h3>
+      <div class="container">
+        <p>Since cell arrays can be considered as conventional arrays of containers, the containers can be accessed and manipulated normally. For example, continuing the previous examples, we have the following:<br>
+         <code>>> E = D(2) % parentheses - fetching a container<br>
+        E = <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[4 6]</code></p>
+        <p>However, braces are used to access the contents of the containers as follows:<br>
+        <code>>> D{2} % braces - fetching the contents<br>
+        ans =<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;4 6</code></p>
+        <p>Exercise 7.1 shows details of cell indexing behavior.</p>
+        <div class="exercise">#exericse_7_1#</div>
+        <p><b>Lessons to learn:</b>
+        <ul>
+          <li>If the right-hand side of an assignment statement results in multiple cell arrays, the assignment must be to the same number of variables.</li>
+          <li> The built-in function <code>deal(...)</code> is used to make these allocations.</li>
+          <li>When we extract the contents of multiple cells using, for example,<code> A{1:2}</code>, this results in multiple assignments being made. </li>
+          <li>These multiple assignments must go to separate variables. This is the fundamental mechanism behind returning multiple results from a function.</li>
+          <li>These multiple assignments cannot be made to a single variable; sufficient storage must be provided either as a collection of variables or explicitly as a vector.</li>
+          <li>Cell arrays can be “sliced” with normal vector indexing assignments as long as the sizes match on the left and right sides of the assignment. Any unassigned array elements are filled with an empty vector.</li>
+          <li>The assignment <code>B{[1 3]} = A{[1 2]}</code> that produced an error needs some thought. Since <code>A{[1 2]}</code> produces two separate assignments, MATLAB will not assign the answers, even to the right number of places in another cell array.</li>
+          <li> The <code>deal(...)</code> function is provided to capture these multiple results in different variables. Notice the difference between using <code>A{:}</code> and <code>A</code> as a parameter to <code>deal(...)</code>. When <code>deal(...)</code> is provided with a parameter other than a collection of cells, it merely copies that parameter to each variable.</li>
+          <li>Assignments work normally if cell arrays are treated as vectors and the extraction of items can be indexed — <code>s</code> is a vector of the sums of the elements in <code>A</code>.</li>
+          <li>When accessing cell arrays, it is normal to have braces on one side or the other of an assignment; it is rarely appropriate to have braces on both sides of an assignment. The result in the last example is that a container is loaded into the third container in the cell array.</li>
+        </ul></p>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="Using Cell Arrays">
+      <!-- Using Cell Arrays -->
+      <h3 id="7_2_3">7.2.3	Using Cell Arrays</h3>
+      <div class="container">
+       <p>There are a number of uses for cell arrays, some of which will be evident in upcoming chapters. For now, the following examples will suffice:
+       <ul>
+         <li>Containing lists of possible values for switch/case statements, as we saw in Chapter 4</li>
+         <li>Substituting for parameter lists in function calls.  For example, suppose you have a function largest(a, b, c) that consumes three variables and produces the largest of the three values provided. It can be used in the following styles, as shown in Listing 7.1.</li>
+       </ul></p>
+       <div class="listing"><iframe src="..\listings\listing_07_1_livehtml.html"></iframe></div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="4" data-sub-name="Processing Cell Arrays">
+      <!-- Processing Cell Arrays -->
+      <h3 id="7_2_4">7.2.4	Processing Cell Arrays</h3>
+      <div class="container">
+       <p>The general template for processing cell arrays is shown in Template 7.1.</p>
+       <div class="template"><iframe src="..\book_templates\template_7_1html.html"></iframe></div>
+       <p>Checking the class of the element can be achieved in one of two ways:
+       <ul>
+         <li>The function <code>class(item)</code> returns a string specifying the item type that can be used in a switch statement</li>
+         <li>Individual test functions can be used in an <code>if... elseif</code> construct; examples of the individual test functions are <code>isa(item, 'class')</code>, <code>iscell(...)</code>, <code>ischar(...)</code>, <code>islogical(...)</code>, <code>isnumeric(...)</code>, and <code>isstruct(...)</code>. </li>
+       </ul></p>
+       <p>For example, suppose you are provided with a cell array and have been asked for a function that finds the total length of all the vectors it contains. The function might look like that shown in Listing 7.2.</p>
+       <div class="listing"><iframe src="..\listings\listing_07_2_livehtml.html"></iframe></div>
+       <p>MATLAB provides two functions that can cast data between a cell array containing only numbers, <code>ca</code>, and a numerical array, <code>arr</code>:<br>
+        <code>arr = cell2num(ca) % consumes a cell array and returns a numerical array<br>
+        </code>and<br>
+        <code>ca = num2cell(arr) % consumes a number array and returns a cell array<br>
+        </code></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="3" data-sect-name="Structures">
+    <!-- Structures -->
+    <h2 id="7_3">7.3 Structures</h2>
+    <div class="container clearfix">
+      <div class="card float-sm-right">
+           <img src="..\Images\Fig_7_2.JPG" alt="Figure 7.2" class="fig card-img">
+           <p class="figure-name card-title">Figure 7.2: Conceptual Structure Array</p>
+      </div>
+     <p>Where cell arrays implemented the concept of homogeneous collections as indexed collections, a structure provides for items to be accessed by field name rather than by indexing. Most modern languages implement the concept of a structure in a similar style. The data contained in a structure are referenced by field name, for example, <code>item1</code>. The rules for making a field name are the same as those for a variable. Fields of a structure, like the elements of a cell array, are heterogeneous — they can contain any MATLAB object. First, we will see how to construct and manipulate one structure, and then how to aggregate individual structures into an array of structures.</p>
+   </div>
+
+     <div class="chp-subsection" data-sub-num="1" data-sub-name="Constructing and Accessing One Structure">
+       <!-- Constructing and Accessing One Structure -->
+      <h3 id="7_3_1">7.3.1	Constructing and Accessing One Structure</h3>
+      <div class="container">
+         <p>To set the value of items in a structure <code>A</code>, the syntax is as follows:<br>
+        <code>&gt;&gt;  A.item1 = 'abcde'<br>
+        A =<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcde'<br>
+        &gt;&gt; A.item2 = 42<br>A =<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcde'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;item2: 42<br></code></p>
+        <p>Notice that MATLAB displays the elements of an emerging structure by name. Fields in a structure are accessed in the same way — by using the dotted notation.<br>
+        <code>&gt;&gt; A.item2 = A.item2 ./ 2<br>
+        A =<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcde'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;item2: 21<br>
+        </code></p>
+        <p>You can determine the names of the fields in a structure using the built-in function <code>fieldnames(...)</code>. It returns a cell array containing the field names as strings.<br>
+        <code>>> names = fieldnames(A)<br>
+        names = <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;'item1' 'item2'<br></code></p>
+        <p>Fields can also be accessed “indirectly” by setting a variable to the name of the field, and then by using parentheses to indicate that the variable contents should be used as the field name:<br>
+        <code>>> fn = names{1};<br>
+        >> A.(fn) = [A.(fn) 'fg']<br>
+        A =<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcdefg'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;item2: 21</code></p>
+        <div class="exercise"><iframe src="..\exercises\exercise_7_2html.html"></iframe></div>
+        <p>You can also remove a field from a structure using the built-in function <code>rmfield(...)</code>. Its specification is <code>function &lt;res&gt; = rmfield(&lt;str&gt;, &lt;fld_name&gt;)</code>
+        where <code>&lt;str&gt;</code> represents a structure consumed by the function
+        <code>&lt;fld_name&gt;</code> represents a field name and
+        <code>&lt;res&gt;</code> represents a structure returned with the field removed.</p>
+        <p>You must remember the scope rules for variables within a function. Code inside a function has no ability to "reach outside" that function to affect any changes at all to the workspace of the code that called the function. The only real problem here is the name of the function, <code>rmfield(...)</code>, which suggests that mystically, this function removes the field in <code>&lt;fld_name&gt;</code> from the structure <code>&lt;str&gt;</code> passed in. It probably should have been called <code>return_a_copy_of_the_structure_with_the_specified_field_removed(...)</code>!</p>
+        <p>Exercise 7.2 gives you an opportunity to understand how to build structures. Here we build a typical structure that could be used as one entry in a telephone book. Since phone numbers usually contain punctuation, we could store them as strings. Notice that since a structure may contain any object, it is quite legal to make a structure containing a date and insert that structure in the date field of the entry. The structure display function, however, does not display the contents of the structures.</p>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Constructor Functions">
+      <!-- Constructor Functions -->
+      <h3 id="7_3_2">7.3.2	Constructor Functions</h3>
+      <div class="container">
+        <p>This section discusses functions that assign their parameters to the fields of a structure and then return that structure. You do this, as opposed to “manually” entering data into structures, for the following reasons:
+        <ul>
+           <li>Manual entry can result in strange behavior due to typographical errors or having fields in the wrong order</li>
+           <li>The resulting code is generally more compact and easier to understand</li>
+           <li>When constructing collections of structures, it enforces consistency across the collections.
+          </li>
+        </ul></p>
+        <p>There are two approaches to the use of constructor functions: using built-in capabilities or writing your own constructor.</p>
+        <p><b>Built-in Constructor: </b> There is a built-in function, <code>struct(...)</code>, that consumes pairs of entries, each consisting of a field name as a string and a cell array of field contents and produces a structure. If all the cell arrays have more than one entry, this actually creates a structure array, as discussed in Section 7.4.1.  The following command would construct the address book entry created in the previous section. Note the use of ellipses <code>(...)</code> to indicate to the MATLAB machinery that the logic is continued onto the next line.</p>
+         <code>>>struct('first','Fred', ...<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'last','Jones', ... <br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'phone','(123) 555-1212', ...<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'birth', struct( 'day', 31, 'month', 'February', 'year', 1965 ))<br>
+         ans = <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;first: 'Fred'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;last: 'Jones'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;phone: '(123) 555-1212'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;birth: [1x1 struct]<br>
+        </code> <br>
+        <p><b>Custom Constructor:</b>The <code>struct(...)</code> constructor is useful in general to create structures, but the need to repeat the field names makes this general-purpose approach a little annoying. We can create a special-purpose function that “knows” the necessary field names to create multiple structures in an organized way.  Listing 7.3 shows the code for a function that consumes parameters that describe a CD and assembles a structure containing those attributes by name.</p>
+        <div class="listing"><iframe src="..\listings\listing_07_3_livehtml.html"></iframe></div>
+        <p>In Exercise 7.3, you can try your hand at using this function to construct a CD structure and then verify the structure contents.</p>
+        <div class="exercise"><iframe src="..\exercises\exercise_7_3html.html"></iframe></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="4" data-sect-name="Structure Arrays">
+    <!-- Structure Arrays -->
+    <h2 id="7_4">7.4 Structure Arrays</h2>
+    <div class="container">
+      <p>To be useful, collections like address books or CD collections require multiple structure entries with the same fields. This is accomplished by forming an array of data items, each of which contains the same fields of information.  MATLAB implements the concept of structure arrays with the properties described in the following paragraphs.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Constructing Structure Arrays">
+       <!-- Constructing Structure Arrays -->
+      <h3 id="7_4_1">7.4.1	Constructing Structure Arrays</h3>
+      <div class="container">
+        <p>Structure arrays can be created either by using MATLAB’s <code>struct(...)</code> function to build the whole structure array, or by using a custom function to create each individual structure.</p>
+        <p>Built-in Constructor:</b> Listing 7.4 illustrates these concepts by implementing a collection of CDs as a structure array using the function <code>struct(...)</code> from Listing 7.3.</p>
+        <div class="listing"><iframe src="..\listings\listing_07_4_livehtml.html"></iframe></div>
+        <p>When using the built-in <code>struct(...)</code> function to create a structure array, the form of the function call is identical to that used in Para 7.3.2. The only difference is the usage of the second parameter of each field_name/value pair. If the value is a cell array, the structure to be created becomes a structure array whose size (in the general sense) is the size of that cell array. Then, each field of the structure array receives the corresponding value from the cell array. If the field content is anything other than a cell array, the content of each structure array field becomes a copy of that item.  It is possible that the first field may not have a cell array as its value such as, for example, a last_name field. The first field whose value is a cell array will define the size of the structure array.  Subsequent fields may have the same size, but it is illegal for any subsequent fields to have cell array of a different size.</p>
+        <p><b>Built-in Constructor:</b> Listing 7.5 illustrates these concepts by implementing a collection of CDs as a structure array using the function <code>makeCD(...)</code> from Listing 7.3.</p>
+        <div class="listing"><iframe src="..\listings\listing_07_5_livehtml.html"></iframe></div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Accessing Structure Arrays">
+      <!-- Accessing Structure Elements -->
+      <h3 id="7_4_2">7.4.2	Accessing Structure Elements</h3>
+      <div class="container">
+        <p>Like normal arrays or cell arrays, items can be stored and retrieved by their index in the array. As structures are added to the array, MATLAB forces all elements in the structure array to implement the same field names in the same order, even if the inserted structure has the fields in the wrong order, or with some missing. Fields in the original structure not changed by the addition are filled with empty vector, <code>[]</code>. If you are trying to add a non-existent field, you should first add that field to the whole structure array before adding another structure containing that field.</p>
+        <p>Elements can be accessed in three ways:
+        <ul>
+          <li>Individually
+          <ul>
+            <li>Manually (not recommended)</li>
+            <li>Creating new structures with a constructor and adding them (recommended)</li>
+          </ul>
+          <li>By collectively accessing specific fields across the whole structure array</li>
+        </ul><p>
+        <p><b>Manually:</b> If you elect to manipulate the elements of a structure array manually, you merely identify the array element by indexing and use the <code>.field</code> operator. For example, for the CD collection <code>cds</code>, we could change the price of one of them as follows:<br>
+        <code>>> cds(3).price = 11.95<br>
+        cds = <br>
+        &nbsp;&nbsp;1x3 struct array with fields:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;genre<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;artist<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;title<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;year<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;stars<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;price<br></code></p>
+        <p>This is a little hazardous when making manual additions to a structure array. A typographical error while entering a field name results in all the structures having that bad field name. For example, consider this error:<br>
+        <code>>> cds(3).prce = 11.95<br>
+        cds = <br>
+        &nbsp;&nbsp;1x31 struct array with fields:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;genre<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;artist<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;title<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;year<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;stars<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;price<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;prce
+        </code></p>
+        <p>You have accidentally added a new field to the whole collection. You can check this by looking at one entry:<br>
+        <code>>> cds(1)<br>
+        ans = <br>
+        &nbsp;&nbsp;struct with fields:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;genre: 'Blues'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;artist: 'Sessions For Robert J'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;title: 'Clapton, Eric'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;year: 2004<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;stars: 2<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;price: 18.95<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;prce: []</code></p>
+        <p>If this happens, you can use the <code>fieldnames(...)</code> function to determine the situation and then the <code>rmfield(...)</code> function to remove the offending entry.<br>
+        <code>>> fieldnames(cds)<br>
+        ans =  <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{'genre'}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{'artist'}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{'title'}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{'year'}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{'stars'}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{'price'}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{'prce'}<br>
+        >> cds = rmfield(cds,'prce')<font color="#00A000">% recall that the result must be assigned to replace the original. </font><br>
+        cds = 1x32 struct array with fields:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;genre<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;artist<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;title<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;year<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;stars<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;price</code><br>
+      </code></p>
+      <p><b>Custom Constructor:</b> It is best to use the custom constructor to make a complete structure and then insert it into the structure array. For example:<br>
+      <code>>> newCD = makeCD( 'Oldies', 'Greatest Hits', ... 'Ricky Nelson', 2005, 5, 15.79 );<br>
+      >> cds = [cds  newCD]<br>
+      cds =<br>
+      &nbsp;&nbsp;1x3 struct array with fields:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;genre<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;artist<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;title<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;year<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;stars<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;price
+      </code></p>
+      <p>If you insert that new CD beyond the end of the array, as one might expect, MATLAB fills out the array with empty structures:<br>
+      <code>>> cds(end+2) = newCD<br>
+      cds =<br>
+      &nbsp;&nbsp;1&#215;5 struct array with fields:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;genre<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;artist<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;title<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;year<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;stars<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;price<br>
+      <br>
+      >> cds(end-1)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;genre []<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;artist []<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;title []<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;year []<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;stars []<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;price []
+      </code></p>
+      <p><b>Accessing one field from the whole structure array</b>: Suppose we really want to extract, for example, all the prices from the cd array. Let's try the obvious way first:<br>
+      <code>>> prices = cds.price;<br>
+      prices =<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;18.9500
+      </code></p>
+      <p>Hmmm - seems to have given me just the first one.  How about letting <code>ans</code> have them all?<br>
+      <code>>> cds.price;<br>
+      ans =<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;18.9500<br>
+      ans =<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;14.8900<br>
+      ans =<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;13.4900<br>
+      ans =<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;[]<br>
+      ans =<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;15.7900<br>
+      </code></p>
+      <p>That looks familiar - sending too many results (in this case, one result for each of the structures in the array) to the default variable.  See the beginning of Exercise 7.1 above. There, we solved the problem by providing at least one actual variable to capture a result, just as we did in our first try above. But what if we actually want all the values of a field? Since the number of structures is variable, we can't really provide the right number of variables to save all the results. So we use a different strategy: "catching" all the values in a collection of the appropriate type: a vector for fields containing only single numbers, a cell array for everything else. For example,<br>
+      <code>
+      >> [cds.price]<br>
+      ans =<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;18.9500   14.8900   13.4900   15.7900<br>
+      <font color="#00A000">% Be careful here - since the 4th structure has an empty vector for price,<br>
+      %    it was ignored by the concatenation</font><br>
+      >> {cds.genre}<br>
+      ans =<br>
+      &nbsp;&nbsp;1&#215;5 cell array<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;{'Blues'}    {'Classical'}    {'Country'}    {0&#215;0 double}    {'Oldies'}
+      </code>.</p>
+    </div>
+  </div>
+
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="Manipulating Structures">
+      <!-- Manipulating Structures -->
+      <h3 id="7_4_3">7.4.3	Manipulating Structures</h3>
+      <div class="container">
+        <p>Structures and structure arrays can be manipulated in the following ways:
+        <ul>
+          <li>Single values can be changed using the '.' (dot) notation directly with a field name:<br>
+          <code>>> cds(5).price = 19.95;</code></li>
+          <li>Indirectly using the "." (dot) notation with a variable containing the field name:<br>
+          <code>>> fld = 'price';<br>
+          >> cds(5).(fld) = 19.95;</li> </code>
+          <li>Using built-in functions:<br>
+            <ul>
+              <li> <code>nms = fieldnames(str)</code>returns a cell array containing the names of the fields in a structure or structure array.<br>
+              <code>>> flds = fieldnames(cds);</li>
+              <li>it = isfield(str, <fldname>) </code>determines whether the given name is a field in this structure or structure array.<br>
+              <code>>> if isfield(cds, 'price') ... </li>
+              <li>str = setfield(str, &lt;fldname&gt;, &lt;value&gt;) </code> returns a new structure array with the specified field set to the specified value.<br>
+              <code>>> cds(1) = setfield(cds(1), 'price', 19.95); </code></li>
+              <li> <code>val = getfield(str, &lt;fldname&gt;) </code> returns the value of the specified field.<br>
+              <code>>> disp(getfield(cds(1), 'price') );</li>
+              <li>str = rmfield(str, &lt;fldname&gt;) </code> returns a new structure array with the specified field removed.<br>
+              <code>>> noprice = rmfield(cds, 'price');</li> </code>
+              <li>Values across the whole array can be retrieved using the “.” notation by accumulating them into either arrays or cell arrays:<br>
+              <code>>> titles = {cds.title};<br>>> [alpha order] = sort(titles); </li> </code>
+              <li>or, if the values are all numeric, into a vector:<br>
+              <code>>> prices = [cds.price];<br>
+              >> total = sum(prices);<br>
+              </code>Notice that after extracting the price values into a cell array or vector, all the normal operations - in this case,  <code>sort(...) </code> and  <code>sum(...) </code> - can be utilized.</li>
+            </ul></li>
+        </ul>
+        <p>Exercise 7.5 provides some practice in manipulating structure arrays using the above CD collection as an example.</p>
+        <div class="exercise"><iframe src="..\exercises\exercise_7_5html.html"></iframe></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="5" data-sect-name="Comparing Cell Arrays to Structure Arrays">
+    <!-- Comparing Cell Arrays to Structure Arrays -->
+    <h2 id="7_5">7.5  Comparing Cell Arrays to Structure Arrays</h2>
+    <div class="container">
+      <p>To provide some context for this discussion, compare the cell array illustrated in Fig 7.1 with the structure array in Fig 7.2.</p>
+      <p><strong>Cell Array:</strong>  To access, for example, the year of the birthday of the third person in the Cell Array, you would need to:
+      <ul>
+        <li>figure out from some design document beyond the code itself which column contained the date structure and which row of the date structure contained the year.</li>
+        <li>then you would enter this: <br><code>it = Obj{3}{3}{3}</code></li>
+      </ul></p>
+      <p><strong>Structure Array:</strong>  To access the same item, you would just enter this:<br>
+       <code>it = Obj(3).birth.year</code></p>
+      <p>Most people would greatly prefer the simplicity and clarity of the Structure Array, and that seems appropriate.  Unfortunately, as you have seen already in this chapter, and will see even more in the next chapter, cell arrays are built into the infrastructure of Matlab and are frequently necessary to extract data from collections or files.</p>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="6" data-sect-name="Engineering Example: Assembling a Physical Structure">
+    <!-- Engineering Example -->
+    <h2 id="7_6">7.6 Engineering Example: Assembling a Physical Structure</h2>
+    <div class="container clearfix">
+      <div class="card float-sm-right">
+           <img src="..\Images\Fig_7_3.JPG" alt="Figure 7.3" class="fig card-img">
+           <p class="figure-name card-title">Figure 7.3: Simple Bridge Structure</p>
+      </div>
+      <p>Many large bridges today have steel frames as their basic structure. Engineers perform the analysis and design work for each steel component and deliver these designs to the steel company. The steel company manufactures all the components, and prepares them for delivery to the building site. At this point, each component is identified only by a unique identifier string stamped and/or chalked onto that component. For even a modest-sized bridge, this transportation may require a significant number of truckloads of components. The question we address here is how to decide the sequence in which the components are delivered to the building site so that components are available when needed, but not piled up waiting to be used.</p>
+      <p>Consider the relatively simple structure shown in Figure 7.3. The components have individual labels, and we can obtain from the architect the identities of the components that are connected together. The construction needs to start from the fixed point A. We need to analyze this information and compute the order in which the components would be used to assemble the structure.</p>
+      <p>The data will be organized as a structure array with one entry for each component. One of the fields in that structure will be a cell array of the names of the components to which this component is connected.</p>
+      <p>The code in Listing 7.6 shows the solution to this problem. When you run this, the output should be:<br>
+        <code>group 1 = { A B E F }<br>
+        group 2 = { C G }<br>
+        group 3 = { D }<br>
+        Beams should arrive in this order:<br>
+        E-A E-B E-F A-B B-F F-C F-G B-C C-G G-D C-D<br></code></p>
+      <p>Although this seems to be simple problem, there is not a natural ordering of the components.  The goal of algorithm cited within the listing is to identify small groups of components that do have natural ordering and then schedule the beams that make up each group for delivery.</p>
+    </div>
+    <div class="listing"><iframe src="..\listings\listing_07_6_livehtml.html"></iframe></div>
+  </div>
+
+  <!-- Chapter Summary -->
+  <h2>Chapter Summary</h2>
+  <p>This chapter covered the nature, implementation, and behavior of two heterogeneous collections:
+  <ul>
+    <li>Cell arrays are vectors of containers; their elements can be manipulated either as vectors of containers, or individually by inserting or extracting the contents of the container using braces in place of parentheses</li>
+    <li>The elements of a structure are accessed by name rather than by indexing, using the dot operator, ‘.’, to specify the field name to be used</li>
+    <li>Structures can be collected into structure arrays whose elements are structures all with the same field names. These elements can then be indexed and manipulated in the same manner as the cells in a cell array</li>
+  </ul></p>
+  <!--[Special Characters]
+
+  [Problems]-->
+
+</div>
+
+
+
+
+</body>
+</html>

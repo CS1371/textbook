@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2019b"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S1 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: normal-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S5 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: normal-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Listing 5.4: Find the days in a month</span></h3><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>main</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    jan = month_days(1, NaN)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    apr = month_days(4, NaN)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    feb_l = month_days(2, true)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    feb_nl = month_days(2, false)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'></div></div></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>days = month_days(month, leap)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% All tests refer to the value of the variable month.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">switch </span><span>month</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% This case specification is a cell array (See Chapter 7 for specifics) containing the indices of the months with 30 days.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">case </span><span>{9, 4, 6, 11}</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(60, 118, 61);">%      Sept, Apr, June, Nov</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(60, 118, 61);">% The code block extends from the case statement to the next</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(60, 118, 61);">% control statement (case, otherwise, or end).</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            days = 30;</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">case </span><span>2	</span><span style="color: rgb(60, 118, 61);">% Feb</span></span></div></div></div><h2  class = 'S4'><span>This code block contains an if statement to deal with the</span></h2><div  class = 'S5'><span>February case. It normalsumes that a Boolean variable leapYear has been created to indicate whether this month is in a leap year.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span>            </span><span style="color: rgb(0, 0, 255);">if </span><span>leap</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                days = 29;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(0, 0, 255);">else</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                days = 28;</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span>            </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div></div><h2  class = 'S4'><span>case to deal with the remaining months.</span></h2><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">case </span><span>{1, 3, 5, 7, 8, 10, 12}</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            days = 31;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(60, 118, 61);">% The default case - an error</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">otherwise</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(60, 118, 61);">% A built-in MATLAB function that announces the error and</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(60, 118, 61);">% terminates the script.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            error(</span><span style="color: rgb(160, 32, 240);">'bad month index'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+function main
+% Listing 5.4: Find the days in a month
+    jan = month_days(1, NaN)
+    apr = month_days(4, NaN)
+    feb_l = month_days(2, true)
+    feb_nl = month_days(2, false)
+end
+%%
+function days = month_days(month, leap)
+    % All tests refer to the value of the variable month.
+    switch month
+        % This case specification is a cell array (See Chapter 7 for specifics) containing the indices of the months with 30 days.
+        case {9, 4, 6, 11}
+            %      Sept, Apr, June, Nov
+            % The code block extends from the case statement to the next
+            % control statement (case, otherwise, or end).
+            days = 30;
+        case 2	% Feb
+%% This code block contains an if statement to deal with the
+% February case. It normalsumes that a Boolean variable leapYear has been created 
+% to indicate whether this month is in a leap year.
+            if leap
+                days = 29;
+            else
+                days = 28;
+            end
+%% case to deal with the remaining months.
+        case {1, 3, 5, 7, 8, 10, 12}
+            days = 31;
+            % The default case - an error
+        otherwise
+            % A built-in MATLAB function that announces the error and
+            % terminates the script.
+            error('bad month index')
+    end
+end
+##### SOURCE END #####
+--></body></html>

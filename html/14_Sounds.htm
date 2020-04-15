@@ -51,7 +51,7 @@
     <h2 id="14_2">14.2	Recording and Playback</h2>
     <div class="container clearfix">
         <div class="float-sm-right card">
-            <img src="Fig_14_1.JPG" alt="Figure 14.1" class="fig card-img">
+            <img src="..\Images\Fig_14_1.JPG" alt="Figure 14.1" class="fig card-img">
             <p class="figure-name card-title">Figure 14.1: Recording and Playback</p>
         </div>
         <p>Early attempts at sound recording concentrated first on mechanical, and later magnetic, methods for storing and reproducing sound. The phonograph/record player depended on the motion of a needle in a groove as a cylinder or disk rotated at constant speed under the playback head. Not surprisingly, when you see the incredible dynamic range required, even the best stereos could not reproduce high-quality sound. Later, analog magnetic tape in various forms replaced the phonograph, offering less wear on the recording and better, but still limited, dynamic range. Digital recording has almost completely supplanted analog recording and will be the subject of this chapter.</p>
@@ -91,7 +91,7 @@
       <div class="container">
           <div class="container clearfix">
               <div class="float-sm-right card">
-                  <img src="Fig_14_2.JPG" alt="Figure 14.2" class="fig card-img">
+                  <img src="..\Images\Fig_14_2.JPG" alt="Figure 14.2" class="fig card-img">
                   <p class="figure-name card-title">Figure 14.2: Gone With the Wind Speech</p>
               </div>
               <p>Consider the problem of constructing comedic sayings by choosing and assembling words from published speeches. One example of a speech clip is "Frankly, my dear..." from <em>Gone with the Wind</em>. Listing 14.1 describes the process of assembling parts of this speech into a semi-coherent conversation.</p>
@@ -99,21 +99,21 @@
           </div>
           <div class="row">
               <div class="col-sm-6">
-                  <audio controls><source src="../Text/sp_givdamn2.wav" type="audio/wav" />"Frankly, my dear..." speech</audio>
+                  <audio controls><source src="../audio/sp_givdamn2.wav" type="audio/wav" />"Frankly, my dear..." speech</audio>
                   <p class="figure-name">"Frankly, my dear..." speech</p>
               </div>
               <div class="col-sm-6">
-                  <audio controls><source src="../Text/sp_bond.wav" type="audio/wav">Bond speech</audio>
+                  <audio controls><source src="../audio/sp_bond.wav" type="audio/wav">Bond speech</audio>
                   <p class="figure-name">Bond speech</p>
               </div>
       	</div>
           <div class="row">
               <div class="col-sm-6">
-                  <audio controls><source src="../Text/sp_beam.wav" type="audio/wav">Beam speech</audio>
+                  <audio controls><source src="../audio/sp_beam.wav" type="audio/wav">Beam speech</audio>
                   <p class="figure-name">Beam Speech</p>
               </div>
               <div class="col-sm-6">
-                  <audio controls><source src="../Text/speech.wav" type="audio/wav">Combined speech</audio>
+                  <audio controls><source src="../audio/speech.wav" type="audio/wav">Combined speech</audio>
                   <p class="figure-name">Combined Speech</p>
               </div>
           </div>
@@ -126,7 +126,7 @@
       <h3 id="14_4_2">14.4.2	Musical Background</h3>
       <div class="container clearfix">
           <div class="float-sm-right card">
-              <img src="Fig_14_3.JPG" alt="Figure 14.3" class="fig card-img">
+              <img src="..\Images\Fig_14_3.JPG" alt="Figure 14.3" class="fig card-img">
               <p class="figure-name card-title">Figure 14.3: Musical Notes</p>
           </div>
           <p>For good historical reasons, music is usually described graphically on a music score. The graphics describe for each note to be played its pitch and its duration, together with other notations indicating how to introduce expression and quality into the music. However, this graphical notation is not amenable to the simple representation of music we need for these experiments. Rather, we will use the representation illustrated in Figure 14.3. The right side of this figure shows a standard piano keyboard, the index of each white note, and the number of half steps necessary to achieve the pitch of each note. On the left side of the figure, we see the method to be used in this text to describe simple tunes. It will consist of an array with two columns and n rows, where n is the number of notes to be played for each tune. The first column is the key number to play, and the second column is the number of beats each note should be played.</p>
@@ -138,12 +138,12 @@
           <p>The first way is easier to understand and code, but very inflexible; the second method is a little more difficult to implement, but completely extensible. Musically speaking, if a sound is played at twice its natural frequency, it is heard as one musical octave higher. When you play a scale by playing each white key in turn from one note to the next octave, there are 8 keys to play with 7 frequency changes: 5 whole note steps (those separated by a black note) and 2 half note steps, for a total of 12 half note steps. These 12 half steps are logarithmically divided where the frequency multiplier between half note steps is 2<sup>1/12</sup>.</p>
           <div class="row">
             <div class="col-sm-6">
-              <audio controls><source src="../Text/instr_piano.wav" type="audio/wav">Piano Note</audio>
+              <audio controls><source src="../audio/instr_piano.wav" type="audio/wav">Piano Note</audio>
               <p class="figure-name">Piano Note</p>
             </div>
           </div>
           <div class="listing">#listing_14_2#</div>
-          <div class="listing">ramblinWreck</div>
+          <div class="listing">#alt_Text/ramblinWreck#</div>
       </div>
     </div>
 
@@ -152,7 +152,7 @@
       <h3 id="14_4_3">14.4.3	Changing Sound Frequency</h3>
       <div class="container clearfix">
           <div class="float-sm-right card">
-              <img src="Fig_14_4.JPG" alt="Figure 14.4" class="fig card-img">
+              <img src="..\Images\Fig_14_4.JPG" alt="Figure 14.4" class="fig card-img">
               <p class="figure-name card-title">Figure 14.4: Creating a Tune File</p>
           </div>
           <p>We will leave as an exercise for the reader the question of playing a tune by changing the playback frequency of each note, which is really never a practical thing to do, and concentrate on playing all the notes of a tune with the same playback frequency. This allows the different notes to be copied into a single sound file and saved to be played back on any digital sound system.</p>
@@ -190,7 +190,7 @@
       <h3 id="14_5_1">14.5.1 Background</h3>
       <div class="container clearfix">
           <div class="float-sm-right card">
-              <img src="Fig_14_5.JPG" alt="Figure 14.5" class="fig card-img">
+              <img src="..\Images\Fig_14_5.JPG" alt="Figure 14.5" class="fig card-img">
               <p class="figure-name card-title">Figure 14.5: A typical spectrum display</p>
           </div>
           <p>In general, a spectrum display shows the amount of sound energy in a given frequency band throughout the duration of the sound analyzed but ignores the time at which the sound at that frequency was generated. Many acoustic amplifiers (see Figure 14.5) include two features that allow you to customize the sound output:</p>
@@ -199,7 +199,7 @@
            <li>Filter controls to change the relative amplification in different frequency bands</li>
           </ul>
           <div class="float-sm-right card">
-              <img src="Fig_14_6.JPG" alt="Figure 14.6" class="fig card-img">
+              <img src="..\Images\Fig_14_6.JPG" alt="Figure 14.6" class="fig card-img">
               <p class="figure-name card-title">Figure 14.6: Mechanics of the Fourier Transform</p>
           </div>
           <p> In the following paragraphs, we will consider only the analysis of the sound frequency content. The ability to reshape the sound frequency content as the sound plays is beyond the scope of this text.</p>
@@ -260,7 +260,7 @@
       <h3 id="14_5_3">14.5.3	Simple Spectral Analysis</h3>
       <div class="container clearfix">
           <div class="float-sm-right card">
-              <img src="Fig_14_7.JPG" alt="Figure 14.7" class="fig card-img">
+              <img src="..\Images\Fig_14_7.JPG" alt="Figure 14.7" class="fig card-img">
               <p class="figure-name card-title">Figure 14.7: FFT of a sine wave</p>
           </div>
           <p>Listing 14.3 illustrates a script that creates 10 seconds of an 8 Hz sine wave, plots the first second of it, performs the FFT, and plots the real and imaginary parts of the spectrum. Notice the following:</p>
@@ -286,23 +286,23 @@
     	<p>As a typical example of operating in the frequency domain, we will consider analyzing the spectral quality of different musical instruments. The intent of this section is to develop a plot showing the spectra of a selection of different musical instruments. <!--We will first build a function that plots the spectrum for a single instrument and then build the script to create all the plots.--> Listing 14.4 shows a function that reads the .wav file of an instrument. The author is deeply indebted to the University of Miami's Audio and Signal Processing Laboratory who gave permission to use their musical instrument sound collection.  This provided us with a series of sound traces recording different instruments.  All were recorded in a quiet room playing the same musical note giving us clean, pure recordings of a large number of instruments. http://chronos.ece.miami.edu/~dasp/samples/samples.html. <!--All the instruments are carefully playing a note at about 260 Hz.--></p>
       <div class="row">
           <div class="col-sm-6">
-              <audio controls><source src="../Text/instr_violin.wav" type="audio/wav">Violin Frequency Spectrum</audio>
+              <audio controls><source src="../audio/instr_violin.wav" type="audio/wav">Violin Frequency Spectrum</audio>
               <p class="figure-name">Violin Frequency Spectrum</p>
           </div>
           <div class="col-sm-6">
-              <audio controls><source src="../Text/instr_tpt.wav" type="audio/wav">Trumpet Frequency Spectrum</audio>
+              <audio controls><source src="../audio/instr_tpt.wav" type="audio/wav">Trumpet Frequency Spectrum</audio>
               <p class="figure-name">Trumpet Frequency Spectrum</p>
           </div>
       </div>
       <div class="row">
         <div class="col-sm-6">
-            <audio controls><source src="../Text/trainwhistle.wav" type="audio/wav">Train Whistle Frequency Spectrum</audio>
+            <audio controls><source src="../audio/trainwhistle.wav" type="audio/wav">Train Whistle Frequency Spectrum</audio>
             <p class="figure-name">Train Whistle Frequency Spectrum</p>
         </div>
       </div>
       <div class="container clearfix">
           <div class="float-sm-right card">
-              <img src="Fig_14_8.JPG" alt="Figure 14.8" class="fig card-img">
+              <img src="..\Images\Fig_14_8.JPG" alt="Figure 14.8" class="fig card-img">
               <p class="figure-name card-title">Figure 14.8: Instrument Spectra</p>
           </div>
           <p>The results are shown in Figure 14.8. It is interesting to notice the following:</p>
@@ -319,14 +319,14 @@
       <h3 id="14_6_1">14.6.1 Details of the Spectral Data</h3>
           <div class="container clearfix">
               <div class="float-sm-right card">
-                  <img src="Fig_14_9.JPG" alt="Figure 14.9" class="fig card-img">
+                  <img src="..\Images\Fig_14_9.JPG" alt="Figure 14.9" class="fig card-img">
                   <p class="figure-name card-title">Figure 14.9: Instrument Spectra</p>
               </div>
               <p>We will now look carefully at the characteristics of the Frequency Spectrum using the code in Listing 14.5.  The first view we create is the spectrum plot of a sine wave at 261.6 Hz which musicians would recognize as Middle C.  Since all the sound energy is at that one frequency, the spectrum is a vertical line at 261.6 Hz.  The scaling on the vertical axis is complicated and irrelevant to this discussion. Consider the vertical axis to show the relative amounts of energy as a function of frequency. Note that the FFT function is assuming that the sound being analyzed is the sum of a number of sine waves at different frequencies.  The task of the FFT is to separate out and display the sound energy at each frequency.  In this example, there is only one frequency.</p>
           </div>
           <div class="container clearfix">
               <div class="float-sm-right card">
-                  <img src="Fig_14_10.JPG" alt="Figure 14.10" class="fig card-img">
+                  <img src="..\Images\Fig_14_10.JPG" alt="Figure 14.10" class="fig card-img">
                   <p class="figure-name card-title">Figure 14.10: Spectrum of a trumpet</p>
               </div>
               <p>In this next example, we will plot the absolute values of the frequency spectrum of a trumpet playing the same note at 261.6 Hz. Notice some interesting characteristics of this spectrum:
@@ -339,7 +339,7 @@
           </div>
           <div class="container clearfix">
               <div class="float-sm-right card">
-                  <img src="Fig_14_11.JPG" alt="Figure 14.11" class="fig card-img">
+                  <img src="..\Images\Fig_14_11.JPG" alt="Figure 14.11" class="fig card-img">
                   <p class="figure-name card-title">Figure 14.11: The Spectrum is actually complex</p>
               </div>
               <p>In this next example, we will plot the real and imaginary parts of the same trumpet frequency spectrum. Notice that the physical mechanics of the shape of the trumpet has created frequency spectrum values that are "out of phase" with other spectrum values.  We will not really be concerned with this except to observe that we need to reproduce the phase as well as the magnitude of the energy if we are to produce a faithful reproduction of the spectrum of an instrument.</p>
@@ -351,15 +351,15 @@
           <h3 id="14_6_2">14.6.2 Notes fading with time</h3>
           <div class="container clearfix">
               <div class="float-sm-right card">
-                  <img src="Fig_14_12.JPG" alt="Figure 14.12" class="fig card-img">
+                  <img src="..\Images\Fig_14_12.JPG" alt="Figure 14.12" class="fig card-img">
                   <p class="figure-name card-title">Figure 14.12: trumpet time history</p>
               </div>
-              <p>Many instruments have a relatively constant amplitude when played.  For example, a trumpet's amplitude is controlled by the musician's breath, and could be assumed to be constant over the duration of the note as illustrated in Figure 14.12. If this is the case, everything necessary to make a synthesizer has been accomplished. Listing 15.6 was used to generate this figure, together with the frequency spectrum not repeated here.</p>
+              <p>Many instruments have a relatively constant amplitude when played.  For example, a trumpet's amplitude is controlled by the musician's breath, and could be assumed to be constant over the duration of the note as illustrated in Figure 14.12. If this is the case, everything necessary to make a synthesizer has been accomplished. Listing 14.6 was used to generate this figure, together with the frequency spectrum not repeated here.</p>
           </div>
           <div class="listing">#listing_14_6#</div>
           <div class="container clearfix">
               <div class="float-sm-right card">
-                  <img src="Fig_14_13.JPG" alt="Figure 14.13" class="fig card-img">
+                  <img src="..\Images\Fig_14_13.JPG" alt="Figure 14.13" class="fig card-img">
                   <p class="figure-name card-title">Figure 14.13: piano time history</p>
               </div>
               <p>Some instruments, however, are played by striking a string, for example, and the allowing the reverberation of the sound to continue, gradually fading over time.  Figure 14.13 illustrates the changes over time when a piano note is played. In order to apply a profile over time to our synthetic piano note, we need to reach ahead to Chapter 15 to use curve fitting to model the shape of the sound decay.  We will merely report the general steps here and refer the reader to section 15.2 for the details.
@@ -380,10 +380,10 @@
       <h2 id="14_7">14.7 Engineering Example—Music Synthesizer</h2>
       <div class="container">
           <p>A music synthesizer is an electronic instrument with a piano style keyboard that is able to simulate the sound of multiple instruments. Unlike the instrument sounds we have used so far, the instrument sounds are not stored as large time histories. Rather, they are stored as the Fourier coefficients  similar to those illustrated in Figure 14.11. The sound is then reconstructed by multiplying sin or cosine waves of the right frequency by the stored coefficients. For some instruments, this is sufficient. Other instruments such as pianos need to have the amplitude of the resulting sound modified to match a typical profile. Listings 14.8 illustrates a possible technique for extracting the most important Fourier coefficients from the piano sound. We would then apply the fading curve created in section 14.6.2 above to each note and create the music from the individual notes.</p>
-          <div class="listing">Listing 14.8</div>
+          <div class="listing">#listing_14_8#</div>
           <div class="row">
               <div class="col-sm-6">
-                  <audio controls><source src="humoresque_1.wav" type="audio/wav">Anton Dvorak: "Humoresque"</audio>
+                  <audio controls><source src="..\audio\humoresque_1.wav" type="audio/wav">Anton Dvorak: "Humoresque"</audio>
                   <p class="figure-name">Anton Dvorak: "Humoresque"</p>
               </div>
           </div>
@@ -409,15 +409,6 @@
   [Problems]-->
 
 
-  <table align="center">
-  <tbody>
-  <tr>
-  <td><a href="13_Images.htm">previous</a></td>
-  <td><a href="Contents.htm">home</a></td>
-  <td><a href="15_Numerical_Methods.htm">next</a></td>
-  </tr>
-  </tbody>
-  </table>
 </div>
 
 </body>

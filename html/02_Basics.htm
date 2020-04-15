@@ -84,7 +84,7 @@
 			<h3 id="2_1_2">2.1.2 Algorithms</h3>
 			<div class="container clearfix">
 				<div class="float-sm-right card">
-					<img src="Fig_2_0.JPG" alt="Figure 2.1" class="fig card-image">
+					<img src="..\Images\Fig_2_0.JPG" alt="Figure 2.1" class="fig card-image">
 					<p class="figure-name card-title">Figure 2.1: Problem Decomposition</p>
 				</div>
 				<p>Chapter 1 defined problem solving as the ability to isolate sub-problems that seem simple and appropriate to solve, and then assemble the solutions to these sub-problems. The solutions to each of these sub-problems would be expressed as an <b>algorithm</b>, which is a sequence of instructions for solving a sub-problem. The process of solving each sub-problem and assembling the solutions to form the solution to the whole problem could also be expressed as an algorithm at a higher level of abstraction.</p>
@@ -186,7 +186,7 @@
 			<h3 id="2_3_1">2.3.1 Command Window</h3>
 			<div class="container clearfix">
 				<div class="card float-right">
-			      <img src="Fig_2_1.jpg" alt="Figure 2.2" class="fig card-image">
+			      <img src="..\Images\Fig_2_1.jpg" alt="Figure 2.2" class="fig card-image">
 			      <p class="figure-name card-title">Figure 2.2: Command Window</p>
 			    </div>
 				<p>You can use MATLAB in two modes:</p>
@@ -213,7 +213,7 @@
 			<h3 id="2_3_3">2.3.3 Workspace Window</h3>
 			<div class="container clearfix">
 				<div class="card float-right">
-				      <img src="Fig_2_2.jpg" alt="Figure 2.2" class="fig card-image">
+				      <img src="..\Images\Fig_2_2.jpg" alt="Figure 2.2" class="fig card-image">
 				      <p class="figure-name card-title">Figure 2.3: Workspace Window</p>
 			  </div>
 				<p>The Workspace window keeps track of the variables you have defined as you execute commands in the Command window or from scripts or functions. By default, the columns in the window display the name of the variable and its current value. You can customize the columns by right-clicking the menu bar containing &quot;Name.&quot; In Figure 2.3, we have added columns for the size of the variables, the number of bytes occupied in memory and the data type, or class. In this case, we are seeing the workspace that results from Exercise 2.2. Notice that in addition to the &quot;class&quot; column, the icon to the left of the variable name symbolizes the data type of the variables. We see that the variable <code>label</code> is a 1 &times; 18 array, uses 36 bytes of memory, and is an object of class char. We will discuss strings in a later chapter.</p>
@@ -226,7 +226,7 @@
 			<h3 id="2_3_4">2.3.4 Current Folder Window</h3>
 			<div class="container clearfix">
 				<div class="card float-right">
-			      <img src="Fig_2_3.jpg" alt="Figure 2.3" class="fig card-image">
+			      <img src="..\Images\Fig_2_3.jpg" alt="Figure 2.3" class="fig card-image">
 			      <p class="figure-name card-title">Figure 2.3: Current Folder Window</p>
 			  </div>
 				<p>When MATLAB accesses files from and saves information to your hard drive, it uses the current directory shown on the tool bar above the Command window. The default for the current directory depends on your version of the software and how it was installed. This can be changed by selecting another directory from the drop-down list to the right of the current directory name, or by browsing through your computer files using the browse button located to the right of the drop-down list.</p>
@@ -324,14 +324,14 @@
 					<li>Step out of this current code block
 				</ul>
 			<p>Use the script from Listing 2.1 to practice inserting break points.</p>
-			<div class="listing">#listing_2_1#</div>
+			<div class="listing">#listing_02_1#</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="chp-section" data-sect-num="5" data-sect-name="Engineering Example&mdash; Spacecraft Launch">
+	<div class="chp-section" data-sect-num="5" data-sect-name="Engineering Example - Spacecraft Launch">
 		<!-- Engineering Example -->
-		<h2 id="2_5">2.5 Engineering Example&mdash; Spacecraft Launch</h2>
+		<h2 id="2_5">2.5 Engineering Example - Spacecraft Launch</h2>
 		<div class="container">
 			<p>In 1996, the Ansari X Prize was offered for the first time for a private venture: a reusable spacecraft. The requirements were for the same vehicle to carry three people into outer space twice in a two-week time period. The competition was won in 2004 by Tier 1, a company led by Burt Rutan. Their concept was to have a mother ship take off and land on a conventional runway carrying Space Ship One. The spacecraft would be launched at 25,000 feet altitude and would reach outer space (an altitude of 100 km), then glide back and land on the same runway. They repeated this within a week, and they won the prize.</p>
 			<p><strong>Problem:</strong> Assuming that the spacecraft uses all its fuel to achieve a vertical velocity <code>u</code> at 25,000 feet, what is the value of <code>u</code> for the spacecraft to reach outer space?</p>
@@ -356,7 +356,7 @@
 			</ol>
 			<p>However, this is not yet in a useful form. For computers to be able to solve an equation, you need the unknown quantity on the left of the equation and everything known on the right. Since <code>u</code> is the unknown, we move this to the left side of the assignment, and organize the known quantities to the right. These are the final velocity, <code>v</code> (i.e., 0) the given distance, <code>s</code>, and the acceleration, <code>a</code>. Since the positive direction for <code>u</code> and <code>s</code> is upward, but gravity is downward, we must use <code>a = -g</code>, and the equation can be transformed to: <code>u = -gs</code> With this information, you can now solve this problem. </p>
 			<p>Listing 2.2 show the author's version of a script to perform  this calculation. Although most modern computing environments, including MATLAB, have tools that actually solve symbolic equations, these tools are not appropriate for an introduction to programming and will not be discussed in this book.</p>
-			<div class="listing">#listing_2_2#</div>
+			<div class="listing">#listing_02_2#</div>
 		</div>
 	</div>
 
@@ -380,16 +380,6 @@
 		</ul>
 	</div>
 </div>
-
-<table align="center">
-	<tbody>
-		<tr>
-			<td><a href="01_Introduction.htm">previous</a></td>
-			<td><a href="Contents.htm">home</a></td>
-			<td><a href="03_Functions.htm">next</a></td>
-		</tr>
-	</tbody>
-</table>
 
 
 </body>

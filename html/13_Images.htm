@@ -41,7 +41,7 @@
     <h2 id="13_1">13.1  Nature of an Image</h2>
     <div class="container clearfix">
         <div class="float-sm-right card">
-            <img src="Fig_13_1.JPG" alt="Figure 13.1" class="fig card-img">
+            <img src="..\Images\..\Images\Fig_13_1.JPG" alt="Figure 13.1" class="fig card-img">
             <p class="figure-name card-title">Figure 13.1: The Nature of Images</p>
         </div>
          <p>Before we confine ourselves to practical, computational reality, we need to understand the general nature of an image. The easiest answer would be that an image is a 2-D sheet on which the color at any point can have essentially infinite variability. However, since we live in a digital world, we will immediately confine ourselves to the conventional representation of images required for most digital display processors, as shown in Figure 13.1. We can represent any image as a 2-D, M x N array of points usually referred to as picture elements, or <b>pixels</b>, where M and N are the number of rows and columns, respectively. Each pixel is “painted” by blending variable amounts of the three primary colors: red, green, and blue. (Notice that this is not the same blending process used in painting with oils or water colors, where the second primary color is yellow and the combination process is reversed—increasing amounts of the primary colors tends toward black, not white.)</p>
@@ -63,7 +63,7 @@
       <div class="container">
            <p>True color images are stored according to the scheme shown in Figure 13.2 as an M*N*3 array where every pixel is directly stored as <code>uint8</code> values in three layers of the 3-D array. The first layer contains the red value, the second layer the green value, and the third layer the blue value. The advantage of this approach, as the name suggests, is that every pixel can be represented as its true color value without compromise. The only disadvantage is the size of the image in memory because there are three color values for every pixel.</p>
            <div class="card">
-               <img src="Fig_13_2.JPG" alt="Figure 13.2" class="fig card-img">
+               <img src="..\Images\..\Images\Fig_13_2.JPG" alt="Figure 13.2" class="fig card-img">
                <p class="figure-name card-title">Figure 13.2: A True Color Image</p>
            </div>
        </div>
@@ -82,7 +82,7 @@
       <h3 id="13_2_3">13.2.3	Color Mapped Images</h3>
       <div class="container clearfix">
           <div class="float-sm-left card">
-              <img src="Fig_13_3.JPG" alt="Figure 13.3" class="fig card-img">
+              <img src="..\Images\..\Images\Fig_13_3.JPG" alt="Figure 13.3" class="fig card-img">
               <p class="figure-name card-title">Figure 13.3: A Color Mapped Image</p>
           </div>
            <p>Color mapped, or indexed, images keep a separate color map either 256 items long (for maximum economy of memory) or up to 32,768 items long. Each item in the color map contains the red, blue, and green values of a color, respectively. As illustrated in Figure 13.3, the image itself is stored as an M x N array of indices into the color map. So, for example, a certain pixel index might contain the value 143. The color to be shown at that pixel location would be the 143rd color set (RGB) on the color map.</p>
@@ -133,7 +133,7 @@
            <p>Then we can use this vector to shrink or stretch the picture pic as follows:</p>
            <p><code>>> newPic = pic(rowVector, cols, :)</code></p>
            <p>Clearly, this can be applied to both dimensions simultaneously, as shown in Exercise 13.1.</p>
-           <span class="exercise">Exercise 13.1</span>
+           <span class="exercise">#exercise_13_1#</span>
            <p>In this exercise, first we read an image and determine its size. Note that with 3-D images, you must give to the <code>size(...)</code> function three variables. Then we illustrate the “normal” slicing operations by reducing the image to the even rows, and every third column. Next, we generalize this image slicing by stretching the number of rows by a factor 1.43 and shrinking the number of columns by a factor 0.75. This is accomplished by building a row index vector, <code>rowVec</code>, and a column index vector, <code>colVec</code>, according to the algorithm above. The stretching is achieved by repeating selected values in the index vector, and shrinking is achieved by omitting some.</p>
        </div>
      </div>
@@ -145,16 +145,16 @@
            <p>As an example of image manipulation, consider the image shown in Figure 13.4. This is a 2400 x 1600 JPEG image that can be taken with any good digital camera. However, the appearance of the Vienna garden is somewhat marred by the fact that the sky is gray, not blue. Fortunately, we have a picture of a cottage, as shown in Figure 13.5, with a nice, clear blue sky. So our goal is to replace the gray sky in the Vienna garden with the blue sky from the cottage picture.</p>
           <div class="card-deck">
               <div class="card">
-                  <img src="../Text/Vienna.jpg" alt="Figure 13.4" class="fig card-img">
+                  <img src="../Images/Vienna.jpg" alt="Figure 13.4" class="fig card-img">
                   <p class="figure-name card-title">Figure 13.4: A Garden in Vienna</p>
               </div>
               <div class="card">
-                  <img src="../Text/Witney.jpg" alt="Figure 13.5" class="fig card-img">
+                  <img src="../Images/Witney.jpg" alt="Figure 13.5" class="fig card-img">
                   <p class="figure-name card-title">Figure 13.5: A Cottage in Oxfordshire</p>
               </div>
           </div>
           <div class="float-sm-right card">
-              <img src="Fig_13_6.jpg" alt="Figure 13.6" class="fig card-img">
+              <img src="..\Images\Fig_13_6.jpg" alt="Figure 13.6" class="fig card-img">
               <p class="figure-name card-title">Figure 13.6: Plot of the color values on one row of the Vienna image</p>
           </div>
            <p><b>Initial Exploration</b> Before we can do this, however, we need to explore the Vienna picture to determine how to distinguish the gray sky from the rest of the picture. In particular, there are patches of sky visible between the tree branches that must be changed as well as the open sky. Listing 13.1 illustrates a good way to accomplish this. Here we display the image in one figure; choose a representative row in the image that includes some sky showing through the tree (we chose row 350); and then plot the red, blue, and green values of the pixels across that row. Figure 13.6 shows the resulting plot.</p>
@@ -162,14 +162,14 @@
            <div class="listing">#listing_13_1#</div>
            <p>There is one more important consideration. It would be unfortunate to turn the hair of the lady (the author’s wife) blue, and there are fountains and walkways that might also logically appear to be “sky.” We can prevent this embarrassment by limiting the color replacement to the upper portion of the picture above row 700.</p>
            <p><b>Final Computation</b> So we are ready to create the code that will replace the gray sky with blue. The code in Listing 13.2 accomplishes this, and Figure 13.7 shows the resulting image.</p>
-           <div class="listing">#listing_13_2</div>
+           <div class="listing">#listing_13_2#</div>
            <div class="card-deck">
              <div class="card">
-               <img src="../listings/Fig_13_7.jpg" alt="Figure 13.7" class="fig card-img">
+               <img src="..\Images\Fig_13_7.jpg" alt="Figure 13.7" class="fig card-img">
                <p class="figure-name card-title">Figure 13.7: The Vienna garden with a blue sky</p>
              </div>
              <div class="card">
-               <img src="../listings/Fig_13_8.jpg" alt="Figure 13.8" class="fig card-img">
+               <img src="..\Images\Fig_13_8.jpg" alt="Figure 13.8" class="fig card-img">
                <p class="figure-name card-title">Figure 13.8: Magnified image of the wire</p>
              </div>
            </div>
@@ -199,11 +199,11 @@
       <div class="container clearfix">
           <div class="float-sm-right">
            <div class="card">
-               <img src="Fig_13_9.jpg" alt="Figure 13.9" class="fig card-img">
+               <img src="..\Images\Fig_13_9.jpg" alt="Figure 13.9" class="fig card-img">
                <p class="figure-name card-title">Figure 13.9: Logic for the kaleidoscope</p>
            </div>
            <div class="card">
-               <img src="Fig_13_10.jpg" alt="Figure 13.10" class="fig card-img">
+               <img src="..\Images\Fig_13_10.jpg" alt="Figure 13.10" class="fig card-img">
                <p class="figure-name card-title">Figure 13.10: The kaleidoscope</p>
            </div>
           </div>
@@ -219,7 +219,7 @@
       <h3 id="13_4_4">13.4.4 Images on a Surface</h3>
       <div class="container clearfix">
           <div class="float-sm-right card">
-              <img src="../Text/earthmap_s.jpg" alt="Figure 13.11" class="fig card-img">
+              <img src="../Images/earthmap_s.jpg" alt="Figure 13.11" class="fig card-img">
               <p class="figure-name card-title">Figure 13.11: Map Projection</p>
           </div>
            <p>In Chapter 11 we saw how to create a surface representing solid objects and, in particular, how to create a spherical image that rotates with lighting.</p>
@@ -227,7 +227,7 @@
            <p>The objective of this exercise is to paste this image onto a rotating globe. The trick to accomplishing this is to use a feature of the <code>surf(...)</code> function, whereby the image is supplied in a specific form as the fourth parameter, as follows:</p>
            <p><code>surf(xx, yy, zz, img)</code></p>
            <div class="float-sm-right">
-               <video controls class="fig"><source src="Fig_13_12.mp4" type="video/mp4">Figure 13.12</video>
+               <video controls class="fig"><source src="..\Images\Fig_13_12.mp4" type="video/mp4">Figure 13.12</video>
                <p class="figure-name">Figure 13.12: Globe</p>
            </div>
            <p>It will replace the normal coloring scheme of the surface with the image under the following conditions:</p>
@@ -249,18 +249,18 @@
     <div class="container clearfix">
       <div class="float-sm-right">
           <div class="card">
-              <img src="../Text/C-130.jpg" alt="Figure 13.13" class="fig">
+              <img src="../Images/C-130.jpg" alt="Figure 13.13" class="fig">
               <p class="figure-name card-title">Figure 13.13: C-130 in flight</p>
           </div>
           <div class="card">
-              <img src="../listings/c-130 edges.jpg" alt="Figure 13.14" class="fig">
+              <img src="../Images/c-130 edges.jpg" alt="Figure 13.14" class="fig">
               <p class="figure-name card-title">Figure 13.14: Result of edge detection</p>
           </div>
       </div>
         <p>While images are powerful methods of delivering information to the human eye, they have limitations when being used by computer programs. Our eyes have an astonishing ability to interpret the content of an image, such as the one shown in Figure 13.13. Even a novice observer would have no difficulty seeing that it is a picture of an aircraft in flight. An experienced observer would be able to identify the type of aircraft as a Lockheed C-130 and perhaps some other characteristics of the aircraft.</p>
         <p>While our eyes are excellent at interpreting images, computer programs need a lot of help. One operation commonly performed to reduce the complexity of an image is edge detection, in which the complete image is replaced by a very small number of points that mark the edges of "interesting artifacts." Figure 13.14 shows the results from a simple program attempting to paint the outline of the aircraft in black by putting a black pixel at an identified edge. The key element of the algorithm is the ability to determine unambiguously whether a pixel is part of the object of interest or not. An edge is then defined as a pixel where some of the surrounding pixels are on the object and some are not. The image selected for this exercise makes edge detection simple since the aircraft is everywhere darker than the surrounding sky.</p>
         <div class="float-sm-right card">
-            <img src="Fig_13_15.jpg" alt="Figure 13.15" class="fig card-img">
+            <img src="..\Images\Fig_13_15.jpg" alt="Figure 13.15" class="fig card-img">
             <p class="figure-name card-title">Figure 13.15: Overlapping picture layers</p>
         </div>
         <p>The script used to generate this picture is shown in Listing 13.5. The basic approach of the algorithm is to use simple array processing tools to detect the edges across the whole image at once. To accomplish this, we create four arrays, each one row and one column less than the original image and each offset by one pixel, as illustrated in Figure 13.15. The array <code>pix</code> is in the original location, <code>pt</code> is one row up from that location, <code>pl</code> is one row left, and <code>ptl</code> is one row left and up. If we now collapse these arrays on top of each other, we are simultaneously comparing the values of a square of four pixels across the whole image (less one row and one column).</p>
@@ -280,7 +280,6 @@
           <li>An engineering example showing how edge detection begins the process of extracting meaning from an image</li>
       </ul>
   </div>
-</div>
 
 <!--
 [Special Characters]
@@ -288,17 +287,8 @@
 [Problems]
 -->
 
-<table align="center">
-<tbody>
-<tr>
-<td><a href="12_Matrices.htm">previous</a></td>
-<td><a href="Contents.htm">home</a></td>
-<td><a href="14_Sounds.htm">next</a></td>
-</tr>
-</tbody>
-</table>
-
 <p id="footnote">[1] The file <code>earth_s.jpg</code> is provided as part of the MATLAB system </p>
+</div>
 
 </body>
 </html>
