@@ -1,11 +1,19 @@
-cd html
+cd ..\html
 files = dir('*.htm');
+
+% Make topnav object
+topnav = sprintf('%s', ['<nav class="navbar navbar-expand-lg fixed-top '...
+    'top-nav navbar-light bg-light"><a class="navbar-brand" href="#">'...
+    '<img src="../Images/1371.png" width="30" height="30" class="d-inline-block align-top" alt="">'...
+    '&nbspEngineering Computation Using MATLAB</a></nav>']);
 
 % Initialize navbar and chapter list
 navobj = '<nav class="nav sidenav nav-scroll navbar-dark bg-dark">';
 navobj = [navobj '<ul class="navbar-nav">'];
 
-% Add preface
+% Add index and preface
+navobj = [navobj '<li class="nav-item">'];
+navobj = [navobj '<a class="nav-link" href="..\..\index.html">Home</a></li>'];
 navobj = [navobj '<li class="nav-item">'];
 navobj = [navobj '<a class="nav-link" href="Preface.htm">Preface</a></li>'];
 

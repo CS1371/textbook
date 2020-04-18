@@ -1,3 +1,4 @@
+% Set up build folder
 clear; clc;
 contents = dir();
 if any(strcmp({contents.name}, 'build'))
@@ -18,18 +19,45 @@ cd ..
 copyfile html\styles build\html\styles;
 copyfile Images build\Images;
 copyfile audio build\audio;
+cd matlab_tools
+
+% Make nav objects
 make_nav_object;
+
+% Print nav bar in index.html
+file = fileread('index_template.html');
+newnavobj = strrep(navobj, 'href="', 'href="build\html\');
+newtopnav = strrep(topnav, 'src="', 'src="build\Images\');
+file = strrep(file, '#nav_obj#', newnavobj);
+file = strrep(file, '#top_nav#', newtopnav);
+fh = fopen('index.html', 'w');
+fprintf(fh, '%s', file);
+fclose(fh);
+
 cd html
 st = dir('*.htm');
 chapters = {st.name};
-chapters = chapters(1:17);
 
+% Modify and copy preface to build folder
+preface = chapters{contains(chapters,'Preface')};
+file = fileread(preface);
+file = strrep(file, '#nav_obj#', navobj);
+file = strrep(file, '#top_nav#', topnav);
+cd ..\build\html
+fh = fopen(preface, 'w');
+fprintf(fh, '%s', file);
+fclose(fh);
+cd ..\..\html
+
+% Modify and copy individual chapters to build folder
+chapters = chapters(1:17);
 for i = [1 2 5:17]
     chapter = chapters{i};
     file = fileread(chapter);
     cd ..
     % Add nav bar
     file = strrep(file, '#nav_obj#', navobj);
+    file = strrep(file, '#top_nav#', topnav);
     
     % Replace listings
     inds = strfind(file, '#listing_');
@@ -114,3 +142,4 @@ function file = findToConvert(file, info, name, type)
         cd(sprintf('%s%s', '..\..\', type));
     end
 end
+

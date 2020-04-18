@@ -1,0 +1,207 @@
+'abc' Single quotes enclose a literal character string 2.2.3
+% A percent sign indicates a comment in an M-file 2.4.2
+; A semicolon suppresses output from assignment statements 2.4.5
+... Ellipses continue a MATLAB command to the next line 2.4.5
+= The assignment operator assigns a value to a memory location; this is not the same as an equality test 2.2.2
+ans The default variable name for results of MATLAB calculations 2.3.1
+clc Clears the Command window 2.3.2
+clear Clears the Workspace window 2.4.2
+sqrt(x) Calculates the square root of x 2.4.2
+[ ] The empty vector 3.3.4
+[...] Concatenates data, vectors, and arrays 3.2.1
+: Specifies a vector as from:incr:to 3.2.1
+: Used in slicing vectors and arrays 3.3.5
+( ) Used with an array name to identify specific elements 3 .3.3
+' Transposes an array 3.5.1
+; Separates rows in an array definition 3.5.2
++ Scalar and array addition 3.3.5
+- Scalar and array subtraction or unary negation 3.3.5
+.* Array multiplication 3.3.5
+./ Array division 3.3.5
+.^ Array exponentiation 3.3.5
+< Less than 3.3.5
+<= Less than or equal to 3.3.5
+> Greater than 3.3.5
+>= Greater than or equal to 3.3.5
+== Equal to 3.3.5
+> Not equal to 3.3.5
+& Element-wise logical AND (vectors) 3.3.5
+& & Short-circuit logical AND (scalar) 3.3.5
+| Element-wise logical OR (vectors) 3.3.5
+| | Short-circuit logical OR (scalar) 3.3.5
+~ Unary not 3.3.5
+end Last element in a vector 3.3.5
+false Logical false 3.2.2
+true Logical true 3.2.2
+ceil(x) Rounds x to the nearest integer toward positive infinity 3.3.5
+cross(a, b) Vector cross product 3.3 
+diag(a) Extracts the diagonal from an array or, if provided with a vector, constructs an array with the given diagonal 3.5.2
+disp(value) Displays an array or text 3.3.5
+find() Computes a vector of the locations of the true values in a logical array 3.3.5, 3.5.5
+[rows cols] = find() Computes vectors of row and column locations of the true values in a logical array 3.5.5
+fix(x) Rounds x to the nearest integer toward zero 3.3.5
+floor(x) Rounds x to the nearest integer toward minus infinity 3.3.5
+length(a) Determines the largest dimension of an array 3.2.2, 3.5.1
+linspace(fr,to,n) Defines a linearly spaced vector 3.2.1
+magic(n) Generates a magic square 3.5.2
+[v,in] = max(a) Finds the maximum value and its position in a 3.3.5
+mean(a) Computes the average of the elements in a 3.3.5
+[v,in] = min(a) Finds the minimum value and its position in a 3.3.5
+ones(r, c) Generates an array filled with the value 1 3.2.1
+rand(r, c) Calculates an rxc array of evenly distributed random numbers in the range 0…1 3.2.1
+randn(r, c) Calculates an r 3 c array of normally distributed random numbers 3.2.1
+round(x) Rounds x to the nearest integer 3.3.5
+size(a) Determines the dimensions of an array 3.2.2, 3.5.1
+sum(a) Totals the values in a 3.3.5
+false Logical false 4.2
+true Logical true 4.2
+break A command within a loop module that forces control to the statement following the innermost loop 4.6.4, 4.7.4
+case A specific value within a switch statement 4.1, 4.4.1
+continue Skips to the end of the innermost loop, but remains inside it 4.6.4, 4.7.4
+else Within an if statement, begins the code block executed when the condition is false 4.1, 4.3.2
+elseif Within an if statement, begins a second test when the first condition is false 4.1, 4.3.2
+end Terminates an if, switch, for, or while module 4.1, 4.3.2
+for var = v A code module repeats as many times as there are elements in the vector v 4.1, 4.6
+if <exp> Begins a conditional module; the following code block is executed if the logical expression <exp> is true 4.1, 4.3.2
+input(str) Requests and parses input from the user 4.3.2
+otherwise Catch-all code block at the end of a switch statement 4.1, 4.4.1
+switch(variable) Begins a code module selecting specific values of the variable (must be countable) 4.1, 4.4.1
+while <exp> A code module repeats as long as the logical expression <exp> is true 4.1
+all(a) True if all the values in a, a logical vector, a, are true 4.3.3
+and(a, b) True if both a and b are true (can be vectors) 4.3.3
+any(a) True if any of the values in a, a logical vector, is true 4.3.3
+not(a) True if a is false; false if a is true (can be vectors) 4.3.3
+or(a, b) True if either a or b is true (can be vectors) 4.3.3
+( ) Used to identify the formal and actual parameters of a function 5.3.2, 5.3.4
+help Invokes help utility 5.3.1
+function Identifies an m-file as a function 5.3.2
+nargin Determines the number of input parameters actually supplied by a function’s caller 5.3.4
+nargout Determines the number of output parameters actually requested by a function’s caller 5.3.4
+global <var> Defines the scope of the variable < var> as globally accessible 5.3.8
+'...' Encloses a literal character string 6.2
+char(...) Casts to a character type 6.2, 6.5
+disp(...) Displays matrix or text 6.4.1
+double(a) Casts to type double 6.2
+fprintf(...) Prints formatted information 6.4.2
+input(...) Prompts the user to enter a value 6.3.2
+int2str(a) Converts an integer to its numerical representation 6.3.1
+ischar(ch) Determines whether the given object is of type char 6.2.3
+isspace(a) Tests for the space character 6.2.3
+num2str(a,n) Converts a number to its numerical representation with n decimal places 6.3.1
+sscanf(...) Formatted input conversion 6.3.2
+sprintf(...) Formats a string result 6.3.1
+str2num(...) Convert a string to its numerical equivalent 6.3.2
+strcmp(s1, s2) Compares two strings; returns true if equal 6.4.3
+strcmpi(s1, s2) Compares two strings without regard to case;
+returns true if equal 6.4.3
+uint8(...) Casts to unsigned integer type with 8 bits 6.2
+{ ... } Defines a cell array 7.2
+.<field> Used to access fields of a structure 7.3.1
+.(<variable>) Allows a variable to be used as a structure field 7.3.1
+class(<object>) Determines the data type of an object 7.2.4
+deal(...) Distributes cell array results among variables 7.2.2
+getfield(<str>, <fld>) Extracts the value of the field <fld> from a structure 7.4.3
+isa(<object>,<class>) Determines whether the <object> is of the given data type, <class> 7.2.4
+iscell(<object>) Determines whether <object> is of type cell 7.2.4
+ischar(<object>) Determines whether <object> is of type char 7.2.4
+isfield(<str>,<fld>) true if the string <fld> is a field in the structure <str> 7.4.3
+islogical(<object>) Determines whether <object> is of type logical 7.2.4
+isnumeric(<object>) Determines whether <object> is of type double 7.2.4
+isstruct(<object>) Determines whether <object> is of type struct 7.2.4
+str = setfield(<str>,<fld>, <value>) Constructs a new structure that is a copy of <str> in which the value of the field <fld> has been changed to <value> 7.4.3
+[values order] = sort(<object>) Sorts either vectors (increasing numerical order) or cell arrays of strings (alphabetically) returning the sorted data and the index order for the sort 7.4.3
+struct(...) Constructs a structure from <fieldname><value> pairs of parameters 7.3.2
+[nums,txt,raw] = csvread(<file>) Reads comma-separated text files 8.3
+csvwrite(<file>,<data>) Writes comma-separated text files 8.3
+dlmread(<file>,<dlm>) Reads text files separated by the given delimiting character 8.3
+dlmwrite (<file>,<data>, <dlm>) Reads text files separated by the given delimiting character 8.3 
+fclose(fh) Closes a text file 8.4.1
+fgetl(fh) Reads a line, omitting the new-line character 8.4.2
+fgets(fh) Reads a line, including the new-line character 8.4.2
+fh = fopen(<file>,<why>) Opens a text file for reading or writing 8.4.1
+fprintf(...) Writes to the console, or to plain text files 8.3, 8.4.4
+load <filename> Loads the workspace from a file 8.2
+save <filename> Saves workspace variables in a file 8.2
+[tk rest] = strtok(<str>, <dlm>) Extracts a token from a string and returns the remainder of the string 8.4.2
+ca = textscan(fh,format) Acquires and scans a line of text according to a specific format 8.3, 8.4.2
+[nums, txt, raw] = xlsread(<file>) Reads an Excel spreadsheet 8.3.2
+xlswrite(<file>,<data>,<sheet>,<range>) Writes an Excel spreadsheet in a specific row/column range 8.3.2
+catch End of a suspect code block where the exception is trapped 9.4.3
+error(str) Announces an error with the string provided 9.4.3
+global <var> Defines the variable <var> as globally accessible 9.1
+lasterror Provides a structure describing the environment from which the last exception was thrown 9.4.3
+try Begins a block of suspect code from which an exception might be thrown 9.4.3
+axis(...) Freezes the current axis scaling for subsequent plots or specifies the axis dimensions 11.1.2
+bar Generates a bar graph 11.2.4
+barh Generates a horizontal bar graph 11.2.4
+clf Clears the current figure 11.1.1
+close all Closes all graphics windows 11.1.1
+colormap <spec> Specifies a sequence of colors to be used when a cycle of color values is required 11.1.2
+figure Opens a new figure window 11.1.1
+fill(x,y,n) Fills a polygon defined by x and y with color index n 11.2.4
+grid off Turns the grid off (default is on) 11.1.2
+grid on Adds a grid to the current and all subsequent graphs in the current figure 11.1.2
+hist Generates a histogram 11.2.4
+hold off Sets a flag to erase figure contents before adding new information (the default state) 11.1.2
+hold on Sets a flag not to erase figure contents before adding new information 11.1.2
+legend(ca) Adds a legend to a graph 11.1.2
+loglog Generates an x-y plot, with both axes scaled logarithmically 11.2.4
+pie Generates a pie chart 11.2.4
+plot(...) Creates an x-y plot 11.1.2
+polar Creates a polar plot 11.2.4
+semilogx Generates an x-y plot, with the x-axis scaled logarithmically 11.2.4
+semilogy Generates an x-y plot, with the y-axis scaled logarithmically 11.2.4
+shading <spec> Shades a surface according to the specification 11.1.2
+subplot(plts, n) Divides the graphics window into sections available for plotting 11.1.1
+text(x,y,{z,} str) Adds a text string to a graph 11.1.2
+title(str) Adds a title to a plot 11.1.2
+view(az,el) Sets the angle from which to view a plot 11.1.2
+xlabel(str) Adds a label to the x-axis 11.1.2
+ylabel(str) Adds a label to the y-axis 11.1.2
+zlabel(str) Adds a label to the z-axis 11.1.2
+alpha(x) Sets the transparency of the surface 11.3.3
+bar3 Generates a 3-D bar graph 11.3.3
+barh3 Generates a horizontal 3-D bar graph 11.3.3
+contour(xx, yy, zz) Generates a contour plot 11.4.5
+cylinder(n) Constructs the plaid for a cylinder with n facets 11.4.5
+ellipsoid(n) Constructs the plaid for an ellipsoid with n facets 11.4.5
+lightangle(az,el) Sets the angle of a light source, angles in degrees 11.4.5
+mesh(xx,yy,zz) Generates a mesh plot of a surface 11.4.1
+meshc(xx,yy,zz) Generates a mesh plot of a surface with a contour below it 11.4.5
+meshz(xx,yy,zz) Generates a mesh plot of a surface with vertical line extensions 11.4.5
+[rr cc] = meshgrid(r,c) Creates a plaid for 3-D plots 11.4.1
+pie3 Generates a 3-D pie chart 11.3.3
+plot3(...) Generates a 3-D line plot 11.3.1
+sphere(n) Example function used to demonstrate graphing 11.4.5
+surf(xx,yy,zz) Generates a surface plot 11.4.1
+surfc(xx,yy,zz) Generates a combination surface and contour plot 11.4.5
+waterfall(xx,yy,zz) Generates a mesh plot of a surface with vertical line extensions in the x direction only 11.4.5
+* Matrix multiplication 12.2.1
+/ Matrix division 12.2.2
+\ Matrix back division 12.2.2
+^ Matrix exponentiation 12.2.3
+e ye(n) Computes the identity matrix 12.2.1
+inv(a) Computes the inverse of a matrix 12.2.3
+reshape(a,r,c) Changes the row/column configuration of the array a 12.4.2
+image(<picture>) Displays an image in a figure of fixed dimensions with axes 13.3
+imread(<file_name>) Reads an image file 13.3
+imshow(<picture>) Displays an image in a figure of variable dimensions without axes 13.3
+imwrite(data,file, format) Writes an image file 13.3
+linspace(from,to, n) Defines a linearly spaced vector 13.2.1, 13.4.1
+rot90(A,n) Rotates A by 90° clockwise n times 13.4.4
+tril(A) Reduces A to its lower triangular half with zeros in the upper triangle 13.4.4
+uint8/16 Unsigned integer type with the specified number of bits 13.1
+[data Fs] = audioread(file) Reads a sound file 14.3
+audiowrite(filename,data,Fs) Writes a sound file 14.3
+fft(ftime) Performs the Fast Fourier Transform on a sound file 14.5.2
+ifft(ffreq) Performs the inverse Fourier Transform on a spectrum file 14.5.2
+NaN Not a number 15.1.1
+cumsum(y) Computes the integral of the function y(x), assuming that Δx is 1 15.3.2
+cumtrapz(x,y) Computes the integral of the function y(x), using the trapezoidal rule 15.3.2
+diff(v) Computes the differences between adjacent values in a vector 15.6
+interp1(x, y, nx) Computes linear and cubic interpolation 15.1.1
+interp2(x, y, z, nx, ny) Computes linear and cubic interpolation 15.1.1
+interp3(x, y, z, v, nx, ny, nz) Computes linear and cubic interpolation 15.1.1
+polyfit(x, y, n) Computes a least-squares polynomial 15.2.2
+polyval(c, x) Evaluates a polynomial 15.2.2
+spline(x, y) Spline interpolation 15.1.2
