@@ -1,3 +1,17 @@
+%% make_nav_object
+%
+% Script to build both top and side nav objects for the website. Side
+% navigation bar is made by going through each chapter, pulling out
+% individual sections, and creating the html code.
+%
+% Side navigation guidelines from html:
+% - Each section is contained within a div with class chp-section and data
+% sect-name and sect-num. 
+% - Each subsection is contained with a div with class chp-subsection and
+% data sub-name and sub-num.
+%
+%%
+
 cd ..\html
 files = dir('*.htm');
 

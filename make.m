@@ -1,3 +1,18 @@
+%% make file
+%
+% Script to build the website with helper function findToConvert()
+% 
+% Build folder is created, and relative stylesheets, images, and audio
+% files are copied over into the correct folder. 
+% The index_template and preface are read in order to replace the top and
+% side nav objects with the corresponding code.
+% Each chapter is read in order to replace the top and side nav objects,
+% listings, exercises, templates, and other code that needs to be inserted
+% into the html. For all .mlx files, these are turned into separate .html
+% files and placed in the build folder.
+%
+%% 
+
 % Set up build folder
 clear; clc;
 contents = dir();
