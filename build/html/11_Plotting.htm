@@ -307,6 +307,10 @@
              <img src="..\Images\Fig_11_11.JPG" alt="Figure 11.11" class="fig card-img">
              <p class="figure-name card-title">Figure 11.11: Rotate a Function about the X Axis</p>
         </div>
+        <div class="float-sm-right card">
+             <img src="..\Images\Fig_11_12.JPG" alt="Figure 11.12" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.12: Rotate a Function about X Axis</p>
+        </div>
         <p>The cylinder and sphere drawn in the above section are special cases of a more general form of 3-D body. Bodies of rotation are created in general by rotating a function <code>v = f(u)</code> defined over a range of <code>u</code> values about the <code>x</code>, <code>y</code> or <code>z</code> axes.  In general, we make no claims about the nature of <code>f(u)</code>. It could be a rational function, or merely a “lookup table” specifying a value of <code>f(u)</code> for every <code>u</code>.  First, we consider rotating a continuous function <code>v = f(u)</code> about the x axis.</p>
         <p><strong>Using the <b><code>cylinder(...)</code></b> function</strong>: To rotate <code>v = f(u)</code> about the x-axis, we could consider this equation as <code>r = f(x)</code>. Figure 11.11 shows the logic of this rotation. The independent variable is x, and the values of y and z are computed as the usual polar-to-Cartesian conversion:</p>
         <p><code>y = r cos(u)</code> and <br>
@@ -418,21 +422,19 @@
       <!-- Analyzing the Data -->
       <h3 id="11_6_1">11.6.1	Analyzing the Data</h3>
       <div class="container clearfix">
-        <div class="float-sm-right">
-          <div class="card">
-             <img src="Table_11_1.JPG" alt="Table 11.1" class="fig card-img">
-             <p class="figure-name card-title">Table 11.1: Part of the File</p>
-          </div>
-          <div class="card">
-             <img src="..\Images\Fig_11_16.JPG" alt="Figure 11.16" class="fig card-img">
-             <p class="figure-name card-title">Table 11.2: Part of the File</p>
-          </div>
-        </div>
         <p>First, we proceed to determine the nature of the data by opening the files and examining their format and content.</p>
         <ol>
           <li><b>Determine the file format</b>: the first step is to open the data files in a plain text editor. The format appears to be consistent with that of a text file delimited by tab characters. Since there are no strings in the files, it should be suitable to be read using the built-in <code>dlmread(...)</code> function. Of course, the down side of being able to read the files easily is that we have no idea what they contain, and we need to spend some quality time figuring that out.</li>
           <li><b>Discern the street map file content</b>: Table 11.1 shows the first few lines of the file &quot;atlanta.txt&quot; simplified by omitting certain irrelevant columns. The numbers in columns 2-5 are pairs, the first of the pair being a large negative number, and the second a smaller positive number. Assuming that each row of this file is a street segment, these could be the x-y coordinates of the ends of a line. A little thought confirms this guess when we realize that the latitude of Atlanta is around -84&deg; relative to the Greenwich meridian, and its longitude is around 33&deg; north of the equator - clearly, the values in these columns are 1,000,000 times the latitude and longitude of points within the city, probably each end of street segments. Column 6 contains numbers mostly in the range 1-6, which could indicate the type of street. We could explore this idea by coloring each line according to that value.</li>
+          <div class="card">
+             <img src="..\Images\Table_11_1.JPG" alt="Table 11.1" class="fig fig-wide card-img">
+             <p class="figure-name card-title">Table 11.1: Part of the File</p>
+          </div>
           <li><b>Discern the travel time file content</b>: Table 11.2 shows the first few lines of the file "ttimes.txt" simplified by omitting certain irrelevant columns. The same latitude/longitude values occur in columns 4 and 5, but they are not repeated, suggesting that the data in this file are in a different form. Examining the first two columns, the numbers in column 2 cycle repeatedly from 1 to 75, with column 1 counting the number of cycles up to 75. Furthermore, the values in column 5 are the same whenever column 1 is the same, and the values in column 4 are the same whenever the value in column 2 matches. This seems to be much like the plaid that results from a meshgrid(...) function call. The values in column 6 then become evident — they would be the z values of the plaid, and it seems reasonable to assume that they represent the travel time in minutes.</li>
+          <div class="card">
+             <img src="..\Images\Table_11_2.JPG" alt="Figure 11.16" class="fig card-img">
+             <p class="figure-name card-title">Table 11.2: Part of the File</p>
+          </div>
         </ol>
       </div>
     </div>
