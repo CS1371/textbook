@@ -2,326 +2,244 @@
 <html>
 <head>
 	<title>03_Functions</title>
-    <link rel="stylesheet" href="styles/styles.css" />
-    <script async src="./javascript/index.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="styles/styles.css" />
+	<script async src="./javascript/index.js"></script>
 </head>
-<body bgcolor="#ffffff">
-<h1 align="center">Chapter 3: Functions</h1>
+<body>
+<div>#top_nav#</div>
+<div class="nav-obj">#nav_obj#</div>
+<div class="content">
+	<h1 align="center" id="3">Chapter 3: Functions</h1>
 
-<table align="center">
-	<tbody>
-		<tr>
-			<td><a href="02_Basics.htm">previous</a></td>
-			<td><a href="Contents.htm">home</a></td>
-			<td><a href="04_Vectors.htm">next</a></td>
-		</tr>
-	</tbody>
-</table>
-<ul>
-	<li><a href="#3_1">3.1  Concepts: Abstraction and Encapsulation</a>
-	<li><a href="#3_2">3.2   Black Box View of a Function</a>
-	<li><a href="#3_3">3.3    MATLAB  Implementation</a>
-	<ul>
-		<li><a href="#3_3_1">3.3.1  General Template</a></li>
-		<li><a href="#3_3_2">3.3.2   Function Definition</a></li>
-		<li><a href="#3_3_3">3.3.3  Storing and Using Functions</a></li>
-		<li><a href="#3_3_4">3.3.4  Calling Functions</a></li>
-		<li><a href="#3_3_5">3.3.5  Variable Numbers of Parameter</a></li>
-		<li><a href="#3_3_6">3.3.6   Returning Multiple Results</a></li>
-		<li><a href="#3_3_7">3.3.7  Auxiliary Local Functions</a></li>
-		<li><a href="#3_3_8">3.3.8  Encapsulation in MATLAB Functions</a></li>
-		<li><a href="#3_3_9">3.3.9  Global Variables</a></li>
-	</ul>
-	</li>
-	<li><a href="#3_4">3.4 Engineering Example — Measuring a Solid Object</a>
-</ul>
+	<!-- Chapter Objectives -->
+	<h2>Chapter Objectives</h2>
+	<div class="container">
+		<p>This chapter discusses the nature, implementation, and behavior of user-defined functions in MATLAB:</p>
+		<ul>
+			<li>How to define a function</li>
+			<li>How data are passed into a function</li>
+			<li>How to return data, including multiple results</li>
+			<li>How to include other functions not needed except as helpers to your own function</li>
+		</ul>
+		<p>Writing a user-defined function allows you to isolate and package together a code block, so that you can apply that code block to different sets of input data. We have already made use of some built-in functions like <code>sin(...)</code> and <code>plot(...)</code> by calling them; this chapter will deal with creating and using your own functions.</p>
+	</div>
 
-<h2>Chapter Objectives</h2>
+  <div class="chp-section" data-sect-num="1" data-sect-name="Concepts: Abstraction and Encapsulation">
+		<!-- Abstraction and Encapsulation -->
+		<h2 id="3_1">3.1	Concepts: Abstraction and Encapsulation</h2>
+		<div class="container">
+			<p>A function is an implementation of procedural abstraction and encapsulation. Procedural abstraction is the concept that permits a code block that solves a particular sub-problem to be packaged and applied to different data inputs. This is exactly analogous to the concept of data abstraction we discussed in Chapter 3 where individual data items are gathered to form a collection. We have already used a number of built-in procedural abstractions in the form of functions. All the mathematical functions that compute, for example, the sine of a collection of angles or the maximum value of a vector are examples of procedural abstraction. They allow us to apply a code block about which we know nothing to data sets that we provide. To make use of a built-in function, all we have to do is provide data in the form the function expects and interpret the results according to the function's specification.</p>
+			<p>Encapsulation is the concept of putting a wrapper around a collection that you wish to protect from outside influence. Functions encapsulate the code they contain in two ways: the variables declared within the function are not visible from elsewhere, and the function's ability to change the values of variables (otherwise known as causing side effects) is restricted to its own code body.</p>
+		</div>
+	</div>
 
-<p>This chapter discusses the nature, implementation, and behavior of user-defined functions in MATLAB:</p>
-<ul>
-<li>How to define a function</li>
-<li>How data are passed into a function</li>
-<li>How to return data, including multiple results</li>
-<li>How to include other functions not needed except as helpers to your own function</li>
-</ul>
-<p>Writing a user-defined function allows you to isolate and package together a code block, so that you can apply that code block to different sets of input data. We have already made use of some built-in functions like <code>sin(...)</code> and <code>plot(...)</code> by calling them; this chapter will deal with creating and using your own functions.
+  <div class="chp-section" data-sect-num="2" data-sect-name="Black Box View of a Function">
+		<!-- Black Box -->
+		<h2 id="3_2">3.2	Black Box View of a Function</h2>
+		<div class="container clearfix">
+			<div class="float-sm-right card">
+					 <img src="..\Images\Fig_3_1.JPG" alt="Figure 3.1" class="fig card-img">
+					 <p class="figure-name card-title">Fig 3.1 Black Box View of a Function</p>
+			</div>
+			<p>The most abstract view of a function can be seen in Figure 3.1. It consists of two parts: the definition of the interface by which the user passes data items to and from the function, and the code block that produces the results required by that interface. A function definition consists of the following components:</p>
+			<ul>
+				<li>A name that follows the same syntactic rules as a variable name</li>
+				<li>A set of 0 or more parameters provided to the function</li>
+				<li>Zero or more results to be returned to the caller of the function</li>
+			</ul>
+			<p>The basic operation of a function begins before execution of the function actually starts. If the function definition requires n parameters, the calling instructions first prepare n items of data from its workspace to be provided to the function. These data are then passed to the function, the code body is executed, and the results are returned to the caller.</p>
+		</div>
+	</div>
 
+  <div class="chp-section" data-sect-num="3" data-sect-name="MATLAB Implementation">
+		<!-- MATLAB Implementation -->
+		<h2 id="3_3">3.3  MATLAB Implementation</h2>
+		<div class="container">
+			<p>In this section, first we consider the general template for implementing functions and then the MATLAB implementation of that template.</p>
+		</div>
 
-<h2><a name="3_1">3.1	Concepts: Abstraction and Encapsulation</a></h2>
+		<div class="chp-subsection" data-sub-num="1" data-sub-name="General Template">
+			<!-- General Template -->
+			<h3 id="3_3_1">3.3.1	General Template</h3>
+			<div class="container">
+				<p>The general layout of a function definition is shown in Template 3.1.<p>
+				<div class="template">#template_3_1#</div>
+				<p>The <code>&lt;return info&gt;</code> section for most functions involves providing the name(s) of the results returned followed by an = sign. If more than one result is to be returned, they are defined in a bracketed container. If nothing is to be returned from this function, both the result list and the = sign are omitted. The <code>&lt;function name&gt;</code> is a name with the same syntactic rules as a variable name and will be used to invoke the code body. The <code>&lt;parameters&gt;</code> section is a comma-separated list of the names of the items to be provided to the function. The <code>&lt;documentation&gt;</code> section is one or more lines of comments that describe what the function does and how to call it. These lines will appear in two situations:</p>
+				<ul>
+					<li>All the documentation lines up to the first non-document line are printed in the Command window when you type the following:<br>
+					<code>>> help &lt;function_name&gt;</code></li>
+					<li>The first line can be displayed in the Current Directory Window</li>
+				</ul>
+			</div>
+		</div>
 
-<p>A function is an implementation of procedural abstraction and encapsulation. Procedural abstraction is the concept that permits a code block that solves a particular sub-problem to be packaged and applied to different data inputs. This is exactly analogous to the concept of data abstraction we discussed in Chapter 3 where individual data items are gathered to form a collection. We have already used a number of built-in procedural abstractions in the form of functions. All the mathematical functions that compute—for example, the sine of a collection of angles or the maximum value of a vector—are examples of procedural abstraction. They allow us to apply a code block about which we know nothing to data sets that we provide. To make use of a built-in function, all we have to do is provide data in the form the function expects and interpret the results according to the function’s specification.</p>
-<p>Encapsulation is the concept of putting a wrapper around a collection that you wish to protect from outside influence. Functions encapsulate the code they contain in two ways: the variables declared within the function are not visible from elsewhere, and the function’s ability to change the values of variables (otherwise known as causing side effects) is restricted to its own code body.</p>
+		<div class="chp-subsection" data-sub-num="1" data-sub-name="Function Definition">
+			<!-- Function Definition -->
+			<h3 id="3_3_2">3.3.2	Function Definition</h3>
+			<div class="container">
+				<p>In the MATLAB language, functions must be stored in a separate file located in a directory accessible to any script or function that calls it. The definition of a function named, for example, <code>function_name</code> <b>must</b> be
+				stored in a file called <code>function_name.m</code>. For the general user, the Current Directory is the normal place to store it. Listing 3.1 illustrates a typical MATLAB function called <code>my_cylinder</code> that consumes two parameters, the <code>height</code> and <code>radius</code> of a cylinder, and produces the return variable <code>volume</code>.</p>
+				<div class="listing">#listing_03_1#</div>
+				<p><b>Important Notes</b>:
+				<ol>
+					<li>It is a good idea to include in the comments a usage statement showing a copy of the function header line, sometimes referred to as the Application Programmer Interface (API), to remind a user exactly how to use this function.</li>
+					<li>Although encapsulation rules forbid external access to the caller's variables, the code body still has access to all built-in MATLAB variables and functions (e.g., pi, as used here).</li>
+					<li>You probably noticed the apparently weird affectation that called the function <code>my_cylinder</code> and not just <code>cylinder</code>.  This is perhaps the most annoying feature of interpreted languages: the library functions and system variables are defined and used in the same "name space" as your scripts and functions.  For example, we have already seen the function <code>cos(...)</code> and the value <code>pi</code> in the previous chapter - some of the many trigonometry features of Matlab.  If you were unwise enough to write and run your own <code>cos(...)</code> function, it would replace the library <code>cos(...)</code> function for any commands, scripts or functions that you use with your <code>cos(...)</code> function in the current directory!</li>
+				</ol></p>
+				<p><b>Moral of the story</b>: when choosing function names, check to see if that name already exists in Matlab by typing:<code>&gt;&gt; help &lt;whatever&gt;</code> in the command window.</p>
+				<p>In general, when you ask for help on a function you wrote, Matlab shows you all the comments after the function header, and shows you just the first line if requested in the Current Directory (see Fig 2.4)</p>
+				<p>Try saving and testing the cylinder function in Exercise 3.1</p>
+				<div class="exercise">#exercise_3_1#</div>
+			</div>
+		</div>
 
-<h2><a name="3_2">3.2	Black Box View of a Function</a></h2>
+		<div class="chp-subsection" data-sub-num="3" data-sub-name="Storing and Using Functions">
+		<!-- Storing and Using Functions -->
+			<h3 id="3_3_3">3.3.3	Storing and Using Functions</h3>
+			<div class="container">
+				<p>All user-defined MATLAB functions must be created like scripts in an m-file. When the file is first created, it must be saved in an m-file with the same file name as the function. For example, the function in Listing 3.1 named <code>my_cylinder</code> must be saved in a file named <code>my_cylinder.m</code>. Once the file has been saved, you may invoke the function by entering its name and parameters of the right type and number in the Command window, in a script, or in other function definitions. If you do not specify an assignment for the result of the function call, it will be assigned to the variable <code>ans</code>.</p>
+			</div>
+		</div>
 
-<p>The most abstract view of a function can be seen in Figure 3.1. It consists of two parts: the definition of the interface by which the user passes data items to and from the function, and the code block that produces the results required by that interface. A function definition consists of the following components:</p>
-<ul>
-<li>A name that follows the same syntactic rules as a variable name</li>
-<li>A set of 0 or more parameters provided to the function</li>
-<li>Zero or more results to be returned to the caller of the function</li>
-</ul>
-The basic operation of a function begins before execution of the function actually starts. If the function definition requires n parameters, the calling instructions first prepare n items of data from its workspace to be provided to the function. These data are then passed to the function, the code body is executed, and the results are returned to the caller.</p>
+		<div class="chp-subsection" data-sub-num="4" data-sub-name="Calling Functions">
+			<!-- Calling Functions -->
+			<h3 id="3_3_4">3.3.4	Calling Functions</h3>
+			<div class="container clearfix">
+				<p>When a function is defined, the user provides a list of the names of each data item expected to be provided by the caller. These are called the <strong>formal parameters</strong>. When this function is called, the caller must provide the same number of data values expected by the function definition. These are the <strong>actual parameters</strong> and can be generated in the following ways:</p>
+				<ul>
+					<li>Constants</li>
+					<li>Variables that have been defined</li>
+					<li>The result of some mathematical operation(s)</li>
+					<li>The result returned from other functions</li>
+				</ul>
+				<div class="card float-sm-right style-points">
+						<p class="card-title">Style Points 3.1: Parameter Passing</p>
+						<p class="card-text">
+								Some languages provide an alternative technique, <b>passing by reference</b>, whereby the memory location for the parameters is passed to the function while the values remain in the caller's workspace. Syntactically, this is usually a bad thing, allowing deliberate or accidental assignments to reach back into the scope of the calling code and thereby perhaps causing undesirable side effects. However, restricting parameter access to passing by value can result in poor program performance. When a function needs access to large sets of data, consider improving the efficiency by using global variables.
+						</p>
+				</div>
+				<p>When the actual parameters have been computed, copies of their values are assigned as the values of the formal parameters the function is expecting.</p>
+				<p>Values are assigned to parameters by position in the calling statement and function definition. The process of copying the actual parameters into the formal parameters is referred to as <b>passing by value</b>, the only technique defined in the MATLAB language for passing data into a function.</p>
+				<p>Once the parameter names have been defined in the function's workspace, the function's code body is executed, beginning with the first instruction. If return variables have been defined for the function, every exit from the code body must assign valid values for the results.</p>
+			</div>
+		</div>
 
-<center><figure style="margin_bottom: 5px">
-<p><img alt="image" height="200" src="Fig_3_1.jpg" width="450" /></p>
-<figcaption><b>Fig 3.1 Black Box View of a Function</b></figcaption></figure></center>
+		<div class="chp-subsection" data-sub-num="5" data-sub-name="Variable Number of Parameters">
+			<!-- Variable Number of Parameters -->
+			<h3 id="3_3_5">3.3.5	Variable Numbers of Parameters</h3>
+			<div class-"container">
+				<p>Although the number of parameters is usually fixed, most languages, including MATLAB, provide the ability to deal with a variable number of parameters, both incoming and returning. The built-in function <code>nargin</code> computes the actual number of parameters provided by the user in the current function call. If the function is designed to make use of <code>nargin</code>, the parameter <code>varargin</code> must be the last parameter.  It collects all subsequent input parameters as a Cell Array of values.</p>
+				<p>Similarly, the function <code>nargout</code> computes the number of storage variables actually provided by the user. So if one or more of the results requires extensive computation or user interaction and the caller has not asked for that data, that computation can be omitted.</p>
+			</div>
+		</div>
 
+		<div class="chp-subsection" data-sub-num="6" data-sub-name="Returning Multiple Results">
+			<!-- Returning Multiple Results -->
+			<h3 id="3_3_6">3.3.6	Returning Multiple Results</h3>
+			<div class="container">
+				<p>The MATLAB language is unique among programming languages in providing the ability to return more than one result from a function by name. The multiple results are specified as a "vector" (see the next chapter for details) of variable names, for example, [area, volume], as shown in Listing 3.2. Assignments must be made to each of the result variables. However, the calling program is not required to make use of all the return values.</p>
+				<div class="listing">#listing_03_2#</div>
+				<p>Exercise 3.2 shows how to invoke a function that can return multiple results. Notice that the normal method to access the multiple answers is to put the names of the variable to receive the results in a vector. The names may be any legal variable name, and the values are returned in the order of the results defined. If you choose less than the full number of results (or none at all), the answers that are specified are allocated from left to right from the available results. As with parameter assignment, the results are allocated by position in these vectors. Although we called the variable <code>v</code> in the last test, it still receives the value of the first result, <code>area</code>. If you really only want the second result value, you must put either a <code>'~'</code> marker or a dummy variable name like <code>'junk'</code> in the place of any variable you wish to ignore.</p>
+				<div class="exercise">#exercise_3_2#</div>
+			</div>
+		</div>
 
-<h2><a name="3_3">3.3  MATLAB Implementation</a></h2>
+		<div class="chp-subsection" data-sub-num="7" data-sub-name="Auxiliary Local Functions">
+			<!-- Auxiliary Local Functions -->
+			<h3 id="3_3_7">3.3.7	Auxiliary Local Functions</h3>
+			<div class="container">
+				<p>Since the MATLAB language uses the name of the file to identify a function, every function should normally be saved in its own m-file. However, there are times when auxiliary functions (sometimes called <b>helper functions</b>) are needed to implement the algorithm contained in the main function in a file. If this auxiliary function is only used in the main function or its helpers, it can be written in the same file as its calling function after the definition of the main function. By convention, some people append the word local_ to the name of local functions.</p>
+				<p>Scripts or functions that use the code in an m-file can reach only the first function. Other functions in the m-file, the auxiliary functions, can only be called from the first function or other auxiliary functions in the same file.</p>
+			</div>
+		</div>
 
-<p>In this section, first we consider the general template for implementing functions and then the MATLAB implementation of that template.</p>
+		<div class="chp-subsection" data-sub-num="8" data-sub-name="Encapsulation in MATLAB Functions">
+			<!-- Encapsulation -->
+			<h3 id="3_3_8">3.3.8	Encapsulation in MATLAB Functions</h3>
+			<div class="container clearfix">
+				<div class="card float-sm-right style-points">
+						<p class="card-title">Style Points 3.2</p>
+						<p class="card-text">
+							<ol>
+								<li>Before you include a function in a complex algorithm, you should always test its behavior in isolation in a script. This test script should validate not only the normal operation of the function, but also its response to erroneous input data it might receive.</li>
+								<li>Although any legal MATLAB instruction is permitted within the code body of a function, it is considered bad form (except temporarily for debugging purposes) to display values in the Command window.</li>
+								<li>We also actively discourage the use of the input(...) function within the code body. If you need to input some values to test a function, do so from the Command window or a test script.</li>
+							</ol>
+						</p>
+				</div>
+				<p>Encapsulation is accomplished in most modern languages, including MATLAB, by implementing the concept of variable scoping. In practice, this is achieved by allocating a separate workspace to each function. When MATLAB is first started, a default workspace is created in which variables created in the Command window or by running scripts are stored. When a function is called, a fresh workspace is created (see Section 9.1.2 for details), and the actual parameter values are copied into the formal parameter names in that new workspace. When the function finishes, this operation is reversed. The returning parameters are copied into the variables provided by the caller in the previous workspace, and the function's workspace is released. The Variables window always shows you the contents of the current workspace.</p>
+				<p>Variable scoping defines the places within your Command window, MATLAB system, and m-files to which instructions have access. It is related to the Variables window, which shows you your current workspace. When using the Command window or running a script and you access the value of a variable, the system will reach into your current workspace and then into the MATLAB system libraries to find its current value. This is referred to as Global Scope. When you run a function, its local variables, including the internal names of its parameters, are not included in your current workspace, and it does not look into your current workspace for values of variables it needs. This is referred to as Local Scope, wherein the variables within a function are not visible from outside and the function is unable to cause side effects by making assignments to variables in other workspaces except by returning results. To illustrate variable scoping, do Exercise 3.3.</p>
+			</div>
+			<div class="exercise">#exercise_3_3#</div>
+		</div>
 
-<h3><a name="3_3_1">3.3.1	General Template</a></h3>
+		<div class="chp-subsection" data-sub-num="9" data-sub-name="Global Variables">
+			<!-- Global Variables -->
+			<h3 id="3_3_9">3.3.9	Global Variables</h3>
+			<div class="container">
+				<p>Because MATLAB always copies the input data into the function's workspace, there are occasions when it is very inefficient to pass large data sets into and out of a function. To avoid passing large amounts of data, we can use global variables. Global variables must be defined in both the calling script and the function using the key word global. For example, suppose we collect a large volume of data in a variable buffer and do not want to copy the whole buffer into and out of a function that processes that data. In this case, we declare the variable to be global in both the calling space and the called function by placing the following line of code before the variable is first used in both places:</p>
+				<p><code>global buffer</code></p>
+				<p>The function will then be able to access and modify the values in buffer without having to pass it in and out as a parameter. This feature must be used with caution, however, because any function with global access to data is empowered to change that data. In other words, the use of global data circumvents the natural MATLAB language's encapsulation mechanisms.</p>
+			</div>
+		</div>
+	</div>
 
-<p>The general layout of a function definition is shown in Template 3.1.<p>
-<h4>Template 3.1 - General Template for a Function</h4>
-<code><font color="blue">function</font> &lt;return_info&gt; = &lt;function_name&gt; (&lt;parameters&gt;)<br>
-<font color="green">&lt;documentation&gt;</font><br>
-&lt;code body&gt; <font color="green">% must set all &lt;return_info&gt; values</font><br>
-<font color="blue">end</font></code>
-<p>The <code>&lt;return info&gt;</code> section for most functions involves providing the name(s) of the results returned followed by an = sign. If more than one result is to be returned, they are defined in a bracketed container. If nothing is to be returned from this function, both the result list and the = sign are omitted. The <code>&lt;function name&gt;</code> is a name with the same syntactic rules as a variable name and will be used to invoke the code body. The <code>&lt;parameters&gt;</code> section is a comma-separated list of the names of the items to be provided to the function. The <code>&lt;documentation&gt;</code> section is one or more lines of comments that describe what the function does and how to call it. These lines will appear in two situations:</p>
-<ul>
-<li>All the documentation lines up to the first non-document line are printed in the Command window when you type the following:<br>
-<code>>> help &lt;function_name&gt;</code></li>
-<li>The first line can be displayed in the Current Directory Window</li>
-</ul>
+  <div class="chp-section" data-sect-num="4" data-sect-name="Engineering Example: Measuring a Solid Object">
+		<!-- Engineering Example -->
+		<h2 id="3_4"> 3.4 Engineering Example: Measuring a Solid Object</h2>
+		<div class="container clearfix">
+			<div class="card float-sm-right">
+				<img src="..\Images\Fig_3_2.JPG" alt="Figure 3.2" class="fig card-img">
+				<p class="figure-name card-title">Figure 3.2: A Flange</p>
+			</div>
+			<p><b>Problem:</b></p>
+			<p>Consider the disk shown in Figure 3.2 commonly referred to as a "flange". Flanges are used in many systems where a pipe must be separated for ease of assembly or maintenance. A flange is welded to each part of the pipe and nuts and bolts then hold the two parts of the pipe securely. For example, pipes carry fuel through the body from one wing to the other of an aircraft.  Since the wings are manufactured individually and then attached to the body of the aircraft, all pipes between the wing and body need flanges.</p>
+			<p>Our flange has a radius <code>R</code>, height <code>h</code>, one central hole with radius <code>cr</code> and eight cylindrical holes each of radius <code>hr</code> bored in it. During the process of designing an aircraft, we need to know the weight of this flange including the amount of paint required to finish it. The weight and the amount of paint for the machine is the sum of the values for each component. Since the weight of our disk is proportional to its volume and the amount of paint is proportional to its "wetted area", we need the volume and area of this flange.</p>
+			<p>Write a script to compute the volume of the flange and its wetted area.</p>
+			<p><b>Solution:</b></p>
+		</div>
+		<div class="listing">#listing_03_3#</div>
+		<div class="container">
+			<p>The results displayed should be:<br>
+			<code>
+			Volume =<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;64.4026<br>
+			Area =<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;185.3540<br>
+			</code></p>
+		</div>
+	</div>
 
-<h3><a name="3_3_2">3.3.2	Function Definition</a></h3>
+	<!-- Chapter Summary -->
+	<h3>Chapter Summary</h3>
+	<div class="container">
+		<p>This chapter showed you how to encapsulate a code block to allow it to be reused:</p>
+		<ul>
+			<li>Functions are defined in a file of the same name using the key word
+			function to distinguish them from scripts</li>
+			<li>Parameters are copied in sequence into the function and given the
+			names of the formal parameters</li>
+			<li>Results are returned to the caller by assigning value(s) to the return
+			variable(s)</li>
+			<li>Variables within the function can be accessed only in the function's
+			code block unless they are declared global</li>
+			<li>Helper functions accessible only to functions within the same file
+			may be added below the main function and otherwise obey the
+			same rules as the main function</li>
+		</ul>
+	</div>
 
-<p>In the MATLAB language, functions must be stored in a separate file located in a directory accessible to any script or function that calls it. The definition of a function named, for example, <code>function_name</code> <b>must</b> be
-stored in a file called <code>function_name.m</code>. For the general user, the Current Directory is the normal place to store it. Listing 3.1 illustrates a typical MATLAB function called <code>my_cylinder</code> that consumes two parameters, the <code>height</code> and <code>radius</code> of a cylinder, and produces the return variable <code>volume</code>.<br>
-
-<h4>Listing 3.1: my_cylinder - a simple function</h4>
-<code><strong>
-<font color="#0000ff">function</font> volume = my_cylinder(height, radius)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% function to compute the volume of a cylinder</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: volume = cylinder(height, radius)</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;base = pi * radius^<font color="#ff8000">2</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;volume = base * height;<br>
-<font color="#0000ff">end</font><br>
-</strong></code>
-<p><b>Important Notes</b>:<br>
-<ol>
-<li>It is a good idea to include in the comments a usage statement showing a copy of the function header line, sometimes referred to as the Application Programmer Interface (API), to remind a user exactly how to use this function.</li>
-<li>Although encapsulation rules forbid external access to the caller's variables, the code body still has access to all built-in MATLAB variables and functions (e.g., pi, as used here).
-</li>
-<li>You probably noticed the apparently weird affectation that called the function <code>my_cylinder</code> and not just <code>cylinder</code>.  This is perhaps the most annoying feature of interpreted languages: the library functions and system variables are defined and used in the same "name space" as your scripts and functions.  For example, we have already seen the function <code>cos(...)</code> and the value <code>pi</code> in the previous chapter - some of the many trigonometry features of Matlab.  If you were unwise enough to write and run your own <code>cos(...)</code> function, it would replace the library <code>cos(...)</code> function for any commands, scripts or functions that you use with your <code>cos(...)</code> function in the current directory!<br>
-<b>Moral of the story</b>: when choosing function names, check to see if that name already exists in Matlab by typing:<code>&gt;&gt; help &lt;whatever&gt;</code> in the command window. <br>
-
-<div class="container">
-  <div class="sidebar_R">
-<h4>Exercise 3.1</h4>
-
-<p>Enter the function from Listing 3.1 in the Editor Window and save it in the file <code>my_cylinder.m</code> in your Current Directory. Then enter the following experiments in the Command Window:</p>
-<code>>> help my_cylinder<br>
-function to compute the volume of a cylinder<br>
-usage: volume = my_cylinder(height, radius)<br>
->> my_cylinder(1,1)<br>
-ans =<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.1416<br>
->></code>
-  </div>
-  <div class="content">
-For example, if you were considering writing the function <code>cylinder</code>, do this:<br>
-<code>&gt;&gt; help cylinder<br>
- cylinder Generate cylinder.<br>
-    [X,Y,Z] = cylinder(R,N) forms the unit cylinder based on the generator<br>
-    curve in the vector R. Vector R contains the radius at equally<br>
-    blah blah blah<br>
-    See also sphere, ellipsoid.<br>
-    Reference page for cylinder<br>
-</code>Obviously, there is a cylinder function already present in Matlab. <br>
-Before you wrote and saved <code>my_cylinder</code>, this would have indicated that all was well with the name <code>my_cylinder</code>:<br><code>
-&gt;&gt; help my_cylinder<br>
-my_cylinder not found.<br>
-Use the Help browser search field to search the documentation, or<br>
-type "help help" for help command options, such as help for methods.<br>
-<br>
-</code>Oh, and incidentally, after it was written and stored, this would have happened:<br><code>
-&gt;&gt;help my_cylinder<br>
-  function to compute the area and volume of a cylinder<br>
-  usage: [area, volume]=cylinder(height, radius)<br>
-&gt;&gt; </code><br>
-In general, when you ask for help on a function you wrote, Matlab shows you all the comments after the function header, and shows you just the first line if requested in the Current Directory (see Fig 2.4)</li>
-</ol></p>
-<p>Try saving and testing the cylinder function in Exercise 3.1</p>
-
-<h3><a name="3_3_3">3.3.3	Storing and Using Functions</a></h3>
-
-<p>All user-defined MATLAB functions must be created like scripts in an m-file. When the file is first created, it must be saved in an m-file with the same file name as the function. For example, the function in Listing 3.1 named <code>my_cylinder</code> must be saved in a file named <code>my_cylinder.m</code>. Once the file has been saved, you may invoke the function by entering its name and parameters of the right type and number in the Command window, in a script, or in other function definitions. If you do not specify an assignment for the result of the function call, it will be assigned to the variable <code>ans</code>.</p>
-
-
-<h3><a name="3_3_4">3.3.4	Calling Functions</a></h3>
-
-<p>When a function is defined, the user provides a list of the names of each data item expected to be provided by the caller. These are called the <strong>formal parameters</strong>. When this function is called, the caller must provide the same number of data values expected by the function definition. These are the <strong>actual parameters</strong> and can be generated in the following ways:</p>
-<ul>
-<li>Constants</li>
-<li>Variables that have been defined</li>
-<li>The result of some mathematical operation(s)</li>
-<li>The result returned from other functions</li>
-</ul>
-</div>
-<div class="container">
-  <div class="sidebar_L">
-<h4>Style Point 3.1 Parameter Passing</h4>
-<p>Some languages provide an alternative technique—“passing by reference”—whereby the memory location for the parameters is passed to the function while the values remain in the caller’s workspace. Syntactically, this is usually a bad thing, allowing deliberate or accidental assignments to “reach back” into the scope of the calling code and thereby perhaps causing undesirable side effects. However, restricting parameter access to passing by value can result in poor program performance. When a function needs access to large sets of data, consider improving the efficiency by using global variables.<p>
-  </div>
-  <div class="content">
-<p>When the actual parameters have been computed, copies of their values are assigned as the values of the formal parameters the function is expecting.</p>
-<p>Values are assigned to parameters by position in the calling statement and function definition. The process of copying the actual parameters into the formal parameters is referred to as “passing by value”— the only technique defined in the MATLAB language for passing data into a function.</p>
-<p>Once the parameter names have been defined in the function’s workspace, the function’s code body is executed, beginning with the first instruction. If return variables have been defined for the function, every exit from the code body must assign valid values for the results.</p>
-</div>
-<h3><a name="3_3_5">3.3.5	Variable Numbers of Parameters</a></h3>
-
-<p>Although the number of parameters is usually fixed, most languages, including MATLAB, provide the ability to deal with a variable number of parameters, both incoming and returning. The built-in function <code>nargin</code> computes the actual number of parameters provided by the user in the current function call. If the function is designed to make use of <code>nargin</code>, the parameter <code>varargin</code> must be the last parameter.  It collects all subsequent input parameters as a Call Array of values.</p>
-<p>Similarly, the function <code>nargout</code> computes the number of storage variables actually provided by the user. So if one or more of the results requires extensive computation or user interaction and the caller has not asked for that data, that computation can be omitted.</p>
-
-<h3><a name="3_3_6">3.3.6	Returning Multiple Results</a></h3>
-
-<p>The MATLAB language is unique among programming languages in providing the ability to return more than one result from a function by name. The multiple results are specified as a "vector" (see the next chapter for details) of variable names, for example, [area, volume], as shown in Listing 3.2. Assignments must be made to each of the result variables. However, the calling program is not required to make use of all the return values.</p>
-<h4>Listing 3.2 - function returning multiple results</h4>
-<code>
-<font color="#0000ff">function</font> [area, volume] = my_cylinder(height, radius)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% function to compute the area and volume of a cylinder</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: [area, volume]=my_cylinder(height, radius)</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;base = pi .* radius.^<font color="#ff8000">2</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;volume = base .* height;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;area = <font color="#ff8000">2</font> * pi * radius .* height + <font color="#ff8000">2</font> * base;<br>
-<font color="#0000ff">end</font><br>
-</strong></code>
-<p>Exercise 3.2 shows how to invoke a function that can return multiple results. Notice that the normal method to access the multiple answers is to put the names of the variable to receive the results in a vector. The names may be any legal variable name, and the values are returned in the order of the results defined. If you choose less than the full number of results (or none at all), the answers that are specified are allocated from left to right from the available results. As with parameter assignment, the results are allocated by position in these vectors. Although we called the variable <code>v</code> in the last test, it still receives the value of the first result, <code>area</code>. If you really only want the second result value, you must put either a <code>'~'</code> marker or a dummy variable name like <code>'junk'</code> in the place of any variable you wish to ignore.</p>
-<div class="container">
-  <div class="sidebar_R">
-
-<h4>Exercise 3.2 Testing multiple returns</h4>
-<p>Adapt the original cylinder function as shown in Listing 3.2 and perform the following tests in the Command window:</p>
-<code>>> [a, v] = cylinder(1, 1)<br>
-a =<br>
-&nbsp;&nbsp;&nbsp;&nbsp;6.2832<br>
-v =<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.1416<br>
->> cylinder(1, 1)<br>
- ans =<br>
-&nbsp;&nbsp;&nbsp;&nbsp;6.2832<br>
->> a = cylinder(1, 1) a =<br>
-&nbsp;&nbsp;&nbsp;&nbsp;6.2832<br>
->> v = cylinder(1, 1) v =<br>
-&nbsp;&nbsp;&nbsp;&nbsp;6.2832<br>
->></code>
-  </div>
-  <div class="content">
-<p>So this call:<code>[~, v] = cylinder(1, 1);</code> will put the volume in the variable <code>v</code>.</p>
-
-<h3><a name="3_3_7">3.3.7	Auxiliary Local Functions</a></h3>
-
-<p>Since the MATLAB language uses the name of the file to identify a function, every function should normally be saved in its own m-file. However, there are times when auxiliary functions (sometimes called “helper functions”) are needed to implement the algorithm contained in the main function in a file. If this auxiliary function is only used in the main function or its helpers, it can be written in the same file as its calling function after the definition of the main function. By convention, some people append the word local_ to the name of local functions.</p>
-<p>Scripts or functions that use the code in an m-file can reach only the first function. Other functions in the m-file, the auxiliary functions, can only be called from the first function or other auxiliary functions in the same file.</p>
-
-<h3><a name="3_3_8">3.3.8	Encapsulation in MATLAB Functions</a></h3>
-
-<p>Encapsulation is accomplished in most modern languages, including MATLAB, by implementing the concept of variable scoping. In practice, this is achieved by allocating a separate workspace to each function. When MATLAB is first started, a default workspace is created in which variables created in the Command window or by running scripts are stored. When a function is called, a fresh workspace is created (see Section 9.1.2 for details), and the actual parameter values are copied into the formal parameter names in that new workspace. When the function finishes, this operation is reversed. The returning parameters are copied into the variables provided by the caller in the previous workspace, and the function’s workspace is released. The Variables window always shows you the contents of the current workspace.</p>
-</div>
-
-<div class="container">
-  <div class="sidebar_R">
-<h4>Exercise 3.3  Observing variable scoping</h4>
-
-Put a break point at Line 6 of your version of the code in Listing 3.2, and then rerun the function by entering:
-<code>>> [a, v] = cylinder(1, 1)</code>
-
-<p>Notice that the logic stops at that break point and the Text Editor displays an arrow. The Workspace window shows you the values of height, radius, and base but none of the variables you left in the workspace for the Command window. The function has no access to other workspaces.<br>
-Observe that as you step through the function, the variables appear in the Variables window and are updated. When you return from the cylinder function to display the results, the workspace for the function disappears. The calling environment has no access to the variables within the function</p>
-  </div>
-  <div class="sidebar_L">
-<h4>Style Points 3.2</h4>
-<ol>
-<li>Before you include a function in a complex algorithm, you should always test its behavior in isolation in a script. This test script should validate not only the normal operation of the function, but also its response to erroneous input data it might receive.</li>
-<li>Although any legal MATLAB instruction is permitted within the code body of a function, it is considered bad form (except temporarily for debugging purposes) to display values in the Command window.</li>
-<li>We also actively discourage the use of the input(...) function within the code body. If you need to input some values to test a function, do so from the Command window or a test script.</li>
-</ol>
-  </div>
-  <div class="content">
-<p>Variable scoping defines the places within your Command window, MATLAB system, and m-files to which instructions have access. It is related to the Variables window, which shows you your current workspace. When using the Command window or running a script and you access the value of a variable, the system will reach into your current workspace and then into the MATLAB system libraries to find its current value. This is referred to as Global Scope. When you run a function, its local variables, including the internal names of its parameters, are not included in your current workspace, and it does not look into your current workspace for values of variables it needs. This is referred to as Local Scope, wherein the variables within a function are not visible from outside and the function is unable to cause side effects by making assignments to variables in other workspaces except by returning results. To illustrate variable scoping, do Exercise 3.3.</p>
 </div>
 
-<h3><a name="3_3_9">3.3.9	Global Variables</a></h3>
-
-
-<p>Because MATLAB always copies the input data into the function's workspace, there are occasions when it is very inefficient to pass large data sets into and out of a function. To avoid passing large amounts of data, we can use global variables. Global variables must be defined in both the calling script and the function using the key word global. For example, suppose we collect a large volume of data in a variable buffer and do not want to copy the whole buffer into and out of a function that processes that data. In this case, we declare the variable to be global in both the calling space and the called function by placing the following line of code before the variable is first used in both places:</p>
-<code>global buffer</code>
-<p>The function will then be able to access and modify the values in buffer without having to pass it in and out as a parameter. This feature must be used with caution, however, because any function with global access to data is empowered to change that data. In other words, the use of global data circumvents the natural MATLAB language's encapsulation mechanisms.</p>
-
-<h2><a name="3_4"> 3.4 Engineering Example: Measuring a Solid Object</a></h2>
-
-<p><strong>Problem:</strong></p>
-<p>Consider the disk shown in Figure 3.2 commonly referred to as a "flange". Flanges are used in many systems where a pipe must be separated for ease of assembly or maintenance. A flange is welded to each part of the pipe and nuts and bolts then hold the two parts of the pipe securely. For example, pipes carry fuel through the body from one wing to the other of an aircraft.  Since the wings are manufactured individually and then attached to the body of the aircraft, all pipes between the wing and body need flanges.</p>
-<p>Our flange has a radius <code>R</code>, height <code>h</code>, one central hole with radius <code>cr</code> and eight cylindrical holes each of radius <code>hr</code> bored in it. During the process of designing an aircraft, we need to know the weight of this flange including the amount of paint required to finish it. The weight and the amount of paint for the machine is the sum of the values for each component. Since the weight of our disk is proportional to its volume and the amount of paint is proportional to its "wetted area", we need the volume and area of this flange.</p>
-<p>Write a script to compute the volume of the flange and its wetted area</p>
-<figure style="float: right; margin-left: 10px; margin_bottom: 5px">
-<p><img alt="image" height="250" src="Fig_3_2.jpg" width="350" /></p>
-<figcaption><center><b>Fig 3.2 A Flange</b></center> </figcaption></figure>
-<p><strong>Solution:</strong></p>
-<h4>Listing 3.3: Solving the Problem</h4>
-<code><strong>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% compute the volume and area of a flange</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;clear<br>
-&nbsp;&nbsp;&nbsp;&nbsp;clc<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;h = <font color="#ff8000">1</font>; <font color="#00A000">% thickness - all measurements in inches</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;R = <font color="#ff8000">5</font>; <font color="#00A000">% outer radius</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;cr = <font color="#ff8000">2</font>; <font color="#00A000">% center hole</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;hr = <font color="#ff8000">0.25</font>; <font color="#00A000">% small holes</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;[A, V] = my_cylinder(h, R); <font color="#00A000">% whole disk</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;[cA, cV, cT] = my_cylinder(h, cr); <font color="#00A000">% center hole</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;[hA, hV, hT] = my_cylinder(h, hr); <font color="#00A000">% small holes</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Volume = V - cV - <font color="#ff8000">8</font> * hV<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Area = A + cA + <font color="#ff8000">8</font> * hA;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% but we need to subtract tops and bottoms</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Area = Area - <font color="#ff8000">4</font> * cT - <font color="#ff8000">4</font> * <font color="#ff8000">8</font> * hT<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-<font color="#0000ff">function</font> [area, volume, top] = my_cylinder(height, radius)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% function to compute the area and volume of a cylinder</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00A000">% usage: [area, volume]=cylinder(height, radius)</font><br>
-&nbsp;&nbsp;&nbsp;&nbsp;top = pi .* radius.^<font color="#ff8000">2</font>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;volume = top .* height;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;area = <font color="#ff8000">2</font> * pi * radius .* height + <font color="#ff8000">2</font> * top;<br>
-<font color="#0000ff">end</font><br>
-</strong></code>
-<p>The results displayed should be:</p>
-<code>
-Volume =<br>
-&nbsp;&nbsp;&nbsp;&nbsp;64.4026<br>
-Area =<br>
-&nbsp;&nbsp;&nbsp;&nbsp;185.3540<br>
-</code>
-<h3>Chapter Summary</h3>
-<p>This chapter showed you how to encapsulate a code block to allow it to be reused:</p>
-<ul>
-<li>Functions are defined in a file of the same name using the key word
-function to distinguish them from scripts</li>
-<li>Parameters are copied in sequence into the function and given the
-names of the formal parameters</li>
-<li>Results are returned to the caller by assigning value(s) to the return
-variable(s)</li>
-<li>Variables within the function can be accessed only in the function’s
-code block unless they are declared global</li>
-<li>Helper functions accessible only to functions within the same file
-may be added below the main function and otherwise obey the
-same rules as the main function</li>
-</ul>
+<!--
 <p>[Summary Table 05]<br>
 
 [Problems added here]</p>
-<table align="center">
-	<tbody>
-		<tr>
-			<td><a href="02_Basics.htm">previous</a></td>
-			<td><a href="Contents.htm">home</a></td>
-			<td><a href="04_Vectors.htm">next</a></td>
-		</tr>
-	</tbody>
-</table>
-<p align="center"><font size="1">This Web Page was Built with PageBreeze </font><a href="http://pagebreeze.com" target="_blank"><font size="1">Free HTML Editor</font></a><font size="1"> </font></p>
+-->
 </body>
 </html>
