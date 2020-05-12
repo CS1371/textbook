@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2019b"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S1 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Listing 11.12: Rotating an irregular shape</span></h3><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% Rotating an irregular shape</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>main</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    u = [0 0 3 3 1.75 1.75 2 2 1.75 1.75 3 4 </span><span style="color: rgb(0, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        5.25 5.25 5 5 5.25 5.25 3 3 6 6];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    v = [0 .5 .5 .502 .502 .55 .55 1.75 1.75 </span><span style="color: rgb(0, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        2.5 2.5 1.5 1.5 1.4 1.4 </span><span style="color: rgb(0, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        .55 .55 .502 .502 .5 .5 0];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    subplot(1, 2, 1)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    plot(u, v, </span><span style="color: rgb(160, 32, 240);">'k'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    axis </span><span style="color: rgb(160, 32, 240);">equal</span><span>, axis </span><span style="color: rgb(160, 32, 240);">off</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    facets = 200;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    subplot(1, 2, 2)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    [zz yy xx] = cylinder(v,300);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">for </span><span>ndx = 1:length(u)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        xx(ndx,:) = u(ndx);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    surf(xx, yy, zz);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    shading </span><span style="color: rgb(160, 32, 240);">interp</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    axis </span><span style="color: rgb(160, 32, 240);">equal</span><span>, axis </span><span style="color: rgb(160, 32, 240);">tight</span><span>, axis </span><span style="color: rgb(160, 32, 240);">off</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    colormap </span><span style="color: rgb(160, 32, 240);">bone</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    lightangle(60, 45)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    lightangle(140, 45)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    alpha(0.8)</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+% Listing 11.12: Rotating an irregular shape
+
+% Rotating an irregular shape
+function main
+    u = [0 0 3 3 1.75 1.75 2 2 1.75 1.75 3 4 ...
+        5.25 5.25 5 5 5.25 5.25 3 3 6 6];
+    v = [0 .5 .5 .502 .502 .55 .55 1.75 1.75 ...
+        2.5 2.5 1.5 1.5 1.4 1.4 ...
+        .55 .55 .502 .502 .5 .5 0];
+    subplot(1, 2, 1)
+    plot(u, v, 'k')
+    axis equal, axis off
+    facets = 200;
+    subplot(1, 2, 2)
+    [zz yy xx] = cylinder(v,300);
+    for ndx = 1:length(u)
+        xx(ndx,:) = u(ndx);
+    end
+    surf(xx, yy, zz);
+    shading interp
+    axis equal, axis tight, axis off
+    colormap bone
+    lightangle(60, 45)
+    lightangle(140, 45)
+    alpha(0.8)
+end
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,488 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+    <title>06_Strings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <script async src="./javascript/index.js"></script>
+</head>
+<body>
+<div><nav class="navbar navbar-expand-lg fixed-top top-nav navbar-light bg-light"><a class="navbar-brand" href="#"><img src="../Images/1371.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbspEngineering Computation Using MATLAB</a></nav></div>
+<div class="nav-obj"><nav class="nav sidenav nav-scroll navbar-dark bg-dark"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="..\..\index.html">Home</a></li><li class="nav-item"><a class="nav-link" href="Preface.htm">Preface</a></li><li class="nav-item"><div class="nav-link"><a href="01_Introduction.htm#1">1 Introduction&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_1"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_1">1.1 Background</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_2">1.2 History of Computer Architectures&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_1_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_1_2"><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_2_1">1.2.1 Babbage's Difference Engine</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_2_2">1.2.2 Colossus</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_2_3">1.2.3 The von Neumann Architecture</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_3">1.3 Modern Computer Software&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_1_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_1_3"><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_1">1.3.1 Operating Systems</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_2">1.3.2 Software Tools</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_3">1.3.3 Programming Languages</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_4">1.3.4 Running a Computer Program</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_5">1.3.5 Running an Interpreted Program</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_4">1.4 Anticipated Outcomes&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_1_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_1_4"><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_4_1">1.4.1 Introduction to MATLAB</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_4_2">1.4.2 Learning Programming Concepts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_4_3">1.4.3 Problem-Solving Skills</a></div></li></ul></li></ul></li><li class="nav-item"><div class="nav-link"><a href="02_Basics.htm#2">2 Basics&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_2"><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_1">2.1 Programming Language Background&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_1"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_1_1">2.1.1 Abstraction</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_1_2">2.1.2 Algorithms</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_1_3">2.1.3 Programming Paradigms</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_2">2.2 Basic Data Manipulation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_2"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_1">2.2.1 Starting and Stopping MATLAB</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_2">2.2.2 Assigning Values to Variables</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_3">2.2.3 Data Typing</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_4">2.2.4 Classes and Objects</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_3">2.3 MATLAB User Interface&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_3"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_1">2.3.1 Command Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_2">2.3.2 Command History</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_3">2.3.3 Workspace Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_4">2.3.4 Current Folder Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_5">2.3.5 Variable Editor</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_6">2.3.6 Figure Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_7">2.3.7 Editor Window</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_4">2.4 Scripts&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_4"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_1">2.4.1 Text Files</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_2">2.4.2 Creating Scripts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_3">2.4.3 The Current Directory</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_4">2.4.4 Running Scripts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_5">2.4.5 Punctuating Scripts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_6">2.4.6 Debugging Scripts</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_5">2.5 Engineering Example - Spacecraft Launch</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="03_Functions.htm#3">3 Functions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_3"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_1">3.1 Concepts: Abstraction and Encapsulation</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_2">3.2 Black Box View of a Function</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_3">3.3 MATLAB Implementation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_3_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_3_3"><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_1">3.3.1 General Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_2">3.3.1 Function Definition</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_3">3.3.3 Storing and Using Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_4">3.3.4 Calling Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_5">3.3.5 Variable Number of Parameters</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_6">3.3.6 Returning Multiple Results</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_7">3.3.7 Auxiliary Local Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_8">3.3.8 Encapsulation in MATLAB Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_9">3.3.9 Global Variables</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_4">3.4 Engineering Example: Measuring a Solid Object</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="04_Vectors.htm#4">4 Vectors&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_4"><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_1">4.1 Concept: Data Collection&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_4_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_4_1"><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_1_1">4.1.1 Data Abstraction</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_1_2">4.1.2 Homogeneous Collections</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_2">4.2 Vectors&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_4_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_4_2"><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_1">4.2.2 Creating a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_2">4.2.2 Size of a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_3">4.2.3 Indexing a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_4">4.2.4 Shortening a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_5">4.2.5 Operating on Vectors</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_3">4.3 Engineering Example - Forces and Moments</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_4">4.4 Arrays&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_4_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_4_4"><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_1">4.4.1 Properties of an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_2">4.4.2 Creating an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_3">4.4.3 Accessing Elements of an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_4">4.4.4 Removing Elements of an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_5">4.4.5 Operating on Arrays</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_5">4.5 Engineering Example - Computing Soil Volume</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="05_Execution.htm#5">5 Execution&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_5"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_1">5.1 Concept: Code Blocks</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_2">5.2 Conditional Execution in General</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_3">5.3 if Statements&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_3"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_3_1">5.3.1 General Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_3_2">5.3.2 MATLAB Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_3_3">5.3.3 Important Ideas</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_4">5.4 switch Statements&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_4"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_4_1">5.4.1 General Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_4_2">5.4.2 MATLAB Implementation</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_5">5.5 Iteration in General</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_6">5.6 for Loops&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_6"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_1">5.6.1 General for Loop Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_2">5.6.2 MATLAB Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_3">5.6.3 Indexing Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_4">5.6.4 Breaking out of a for Loop</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_7">5.7 while Loops&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_7" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_7"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_1">5.7.1 General while Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_2">5.7.2 MATLAB while Loop Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_3">5.7.3 Loop-and-a-Half Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_4">5.7.4 Breaking a while Loop</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_8">5.8 Engineering Example - Computing Liquid Levels</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="06_Strings.htm#6">6 Strings&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_6"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_1">6.1 Character String Concepts: Mapping, Casting, Tokens, and Delimiting</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_2">6.2 MATLAB Implementation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_6_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_6_2"><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_2_1">6.2.1 Slicing and Concatenating Strings</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_2_2">6.2.2 Arithmetic and Logical Operations</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_2_3">6.2.3 Useful Functions</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_3">6.3 Format Conversion Functions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_6_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_6_3"><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_3_1">6.3.1 Conversion from Numbers to Strings</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_3_2">6.3.2 Conversion from Strings to Numbers and Other Stuff</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_4">6.4 Character String Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_6_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_6_4"><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_4_1">6.4.1 Simple Data Output: The disp(...) Function</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_4_2">6.4.2 Complex Output</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_4_3">6.4.3 Comparing Strings</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_5">6.5 Arrays of Strings</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_6">6.6 Engineering Example - Encryption</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="07_Structures.htm#7">7 Structures&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_7" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_7"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_1">7.1 Concept: Collecting Dissimilar Objects</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_2">7.2 Cell Arrays&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_7_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_7_2"><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_1">7.2.1 Creating Cell Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_2">7.2.2 Accessing Cell Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_3">7.2.3 Using Cell Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_4">7.2.4 Processing Cell Arrays</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_3">7.3 Structures&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_7_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_7_3"><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_3_1">7.3.1 Constructing and Accessing One Structure</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_3_2">7.3.2 Constructor Functions</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_4">7.4 Structure Arrays&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_7_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_7_4"><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_4_1">7.4.1 Constructing Structure Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_4_2">7.4.2 Accessing Structure Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_4_3">7.4.3 Manipulating Structures</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_5">7.5 Comparing Cell Arrays to Structure Arrays</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_6">7.6 Engineering Example: Assembling a Physical Structure</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="08_File_I_O.htm#8">8 File I O&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_8" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_8"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_1">8.1 Concept: Serial Input and Output (I/O)</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_2">8.2 Workspace I/O</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3">8.3 High-Level I/O Functions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_8_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_8_3"><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3_1">8.3.1 Exploration</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3_2">8.3.2 Spreadsheets</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3_3">8.3.3 Delimited Text Files</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4">8.4 Lower-Level File I/O&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_8_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_8_4"><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4_1">8.4.1 Opening and Closing Files</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4_2">8.4.2 Reading Text Files</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4_3">8.4.3 Writing Text Files</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_5">8.5 Engineering Example - Spreadsheet Data</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="09_Recursion.htm#9">9 Recursion&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_9" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_9"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_1">9.1 Concept: The Activation Stack&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_9_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_9_1"><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_1_1">9.1.1 A Stack</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_1_2">9.1.2 Activation Stack</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_1_3">9.1.3 Function Instances</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_2">9.2 Recursion Defined</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_3">9.3 Implementing a Recursive Function</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_4">9.4 Exceptions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_9_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_9_4"><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_4_1">9.4.1 Historical Approaches</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_4_2">9.4.2 Generic Exception Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_4_3">9.4.3 MATLAB Implementation</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_5">9.5 Wrapper Functions</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_6">9.6 Examples of Recursion&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_9_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_9_6"><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_6_1">9.6.1 Detecting Palindromes</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_6_2">9.6.2 Fibonacci Series</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_6_3">9.6.3 Zeros of a Function</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_7">9.7 Engineering Example - Robot Arm Motion</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="10_Problem_Solving.htm#10">10 Problem Solving&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_10" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_10"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_1">10.1 Solving Simple Problems</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_2">10.2 Assembling Solution Steps</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3">10.3 Summary of Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_10_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_10_3"><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_1">10.3.1 Basic Arithmetic Operations</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_2">10.3.2 Inserting into a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_3">10.3.3 Traversing a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_4">10.3.4 Building a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_5">10.3.5 Mapping a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_6">10.3.6 Filtering a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_7">10.3.7 Folding a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_8">10.3.8 Searching a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_9">10.3.9 Sorting a Collection</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_4">10.4 Solving Larger Problems</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_5">10.5 Engineering Example - Processing Geopolitical Data</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="11_Plotting.htm#11">11 Plotting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_11" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_11"><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_1">11.1 Plotting in General&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_1"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_1">11.1.1 A Figure - The Plot Container</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_2">11.1.2 Simple Functions for Enhancing Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_3">11.1.3 Multiple Plots on One Figure - Subplots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_4">11.1.4 Manually Editing Plots</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_2">11.2 2-D Plotting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_2"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_1">11.2.1 Simple Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_2">11.2.2 Plot Options</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_3">11.2.3 Parametric Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_4">11.2.4 Other 2-D Plot Capabilities</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_3">11.3 3-D Plotting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_3"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_3_1">11.3.1 Linear 3-D Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_3_2">11.3.2 Linear Parametric 3-D Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_3_3">11.3.3 Other 3-D Plot Capabilities</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_4">11.4 Surface Plots&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_4"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_1">11.4.1 Basic Capabilities</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_2">11.4.2 Simple Exercises</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_3">11.4.3 3-D Parametric Surfaces</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_4">11.4.4 Bodies of Rotation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_5">11.4.5 Other 3-D Surface Plot Capabilities</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_6">11.4.6 Assembling Compound Surfaces</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_5">11.5 Manipulating Plotted Data</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_6">11.6 Engineering Example - Visualizing Geographic Data&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_6"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_6_1">11.6.1 Analyzing the Data</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_6_2">11.6.2 Displaying the Data</a></div></li></ul></li></ul></li><li class="nav-item"><div class="nav-link"><a href="12_Matrices.htm#12">12 Matrices&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_12" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_12"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_1">12.1 Concept: Behavioral Abstraction</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_2">12.2 Matrix Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_2"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_2_1">12.2.1 Matrix Multiplication</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_2_2">12.2.2 Matrix Division</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_2_3">12.2.3 Matrix Exponentiation</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_3">12.3 Implementation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_3"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_3_1">12.3.1 Matrix Multiplication</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_3_2">12.3.2 Matrix Division</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_4">12.4 Rotating Coordinates&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_4"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_4_1">12.4.1 2-D Rotation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_4_2">12.4.2 3-D Rotation</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_5">12.5 Solving Simultaneous Linear Equations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_5"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_5_1">12.5.1 Intersecting Lines</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_6">12.2 Engineering Examples&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_6"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_6_1">12.2.1 Ceramic Composition</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_6_2">12.2.2 Analyzing an Electrical Circuit</a></div></li></ul></li></ul></li><li class="nav-item"><div class="nav-link"><a href="13_Images.htm#13">13 Images&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_13" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_13"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_1">13.1 Nature of an Image</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_2">13.2 Image Types&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_13_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_13_2"><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_1">13.2.1 True Color Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_2">13.2.2 Gray Scale Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_3">13.2.3 Color Mapped Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_4">13.2.4 Preferred Image Format</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_3">13.3 Reading, Displaying, and Writing Images</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_4">13.4 Operating on Images&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_13_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_13_4"><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_1">13.4.1 Stretching or Shrinking Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_2">13.4.2 Color Masking</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_3">13.4.3 Creating a Kaleidoscope</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_4">13.4.4 Images on a Surface</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_5">13.5 Engineering Example - Detecting Edges</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="14_Sounds.htm#14">14 Sounds&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_14" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_14"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_1">14.1 The Physics of Sound</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_2">14.2 Recording and Playback</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_3">14.3 Implementation</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_4">14.4 Time Domain Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_14_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_14_4"><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_4_1">14.4.2 Slicing and Concatenating Sounds</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_4_2">14.4.2 Musical Background</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_4_3">14.4.3 Changing Sound Frequency</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_5">14.5 The Fast Fourier Transform&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_14_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_14_5"><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_5_1">14.5.1 Background</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_5_2">14.5.2 Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_5_3">14.5.3 Simple Spectral Analysis</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_6">14.6 Frequency Domain Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_14_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_14_6"><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_6_1">14.6.1 Details of the Spectral Data</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_6_2">14.6.2 Notes fading with time</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_7">14.7 Engineering Example - Music Synthesizer</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="15_Numerical_Methods.htm#15">15 Numerical Methods&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_15" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_15"><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1">15.1 Interpolation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_1"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1_1">15.1.1 Linear Interpolation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1_2">15.1.2 Cubic Spline Interpolation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1_3">15.1.3 Extrapolation</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2">15.2 Curve Fitting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_2"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2_1">15.2.1 Linear Regression</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2_2">15.2.2 Polynomial Regression</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2_3">15.2.3 Practical Application</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_3">15.3 Numerical Integration&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_3"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_3_1">15.3.1 Determination of the Complete Integral</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_3_2">15.3.2 Continuous Integration Problems</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_4">15.4 Numerical Differentiation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_4"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_4_1">15.4.1 Difference Expressions</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_5">15.5 Analytical Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_5"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_5_1">15.5.1 Analytical Integration</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_5_2">15.5.2 Analytical Differentiation</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_6">15.6 Implementation</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_7">15.7 Engineering Example - Shaping the Synthesizer Notes</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="16_Sorting.htm#16">16 Sorting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_16" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_16"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_1">16.1 Measuring Algorithm Cost</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_2">16.2 Algorithms for Sorting Data&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_16_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_16_2"><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_1">16.2.1 Insertion Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_2">16.2.2 Bubble Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_3">16.2.3 Quick Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_4">16.2.4 Merge Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_5">16.2.5 Radix Sort</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_3">16.3 Performance Analysis</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_4">16.4 Applications of Sorting Algorithms&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_16_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_16_4"><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_1">16.4.1 Using sort(...)</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_2">16.4.2 Insertion Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_3">16.4.3 Bubble Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_4">16.4.4 Quick Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_5">16.4.5 Merge Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_6">16.4.6 Radix Sort</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_5">16.5 Engineering Example - A Selection of Countries</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="17_Graphs.htm#17">17 Graphs&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_17" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_17"><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_1">17.1 Stacks&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_1"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_1_1">17.1.1 The Nature of a Stack</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_1_2">17.1.2 Implementing Stacks</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_2">17.2 Queues&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_2"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_2_1">17.2.1 The Nature of a Queue</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_2_2">17.2.2 Implementing Queues</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_2_3">17.2.3 Priority Queues</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#">17.3 Testing Stacks and Queues</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_4">17.4 Graphs&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_4"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_4_1">17.4.1 Graph Examples</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_4_2">17.4.2 Processing Graphs</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_5">17.5 Minimum Spanning Trees</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_6">17.6 Finding Paths through a Graph&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_6"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_1">17.6.1 Depth-First Search</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_2">17.6.2 Breadth-First Search</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_3">17.6.3 Dijkstra's Algorithm</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_4">17.6.4 An Approximation Algorithm</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_5">17.6.5 Serious Path Finding Algorithms</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_7">17.7 Engineering Applications&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_7" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_7"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_7_1">17.7.1 Simple Applications</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_7_2">17.7.2 Complex Extensions</a></div></li></ul></li></ul></li></ul></nav></div>
+<div class="content">
+  <h1 id="6" align="center">Chapter 6: Strings</h1>
+
+  <!-- Chapter Objectives -->
+  <h1>Chapter Objectives</h1>
+  <div class="container">
+    <p>This chapter discusses the nature, implementation, and behavior of
+    character strings in the MATLAB language:</p>
+    <ul>
+      <li>The internal workings of character strings as vectors</li>
+      <li>Operations on character strings</li>
+      <li>Converting between numeric and character string representations</li>
+      <li>Input and output functions</li>
+      <li>The construction and uses for arrays of strings</li>
+    </ul>
+    <p>To this point in the text, we have seen the use of character strings that we can store in variables and display in the Command window. In reality, we have already seen a significant amount of character manipulation that we have taken for granted. The m-files we use to store scripts and functions contain lines of legible characters separated by an invisible “new-line” character.</p>
+  </div>
+
+  <!-- Introduction -->
+  <h1>Introduction</h1>
+  <div class="container">
+    <p>This chapter presents the underlying concept of character storage and the tools MATLAB provides for operating on character strings. We need to distinguish two different relationships between characters and
+    numbers:</p>
+    <ol>
+      <li>Individual characters have an internal numerical representation: the visible character shapes we see in windows are created as a collection of white and black dots by special software called a character generator. Character generators allow us to take the underlying concept of a character - say, “w” - and “draw” that character on screen or paper in accordance with the rules defined by the current font. A complete study of fonts is beyond the scope of
+      this discussion, but we need to understand how computers in general and the
+      MATLAB language in particular represent that “underlying concept” of a character. This is achieved by representing each individual character by its
+      numerical equivalent. Not long ago, there were many different representations.
+      Today, the dominant representation is the one defined by the American
+      Standard Code for Information Interchange (ASCII). In this representation, the
+      most common uppercase and lowercase characters, numbers, and many
+      punctuation marks are represented by numbers between 0 and 127. A
+      complete listing of the first 255 values is included in Appendix B.</li>
+      <li>Strings of characters represent numerical values to the user: numerical values
+      are stored in a special, internal representation for efficient numerical
+      computation as described in Appendix C . However, whenever we need to see
+      the value of that number in the Command window, that internal
+      representation is automatically converted by MATLAB into a character string
+      representing its value in a form we can read. For example, if the variable a
+      contained the integer value 124, internally that number could be stored in a
+      single byte (8 bits) with a binary value of 011111100—not a very meaningful
+      representation, but efficient internally for performing arithmetic and logical
+      operations. For the user to understand that value, internal MATLAB logic must
+      convert it to the three printable characters: '124' . Similarly, when we type in
+      the Command window or use the input(...) function, the set of characters
+      that we enter is automatically translated from a character string into the
+      internal number representation.</li>
+    </ol>
+  </div>
+
+  <div class="chp-section" data-sect-num="1" data-sect-name="Character String Concepts: Mapping, Casting, Tokens, and Delimiting">
+    <!-- Character String Concepts -->
+    <h2 id="6_1">6.1 Character String Concepts: Mapping, Casting, Tokens, and Delimiting</h2>
+    <div class="container">
+      <p>Here we see the MATLAB language tools that deal with the first relationship
+      between characters and numbers: the numerical representation of individual
+      characters.</p>
+      <p>The basic idea of <b>mapping</b> is that it defines a relationship between two
+      entities. The most obvious example of mapping is the idea that the function<br><br>
+      <code>f(x) = 2 &#215; x</code><br><br>
+      defines the mapping between the value of <code>x</code> and the value of <code>f(x)</code> .
+      We will apply that concept to the process of translating a character (like
+      "A") from its graphical form to a numerical internal code. Character
+      mapping allows each individual graphic character to be uniquely
+      represented by a numerical value.</p>
+      <p><b>Casting</b> is the process of changing the way a language views a piece of
+      data without actually changing the data value. Under normal circumstances,
+      a language like MATLAB automatically presents a set of data in the "right"
+      form. However, there are times when we wish to force the language to
+      treat a data item in a specific way. For example, if we create a variable containing a character string, MATLAB will consistently display it as a character string. However, we might want to view the underlying
+      numerical representation as a number, in which case we have to cast the
+      variable containing the characters to a numerical data type. MATLAB
+      implements casting as a function with the name of the data type expected.
+      In essence, these functions implement the mapping from one character
+      representation to another. For example:<br><br>
+      <code> &gt;&gt; str = 'ABCD'<br>
+      str =
+      &nbsp;&nbsp;&nbsp;&nbsp; ABCD<br>
+      &gt;&gt; double(str)<br>
+      ans =
+      &nbsp;&nbsp;&nbsp;&nbsp; 65 66 67 68<br><br>
+      </code>In your workspace window, <code>ans</code> will be of type <code>double</code>.</p>
+      <p>A <b>token</b> is a collection of characters to which we may wish to attach
+      meaning. Obvious examples of tokens are the name of a MATLAB variable
+      or the characters representing the values of a number to be used in an
+      expression.</p>
+      <p>A <b>delimiter</b> is a character used to separate tokens. The space character,
+      for example, can delimit words in a sentence; punctuation marks provide
+      additional delimiters with specific meanings.</p>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="2" data-sect-name="MATLAB Implementation">
+    <h2 id="6_2">6.2 MATLAB Implementation</h2>
+    <div class="container">
+      <p>When you enter a string in the Command window or the editor, MATLAB
+      requires that you delimit the characters of a string with a single quote mark
+      ( ' ). Note that you can include a single quote mark within the string by
+      doubling the character. For example, if you entered the following in the
+      Command window:<br><br>
+      <code>>> refusal = 'I can''t do that!'</code><br><br>
+      The result displayed would be<br><br>
+      <code>refusal = <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;I can't do that</code><br><br></p>
+      <p>Exercise 6.1 illustrates the concept of casting between data types <code>char</code> and
+      <code>double</code>.</p>
+      <div class="exercise"><iframe src="..\exercises\exercise_6_1html.html"></iframe></div>
+      <p>In Exercise 6.1:</p>
+      <ul>
+        <li>the casting function <code>uint8(...)</code> takes a character or
+        character string and changes its representation to a vector of the same
+        length as the original string.</li>
+        <li>Then the casting function <code>char(...)</code> takes a
+        number or vector and causes it to be presented as a string. </li>
+        <li>The casting function <code>double(...)</code> appears to act in the same way as <code>uint8(...)</code>, but it
+        actually uses 64 bits to store the values. </li>
+        <li>Single quotes delimit a string to be
+        assigned to the variable <code>fred</code>. Notice that when a string is presented as a
+        result, the delimiters are omitted.</li>
+        <li>When you apply arithmetic operations to
+        a string, the operation is illegal on characters; therefore, an implicit casting
+        to the numerical equivalent occurs.</li>
+        <li>You can perform any mathematical operation on the vector and use the
+          cast, <code>char(...)</code>, to cast it back to a string.</li>
+      </ul>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Slicing and Concatenating Strings">
+      <!-- Slicing and Concatenating Strings -->
+      <h3 id="6_2_1">6.2.1 Slicing and Concatenating Strings</h3>
+      <div class="container">
+        <p>Strings are internally represented as vectors; therefore, we can perform all
+        the usual vector operations on strings. Try it in Exercise 6.2.</p>
+        <div class="exercise"><iframe src="..\exercises\exercise_6_2html.html"></iframe></div>
+        <ul>
+          <li>First, we set the variable <code>first</code>.</li>
+          <li>Then, the variable <code>last</code>.</li>
+          <li>Then we concatenate the strings with a space separating them.</li>
+          <li>Then we display every other character in the name.</li>
+          <li>Then we display the letters of name in reverse order.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Arithmetic and Logical Operations">
+      <!-- Arithmetic and Logical Operations -->
+      <h3 id="6_2_2">6.2.2 Arithmetic and Logical Operations</h3>
+      <div class="container">
+        <p>Mathematical operations can be performed on the numerical mapping of a
+        character string. If you do not explicitly perform that casting first, MATLAB
+        will do the cast for you and create a result of type double (not usually
+        suitable for character values). Note that <code>char('a' + 1 )</code> returning <code>'b'</code> is an
+        accident of the character type mapping.</p>
+        <p>Logical operations on character strings are also exactly equivalent to
+        logical operations on vectors, with the same automatic casting. Exercise 6.3
+        gives you an opportunity to try it yourself.</p>
+        <div class="exercise"><iframe src="..\exercises\exercise_6_3html.html"></iframe></div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="Useful Functions">
+      <!-- Userful Functions -->
+      <h3 id="6_2_3">6.2.3 Useful Functions</h3>
+      <div class="container">
+        <p>The following functions are useful in analyzing character strings:</p>
+        <ul>
+          <li><code>ischar(a)</code> returns true if <code>a</code> is a character string</li>
+          <li><code>isspace(ch)</code> returns true if the character <code>ch</code> is the space character</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="3" data-sect-name="Format Conversion Functions">
+    <!-- Format Conversion Functions -->
+    <h2 id="6_3">6.3 Format Conversion Functions</h2>
+    <div class="container">
+      <p>Now we turn to the second relationship between characters and numbers:
+      using character strings to represent individual number values. We need
+      two separate capabilities: converting numbers from the efficient, internal
+      form to legible strings and converting strings provided by users of MATLAB
+      into the internal number representation. MATLAB provides a number of
+      functions that transform data between string format and numerical format.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Conversion from Numbers to Strings">
+      <!-- Conversion from Numbers to Strings -->
+      <h3 id="6_3_1">6.3.1 Conversion from Numbers to Strings</h3>
+      <div class="container">
+        <p>Use the following built-in MATLAB functions for a simple conversion of a
+        single number, <code>x</code>, to its string representation:</p>
+        <ul>
+          <li><code>int2str(x)</code> if you want it displayed as an integer value</li>
+          <li><code>num2str(x, n)</code> to see the decimal parts; the parameter <code>n</code> represents
+          the number of decimal places required—if not specified, its default
+          value is <code>3</code>.</li>
+        </ul>
+        <p>Frequently, however,  you need better control over the data conversion, and the
+        function <code><b>sprintf(...)</b></code> provides fine-grained control. The MATLAB version
+        of <code>sprintf(...)</code> is very similar to the C/C++ implementation of this
+        capability. The first parameter to <code>sprintf</code> is a <b>format control string</b> that
+        defines exactly how the resulting string should be formatted. A variable
+        number of <b>value parameters</b> follow the format string, providing data items
+        as necessary to satisfy the formatting.</p>
+        <p>Basically, the format string contains characters to be copied to the
+        string returned from <code>sprintf(...)</code>; however, it also contains two types of functionality introduced by
+        the following two special characters:</p>
+        <ul>
+          <li>The <code>'%'</code> character introduces a conversion specification, indicating
+          how one of the value parameters should be represented. The most
+          common conversions are <code>%d</code> (integer), <code>%f</code> (real), <code>%g</code> (general), <code>%c</code>
+          (character), and <code>%s</code> (string). A number may be placed immediately
+          after the <code>%</code> character to specify the minimum number of characters
+          in the conversion. If more characters than the specified minimum
+          are required to represent the data, they will be added. In addition,
+          the <code>%f</code> and <code>%g</code> conversions can include <code>'.n'</code> to indicate the number
+          of decimal places required. If you actually want a <code>'%'</code> character, it
+          must be doubled, for example, <code>'%%'</code>. MATLAB processes each of the
+          value parameters in turn, inserting them in the result string
+          according to the corresponding conversion specification. If there are
+          more parameters than conversion specifications in the format
+          control string, the format control string is repeated.</li>
+          <li>The '\' character introduces format control information, the most
+          common of which are \n (new line) and \t (tab). If the '\' character
+          is actually wanted in the result string, it should be doubled, for
+          example, '\\'.</li>
+        </ul>
+        <p>For example, consider the following statements:<br><br>
+        <code>&nbsp;&nbsp;&nbsp;&nbsp;A = [4.7 1321454.47 4.8];<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;index = 1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;v = 'values';<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;str = sprintf('%8s of A(%d) are \t%8.3f\t%12.4g\t%f\n'...<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v, index, A(index,1), A(index,2), A(index,3)) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;str =<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values of A(1) are 4.700 1.321e+006 4.800000</code></p>
+        <p>
+        <ul>
+          <li>We first prepared the variables <code>A</code>, <code>index</code> and <code>v</code>, and then called for <code>sprintf(...)</code> to present their values.</li>
+          <li>The first conversion, <code>%8s</code>, takes the value of the first parameter, <code>v</code>, allows
+          eight spaces for its conversion, and copied its contents to the resulting string. Since this
+          was a string conversion, the characters are merely copied.</li>
+          <li>The characters <code>' of A('</code> are then appended to the output string.</li>
+          <li>The second conversion, <code>%d</code>, takes the value of the second parameter, index, and converts it as an
+          integer with the minimum space allocated.</li>
+          <li>The characters <code>') are'</code> are then
+          appended to the output string, followed by a tab character that inserts enough spaces to bring the next characters to a column that is an even multiple of eight.</li>
+          <li>The following three conversions appended the next three
+          value parameters with three decimal places, a general conversion
+          with at least 12 spaces and 4 decimal places, and the default numerical
+          conversion.</li>
+          <li>Finally, a new line character was inserted into the string.</li>
+        </ul>
+        <p>We will formalize here the function<br><br>
+        <code>fprintf(&lt;control string&gt;, &lt;parameters&gt;)</code><br><br>
+        where the <code>&lt;control string&gt;</code> is the format control string discussed above, and<br>
+        <code>&lt;parameters&gt;</code> is a collection of 0 or more parameters whose values will be presented in each <code>'%'</code> entry in the control string.</p>
+        <p>The function <code>fprintf(...)</code> works exactly as <code>sprintf(...)</code> except that instead of returning the resulting string, it writes that string directly to the command window. Notice its use at the bottom of Listing 6.1 below.</p>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Conversion from Strings to Numbers and Other Stuff">
+      <!-- Conversion from Strings to Numbers and Other Stuff -->
+      <h3 id="6_3_2">6.3.2 Conversion from Strings to Numbers and Other Stuff</h3>
+      <div class="container">
+        <p>Conversion from strings to numbers is much messier. In order to understand the situation, let us emulate some of the Matlab behavior that you have already used, but probably not realized all the underlying complexity.</p>
+        <p><b>First Try</b>: Suppose, for example, you have the string: <code>'area = 3.14159265 .* radius .^ 2'</code>. In paragraph 6.1, we mentioned the idea of a token as a string whose meaning is important and the delimiters that separate tokens. Our first guess might be to assume that <code>'area'</code>, <code>'='</code>, <code>'3.14159265'</code>, <code>'.*',</code> <code>'radius'</code>, <code>'.^'</code> and <code>'2'</code> were the tokens because they carry the meaning of the equation, and the space character is the delimiter.</p>
+        <p>In order to separate this out into its individual tokens, we will repeatedly employ the function <code>strtok(...)</code>. This function consumes two inputs and produces two outputs:</p>
+        <p><code>[token, rest] = strtok(str, delims)</code></p>
+        <p>where <code>str</code> is the string to process, <br>
+        <code>delims</code> is a string of delimiting characters, <br>
+        <code>token</code> is the first token returned, and<br>
+        <code>rest</code> is what remains of the string when that token is removed.</p>
+        <p>Look carefully through Listing 6.1 to see how we extract the meaning from the line of code.</p>
+        <div class="listing"><iframe src="..\listings\listing_06_1_livehtml.html"></iframe></div>
+        <p>When you run this code, you see this in the Command Window:</p>
+        <p><code>
+        calculate area by doing .^ with radius and 2, then doing .* with the result and 3.1416<br>
+        </code></p>
+        <p>Notice that I deliberately changed the numerical resolution of <code>pi</code> to only 4 decimal places to assert that we really did convert the string <code>num_1</code> to the <code>double</code> value <code>n_1</code>.</p>
+        <p><b>Second Thought</b>: now, what could possibly go wrong ... oh, wait a sec</p>
+        <ul>
+          <li>although we have been inserting spaces in the code for clarity, this line is quite legal: <code>'area=3.14159265.*radius.^2'</code>.  So we have to treat the '<code>=</code>' and even worse, the '<code>.*</code>' and '<code>.^</code>' as delimiters. </li>
+          <li>Messier still, the simple parsing in Listing 6.1 had to assume that the first token was a variable name, the second was the '=' to make an assignment etc. We are certainly not intending to delve into the correct way to process this simple line of code.</li>
+        </ul>
+        <p>I did warn you at the top of this paragraph about messes to come ...</p>
+        <p><b>Preferred Approach:</b> When possible, allow MATLAB’s built-in functions
+        <code>str2num</code>, <code>str2double</code> or <code>input(...)</code> to do the work of conversion for you:</p>
+        <ul>
+          <li>The function <code>str2num(str)</code> consumes a string representing either a single
+          numerical value or an arbitrarily complex array of numbers and returns the numerical equivalent.</li>
+          <li>The function <code>str2double(str)</code> consumes a string representing only a single
+          numerical value and returns the numerical equivalent with <code>double</code> precision.</li>
+          <li>The function <code>input(prompt)</code> presents the prompt string to the user in the
+          Command window and waits for the user to type some characters and the [Enter] key, all of which are echoed in the Command window. Then it parses the input string in exactly the same manner as if you had typed that string to the command window, according to the following rules:<br>
+          <ol>
+            <li>If the string begins with a numerical character, MATLAB converts
+            the string to a number</li>
+            <li>If it begins with a non-numeric character, MATLAB constructs a
+            variable name and looks for its current value</li>
+            <li>If you actually want a string literal entered, it must be enclosed in the
+            string delimiters.</li>
+            <li>If it begins with an open bracket, <code>'['</code>, a vector is constructed</li>
+            <li>If it begins with the single quote character, MATLAB creates a
+            string</li>
+            <li>If a format error occurs, MATLAB repeats the prompt and waits for another input</li>
+          </ol>
+          This behavior can be modified if <code>'s'</code> is provided as the second parameter,
+          <code>input(prompt, 's')</code>, in which case the complete input character sequence is
+          returned to the user as a string with no attempt to perform the above conversions. Exercise 6.4 demonstrates a number of capabilities of the <code>input(...)</code> function.
+          </li>
+        </ul>
+        <div class="exercise"><iframe src="..\exercises\exercise_6_4html.html"></iframe></div>
+        <p><b>Severe Warning: </b> Be careful to separate in your mind the use of the <code>input(...)</code> function and the process of passing parameters into a function. When values are passed to a function, we refer to this as the function <b><i>consuming</i></b> the incoming parameter(s), and this process happens automatically as part of the function call processing.  The <code>input(...)</code> function is a manual process whereby the user has to type data to be processed. The <code>input(...)</code> function should only be used in scripts that test functions and <b><i>never</i></b> in the body of a function.</p>
+        <p><b>Hopeful footnote:</b> If you have to do some complex conversions
+        yourself, the function <code>sscanf(...)</code> was designed to extract the values of variables
+        from a string, but is really difficult to use. Instead,
+        you can either split a string into tokens as we did above, and then convert each
+        token with the str2num(str) function or, you might be better off putting that string into a text file and using the techniques in Chapter 8 to extract the meaning you need.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="4" data-sect-name="Character String Operations">
+    <!-- Character String Operations -->
+    <h2 id="6_4">6.4 Character String Operations</h2>
+    <div class="container">
+      <p>As with the string-to-number conversions, input and output in the
+      Command window can be accomplished with simple functions that have
+      little flexibility or with complex functions that have better control.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Simple Data Output: The disp(...) Function">
+      <!-- Simple Data Output -->
+      <h3 id="6_4_1">6.4.1 Simple Data Output: The <code>disp(. . .)</code> Function</h3>
+      <div class="container">
+        <p>We have already seen the use of the <code>disp(...)</code> function to present data in
+        readable form in the Command window. It can
+        present the values of any variable, regardless of type, or of strings
+        constructed by concatenation. Note, however, that an explicit number
+        conversion is required to concatenate variables with strings. Note also that conversion
+        from the ASCII code is not automatic; you need the <code>char(...)</code> cast function.</p>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Complex Output">
+      <!-- Complex Output -->
+      <h3 id="6_4_2">6.4.2 Complex Output</h3>
+      <div class="container">
+        <p>We discussed the functions fprintf(...) and sprintf(...) in Paragraph 6.3.1. While slightly messy to use, their flexibility makes them the functions of choice for displaying nicely formatted results.  Appendix A includes a complete discussion of the behavior of elements in the control strings of these functions.</p>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="Comparing Strings">
+      <!-- Comparing Strings -->
+      <h3 id="6_4_3">6.4.3 Comparing Strings</h3>
+      <div class="container">
+        <p>Since strings are readily translated into vectors of numbers, they may be
+        compared in the obvious way with the logical operators we used on
+        numbers. However, there is the restriction that either the strings must be of the same length or one of them must be of length 1 before it is legal to
+        compare them with these operators. To avoid this restriction, MATLAB
+        provides the function <code>strcmp(&lt;s1&gt;, &lt;s2&gt;)</code> that returns <code>true</code> if the
+        strings are identical and <code>false</code> if they are not.
+        Unfortunately for C programmers, this is not quite the same behavior as the C version, which
+        does a more rigorous comparison returning <code>−1</code>, <code>0</code>, or <code>1</code>. You can study character string comparison in Exercise 6.5.</p>
+        <div class="exercise"><iframe src="..\exercises\exercise_6_5html.html"></iframe></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="5" data-sect-name="Arrays of Strings">
+    <!-- Arrays of Strings -->
+    <h2 id="6_5">6.5 Arrays of Strings</h2>
+    <div class="container">
+      <p>Since a single character string is stored as a vector, it seems natural to
+      consider storing a collection of strings as an array. The most obvious way to
+      do this, as shown in previous examples, has some limitations, for which
+      there are nice, tidy cures built into the MATLAB language. Consider the
+      example shown in Exercise 6.6. Character arrays can be constructed by
+      either of the following:</p>
+      <ul>
+        <li>As a vertical vector of strings, all of which must be the same
+        length</li>
+        <li>By using a special version of
+        the char() cast function that
+        accepts a variable number of
+        strings with different lengths,
+        pads them with blanks to
+        make all rows the same length,
+        and stores them in an array of
+        characters</li>
+      </ul>
+      <div class="exercise"><iframe src="..\exercises\exercise_6_6html.html"></iframe></div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="6" data-sect-name="Engineering Example - Encryption">
+    <!-- Engineering Example -->
+    <h2 id="6_6">6.6 Engineering Example - Encryption</h2>
+    <div class="container clearfix">
+      <p><b>The Problem</b>As public access to information becomes more pervasive, there is increasing
+      interest in the use of encryption to protect intellectual property and private
+      communications from unauthorized access. The following discussion is
+      based on no direct knowledge of the latest encryption technology.
+      However, it illustrates a very simple approach to developing an algorithm
+      that is immune to all but the most obvious, brute-force code-breaking
+      techniques.</p>
+      <div class="float-sm-right card">
+          <img src="..\Images\Fig_6_1.JPG" alt="Figure 6.1" class="fig fig-long card-image">
+          <p class="figure-name card-title">Figure 6.1: An Enigma Machine</p>
+      </div>
+      <p><b>Background</b>Historically, a simple encryption was accomplished using a Caesar cypher that used a single offset value,
+      say N, to replace all characters with the character N spaces farther down the alphabet. If the entered
+      value was 'A' and N was 4, the encrypted text would have 'E'. With strictly manual analysis, without
+      knowing N, it was deemed impossible to decipher messages. In World War II, the German armed forces
+      used a slight modification to this algorithm whereby each key in the alphabet had a different offset value.
+      Figure 6.1 shows an actual Enigma machine that automatically applied the key offset values to messages
+      typed on its keyboard. However, it was vulnerable for two reasons:</p>
+      <ul>
+        <li>there was still a constant mapping between plain text and encrypted charaacters leaving it open to "simple" letter frequency analysis, and</li>
+        <li>since it was difficult to distribute fresh key maps, the maps were only changed once a day.</li>
+      </ul>
+      <p>A massive effort in England led by Alan Turing produced "Colossus" discussed in Paragraph 1.2.2 that was generally recognized as one of the first "general-purpose" computers. It was able to decode a large majority of the intercepted German message traffic, and was credited with contributing to the end of that terrible war.</p>
+      <p><b>The Solution</b> We propose a simple algorithm whereby the key replacement map can be changed rapidly so that
+       the same letter in the original message is only replaced by the same substitute for a short period of time.  Hnce, no simple language analysis will crack the code. The <code>rand(...)</code> function is an excellent source for an appropriate random sequence. If the encryption and decryption processes use the same value to seed the same random generator, the same sequence of apparently random (pseudo-random) values will be generated. Since the seed can take on <code>2<sup>31</sup> – 2</code> values, it is virtually impossible to determine the decryption without knowing the seed value. The seed (i.e., the decryption key) can be transmitted to anyone authorized to decrypt the message by any number of ways. Furthermore, since there are abundant different techniques for generating pseudo-random sequences, the specific generation technique must be known in addition to the seed value for successful decryption.</p>
+       <p><b>Awkward Dilemma:</b> Unfortunately, earlier versions of Matlab had strange implementations of the ability to change the seed and generators of the rand(...) and randn(...) functions.  Rather than struggle with this deprecated implementation, we will take a short tour of the modern implementation for setting up rand(...).</p>
+       <p>There are currently three number generators that consume the current state and generate the next state: 'twister', the default generator, and 'v4' and 'v5uniform' and 'v5normal' the legacy generators.  Each generator can be seeded with an integer value. So we have these implementations:</p>
+      <ul>
+        <li>to generate the next random state, <code>val = rand()</code></li>
+        <li>to set the seed value sd with the default generator:  <code>rnd(sd) </code></li>
+        <li>to select another generator and seed it:  <code>rnd(sd, &lt;gen&gt;) </code> where <code>&lt;gen&gt;</code> is one of the generators above.</li>
+      </ul>
+      <p>Listing 6.2 shows the code for encrypting, the corresponding decryption by this technique and two attempts at decryption decrypt - one with the wrong key and one with the wrong generator.</p>
+    </div>
+    <div class="listing"><iframe src="..\listings\listing_06_2_livehtml.html"></iframe></div>
+    <div class="container">
+      <p>This is the result when the code is run:</p>
+      <p><code>
+      original text: The quality of mercy is not strain'd<br>
+      encrypted text: Xf% FmHH31$ {\ ove10 }M %~4 ]gB-~,yM<br>
+      decrypted text with right values: The quality of mercy is not strain'd (matched)<br>
+      decrypted text with bad seed: 2&gt;W 7Cr]lgq %@ ,N(nV ep [/x h4ac1n+a (not matched)<br>
+      decrypted text with bad generator: 8v&gt; (zx^G'+ /N |Xb#U KC PcN b6I.6$Q~ (not matched)<br>
+    </code></p>
+    </div>
+  </div>
+
+  <!-- Chapter Summary -->
+  <h3>Chapter Summary</h3>
+  <div class="container">
+    <p>This chapter discussed the nature, implementation, and behavior of character
+    strings. We learned the following:</p>
+    <ul>
+      <li>Character strings are merely vectors of numbers that are presented
+      to the user as single characters</li>
+      <li>We can perform on strings the same operations that can be
+      performed on vectors; if mathematical operations are
+      performed, MATLAB first converts the characters to double
+      values</li>
+      <li>We can convert between string representations of numbers and the
+      numbers themselves using built-in functions</li>
+      <li>MATLAB provides functions that convert numbers to text strings
+      for presentation in the Command window</li>
+      <li>Arrays of strings can be assembled using the char(...) function</li>
+    </ul>
+  </div>
+
+<!--[Special Characters]
+
+[Problems]-->
+
+
+</body>
+</html>

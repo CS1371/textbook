@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2019b"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S1 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Exercise 13.1</span></h3><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span>pic = imread(</span><span style="color: rgb(160, 32, 240);">'&lt;your_favorite_image.jpg'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>[rows, cols, clrs] = size(pic);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>imshow(pic(2:2:end, 3:3:end, :));</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>RFactor = 1.43; CFactor = 0.75; </span><span style="color: rgb(60, 118, 61);">% shrink / stretch factors</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>rowVec = round(linspace(1, rows, Rfactor*rows));</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>colVec = round(linspace(1, cols, Cfactor*cols));</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>imshow(pic(rowVec, colVec,:)); </span><span style="color: rgb(60, 118, 61);">% shrunk / stretched image</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span>imshow(pic(:, :, [2 3 1])); </span><span style="color: rgb(60, 118, 61);">% re-ordering the color layers</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+% Exercise 13.1
+
+pic = imread('<your_favorite_image.jpg');
+[rows, cols, clrs] = size(pic);
+imshow(pic(2:2:end, 3:3:end, :));
+RFactor = 1.43; CFactor = 0.75; % shrink / stretch factors
+rowVec = round(linspace(1, rows, Rfactor*rows));
+colVec = round(linspace(1, cols, Cfactor*cols));
+imshow(pic(rowVec, colVec,:)); % shrunk / stretched image
+imshow(pic(:, :, [2 3 1])); % re-ordering the color layers
+##### SOURCE END #####
+--></body></html>

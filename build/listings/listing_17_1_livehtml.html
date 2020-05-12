@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2019b"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S1 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Listing 17.1: Testing Stacks, Queues, and Priority Queues</span></h3><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>main</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">%    Test a Stack</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    stack = [];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    rv = round(rand(1,6)*100 - 25);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    stack = pushvec(stack, rv);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    sv = popvec(stack); </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">if </span><span>length(rv) == length(sv) </span><span style="color: rgb(0, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        &amp;&amp; all(sv == rv(end:-1:1))</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        fprintf(</span><span style="color: rgb(160, 32, 240);">'Stack good\n'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">else</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        fprintf(</span><span style="color: rgb(160, 32, 240);">'Stack bad!!!\n'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">%    Test a Queue</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    rv = round(rand(1,5)*100 - 25);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    q = [];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    q = enqvec(q, rv);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    sv = deqvec(q); </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">if </span><span>length(rv) == length(sv) </span><span style="color: rgb(0, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        &amp;&amp; all(sv == rv) </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        fprintf(</span><span style="color: rgb(160, 32, 240);">'Queue good\n'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">else</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        fprintf(</span><span style="color: rgb(160, 32, 240);">'Queue bad!!!\n'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">%    Test a Priority Queue</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    rv = round(rand(1,5)*100 - 25);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    pq = [];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    pq = pqenqvec(pq, rv);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    sv = deqvec(pq); </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">if </span><span>length(rv) == length(sv) </span><span style="color: rgb(0, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        &amp;&amp; all(diff(sv) &gt;= 0) </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        fprintf(</span><span style="color: rgb(160, 32, 240);">'Priority Queue good\n'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">else</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        fprintf(</span><span style="color: rgb(160, 32, 240);">'Priority Queue bad!!!\n'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'></div></div></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>ans = is_before(a, b)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    acl = class(a);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    ans = false;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">if </span><span>isa(b, acl)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">switch </span><span>acl</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(0, 0, 255);">case </span><span>{</span><span style="color: rgb(160, 32, 240);">'double' 'logical' 'uint8'</span><span>}</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                ans = a &lt; b;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(0, 0, 255);">case </span><span style="color: rgb(160, 32, 240);">'char'</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                ans = strcmp(a,b);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(0, 0, 255);">case </span><span style="color: rgb(160, 32, 240);">'struct'</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                </span><span style="color: rgb(0, 0, 255);">if </span><span>isfield(a, </span><span style="color: rgb(160, 32, 240);">'key'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                    ans = a.key &lt; b.key;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                </span><span style="color: rgb(0, 0, 255);">elseif </span><span>isfield(a, </span><span style="color: rgb(160, 32, 240);">'dod'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                    ans = age(a) &lt; age(b);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                </span><span style="color: rgb(0, 0, 255);">else</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                    error(</span><span style="color: rgb(160, 32, 240);">'comparing unknown structures'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(0, 0, 255);">otherwise</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                error([</span><span style="color: rgb(160, 32, 240);">'can''t compare ' </span><span>acl </span><span style="color: rgb(160, 32, 240);">'s'</span><span>])</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>v = popvec(stk)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% pop a vector from a stack</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    v = [];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">while </span><span>~isempty(stk)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        [stk val] = pop(stk);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        v = [v val];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>stk = pushvec(stk, V)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% push a vector onto a stack</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">for </span><span>v = V</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        stk = push(stk, v);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>v = deqvec(q)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% dequeue a vector from a queue</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    v = [];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">while </span><span>~isempty(q)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        [q val] = deq(q);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        v = [v val];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>q = enqvec(q, V)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% enqueue a vector on a queue</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">for </span><span>v = V</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        q = enq(q, v);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>q = pqenqvec(q, V)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% enqueue a vector on a priority queue</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">for </span><span>v = V</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        q = pqenq(q, v);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>s = push(s, data)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% push an item onto a stack</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	s = [s {data}];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>[s ans] = pop(s)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% pop an item off a stack</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	ans = s{end};</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	s = s(1:(end-1));</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>q = enq(q, data)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% enqueue onto a queue</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    q = [q {data}];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>[q ans] = deq(q)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% dequeue an item from a queue</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    ans = q{1};</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    q = q(2:end);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>pq = pqenq(pq, item)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% enqueue in order to a priority queue</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	in = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	at = length(pq)+1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(0, 0, 255);">while </span><span>in &lt;= length(pq)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">if </span><span>is_before(item, pq{in})</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            at = in;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(0, 0, 255);">break</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        in = in + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	pq = [pq(1:at-1) {item} pq(at:end)];</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+function main
+% Listing 17.1: Testing Stacks, Queues, and Priority Queues
+%    Test a Stack
+    stack = [];
+    rv = round(rand(1,6)*100 - 25);
+    stack = pushvec(stack, rv);
+    sv = popvec(stack); 
+    if length(rv) == length(sv) ...
+        && all(sv == rv(end:-1:1))
+        fprintf('Stack good\n');
+    else
+        fprintf('Stack bad!!!\n');
+    end
+%    Test a Queue
+    rv = round(rand(1,5)*100 - 25);
+    q = [];
+    q = enqvec(q, rv);
+    sv = deqvec(q); 
+    if length(rv) == length(sv) ...
+        && all(sv == rv) 
+        fprintf('Queue good\n');
+    else
+        fprintf('Queue bad!!!\n');
+    end
+%    Test a Priority Queue
+    rv = round(rand(1,5)*100 - 25);
+    pq = [];
+    pq = pqenqvec(pq, rv);
+    sv = deqvec(pq); 
+    if length(rv) == length(sv) ...
+        && all(diff(sv) >= 0) 
+        fprintf('Priority Queue good\n');
+    else
+        fprintf('Priority Queue bad!!!\n');
+    end
+end
+%%
+function ans = is_before(a, b)
+    acl = class(a);
+    ans = false;
+    if isa(b, acl)
+        switch acl
+            case {'double' 'logical' 'uint8'}
+                ans = a < b;
+            case 'char'
+                ans = strcmp(a,b);
+            case 'struct'
+                if isfield(a, 'key')
+                    ans = a.key < b.key;
+                elseif isfield(a, 'dod')
+                    ans = age(a) < age(b);
+                else
+                    error('comparing unknown structures')
+                end
+            otherwise
+                error(['can''t compare ' acl 's'])
+        end
+    end
+end
+function v = popvec(stk)
+% pop a vector from a stack
+    v = [];
+    while ~isempty(stk)
+        [stk val] = pop(stk);
+        v = [v val];
+    end
+end
+function stk = pushvec(stk, V)
+% push a vector onto a stack
+    for v = V
+        stk = push(stk, v);
+    end
+end
+function v = deqvec(q)
+% dequeue a vector from a queue
+    v = [];
+    while ~isempty(q)
+        [q val] = deq(q);
+        v = [v val];
+    end
+end
+function q = enqvec(q, V)
+% enqueue a vector on a queue
+    for v = V
+        q = enq(q, v);
+    end
+end
+function q = pqenqvec(q, V)
+% enqueue a vector on a priority queue
+    for v = V
+        q = pqenq(q, v);
+    end
+end
+function s = push(s, data)
+% push an item onto a stack
+	s = [s {data}];
+end
+function [s ans] = pop(s)
+% pop an item off a stack
+	ans = s{end};
+	s = s(1:(end-1));
+end
+    
+function q = enq(q, data)
+    % enqueue onto a queue
+    q = [q {data}];
+end
+function [q ans] = deq(q)
+    % dequeue an item from a queue
+    ans = q{1};
+    q = q(2:end);
+end
+function pq = pqenq(pq, item)
+% enqueue in order to a priority queue
+	in = 1;
+	at = length(pq)+1;
+	while in <= length(pq)
+        if is_before(item, pq{in})
+            at = in;
+            break;
+        end
+        in = in + 1;
+	end
+	pq = [pq(1:at-1) {item} pq(at:end)];
+end
+##### SOURCE END #####
+--></body></html>

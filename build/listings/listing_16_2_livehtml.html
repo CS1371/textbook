@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2019b"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S1 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 16.996px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Listing 16.2: Bubble sort</span></h3><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% Bubble sort</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>main</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">global </span><span>b</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    b = round((rand(1,7)-0.5) .* 100);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    bubblesort();</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'></div></div></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>bubblesort()</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% This function sorts the column array b in place,</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% using the bubble sort algorithm</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% In order to be able to access the array in place, we pass it as a</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% global variable instead of as a parameter.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">global </span><span>b</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Since each pass puts the largest element in place, we can</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% reduce the item count by 1 each time. This initializes the size of the</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% first pass.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    N = length(b);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    right = N-1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Show the loop for the N - 1 major passes.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">for </span><span>in = 1:(N-1)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Show the loop for each major pass.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">for </span><span>jn = 1:right</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(0, 0, 255);">if </span><span>b(jn) &gt; b(jn+1)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                </span><span style="color: rgb(60, 118, 61);">% Swap the current item with its neighbor. By doing this</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                </span><span style="color: rgb(60, 118, 61);">% in place, the largest item is always considered the current </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                </span><span style="color: rgb(60, 118, 61);">% item until it reaches the end.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                tmp = b(jn); </span><span style="color: rgb(60, 118, 61);">% swap b(jn) with b(jn+1)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                b(jn) = b(jn+1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>                b(jn+1) = tmp;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Shortens the row after each major pass because the largest</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% item in the last pass is placed at the right-hand end.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        right = right - 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+% Listing 16.2: Bubble sort
+
+% Bubble sort
+function main
+    global b
+    b = round((rand(1,7)-0.5) .* 100);
+    bubblesort();
+end
+
+%%
+function bubblesort()
+    % This function sorts the column array b in place,
+    % using the bubble sort algorithm
+    
+    % In order to be able to access the array in place, we pass it as a
+    % global variable instead of as a parameter.
+    global b
+    % Since each pass puts the largest element in place, we can
+    % reduce the item count by 1 each time. This initializes the size of the
+    % first pass.
+    N = length(b);
+    right = N-1;
+    % Show the loop for the N - 1 major passes.
+    for in = 1:(N-1)
+        % Show the loop for each major pass.
+        for jn = 1:right
+            if b(jn) > b(jn+1)
+                % Swap the current item with its neighbor. By doing this
+                % in place, the largest item is always considered the current 
+                % item until it reaches the end.
+                tmp = b(jn); % swap b(jn) with b(jn+1)
+                b(jn) = b(jn+1);
+                b(jn+1) = tmp;
+            end
+        end
+        % Shortens the row after each major pass because the largest
+        % item in the last pass is placed at the right-hand end.
+        right = right - 1;
+    end
+end
+##### SOURCE END #####
+--></body></html>
