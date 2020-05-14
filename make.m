@@ -145,8 +145,9 @@ function file = findToConvert(file, info, name, type)
     matlab.internal.liveeditor.openAndConvert(which(name), newname);
     delete(which(name));
     listing = fileread(newname);
-    listing = strrep(listing, 'nowrap', 'normal');
-    listing = strrep(listing, 'pre', 'normal');
+    listing = strrep(listing, ': nowrap;', ': normal;');
+    listing = strrep(listing, ': pre;', ': normal;');
+    listing = strrep(listing, ': pre-wrap;', ': normal;');
     fh_listing = fopen(which(newname), 'w');
     fprintf(fh_listing, '%s', listing);
     fclose(fh_listing);
