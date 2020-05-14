@@ -105,7 +105,7 @@
           <p>The curve in Figure 15.4 was created using the code shown in Listing 15.2.</p>
           <div class="card-deck">
               <div class="card col-sm-6">
-                  <img src="..\Images\Fig_15_4.png" alt="Figure 15.4" class="fig card-image">
+                  <img src="..\Images\Fig_15_4.PNG" alt="Figure 15.4" class="fig card-image">
                   <p class="figure-name card-title">Figure 15.4: Cubic Spline Interpolation</p>
               </div>
                 <!-- Style Points -->
@@ -152,11 +152,11 @@
       <div class="container clearfix">
           <div class="float-sm-right">
               <div class="card">
-                  <img src="..\Images\Fig_15_5.png" alt="Figure 15.5" class="fig card-image">
+                  <img src="..\Images\Fig_15_5.PNG" alt="Figure 15.5" class="fig card-image">
                   <p class="figure-name card-title">Figure 15.5: An eyeball estimate of a linear fit</p>
               </div>
               <div class="card">
-                  <img src="..\Images\Fig_15_6.png" alt="Figure 15.6" class="fig card-image">
+                  <img src="..\Images\Fig_15_6.PNG" alt="Figure 15.6" class="fig card-image">
                   <p class="figure-name card-title">Figure 15.6: Linear Curve Fit</p>
               </div>
           </div>
@@ -191,7 +191,7 @@
           <div id="listing_15_4" class="listing"><iframe src="..\listings\listing_15_4_livehtml.html"></iframe></div>
           <p>The results are shown in Figure 15.7. Notice that with six points, the fifth-order fit goes through all the data points.</p>
           <div class="card">
-              <img src="..\Images\Fig_15_7.png" alt="Figure 15.7" class="fig-wide card-image">
+              <img src="..\Images\Fig_15_7.PNG" alt="Figure 15.7" class="fig-wide card-image">
               <p class="figure-name card-title">Figure 15.7: Higher-order polynomial fits</p>
           </div>
       </div>
@@ -223,7 +223,7 @@
     <h2 id="15_3">15.3 Numerical Integration</h2>
     <div class="container clearfix">
         <div class="card float-right">
-          <img src="..\Images\Fig_15_10.jpg" alt="Figure 15.10" class="fig card-image">
+          <img src="..\Images\Fig_15_10.JPG" alt="Figure 15.10" class="fig card-image">
           <p class="figure-name card-title">Figure 15.10: Integration of \(f(x)\)</p>
         </div>
         <p>The integral of a function \(f(x)\) over the interval \([a, b]\) is defined to be the area under the curve of \(f(x)\) between \(a\) and \(b\), as shown in Figure 15.10. If the value of this integral is \(K\), the notation to represent the integral of \(f(x)\) between \(a\) and \(b\) is as follows:</p>
@@ -240,7 +240,7 @@
       <h3 id="15_3_1">15.3.1 Determination of the Complete Integral</h3>
       <div class="container clearfix">
           <div class="card float-right">
-              <img src="..\Images\Fig_15_11.png" alt="Figure 15.11" class="fig card-image">
+              <img src="..\Images\Fig_15_11.PNG" alt="Figure 15.11" class="fig card-image">
               <p class="figure-name card-title">Figure 15.11: Discrete Integration</p>
           </div>
           <p>Two of the most common numerical integration techniques estimate \(f(x)\) either with a set of piecewise linear functions or with a set of piecewise parabolic functions. If we use piecewise linear functions, we can compute the area of the trapezoids that compose the area under the piecewise linear function. This technique is called the <b>trapezoidal rule</b>. If we use piecewise quadratic functions, we can compute and add the areas of these components. This technique is called <b>Simpson's rule</b>.</p>
@@ -268,11 +268,11 @@
           <p>To compute a more accurate integral, especially if the samples are not regularly spaced along the independent axis, MATLAB also provides the function <code>cumtrapz(t, f)</code> where <code>t</code> is the independent parameter and <code>f</code> the dependent parameter. The function uses trapezoidal integration to calculate the indefinite integral <code>F(t)</code>.</p>
           <div class="card-deck">
               <div class="card">
-                  <img src="..\Images\Fig_15_12.png" alt="Figure 15.12" class="fig card-image">
+                  <img src="..\Images\Fig_15_12.PNG" alt="Figure 15.12" class="fig card-image">
                   <p class="figure-name card-title">Figure 15.12: Velocity of a rocket</p>
               </div>
               <div class="card">
-                  <img src="..\Images\Fig_15_13.png" alt="Figure 15.13" class="fig card-image">
+                  <img src="..\Images\Fig_15_13.PNG" alt="Figure 15.13" class="fig card-image">
                   <p class="figure-name card-title">Figure 15.12: Rocket velocity and amplitude</p>
               </div>
           </div>
@@ -306,7 +306,7 @@
           </ul>
           <p>The quality of all of these types of derivative computations depends on the distance between the points used to estimate the derivative; the estimate of the derivative improves as the distance between the two points decreases.</p>
           <div class="card">
-            <img src="..\Images\Fig_15_14.png" alt="Figure 15.14" class="fig-wide card-image">
+            <img src="..\Images\Fig_15_14.PNG" alt="Figure 15.14" class="fig-wide card-image">
             <p class="figure-name card-title">Figure 15.14: Difference Techniques</p>
           </div>
       </div>
@@ -347,7 +347,7 @@
     <h2 id="15_6">15.6  Implementation</h2>
     <div class="container clearfix">
         <div class="float-sm-right card">
-            <img src="..\Images\Fig_15_15.png" alt="Figure 15.15" class="fig card-image">
+            <img src="..\Images\Fig_15_15.PNG" alt="Figure 15.15" class="fig card-image">
             <p class="figure-name card-title">Figure 15.15: Differentiation</p>
         </div>
         <p>To facilitate differentiation, the MATLAB language defines the <code>diff(...)</code> function, which computes differences between adjacent values in a vector, generating a new vector with one less value than the original:</p>
@@ -363,7 +363,7 @@
     <h2 id="15_7">15.7  Engineering Example - Shaping the Synthesizer Notes</h2>
     <div class="container clearfix">
         <div class="card float-sm-right">
-          <img src="..\Images\Fig_15_16.png" alt="Figure 15.16" class="fig card-image">
+          <img src="..\Images\Fig_15_16.PNG" alt="Figure 15.16" class="fig card-image">
           <p class="figure-name card-title">Figure 15.16: Piano note time history</p>
         </div>
         <p>As discussed in Chapter 14, we can synthesize the frequency content of an instrument by selecting an appropriate number of coefficients from the energy spectrum, multiplying each by an appropriate sine or cosine wave and summing the results. This gives a time trace with constant amplitude, which is fine for an instrument like a trumpet, but notes played on other instruments like a piano have a very non-linear time profile as shown in Figure 15.16. That same figure has two overlays indicating how to develop the decay profile typical of a piano note. First, we choose a modest number of samples that describe the envelope of the sound (marked by red * symbols). Then, we perform a high-order curve fit on that data and check its accuracy by plotting it as the solid line on the same figure.</p>
