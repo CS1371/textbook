@@ -1,0 +1,67 @@
+Style Points 2.1
+1. Some early versions of the FORTRAN and Basic languages
+severely restricted the number of characters you could use
+for variable names. It is no longer necessary to program as if
+you were still in the “bad old days.” Choose names for
+variables that describe their content. For example, a variable
+used to store the velocity of an object should be named
+velocity_in_feet_per_second rather than v.
+2. Since the space character is not permitted in variable
+names, there are two conventions for joining multiple words
+together to make a single variable name. One uses the
+underscore character to separate the words (file_size),
+and the other capitalizes the first letter of additional words
+(fileSize).You should choose one convention and be
+consistent with it. You cannot use a hyphen to concatenate
+words—MATLAB treats the name file-size as the
+arithmetic operation subtracting the value of the variable
+size from the value of the variable file.
+
+Style Points 4.1
+The usual description of the logic suggests that the last case in Listing 4.4 could be the otherwise clause. However, that would prevent you from being able to detect bad month number values, as this code does.
+
+Style Points 4.2
+The use of indentation is not required in the MATLAB language, and it has no significance with regard to syntax. However, the appropriate use of indentation greatly improves the legibility of code and you should use it. You have probably already noted that in addition to colorizing control statements, the text editor automatically places the control statements in the indented positions illustrated in Listings 4.3 and 4.4.
+
+Style Points 4.3
+We wrote the for loop examples in two styles: the direct access style and the indexing style. Many people code in the indexing style even when the index value is not explicitly required. This is slightly tacky and demonstrates a lack of appreciation for the full power of the MATLAB language.
+
+
+Style Points 4.4
+The use of break and continue statements is frowned upon in programming circles for the same reason that the goto statement has fallen into disrepute—they make it more difficult to understand the flow of control through a complex program. It is preferable to express the logic for remaining in a while loop explicitly in its controlling logical expression, combined with if statements inside the loop to skip blocks of code. However, sometimes this latter approach causes code to be more complex than would be the case with judicious use of break or continue.
+
+Style Point 5.1 Parameter Passing
+Some languages provide an alternative technique—“passing by reference”—whereby the memory location for the parameters is passed to the function while the values remain in the caller’s workspace. Syntactically, this is usually a bad thing, allowing deliberate or accidental assignments to “reach back” into the scope of the calling code and thereby perhaps causing undesirable side effects. However, restricting parameter access to passing by value can result in poor program performance. When a function needs access to large sets of data, consider improving the efficiency by using global variables.
+
+Style Points 5.2
+1.	Before you include a function in a complex algorithm, you should always test its behavior in isolation in a script. This test script should validate not only the normal operation of the function, but also its response to erroneous input data it might receive.
+2.	Although any legal MATLAB instruction is permitted within the code body of a function, it is considered bad form (except temporarily for debugging purposes) to display values in the Interactions window.
+3.	We also actively discourage the use of the input(...) function within the code body. If you need to input some values to test a function, do so from the Interactions window or a test script.
+
+Style Points 8.1
+In a practical sense, saving workspace data is very rarely an appropriate approach to saving work because it saves the results but not the code that generated the results. It is almost always better to save the scripts and raw data that created the workspace. For example, this is a good idea when you have a lengthy computation (perhaps one run overnight) to prepare data for a display. You could split that script into two halves. The first half would do the overnight calculation and save the workspace. The second part can then read the workspace quickly, and you can develop sophisticated ways to display the data without having to re-run the lengthy calculations.
+
+ Stype Points 9.1
+1.	You should allow the exception-processing mechanism to simplify the structure of your code. Rather than attempting to detect every possible data error and return error condition, perhaps from deeply nested function calls, allow the exception mechanism to return control directly to the code that can deal with the problem.
+2.	Exception processing is for processing events that occur outside the normal thread of execution. It may be tempting at times to use the exception mechanism as a clever means of changing the normal flow of program control, but resist that temptation. It produces ugly, untraceable  code and should be avoided.
+ 
+Style Points 10.1
+It is conceivable—and in fact,  a common  practice—to combine multiple operations into one computing module, but it is poor abstraction and leads to code that is hard to understand and/or debug.
+
+
+Style Points 10.2
+A simpler example of collection building occurred when we built the CD collection initially by repeated calls to the makeCD method, as shown in Chapter 7 when we were inserting each item at the end of the collection. However, while that example seems to simplify the process of building the collection, it really did not. The data for the function calls had to be extracted from a CD listing and edited to construct the function calls—normally not an efficient or effective way to compose a collection. Such hard-wiring should generally be avoided.
+
+Style Points 11.1
+All of these capabilities are also available to the script that creates the plots, and you are very likely to want to generate a plot more than once. Therefore, it is unwise to put a significant amount of manual effort into adjusting a plot. It is better to experiment with the manual adjustments and then find out how to make the same adjustments in the script that creates the plots. This also leaves you a permanent record of how the plot was generated.
+ 
+Style Points 11.2
+By convention, good engineers are expected to represent the data with appropriate line styles to avoid misleading the reader. For example, if you have some raw data that is only valid at the measurement points, it should be plotted with symbols only. Connecting the data with a line would imply that the data have some interpolated values, which may not be the case. On the other hand, if you calculate a theoretical curve that is good throughout the range of x, it should be plotted as a continuous curve, perhaps even at a better resolution (more x values) than the raw data samples.
+
+Style Points 15.1
+A good convention to adopt is shown in Figure 15.4:
+•	Use symbols to plot data points that are real values with no associated information connecting them
+•	Draw lines between data points only when there is an
+analytic relationship that connects the data points
+Here, we use a circle symbol for the raw data to emphasize the original source of the information, and a smooth line for the spline curve to indicate that we are assuming a possibly erroneous but continuous relationship between data points.
+ 

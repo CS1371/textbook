@@ -1,0 +1,46 @@
+Common Pitfalls 4.1
+The MATLAB Command window echoes logical results as 1 (true) or 0 (false). In spite of this appearance, logical values are not numeric and should never be treated as if they were.
+
+Common Pitfalls 4.2
+By setting the default answer to the first value, we avoid the problem of seeding the result with a value that could be already outside the range of the vector values. For example, we might think that theMax = 0; would be a satisfactory seed. However, this would not do well if all the elements of A were negative.
+
+Common Pitfalls 6.1
+The if statement uses a logical expression as its controlling
+test; therefore, it is bound by the same comparison rules
+as those applied to vectors. Two strings being compared
+must be of the same length, and all of the comparisons
+must match to result in a logical true . Frequently, we
+expect the if statement to compare strings of unequal
+length. However, this will cause an error whenever two
+strings of unequal length are compared (unless one string
+is just one character). You should use the switch
+statement, which will correctly compare strings of unequal
+length in the case tests.
+
+Common Pitfalls 6.2
+Trying to concatenate strings of unequal length vertically
+into column arrays of strings will cause errors because the
+vertical concatenation must use rows of equal length. Use
+the version of the char(...) function that pads the strings
+with spaces.
+
+Common Pitfalls 7.1
+Be careful. rmfield(...) returns a new structure with the requested field removed. It does not remove that field from your original structure. If you want the field removed from the original, you must assign the result from rmfield(...) to replace the original structure:
+>> A = rmfield(A, 'item1') A =
+item2: 21
+
+Common Pitfalls 7.2	
+ 
+A few very understandable but sneaky errors occur when adding structures that have been created “manually” rather than by means of a standardized constructor function. If the new structure has fields not in the original structure, or extra fields, you see a slightly obscure error: "Subscripted assignment between dissimilar structures."
+Perhaps more puzzling, if you are using an older version of MATLAB, this same error occurs if all the fields are present, but are in the wrong order.
+
+>> fld = 'price';
+ 
+Common Pitfalls 8.1
+It is best not to provide the delimiter unless you have to. Without it, MATLAB will assume that repeated delimiters— like tabs and spaces—are single delimiters. If you do specify a delimiter, it will assume that repeated delimiter characters are separating different, absent field values.
+
+Common Pitfalls 13.1
+Be careful requesting the size of 3-D (and more) arrays. If you leave off variables—as here, you might be tempted not to ask for the number of colors because you know it’s three—the size(...) function multiplies together the remaining dimension sizes. So if img is sized 1200 * 1600, [r,c] = size(img) would return r = 1200 and c = 4800! If you provide to only one variable, it returns a vector of the sizes of each dimension of the array. So v = size(img) returns [1200 1600 3].
+ 
+Common Pitfalls 16.1
+A deceptively simple question arises: Should you expect the worldData at line 6 of Listing 16.7 to contain the field growth? Actually, it will not. Although it appears that the function findBestn adds this field to worldData, it is working with a copy of the worldData structure array that is not returned to the calling script.
