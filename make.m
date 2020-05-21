@@ -12,12 +12,16 @@
 % files and placed in the build folder.
 %
 %% 
+import matlab.internal.liveeditor.LiveEditorUtilities
 
 % Set up build folder
 clear; clc;
 contents = dir();
 if any(strcmp({contents.name}, 'build'))
-    rmdir build s;
+    try
+        rmdir build s;
+    catch
+    end
 end
 mkdir build;
 cd build
@@ -55,6 +59,7 @@ chapters = {st.name};
 
 % Modify and copy preface to build folder
 preface = chapters{contains(chapters,'Preface')};
+fprintf('Process %s\n', preface);
 file = fileread(preface);
 file = strrep(file, '#nav_obj#', navobj);
 file = strrep(file, '#top_nav#', topnav);
@@ -66,8 +71,10 @@ cd ..\..\html
 
 % Modify and copy individual chapters to build folder
 chapters = chapters(1:17);
-for i = 1:17
+% for i = 1:17
+for i = 1:3
     chapter = chapters{i};
+    fprintf('Process %s\n', chapter);
     file = fileread(chapter);
     cd ..
     % Add nav bar
@@ -87,12 +94,17 @@ for i = 1:17
     
     % Replace exercises
     inds = strfind(file, '#exercise_');
-    cd exercises
-    for j = 1:length(inds)
-        inds = strfind(file, '#exercise_');
-        [info, ~] = strtok(file(inds(1)+1:end), '#');
-        name = sprintf('%s.mlx', info);
-        file = findToConvert(file, info, name, 'exercises');
+    try 
+        cd exercises
+        for j = 1:length(inds)
+            inds = strfind(file, '#exercise_');
+            [info, ~] = strtok(file(inds(1)+1:end), '#');
+            name = sprintf('%s.mlx', info);
+            file = findToConvert(file, info, name, 'exercises');
+        end
+    catch ME
+        ME
+        error('Error at findToConvert')
     end
     cd ..
         
@@ -127,6 +139,7 @@ for i = 1:17
     fh = fopen(sprintf('%s.htm', chapter(1:end-4)), 'w');
     fprintf(fh, '%s', file);
     fclose(fh);
+    clear file
     cd ..\..\html
 end
 cd ..    
@@ -142,7 +155,12 @@ function file = findToConvert(file, info, name, type)
         copyfile(name, sprintf('%s', '..\build\', type));
         cd(sprintf('%s', '..\build\', type));
     end
-    matlab.internal.liveeditor.openAndConvert(which(name), newname);
+    try 
+        matlab.internal.liveeditor.openAndConvert(which(name), newname);
+    catch ME
+        ME
+        error('error at openAndConvert') ;
+    end
     delete(which(name));
     listing = fileread(newname);
     listing = strrep(listing, ': nowrap;', ': normal;');
