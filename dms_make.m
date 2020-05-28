@@ -37,13 +37,13 @@ cd ..
 mkdir Images
 mkdir listings
 mkdir exercises
-mkdir audio
+%mkdir audio
 mkdir book_templates
 cd ..
 % path is C:\Users\dmsmi\Documents\textbook
 copyfile html\styles build\html\styles;
 copyfile Images build\Images;
-copyfile audio build\audio;
+%copyfile audio build\audio;
 cd matlab_tools
 % path is C:\Users\dmsmi\Documents\textbook\matlab_tools
 
@@ -68,7 +68,7 @@ chapters = {st.name};
 
 % Modify and copy individual chapters to build folder
 % for i = 1:length(chapters)
-for i = 1:4
+for i = 4:length(chapters)
 % path is C:\Users\dmsmi\Documents\textbook\html
     chapter = chapters{i};
     fprintf('Process %s\n', chapter);
@@ -80,78 +80,100 @@ for i = 1:4
     line = fgets(in);
     while ischar(line)
         pounds = strfind(line, "#");
-        if length(pounds) < 2
-            fprintf(out, '%s', line);
-        else
-            from = 1;
-            for at = 1:2:length(pounds)
-                to = pounds(at)-1;
-                start = pounds(at);
-                try
-                    stop = pounds(at+1);
-                catch
-                    pounds
-                    at
-                end
-                tag = line(start:stop);
-                fprintf(out, '%s', line(from:to));
-                from = stop + 1;
+        % Here's the problem.
+        % Anywhere on the line, we might find 1 or more ASCII lookups
+        % like '&#215;' which is actually × - the multiply sign.
+        % We want to eliminate all of these from consideration as token
+        % plugs
+        % let's just check all the pound locations for the case where the
+        % previous character is '&'. If we find it, just eliminate it
+        % from the pounds v ector before we try to process it.
+        % start at the end and work forward so we don't mess up
+        % the indexing
+        ndx = length(pounds);
+        while ndx > 0
+            at = pounds(ndx);
+            if line(at-1) == '&'
+                pounds(ndx) = [];
+            end
+            ndx = ndx - 1;
+        end
+        from = 1;
+        for at = 1:2:length(pounds)
+            to = pounds(at)-1;
+            start = pounds(at);
+            try
+                stop = pounds(at+1);
+            catch
+                pounds
+                at
+            end
+            tag = line(start:stop);
+            fprintf(out, '%s', line(from:to));
+            from = stop + 1;
 %               Add nav bar
-                if strcmp(tag, '#nav_obj#')
-                    fprintf(out, '%s', newnavobj);
+            if strcmp(tag, '#nav_obj#')
+                fprintf(out, '%s', newnavobj);
 %               % Add top bar
-                elseif strcmp(tag, '#top_nav#')
-                    fprintf(out, '%s', newtopnav);
-                % Replace a listing
-                elseif contains(line, '#listing_') 
-                    inds = strfind(line, '#listing_');
-                    cd listings\livelistings
-                    [info, ~] = strtok(line(inds(1)+1:end), '#');
-                    fprintf(out, '%s', line(1:inds(1)));
-                    name = sprintf('%s_live.mlx', info);
-                    new_plug = findToConvert(info, name, 'listings');
+            elseif strcmp(tag, '#top_nav#')
+                fprintf(out, '%s', newtopnav);
+            % Replace a listing
+            elseif contains(line, '#listing_') 
+                inds = strfind(line, '#listing_');
+                cd listings\livelistings
+                [info, ~] = strtok(line(inds(1)+1:end), '#');
+                fprintf(out, '%s', line(1:inds(1)));
+                name = sprintf('%s_live.mlx', info);
+                new_plug = findToConvert(info, name, 'listings');
+                try
                     fprintf(out, '%s', new_plug); 
-                    % path is C:\Users\dmsmi\Documents\textbook\listings\livelistings
-                    cd ..\..
-                    % path is C:\Users\dmsmi\Documents\textbook
-                % Replace an exercise
-                elseif contains(line, '#exercise_') 
-                    inds = strfind(line, '#exercise_');
-                    cd exercises
-                    % path is C:\Users\dmsmi\Documents\textbook\exercises
-                    [info, ~] = strtok(line(inds(1)+1:end), '#');
-                    name = sprintf('%s.mlx', info);
-                    new_plug = findToConvert(info, name, 'exercises');
-                    fprintf(out, '%s', new_plug); 
-                    % path is C:\Users\dmsmi\Documents\textbook\exercises
-                    cd ..
-                    % path is C:\Users\dmsmi\Documents\textbook\
-                % Replace a template
-                elseif contains(line, '#template_') 
-                    inds = strfind(line, '#');
-                    cd book_templates
-                    [info, ~] = strtok(line(inds(1)+1:end), '#');
-                    name = sprintf('%s.mlx', info);
-                    new_plug = findToConvert(info, name, 'book_templates');
-                    fprintf(out, '%s', new_plug); 
-                    % path is C:\Users\dmsmi\Documents\textbook\book_templates
-                    cd ..
-                    % path is C:\Users\dmsmi\Documents\textbook\
-                % Replace any others (not listings, exercises, templates)
-                else 
-                    inds = strfind(line, '#alt_');
-                    [info, ~] = strtok(line(inds(1)+1:end), '#');
-                    [folderName, name] = strtok(file(inds(1)+1:end), '/');
-                    folderName = folderName(5:end);
-                    name(1) = [];
-                    mkdir(sprintf('%s', 'build\', folderName))
-                    cd(folderName);
-                    [name, ~] = strtok(name, '#');
-                    name = sprintf('%s.mlx', name);
-                    new_plug = findToConvert(info, name, folderName);
-                    fprintf(out, '%s', new_plug); 
-                    cd ..
+                catch ME
+                    ME;
                 end
+                % path is C:\Users\dmsmi\Documents\textbook\listings\livelistings
+                cd ..\..
+                % path is C:\Users\dmsmi\Documents\textbook
+            % Replace an exercise
+            elseif contains(line, '#exercise_') 
+                inds = strfind(line, '#exercise_');
+                cd exercises
+                % path is C:\Users\dmsmi\Documents\textbook\exercises
+                [info, ~] = strtok(line(inds(1)+1:end), '#');
+                name = sprintf('%s.mlx', info);
+                new_plug = findToConvert(info, name, 'exercises');
+                fprintf(out, '%s', new_plug); 
+                % path is C:\Users\dmsmi\Documents\textbook\exercises
+                cd ..
+                % path is C:\Users\dmsmi\Documents\textbook\
+            % Replace a template
+            elseif contains(line, '#template_') 
+                inds = strfind(line, '#');
+                cd book_templates
+                [info, ~] = strtok(line(inds(1)+1:end), '#');
+                name = sprintf('%s.mlx', info);
+                new_plug = findToConvert(info, name, 'book_templates');
+                fprintf(out, '%s', new_plug); 
+                % path is C:\Users\dmsmi\Documents\textbook\book_templates
+                cd ..
+                % path is C:\Users\dmsmi\Documents\textbook\
+            % Replace any others (not listings, exercises, templates)
+            else 
+                inds = strfind(line, '#alt_');
+                try
+                    [info, ~] = strtok(line(inds(1)+1:end), '#');
+                catch ME
+                    ooh = 1;
+                end
+%                 [folderName, name] = strtok(file(inds(1)+1:end), '/');
+%                 folderName = folderName(5:end);
+%                 name(1) = [];
+%                 mkdir(sprintf('%s', 'build\', folderName))
+%                 cd(folderName);
+%                 [name, ~] = strtok(name, '#');
+%                 name = sprintf('%s.mlx', name);
+%                 new_plug = findToConvert(info, name, folderName);
+%                 fprintf(out, '%s', new_plug); 
+%                 cd ..
             end
         end
         line = fgets(in);
@@ -162,6 +184,7 @@ for i = 1:4
 end
 
 function plug = findToConvert(info, name, type)
+    fprintf('findToConvert(%s)\n', name)
     toReplace = sprintf('#%s#', info);
     newname = sprintf('%shtml.html', name(1:end-4));
     
@@ -177,6 +200,7 @@ function plug = findToConvert(info, name, type)
         cd(path)
     end
     try 
+%        matlab.internal.liveeditor.executeAndSave(which(name));
         matlab.internal.liveeditor.openAndConvert(which(name), newname);
     catch ME
         ME

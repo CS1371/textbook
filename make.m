@@ -72,7 +72,7 @@ cd ..\..\html
 % Modify and copy individual chapters to build folder
 chapters = chapters(1:17);
 % for i = 1:17
-for i = 1:3
+for i = 1:17
     chapter = chapters{i};
     fprintf('Process %s\n', chapter);
     file = fileread(chapter);
