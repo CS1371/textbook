@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2020a"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: normal; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: normal; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Exercise 9.2: Processing Exceptions</span></h3><div  class = 'S1'><span>Put the code from Listing 9.2 in a script and execute it, defining the following triangles:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>triangle(2) </span><span style="color: rgb(60, 118, 61);">% wrong number of sides</span></span></div></div></div><div  class = 'S3'><span style=' font-family: monospace;'>   bad triangle - try again</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>triangle([3 4 8]) </span><span style="color: rgb(60, 118, 61);">% bad values</span></span></div></div></div><div  class = 'S3'><span style=' font-family: monospace;'>    bad triangle - try again</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>triangle([3 4 6])</span></span></div></div></div><div  class = 'S3'><span style=' font-family: monospace;'>    the angle is 62.720387</span></div><div  class = 'S1'><span></span></div><div  class = 'S1'><span>Then, edit the script to remove the try statement and the catch block and repeat the test.</span></div><div  class = 'S1'></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+% Exercise 9.2: Processing Exceptions
+% Put the code from Listing 9.2 in a script and execute it, defining the following 
+% triangles:
+
+triangle(2) % wrong number of sides
+%% 
+% |bad triangle - try again|
+
+triangle([3 4 8]) % bad values
+%% 
+% |bad triangle - try again|
+
+triangle([3 4 6])
+%% 
+% |the angle is 62.720387|
+% 
+% 
+% 
+% Then, edit the script to remove the try statement and the catch block and 
+% repeat the test.
+% 
+%
+##### SOURCE END #####
+--></body></html>

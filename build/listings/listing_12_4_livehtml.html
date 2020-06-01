@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2020a"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S1 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Listing 12.4: Rotating a solid cube</span></h3><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% Rotating a solid cube</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>main</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Build coordinates of the cube centered at the origin.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    xx = [ 0 0 0 0 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        -1 -1 1 1 -1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        -1 -1 1 1 -1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        0 0 0 0 0]</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    yy = [ 0 0 0 0 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        -1 1 1 -1 -1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        -1 1 1 -1 -1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        0 0 0 0 0]</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    zz = [ 1 1 1 1 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        1 1 1 1 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        -1 -1 -1 -1 -1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        -1 -1 -1 -1 -1]</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Determine the length of the linearized row vector for the</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% reshape(...) function</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    [r c] = size(xx);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    ln = r*c; </span><span style="color: rgb(60, 118, 61);">% length of reshaped vector</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Set up the three rotation angle parameters - the initial values and</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% the increments</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    th = 0; ph = 0; ps = 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    dth = 0.05; dph = 0.03; dps = 0.01;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Repeat the drawing loop until the variable go is reset.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    go = true</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">while </span><span>go</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Draw one cube not rotated four units down the x axis</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        surf(xx+4, yy, zz)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        shading </span><span style="color: rgb(160, 32, 240);">interp</span><span>; colormap </span><span style="color: rgb(160, 32, 240);">autumn</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        hold </span><span style="color: rgb(160, 32, 240);">on</span><span>; alpha(0.5)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Set up the rotation matrices</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        Rz = [cos(th) -sin(th)  0</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            sin(th) cos(th) 0</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            0	0	1];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        Ry = [cos(ph)	0	-sin(ph)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            0	1	0</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            sin(ph)	0 cos(ph)];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        Rx = [ 1	0	0</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            0	cos(ps) -sin(ps)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            0	sin(ps) cos(ps)];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Reshape the x, y, and z arrays into linear forms</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        P(1,:) = reshape(xx, 1, ln);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        P(2,:) = reshape(yy, 1, ln);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        P(3,:) = reshape(zz, 1, ln);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Performs the rotation</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        Q = Rx*Ry*Rz*P;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Recover the original array shapes</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        qx = reshape(Q(1,:), r, c);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        qy = reshape(Q(2,:), r, c);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        qz = reshape(Q(3,:), r, c);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Draw the rotated cube</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        surf(qx, qy, qz)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        shading </span><span style="color: rgb(160, 32, 240);">interp</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        axis </span><span style="color: rgb(160, 32, 240);">equal</span><span>; axis </span><span style="color: rgb(160, 32, 240);">off</span><span>; hold </span><span style="color: rgb(160, 32, 240);">off</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        axis([-2 6 -2 2 -2 2])</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        lightangle(40, 65); alpha(0.5)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Updates the rotation angles</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        th = th+dth; ph = ph+dph; ps = ps+dps;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Shows the terminating condition</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        go = ps &lt; pi/4</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Pauses to give the figure time to draw</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        pause(0.03)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+% Listing 12.4: Rotating a solid cube
+
+% Rotating a solid cube
+function main
+    % Build coordinates of the cube centered at the origin.
+    xx = [ 0 0 0 0 0;
+        -1 -1 1 1 -1;
+        -1 -1 1 1 -1;
+        0 0 0 0 0]
+    yy = [ 0 0 0 0 0;
+        -1 1 1 -1 -1;
+        -1 1 1 -1 -1;
+        0 0 0 0 0]
+    zz = [ 1 1 1 1 1;
+        1 1 1 1 1;
+        -1 -1 -1 -1 -1;
+        -1 -1 -1 -1 -1]
+    
+    % Determine the length of the linearized row vector for the
+    % reshape(...) function
+    [r c] = size(xx);
+    ln = r*c; % length of reshaped vector
+    
+    % Set up the three rotation angle parameters - the initial values and
+    % the increments
+    th = 0; ph = 0; ps = 0;
+    dth = 0.05; dph = 0.03; dps = 0.01;
+    
+    % Repeat the drawing loop until the variable go is reset.
+    go = true
+    while go
+        % Draw one cube not rotated four units down the x axis
+        surf(xx+4, yy, zz)
+        shading interp; colormap autumn
+        hold on; alpha(0.5)
+        
+        % Set up the rotation matrices
+        Rz = [cos(th) -sin(th)  0
+            sin(th) cos(th) 0
+            0	0	1];
+        Ry = [cos(ph)	0	-sin(ph)
+            0	1	0
+            sin(ph)	0 cos(ph)];
+        Rx = [ 1	0	0
+            0	cos(ps) -sin(ps)
+            0	sin(ps) cos(ps)];
+        
+        % Reshape the x, y, and z arrays into linear forms
+        P(1,:) = reshape(xx, 1, ln);
+        P(2,:) = reshape(yy, 1, ln);
+        P(3,:) = reshape(zz, 1, ln);
+        
+        % Performs the rotation
+        Q = Rx*Ry*Rz*P;
+        
+        % Recover the original array shapes
+        qx = reshape(Q(1,:), r, c);
+        qy = reshape(Q(2,:), r, c);
+        qz = reshape(Q(3,:), r, c);
+        
+        % Draw the rotated cube
+        surf(qx, qy, qz)
+        shading interp
+        axis equal; axis off; hold off
+        axis([-2 6 -2 2 -2 2])
+        lightangle(40, 65); alpha(0.5)
+        
+        % Updates the rotation angles
+        th = th+dth; ph = ph+dph; ps = ps+dps;
+        
+        % Shows the terminating condition
+        go = ps < pi/4
+        
+        % Pauses to give the figure time to draw
+        pause(0.03)
+    end
+end
+##### SOURCE END #####
+--></body></html>

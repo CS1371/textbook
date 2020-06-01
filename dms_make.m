@@ -12,7 +12,7 @@
 % files and placed in the build folder.
 %
 %% 
-import matlab.internal.liveeditor.LiveEditorUtilities
+% import matlab.internal.liveeditor.LiveEditorUtilities
 
 % Set up build folder
 clear; clc;
@@ -68,7 +68,7 @@ chapters = {st.name};
 
 % Modify and copy individual chapters to build folder
 % for i = 1:length(chapters)
-for i = 4:length(chapters)
+for i = 1:length(chapters)
 % path is C:\Users\dmsmi\Documents\textbook\html
     chapter = chapters{i};
     fprintf('Process %s\n', chapter);

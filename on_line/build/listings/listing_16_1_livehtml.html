@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2020a"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S1 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Listing 16.1: Insertion sort</span></h3><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% The insertion sort function</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>main</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    vec = round((rand(1,7)-0.5) .* 100);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    vs = insertionsort(vec);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'></div></div></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>b = insertionsort(a)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% This function sorts a column vector,</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% using the insertion sort algorithm</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% Initializes the result and the while loop parameters</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    b = []; i = 1; sz = length(a);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">while </span><span>i &lt;= sz</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% Calls the helper function to insert the later value into the</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(60, 118, 61);">% output vector</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        b = insert(b, a(i) );</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        i = i + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% The helper function that inserts a new value into a vector and returns</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(60, 118, 61);">% that vector</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">function </span><span>a = insert(a, v)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(60, 118, 61);">% insert the value v into column vector a</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    i = 1; sz = length(a); done = false;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">while </span><span>i &lt;= sz</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">if </span><span>v &lt; a(i)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            done = true;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            a = [a(1:i-1) v a(i:end)];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>            </span><span style="color: rgb(0, 0, 255);">break</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        i = i + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">if </span><span>~done</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        a(end+1) = v;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+% Listing 16.1: Insertion sort
+
+% The insertion sort function
+function main
+    vec = round((rand(1,7)-0.5) .* 100);
+    vs = insertionsort(vec);
+end
+
+%%
+function b = insertionsort(a)
+    % This function sorts a column vector,
+    % using the insertion sort algorithm
+    
+    % Initializes the result and the while loop parameters
+    b = []; i = 1; sz = length(a);
+    while i <= sz
+        % Calls the helper function to insert the later value into the
+        % output vector
+        b = insert(b, a(i) );
+        i = i + 1;
+    end
+end
+
+% The helper function that inserts a new value into a vector and returns
+% that vector
+function a = insert(a, v)
+    % insert the value v into column vector a
+    i = 1; sz = length(a); done = false;
+    while i <= sz
+        if v < a(i)
+            done = true;
+            a = [a(1:i-1) v a(i:end)];
+            break;
+        end
+        i = i + 1;
+    end
+    if ~done
+        a(end+1) = v;
+    end
+end
+##### SOURCE END #####
+--></body></html>

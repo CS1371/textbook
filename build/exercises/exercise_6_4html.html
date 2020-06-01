@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2020a"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: normal; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: normal; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Exercise 6.4: Using the input(...) function</span></h3><div  class = 'S1'><span>1. define fred as a string</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>fred = </span><span style="color: rgb(160, 32, 240);">'Fred'</span><span>;</span></span></div></div></div><div  class = 'S3'><span></span></div><div  class = 'S1'><span>2. Ask for a number and type </span><span style=' font-family: monospace;'>5</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>n = input( </span><span style="color: rgb(160, 32, 240);">'Enter a number: ' </span><span>)</span></span></div></div></div><div  class = 'S3'><span style=' font-family: monospace;'>Enter a number: 5</span></div><div  class = 'S1'><span style=' font-family: monospace;'>n =</span></div><div  class = 'S1'><span style=' font-family: monospace;'>    5</span></div><div  class = 'S1'><span style=' font-family: monospace;'></span></div><div  class = 'S1'><span>3. Despite the prompt asking for a number, enter a known variable name </span><span style=' font-family: monospace;'>fred</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>n = input( </span><span style="color: rgb(160, 32, 240);">'Enter a number: ' </span><span>)</span></span></div></div></div><div  class = 'S3'><span style=' font-family: monospace;'>Enter a number: fred</span></div><div  class = 'S1'><span style=' font-family: monospace;'>n =</span></div><div  class = 'S1'><span style=' font-family: monospace;'>    Fred</span></div><div  class = 'S1'><span style=' font-family: monospace;'></span></div><div  class = 'S1'><span>4. Now try an unknown name </span><span style=' font-family: monospace;'>lsdf</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>&gt;&gt; n = input( </span><span style="color: rgb(160, 32, 240);">'Enter a number: ' </span><span>)</span></span></div></div></div><div  class = 'S3'><span style=' font-family: monospace;'>Enter a number: lsdf</span></div><div  class = 'S1'><span>Matlab throws an error</span></div><div  class = 'S1'><span style=' font-family: monospace;'>Error using input</span></div><div  class = 'S1'><span style=' font-family: monospace;'>Undefined function or variable 'lsdf'..</span></div><div  class = 'S1'><span>Matlab automatically asks for another input to which we give an illegal value, a variable starting with a numeric character</span></div><div  class = 'S1'><span style=' font-family: monospace;'>Enter a number: 2sdf</span></div><div  class = 'S1'><span>Matlab throws an error and asks for another input to which we give a complex expression</span></div><div  class = 'S1'><span style=' font-family: monospace;'>Error: Invalid expression. Check for missing multiplication operator, missing or unbalanced delimiters, or other syntax error. To construct matrices, use brackets instead of parentheses.</span></div><div  class = 'S1'><span style=' font-family: monospace;'>Enter a number: char(fred - 2)</span></div><div  class = 'S1'><span style=' font-family: monospace;'>n =</span></div><div  class = 'S1'><span style=' font-family: monospace;'>    Dpcb</span></div><div  class = 'S1'><span style=' font-family: monospace;'></span></div><div  class = 'S1'><span>Now, enter a string with the single quotes</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>n = input( </span><span style="color: rgb(160, 32, 240);">'Enter a number: ' </span><span>)</span></span></div></div></div><div  class = 'S3'><span style=' font-family: monospace;'>Enter a number: 'ABCD'</span></div><div  class = 'S1'><span style=' font-family: monospace;'>n =</span></div><div  class = 'S1'><span style=' font-family: monospace;'>    ABCD</span></div><div  class = 'S1'><span>using the second parameter 's', we don't need the single quotes</span><span style=' font-family: monospace;'> </span><span style=' font-family: monospace;'>&gt;&gt; n = input( 'Enter a number: ' , 's' )</span></div><div  class = 'S1'><span style=' font-family: monospace;'>Enter a number: ABCD</span></div><div  class = 'S1'><span style=' font-family: monospace;'>n =</span></div><div  class = 'S1'><span style=' font-family: monospace;'>    ABCD</span></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+% Exercise 6.4: Using the input(...) function
+% 1. define fred as a string
+
+fred = 'Fred';
+%% 
+% 
+% 
+% 2. Ask for a number and type |5|
+
+n = input( 'Enter a number: ' )
+%% 
+% |Enter a number: 5|
+% 
+% |n =|
+% 
+% |5|
+% 
+% 
+% 
+% 3. Despite the prompt asking for a number, enter a known variable name |fred|
+
+n = input( 'Enter a number: ' )
+%% 
+% |Enter a number: fred|
+% 
+% |n =|
+% 
+% |Fred|
+% 
+% 
+% 
+% 4. Now try an unknown name |lsdf|
+
+>> n = input( 'Enter a number: ' )
+%% 
+% |Enter a number: lsdf|
+% 
+% Matlab throws an error
+% 
+% |Error using input|
+% 
+% |Undefined function or variable 'lsdf'..|
+% 
+% Matlab automatically asks for another input to which we give an illegal value, 
+% a variable starting with a numeric character
+% 
+% |Enter a number: 2sdf|
+% 
+% Matlab throws an error and asks for another input to which we give a complex 
+% expression
+% 
+% |Error: Invalid expression. Check for missing multiplication operator, missing 
+% or unbalanced delimiters, or other syntax error. To construct matrices, use 
+% brackets instead of parentheses.|
+% 
+% |Enter a number: char(fred - 2)|
+% 
+% |n =|
+% 
+% |Dpcb|
+% 
+% 
+% 
+% Now, enter a string with the single quotes
+
+n = input( 'Enter a number: ' )
+%% 
+% |Enter a number: 'ABCD'|
+% 
+% |n =|
+% 
+% |ABCD|
+% 
+% using the second parameter 's', we don't need the single quotes >> n = input( 
+% 'Enter a number: ' , 's' )|
+% 
+% |Enter a number: ABCD|
+% 
+% |n =|
+% 
+% |ABCD|
+##### SOURCE END #####
+--></body></html>

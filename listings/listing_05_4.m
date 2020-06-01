@@ -16,8 +16,9 @@ function days = month_days(month, leap)
             % The code block extends from the case statement to the next
             % control statement (case, otherwise, or end).
             days = 30;
-        case 2	% Feb
-            %% This code block contains an if statement to deal with the
+        case 2	
+		    % February
+            % This code block contains an if statement to deal with the
             % February case. It presumes that a Boolean variable leapYear
             % has been created to indicate whether this month is in a leap year.
             if leap
