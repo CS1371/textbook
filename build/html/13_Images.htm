@@ -154,7 +154,7 @@
               </div>
           </div>
           <div class="float-sm-right card">
-              <img src="..\Images\Fig_13_6.jpg" alt="Figure 13.6" class="fig card-img">
+              <img src="..\Images\Fig_13_6.JPG" alt="Figure 13.6" class="fig card-img">
               <p class="figure-name card-title">Figure 13.6: Plot of the color values on one row of the Vienna image</p>
           </div>
            <p><b>Initial Exploration</b> Before we can do this, however, we need to explore the Vienna picture to determine how to distinguish the gray sky from the rest of the picture. In particular, there are patches of sky visible between the tree branches that must be changed as well as the open sky. Listing 13.1 illustrates a good way to accomplish this. Here we display the image in one figure; choose a representative row in the image that includes some sky showing through the tree (we chose row 350); and then plot the red, blue, and green values of the pixels across that row. Figure 13.6 shows the resulting plot.</p>
@@ -165,11 +165,11 @@
            <div class="listing"><iframe src="..\listings\listing_13_2_livehtml.html"></iframe></div>
            <div class="card-deck">
              <div class="card">
-               <img src="..\Images\Fig_13_7.jpg" alt="Figure 13.7" class="fig card-img">
+               <img src="..\Images\Fig_13_7.JPG" alt="Figure 13.7" class="fig card-img">
                <p class="figure-name card-title">Figure 13.7: The Vienna garden with a blue sky</p>
              </div>
              <div class="card">
-               <img src="..\Images\Fig_13_8.jpg" alt="Figure 13.8" class="fig card-img">
+               <img src="..\Images\Fig_13_8.JPG" alt="Figure 13.8" class="fig card-img">
                <p class="figure-name card-title">Figure 13.8: Magnified image of the wire</p>
              </div>
            </div>
@@ -199,11 +199,11 @@
       <div class="container clearfix">
           <div class="float-sm-right">
            <div class="card">
-               <img src="..\Images\Fig_13_9.jpg" alt="Figure 13.9" class="fig card-img">
+               <img src="..\Images\Fig_13_9.JPG" alt="Figure 13.9" class="fig card-img">
                <p class="figure-name card-title">Figure 13.9: Logic for the kaleidoscope</p>
            </div>
            <div class="card">
-               <img src="..\Images\Fig_13_10.jpg" alt="Figure 13.10" class="fig card-img">
+               <img src="..\Images\Fig_13_10.JPG" alt="Figure 13.10" class="fig card-img">
                <p class="figure-name card-title">Figure 13.10: The kaleidoscope</p>
            </div>
           </div>
@@ -260,7 +260,7 @@
         <p>While images are powerful methods of delivering information to the human eye, they have limitations when being used by computer programs. Our eyes have an astonishing ability to interpret the content of an image, such as the one shown in Figure 13.13. Even a novice observer would have no difficulty seeing that it is a picture of an aircraft in flight. An experienced observer would be able to identify the type of aircraft as a Lockheed C-130 and perhaps some other characteristics of the aircraft.</p>
         <p>While our eyes are excellent at interpreting images, computer programs need a lot of help. One operation commonly performed to reduce the complexity of an image is edge detection, in which the complete image is replaced by a very small number of points that mark the edges of "interesting artifacts." Figure 13.14 shows the results from a simple program attempting to paint the outline of the aircraft in black by putting a black pixel at an identified edge. The key element of the algorithm is the ability to determine unambiguously whether a pixel is part of the object of interest or not. An edge is then defined as a pixel where some of the surrounding pixels are on the object and some are not. The image selected for this exercise makes edge detection simple since the aircraft is everywhere darker than the surrounding sky.</p>
         <div class="float-sm-right card">
-            <img src="..\Images\Fig_13_15.jpg" alt="Figure 13.15" class="fig card-img">
+            <img src="..\Images\Fig_13_15.JPG" alt="Figure 13.15" class="fig card-img">
             <p class="figure-name card-title">Figure 13.15: Overlapping picture layers</p>
         </div>
         <p>The script used to generate this picture is shown in Listing 13.5. The basic approach of the algorithm is to use simple array processing tools to detect the edges across the whole image at once. To accomplish this, we create four arrays, each one row and one column less than the original image and each offset by one pixel, as illustrated in Figure 13.15. The array <code>pix</code> is in the original location, <code>pt</code> is one row up from that location, <code>pl</code> is one row left, and <code>ptl</code> is one row left and up. If we now collapse these arrays on top of each other, we are simultaneously comparing the values of a square of four pixels across the whole image (less one row and one column).</p>
