@@ -31,7 +31,7 @@ navobj = [navobj '<a class="nav-link" href="..\..\index.html">Home</a></li>'];
 navobj = [navobj '<li class="nav-item">'];
 navobj = [navobj '<a class="nav-link" href="Preface.htm">Preface</a></li>'];
 
-for i = 1:length(files)
+for i = 1:17
     % Find chapter information
     filename = files(i).name;
     text = fileread(filename);
@@ -115,6 +115,10 @@ for i = 1:length(files)
     navobj = [navobj '</li>'];
     
 end
+navobj = [navobj '<li class="nav-item">'];
+navobj = [navobj '<a class="nav-link" href="Appendix_A.htm">Appendix A</a></li>'];
+navobj = [navobj '<li class="nav-item">'];
+navobj = [navobj '<a class="nav-link" href="Appendix_B.htm">Appendix B</a></li>'];
 
 % Close chapter list and overall nav
 navobj = [navobj '</ul>'];

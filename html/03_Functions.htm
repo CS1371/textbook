@@ -233,13 +233,116 @@
 			same rules as the main function</li>
 		</ul>
 	</div>
+<h2>Self Test</h2>
+<div class="container">
 
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>All data used by a function must be passed in as parameters to the function.</li>
+<li>The name of the first function in an m-file must match the name of the file containing its definition.</li>
+<li>The first documentation line appears in the Current Directory listing.</li>
+<li>Functions must consume at least one parameter.</li>
+<li>The calling code must provide assignments for every result returned from a function.</li>
+<li>The names of auxiliary functions must begin with local_.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li> _________permits a code block to be packaged and referred to collectively rather than individually.</li>
+<li>Values of the ___________ parameters are copied to define the ____________________
+ 	 parameters inside the function.</li>
+<li>If more than one result is to be returned from a function, they are defined in a(n) _____________.</li>
+<li> ___________ describes the situation where the variables within a function are not visible from outside, and the function is unable to cause side effects by making assignments to outside variables.</li>
+<li>Calling code can only reach the	__________________ function in an m-file.
+Other functions in the m-file can only be called from the __________________ or	__________________.</li>
+</ol>
+
+<h3>Programming Projects</h3>
+<ol>
+<li>Write a function called checkFactor that takes in two numbers and checks if they are divisible, that is, if the first is divisible by the second. You may assume that both numbers are positive. Your function should return a logical value, true or false.<br>
+For example:<br>
+ 
+checkFactor(25,6) should return false<br>
+checkFactor (9,3) should return true.<br>
+ checkFactor (3,9) should return false.</li>
+<li>Write and test the code for the function mysteryFunction that consumes a vector, V, and produces a new vector, W, of the same length where each element of W is the sum of the corresponding element in V and the previous element of V. Consider the previous element of V(1) to be 0.<br>
+For example:<br>
+
+mysteryFunction( 1:8 ) should return [1 3 5 7 9 11 13 15]<br>
+mysteryFunction([1:6].^2) should return [1 5 13 25 41 61]</li>
+<li>Coming off a respectable 7–6 record last year, your football team is looking to improve on that this season. They have contacted you and asked for your help projecting some of the scenarios for their
+win–loss record. They want you to write a function called teamRecord that takes in two parameters—wins, and losses, and returns two values—season and wPercentage. Season should be a logical result that is true for a winning season. wPercentage is the percentage of games won (ranging from 0 to 100).<br>
+For example:<br>
+[season wPercentage] = teamRecord(3, 9) should return season = false, wPercentage = 25<br>
+[season wPercentage] = teamRecord(10, 2) should return season = true, wPercentage = 83.3</li>
+<li>Write a function called classAverage that takes in an array of numbers and, after normalizing the grades in such a way that the highest corresponds to 100, returns the letter grade of the class average. The grade ranges are as follows:<br>
+average>90 => A<br>
+80<=average<90 => B<br>
+70<=average<80 => C<br>
+60<=average<70 => D<br>
+average<60	=> F<br>
+For example:<br>
+classAverage( [70 87 95 80 80 78 85 90 66
+89 89 100] ) should return B<br>
+classAverage( [50 90 61 82 75 92 81 76 87 41
+31 98] ) should return C<br>
+classAverage( [10 10 11 32 53 12 34 74 31 30
+26 22] ) should return F</li>
+<li>Write a function called myMin4 that will take in four numbers and returns the minimum value and an index showing which parameter it was. You may not use the built-in min() function.<br>
+For example:<br>
+myMin4(1,3,5,7) should return 1 and 1<br>
+myMin4(8,9,2,4) should return 2 and 3</li>
+<li>Write the function meansAndMedian that takes in a vector of numbers and returns the arithmetic and geometric means, as well as the median.<br>
+You may not use the built-in functions mean(), median(), or geomean().<br>
+ 
+Hints: The built-in function sort() might help to compute the median of the vector.<br>
+You could type “help geomean” to familiarize yourself with computing the geometric mean of a group of numbers.</li>
+<li>Given an array of numbers that could be negative, write a function posavg(a) to calculate and return the average (mean) of the non- negative numbers in the single dimensional array, a. One such solution is mean(a(find(a>0))). In order to test your understanding
+of class concepts, re-implement the posavg(a) function using iteration.<br>
+You may not use the built-in functions sum(...), find(...), or mean(...) in your solution.</li>
+<li>Write a function called sumAndAverage. It should take in an array of numbers and return the sum and average of the array in that order.<br>
+For example:<br>
+
+sumAndAverage([3 2 3 2]) should return 10 and 2.5<br>
+sumAndAverage([5 -5 2 8 0]) should return 10 and 2<br>
+sumAndAverage([]) should return 0 and 0</li>
+<li>You are already familiar with the logical operators && (and) and || (or), as well as the unary negation operator ~(not). In a
+weakly typed language such as MATLAB, the binary states true and false could be equivalently expressed as a 1 or a 0, respectively. Let us now consider a ternary number system, consisting of the states true(1), maybe(2), and false(0). The truth table for such a system is shown below. Implement the truth table by writing the functions f=tnot(x), f=tand(x,y), and f=tor(x,y). You may not assume that only valid input numbers will be entered.<br>
+<table>
+<tr><th>  x  </th><th>  y  </th><th>tnot(x)</th><th>tand(x,y)</th><th>tor(x,y)</th></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>2</td><td>0</td><td>2</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>2</td><td>1</td><td>2</td><td>0</td></tr>
+<tr><td>2</td><td>1</td><td>2</td><td>2</td><td>1</td></tr>
+<tr><td>2</td><td>0</td><td>2</td><td>2</td><td>0</td></tr>
+<tr><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+</table>
+</li>
+<li>Write a function called multiSum(A). This particular function should take in a N 3 M array, A, and return four results:<br>
+A 1 × M vector with the sum of the columns, A N × 1 vector with the sum of the rows, and
+Two numbers containing the sums of the two diagonals, the major diagonal first.<br>
+For example:<br>
+
+columnSum([1 2 3; 4 5 6; 7 8 9]) should return
+[12 15 18], [6 15 24]', 15 and 15<br>
+columnSum([0 2 3; 4 0 6; 7 8 0]) should return
+[11 10 9], [5 10 15]', 0 and 10<br>
+columnSum(eye[5,5]) should return [1 1 1 1 1], [1 1 1 1 1]', 5 and 1<br>
+columnSum([]) should return [], [], 0 and 0</li>
+<li>You are playing a game where you roll a die 10 times. If you roll a 5 or 6 seven or more times, you win 2 dollars; four or more times, you win 1 dollar; and if you roll a 5 or 6 three or less times, you win no money. Write a function called diceGame that takes in a vector representing the die values and returns the amount of money won.<br>
+For example:<br>
+diceGame([5 1 4 6 5 5 6 6 5 2]) should return 2<br>
+diceGame([2 4 1 3 6 6 6 4 5 3]) should return 1<br>
+diceGame([1 4 3 2 5 3 4 2 6 5]) should return 0<br>
+Note: This function should work for any length vector.</li>
+ 
+</ol>
+</div>
 </div>
 
-<!--
-<p>[Summary Table 05]<br>
-
-[Problems added here]</p>
--->
 </body>
 </html>

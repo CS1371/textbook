@@ -514,6 +514,185 @@
     </ul>
     </p>
   </div>
+<h2>Self Test</h2>
+<div class="container">
+
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>A homogeneous collection must consist entirely of numbers.</li>
+<li>The function linspace(...) can create only vectors, whereas the
+functions zeros(...) , ones(...) , and rand(...) produce either
+vectors or arrays of any dimension.</li>
+<li>The length(...) function applied to a column vector gives you the
+number of rows.</li>
+<li>You can access any element(s) of an array of any dimension using a
+single index vector.</li>
+<li>Mathematical or logical operators are allowed only between two
+arrays of the same shape (rows and columns).</li>
+<li>You can access data in a vector A with an index vector that is longer
+than A .</li>
+<li>You can access data in a vector A with a logical vector that is longer
+than A .</li>
+<li>When moving a block of data in the form of specified rows and
+columns from array A to array B , the shape of the block in A must
+match the shape of the block in B .</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>Vector elements have two attributes that make them unique: their
+____________ and their ____________.</li>
+<li>Vectors can be created using the colon operator, for example,
+B = 1:3:20 , where the first number is the __________, the second
+number is the ______________, and the third number is the
+______________.</li>
+<li>When indexing a source vector with a logical vector, the result will
+contain the _____________of the source vector corresponding in
+position to the ____________ in the logical vector.</li>
+<li>The normal precedence of operators can be overruled by the use of
+_____________________.</li>
+<li>Arithmetic operations can be performed collectively on the
+individual components of two arrays as long as both arrays
+_______________or one of them is _____________.</li>
+<li>To remove elements from arrays, you write ______________in
+___________________________.</li>
+<li>Removing rows or columns from an array is ________________, and
+can lead to ______________. Wherever possible, use _____________
+to _____________________.</li>
+</ol>
+
+<h3>Programming Projects</h3>
+For these exercises, do not use the direct entry method to construct
+the vectors.
+<ol>
+<li>Write a script that does the following:
+<ul>
+<li>Construct a vector containing all of the even numbers between 6
+and 33, inclusive of the end points. Store your answer in the
+variable evens . ( Note: 33 is not an even number)</li>
+<li>Construct a vector, threes , containing every third number
+starting with 8 and ending at 38.</li>
+<li>Construct a vector, reverse , containing numbers starting at 20
+and counting backward by 1 to 10.</li>
+<li>Construct a vector, theta , containing 100 evenly spaced values
+between 0 and 2pi.</li>
+<li>Construct a vector, myZeros , containing 15 elements, all of which
+are zeros.</li>
+<li>Construct a vector, random , containing 15 randomly generated
+numbers between 1 and 12.</li>
+</ul>
+<li>Write a script that performs the following exercises on vectors:
+<ul>
+<li>You are given a vector vec , defined as: vec = [45 8 2 6 98 55 45
+-48 75] . You decide that you don’t want the numbers with even
+values. Write as script to remove all of the even numbers (i.e., 8, 2,
+6, 98, and 248) from vec . You should alter the vector vec rather
+than storing your answer in a new variable. Since your
+commands must work for any vector of any length, you must not
+use direct entry.</li>
+<li>Create a variable called vLength that holds the length of the
+vector vec modified in part a. You should use a built-in function
+to calculate the value based on the vector itself.</li>
+<li>Create a variable called vSum that holds the sum of the elements
+in vector vec . Do not just enter the value. You should use a
+built-in function to calculate the value based on the vector
+itself.</li>
+<li>Calculate the average of the values in the vector vec two ways.
+First, use a built-in function to find the average of vec . Then,
+use the results from parts b and c to calculate the average
+of vec.</li>
+<li>Create a variable called vProd that holds the product of the
+elements in vector vec . You should use a built-in function to
+calculate the value based on the vector itself.</li>
+</ul>
+<li>Write a script to solve the following problems using only vector
+operations:
+<ul>
+<li>Assume that you have two vectors named A1 and B1 of equal
+length, and create a vector C1 that combines A1 and B1 such that
+C1 = [A1(1) B1(1) A1(2) B1(2) ... . A1(end) B1(end)] . For
+example, if A1 = [2, 4, 8] and B1 = [3, 9, 27] , C1 should
+contain [2, 3, 4, 9, 8, 27]</li>
+<li>Assume that you have two vectors named A2 and B2 of different
+lengths. Create a vector C2 that combines A2 and B2 in a manner
+similar to part a. However, if you run out of elements in one of
+the vectors, C2 also contains the elements remaining from the
+longer vector. <br>
+For example, if A2 = [1, 2, 3, 4, 5, 6] and B2 =
+[10, 20, 30] , then C2 = [1, 10, 2, 20, 3, 30, 4, 5, 6] ;<br>
+ if A2 = [1, 2, 3] and B2 = [10, 20, 30, 40, 50] , then C2 = [1, 10,
+2, 20, 3, 30, 40, 50]</li>
+</ul>
+<li>Write a script that, when given a vector of numbers, nums , creates a
+vector newNums containing every other element of the original vector,
+starting with the first element. For example, if nums = [6 3 56 7 8 9
+445 6 7 437 357 5 4 3] , newNums should be [6 56 8 445 7 357 4] .
+Note: You must not simply hard-code the numbers into your
+answer; your script should work with any vector of numbers.</li>
+<li>You are given a vector, tests, of test scores and wish to normalize
+these scores by computing a new vector, normTests , that will contain
+the test scores on linear scale from 0 to 100. A zero still corresponds
+to a zero, and the highest test score will correspond to 100.<br>
+ For example, <br>
+ if tests = [90 45 76 21 85 97 91 84 79 67 76 72 89
+95 55] , <br>
+normTests should be
+[92.78 46.39 78.35 21.65 87.63 100 93.81 86.6 ...
+81.44 69.07 78.35 74.23 91.75 97.94 56.7];</li>
+<li>Write a script that takes a vector of numbers, A , and return a new vector
+B , containing the cubes of the positive numbers in A . If a particular
+entry is negative, replace its cube with 0. <br>
+For example, <br>
+if A = [1 2 -1 5
+6 7 -4 3 -2 0] , B should be [1 8 0 125 216 343 0 27 0 0]</li>
+<li>Great news! You have just been selected to appear on Jeopardy
+this fall. You decide that it might be to your advantage to
+generate an array representing the values of the questions on
+the board.
+<ul>
+<li>Write a script to generate the matrix jeopardy that consists of
+six columns and five rows. The columns are all identical, but
+the values of the rows range from 200 to 1,000 in equal
+increments.</li>
+<li>Next, generate the matrix doubleJeopardy , which has the same
+dimensions as jeopardy but whose values range from 400 to
+2,000.</li>
+<li>You’ve decided to go even one step further and practice for a
+round that doesn’t even exist yet. Generate the matrix
+squaredJeopardy that contains each entry of the original jeopardy
+matrix squared.</li>
+</ul>
+<li>Write a script named arrayCollide that will combine two arrays,
+sort them, and then return a new array of a specified size.<br>
+Your script should process the following data:
+<ul>
+<li>A : a 2-D array of any size</li>
+<li>B : another 2-D array that may be a different size from A</li>
+<li>N : a number specifying the number of rows for the new array</li>
+<li>M : a number specifying the number of columns for the new
+array.</li>
+</ul>
+Your script should produce an array, res , of size N x M that contains
+the first N x M elements of A and B and is sorted columnwise. If N x M
+is larger than the total number of elements in A and B , you should fill
+empty spots with 0.
+Test this script by writing another script that repeatedly sets the
+values of A , B , M , and N and then invokes your arrayCollide script.
+You can then create as many test cases as you wish.<br> For example,<br> if
+A = [1 2 3; 5 4 6] , B = [7 8; 9 10; 12 11] , N = 3 and M = 4 , res
+will be
+[1 4 7 10
+2 5 8 11
+3 6 9 12]<br>
+Change N to 4, and res will be
+[1 5 9 0
+2 6 10 0
+3 7 11 0
+4 8 12 0</li>
+ 
+</ol>
+</div>
 </div>
 
 

@@ -374,12 +374,175 @@
     <li>A while loop repeats a code block a variable number of times, as long as the conditions specified for continuing the repetition remain true</li>
   </ul>
 </div>
+<h2>Self Test</h2>
+<div class="container">
 
-  <!--[Summary Table 04]
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>MATLAB keywords are colored green by the editor.</li>
+    <li>Indentation is required in MATLAB to define code blocks.</li>
+    <li>It is possible that no code at all is executed by if or switch
+constructs.</li>
+    <li>The word true is a valid logical expression.</li>
+    <li>When evaluating a sequence of logical && expressions, MATLAB
+will stop processing when it finds the first true result.</li>
+    <li>The for loop repeats the enclosed code block a fixed number of
+times even if you modify the index variable within the code block.</li>
+    <li>Using a break statement is illegal in a while loop.</li>
+    <li>The logical expression used in a while loop specifies the conditions
+for exiting the loop.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>MATLAB uses ______________ in the text to define the extent of
+code blocks.</li>
+    <li>The function _________________is implicitly called by MATLAB if
+you supply a vector of logical values to the if statement.</li>
+    <li>It is good practice to include __________ in a switch statement to
+trap illegal values entering the switch.</li>
+    <li>There is no reason to evaluate any more components of a logical or
+expression once a(n) _______ result has been found.</li>
+    <li>A while loop can be repeated a number of times, depending on the
+____________ being processed.</li>
+    <li>If you are in a(n) _____________ loop, you can use the break
+statement to skip immediately out of the _____________ loop.</li>
+</ol>
 
-  [Problems added here]-->
+<h3>Programming Projects</h3>
+<ol>
+<li>Write a script to solve this problem. Assume that you have a vector
+named D. Using iteration (for and/or while) and conditionals (if
+and/or switch), separate vector D into four vectors posEven,
+negEven, posOdd, and negOdd.
+<ul>
+<li>posEven contains all of the positive even numbers in D.</li>
+    <li>negEven contains all of the negative even numbers in D.</li>
+    <li>posOdd contains all of the positive odd numbers in D.</li>
+    <li>negOdd contains all of the negative odd numbers in D.
+</ul>
+For example:
+if D = [-4,-3,-2,-1,0,1,2,3,4],
+posEven=[2,4], negEven=[-4,-2],
+posOdd=[1,3] and negOdd=[-3,-1]</li>
+    <li>You must use either for or while to solve the following problems.
+	<ul>
+<li> Iterate through a vector, A, using a for loop, and create a new
+vector, B, containing logical values. The new vector should
+contain true for positive values and false for all other values. For
+example, if A = [−300 2 5 −63 4 0 −46], the result should be
+B = [false true true false true true false]</li>
+    <li>Iterate through the vector, A, using a while loop, and return a new
+vector, B, containing true for positive values and false for all
+other values.</li>
+    <li>Iterate through a logical array, N, using a for loop, and return a
+new vector, M, containing the value 2 wherever an element of N is
+true and the value −1 (not a logical value) wherever N is false.
+For example, if N = [true false false true true false true],
+the result should be M = [2 −1 −1 2 2 −1 2]</li>
+    <li>Iterate through an array, Z, using a while loop. Replace every
+element with the number 3 until you reach a number larger than
+50. Leave the rest unchanged. For example, if Z = [4 3 2 5 7 9 0
+64 34 43], after running your script, Z = [3 3 3 3 3 3 3 3 34 43]</li>
+</ul>
+    <li>You are hiring grad students to work for your company, which you
+have recently started. The Human Resources department has asked
+you to write a script that will help them determine the chances of an
+individual applicant getting a job after interviewing. The following
+table outlines the rules for determining the chances for the applicant
+to get a job:
+<table>
+<tr><th>GPA Value</th><th>Chance of Being Hired</th></tr>
+<tr><td>GPA>= 3.5</td><td>90%</td></tr>
+<tr><td>3.0<= GPA < 3.5</td><td>80%</td></tr>
+<tr><td>2.5 <= GPA < 3.0</td><td>70%</td></tr>
+<tr><td>2.0 <= GPA < 2.5</td><td>60%</td></tr>
+<tr><td>1.5 <= GPA < 2.0</td><td>40%</td></tr>
+<tr><td>GPA < 1.5</td><td>30%</td></tr>
+</table>
+Your script should repeatedly ask the user for a GPA value and
+compute the student’s chances of being hired. It should continue asking
+for GPA values until a negative number is entered. <br>
+For example:
+<ul>
+<li>GPA input: 4 should give the answer 0.9</li>
+    <li>GPA input: 3.5 should give the answer 0.9</li>
+    <li>GPA input: 3.4 should give the answer 0.8</li>
+</ul>
+    <li>You were just hired for a summer internship with one of the area’s
+best software companies; however, on your first day of work you
+learn that for the next three months, the only job you will have is to
+convert binary (base 2) numbers into decimal numbers (base 10).
+You decide to write a script that will repetitively ask the user for a
+binary number and return its decimal equivalent until an illegal
+number (one containing digits other than 0 or 1) is entered. The
+number entered should contain only the digits 0 and 1. The
+rightmost digit has the value 2 0 and the digit N places to the left of
+that has the value 2 N. <br>
+For example, <br>
+entering 110101 returns
+53 = 25 + 24 + 23 + 20
+You must use iteration to solve this problem. <br>
+Note: The input (...) function prompts the user for a value, parses the characters entered
+according to normal MATLAB rules, and returns the result.</li>
+    <li>You have a friend who has too many clothes to store in his or her
+tiny wardrobe. Being a good friend, you offer to help to decide
+whether each piece of clothing is worth saving. You decide to write
+a script that will compute the value of each piece of clothing. A
+piece of clothing has five attributes that can be used to determine its
+value. The attributes are: condition, color, price, number of matches,
+and comfort. Each attribute will be rated on a scale of 1 to 5. Write a
+script called clothes that will ask the user for the ratings for each
+attribute and store the result in a vector. The order of attributes in
+the vector is: [condition color price matches comfort]
+The script should compute a value between 0 and 100; 100 represents
+a good piece of clothing, while 0 represents a bad piece of clothing.
+The points that should be given for each attribute are shown below:<br>
+<table>
+<tr><th>Condition:</th><td>1=>0; 2=>5; 3=>10; 4=>15; 5=>20</td></tr>
+<tr><th>Color:</th><td>1 => blue => 12;</td></tr>
+<tr><th></th><td>2 => red => 2;</td></tr>
+<tr><th></th><td>3 => pink => 15;</td></tr>
+<tr><th></th><td>4 => yellow => 20;</td></tr>
+<tr><th></th><td>5 => white => 12</td></tr>
+<tr><th>Price:</th><td>1 => 8, 2–3 => 16, 4–5 => 20</td></tr>
+<tr><th>Matches:</th><td>1–2 => 8, 3–5 => 19</td></tr>
+<tr><th>Comfort:</th><td>1 => 6, 2–3 => 13, 4–5 =>18</td></tr>
+</table>
+Note: If a number other than 1–5 is assigned for one of the
+attributes, no points should be given.</li>
+    <li>A "yard" is a traditional English container. It is 36 inches long, and
+can be approximated by a 4-inch diameter glass sphere attached to
+a conical section whose narrow end is 1 inch in diameter, and
+whose wide end is 6 inches in diameter. <br>
+Write a script to do the following: <br>
+<ul>
+<li>ask the user for the height of the liquid in the yard, and</li>
+<li>calculate the volume of liquid needed to fill the yard to that level.</li>
+</ul>
+    <li>Now that you’re comfortable with iteration, you’re going to have to
+solve an interesting problem. It seems that the Math department at a
+rival university has once again dropped the ball, and forgotten the
+value of pi. You are to write a function called mypi, which consumes
+a number that specifies the required accuracy and then
+approximates the value of pi to that accuracy. You are going to use
+the following algorithm based on geometric probability.
+Think about a quarter circle inside of a unit square (the quarter
+circle has area p/4). You pick a random point inside the square. If it
+is in the quarter circle, you get a “hit”; and if not, you get a “miss.”
+The approximate area of the quarter circle will be given by the
+number of hits divided by the number of points you chose.
+Your function should repeat the process of counting
+hits and misses until at least 10,000 tries have been
+made, and the successive estimates of pi are within
+the prescribed accuracy. It should return the
+estimated value of pi.<br>
+Hint: you could use the function rand (...)in this problem.</li>
+ 
+</ol>
 </div>
-
+</div>
 
 
 </body>

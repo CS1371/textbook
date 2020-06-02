@@ -3,7 +3,7 @@
 % Script to build the website with helper function findToConvert()
 % 
 % Build folder is created, and relative stylesheets, images, and audio
-% files are copied over into the correct folder. 
+% files19 are copied over into the correct folder. 
 % The index_template and preface are read in order to replace the top and
 % side nav objects with the corresponding code.
 % Each chapter is read in order to replace the top and side nav objects,
@@ -14,10 +14,9 @@
 %% 
 function one_at_a_time
     clc
-    choice = -1;
-    while choice <= 17
-        fprintf('-1_Initialize\n')
-        fprintf('00_Preface.htm\n')
+    choice = 0;
+    while choice ~= 99
+        fprintf('00_Initialize\n')
         fprintf('01_Introduction.htm\n')
         fprintf('02_Basics.htm\n')
         fprintf('03_Functions.htm\n')
@@ -35,9 +34,12 @@ function one_at_a_time
         fprintf('15_Numerical_Methods.htm\n')
         fprintf('16_Sorting.htm\n')
         fprintf('17_Graphs.htm\n')
-        fprintf('18_Quit\n');
+        fprintf('18_Appendix_A.htm\n');
+        fprintf('19_Appendix_B.htm\n');
+        fprintf('20_Preface.htm\n')
+        fprintf('99_Quit\n');
         choice = input('Choose your action: ');    
-        if choice <= 17
+        if choice ~= 99
             doit(choice)
         end
     end
@@ -49,7 +51,7 @@ function doit(choice)
     chapters = {st.name};
     cd  ..
     switch choice
-        case -1   % initialize the build folders         
+        case 0   % initialize the build folders         
             % Set up build folder
             contents = dir();
             if any(strcmp({contents.name}, 'build'))
@@ -89,20 +91,27 @@ function doit(choice)
             fh = fopen('index.html', 'w');
             fprintf(fh, '%s', file);
             fclose(fh);
-        case 0
-            % Modify and copy preface to build folder
+        case {18 19 20}
+            % Modify and copy odd files to build folder
             if ~isfile('nav.mat')
                 error('build not initialized')
             end 
             load nav.mat
             cd html
-            preface = chapters{contains(chapters,'Preface')};
-            fprintf('Process %s\n', preface);
-            file = fileread(preface);
+            name = '';
+            if choice == 20
+                    name = chapters{contains(chapters,'Preface')};
+            elseif choice == 18
+                    name = chapters{contains(chapters,'Appendix_A')};
+            elseif choice == 19
+                    name = chapters{contains(chapters,'Appendix_B')};
+            end
+            fprintf('Process %s\n', name);
+            file = fileread(name);
             file = strrep(file, '#nav_obj#', navobj);
             file = strrep(file, '#top_nav#', topnav);
             cd ..\build\html
-            fh = fopen(preface, 'w');
+            fh = fopen(name, 'w');
             fprintf(fh, '%s', file);
             fclose(fh);
             cd ..\..
@@ -113,7 +122,7 @@ function doit(choice)
             end 
             load 'nav.mat'
             cd html
-            chapters = chapters(1:17);
+            chapters = chapters(1:20);
             chapter = chapters{choice};
             fprintf('Process %s\n', chapter);
             
