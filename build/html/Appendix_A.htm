@@ -56,8 +56,8 @@
 <tr><td>></td><td>Greater than</td></tr>
 <tr><td>>=</td><td>Greater than or equal to</td></tr>
 <tr><td>==</td><td>Is equal to</td></tr>
-<tr><td>~=</td><td>Is not equal to</td></tr>
-<tr><td>~</td><td>Unary negation</td></tr>
+<tr><td>&#126;=</td><td>Is not equal to</td></tr>
+<tr><td>&#126;</td><td>Unary negation</td></tr>
 <tr><td>&amp;</td><td>Element-by-element logical AND</td></tr>
 <tr><td>&amp;&amp;</td><td>Short-circuit logical AND (scalar)</td></tr>
 <tr><td>|</td><td>Element-by-element logical OR</td></tr>
@@ -181,9 +181,9 @@ Functions</th><th>Description</td></tr>
 <tr><td>ones(r, c)</td><td>Generate an array filled with the value 1</td></tr>
 <tr><td>prod(x)</td><td>Compute the product of all the items in x</td></tr>
 <tr><td>rand(r, c)</td><td>Calculate an r x c array of evenly distributed random numbers in
-the range 0…1</td></tr>
+the range 0 - 1</td></tr>
 <tr><td>randi(IMAX,M,N)</td><td>Calculate an M x N array of evenly distributed random integers in the range 1..IMAX</td></tr>
-<tr><td>randn(r, c)</td><td>Calculate an r x c array of normally distributed random numbers in the range 0…1</td></tr>
+<tr><td>randn(r, c)</td><td>Calculate an r x c array of normally distributed random numbers in the range 0 - 1</td></tr>
 <tr><td>size(a)</td><td>Determine the dimensions of an array</td></tr>
 <tr><td>sparse</td><td>Define a sparse matrix</td></tr>
 <tr><td>[v,in] = sort(v)</td><td>Sort the vector v (a vector or a cell array of strings)</td></tr>
@@ -234,7 +234,7 @@ Type Control</th><th>Description</td></tr>
 <tr><td>*</td><td>Star</td></tr>
 <tr><td>s</td><td>Square</td></tr>
 <tr><td>d</td><td>Diamond</td></tr>
-<tr><td>ˇ</td><td>Triangle down</td></tr>
+<tr><td>v</td><td>Triangle down</td></tr>
 <tr><td>^</td><td>Triangle up</td></tr>
 <tr><td>&lt;</td><td>Triangle left</td></tr>
 <tr><td>&gt;</td><td>Triangle right</td></tr>
@@ -295,8 +295,8 @@ Type Control</th><th>Description</td></tr>
 decimal places</td></tr>
 <tr><td>sprintf(...)</td><td>Format a string result</td></tr>
 <tr><td>sscanf(...)</td><td>Formatted input conversion</td></tr>
-<tr><td>strcmp(s1, s2)</td><td>Compare two strings—returns true if equal</td></tr>
-<tr><td>strcmpi(s1, s2)</td><td>Compare two strings without regard to case—returns true if equal</td></tr>
+<tr><td>strcmp(s1, s2)</td><td>Compare two strings - returns true if equal</td></tr>
+<tr><td>strcmpi(s1, s2)</td><td>Compare two strings without regard to case - returns true if equal</td></tr>
 <tr><td>textscan</td><td>Scan a text string</td></tr>
 </table>
 <table>
@@ -328,7 +328,7 @@ decimal places</td></tr>
 &lt;expression&gt;	the previous test is false</td></tr>
 <tr><td>end</td><td>Terminate a function specification or an if, switch, for, while, or catch block.</td></tr>
 <tr><td>end</td><td>When indexing, the value of the last element in an index vector</td></tr>
-<tr><td>for</td><td>var = v	A code block repeated as many times as there are elements in the
+<tr><td>for var = v</td><td>A code block repeated as many times as there are elements in the
 vector v</td></tr>
 <tr><td>function</td><td>Identify an m-file as a function or begin a helper function within a
 function file</td></tr>
@@ -337,8 +337,8 @@ function file</td></tr>
 <tr><td>if &lt;expression&gt;</td><td>Begin a conditional module—the following code block is executed if the logical expression is true</td></tr>
 <tr><td>lasterror</td><td>Provide a structure describing the environment from which an
 exception was thrown</td></tr>
-<tr><td>nargin</td><td>Determine the number of input parameters actually supplied by a function’s caller</td></tr>
-<tr><td>nargout</td><td>Determine the number of output parameters actually requested by a function’s caller</td></tr>
+<tr><td>nargin</td><td>Determine the number of input parameters actually supplied by a function's caller</td></tr>
+<tr><td>nargout</td><td>Determine the number of output parameters actually requested by a function's caller</td></tr>
 <tr><td>otherwise</td><td>Catch-all code block at the end of a switch statement</td></tr>
 <tr><td>switch &lt;variable&gt;</td><td>Begin a code module selecting specific values of the variable>(must be countable)</td></tr>
 <tr><td>try</td><td>Begin a block of suspect code from which an exception might be thrown
@@ -347,13 +347,13 @@ exception was thrown</td></tr>
 <table>
 <tr><th style="width="250 pixels">Data Class Operations</th><th>Description</td></tr>
 <tr><td>char(...)</td><td>Cast to a character type </td></tr>
-<tr><td>class(<object>)	Determine the data type of an <tr><td>object </td></tr>
+<tr><td>class(&lt;object&gt;)</td><td>Determine the data type of an <tr><td>object </td></tr>
 <tr><td>double(a)</td><td>Cast a to type double</td></tr>
 <tr><td>int8/16/32/64(a)</td><td>Cast a to integer type with the specified number of bits </td></tr>
 <tr><td>uint8/16/32/64(a)</td><td>Cast a to unsigned integer type with the specified number of bits </td></tr>
 <tr><td>isa(obj, str)</td><td>Test for a given data type</td></tr>
 <tr><td>ischar(ch)</td><td>Determine whether the given object is of type char iscell(...)	Determine whether the given object is a cell </td></tr>
-<tr><td>isempty(a)	Test for the empty vector [ ]</td></tr>
+<tr><td>isempty(a)</td><td>Test for the empty vector [ ]</td></tr>
 <tr><td>islogical(a)</td><td>Determine whether the given object is of type logical </td></tr>
 <tr><td>isnumeric(a)</td><td>Determine whether the given object is of type double </td></tr>
 <tr><td>isspace(a)</td><td>Test for the space character</td></tr>

@@ -41,7 +41,8 @@
       <!-- Data Abstraction -->
       <h3 id="4_1_1">4.1.1  Data Abstraction</h3>
       <div class="container">
-        <p>It is frequently convenient to refer to groups of data collectively, for example, “all the temperature readings for May” or “all the purchases from Amazon.” This allows us not only to move these items around as a group, but also to consider mathematical or logical operations on these groups. For example, we could discuss the average, maximum, or minimum temperatures for a month, or that the cost of the Amazon purchases had gone down 3%.</p>
+        <p>It is frequently convenient to refer to groups of data collectively, for example,
+		"all the temperature readings for May" or "all the purchases from Amazon." This allows us not only to move these items around as a group, but also to consider mathematical or logical operations on these groups. For example, we could discuss the average, maximum, or minimum temperatures for a month, or that the cost of the Amazon purchases had gone down 3%.</p>
       </div>
     </div>
 
@@ -88,7 +89,7 @@
         <p>Try working with vectors in Exercise 4.1.</p>
         <div class="exercise"><iframe src="..\exercises\exercise_4_1html.html"></iframe></div>
         <p>The Workspace window enables you to choose the attributes of each variable to be displayed. Select the Workspace window and you will see a row of column headings beginning with 'Name.' Right click on that headings row; a drop-down menu offers the attributes to display.  Common selections are 'Value' and 'Class.' You may also select and drag the column width markers to change the column layout.</p>
-        <p>Notice that if the size of the vector is small enough, the value field shows its actual contents; otherwise, you see a description of its attributes, like <1 &#215 11 double>. Exercise 4.1 deliberately created the vector D with only one element, and perhaps the result surprised you. D was presented in both the Interactions window and the Workspace window as if it were a scalar quantity. This is generally true in the MATLAB language—all scalar quantities are considered vectors of unit length.</p>
+        <p>Notice that if the size of the vector is small enough, the value field shows its actual contents; otherwise, you see a description of its attributes, like <1 &#215 11 double>. Exercise 4.1 deliberately created the vector D with only one element, and perhaps the result surprised you. D was presented in both the Interactions window and the Workspace window as if it were a scalar quantity. This is generally true in the MATLAB language - all scalar quantities are considered vectors of unit length.</p>
       </div>
     </div>
 
@@ -96,7 +97,7 @@
       <!-- Size of a Vector -->
       <h3 id="4_2_2">4.2.2  Size of a Vector</h3>
       <div class="container">
-        <p>A vector also has a specific attribute: its length (<code>n</code> in Figure 4.1). In most implementations, this length is fixed when the vector is created. However, as you will see shortly, the MATLAB language provides the ability to increase or decrease the size of a vector by adding or removing elements. MATLAB also provides two functions to determine the size of arrays in general, and of vectors in particular. The function <code>size(V)</code> when applied to the vector <code>V</code> returns another vector containing two quantities: the number of rows in the vector (always 1) and the number of columns (the length of the vector). The function <code>length(V)</code> returns the maximum value in the size of the size array — for a vector, this is a number indicating its length.</p>
+        <p>A vector also has a specific attribute: its length (<code>n</code> in Figure 4.1). In most implementations, this length is fixed when the vector is created. However, as you will see shortly, the MATLAB language provides the ability to increase or decrease the size of a vector by adding or removing elements. MATLAB also provides two functions to determine the size of arrays in general, and of vectors in particular. The function <code>size(V)</code> when applied to the vector <code>V</code> returns another vector containing two quantities: the number of rows in the vector (always 1) and the number of columns (the length of the vector). The function <code>length(V)</code> returns the maximum value in the size of the size array - for a vector, this is a number indicating its length.</p>
       </div>
     </div>
 
@@ -104,7 +105,7 @@
       <!-- Indexing a Vector -->
       <h3 id="4_2_3">4.2.3   Indexing a Vector</h3>
       <div class="container">
-        <p>As mentioned in section 4.2.2, each element in a vector has two attributes: its value and its position in the vector. You can access the elements in a vector in either of two ways: using a numerical vector or a logical vector. We refer to the process of accessing array elements by their position as “indexing.”</p>
+        <p>As mentioned in section 4.2.2, each element in a vector has two attributes: its value and its position in the vector. You can access the elements in a vector in either of two ways: using a numerical vector or a logical vector. We refer to the process of accessing array elements by their position as "indexing."</p>
       </div>
     </div>
 
@@ -112,7 +113,7 @@
       <!-- Shortening -->
       <h3 id="4_2_4">4.2.4  Shortening a Vector</h3>
       <div class="container">
-        <p>There are times when we need to remove elements from a vector. For example, if we had a vector of measurements from an instrument, and it was known that the setup for the third reading was incorrect, we would want to remove that erroneous reading before processing the data. To accomplish this, we make a rather strange use of the empty vector, []. The empty vector, as its name and symbol suggest, is a vector with no elements in it. When you assign the empty vector to an element in another vector—say, A—that element is removed from A, and A is shortened by one element. Try Exercise 4.2. As you can see in step {3.}, we asked for the fourth element to be removed from a vector initially with eight elements. The resulting vector has only seven elements, and the fourth element, originally with value 1, has been removed.</p>
+        <p>There are times when we need to remove elements from a vector. For example, if we had a vector of measurements from an instrument, and it was known that the setup for the third reading was incorrect, we would want to remove that erroneous reading before processing the data. To accomplish this, we make a rather strange use of the empty vector, []. The empty vector, as its name and symbol suggest, is a vector with no elements in it. When you assign the empty vector to an element in another vector - say, A - that element is removed from A, and A is shortened by one element. Try Exercise 4.2. As you can see in step {3.}, we asked for the fourth element to be removed from a vector initially with eight elements. The resulting vector has only seven elements, and the fourth element, originally with value 1, has been removed.</p>
         <div class="exercise"><iframe src="..\exercises\exercise_4_2html.html"></iframe></div>
         <p>Shortening a vector, however, is very rarely the right solution to a problem and can lead to logical difficulties. Wherever possible, you should use indexing to copy the elements you want to keep rather than using <code>[]</code>to erase elements you want to remove.</p>
       </div>
@@ -122,7 +123,7 @@
       <!-- Operating on Vectors -->
       <h3 id="4_2_5">4.2.5  Operating on Vectors</h3>
       <div class="container">
-        <p>The essential core of the MATLAB language is a rich collection of tools for manipulating vectors and arrays. This section first shows how these tools operate on vectors, and then generalizes to how they apply to arrays (multi- dimensional vectors) and, later, matrices. Three techniques extend directly from operations on scalar values:</p>
+        <p>The essential core of the MATLAB language is a rich collection of tools for manipulating vectors and arrays. This section first shows how these tools operate on vectors, and then generalizes to how they apply to arrays (multi-dimensional vectors) and, later, matrices. Three techniques extend directly from operations on scalar values:</p>
         <ul>
           <li>Arithmetic operations</li>
           <li>Logical operations</li>
@@ -584,8 +585,8 @@ numbers between 1 and 12.</li>
 </ul>
 <li>Write a script that performs the following exercises on vectors:
 <ul>
-<li>You are given a vector vec , defined as: vec = [45 8 2 6 98 55 45
--48 75] . You decide that you don’t want the numbers with even
+<li>You are given a vector vec, defined as: vec = [45 8 2 6 98 55 45
+-48 75] . You decide that you don't want the numbers with even
 values. Write as script to remove all of the even numbers (i.e., 8, 2,
 6, 98, and 248) from vec . You should alter the vector vec rather
 than storing your answer in a new variable. Since your
@@ -658,8 +659,8 @@ increments.</li>
 <li>Next, generate the matrix doubleJeopardy , which has the same
 dimensions as jeopardy but whose values range from 400 to
 2,000.</li>
-<li>You’ve decided to go even one step further and practice for a
-round that doesn’t even exist yet. Generate the matrix
+<li>You've decided to go even one step further and practice for a
+round that doesn't even exist yet. Generate the matrix
 squaredJeopardy that contains each entry of the original jeopardy
 matrix squared.</li>
 </ul>
