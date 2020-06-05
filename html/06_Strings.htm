@@ -478,10 +478,152 @@
       <li>Arrays of strings can be assembled using the char(...) function</li>
     </ul>
   </div>
+<h2>Self Test</h2>
+<div class="container">
 
-<!--[Special Characters]
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>Casting changes the value of a piece of data.</li>
+<li>The ASCII code maps individual characters to their internal
+numerical representation.</li>
+<li>Because the single quote mark ( ' ) delimits strings, you cannot use it
+within a string.</li>
+<li>If you attempt mathematical operations on a character string,
+MATLAB will throw an error.</li>
+<li>The function disp(...) can display multiple values to the
+Command window.</li>
+<li>The function strcmp(...) throws an error if the two strings are of
+unequal length, unless one of them is a single character.</li>
+<li>The switch statement will correctly compare strings of unequal
+length in the case tests.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>Numerical values are stored in MATLAB in _______________ for
+efficient numerical computation.</li>
+<li>Most common __________________, _______________, and many
+_________________are represented in ASCII by the numbers
+________________.</li>
+<li>The function ____________ casts a string to a vector of the same
+length as the string containing the numerical mapping of
+_______________________.</li>
+<li>The function fprintf(...) requires a(n) _____________ that defines
+exactly how the resulting string should be formatted and a variable
+number of ________________.</li>
+<li>Since the _____________ statement tests a logical expression, it
+_____________ test strings of unequal length.</li>
+<li>A special version of the cast function accepts __________________
+strings with different lengths, _____________, and stores them in an
+array of characters.</li>
+</ol>
+<h3>Programming Projects</h3>
+<ol>
+<li>Solve the following introductory problems on strings.
+<ul>
+<li>Write a function dayName that consumes a parameter, day ,
+containing the numerical value of a day in the month of
+September 2008. Your function should return the name of that
+day as a string. For example:
+dayName( 8 ) should return 'Monday'</li>
+<li>You are now given a variable named days, a vector that contains
+the numeric values of days in the month of
+September 2008. Write a script that will
+convert each numeric value in the vector
+days into a string named daysOfWeek with
+the day names separated by a comma and a space. For example, if days = [8, 9, 10], daysOfWeek should
+be 'Monday, Tuesday, Wednesday'
+Notice that there is no separator before the first day name or after
+the last one.'</li>
+<li>
+</ul>
+<li>Consider the problem the MATLAB system has in parsing the string:<br>
+'V=[1 2 3 4; 5,6, 7;8; 9 10]'<br>
+Your task is to use strtok to parse this line and construct the array it
+represents. You will write a function arrayParse that consumes a
+string and returns two variables: a string that is the variable name
+and an array.
+<ul><li>Tokenize the string first using ' = ' as the delimiter to isolate the
+variable name and the expression to be evaluated. Return the
+variable name to the user and save the rest of the line as the
+variable str1 for further processing. You may assume that there
+are no spaces outside the characters ' [. . .].</li>
+<li>Tokenize str1 with ' [ ' and ' ] ' to remove the concatenation
+operators and save the first token as str2.</li>
+<li>Tokenize str2 using ' ; ' as the delimiter. This will produce 0 or
+more strings that represent the rows of the array. Save each in the
+variable rowString . You may assume for now that the first row is
+the longest one.</li>
+<li>Using nested while loops, tokenize each rowString with ' , ' and
+' ' as delimiters and use str2num (. . .) to extract the numerical
+value of each array entry. Save it as rowEntry .</li>
+<li>Concatenate the rowEntry elements horizontally to produce each
+row of the array. If the row is too short, pad it with zeros.</li>
+<li>Concatenate each row vertically to produce the resulting array
+and return that array to the caller.</li>
+<li>Test the function with cases like:<br>
+empty=[]<br>
+row=[1 2 3 4]<br>
+diag=[0 0 0 1; 0 0 1; 0 1; 1]<br>
+</li></ul>
 
-[Problems]-->
+<li>Write a function called DNAcomplement that consumes a set of letters
+as a character array that forms a DNA sequence such as 'gattaca' . The
+function will produce the complement of the sequence so that a's
+become t's , g's become c's , and vice versa. The string 'gattaca'
+would therefore become 'ctaatgt' . You may assume that all the
+letters in the sequence will be lowercase and that they will all be
+either a, t, g, or c .<br>
+Note: You may be tempted to use iteration for this problem, but you
+don’t need it.</li>
+<li>The function rot(s, n) is a simple Caesar cipher encryption
+algorithm that replaces each English letter in places forward or
+backward along the alphabet in the strings. For example, the result
+of rot('Baz!',3) is 'Edc!' . An encrypted string can be deciphered
+by simply performing the inverse rotation on it, that is,
+rot('Edc!',3), which rotates each English letter in the strings three
+places to the left. Numbers, symbols, and non-letters are not
+transformed. Implement the following function:<br>
+function rotatedText=rot(text,n)<br>
+To assist you as you solve this problem, you could write several
+functions as local functions in the rot.m file:<br>
+isUppercaseLetter(letter), getUppercaseLetter(n),
+getLowercaseLetter(n) , and getPosition(letter) .<br>You may also
+wish to use the built-in functions isletter (. . .), find (. . .), and
+mod (. . .).</li>
+<li>You have a big problem. In one of your CS courses, your professor
+decides that the only way you will pass the class is if you write a
+function to get him out of a mess. All the grades in his class have
+been accidentally stored into one long string of characters
+containing only the letters A, B, C, D, F, and Y.
+<ul>
+<li>Your job is to write a function called CrazyGrade that will take in
+the string and flip the grades according to the following
+specifications:<br>
+A becomes F<br>
+B becomes D<br>
+C remains unchanged<br>
+D becomes B<br>
+F becomes A<br>
+Y becomes W<br>
+Your function should take in a string and return an inverted string.
+You may assume that the string will only consist of valid letter
+grades. For example,<br>
+CrazyGrade('BADDAD') should return 'DFBBFB'<br>
+CrazyGrade('BAYBAY') should return 'DFWDFW'<br></li>
+<li>To make matters worse, he wants you to organize this modified
+grade set. Write a function called GradeDist to bunch together all
+the similar grades (put all the A's next to each other, B's next to
+each other, etc.) Then, calculate and return the professor's grade
+distribution. Your function should take in a string and return a
+string with all similar grades grouped together, along with an
+array containing percentage values from A's all the way to F's. For
+example, if there are 15% A's, 16% B's, 33% C's, 16% D's, 16% F's,
+and 4% W's, GradeDist should return [15 16 33 16 16 4].</li>
+</ol>
+</div>
+</div>
 
 
 </body>

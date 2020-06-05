@@ -287,9 +287,131 @@
       <li>Lower-level functions provide the ability to open and close files, and to read and write text files in any form that is required</li>
     </ul>
   </div>
-<!--[Special Characters]
+<h2>Self Test</h2>
+<div class="container">
 
-[Problems]-->
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>All data files should be treated as a sequential series of characters.</li>
+      <li> When you save a workspace, you are actually saving the scripts that
+generate the data in the workspace.</li>
+      <li>MATLAB reads strings from tab- or comma-delimited files by
+recognizing the double quotes that delimit strings.</li>
+      <li>If you use fopen(...) to open an existing file and write to it, the
+original data in the file will be overwritten.</li>
+      <li>The function fgets(fh) does not always return a string.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>In general, data files contain text that represents the ________ of the
+data and control characters that specify the _____________ of the
+data.</li>
+      <li>The MATLAB readcell(...) function returns three results: the
+____________ in a(n) __________, the __________ in a(n) __________,
+and _____________ in a ____________.</li>
+      <li>When using dlmread(...) to populate a(n) ___________, any
+unassigned values are ___________.</li>
+      <li>When using fopen(...) , the consequence of failure to open the file
+is _____________.</li>
+</ol>
+
+<h3>Programming Projects</h3>
+<ol>
+<li>Write a script that performs the following operations:
+<ul>
+<li>Set the value of variables a, b, c1, c2, c3, and x . The values
+don’t matter, except you should set c2 to 42.</li>
+      <li>Save the values of all the variable except x to mydata.mat using
+the save operation.</li>
+      <li>Set the value of c2 to -99.</li>
+      <li>Load myData.mat and check that c2 is now 42.</li>
+      <li>Clear all variables.</li>
+      <li>Load myData.mat again and note that the variable x is not present.
+</ul></li>
+      <li>One requirement for all freshmen classes is an issue of a 'Standing'
+during the middle of the term. The results are either Satisfactory (S)
+or Unsatisfactory (U) . Since you are the office employee in charge of
+issuing these grades, you decide to write a function called
+midtermGrades to help yourself. You discover that the grades are on
+a spreadsheet organized like this:
+<ul>
+<li>Each student is represented by one row on the spreadsheet.</li>
+      <li>Unfortunately, since these sheets are created by different
+instructors, they are not necessarily consistent in their layout.</li>
+      <li>The first row will contain the following six strings in any order:<br>
+'name', 'math', 'science', 'english', 'history', and 'cs'.</li>
+      <li>Under the name column will be a string with the student's name.</li>
+      <li>Grades in the other columns can be 'A', 'B', 'C', 'D', 'F', or
+'W</li>
+      <li>A student's grade is 'S' if there are more A's, B's and C's than
+not.</li>
+      </ul>
+Your function should print out grades ready to be entered consisting
+of a table with headings 'Name' and 'S/U'</li>
+      <li>Write a function called genStats that will compute statistics for a set
+of class grades. The grades will be stored in a spreadsheet, and your
+function will compute statistics and then write the grades along
+with the statistics to another spreadsheet. <br>
+You may assume that the initial spreadsheet will have a format
+similar to:<br>
+Student Name Exam1 Exam2 Exam3 ...<br>
+student 1 100 76 45 ...<br>
+student 2 34 83 89 ...<br>
+The first row is the header row, and the first column is the list of
+student names. There may be any number of exam grades, and there
+may be any number of students. Although, you may assume that
+there will be at least one student and that there will be at least one
+exam.<br>
+Also, every student will have a grade for every exam.
+Your function should only have one input (a string containing the
+file name of the grades file) and no outputs. You must write your
+function to perform the following steps:
+<ul>
+<li>Calculate the average grade of each student (across the rows) and
+store it in a new column called 'Average' (to the right of the last
+exam grade).</li>
+      <li>Calculate the deviation of each student's overall average
+(calculated in step a) from the maximum student average and
+store it in a new column called 'Deviation' (to the right of the
+'Average' column). Note that deviation is just the difference
+between the maximum student average and a student's overall
+average.</li>
+      <li>Calculate the average of each column's data (each exam), the
+averages calculated in step a, and the deviations calculated in
+step b, then store these averages below the last row of the original
+data and name that row 'Total Average'.</li>
+      <li>Write the original data along with all of the new data to a file
+named 'Stats_&lt;name_of_original_file&gt;' (so if the inputted file
+name was 'Student_Grades.csv' , the new data would be written
+to the file named 'Stats_Student_Grades.csv' ).</li>
+      <li>Construct a spreadsheet with suitable test data and use it to test
+your function.</li>
+      </ul></li>
+      <li>Write a function called replaceStr . Your function should take in the
+following order:<br>
+filename: A string that corresponds to the name of a file<br>
+wordA: A string that is a word (contains no spaces)<br>
+wordB: Another string that is also a word (contains no spaces)<br>
+Your function should do the following:
+<ul>
+<ul>Read the file a line at a time.</li>
+      <li>On each line, replace every occurrence of wordA with wordB.</li>
+      <li>Write the modified text file with the same name as the original
+file, but preprended with 'new_' . For instance, if the input
+filename was 'data.txt' , the output filename would be 'new_
+data.txt'.</li>
+      <li>Prepare a test file by downloading a text file from the Internet.
+For example, the complete works of Shakespeare are accessible at
+http://www.william-shakespeare.info</li>
+      <li>Examine the file for repeated words, and test your function by
+writing a script that replaces frequently repeated words.</li>
+</ul></li>
+ 
+</ol>
+</div>
+</div>
 
 
 </body>

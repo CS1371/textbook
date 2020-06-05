@@ -319,12 +319,12 @@
           <p>We have seen earlier that theoretical algorithms are OK for small problems, but for commercial algorithms that process large quantities of data, much care must be taken to ensure that the algorithm is fast enough and covers the nasty cases that make algorithms look foolish.</p>
           <ul>
               <li><b>"Layering" the problem</b>: Returning to the Sat Nav problem of finding a path from a house in Atlanta to a house in Los Angeles, if you were personally planning that route, you would not need to consider all the surface streets across the country. Rather, you would probably use a greedy algorithm to compute the route from the starting place to the nearest expressway on ramp, and from the destination to the nearest off ramp. The remains of the trip would be taken care of with a greedy algorithm on expressways only from the selected on ramp to the selected off ramp, and then stitch the three paths together.</li>
-              <li><b>Informed Search</b>: A number of researchers have enhanced the basic greedy algorithm to avoid the silly solutions.  A* is one such algorithm. It uses heuristics to maintain a small number of competing paths until they either became to costly or merged to a point where the best can be selected. One aspect of the algorithm design is choosing how many paths to maintain. This becomes a trade-off between computational speed and the need to avoid ridiculous behavior.  A normal greedy algorithm is the fast end of that spectrum and algorithms like Dijkstra's is the slow end.</li>
+              <li><b>Informed Search</b>: A number of researchers have enhanced the basic greedy algorithm to avoid the silly solutions.  A* is one such algorithm. It uses heuristics to maintain a small number of competing paths until they either became too costly or merged to a point where the best can be selected. One aspect of the algorithm design is choosing how many paths to maintain. This becomes a trade-off between computational speed and the need to avoid ridiculous behavior.  A normal greedy algorithm is the fast end of that spectrum and algorithms like Dijkstra's is the slow end.</li>
           </ul>
       </div>
     </div>
   </div>
-
+Summary
   <div class="chp-section" data-sect-num="7" data-sect-name="Engineering Applications">
     <!-- Engineering Applications -->
     <h2 id="17_7">17.7	Engineering Applications</h2>
@@ -360,8 +360,8 @@
   <p>This chapter demonstrated effective algorithms for finding good paths through a graph, and included the following:</p>
   <ul>
       <li>How to construct and use queues and priority queues as the underlying mechanism for graph traversal</li>
-      <li>Prim’s algorithm for finding the minimum spanning tree of a graph</li>
-      <li>Depth-first, Breadth-first and Dijkstra’s algorithms for finding exact paths
+      <li>Prim's algorithm for finding the minimum spanning tree of a graph</li>
+      <li>Depth-first, Breadth-first and Dijkstra's algorithms for finding exact paths
       through a graph</li>
       <li>A greedy algorithm for finding approximate paths that are "good enough."</li>
   </ul>

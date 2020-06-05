@@ -37,6 +37,7 @@ function one_at_a_time
         fprintf('18_Appendix_A.htm\n');
         fprintf('19_Appendix_B.htm\n');
         fprintf('20_Preface.htm\n')
+        fprintf('21_text_index.htm\n')
         fprintf('99_Quit\n');
         choice = input('Choose your action: ');    
         if choice ~= 99
@@ -91,7 +92,7 @@ function doit(choice)
             fh = fopen('index.html', 'w');
             fprintf(fh, '%s', file);
             fclose(fh);
-        case {18 19 20}
+        case {18 19 20 21}
             % Modify and copy odd files to build folder
             if ~isfile('nav.mat')
                 error('build not initialized')
@@ -99,12 +100,14 @@ function doit(choice)
             load nav.mat
             cd html
             name = '';
-            if choice == 20
-                    name = chapters{contains(chapters,'Preface')};
-            elseif choice == 18
+            if choice == 18
                     name = chapters{contains(chapters,'Appendix_A')};
             elseif choice == 19
                     name = chapters{contains(chapters,'Appendix_B')};
+            elseif choice == 20
+                    name = chapters{contains(chapters,'Preface')};
+            elseif choice == 21
+                    name = chapters{contains(chapters,'index')};
             end
             fprintf('Process %s\n', name);
             file = fileread(name);
@@ -122,7 +125,7 @@ function doit(choice)
             end 
             load 'nav.mat'
             cd html
-            chapters = chapters(1:20);
+            chapters = chapters(1:21);
             chapter = chapters{choice};
             fprintf('Process %s\n', chapter);
             

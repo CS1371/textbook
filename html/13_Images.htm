@@ -280,15 +280,151 @@
           <li>An engineering example showing how edge detection begins the process of extracting meaning from an image</li>
       </ul>
   </div>
+<h2>Self Test</h2>
+<div class="container">
 
-<!--
-[Special Characters]
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>An image whose color values are all 0 will be all white on the screen.</li>
+          <li>The MATLAB language defines one image reader for all image file
+types.</li>
+          <li>The normal operations of creation, slicing, and concatenation can be
+used to manipulate images.</li>
+          <li>rot90(A) rotates a 3-D array by 90° clockwise.</li>
+          <li>Edge detection dramatically reduces the amount of data to be
+processed by image identification software.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>Each pixel of a true color image is stored as __________values of
+type ____________ containing values __________.</li>
+          <li>Gray scale images store the black-to-white intensity value for each
+__________ as a(n) ___________.</li>
+          <li>When you read JPEG files, they are __________as ___________
+images containing _______________.</li>
+          <li>Once a picture has been read, you can display it in a(n)
+_______________ with the function _____________.</li>
+          <li>The operator ____________ mirrors an array about its ____________.</li>
+</ol>
 
-[Problems]
--->
-
-<p id="footnote">[1] The file <code>earth_s.jpg</code> is provided as part of the MATLAB system </p>
+<h3>Programming Projects</h3>
+<ol>
+<li>As an introduction to image problems, perform the following
+manipulations:
+<ul>
+<li>Find a suitable JPEG image file. Read it, display it, and store the
+result in A.</li>
+          <li>Create a copy of A, flip the image from left to right, and display it
+in a new figure.</li>
+          <li>Create a copy of A, swap the values for red and blue, and display
+it in a new figure.</li>
+          <li>Create a copy of A, stretch the image to four times its original size
+(twice as many rows and twice as many columns), and display it
+in a new figure.</li>
+          <li>Create a copy of A and then shrink the image to 0.7 its original
+size in each dimension and display it in a new figure.</li>
+</ul>
+An image could be scrambled by doing the following in order:
+<ol type="a">
+<li>multiple quadrant flips:
+<ol type="i">
+<li>top left quadrant becomes bottom right quadrant</li>
+          <li>top right quadrant becomes bottom left quadrant</li>
+          <li>bottom right quadrant becomes top left quadrant</li>
+          <li>bottom left quadrant becomes top right quadrant</li>
+		  </ol>
+          <li>The image is flipped upside down.</li>
+          <li>The red values are swapped with the green values.</li>
+          <li>The blue values are flipped left to right.</li>
+		  </ol>
+Write a function called imageScrambler that takes in an image array
+and a string. If the string is equal to 'scramble', your function
+should scramble the image according to the above method and
+return the modified image in array form. If the string is equal to
+'unscramble', your function should unscramble the image by
+reversing the above method and return the modified array.
+Otherwise, your function should return the array untouched. You
+may assume that the image array provided will always contain an
+even number of rows and columns.<br>
+Test your solution by writing a script that reads a selected image, A,
+ensures that there is an even number of rows and columns, and tests
+the scrambling and unscrambling the image.</li>
+          <li>You are provided an image, and your job is to convert the full-sized
+image to a smaller one. Normally when image processing software
+is required to resize an image, a complex resizing algorithm is used
+to accomplish the conversion. We will attempt to duplicate this
+conversion. Write a function called resizeMe that takes in a string as
+an input corresponding to an image file name. The function should
+then resize the image to 1.414 times its original size in each
+dimension and display it. Additionally, your function should use
+the built-in function imwrite(...) to write the new image to a file.
+The name of the new file will be the original file name preceded by
+'LG' . For example, if the original filename is called 'yellow_bird.jpg', 
+the new file should be called 'LGyellow_bird.jpg'.</li>
+          <li>Write a function called rotate that takes in an image array and a
+number. The number represents the number of times the function
+will rotate the image clockwise by 90 degrees. A negative number
+signifies counter-clockwise rotation and a positive one signifies
+clockwise rotation.</li>
+          <li>We have obtained new intelligence that the Housing Department
+has plans to renovate all the rooms in the dorms with a new
+prototype. However, the prototype has been encoded into three
+separate images to avoid rival students finding out about it and
+thus seeking refuge here. Each image only contains one layer of
+color (e.g., roomScrambledRed.jpg only contains the Red layer). As a
+loyal student, it is your job to reconstruct a new image out of these
+three images.
+<ol type="a">
+<li>Create a script called room , and read the three layers using
+'imread' . Create the new matrix ReconImage with the three layers,
+and display it using 'imshow'.</li>
+          <li>After detailed analysis of the image, you find that it is also
+scrambled. Using advanced crytography and whizbang
+mathematical formulas, you have come to the conclusion that the
+four quadrants of the image have been re-arranged. </li>
+</ol>
+Manipulate
+the composite image from part a. and re-arrange the pieces to
+form the proper image. Display it using subplot(...) , below the
+first image.</li>
+          <li>For this exercise, you will visit - at least in MATLAB - a place you
+have always wanted to go.
+<ol type="a">
+<li>Find or take a picture of yourself with a plain background such
+as a green screen, using the JPEG image format. It would be a
+good idea not to wear the color of the background.</li>
+          <li>Find a JPEG image of the place you want to go and decide on the
+rectangle in that scene where your image should appear. Save the
+width and height of the rectangle and the row and column of its
+top left corner.</li>
+          <li>Re-size your image to be the width and height of the rectangle.</li>
+          <li>Use the color masking technique of section 13.4.2 to copy your
+image without the green screen into the selected rectangle of
+your dream scene.</li>
+</ol>
+          <li>Write a function called
+adjustImage that consumes the
+name of an image file and an
+angle in degrees and produces a
+new image rotated counterclockwise
+by that number of
+degrees about the center of the
+original image. Your new image
+will be larger than the original
+image.<br>
+<b>Hint</b>: The trick to this is to move each pixel from its current
+location (in polar coordinates, r - theta) to a new location on
+the new image. The new location is found by adding the
+rotation angle provided to the angular value, u, of each pixel.
+Those pixels in the new image not occupied by a pixel will
+be black.</li>
+ 
+</ol>
 </div>
+</div>
+
 
 </body>
 </html>

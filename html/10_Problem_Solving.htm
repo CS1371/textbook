@@ -114,7 +114,7 @@
           </tr>
           <tr>
             <td>Traverse</td>
-            <td>Touches each item of data in the collection—frequently used to display or copy a collection</td>
+            <td>Touches each item of data in the collection - frequently used to display or copy a collection</td>
             <td>The collection is unchanged</td>
           </tr>
           <tr>
@@ -377,6 +377,96 @@
     </ul>
     <p>Then we briefly discussed how to combine these fundamental tools to solve more complex data manipulation problems.</p>
   </div>
+<h2>Self Test</h2>
+<div class="container">
+
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>Copying the elements of a structure array into a cell array is a
+combination of traversal and insertion.</li>
+      <li>If you map a collection, you must change at least one of its elements.</li>
+      <li>When you filter a collection, at least one data element is changed.</li>
+      <li>The function max(...) is not folding because it returns two values.</li>
+      <li>You can use a for loop to search a collection even if you need to
+stop the search when you find the answer.</li>
+      <li>Sorting must involve putting the items in a collection in numerical
+order (ascending or descending).</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>The problem-solving style recommended in this text is to identify
+the ___________and the _____________.</li>
+      <li>Building is usually the process of ____________ and ___________
+_______________.</li>
+      <li>Mapping may involve combining _____________ of the same length.</li>
+      <li>We _______________ vectors by applying built-in logical operations
+and then indexing with the results to produce new, shorter arrays.</li>
+      <li>Totaling, averaging, and finding the smallest element in a vector are
+typical examples of _____________.</li>
+      <li>There are almost always two exit criteria for a search: ___________
+_______________ or ________________.</li>
+      <li>To save a collection to a text file, you ____________ the collection
+____________ it to the file.</li>
+</ol>
+
+<h3>Programming Projects</h3>
+<ol><p>
+<li>The purpose of this problem is to write a set of functions that
+calculate the volume of a slant cylinder with an irregular pentagonal
+cross section shown in Figure 10.10. </p>
+      <div class="card">
+          <img src="..\Images\Fig_10_10.JPG" alt="Figure 10.10" class="fig card-img">
+          <p class="figure-name card-title">Fig 10.10: The Problem</p>
+      </div>
+<p>You will be given two vectors, x and y, containing the coordinates of
+the corners of the pentagon, and the value h , the vertical height of
+the cylinder. We will need to break this problem apart, writing
+functions to solve each part:
+<ul>
+<li>The volume of the cylinder is the area of the pentagon multiplied by
+the vertical height; write a function polyval(x, y, h) to solve this.</li>
+      <li>The area of the pentagon is the sum of the areas of three
+triangles shown in Figure 10.11. </p>
+      <div class="card">
+          <img src="..\Images\Fig_10_11.JPG" alt="Figure 10.11" class="fig card-img">
+          <p class="figure-name card-title">Fig 10.11: The Base</p>
+      </div>
+<p>So we need to write a function
+pent_area(x, y) that asks for the area of the three triangles and
+adds them together.</li>
+      <li>Given the coordinates of the corners of a triangle, we need a
+function tri_area(x, y) to calculate the area of the triangle—see
+Figure 10.12. </p>
+      <div class="card">
+          <img src="..\Images\Fig_10_12.JPG" alt="Figure 10.12" class="fig card-img">
+          <p class="figure-name card-title">Fig 10.12: Area of a Triangle</p>
+      </div>
+<p>To compute the area of the triangle, we need the
+values of a, b, and c . So if we had the lengths of the lines, the area
+of the triangle is given by Heron's formula:<br>
+A = ( s(s-a)(s-b)(s-c) )<br>
+where s is half the sum of a, b, and c.</li>
+      <li>So we need a function tri_side(x, y) that computes the length
+of a line when given its end points.</li>
+      <li>Then, we can put the pieces back together by calling the functions
+with the right parameters, and then build and test polyvol using
+the test cases provided.</li>
+</ul>
+      <li>This problem is about processing structure arrays. Write a function
+named structSort that sorts a structure array based on a given field
+that contains numerical values. Your function should take in a
+structure array and a string that should correspond to one of the
+field names of the structure array and return the original structure array
+sorted on the given field. It should check to be sure that the
+specified field name is in fact one of the fields of the structure array,
+and call the error(...) function if it is not.
+Test your function by using the buildCDs script from Chapter 7,
+using the input function to specify the sorting field.</li>
+ 
+</ol>
+</div>
 </div>
 
 

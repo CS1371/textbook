@@ -358,12 +358,102 @@
           <li>Matrix division can be used for solving simultaneous equations by setting up the equations in the general form <code>B = A * x</code>, where the known matrix <code>A</code> is <code>n x n</code> and the known column vector <code>B</code> is <code>n x 1</code>; the unknown vector <code>x</code> is then found by <code>x = A\B</code> or <code>x = inv(A) * B</code></li>
       </ul>
   </div>
+<h2>Self Test</h2>
+<div class="container">
+
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>All MATLAB classes exhibit some form of behavioral abstraction.</li>
+<li>Matrix multiplication requires that the inner dimensions match.</li>
+<li>The results of A * B and B * A are identical.</li>
+<li>Both A * A -1 and A -1 * A return the identity matrix.</li>
+<li>Multiplying inv(A) * B is logically equivalent to B / A.</li>
+<li>All sets of simultaneous linear equations can be solved by matrix
+inversion.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>Behavioral abstraction combines _____________ abstraction and
+_______________ abstraction.</li>
+<li>The result of a matrix multiplication is a new matrix with the
+__________ count of the first matrix and the ___________ count of
+the second.</li>
+<li>To rotate a graphic object in the x-y plane about some point, P, other
+than the origin, you first ___________, then __________, and then
+_____________________.</li>
+<li>To be soluble, simultaneous linear equations must be expressed as
+______________ equations involving _______________variables, xi,
+and _____________values.</li>
+</ol>
+
+<h3>Programming Projects</h3>
+<ol>
+<li>This is a set of simple matrix manipulations.
+<ul>
+<li>Create a five by six matrix, A , that contains random numbers
+between 0 and 10.</li>
+<li>Create a six by five matrix, B , that contains random numbers
+between 0 and 10.</li>
+<li>Find the inverse of matrix A*B and store it in the variable, C.</li>
+<li>Without iteration, create a new matrix D that is the same as A
+except that all values less than 5 are replaced by zero.</li>
+<li>Using iteration, create a new matrix F that is the same as A except
+that all values less than 5 are replaced by zero.</li>
+<li>Create a new matrix G that is the matrix A with the columns
+reversed.<br>
+For example:<br>
+if A is [1 2 3; 3 2 5; 1 7 4], <br>
+G should be [3 2 1; 5 2 3; 4 7 1]</li>
+<li>Find the minimum value among all the elements in A and store
+your answer in the variable H.</li></ul>
+
+<li>Imagine that world leaders have decided to come up with a single
+currency for the world. This new currency, called the Eullar, is
+defined by the following:<br>
+Seven dollars and 3 Euros make 71 Eullars.<br>
+One dollar and 2 Euros make 20 Eullars.<br>
+You are a reputed economist, and your job is to find out the value of
+a dollar in terms of Eullars.</li>
+<li>As an enthusiastic and motivated student, you decided to go
+out and buy plenty of pens for all your classes this semester.
+This spending spree unfortunately
+occurred before you realized your
+engineering classes seldom required the
+use of "ink." So now, you're left with
+four different types of pens and no
+receipt—you only remember the total
+amount you spent, and not the price of
+each type of pen. You decide to get
+together with three of your friends who
+coincidentally did the same thing as
+you, buying the same four types of pens and knowing only
+the total amount. Write a script to find the prices of each type
+of pen.<br>
+<b>Hint</b>: In order to find the price of each individual pen, you
+could create a matrix called "pens," where each
+column represents a different type of pen and each
+row represents a different person and a column
+vector totals that contains the amount of money
+each of you spent on the pens.
+</li>
+<li>Write a function called rotateLine that takes in two vectors, x and
+y , of the same length that represent a set or ordered pairs that
+could be used to plot a line. Your function should also take in a
+third parameter, theta , representing an angle in degrees. Your
+function should return xprime and yprime where xprime and yprime
+represent the line that is x and y rotated about the origin by the
+angle theta.<br>
+For example:<br>
+x = [ 7 7 11 11 7];<br>
+y = [-5 -9 -9 -5 -5];<br>
+[xprime yprime] = rotateLine(x, y, 90) returns:<br>
+xprime = [5 9 9 5 5]<br>
+yprime = [7 7 11 11 7]<br>
+</li>
+</ol>
 </div>
-
-
-<!-- [Special Characters]
-
-[Problems] -->
-
+</div>
 </body>
 </html>

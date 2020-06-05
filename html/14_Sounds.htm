@@ -404,13 +404,138 @@
           <li>We can reconstruct a sound from the FFT coefficients.</li>
       </ul>
   </div>
+<h2>Self Test</h2>
+<div class="container">
 
-  <!--[Special Characters]
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>Playing a sound file at double the recorded sample frequency raises
+its pitch by an octave.</li>
+          <li>Removing every other sample from a sound file lowers the pitch by
+an octave.</li>
+          <li>The resolution of the recorded data has a significant effect on the
+quality of the recording.</li>
+          <li>After performing an FFT, the zero frequency occurs at either end of
+the spectrum and the maximum frequency occurs in the middle.</li>
+          <li>Since the mathematics of the FFT are linear, the spectrum of a sound
+added in the time domain is also added in the frequency domain.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>Sound pressure fluctuations have two attributes: their
+_______________ and their _______________.</li>
+          <li>Each word coming out of the _____________ or going into the
+_______________ merely represents the _______________ on the
+microphone at a point in time.</li>
+          <li>The steps from one note to the next higher octave are divided into
+_______________ increments: _______________ whole note steps and
+_______________ half note steps, for a total of _______________ half
+note steps.</li>
+          <li>A spectrum display shows the amount of _______________ in a
+given _______________ throughout the duration of the sound
+analyzed.</li>
+</ol>
 
-  [Problems]-->
-
-
+<h3>Programming Projects</h3>
+<ol>
+<li>These are fundamental exercises with sound files. You should not
+hard-code any of the answers for this problem, and you should not
+need iteration.
+<ol type="a">
+<li>Select and read a suitable .wav file, and save the sound values
+and sampling frequency.</li>
+          <li>Create a new sound that has double the frequency of the original
+sound, and store your answer in the variable sound_Double.</li>
+          <li>Create a new sound that is the same as the original except that
+the pitch is raised by five half tones. Store your answer in the
+variable raised_pitch.</li>
+          <li>We need a figure showing two views each of these three
+sounds, created using subplot. <br>
+In the left column, plot the
+original sound, sound_Double, and raised_pitch, labeling each
+plot accordingly.<br>
+In the right column, plot the first quarter of the values of the
+power spectrum of each sound with the proper frequency values
+on the horizontal axis.</li>
+          <li>Play each of the sounds in the following order: original sound,
+sound_Double , and raised_pitch each at the original sampling
+frequency.</li>
+          </ol></li>
+          <li>Write a function that will accept a string specifying a sound file and
+do the following:
+<ol type="a">
+<li>Play back the sound..</li>
+          <li>Plot the sound in the time domain, titling and labeling your plot
+appropriately..</li>
+          <li>Compute the frequency with the most energy in this file.
+Validate your answer by plotting the lower quarter of the
+frequencies of the Fourier Transform of the sound. Don't forget
+that the Fourier Transform is complex; you will need to reason
+with and plot the absolute value of the spectrum..</li>
+          <li>Test this function with suitable .wav files.</li>
+		  </ol>
+          <li>Write a function named plotSound that takes in the name of a sound
+file and produces a 1 3 2 figure with two plots. The first plot should
+be a plot of the sound in the time domain. The second plot should
+be a plot of the sound in the frequency domain. Your function
+should not return anything. Label the first plot 'Time Domain' and
+label its axes appropriately. Label second plot 'Frequency Domain'
+and label its axes appropriately.
+The Time Domain plot should be an amplitude vs. time plot. For
+simplicity make sure that your time vector starts at dt (delta time)
+and goes to n*dt (t max ) where n is the number of samples.
+<br>The Frequency Domain plot should be a power vs. frequency plot
+where power is the absolute value of the FFT of the amplitude
+values. For simplicity make sure that your frequency vector starts at
+df (delta frequency) and goes to n*df (2*f max ).</li>
+          <li>In this exercise, we will write a script to create an instrument sound
+from scratch.
+<ol type="a">
+<li>Create a vector, t , of time values from 0 to 2 seconds with length
+40,000 samples.</li>
+          <li>Convert the frequency of middle C (261.6 Hz) to v radians per
+second.</li>
+          <li>Compute a sound sample as cos(vt) over the range of t in part a.</li>
+          <li>Play that sound at a sample frequency of 20,000, and verify that it
+sounds "about right."</li>
+          <li>Perform the Fourier Transform on the sound vector, establish the
+correct axis values, and prove that the sound is exactly Middle C.
+</ol></li>
+          <li>Write a function named playNote that takes in a string representing
+a note on the piano. Your function should return a vector
+representing the amplitude values of the note in addition to the
+correct sampling frequency to be used to play it back. You should
+do this by modifying the sound in the provided instr_piano.wav file
+which is Middle C played on the piano. Note that the returned
+sampling frequency should be the same as that in instr_piano..wav .
+Here is a list of all the possible note names representing notes that
+your function should work with and below that is the number of
+half steps above/below the middle C for that note:
+<table>
+<tr><td >cn</td><td>cn#</td><td>dn</td><td>dn#</td><td>en</td><td>fn</td><td>fn#</td><td>gn</td><td>gn#</td><td>a(n+1)</td><td>a(n+1)#</td><td>b(n+1)</td><td>c(n+1)</td></tr>
+<tr><td>-12</td><td>-11</td><td>-10</td><td>-9</td><td>-8</td><td>-7</td><td>-6</td><td>-5</td><td>-4</td><td>-3</td><td>-2</td><td>-1</td><td>0</td></tr>
+</table>
+where c4 is the middle C, c5 is 1 octave above it, and c3 is 1 octave
+below it. Similarly, f5 is 1 octave higher than f4, etc. For example,
+[y1 fs] = playNote('c5'); should return a vector such that
+sound(y1, fs) should sound like middle C</li>
+          <li>Finally, you will use these tools to play your favorite song.
+		  <ol type = "a">
+<li>Find the music for your favorite song, and translate it into the
+symbology of Problem 14.5.</li>
+          <li> Write a script that uses the playNote function to play your song
+on the piano.</li>
+          <li>Modify playNote to use your synthetic instrument from Problem
+14.3, and save it as playSynthetic .</li>
+          <li>Write a script that uses playSynthetic to play your song in
+futuristic style.
+</ol>
+</ol>
 </div>
+</div>
+
 
 </body>
 </html>

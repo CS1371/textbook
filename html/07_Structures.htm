@@ -474,13 +474,187 @@
     <li>The elements of a structure are accessed by name rather than by indexing, using the dot operator, ‘.’, to specify the field name to be used</li>
     <li>Structures can be collected into structure arrays whose elements are structures all with the same field names. These elements can then be indexed and manipulated in the same manner as the cells in a cell array</li>
   </ul></p>
-  <!--[Special Characters]
+<h2>Self Test</h2>
+<div class="container">
 
-  [Problems]-->
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>Of all the collective operations defined for numerical arrays, only
+logical operations can be applied to a whole cell array.</li>
+    <li>A cell array or a structure can contain any legal MATLAB object.</li>
+    <li>You gain access to the contents of a cell by using braces, {...}.</li>
+    <li>Since the contents of a structure are heterogeneous, we can store
+other structures in any structure.</li>
+    <li>The statement rmfield(str, 'price') removes the field 'price' and
+its value from the structure str.</li>
+    <li>The statement getfield(str, <fldname>) returns the value of the
+specified field.</li>
+    <li>You cannot extract and process all of the values of a field in a
+structure array.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>To perform any operations on the contents of a heterogeneous
+collection, the items must be _________ and if necessary,
+________________.</li>
+    <li>Cell arrays can be treated for the purpose of concatenation and
+slicing as ____________of ___________ .</li>
+    <li>The assignment B{3} = {42} results in the third entry in the cell
+array B being a(n) ______________.</li>
+    <li>If a variable called field contains the name of a field in a structure
+str , the expression ______________ will set the value of that field to
+42.</li>
+    <li>MATLAB has a built-in function __________ that consumes pairs of
+entries, each consisting of a(n) _________and a(n) __________, and
+produces a structure array. </li>
+</ol>
 
+<h3>Programming Projects</h3>
+<ol>
+<li>Write a function named cellParse that takes in a cell array with
+each element being either a string (character array), or a vector
+(containing numbers), or a boolean value (logical array of length 1).
+Your function should return the following:
+<ul>
+<li>nStr: the number of strings</li>
+<li>nVec: the number of vectors</li>
+<li>nBool: the number of boolean values</li>
+<li>cString: a cell array of all the strings in alphabetical order</li>
+<li>vecLength: the average length of all the vectors</li>
+<li>allTrue: true if all the boolean values are true and false
+otherwise</li>
+</ul>
+For example,<br>
+[a b c d e f] = cellParse( { [1 2 3], true, 'hi there!', 42, false, 'abc'} ) <br>
+should return<br>
+ a = 2, b = 2, c = 2, d = {'abc','hi there!},
+e = 2, and f = false.</li>
+<li>It turns out that since you have become an expert on rating clothing
+( Chapter 4 , Problem 5), Acme Clothing Company has hired you to
+rate its clothes. Clothes are now represented as structures instead of
+vectors with the fields (all of which are numbers between 0 and 5):
+Condition, Color, Price, Matches, and Comfort
+Acme has a much simpler way of rating its clothes than you used
+before:<br>
+Rating = 5 * Condition + 3 * Color + 2 * Price + Matches
++ 9 * Comfort<br>
+You have a script called makeClothes.m that will create a structure
+array called acmeClothes that contains clothes structures. You are to
+write a script called rateClothes that will add a Rating field and a
+Quality field to each of the structures in the acmeClothes array. The
+Rating field in each structure should contain the rating of that
+particular article of clothing. The Quality field is a string that is
+'premium' if the Rating is over 80, 'good' over 60, 'poor' over 20,
+and 'liquidated' for anything else.<br>
+Note:<br>
+<ul>
+<li>You MUST use iteration to solve this problem.</li>
+<li>To make things easy, just place the line makeClothes at the top of
+your script, so you're guaranteed to have the correct acmeClothes
+array to work with.</li>
+<li>The fields are case sensitive, so make sure that you capitalize them.</li>
+</ul></li>
+<li>You have been hired by a used-car dealership to modify the price of
+cars that are up for sale. You will get the information about a car,
+and then change its price tag depending on a number of factors.
+Write a function called usedCar that takes in a structure with the
+following fields:<br>
+Make: A string that represents the make of the car (e.g., 'Toyota
+Corolla' )<br>
+Year: A number that corresponds to the year of the car (e.g., 1997 )<br>
+Cost : A number that holds the marked price of the car (e.g., 7,000 )<br>
+Miles : The number of miles clocked (e.g., 85,000 )<br>
+Accidents: The number of accidents the car has been in (e.g., 1 )<br>
+Your function should return a structure with all the above fields,
+with <b>exactly</b> the same names. It should have the same make, year,
+accidents, and miles. Here are the changes you must make:
+<ul>
+<li>Add 5,000 to the cost if the car has clocked less than
+20,000 miles</li>
+<li>Subtract 5,000 if it has clocked more than 100,000 miles.</li>
+<li>Reduce the price by 10,000 for every accident.</li>
+</ul></li>
+<li>This problem deals with structures that represent dates.
+<ul>
+<li>First, write a MATLAB function called createDate that will take
+in three numeric parameters. The first parameter represents the
+month , the second the day , and the third the year. The function
+should return a structure with the following fields:<br>
+Day: a number<br>
+Month: a 3 character string containing the first three characters
+of the month name<br>
+Year: a number containing the year.<br>
+For example,<br>
+it = createDate(3,30,2008) should return a structure containing:<br>
+Day: 30<br>
+Month: Mar<br>
+Year: 2008<br></li>
+<li>Write a function called printDate that displays a date in the form
+Mar 30, 2007</li>
+<li>Write a function inBetween that will take in three date
+structures. The function should return true if the second date is
+between the first and third dates, otherwise the function should
+return false.</li>
+<li>Write a function called isSorted that takes in a single parameter,
+an array of date structures. This function should return true if
+all the dates in the array are in a chronological order (regardless
+of whether they are in ascending or descending order),<br>
+ -> It might help to add a field to the date class.<br>
+ -> The third date does not have to be chronologically
+later than the first date.
+otherwise the function should return false.</li>
+<li>Write a test script that creates an
+array of date structures, prints out
+each date, and then states whether
+or not the dates are in order.</li>
+</ul></li>
+<li>Your university has added a new award for students who were "almost there" last
+semester and just missed getting into the Dean's List. Write a function called almost
+that consumes an array of student structures, and produces an array of names of
+those who have a semester GPA between 2.9 and 2.99 (inclusive). The student
+structure has the following fields:<br>
+Name - string (e.g., 'George P. Burdell')<br>
+Semester_GPA - decimal number (e.g., 2.97)<br>
+Cumulative_GPA - decimal number (e.g., 3.01)<br></li>
+<li>The MATLAB language has the built-in ability to perform
+mathematical operations on complex numbers. However, there are
+times when it is useful to treat complex numbers as a structure.
+Write a set of functions with the following capability and a script to
+verify that they work correctly:<br>
+cmplx = makeComplex(real, imag)<br>
+res = cmplxAdd( cmpxa, cmpxb )<br>
+res = cmplxMult( cmpxa, cmpxb )</li>
+<li>In terms of atomic physics, every electron has four numbers
+associated with it, called the quantum numbers. These are
+'principal' (energy), 'azimuthal' (angular momentum), 'magnetic'
+(orientation of angular momentum), and 'spin' (particle spin)
+quantum numbers. Wolfgang Pauli hypothesized (correctly) that no
+two electrons in an atom can have the same set of four quantum
+numbers; that is, if the Principal, Azimuthal, and Magnetic
+numbers are the same for two electrons, then it is necessary for the
+electrons to have different Spin numbers.
+You need to write a function called spinSwitch that takes in two
+structures and returns both structures. Each structure represents an
+electron in a hydrogen atom and has the following fields:<br>
+principal (this is always > 0)<br>
+azimuthal (a number)<br>
+magnetic (a number)<br>
+spin (a string with value 'up' or 'down')<br>
+Your function will compare the values in the two structures and
+check if they all have the same values for the four fields. If true, you
+are required to switch the spin of the second structure. You also
+have to add a field called "energy" to both structures. The value
+stored in this field must be ( -2.18*(10^18))/(n^2), where n is the
+value of the principal quantum number for that electron. You have
+to return both the structures with the energy field added to both, so
+that the one with the higher energy is first. If the energies are equal,
+return the one with the 'up' spin first. If both have the same spin
+and the same energy, the order does not matter.
+</ol>
 </div>
-
-
+</div>
 
 
 </body>

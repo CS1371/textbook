@@ -466,6 +466,157 @@
       <li>Bodies of rotation are a special case of parametric surface plots where one of the independent variables is an angle with values between <code>0</code> and <code>2&pi;</code>.</li>
     </ul>
   </div>
+<h2>Self Test</h2>
+<div class="container">
+
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>The plot(...) function needs only one parameter to function
+correctly.</li>
+<li>Plot enhancement functions may be called before or after the
+function that plots the data.</li>
+<li>You must provide plots for all the specified sub-plot areas.</li>
+<li>meshgrid(...) accepts vectors of length m and n that bound the
+edges of the plaid and produces two arrays sized m x n giving the
+complete plaid.</li>
+<li>To construct a parametric surface, both independent parameters
+must be angles.</li>
+<li>When rotating a function about the y-axis, the variables along the x
+and y axes are computed from a classic polar-to-Cartesian
+conversion.</li>
+<li>To compute a body of rotation, the curve must be a continuous,
+differentiable function.</li>
+<li>Bodies of rotation are confined rotating about the x, y, or z axes.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>Each time figure is called, a(n) ___________ is made available, with
+figure number _____________.</li>
+<li>To prepare for plotting, put ___________ or ____________ at the
+beginning of your script.</li>
+<li>Parametric plots allow the variables on each axis to be ____________
+on a(n) _________________, _____________ variable.</li>
+<li>The simplest surface plots are obtained by defining a(n)____________
+value for each point on ___________.</li>
+<li>We construct a sphere by wrapping a(n) ___________with two
+_________________ as the independent variables around the sphere.</li>
+<li>Bodies of rotation are created by rotating a(n) ____________ about
+a(n) _______________.</li>
+</ol>
+
+<h3>Programming Projects</h3>
+<ol>
+<li>Write a script that creates six sub-plots in two columns each with
+three rows. Each plot should have an appropriate title and labels on
+the x and y axes. The plot in the top left sub-plot should be<br>
+ y = cos( u) for values of u from -2pi to 2pi.<br>
+ Subsequent plots going across
+the rows before going down the columns should be of <br>
+y = cos(2 u ),
+y = cos(3 u ), etc., to y = cos(6 u ) over the same range of u.</li>
+<li>Your task is to create a script called thisPlot . This script should do
+the following:
+<ul>
+<li>Ask the user to enter in a positive number, N, greater than 5.</li>
+<li>Calculate the factorial for each number from 1 to N. Each of these
+values should be stored into a vector.</li>
+<li>Display a graph titled 'Logarithmic Growth', where the
+logarithms for each of the factorials are displayed.</li>
+<li>Add to the graph a continuous linear line that follows the
+equation y = x with x values from 1 to N.</li>
+<li>Since the numbers will have different magnitudes, use plotyy to
+plot the linear values on the right hand axis.</li>
+</li></ul>
+<li>Write a function called sineGraph that graphs a sine function four
+times between the interval [start,stop] on the same graph. The
+start and stop values should be parameters of the function. The
+number of points per interval will vary. More specifically:
+<ul>
+<li>The first time you graph the sine function, you should have two
+evenly spaced points, start and stop</li>
+<li>The next plot should have four evenly spaced points - start ,
+stop, and two points between them</li>
+<li>The third should have eight evenly spaced points and the fourth
+256 points.</li>
+<li>Make sure to add a legend and a title - 'Multiple graphs on one
+plot'  - and to label the axes. Make sure that each line has a
+different color.</li>
+<li>The function should return the x and y values for the 256 point set.
+Test your function with the following intervals [0, p /2] , [0,2 p ] ,
+[0,4 p ] , [0,16 p ].</li>
+</ul></li>
+<li>This programming problem will compare the surf(...) and
+mesh(...) functions by putting two 3-D side-by-side plots for
+comparison using subplot(...) . You should label all axes
+accordingly ( 'X-axis', 'Y-axis' , etc.) and title your plot
+corresponding to the problem statement.
+<ul>
+<li>On the left side, plot the function f(x,y)=x^2*cos(y) in the range
+x= -5:5 and y= -5:5 using mesh and name your plot 'Using Mesh'.</li>
+<li>On the right side, plot the same function, in the same range, but
+using surf . Name your plot 'Using Surf'.</li>
+</ul></li>
+<li>Georgia Tech wants to tear down the Campanile and build a new
+one that is ridiculously tall. However, before it is built, it needs you
+to model it. Using the equation z = 1/(x^2 + y^2) as the model,
+write a script that will plot the Campanile. Your domain should be
+-.75 <= x <=.75 and -.75 <= y <= .75 using an increment of .05 for
+each range. Set your axes such that all of the x, y domain is seen and
+z runs from 0 to 300. Use surf(...) to plot your image.</li>
+<li>You are provided the file 'data.csv', which contains two columns of
+numbers. Each column contains the same number of elements. The
+first row contains the titles of the x and y values, respectively. Create
+a script called spreadSheetPlot that plots the data in this file. The first
+column represents your x values, and the second column is your y
+values. Read the numbers from the file and make a plot of the x vs. y
+values. Title your plot 'spreadSheetPlot' and use the first row data to
+label the x and y axes. For example, the spreadsheet might look like:</li></p>
+      <div class="card">
+          <img src="..\Images\Fig_11_19.JPG" alt="Figure 11.19" class="fig fig_small card-img">
+          <p class="figure-name card-title">Fig 11.19: Sample Spread Sheet</p>
+      </div>
+<p>
+<li>You just realized that February 14th has passed and you haven't
+gotten anything for your Valentine. Since your date is a CS major,
+sending the lucky person a coded heart seems like a cool and sincere
+thing to do. Make sure that you follow each and every instruction
+carefully, or your heart will end up broken. Trust us.
+You are going to write a script to draw this heart using the
+following steps:
+<ul>
+<li>Create a plaid [xx, yy] using x values with range (0 to 2p, with an
+interval 0.05p) and y values with the range (0 to 1, with an
+interval 0.05).</li>
+<li>Define the following variables:
+c=[0.1 + 0.9*(p-abs(xx - p))/p ] .* yy
+aa = c .* cos(xx)
+bb = c.* sin(xx)
+zz = (-2)*aa.^3 + (3/2)*c.^2 + 0.5</li>
+<li>Plot zz against aa and bb using the surf() function with
+interpolated colors.</li>
+</ul></li>
+<li>Write a function named plotRotation that takes in two vectors, x
+and z , and a vector th . Your function should plot three plots in the
+same figure by using the subplot command. The figure should have
+1 × 3 plots. The plots should be as follows:
+<ul>
+<li>z vs. x, titled 'z vs. x' . Note that you will have to use plot3() to
+correctly plot this in the x-z plane rather than the x-y plane a
+plot() would do. Also, you should use view(0, 0) to make the
+plot produced by plot3() show up as 2-D.</li>
+<li>z vs. x rotated around the x-axis using mesh() with flat shading
+and a square axis, titled 'z vs. x about x using mesh'.</li>
+<li>z vs. x rotated around the z-axis using surf() with interp
+shading and a square axis, titled 'z vs. x about z using surf' .
+For plots b and c, the input vector th should be used for your
+independent vector theta, which is used to convert from polar-to-
+Cartesian coordinates. Don’t forget to title and label each of the
+three plots.</li>
+</ul> 
+</ol>
+</div>
 </div>
 
 

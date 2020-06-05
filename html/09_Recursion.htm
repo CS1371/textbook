@@ -348,7 +348,109 @@
       <li>A wrapper function is used to set up a recursive solution by validating the incoming data.</li>
     </ul>
   </div>
+<h2>Self Test</h2>
+<div class="container">
+
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>We limit the functionality of a stack in order to protect the data from
+corruption.</li>
+      <li>The only way to remove a stack frame from the activation stack is to
+exit from the function instance hosted by that frame.</li>
+      <li>All the math operations in a recursive function are performed as the
+activation stack unwinds.</li>
+      <li>Exception processing can be used as a clever means of changing the
+normal flow of program control.</li>
+      <li>The name of the first function in a function definition m-file must
+match the name of the file.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>Recursion is ____________ by which a code block can be repeated in
+a controlled manner.</li>
+      <li>Very frequently, a recursive function needs a(n) ________________
+to set up the recursion correctly and to _________________ .</li>
+      <li>Exceptions are a powerful tool for managing ______________ caused
+by either ____________ or _____________ .</li>
+      <li>A wrapper function is called once to perform _________________
+that the recursion requires, and then to call the recursive function
+_________________.</li>
+      <li>You can ________ one of the zeros of a function by first
+_______________, and then using a(n) ____________ for refining a
+better estimate to arbitrary levels of accuracy.</li>
+</ol>
+
+<h3>Programming Projects</h3>
+<ol>
+<li>For this problem, you will be required to write three functions:
+recurSum, recurProd, and fibVector . The first one will take in a
+vector and compute the sum of the elements of the vector. The
+second one will take in a vector and compute the product of the
+elements of the vector. The third one will take in a number, N , and
+return a vector containing the first N terms of the Fibonacci
+sequence. You must use recursion to complete these functions. You
+may not use for loops, while loops or the functions sum , prod, or
+factorial . Your function headers should be:<br>
+function ans = recurSum(arr)<br>
+function ans = recurProd(arr)<br>
+function vec = fibVector (num)</li>
+      <li>Write a recursive function called oddfact(n) that takes in a number
+and returns the factorial of the odd numbers between the given
+number and 1.<br>
+For example:<br>
+oddfact(4) returns 3<br>
+oddfact(9) returns 945 = 9*7*5*3*1<br></li>
+      <li>Consider the problem of structures with nested fields.
+	  <ul>
+<li>Write a function called tracker that takes in a structure and
+returns the number of levels at which it has a field called
+'Inner' . Each of these fields can also be structures having a field
+called 'Inner' , but at each level there can be only one field called
+'Inner' . The innermost structure will not contain a field called
+'Inner' . You must use recursion. Hint: use the isfield(...)
+function. Your function header should be:
+function num = tracker(astruct)</li>
+      <li>Create a structure with at least three levels of recurring fields,
+and use it to test your tracker function.</li>
+</ul></li>
+      <li>Create a recursive function with a wrapper to protect it from illegal
+values. The function name should be recursiveFib . It should take in
+a number n and return the n th Fibonacci number. You should ensure
+that n is a non-negative integer, and announce an error if that is not
+the case.<br>
+Fibonacci numbers are defined as:<br>
+F(n) = 0 if n = 0<br>
+F(n) = 1 if n = 1<br>
+F(n) = F(n-1) + F(n-2) otherwise.<br>
+This produces the following sequence of numbers:<br>
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55...<br>
+For example:<br>
+a = recursiveFib(0) should return 0<br>
+b = recursiveFib(1) should return 1<br>
+c = recursiveFib(-1) should cause an error<br>
+d = recursiveFib(8) should return 21<br></li>
+      <li>Create and test a function called recursiveMin that takes in a vector
+and returns the element with the minimum value and the index of
+that element as separate returned values, much as the standard
+min(...) function. If the input vector is of length zero, your function
+should return two empty vectors. If the input vector contains two
+minimum elements of equal value, your function should return the
+index of the first element. Create suitable test cases and use the
+built-in function min(...) only to test your answers.<br>
+For example:<br>
+[m n] = recursiveMin([]) should return [] and []<br>
+[m n] = recursiveMin([5]) should return 5 and 1<br>
+[m n] = recursiveMin([5 2]) should return 2 and 2<br>
+[m n] = recursiveMin([2 5 2]) should return 2 and 1<br>
+[m n] = recursiveMin([2 5 2 1 6 7]) should return 1 and 4<br>
+</li>
+ 
+</ol>
 </div>
+</div>
+
 
 </body>
 </html>
