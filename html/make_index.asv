@@ -252,16 +252,15 @@ function show_index()
     fprintf(out, '<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>\n');
     fprintf(out, '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>\n');
     fprintf(out, '<link rel="stylesheet" href="styles/styles.css" />\n');
-    fprintf(out, '<style>\n');
-    fprintf(out, '.blackText\n');
-    fprintf(out, '{\n');
-    fprintf(out, '    color:black;\n');
-    fprintf(out, '}\n');
-    fprintf(out, '</style>\n');
+    fprintf(out, '<style>/>\n');
+    fprintf(out, '.blackText/>\n');
+    fprintf(out, '{/>\n');
+    fprintf(out, '    color:black;/>\n');
+    fprintf(out, '}/>\n');
+    fprintf(out, '</style>/>\n');
     fprintf(out, '<title>Index</title>\n');
     fprintf(out, '</head>\n');
     fprintf(out, '<body>\n');
-    fprintf(out, '<table>\n');
 % put this:
 %    A. at the top of the table
 %    B. whenever the current token is alone and is A - Z
@@ -284,6 +283,8 @@ function show_index()
 % <tr><td>.! </td><td>  scalar transpose  </td><td><a href="01_Introduction.htm#1_1"><span class="blackText">1.1 Background</span></a></td></tr>
 % </table>
 
+    do_header = false;
+    first = true;
     for entry = data
         switch entry.type
             case 'H'
@@ -291,23 +292,9 @@ function show_index()
                 fprintf(out,'            <th colspan="7">%s</th>\n', ...
                     entry.first);
                 fprintf(out,'        </tr>\n');
-            case {'N', 'S'}
+            case {'N', 'S'
                 fprintf(out,'        <tr>\n');
                 fprintf(out,'            <td>%-0s</td>\n', entry.first);
-                fprintf(out,'            <td> %s</td>\n', ...
-                    [entry.second ' ' entry.third]);
-                for ndx = 1:length(entry.ref)
-                    fprintf(out, ...
-                       '<td><a href="%s"><span class="blackText">(%d)</span></a></td>\n', ...
-                        entry.ref{ndx}, ndx);
-                    if ndx < length(entry.ref) 
-                        fprintf(out,', ');
-                    end
-                end
-                fprintf(out,'        <tr>\n');
-            case 'C'
-                fprintf(out,'        <tr>\n');
-                fprintf(out,'            <td> - </td>\n', entry.first);
                 fprintf(out,'            <td> %s</td>\n', ...
                     [entry.second ' ' entry.third]);
                 for ndx = 1:length(entry.ref)
@@ -318,6 +305,13 @@ function show_index()
                     end
                 end
                 fprintf(out,'        <tr>\n');
+            case 'N'
+                
+            case 'C'
+        end
+%        if do_header
+            do_header = false;
+%        else
         end
     end
     fprintf(out,'</table>\n');

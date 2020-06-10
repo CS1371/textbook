@@ -58,13 +58,15 @@ function show_entry(out, me)
     else
         fprintf(out,'<tr><td>%s </td><td>%s </td>', me.item, me.description);
         for ndx = 1:length(me.pointers)
-            tndx = sprintf('%d', ndx);
-            str = sprintf('<td class="nav-item"><a class="nav-link" href="%s">%s</a></td>', ...
-                me.pointers{ndx}, tndx);
+%             tndx = sprintf('%d', ndx);
+%             str = sprintf('<td class="nav-item"><a class="nav-link" href="%s">%s</a></td>', ...
+%                 me.pointers{ndx}, tndx);
+            str = '<td class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_1">1.1 Background</a></div></td>';
             fprintf(out, str);
         end
         fprintf(out,'</tr>\n');
     end
+% <li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_1">1.1 Background</a></div></li>
 % <li class="nav-item"><a class="nav-link" href="..\..\index.html">Home</a></li>
 %     me.item = it;
 %     me.header = hdr;
@@ -88,6 +90,12 @@ function show_index
     fprintf(out, '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>\n');
     fprintf(out, '<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>\n');
     fprintf(out, '<link rel="stylesheet" href="styles/styles.css" />\n');
+    fprintf(out, '<style>\n');
+    fprintf(out, '.blackText\n');
+    fprintf(out, '{\n');
+    fprintf(out, '    color:black;\n');
+    fprintf(out, '}\n');
+    fprintf(out, '</style>\n');
     fprintf(out, '<title>Index</title>\n');
     fprintf(out, '</head>\n');
     fprintf(out, '<body>\n');

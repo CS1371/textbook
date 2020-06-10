@@ -14,6 +14,7 @@
 %% 
 function one_at_a_time
     clc
+    
     choice = 0;
     while choice ~= 99
         fprintf('00_Initialize\n')
