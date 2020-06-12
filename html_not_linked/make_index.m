@@ -7,15 +7,16 @@ clc
     global data
     global files
     global state
+    global current_ID
     
     % <a class="nav-link" href="Preface.htm">Preface</a>
-    cd 'C:\Users\dmsmi\Documents\textbook\html'
+    cd 'C:\Users\dmsmi\Documents\textbook\html_not_linked'
     state = 'Symbols';
-    debug = fopen('debug.log', 'w');
+    debug = fopen('../new_code/debug.log', 'w');
     data = [];
     ndx = 1;
+    current_ID = 300;
     files = { ...
-        'Appendix_A.htm' ...
         'Preface.htm' ...
         '01_Introduction.htm' ...
         '02_Basics.htm' ...
@@ -45,7 +46,7 @@ clc
         end
         line = fgetl(in);
     end
-%     seek_in_files();
+    seek_in_files();
     show_index();
     fclose(debug);
     fprintf('Done!\n');
@@ -53,15 +54,137 @@ end
 
 
 % % 
+% % seek_in_files()
+% % 
+function seek_in_files() 
+    global files
+    global last_marker
+    global debug
+    global file_str
+    
+    last_marker = '';
+%    for ndx = 1:length(files)
+    for ndx = 1:4
+        name = files{ndx};
+        fprintf(debug, '\n   *** look in %s\n', name);
+        fprintf('look in %s\n', name);
+        file_str = fileread(name);
+        if isempty(file_str)
+            error(['file ' name ' ' not found']);
+        end
+        find_words(name);
+        new_name = ['../html/' name];
+        fid = fopen(new_name, 'w');
+        fprintf(fid,'%s\n', file_str);
+        fclose(fid);
+    end
+end
+
+
+
+
+% % 
+% % find_words
+% % 
+function find_words(name)
+    global file_str
+    global data
+    
+    for ndx = 1:length(data)
+        entry = data(ndx);
+        if entry.type == 'N'
+            [found, word, at] = find_whole_word(name, entry);
+            if found
+                insert_link(word, at, name, ndx);
+            end
+        end
+    end
+end
+
+
+
+function insert_link(word, at, file_name, entry_ndx)
+    global file_str
+    global data
+    global current_ID
+    
+    current_ID = current_ID + 1;
+    plug = sprintf('<a id="%d">*</a>', current_ID);
+    file_str = [file_str(1:at-1) plug file_str(at:end)];
+    % add the reference in entry
+    entry = data(entry_ndx);
+    str = sprintf('#%d', current_ID);
+    new_ref = [file_name str];
+    entry.ref = [entry.ref {new_ref}];
+    data(entry_ndx) = entry;
+end
+
+
+function [found, word, wh] = find_whole_word(name, entry)
+    global file_str
+    global debug
+    
+    found = false;
+    word = entry.first;
+    where = strfind(file_str, word);
+    wh = 0;
+    for ndx = 1:length(where)
+        wh = where(ndx);
+        % check if inside <...>
+        found = is_not_html(wh);
+        % check for beginning with space or start of line
+        if found
+            found = wh == 1 || file_str(wh-1) == ' ';
+            if found
+                at = wh + length(word);
+                found = at > length(file_str) || is_word_end(file_str(at));
+                if found
+                    if strcmp(word, 'abstraction')
+                        ooh = true;
+                    end
+                    break
+                end
+            end
+        end
+    end
+end
+
+
+
+
+function found = is_not_html(where)
+    global file_str
+    
+    % find nearest enclosing 13's
+    left = 0;
+    at = where - 1;
+    while file_str(at) ~= char(10)
+        if file_str(at) == '<',left = left + 1; end
+        if file_str(at) == '>',left = left - 1; end
+        at = at - 1;
+    end
+    right = 0;
+    at = where + 1;
+    while file_str(at) ~= char(13)
+        if file_str(at) == '<',right = right + 1; end
+        if file_str(at) == '>',right = right - 1; end
+        at = at + 1;
+    end
+    found = left == 0 && right == 0;
+end
+
+
+function found = is_word_end(ch)
+    found = ~any(ch == 'abcdefghijklmnopqrstuvwxyz(');
+end
+
+
+
+% %
 % % process_line()
 % % 
 function ntry = process_line()
     global line
-    global debug
-    global last_name
-    global ndx
-    global data
-    global comment_there
     global state
     
     symhead = strcmp(line, 'Symbols#');
@@ -96,6 +219,9 @@ function ntry = process_line()
             end
         case 'Normal'
             [first rest] = strtok(line, ' ()');
+            if length(rest) > 0 && rest(1) == '('
+                first = [first '(...)'];
+            end
             [second rest] = strtok(rest, ' ()');
             [third rest] = strtok(rest, ' ()');
             ref = '';
@@ -108,6 +234,7 @@ function ntry = process_line()
     end
     ntry = make_entry( type, first, second, third, ref);
 end
+
 
 
 % % 
@@ -145,84 +272,6 @@ end
 
 
 % % 
-% % seek_in_files()
-% % 
-function seek_in_files() 
-    global files
-    global debug
-    global state
-    
-    for ndx = 1:length(files)
-%    for ndx = 1:1
-        name = files{ndx};
-        fprintf('look in %s\n', name);
-        in = fopen(name, 'r');
-        if isempty(in)
-            error(['file ' name ' ' not found']);
-        end
-        state  = 'find_body';
-        line = fgetl(in);
-        while ischar(line)
-            process_file_line(line);
-            line = fgetl(in);
-        end
-    end
-end
-
-
-% % 
-% % process_file_line(line)
-% % 
-function process_file_line(line)
-    global state
-    global debug
-    global current_head
-    
-%    fprintf(debug, '%s\n', line); 
-    switch state
-        case 'find_body'
-            if contains(line, '<body>');
-                state = 'read_body';
-            end
-        case 'read_body'
-            start = strfind(line, '<h');
-            if ~isempty(start) 
-                end_head = strfind(line(start(1):end), '>');
-                h_end = strfind(line, '</h'); 
-                current_head = line(end_head(1)+2:h_end(1)-1);
-            end
-            match_indices(line);
-    end
-end
-
-% % 
-% % match_indices(line)
-% % 
-function match_indices(line)
-    global data
-    global current_head
-    
-    for ndx = 1:length(data)
-        entry = data(ndx);
-        if length(entry.refs) < 5
-            found = true;
-            for tndx = 1:length(entry.tokens)
-                token = entry.tokens{tndx};
-                if ~contains(line, token)
-                    found = false;
-                    break;
-                end
-            end
-            if found
-                entry.refs = [entry.refs {current_head}];
-                data(ndx) = entry;
-            end
-        end
-    end
-end
-
-
-% % 
 % % ischild()
 % % 
 function yes = ischild()
@@ -240,6 +289,7 @@ function show_index()
     global data
     global debug
     
+    cd '../html/';
     out = fopen('text_index.htm', 'w');
     fprintf(out, '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">\n');
     fprintf(out, '<html>\n');
@@ -252,15 +302,16 @@ function show_index()
     fprintf(out, '<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>\n');
     fprintf(out, '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>\n');
     fprintf(out, '<link rel="stylesheet" href="styles/styles.css" />\n');
-    fprintf(out, '<style>/>\n');
-    fprintf(out, '.blackText/>\n');
-    fprintf(out, '{/>\n');
-    fprintf(out, '    color:black;/>\n');
-    fprintf(out, '}/>\n');
-    fprintf(out, '</style>/>\n');
+    fprintf(out, '<style>\n');
+    fprintf(out, '.blackText\n');
+    fprintf(out, '{\n');
+    fprintf(out, '    color:black;\n');
+    fprintf(out, '}\n');
+    fprintf(out, '</style>\n');
     fprintf(out, '<title>Index</title>\n');
     fprintf(out, '</head>\n');
     fprintf(out, '<body>\n');
+    fprintf(out, '<table>\n');
 % put this:
 %    A. at the top of the table
 %    B. whenever the current token is alone and is A - Z
@@ -283,8 +334,6 @@ function show_index()
 % <tr><td>.! </td><td>  scalar transpose  </td><td><a href="01_Introduction.htm#1_1"><span class="blackText">1.1 Background</span></a></td></tr>
 % </table>
 
-    do_header = false;
-    first = true;
     for entry = data
         switch entry.type
             case 'H'
@@ -292,9 +341,23 @@ function show_index()
                 fprintf(out,'            <th colspan="7">%s</th>\n', ...
                     entry.first);
                 fprintf(out,'        </tr>\n');
-            case {'N', 'S'
+            case {'N', 'S'}
                 fprintf(out,'        <tr>\n');
                 fprintf(out,'            <td>%-0s</td>\n', entry.first);
+                fprintf(out,'            <td> %s</td>\n', ...
+                    [entry.second ' ' entry.third]);
+                for ndx = 1:length(entry.ref)
+                    fprintf(out, ...
+                       '<td><a href="%s"><span class="blackText">(%d)</span></a></td>\n', ...
+                        entry.ref{ndx}, ndx);
+                    if ndx < length(entry.ref) 
+                        fprintf(out,', ');
+                    end
+                end
+                fprintf(out,'        <tr>\n');
+            case 'C'
+                fprintf(out,'        <tr>\n');
+                fprintf(out,'            <td> - </td>\n', entry.first);
                 fprintf(out,'            <td> %s</td>\n', ...
                     [entry.second ' ' entry.third]);
                 for ndx = 1:length(entry.ref)
@@ -305,18 +368,12 @@ function show_index()
                     end
                 end
                 fprintf(out,'        <tr>\n');
-            case 'N'
-                
-            case 'C'
-        end
-%        if do_header
-            do_header = false;
-%        else
         end
     end
     fprintf(out,'</table>\n');
     fprintf(out,'</body>\n');
     fprintf(out,'</html>\n');
+    fclose(out)
 end
 
 

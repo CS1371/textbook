@@ -1,0 +1,430 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+    <title>13_Images.htm</title>
+    <script async src="./javascript/index.js"></script>
+    <!-- include bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- include stylesheets -->
+    <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+<div>#top_nav#</div>
+<div class="nav-obj">#nav_obj#</div>
+
+<div class="content">
+  <h1 id="13" align="center">Chapter 13: Images</h1>
+
+  <!-- Chapter Objectives -->
+  <h1>Chapter Objectives</h1>
+  <p>This chapter covers:</p>
+  <ul>
+      <li>The basic representation of images</li>
+      <li>How to read, display, and write JPEG image files</li>
+      <li>Some basic operations on images</li>
+      <li>Some advanced image processing techniques</li>
+  </ul>
+
+  <!-- Introduction -->
+  <h1>Introduction</h1>
+  <div class="container">
+      <p>The graphical techniques we have seen so far have been 2-D and 3-D plots, whose basic concept is to write in places on the screen where data are required and to leave the rest of the screen blank. These presentations are easily generated when we have a mathematical model of the data and wish to represent it graphically. However, many sensors observing the world do not have that underlying model of the data. Rather, they passively generate 2-D repr that we see as images, leaving the interpretation of those images to an observer. This kind of presentation is exemplified by a digital photogra includes images from many other sources like radar or X-ray machines.</p>
+      <p>This chapter discusses some of the elementary processes that can be images in order to begin to extract meaning from them.</p>
+  </div>
+
+  <div class="chp-section" data-sect-num="1" data-sect-name="Nature of an Image">
+     <!-- Nature of an Image -->
+    <h2 id="13_1">13.1  Nature of an Image</h2>
+    <div class="container clearfix">
+        <div class="float-sm-right card">
+            <img src="..\Images\..\Images\Fig_13_1.JPG" alt="Figure 13.1" class="fig card-img">
+            <p class="figure-name card-title">Figure 13.1: The Nature of Images</p>
+        </div>
+         <p>Before we confine ourselves to practical, computational reality, we need to understand the general nature of an image. The easiest answer would be that an image is a 2-D sheet on which the color at any point can have essentially infinite variability. However, since we live in a digital world, we will immediately confine ourselves to the conventional representation of images required for most digital display processors, as shown in Figure 13.1. We can represent any image as a 2-D, M x N array of points usually referred to as picture elements, or <b>pixels</b>, where M and N are the number of rows and columns, respectively. Each pixel is “painted” by blending variable amounts of the three primary colors: red, green, and blue. (Notice that this is not the same blending process used in painting with oils or water colors, where the second primary color is yellow and the combination process is reversed—increasing amounts of the primary colors tends toward black, not white.)</p>
+         <p>The resolution of a picture is measured by the number of pixels per unit of picture width and height. This governs the fuzziness of its appearance in print, and controls the maximum size of good-quality photo printing. The color resolution is measured by the number of bits in the words containing the red, green, and blue (RGB) components. Since one value generally exists for each of the M x N pixels in the array, increasing the number of bits for each pixel color will have a significant effect on the stored size of the image. Typically, 8 bits (values 0–255) are assigned to each color.</p>
+         <p>The MATLAB language has a data type, <code>uint8</code>, which uses 8 bits to store an unsigned integer in the range 0–255. It is unsigned because we are not interested in negative color values, and to specify the sign value would cost a data bit and reduce the resolution of the data to 0–127. By combining the three color values, there are actually 2<sup>24</sup> different combinations of color available to a true-color image—many more possible combinations than the human eye can distinguish.</p>
+     </div>
+   </div>
+
+   <div class="chp-section" data-sect-num="2" data-sect-name="Image Types">
+     <!-- Images Types -->
+    <h2 id="13_2">13.2 Image Types</h2>
+    <div class="container">
+        <p>Our sources for images to process are data files captured by imaging devices such as cameras, scanners, and graphic arts systems, and these image files are provided in a wide variety of formats. According to the MATLAB documentation, it recognizes files in TIFF, PNG, HDF, BMP, JPEG (JPG), GIF, PCX, XWD, CUR, and ICO formats. The various file formats are usually identified by their file extensions. While this seems a bewildering collection of formats, MATLAB provides one image reading function that converts these file formats to one of three internal representations: true color, gray scale, or color mapped images. In the MATLAB implementation, we will confine our interests to two formats: .png files when absolute color fidelity is required and .jpg files that offer better compression ratios to give a smaller file size for a given image.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="True Color Images">
+       <!-- True Color Images -->
+      <h3 id="13_2_1">13.2.1	True Color Images</h3>
+      <div class="container">
+           <p>True color images are stored according to the scheme shown in Figure 13.2 as an M*N*3 array where every pixel is directly stored as <code>uint8</code> values in three layers of the 3-D array. The first layer contains the red value, the second layer the green value, and the third layer the blue value. The advantage of this approach, as the name suggests, is that every pixel can be represented as its true color value without compromise. The only disadvantage is the size of the image in memory because there are three color values for every pixel.</p>
+           <div class="card">
+               <img src="..\Images\..\Images\Fig_13_2.JPG" alt="Figure 13.2" class="fig card-img">
+               <p class="figure-name card-title">Figure 13.2: A True Color Image</p>
+           </div>
+       </div>
+     </div>
+
+     <div class="chp-subsection" data-sub-num="2" data-sub-name="Gray Scale Images">
+       <!-- Gray Scale Images -->
+      <h3 id="13_2_2">13.2.2	Gray Scale Images</h3>
+      <div class="container">
+           <p>Gray scale images are also directly stored, but save the black-to-white intensity value for each pixel as a single <code>uint8</code> value rather than three values. The function <code>imread(...)</code> will read an existing gray scale image into a 2 dimensional array, and the function <code>rgb2gray(...)</code> will convert a true color image to gray scale.</p>
+       </div>
+     </div>
+
+     <div class="chp-subsection" data-sub-num="3" data-sub-name="Color Mapped Images">
+       <!-- Color Mapped Images -->
+      <h3 id="13_2_3">13.2.3	Color Mapped Images</h3>
+      <div class="container clearfix">
+          <div class="float-sm-left card">
+              <img src="..\Images\..\Images\Fig_13_3.JPG" alt="Figure 13.3" class="fig card-img">
+              <p class="figure-name card-title">Figure 13.3: A Color Mapped Image</p>
+          </div>
+           <p>Color mapped, or indexed, images keep a separate color map either 256 items long (for maximum economy of memory) or up to 32,768 items long. Each item in the color map contains the red, blue, and green values of a color, respectively. As illustrated in Figure 13.3, the image itself is stored as an M x N array of indices into the color map. So, for example, a certain pixel index might contain the value 143. The color to be shown at that pixel location would be the 143rd color set (RGB) on the color map.</p>
+           <p>If the color map is restricted to 256 colors, each pixel can be drawn at the same color resolution as a true color image, as three 8-bit values, but the choice of colors is very restricted, and normal pictures of scenery—sky, for instance—take on a “layered color” appearance. Color mapped images can be used effectively, however, to store “cartoon pictures” economically where limited color choices are not a problem. Using a larger color map provides a larger, but still sometimes restrictive, range of color choices; but since the indices in the picture array must be 16-bit values and the color map is larger, the memory size advantages of this method of storage are diminished. Computationally, it is possible to convert a color mapped image to true color, but true color or black-and-white images cannot normally be converted to color mapped format without loss of fidelity in the color representation.</p>
+       </div>
+     </div>
+
+     <div class="chp-subsection" data-sub-num="4" data-sub-name="Preferred Image Format">
+       <!-- Preferred Image Format -->
+      <h3 id="13_2_4">13.2.4	Preferred Image Format</h3>
+      <div class="container">
+           <p>In order to avoid confusion in the format of images, we will confine our discussions to one specific image file format that is prevalent at the time of writing and that provides a nice compromise between economy of storage as an image file and accessibility within MATLAB. We will discuss files compressed according to a standard algorithm originally proposed by the Joint Photographic Experts Group (JPEG). When MATLAB reads JPEG images, they are decoded as true color images; when MATLAB writes them, they are again encoded in compressed form. The file size for a typical JPEG file is 30 times less than the size you would need to store the M x N x 3 bytes of the image. As we will see later, however, this compression does not come without cost.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="3" data-sect-name="Reading, Displaying, and Writing Images">
+     <!-- Reading, Displaying, Writing Images -->
+    <h2 id="13_3">13.3	Reading, Displaying, and Writing Images</h2>
+    <div class="container">
+        <p>MATLAB uses one image reading function, <code>imread(...)</code>, for all image file types. To read a file named <code>myPicture.jpg</code>, we use the following command:</p>
+        <p><code>>> pic = imread('myPicture.jpg', 'jpg')</code></p>
+        <p>where the result, <code>pic</code>, is an M x N x 3 <code>uint8</code> array of pixel color values, and the second parameter, <code>'jpg'</code>, provides the format of the file explicitly. This parameter is optional; MATLAB usually infers the file format correctly from the file contents.</p>
+        <p>Once the picture has been read, you can display it in a figure window with fixed size and axes visible by using the following command:</p>
+        <p><code>>> image(pic)</code></p>
+        <p>This actually stretches or shrinks the image to fit the size of the normal plot figure, a behavior you normally desire; however, occasionally, you want the plot figure to match the actual image size (or at least, preserving its aspect ratio). Releases of MATLAB after R2008a provide the <code>imshow(...)</code> function, which presents the image without stretching, shrinking, or axes (unless the figure window is too small).</p>
+        <p>Similarly, there is one function for writing files: <code>imwrite(...)</code>, which can be used to write most common file formats. If we have made some changes to pic, the internal representation of the image, we could write a new version to the disk by using the following:</p>
+        <p><code>>> imwrite( pic, 'newPicture.jpg', 'jpg')</code></p>
+        <p>where the third parameter, <code>'jpg'</code>, is required to specify the output format of the file.</p>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="4" data-sect-name="Operating on Images">
+     <!-- Operating on Images -->
+    <h2 id="13_4">13.4	Operating on Images</h2>
+    <div class="container">
+         <p>Since images are stored as arrays, it is not surprising that we can employ the normal operations of creation, manipulation, slicing, and concatenation. We will note one particular matrix operation that will be of great value before examining some applications of array manipulation related to image processing.</p>
+     </div>
+
+     <div class="chp-subsection" data-sub-num="1" data-sub-name="Stretching or Shrinking Images">
+       <!-- Stretching or Shrinking Images -->
+      <h3 id="13_4_1">13.4.1	Stretching or Shrinking Images</h3>
+      <div class="container">
+           <p>In earlier chapters we have seen the basic ability to use index vectors to extract rows and columns from an array. Now we extend these ideas to understand how to uniformly shrink or stretch an array to match an exact size. Consider, for example, <code>A</code>, a <code>rows x cols</code> array. Assume for a moment that the vertical size is good, but we want to stretch or shrink the image horizontally to <code>newRows</code>—a number that might be larger or smaller than <code>rows</code>. We use <code>linspace(...)</code> to create an index vector as follows:</p>
+           <p><code>>> rowVector = linspace(1, rows, newRows)</code></p>
+           <p>where the third parameter is the desired size of the new array. In general, this index vector will contain fractional values, but MATLAB will truncate the index values. We can round the results as follows:</p>
+           <p><code>>> rowVector = round(rowVector)</code></p>
+           <p>Then we can use this vector to shrink or stretch the picture pic as follows:</p>
+           <p><code>>> newPic = pic(rowVector, cols, :)</code></p>
+           <p>Clearly, this can be applied to both dimensions simultaneously, as shown in Exercise 13.1.</p>
+           <span class="exercise">#exercise_13_1#</span>
+           <p>In this exercise, first we read an image and determine its size. Note that with 3-D images, you must give to the <code>size(...)</code> function three variables. Then we illustrate the “normal” slicing operations by reducing the image to the even rows, and every third column. Next, we generalize this image slicing by stretching the number of rows by a factor 1.43 and shrinking the number of columns by a factor 0.75. This is accomplished by building a row index vector, <code>rowVec</code>, and a column index vector, <code>colVec</code>, according to the algorithm above. The stretching is achieved by repeating selected values in the index vector, and shrinking is achieved by omitting some.</p>
+       </div>
+     </div>
+
+     <div class="chp-subsection" data-sub-num="2" data-sub-name="Color Masking">
+       <!-- Color Masking -->
+      <h3 id="13_4_2">13.4.2	Color Masking</h3>
+      <div class="container clearfix">
+           <p>As an example of image manipulation, consider the image shown in Figure 13.4. This is a 2400 x 1600 JPEG image that can be taken with any good digital camera. However, the appearance of the Vienna garden is somewhat marred by the fact that the sky is gray, not blue. Fortunately, we have a picture of a cottage, as shown in Figure 13.5, with a nice, clear blue sky. So our goal is to replace the gray sky in the Vienna garden with the blue sky from the cottage picture.</p>
+          <div class="card-deck">
+              <div class="card">
+                  <img src="../Images/Vienna.jpg" alt="Figure 13.4" class="fig card-img">
+                  <p class="figure-name card-title">Figure 13.4: A Garden in Vienna</p>
+              </div>
+              <div class="card">
+                  <img src="../Images/Witney.jpg" alt="Figure 13.5" class="fig card-img">
+                  <p class="figure-name card-title">Figure 13.5: A Cottage in Oxfordshire</p>
+              </div>
+          </div>
+          <div class="float-sm-right card">
+              <img src="..\Images\Fig_13_6.JPG" alt="Figure 13.6" class="fig card-img">
+              <p class="figure-name card-title">Figure 13.6: Plot of the color values on one row of the Vienna image</p>
+          </div>
+           <p><b>Initial Exploration</b> Before we can do this, however, we need to explore the Vienna picture to determine how to distinguish the gray sky from the rest of the picture. In particular, there are patches of sky visible between the tree branches that must be changed as well as the open sky. Listing 13.1 illustrates a good way to accomplish this. Here we display the image in one figure; choose a representative row in the image that includes some sky showing through the tree (we chose row 350); and then plot the red, blue, and green values of the pixels across that row. Figure 13.6 shows the resulting plot.</p>
+           <p><b>Analysis</b> As we examine Figure 13.6, we see that the red, green, and blue values for the open sky are all around 250 because the sky is almost white. However, the color “spikes” that correspond to the color values of the sky elements that show through the tree are actually lower. We could decide, for example, to define the sky as all those pixels where the red, blue, and green values are all above a chosen threshold, and we could comfortably set that threshold at 160.</p>
+           <div class="listing">#listing_13_1#</div>
+           <p>There is one more important consideration. It would be unfortunate to turn the hair of the lady (the author’s wife) blue, and there are fountains and walkways that might also logically appear to be “sky.” We can prevent this embarrassment by limiting the color replacement to the upper portion of the picture above row 700.</p>
+           <p><b>Final Computation</b> So we are ready to create the code that will replace the gray sky with blue. The code in Listing 13.2 accomplishes this, and Figure 13.7 shows the resulting image.</p>
+           <div class="listing">#listing_13_2#</div>
+           <div class="card-deck">
+             <div class="card">
+               <img src="..\Images\Fig_13_7.JPG" alt="Figure 13.7" class="fig card-img">
+               <p class="figure-name card-title">Figure 13.7: The Vienna garden with a blue sky</p>
+             </div>
+             <div class="card">
+               <img src="..\Images\Fig_13_8.JPG" alt="Figure 13.8" class="fig card-img">
+               <p class="figure-name card-title">Figure 13.8: Magnified image of the wire</p>
+             </div>
+           </div>
+           <div class="row">
+              <div class="col-sm-8">
+                   <p><b>Post-operative Analysis</b> We realize that this is not quite the end of the story, because a wire has suddenly become evident in the picture. Furthermore, if we take a close look at the wire (Figure 13.8), we see a number of disturbing things:</p>
+                   <ul>
+                       <li>The sky is by no means uniform in color—justifying the assertion that color mapped images do not have enough different colors to draw a true sky effectively</li>
+                       <li>The color of the wire is not far removed from the color of some parts of the blue sky—so replacing slightly darker blue would be problematic</li>
+                       <li>There is a light colored “halo” around the wire that is actually a result of the original JPEG compression of the image so that even if we did replace the darker colors, the “ghost” of the wire would still be visible</li>
+                   </ul>
+                   <p>From this we conclude that pixel replacement will probably not solve our wire problem. We will take a different approach to solve this problem in Chapter 15.</p>
+               </div>
+               <div class="col-sm-4">
+                   <div class="card common-pitfalls common-pitfalls-col">
+                       <p class="card-title">Common Pitfalls 13.1</p>
+                       <p class="card-text">Be careful requesting the size of 3-D (and more) arrays. If you leave off variables—as here, you might be tempted not to ask for the number of colors because you know it’s three—the <code>size(...)</code> function multiplies together the remaining dimension sizes. So if img is sized 1200 * 1600, <code>[r,c] = size(img)</code> would return <code>r = 1200</code> and <code>c = 4800</code>! If you provide to only one variable, it returns a vector of the sizes of each dimension of the array. So <code>v = size(img)</code> returns <code>[1200 1600 3]</code>.</p>
+                   </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+     <div class="chp-subsection" data-sub-num="3" data-sub-name="Creating a Kaleidoscope">
+       <!-- Creating a Kaleidoscope -->
+      <h3 id="13_4_3">13.4.3	Creating a Kaleidoscope</h3>
+      <div class="container clearfix">
+          <div class="float-sm-right">
+           <div class="card">
+               <img src="..\Images\Fig_13_9.JPG" alt="Figure 13.9" class="fig card-img">
+               <p class="figure-name card-title">Figure 13.9: Logic for the kaleidoscope</p>
+           </div>
+           <div class="card">
+               <img src="..\Images\Fig_13_10.JPG" alt="Figure 13.10" class="fig card-img">
+               <p class="figure-name card-title">Figure 13.10: The kaleidoscope</p>
+           </div>
+          </div>
+          <p>Originally, a kaleidoscope was a cardboard tube in which a number of mirrors were arranged in such a manner that one image—usually, a collection of colored beads—was reflected to produce a symmetrical collection of images. We will replicate that general idea using MATLAB. Figure 13.9 illustrates the geometric manipulation necessary to create one particular kaleidoscope picture. We start with an arbitrary image and use shrinking or stretching to generate a square picture—the ‘F’ in the figure. We then mirror it horizontally and concatenate it horizontally with the original image. We then mirror these two images vertically and concatenate them vertically. Finally, we take that compound image and repeat the process to produce the 4x4 image array on the right side.</p>
+          <p>Figure 13.10 shows the original image and the results. The overall logic flow of the solution matches that shown in Figure 13.9.</p>
+          <p>Listing 13.3 shows the code that makes the kaleidoscope.</p>
+        </div>
+        <div class="listing">#listing_13_3#</div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="4" data-sub-name="Images on a Surface">
+      <!-- Images on a Surface -->
+      <h3 id="13_4_4">13.4.4 Images on a Surface</h3>
+      <div class="container clearfix">
+          <div class="float-sm-right card">
+              <img src="../Images/earthmap_s.jpg" alt="Figure 13.11" class="fig card-img">
+              <p class="figure-name card-title">Figure 13.11: Map Projection</p>
+          </div>
+           <p>In Chapter 11 we saw how to create a surface representing solid objects and, in particular, how to create a spherical image that rotates with lighting.</p>
+           <p>Spectacular effects can be created by “pasting” images onto these surfaces, as will be illustrated in this last example. Here, we are given an image of the surface of the earth using Mercator projection, shown in Figure 13.11<sup><a style="color:black" href="#footnote">[1]</a></sup>. It is important to use the Mercator projection, named for the sixteenth-century Flemish cartographer Gerardus Mercator, because this projection keeps the lines of latitude and longitude on a rectangular grid. This allows a correct representation of the map as it is pasted onto the spherical surface. However, it also presents a challenge because in this projection, the north and south poles would be stretched to infinite length across the top and bottom of the map. This map, therefore, leaves off the region near the poles, and we have to replace those regions.</p>
+           <p>The objective of this exercise is to paste this image onto a rotating globe. The trick to accomplishing this is to use a feature of the <code>surf(...)</code> function, whereby the image is supplied in a specific form as the fourth parameter, as follows:</p>
+           <p><code>surf(xx, yy, zz, img)</code></p>
+           <div class="float-sm-right">
+               <video controls class="fig"><source src="..\Images\Fig_13_12.mp4" type="video/mp4">Figure 13.12</video>
+               <p class="figure-name">Figure 13.12: Globe</p>
+           </div>
+           <p>It will replace the normal coloring scheme of the surface with the image under the following conditions:</p>
+           <uL>
+               <li>The rows and columns of the image match the rows and columns of the <code>xx, yy, zz</code> plaid</li>
+               <li>The image supplies the red, green, and blue layers in the same form as true color images</li>
+               <li>The color values, however, must be of type double in the range <code>0..1</code></li>
+           </ul>
+           <p>In the following code, rather than stretching the image to the size of the plaid, we choose to size the plaid to the image, thereby preserving all the image resolution. Clearly, in different circumstances where the size of the plaid is specified,  the  image  can  be  stretched  to suit those dimensions. The code to accomplish all this is shown in Listing 13.4.</p>
+          <p>A snapshot of the globe as it is rotating is shown in Figure 13.12.</p>
+          <div class="listing">#listing_13_4#</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="5" data-sect-name="Engineering Example - Detecting Edges">
+    <!-- Engineering Example -->
+    <h2 id="13_5">13.5  Engineering Example - Detecting Edges</h2>
+    <div class="container clearfix">
+      <div class="float-sm-right">
+          <div class="card">
+              <img src="../Images/C-130.jpg" alt="Figure 13.13" class="fig">
+              <p class="figure-name card-title">Figure 13.13: C-130 in flight</p>
+          </div>
+          <div class="card">
+              <img src="../Images/c-130 edges.jpg" alt="Figure 13.14" class="fig">
+              <p class="figure-name card-title">Figure 13.14: Result of edge detection</p>
+          </div>
+      </div>
+        <p>While images are powerful methods of delivering information to the human eye, they have limitations when being used by computer programs. Our eyes have an astonishing ability to interpret the content of an image, such as the one shown in Figure 13.13. Even a novice observer would have no difficulty seeing that it is a picture of an aircraft in flight. An experienced observer would be able to identify the type of aircraft as a Lockheed C-130 and perhaps some other characteristics of the aircraft.</p>
+        <p>While our eyes are excellent at interpreting images, computer programs need a lot of help. One operation commonly performed to reduce the complexity of an image is edge detection, in which the complete image is replaced by a very small number of points that mark the edges of "interesting artifacts." Figure 13.14 shows the results from a simple program attempting to paint the outline of the aircraft in black by putting a black pixel at an identified edge. The key element of the algorithm is the ability to determine unambiguously whether a pixel is part of the object of interest or not. An edge is then defined as a pixel where some of the surrounding pixels are on the object and some are not. The image selected for this exercise makes edge detection simple since the aircraft is everywhere darker than the surrounding sky.</p>
+        <div class="float-sm-right card">
+            <img src="..\Images\Fig_13_15.JPG" alt="Figure 13.15" class="fig card-img">
+            <p class="figure-name card-title">Figure 13.15: Overlapping picture layers</p>
+        </div>
+        <p>The script used to generate this picture is shown in Listing 13.5. The basic approach of the algorithm is to use simple array processing tools to detect the edges across the whole image at once. To accomplish this, we create four arrays, each one row and one column less than the original image and each offset by one pixel, as illustrated in Figure 13.15. The array <code>pix</code> is in the original location, <code>pt</code> is one row up from that location, <code>pl</code> is one row left, and <code>ptl</code> is one row left and up. If we now collapse these arrays on top of each other, we are simultaneously comparing the values of a square of four pixels across the whole image (less one row and one column).</p>
+      </div>
+        <div class="listing">#listing_13_5#</div>
+        <p><b>Observation</b> Clearly, while there is much more to be done with this data for it to be useful, the complexity of this image has been reduced from 12 million <code>uint8</code> values with no real meaning to a small number of data values that outline an object of interest. Algorithms beyond the scope of this text could be used to convert these outlining points to polynomial shapes. These shapes could then be matched against projections of 3-D models to actually identify the object in the picture.</p>
+  </div>
+
+
+  <h2>Chapter Summary</h2>
+  <div class="container clearfix">
+      <p><i>This chapter covered the following:</i></p>
+      <ul>
+          <li>Images represented internally in bit-mapped, gray scale, or true color form</li>
+          <li>Image files that come in a large variety of formats; MATLAB provides a single reader function and a single writer function to manipulate all the common image types</li>
+          <li>Common operations on images, including cropping, stretching or shrinking, and concatenating and pasting an image onto a surface</li>
+          <li>An engineering example showing how edge detection begins the process of extracting meaning from an image</li>
+      </ul>
+  </div>
+<h2>Self Test</h2>
+<div class="container">
+
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>An image whose color values are all 0 will be all white on the screen.</li>
+          <li>The MATLAB language defines one image reader for all image file
+types.</li>
+          <li>The normal operations of creation, slicing, and concatenation can be
+used to manipulate images.</li>
+          <li>rot90(A) rotates a 3-D array by 90° clockwise.</li>
+          <li>Edge detection dramatically reduces the amount of data to be
+processed by image identification software.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>Each pixel of a true color image is stored as __________values of
+type ____________ containing values __________.</li>
+          <li>Gray scale images store the black-to-white intensity value for each
+__________ as a(n) ___________.</li>
+          <li>When you read JPEG files, they are __________as ___________
+images containing _______________.</li>
+          <li>Once a picture has been read, you can display it in a(n)
+_______________ with the function _____________.</li>
+          <li>The operator ____________ mirrors an array about its ____________.</li>
+</ol>
+
+<h3>Programming Projects</h3>
+<ol>
+<li>As an introduction to image problems, perform the following
+manipulations:
+<ul>
+<li>Find a suitable JPEG image file. Read it, display it, and store the
+result in A.</li>
+          <li>Create a copy of A, flip the image from left to right, and display it
+in a new figure.</li>
+          <li>Create a copy of A, swap the values for red and blue, and display
+it in a new figure.</li>
+          <li>Create a copy of A, stretch the image to four times its original size
+(twice as many rows and twice as many columns), and display it
+in a new figure.</li>
+          <li>Create a copy of A and then shrink the image to 0.7 its original
+size in each dimension and display it in a new figure.</li>
+</ul>
+An image could be scrambled by doing the following in order:
+<ol type="a">
+<li>multiple quadrant flips:
+<ol type="i">
+<li>top left quadrant becomes bottom right quadrant</li>
+          <li>top right quadrant becomes bottom left quadrant</li>
+          <li>bottom right quadrant becomes top left quadrant</li>
+          <li>bottom left quadrant becomes top right quadrant</li>
+		  </ol>
+          <li>The image is flipped upside down.</li>
+          <li>The red values are swapped with the green values.</li>
+          <li>The blue values are flipped left to right.</li>
+		  </ol>
+Write a function called imageScrambler that takes in an image array
+and a string. If the string is equal to 'scramble', your function
+should scramble the image according to the above method and
+return the modified image in array form. If the string is equal to
+'unscramble', your function should unscramble the image by
+reversing the above method and return the modified array.
+Otherwise, your function should return the array untouched. You
+may assume that the image array provided will always contain an
+even number of rows and columns.<br>
+Test your solution by writing a script that reads a selected image, A,
+ensures that there is an even number of rows and columns, and tests
+the scrambling and unscrambling the image.</li>
+          <li>You are provided an image, and your job is to convert the full-sized
+image to a smaller one. Normally when image processing software
+is required to resize an image, a complex resizing algorithm is used
+to accomplish the conversion. We will attempt to duplicate this
+conversion. Write a function called resizeMe that takes in a string as
+an input corresponding to an image file name. The function should
+then resize the image to 1.414 times its original size in each
+dimension and display it. Additionally, your function should use
+the built-in function imwrite(...) to write the new image to a file.
+The name of the new file will be the original file name preceded by
+'LG' . For example, if the original filename is called 'yellow_bird.jpg', 
+the new file should be called 'LGyellow_bird.jpg'.</li>
+          <li>Write a function called rotate that takes in an image array and a
+number. The number represents the number of times the function
+will rotate the image clockwise by 90 degrees. A negative number
+signifies counter-clockwise rotation and a positive one signifies
+clockwise rotation.</li>
+          <li>We have obtained new intelligence that the Housing Department
+has plans to renovate all the rooms in the dorms with a new
+prototype. However, the prototype has been encoded into three
+separate images to avoid rival students finding out about it and
+thus seeking refuge here. Each image only contains one layer of
+color (e.g., roomScrambledRed.jpg only contains the Red layer). As a
+loyal student, it is your job to reconstruct a new image out of these
+three images.
+<ol type="a">
+<li>Create a script called room , and read the three layers using
+'imread' . Create the new matrix ReconImage with the three layers,
+and display it using 'imshow'.</li>
+          <li>After detailed analysis of the image, you find that it is also
+scrambled. Using advanced crytography and whizbang
+mathematical formulas, you have come to the conclusion that the
+four quadrants of the image have been re-arranged. </li>
+</ol>
+Manipulate
+the composite image from part a. and re-arrange the pieces to
+form the proper image. Display it using subplot(...) , below the
+first image.</li>
+          <li>For this exercise, you will visit - at least in MATLAB - a place you
+have always wanted to go.
+<ol type="a">
+<li>Find or take a picture of yourself with a plain background such
+as a green screen, using the JPEG image format. It would be a
+good idea not to wear the color of the background.</li>
+          <li>Find a JPEG image of the place you want to go and decide on the
+rectangle in that scene where your image should appear. Save the
+width and height of the rectangle and the row and column of its
+top left corner.</li>
+          <li>Re-size your image to be the width and height of the rectangle.</li>
+          <li>Use the color masking technique of section 13.4.2 to copy your
+image without the green screen into the selected rectangle of
+your dream scene.</li>
+</ol>
+          <li>Write a function called
+adjustImage that consumes the
+name of an image file and an
+angle in degrees and produces a
+new image rotated counterclockwise
+by that number of
+degrees about the center of the
+original image. Your new image
+will be larger than the original
+image.<br>
+<b>Hint</b>: The trick to this is to move each pixel from its current
+location (in polar coordinates, r - theta) to a new location on
+the new image. The new location is found by adding the
+rotation angle provided to the angular value, u, of each pixel.
+Those pixels in the new image not occupied by a pixel will
+be black.</li>
+ 
+</ol>
+</div>
+</div>
+
+
+</body>
+</html>

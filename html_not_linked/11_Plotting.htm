@@ -1,0 +1,624 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>11_Plotting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="styles/styles.css" />
+<script async src="./javascript/index.js"></script>
+</head>
+<body>
+<div>#top_nav#</div>
+<div class="nav-obj">#nav_obj#</div>
+
+<div class="content">
+  <h1 id="11" align="center">Chapter 11: Plotting</h1>
+
+  <!-- Chapter Objectives -->
+  <h1>Chapter Objectives</h1>
+  <div class="container">
+    <p>This chapter presents the principles and practice of plotting in the following forms:</p>
+    <ul>
+      <li>Basic two-dimensional (2-D) line plots
+      <li>2-D parametric plots
+      <li>Three-dimensional (3-D) line and parametric plots
+      <li>Basic 3-D surface plots
+      <li>Parametric surface plots
+      <li>Bodies of rotation
+    </ul>
+  </div>
+
+  <!-- Introduction -->
+  <h1>Introduction</h1>
+  <div class="container">
+    <p>There is a much-quoted expression that "a picture is worth a thousand words," and this is never more appropriate than when talking about data. In previous chapters, we used some simple plot commands to display data to illustrate its behavior. The capability of the MATLAB language to present data reaches far beyond ordinary data plotting, and far beyond the limited confines of a textbook. This chapter will present the fundamental concepts of the different forms in which data can be presented, but it leaves to the reader the challenge of exploring the full range of capabilities available. You only really discover the power inherent in the plotting capabilities of MATLAB when you have some unusual data to visualize.</p>
+  </div>
+
+  <div class="chp-section" data-sect-num="1" data-sect-name="Plotting in General">
+    <!-- Plotting in General -->
+    <h2 id="11_1">11.1  Plotting in General</h2>
+    <div class="container">
+      <p>Before considering the details of how each plotting mode works, we should set the context. In this section, we will discuss the general container for all graphical types, the figure, and some basic operations that apply to all figures—functions that enhance them, the ability to assemble subplots into a single figure, and the advisability of making manual changes to plots.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="A Figure - The Plot Container">
+      <h3 id="11_1_1">11.1.1	A Figure - The Plot Container</h3>
+      <div class="container">
+        <p>The fundamental container for plotting is a figure. In a simple script, if you just start plotting data, figure number 1 is automatically created to present the data. You can manage the figures by asserting the <code>figure</code> command. Each time figure is called, a new figure is made available, with the next higher figure number. If you use the form <code>figure &lt;number&gt;</code>, you can select a specific figure number for the next plot.  To clear the current figure, put the key word <code>clf</code> in the header of your script. To remove all the figures, put the key phrase <code>close all</code> at the beginning of your script. The listing examples below will assume that each script begins with <code>clear</code>, <code>clc</code>, <code>close all</code>.</p>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Simple Functions for Enhancing Plots">
+      <!-- Simple Functions for Enhancing Plots -->
+      <h3 id="11_1_2">11.1.2	Simple Functions for Enhancing Plots</h3>
+      <div class="container">
+        <p>We have already introduced <code>plot(x, y)</code>, the basic function that creates a simple plot of <code>x</code> versus <code>y</code>. The following functions can be used to enhance any of the plots discussed in this chapter. Note that they enhance an existing plot; they should all be called after the fundamental function that creates a plot figure.</p>
+         <ul>
+           <li><code>axis &lt;param&gt;</code> provides a rich set of tools for managing the appearance of the axes, including the following:
+            <ul>
+              <li><code>tight</code> reduces the axes to their smallest possible size</li>
+              <li><code>equal</code> sets the <code>x</code> and <code>y</code> scales to the same value</li>
+              <li><code>square</code> makes the plot figure of equal width and height</li>
+              <li><code>off</code> does not show the axes at all</li>
+            </ul></li>
+            <li><code>axis([xl xu yl yu zl zu])</code> overrides the automatic computation of the axis values, forcing the x-axis to reach from <code>xl</code> to <code>xu</code>, the y-axis from <code>yl</code> to <code>yu</code>, and the z-axis from <code>zl</code> to <code>zu</code>. For 2-D plots, the <code>z</code> values should be omitted.</li>
+            <li><code>colormap &lt;specification&gt;</code> establishes a sequence of colors, the color map, to be used under a number of circumstances to cycle through a series of colors automatically. The legal specification values are listed in Appendix A.</li>
+            <li><code>grid on</code> puts a grid on the plot; <code>grid off</code> (the default) removes grid lines.</li>
+            <li><code>hold on</code> keeps the existing data on the current figure to allow the results of subsequent plotting calls to be added to the current figure without first erasing the existing plot; <code>hold off</code> (the default) allows you to redraw the current figure at the next plot call, erasing the previous contents.</li>
+            <li><code>legend(...)</code> takes a cell array of strings, one for each of the multiple plots on a single figure, and creates a legend box. By default, that box appears in the top-right corner of the figure. However, this default can be overridden by explicitly specifying the location of the legend. See the help files for a complete discussion of the legend options.</li>
+            <li><code>shading &lt;spec&gt;</code> defines the method for shading surfaces. See the help files for a complete discussion of the shading specification options.</li>
+            <li><code>text(x, y, {z,}, str)</code> places the text provided at the specified (x, y) location on a 2-D plot, or at the (x, y, z) location on a 3-D plot.</li>
+            <li><code>title(&lt;string&gt;)</code> places the text provided as the title of the current plot.</li>
+            <li><code>view(az, el)</code> sets the angle from which to view a plot. The parameters are <code>az</code>, the azimuth, an angle measured in the horizontal plane, and <code>el</code>, the elevation, an angle measured upward from the x axis. Both angles are specified in degrees.</li>
+            <li><code>xlabel(&lt;string&gt;)</code> sets the string provided as the label for the x-axis.</li>
+            <li><code>ylabel(&lt;string&gt;)</code> sets the string provided as the label for the y-axis.</li>
+            <li><code>zlabel(&lt;string&gt;)</code> sets the string provided as the label for the z-axis. (As we will soon see, all plots actually have a third axis.)</li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="Multiple Plots on One Figure - Subplots">
+      <!-- Subplots -->
+      <h3 id="11_1_3">11.1.3	Multiple Plots on One Figure - Subplots</h3>
+      <div class="container clearfix">
+          <p>Within the current figure, you can place multiple plots with the subplot command, as shown in Figure 11.1. The function <code>subplot(r, c, n)</code>divides the current figure into <code>r</code> rows and <code>c</code> columns of equally spaced plot areas, and then establishes the nth of these (counting across the rows first) as the current figure. You do not have to draw in all of the areas you specify. Figure 11.1 was generated by the code shown in Listing 11.1. Notice that the order of the plot positions is in an order different from that achieved when you linearize an array.</p>
+          <div class="card">
+               <img src="..\Images\Fig_11_1.JPG" alt="Figure 11.1" class="fig card-img">
+               <p class="figure-name card-title">Figure 11.1: Using Subplots</p>
+          </div>
+      </div>
+      <div class="listing">#listing_11_1#</div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="4" data-sub-name="Manually Editing Plots">
+      <!-- Manually Editing Plots -->
+      <h3 id="11_1_4">11.1.4	Manually Editing Plots</h3>
+      <div class="container">
+        <p>When a figure has been created, you are free to manipulate many of its characteristics  by  using  its  menu items and tool bars. They provide the ability to resize the plot, change the view characteristics, and annotate it with legends, axis labels, lines, and text call-outs. However, <b><i>a word of caution</i></b> is in order here. It is very rare that you achieve what you desire on the first try.  Manual edits become very tedious and error prone when they must be repeated. You will always be better served by putting all that additions into your source code rather than ever using manual figure editing.  If for no other reason, by never using manual edits, you are avoiding the appearance of impropriety by being able to repeat any graphics you created from the source materials.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="2" data-sect-name="2-D Plotting">
+    <h2 id="11_2">11.2 2-D Plotting</h2>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Simple Plots">
+      <!-- Simple Plots -->
+      <h3 id="11_2_1">11.2.1 Simple Plots</h3>
+      <div class="container clearfix">
+        <div class="float-sm-right card">
+             <img src="..\Images\Fig_11_2.JPG" alt="Figure 11.2" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.2: Overlaying plots with <code>hold on</code></p>
+        </div>
+        <p>The basic function to use for 2-D plots is <code>plot(...)</code>. The normal use of this function is to give it three parameters, <code>plot(x, y, str)</code>, where <code>x</code> and <code>y</code> are vectors of the same length containing the x and y coordinates respectively, and <code>str</code> is a string containing one or more optional line color and style control characters. A complete list of these control characters is included in Appendix A. If the vector <code>x</code> is omitted, MATLAB assumes that the x coordinates are <code>1:N</code>, where <code>N</code> is the length of the y vector. If the <code>str</code> is omitted, the default line is solid blue with no symbols at the data points. The MATLAB definition of this function also permits multiple <code>(x, y, str)</code> data sets in a single function call. It is always possible, of course, to produce the same result with multiple function calls in <code>hold on</code> mode.  Since we have already seen basic 2-D plotting at work, it should be sufficient to observe and comment on the simple example seen in Figure 11.2, generated by the code shown in Listing 11.2.</p>
+      </div>
+      <div class="listing">#listing_11_2#</div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Plot Options">
+      <!-- Plot Options -->
+      <h3 id="11_2_2">11.2.2	Plot Options</h3>
+      <div class="container">
+        <p>In addition to the plot enhancement tools listed in Section 11.1.2, the following capabilities are available.</p>
+        <ul>
+          <li>Setting line styles and symbols to mark the data points (details in Appendix A)</li>
+          <li>Using <code>plotyy(...)</code> to put a second axis on the right side of the figure</li>
+          <li>Obtaining logarithmic plots on the x-axis <code>(semilogx(...))</code>, y-axis <code>(semilogy(...))</code>, or both axes (<code>loglog(...)</code>)</li>
+        </ul>
+        <p>We strongly suggest that the reader experiment with these features and observe their effects.</p>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="Parametric Plots">
+      <!-- Parametric Plots -->
+      <h3 id="11_2_3">11.2.3	Parametric Plots</h3>
+      <div class="container clearfix">
+        <div class="float-sm-right card">
+             <img src="..\Images\Fig_11_3.JPG" alt="Figure 11.3" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.3: Parametric Plots</p>
+        </div>
+        <p>Plotting is not restricted to the situation where the data along one axis are the  independent  variable  and  that along   the   other   are   dependent. Parametric plots allow the variables on each axis to be dependent on a separate, independent variable. That independent variable will define a path or locus on the plotting surface. Consider the plot shown in Figure 11.3, which presents   a   simple   exercise   in transforming a circle into the shape of an airfoil, for example, the cross-section of an aircraft wing or a turbine blade. It was generated using the code shown in Listing 11.3.</p>
+      </div>
+      <div class="listing">#listing_11_3#</div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="4" data-sub-name="Other 2-D Plot Capabilities">
+      <!-- Other 2D Plot Capabilities -->
+      <h3 id="11_2_4">11.2.4	Other 2-D Plot Capabilities</h3>
+      <div class="container">
+        <p>You can also create some more exotic plots that are not necessary to understand the basic principles of plotting, but are powerful methods for visualizing real data:</p>
+        <ul>
+          <li><code>bar(x, y)</code> produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with <code>&gt;&gt; help bar</code></li>
+          <li><code>barh(x, y)</code> produces a bar graph with the values in y positioned at the horizontal locations in x. The options available can be studied with <code>&gt;&gt; help bar</code>.</li>
+          <li><code>fill(x,y,n)</code> produces a filled polygon defined by the coordinates in <code>x</code> and <code>y</code>. The fill color is specified by indexing n into the color map. The options available can be studied with <code>&gt;&gt; help fill</code></li>
+          <li><code>hist(y, x)</code> produces a histogram plot with the values in <code>y</code> counted into bins defined by <code>x</code>. The options available can be studied with <code>&gt;&gt; help hist.</code></li>
+          <li><code>pie(y)</code> makes a pie chart of the values in <code>y</code>. For more options, see <code>&gt;&gt; help pie</code>.</li>
+          <li><code>polar(th, y)</code> makes a polar plot of the angle <code>th</code> (radians) with the radius <code>r</code> specified for each angle. For more options, see <code>&gt;&gt; help polar</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="3" data-sect-name="3-D Plotting">
+    <!-- 3D Plotting -->
+    <h2 id="11_3">11.3 3-D Plotting</h2>
+    <div class="container clearfix">
+      <div class="float-sm-right card">
+           <img src="..\Images\Fig_11_3a.JPG" alt="Figure 11.3a" class="fig card-img">
+           <p class="figure-name card-title">Figure 11.3a: Rotating 2-D Plots</p>
+      </div>
+      <p>Before attacking the details of plotting in three dimensions, it should be noted that even 2-D plots are actually 3-D plots. Consider the picture shown in Figure 11.3a, which was generated originally as the 2-D plot in Figure 11.3. By selecting the Rotate 3-D icon on the tool bar and moving the mouse on your figure, it becomes apparent that what appeared to be a 2-D plot in the x-y plane is really a 3-D plot in the x-y-z plane “suspended in space” at z = 0.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Linear 3-D Plots">
+      <!-- Linear 3D Plots -->
+      <h3 id="11_3_1">11.3.1 Linear 3-D Plots</h3>
+      <div class="container clearfix">
+        <div class="float-sm-right card">
+             <img src="..\Images\Fig_11_4.JPG" alt="Figure 11.4" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.4: Linear 3-D Plots</p>
+        </div>
+        <p>The simplest method of 3-D plotting is to extend our 2-D plots by adding a set of z values. In the same style as <code>plot(...)</code>, <code>plot3(x, y, z, str)</code> consumes three vectors of equal size and connects the points defined by those vectors in 3-D space. The optional <code>str</code> specifies the color and/or line style. If the <code>str</code> is omitted, the default line is solid blue.  Figure 11.4 shows three curves plotted in three dimensions, using the script shown in Listing 11.4. Each plot is in the z-x plane: the red curve at y = 0, the blue curve at y = 0.5, and the green curve at y = 1.</p>
+      </div>
+      <div class="listing">#listing_11_4#</div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Linear Parametric 3-D Plots">
+      <!-- Linear Parametric 3-D Plots -->
+      <h3 id="11_3_2">11.3.2	Linear Parametric 3-D Plots</h3>
+      <div class="container clearfix">
+        <div class="float-sm-right card">
+             <img src="..\Images\Fig_11_5.JPG" alt="Figure 11.5" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.5: Linear Parametric 3-D Plots</p>
+        </div>
+        <p>We can generalize the concept of parametric plots to 3-D, as shown in Figure 11.5, in which the x, y, and z values are mappings of some linear parameter. On the left side, the spiral is an example of a 3-D plot where two of the dimensions, x and y, are dependent on the third, independent parameter. The independent parameter in this example is the rotation angle, <code>theta</code>, varying from 0 to 10&pi; (five complete revolutions). The x and y values are mapped as sin(u) and cos(u) — the classic Polar to Cartesian conversion for describing a circle. The spiral effect is accomplished by plotting <code>theta</code> on the z-axis.  The right half of Figure 11.5 illustrates a fully parametric plot, where the values of all three coordinates are mappings of an independent parameter, <code>t</code>. This particular example is a plot of the 3-D Brownian motion of a particle receiving random impulses in all three axes. Note the use of text anchored in x-y-z space to label points on the graph. The figure is drawn using Listing 11.5.</p>
+      </div>
+      <div class="listing">#listing_11_5#</div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="Other 3-D Plot Capabilities">
+      <!-- Other 3-D Plot Capabilities -->
+      <h3 id="11_3_3">11.3.3	Other 3-D Plot Capabilities</h3>
+      <div class="container">
+       <p>If you are using MATLAB, you can also create some more exotic 3-D plots that are not necessary to understand the basic principles of plotting, but are powerful methods for visualizing real data:</p>
+       <ul>
+          <li><code>bar3(x, y)</code> produces a bar graph with the values in <code>y</code> positioned at the horizontal locations in <code>x</code>. The options available can be studied with<br>
+          <code>>> help bar3.</code></li>
+          <li><code>barh3(x, y)</code> produces a bar graph with the values in <code>y</code> positioned at the horizontal locations in <code>x</code>. The options available can be studied with <br>
+          <code>>> help barh.</code></li>
+          <li><code>pie3(y)</code> makes a 3-D pie chart of the values in <code>y</code>. For more options, see<br>
+          <code>>> help pie3.</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="4" data-sect-name="Surface Plots">
+    <!-- Surface Plots -->
+    <h2 id="11_4">11.4 Surface Plots</h2>
+    <div class="container">
+      <p>In Section 11.3.2, we saw that data can be generated for all three axes based on one linear parameter. However, more dramatic graphics are produced by a different group of 3-D graphics functions that produce images based on mapping a 2-D surface. The underlying 2-D surface is sometimes referred to as plaid because of its conceptual similarity to a Scottish tartan pattern. To design such a pattern, one needs only to specify the color sequence of the horizontal and vertical threads. In the same way, we specify a plaid by defining vectors of the row and column data configurations.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Basic Capabilities">
+      <!-- Basic Capabilities -->
+      <h3 id="11_4_1">11.4.1	Basic Capabilities</h3>
+      <div class="container">
+        <p>Three fundamental functions are used to create 3-D surface plots:</p>
+        <ul>
+          <li><code>[xx, yy] = meshgrid(x, y)</code> accepts the <code>x<sub>1*m</sub></code> and <code>y<sub>1*n</sub></code> vectors that bound the edges of the plaid and replicates the rows and columns appropriately to produce <code>xx<sub>n*m</sub></code> and <code>yy<sub>n*m</sub></code>, containing the <code>x</code> and <code>y</code> values (respectively) of the complete plaid. This enables us in general to compute mappings for the 3-D coordinates of the figure we want to plot.</li>
+          <li><code>mesh(xx, yy, zz)</code> plots the surface as white facets outlined by colored lines. The line coloring uses one of many color maps (listed in Appendix A), where the color is selected in proportion to the <code>zz</code> parameter. You can turn the white facets transparent with the command <code>hidden off</code>.</li>
+          <li><code>surf(xx, yy, zz)</code> plots the surface as colored facets outlined by black lines. The line coloring by default is selected in proportion to the <code>zz</code> parameter. You can remove the lines by using one of a number of shading commands listed in Appendix A.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Simple Exercises">
+      <!-- Simple Exercises -->
+      <h3 id="11_4_2">11.4.2	Simple Exercises</h3>
+      <div class="container clearfix">
+        <div class="float-sm-right">
+          <div class="card">
+               <img src="..\Images\Fig_11_6.JPG" alt="Figure 11.6" class="fig card-img">
+               <p class="figure-name card-title">Figure 11.6: Geometry of a cube</p>
+          </div>
+          <div class="card">
+               <img src="..\Images\Fig_11_7.JPG" alt="Figure 11.7" class="fig card-img">
+               <p class="figure-name card-title">Figure 11.7: Cube with solid fill</p>
+          </div>
+        </div>
+        <p>We will consider some simple situations that illustrate many of the features of surface drawing.</p>
+        <p><b>Draw a cube</b>: In this example, in order to understand the underlying logic, we will develop the basic concept of drawing a cube without the help of the <code>meshgrid(...)</code> function. Figure 11.6 shows the coordinates of a cube of side 2 units centered at the origin drawn with simple line plots and Figure 11.7 shows the same cube drawn as a solid object. Before we descend into specifics, you need to understand specifically in the case of this cube how the <code>surf(...)</code> function works. Visualize four pens that can draw in 3-D space attached to the tops of your forefingers and thumbs respectively.Put your forefingers and thumbs together at the point P, and then slide them out to the points A, B, C and D. The <code>surf(...)</code>function fills in a surface between the lines you drew making the top of the cube. Now slide your fingers and thumbs down the sides of the cube to the points E, F, G and H. Filling in those surfaces draws the sides of the cube.  Finally, draw the bottom by sliding your fingers and thumbs across the bottom of the cube to its center at Q.</p>
+        <p>To define the sides of the cube, we need to draw four lines to complete the horizontal square, thereby needing five columns with the first column repeated at the last column.  To define the top and bottom of the cube, we must add the points P and Q at the centers of the top and bottom. Although only one point each is required to define P and Q, the array must have the same number of columns in each row. Therefore, P and Q must be replicated five times to keep the arrays rectangular.</p>
+        <p>Listing 11.6 shows the code that plots this cube from scratch.</p>
+      </div>
+      <div class="listing">#listing_11_6#</div>
+      <div class="container clearfix">
+        <div class="float-sm-right card">
+             <img src="..\Images\Fig_11_8.JPG" alt="Figure 11.8" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.8: A Parabolic Dish</p>
+        </div>
+        <p><b>A Simple Parabolic Dish</b>:  The simplest surface plots are obtained by defining a z value for each point on an x-y plaid. We will continue with a simple example illustrating the use of <code>meshgrid(...)</code> to define the plaid. Consider
+        how we might plot the data shown in Figure 11.8 . Before we look at the code, consider what the picture represents. The independent variables are <code>x</code> and <code>y</code>, each covering the range from −3 to 3, each having seven discrete
+        values. As the title indicates, the <code>z</code> values are calculated as the sum of <code>x<sup>2</sup></code> and
+        <code>y<sup>2</sup></code>. However, we don't need 14 <code>z</code> values as the range of <code>x</code> and <code>y</code> values might suggest, but <code>49</code>! In order to plot the 3-D shape of our parabolic bowl, we must have a <code>z</code> value for every point on the <code>x-y</code> surface. Each of these points has values of <code>x</code> and <code>y</code> corresponding to the intersections of the <code>x</code> and <code>y</code> vectors. Therefore, the process of creating this plot has three parts:</p>
+        <ol>
+          <li>Develop the underlying plaid specifying the x-y location of every point on the x-y plane.</li>
+          <li>Calculate the z values from the plaid.</li>
+          <li>Call a plotting function that will accept the plaid and these z values to produce the required plot.</li>
+        </ol>
+        <p>The code to accomplish this is shown in Listing 11.7.</p>
+      </div>
+      <div class="listing">#listing_11_7#</div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="3-D Parametric Surfaces">
+      <!-- 3-D Parametric Surfaces -->
+      <h3 id="11_4_3">11.4.3	3-D Parametric Surfaces</h3>
+      <div class="container clearfix">
+        <div class="float-sm-right card">
+             <img src="..\Images\Fig_11_9.JPG" alt="Figure 11.9" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.9: A Cylinder</p>
+        </div>
+        <p><strong>Cylinder</strong>: Consider first the construction of a cylinder. One could consider this as a sheet of paper rolled up in a cylindrical shape. We could visualize that piece of paper as a plaid of values, not of <code>x-y</code>, but perhaps <code>x−&theta;</code> where the range of <code>x</code> would be from 0 to the length of the cylinder, and the range of <code>&theta;</code> would be <code>0</code> to <code>360°</code>.  To plot this, one would then merely need to create a plaid in <code>x</code> and <code>&theta;</code>, and then decide on the mapping from <code>x-&theta;</code> to the <code>y</code> and <code>z</code> values of the cylinder.</p>
+        <p>Fortunately for us, however, the Matlab folks have provided a function named <code>cylinder</code> that takes two parameters: a vector or radius values along the length of the cylinder and the number of points around the circumference. We will see later how to generalize this, but for now, we use it in one line of code to compute the <code>xx</code>, <code>yy</code> and <code>zz</code> values that will draw a cylinder.</p>
+        <p>The resulting picture is shown in Figure 11.9, and the code is shown in Listing 11.8.</p>
+      </div>
+      <div class="listing">#listing_11_8#</div>
+      <div class="container clearfix">
+        <div class="float-sm-right card">
+             <img src="..\Images\Fig_11_10.JPG" alt="Figure 11.10" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.10: A Simple Sphere</p>
+        </div>
+        <p><strong>Sphere</strong>: Now, we construct a sphere as shown in Figure 11.10. Conceptually, we could start with a cylinder but instead of using a constant radius in the x direction, we will calculate the radius in that direction by rotating a second angle from 0 to 180°. Again, however, the Mathworks folks have taken all the fun and math out of this by providing the <code>sphere(N)</code> function where the parameter determines the number of facets around the face of the sphere.</p>
+        <p>The code for drawing this sphere is shown in Listing 11.9.</p>
+      </div>
+      <div class="listing">#listing_11_9#</div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="4" data-sub-name="Bodies of Rotation">
+      <!-- Bodies of Rotation -->
+      <h3 id="11_4_4">11.4.4	Bodies of Rotation</h3>
+      <div class="container clearfix">
+        <div class="float-sm-right card">
+             <img src="..\Images\Fig_11_11.JPG" alt="Figure 11.11" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.11: Rotate a Function about the X Axis</p>
+        </div>
+        <div class="float-sm-right card">
+             <img src="..\Images\Fig_11_12.JPG" alt="Figure 11.12" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.12: Rotate a Function about X Axis</p>
+        </div>
+        <p>The cylinder and sphere drawn in the above section are special cases of a more general form of 3-D body. Bodies of rotation are created in general by rotating a function <code>v = f(u)</code> defined over a range of <code>u</code> values about the <code>x</code>, <code>y</code> or <code>z</code> axes.  In general, we make no claims about the nature of <code>f(u)</code>. It could be a rational function, or merely a “lookup table” specifying a value of <code>f(u)</code> for every <code>u</code>.  First, we consider rotating a continuous function <code>v = f(u)</code> about the x axis.</p>
+        <p><strong>Using the <b><code>cylinder(...)</code></b> function</strong>: To rotate <code>v = f(u)</code> about the x-axis, we could consider this equation as <code>r = f(x)</code>. Figure 11.11 shows the logic of this rotation. The independent variable is x, and the values of y and z are computed as the usual polar-to-Cartesian conversion:</p>
+        <p><code>y = r cos(u)</code> and <br>
+        <code>z = r sin(u)</code>.</p>
+        <p>Whenever the rotation you want can be performed using the <code>cylinder(...)</code> function, you should do so, as is the case here. We want to put the independent variable <code>u</code> along the axis of rotation <code>x</code>  and make the dependent variable <code>v</code> the radius. The most general form of the <code>cylinder(...)</code> function allows you to specify a vector of radii equally spaced along the cylinder, which is the case here. Listing 11.9 shows how we do this, and Fig 11.12 is the result.</p>
+      </div>
+      <div class="container clearfix">
+        <div class="float-sm-right">
+          <div class="card">
+             <img src="..\Images\Fig_11_13.JPG" alt="Figure 11.13" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.13: Rotate a Function about Z Axis</p>
+          </div>
+          <div class="card">
+             <img src="..\Images\Fig_11_14.JPG" alt="Figure 11.14" class="fig card-img">
+             <p class="figure-name card-title">Figure 11.14: Rotate a Function about Z Axis</p>
+          </div>
+        </div>
+        <p><strong>Generalized Bodies of Rotation</strong>: To rotate a shaping function <code>v = f(u)</code> about the z-axis requires some thought. Consider Fig 11.13. Although superficially similar to the X axis rotation in Figs 11.11 and 11.12 above, we need to exchange to roles of <code>u</code> and <code>v</code>. The independent variable <code>u</code> is now the radius of the shape and <code>v</code>, the dependent variable, needs to lie along the axis of rotation, z. There are several ways to accomplish this, and we will consider them in decreasing levels of 'horrible':</p>
+        <ol>
+          <li>We could invert the body of <code>f(u)</code> by changing it to <code>sqrt(u)</code>, but only the very simple functions are invertible like this</li>
+          <li>As we will see later, Matlab has some useful tools that will look up equally spaced values of <code>v</code> and produce a new set of <code>u</code> values at those spacings, or</li>
+          <li>we could give up on the <code>cylinder(...)</code> function and do the rotation from first principles.</li>
+        </ol>
+        <p>We will implement this rotation using the third, most general strategy. Figure 11.13 shows the logic of this rotation. The independent variable is now <code>r</code>, and the values of <code>x</code> and <code>y</code> are computed as the usual polar-to-Cartesian conversion:</p>
+        <p><code>x = r cos(u)</code> and <br>
+        <code>y = r sin(u)</code>.</p>
+        <p>You can see the results in Figure 11.14.  The code that generated this output is in Listing 11.10.</p>
+      </div>
+      <div class="listing">#listing_11_10#</div>
+      <div class="container clearfix">
+        <div class="float-sm-right card">
+           <img src="..\Images\Fig_11_15.JPG" alt="Figure 11.15" class="fig card-img">
+           <p class="figure-name card-title">Figure 11.15: A Donut</p>
+        </div>
+        <p><strong>More Complex shapes: a Torus (Donut)</strong>: A donut is actually very simple to draw from first principles.  We merely need to visualize what the cross-section looks like and then rotate it about the appropriate axis.  Clearly, the axis about which the final rotation is performed will be the Z axis so that the donut will be horizontal.  We therefore first visualize in the x-z plane what the section looks like.  In this case, it will be a circle offset from the origin of coordinates by a distance that will become the radius of the donut. That circle will be created using standard polar-to-Cartesian coordinates.  Finally, we realize that the plaid on which it will be built consists of two angles each going from 0 to 2&pi;.</p>
+        <p>The code to accomplish this is in Listing 11.11, and the resulting image is in Figure 11.15.</p>
+      </div>
+      <div class="listing">#listing_11_11#</div>
+      <div class="container clearfix">
+        <div class="float-sm-right card">
+           <img src="..\Images\Fig_11_16.JPG" alt="Figure 11.16" class="fig card-img">
+           <p class="figure-name card-title">Figure 11.16: An Irregular Shape</p>
+        </div>
+        <p><strong>Rotating Discrete Functions</strong>: There is no need to restrict ourselves to continuous functions as the profiles for bodies of rotation. Figure 11.16 shows the 2-D profile of a fictitious machine part and the picture created when that profile is rotated about the x-axis. The figure was generated by the code shown in Listing 11.12.</p>
+      </div>
+      <div class="listing">#listing_11_12#</div>
+      <div class="container">
+        <p>Notice in Listing 11.12 that we elected to use the <code>cylinder(...)</code> function to make the values of <code>v</code> the radii of the cylinder.  However, this placed the values of <code>v</code> at regular intervals down the cylinder.  Since the corresponding values of <code>u</code> indicated where they should have been placed, we then had to move all the <code>xx</code> circle values to the locations specified in <code>u</code>. We could have replaced all the code from <code>subplot(1, 2, 1)</code> to <code>surf(xx, yy, zz)</code> with this:</p>
+      </div>
+      <div class="exercise">#exercise_11#</div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="5" data-sub-name="Other 3-D Surface Plot Capabilities">
+      <!-- Other 3-D Surface Plot Capabilities -->
+      <h3 id="11_4_5">11.4.5	Other 3-D Surface Plot Capabilities</h3>
+      <div class="container">
+        <p>The MATLAB language defines special-purpose functions to enhance the quality of surface plots:</p>
+        <ul>
+          <li><code>alpha(x)</code> sets the transparency of the surfaces. 0<=x<=1, where 0 means completely transparent and 1 (the default value) is opaque. The options available can be studied with <code>>> help alpha</code>.
+          <li><code>contour(z)</code> produces a contour plot of the plaid surface defined by z. The options available can be studied with <code>>> help bar3</code>.</li>
+          <li><code>[x,y,z] = cylinder(n)</code> constructs the meshgrid for a cylinder with n facets in each direction. For more options, see <code>>> help cylinder</code>.</li>
+          <li><code>[x,y,z] = ellipsoid(n)</code> constructs the meshgrid for an ellipsoid with n facets in each direction. For more options, see <code>>> help ellipsoid</code>.</li>
+          <li><code>[x,y,z] = sphere(n)</code> constructs the meshgrid for a sphere with n facets in each direction. For more options, see <code>>> help sphere</code>.</li>
+          <li><code>meshc(x,y,z)</code> makes a mesh plot with contours below. For more options, see <code>>> help meshc</code>.</li>
+          <li><code>meshz(x,y,z)</code> makes a mesh plot with vertical line extensions. For more options, see <code>>> help meshz</code>.</li>
+          <li><code>surfc(x,y,z)</code> makes a surface plot with contours below. For more options, see <code>>> help surfc</code>.</li>
+          <li><code>surfz(x,y,z)</code> makes a surface plot with vertical line extensions. For more options, see <code>>> help surfz</code>.</li>
+          <li><code>waterfall(x,y,z)</code> makes a mesh plot with vertical line extensions only in the x direction. For more options, see <code>>> help waterfall</code>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="6" data-sub-name="Assembling Compound Surfaces">
+      <!-- Assembling Compound Surfaces -->
+      <h3 id="11_4_6">11.4.6	Assembling Compound Surfaces</h3>
+      <div class="container clearfix">
+        <div class="float-sm-right card">
+          <video controls class="card-image"><source src="..\Images\klein_bottle.mp4" type="video/mp4">Figure 11.17</video>
+          <p class="figure-name card-title">Fig 11.17: A Klein Bottle</p>
+        </div>
+        <p>We can assemble more complex solid bodies by constructing simple surfaces and concatenating the data before submitting it to the rendering machine. Shapes of considerable complexity can be assembled this way. Consider, for example, the Klein bottle shown below, a well-documented example of topological curiosity. The particular example shown in Figure 11.17. It was constructed by building a set of simple components and then concatenating the arrays. All the components could be created from the examples shown above. Moving from top to bottom, these components are:</p>
+        <ul>
+          <li> the top of the handle is just half of a donut,</li>
+          <li> the curved section of the handle is a cylinder with the yy circled shifted with a cosine function.</li>
+          <li> the top part of the body is a cosine function rotated about the z axis, and</li>
+          <li> the bottom of the body is another donut sliced in half horizontally.</li>
+        </ul>
+       <p>The code is a little too complex to be included here, but can be found on the companion Web site. If you are curious, Figure 11.17 is actually a video clip explaining the very strange topological challenge posed by the Klein bottle.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="5" data-sect-name="Manipulating Plotted Data">
+    <!-- Manipulating Plotted Data -->
+    <h2 id="11_5">11.5 Manipulating Plotted Data</h2>
+    <div class="container">
+      <p>Two new features introduced with MATLAB 7.6 (R2008a) allow you to interact with the data presented in a plot. Brushing allows you to select portions of the data presented in a plot and make changes to the values presented. Linking allows you to connect the plotted data to the underlying data source, so that when you make changes to the plotted data, these changes are reflected in the data source. Whereas these tools allow the user to change the appearance of data presentations interactively, a careful user would return to the original tools that created the plots and explicitly insert the logic that changes the appearance of the results. This provides a traceable set of programs that show exactly how the data were generated.</p>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="6" data-sect-name="Engineering Example - Visualizing Geographic Data">
+    <!-- Engineering Example -->
+    <h2 id="11_6">11.6  Engineering Example - Visualizing Geographic Data</h2>
+    <div class="container">
+      <p>You have been given two files of data: "atlanta.txt", which presents the streets of Atlanta in graphical form, and "ttimes.txt", which gives the travel times between Atlanta suburbs and the city center. You have been asked to present these data sets in a manner that will help to visualize and validate the data.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Analyzing the Data">
+      <!-- Analyzing the Data -->
+      <h3 id="11_6_1">11.6.1	Analyzing the Data</h3>
+      <div class="container clearfix">
+        <p>First, we proceed to determine the nature of the data by opening the files and examining their format and content.</p>
+        <ol>
+          <li><b>Determine the file format</b>: the first step is to open the data files in a plain text editor. The format appears to be consistent with that of a text file delimited by tab characters. Since there are no strings in the files, it should be suitable to be read using the built-in <code>dlmread(...)</code> function. Of course, the down side of being able to read the files easily is that we have no idea what they contain, and we need to spend some quality time figuring that out.</li>
+          <li><b>Discern the street map file content</b>: Table 11.1 shows the first few lines of the file &quot;atlanta.txt&quot; simplified by omitting certain irrelevant columns. The numbers in columns 2-5 are pairs, the first of the pair being a large negative number, and the second a smaller positive number. Assuming that each row of this file is a street segment, these could be the x-y coordinates of the ends of a line. A little thought confirms this guess when we realize that the latitude of Atlanta is around -84&deg; relative to the Greenwich meridian, and its longitude is around 33&deg; north of the equator - clearly, the values in these columns are 1,000,000 times the latitude and longitude of points within the city, probably each end of street segments. Column 6 contains numbers mostly in the range 1-6, which could indicate the type of street. We could explore this idea by coloring each line according to that value.</li>
+          <div class="card">
+             <img src="..\Images\Table_11_1.JPG" alt="Table 11.1" class="fig fig-wide card-img">
+             <p class="figure-name card-title">Table 11.1: Part of the File</p>
+          </div>
+          <li><b>Discern the travel time file content</b>: Table 11.2 shows the first few lines of the file "ttimes.txt" simplified by omitting certain irrelevant columns. The same latitude/longitude values occur in columns 4 and 5, but they are not repeated, suggesting that the data in this file are in a different form. Examining the first two columns, the numbers in column 2 cycle repeatedly from 1 to 75, with column 1 counting the number of cycles up to 75. Furthermore, the values in column 5 are the same whenever column 1 is the same, and the values in column 4 are the same whenever the value in column 2 matches. This seems to be much like the plaid that results from a meshgrid(...) function call. The values in column 6 then become evident — they would be the z values of the plaid, and it seems reasonable to assume that they represent the travel time in minutes.</li>
+          <div class="card">
+             <img src="..\Images\Table_11_2.JPG" alt="Figure 11.16" class="fig card-img">
+             <p class="figure-name card-title">Table 11.2: Part of the File</p>
+          </div>
+        </ol>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Displaying the Data">
+      <h3 id="11_6_2">11.6.2	Displaying the Data</h3>
+      <div class="container clearfix">
+        <p>With this much understanding of the data sources, we proceed to solve the problem of presenting the data. The script shown in Listing 11.13 shows the code used to visualize these data files and Figure 11.18 shows the resulting plot.</p>
+        <div class="card">
+          <video controls class="card-image"><source src="..\Images\Atlanta.mp4" type="video/mp4">Figure 11.17</video>
+          <p class="figure-name card-title">Fig 11.18: Travel Times in Atlanta</p>
+        </div>
+       <p>As a credibility check, play the video clip to see the plot rotated to look straight down on the map. The travel time surface shows &quot;valleys&quot; of low travel times that follow the paths of the major expressways through the city.</p>
+      </div>
+      <div class="listing">#listing_11_13#</div>
+    </div>
+  </div>
+
+  <!-- Chapter Summary -->
+  <h2>Chapter Summary</h2>
+  <div class="container">
+    <p>This chapter presented the principles and practice of plotting:</p>
+    <ul>
+      <li>Basic 2-D line plots are accomplished by using <code>plot(x,y)</code>, where <code>x</code> is the independent variable and <code>y</code> the dependent variable</li>
+      <li>2-D parametric plots are accomplished by using <code>plot(x,y)</code>, where both <code>x</code> and <code>y</code> are dependent on another independent variable</li>
+      <li>3-D line and parametric plots are accomplished by using <code>plot3(x,y,z)</code></li>
+      <li>Basic 3-D surface plots are accomplished by building a plaid using <code>[xx yy] = meshgrid(x,y)</code>, computing the <code>zz</code> layer as a function of <code>xx</code> and <code>yy</code>, and then plotting the surface using <code>mesh(xx, yy, zz)</code> or <code>surf(xx, yy, zz)</code></li>
+      <li>Parametric surface plots, like parametric line plots, are achieved by building the plaid with two independent variables and making <code>xx</code>, <code>yy</code>, and <code>zz</code> functions of those independent variables</li>
+      <li>Bodies of rotation are a special case of parametric surface plots where one of the independent variables is an angle with values between <code>0</code> and <code>2&pi;</code>.</li>
+    </ul>
+  </div>
+<h2>Self Test</h2>
+<div class="container">
+
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>The plot(...) function needs only one parameter to function
+correctly.</li>
+<li>Plot enhancement functions may be called before or after the
+function that plots the data.</li>
+<li>You must provide plots for all the specified sub-plot areas.</li>
+<li>meshgrid(...) accepts vectors of length m and n that bound the
+edges of the plaid and produces two arrays sized m x n giving the
+complete plaid.</li>
+<li>To construct a parametric surface, both independent parameters
+must be angles.</li>
+<li>When rotating a function about the y-axis, the variables along the x
+and y axes are computed from a classic polar-to-Cartesian
+conversion.</li>
+<li>To compute a body of rotation, the curve must be a continuous,
+differentiable function.</li>
+<li>Bodies of rotation are confined rotating about the x, y, or z axes.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>Each time figure is called, a(n) ___________ is made available, with
+figure number _____________.</li>
+<li>To prepare for plotting, put ___________ or ____________ at the
+beginning of your script.</li>
+<li>Parametric plots allow the variables on each axis to be ____________
+on a(n) _________________, _____________ variable.</li>
+<li>The simplest surface plots are obtained by defining a(n)____________
+value for each point on ___________.</li>
+<li>We construct a sphere by wrapping a(n) ___________with two
+_________________ as the independent variables around the sphere.</li>
+<li>Bodies of rotation are created by rotating a(n) ____________ about
+a(n) _______________.</li>
+</ol>
+
+<h3>Programming Projects</h3>
+<ol>
+<li>Write a script that creates six sub-plots in two columns each with
+three rows. Each plot should have an appropriate title and labels on
+the x and y axes. The plot in the top left sub-plot should be<br>
+ y = cos( u) for values of u from -2pi to 2pi.<br>
+ Subsequent plots going across
+the rows before going down the columns should be of <br>
+y = cos(2 u ),
+y = cos(3 u ), etc., to y = cos(6 u ) over the same range of u.</li>
+<li>Your task is to create a script called thisPlot . This script should do
+the following:
+<ul>
+<li>Ask the user to enter in a positive number, N, greater than 5.</li>
+<li>Calculate the factorial for each number from 1 to N. Each of these
+values should be stored into a vector.</li>
+<li>Display a graph titled 'Logarithmic Growth', where the
+logarithms for each of the factorials are displayed.</li>
+<li>Add to the graph a continuous linear line that follows the
+equation y = x with x values from 1 to N.</li>
+<li>Since the numbers will have different magnitudes, use plotyy to
+plot the linear values on the right hand axis.</li>
+</li></ul>
+<li>Write a function called sineGraph that graphs a sine function four
+times between the interval [start,stop] on the same graph. The
+start and stop values should be parameters of the function. The
+number of points per interval will vary. More specifically:
+<ul>
+<li>The first time you graph the sine function, you should have two
+evenly spaced points, start and stop</li>
+<li>The next plot should have four evenly spaced points - start ,
+stop, and two points between them</li>
+<li>The third should have eight evenly spaced points and the fourth
+256 points.</li>
+<li>Make sure to add a legend and a title - 'Multiple graphs on one
+plot'  - and to label the axes. Make sure that each line has a
+different color.</li>
+<li>The function should return the x and y values for the 256 point set.
+Test your function with the following intervals [0, p /2] , [0,2 p ] ,
+[0,4 p ] , [0,16 p ].</li>
+</ul></li>
+<li>This programming problem will compare the surf(...) and
+mesh(...) functions by putting two 3-D side-by-side plots for
+comparison using subplot(...) . You should label all axes
+accordingly ( 'X-axis', 'Y-axis' , etc.) and title your plot
+corresponding to the problem statement.
+<ul>
+<li>On the left side, plot the function f(x,y)=x^2*cos(y) in the range
+x= -5:5 and y= -5:5 using mesh and name your plot 'Using Mesh'.</li>
+<li>On the right side, plot the same function, in the same range, but
+using surf . Name your plot 'Using Surf'.</li>
+</ul></li>
+<li>Georgia Tech wants to tear down the Campanile and build a new
+one that is ridiculously tall. However, before it is built, it needs you
+to model it. Using the equation z = 1/(x^2 + y^2) as the model,
+write a script that will plot the Campanile. Your domain should be
+-.75 <= x <=.75 and -.75 <= y <= .75 using an increment of .05 for
+each range. Set your axes such that all of the x, y domain is seen and
+z runs from 0 to 300. Use surf(...) to plot your image.</li>
+<li>You are provided the file 'data.csv', which contains two columns of
+numbers. Each column contains the same number of elements. The
+first row contains the titles of the x and y values, respectively. Create
+a script called spreadSheetPlot that plots the data in this file. The first
+column represents your x values, and the second column is your y
+values. Read the numbers from the file and make a plot of the x vs. y
+values. Title your plot 'spreadSheetPlot' and use the first row data to
+label the x and y axes. For example, the spreadsheet might look like:</li></p>
+      <div class="card">
+          <img src="..\Images\Fig_11_19.JPG" alt="Figure 11.19" class="fig fig_small card-img">
+          <p class="figure-name card-title">Fig 11.19: Sample Spread Sheet</p>
+      </div>
+<p>
+<li>You just realized that February 14th has passed and you haven't
+gotten anything for your Valentine. Since your date is a CS major,
+sending the lucky person a coded heart seems like a cool and sincere
+thing to do. Make sure that you follow each and every instruction
+carefully, or your heart will end up broken. Trust us.
+You are going to write a script to draw this heart using the
+following steps:
+<ul>
+<li>Create a plaid [xx, yy] using x values with range (0 to 2p, with an
+interval 0.05p) and y values with the range (0 to 1, with an
+interval 0.05).</li>
+<li>Define the following variables:
+c=[0.1 + 0.9*(p-abs(xx - p))/p ] .* yy
+aa = c .* cos(xx)
+bb = c.* sin(xx)
+zz = (-2)*aa.^3 + (3/2)*c.^2 + 0.5</li>
+<li>Plot zz against aa and bb using the surf() function with
+interpolated colors.</li>
+</ul></li>
+<li>Write a function named plotRotation that takes in two vectors, x
+and z , and a vector th . Your function should plot three plots in the
+same figure by using the subplot command. The figure should have
+1 × 3 plots. The plots should be as follows:
+<ul>
+<li>z vs. x, titled 'z vs. x' . Note that you will have to use plot3() to
+correctly plot this in the x-z plane rather than the x-y plane a
+plot() would do. Also, you should use view(0, 0) to make the
+plot produced by plot3() show up as 2-D.</li>
+<li>z vs. x rotated around the x-axis using mesh() with flat shading
+and a square axis, titled 'z vs. x about x using mesh'.</li>
+<li>z vs. x rotated around the z-axis using surf() with interp
+shading and a square axis, titled 'z vs. x about z using surf' .
+For plots b and c, the input vector th should be used for your
+independent vector theta, which is used to convert from polar-to-
+Cartesian coordinates. Don’t forget to title and label each of the
+three plots.</li>
+</ul> 
+</ol>
+</div>
+</div>
+
+
+</body>
+</html>

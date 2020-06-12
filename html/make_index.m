@@ -11,11 +11,10 @@ clc
     % <a class="nav-link" href="Preface.htm">Preface</a>
     cd 'C:\Users\dmsmi\Documents\textbook\html'
     state = 'Symbols';
-    debug = fopen('debug.log', 'w');
+    debug = fopen('../new_code/debug.log', 'w');
     data = [];
     ndx = 1;
     files = { ...
-        'Appendix_A.htm' ...
         'Preface.htm' ...
         '01_Introduction.htm' ...
         '02_Basics.htm' ...
@@ -53,15 +52,146 @@ end
 
 
 % % 
+% % seek_in_files()
+% % 
+function seek_in_files() 
+    global files
+    global last_marker
+    global debug
+    
+    last_marker = '';
+%    for ndx = 1:length(files)
+    for ndx = 1:length(files)
+        name = files{ndx};
+        fprintf(debug, '\n   *** look in %s\n', name);
+        fprintf('look in %s\n', name);
+        in = fopen(name, 'r');
+        if isempty(in)
+            error(['file ' name ' ' not found']);
+        end
+        line = fgetl(in);
+        while ischar(line)
+            process_file_line(line, name);
+            line = fgetl(in);
+        end
+    end
+end
+
+
+
+% % 
+% % process_file_line(line)
+% % 
+function process_file_line(line, name)
+    global debug
+    global last_marker
+    
+%    fprintf(debug, '%s\n', line); 
+    start = strfind(line, '<h');
+    if ~isempty(start) 
+        header = line(start(1):end);
+        id_at = strfind(header, 'id="');
+        if ~isempty(id_at)
+            at = id_at(1);
+            tkn = strfind(header,'">');
+            if ~isempty(tkn)
+                from = at+4;
+                to = tkn-1;
+                id = header(from:to);
+                last_marker = [name '#' id];
+            end
+        end
+    end
+    find_words(line);
+end
+
+
+
+
+% % 
+% % match_indices(line)
+% % 
+function find_words(line)
+    global data
+    global last_marker
+    
+    if ~isempty(last_marker)
+        for ndx = 1:length(data)
+            entry = data(ndx);
+            if entry.type == 'N' && length(entry.ref) < 20
+                has = find_whole_word(line, entry);
+                if has
+                    entry.ref = [entry.ref {last_marker}];
+                    data(ndx) = entry;
+                end
+            end
+        end
+    end
+end
+
+
+
+function found = find_whole_word(line, entry)
+    global debug
+    
+    found = false;
+    word = entry.first;
+    where = strfind(line, word);
+    for ndx = 1:length(where)
+        wh = where(ndx);
+        % check if inside <...>
+        found = is_not_html(line, wh);
+        % check for beginning with space or start of line
+        if found
+            found = wh == 1 || line(wh-1) == ' ';
+            if found
+                at = wh + length(word);
+                found = at > length(line) || is_word_end(line(at));
+                if found
+                    if strcmp(word, 'acosd(')
+                        ooh = true;
+                    end
+                    break
+                end
+            end
+        end
+    end
+    if found
+        n = length(line);
+        if n > 72, n = 72; end
+        fprintf(debug, 'found %s in %s\n', entry.first, line(1:n));
+    end
+end
+
+
+
+
+function found = is_not_html(line, where)
+    left = 0;
+    for at = where:-1:1
+        if line(at) == '<',left = left + 1; end
+        if line(at) == '>',left = left - 1; end
+    end
+    right = 0;
+    for at = where:length(line)
+        if line(at) == '<',right = right - 1; end
+        if line(at) == '>',right = right + 1; end
+    end
+    found = left == 0 && right == 0;
+end
+
+
+function found = is_word_end(ch)
+    found = ~any(ch == 'abcdefghijklmnopqrstuvwxyz(');
+end
+
+
+
+% %
 % % process_line()
 % % 
 function ntry = process_line()
     global line
-    global debug
-    global last_name
-    global ndx
-    global data
-    global comment_there
     global state
     
     symhead = strcmp(line, 'Symbols#');
@@ -96,6 +226,9 @@ function ntry = process_line()
             end
         case 'Normal'
             [first rest] = strtok(line, ' ()');
+            if length(rest) > 0 && rest(1) == '('
+                first = [first '(...)'];
+            end
             [second rest] = strtok(rest, ' ()');
             [third rest] = strtok(rest, ' ()');
             ref = '';
@@ -108,6 +241,7 @@ function ntry = process_line()
     end
     ntry = make_entry( type, first, second, third, ref);
 end
+
 
 
 % % 
@@ -141,84 +275,6 @@ function it = make_entry(type, first, second, third, ref)
         fprintf(debug, ', %s', it.ref{1});
     end
     fprintf(debug, '\n');
-end
-
-
-% % 
-% % seek_in_files()
-% % 
-function seek_in_files() 
-    global files
-    global debug
-    global state
-    
-    for ndx = 1:length(files)
-%    for ndx = 1:1
-        name = files{ndx};
-        fprintf('look in %s\n', name);
-        in = fopen(name, 'r');
-        if isempty(in)
-            error(['file ' name ' ' not found']);
-        end
-        state  = 'find_body';
-        line = fgetl(in);
-        while ischar(line)
-            process_file_line(line);
-            line = fgetl(in);
-        end
-    end
-end
-
-
-% % 
-% % process_file_line(line)
-% % 
-function process_file_line(line)
-    global state
-    global debug
-    global current_head
-    
-%    fprintf(debug, '%s\n', line); 
-    switch state
-        case 'find_body'
-            if contains(line, '<body>');
-                state = 'read_body';
-            end
-        case 'read_body'
-            start = strfind(line, '<h');
-            if ~isempty(start) 
-                end_head = strfind(line(start(1):end), '>');
-                h_end = strfind(line, '</h'); 
-                current_head = line(end_head(1)+2:h_end(1)-1);
-            end
-            match_indices(line);
-    end
-end
-
-% % 
-% % match_indices(line)
-% % 
-function match_indices(line)
-    global data
-    global current_head
-    
-    for ndx = 1:length(data)
-        entry = data(ndx);
-        if length(entry.refs) < 5
-            found = true;
-            for tndx = 1:length(entry.tokens)
-                token = entry.tokens{tndx};
-                if ~contains(line, token)
-                    found = false;
-                    break;
-                end
-            end
-            if found
-                entry.refs = [entry.refs {current_head}];
-                data(ndx) = entry;
-            end
-        end
-    end
 end
 
 

@@ -1,0 +1,381 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <script async src="./javascript/index.js"></script>
+<title>Appendix A</title>
+</head>
+<body>
+<div>#top_nav#</div>
+<div class="nav-obj">#nav_obj#</div>
+
+<div class="content">
+  <h1 align="center" id="1">Appendix A - Special Characters and Reserved Words</h1>
+<p>This appendix collects MATLAB special characters, reserved words and functions grouping them by function.</p>
+<table>
+<tr>
+  <th style="width="250 pixels">Special Characters</th>
+  <th>Description</th>
+</r>
+<tr><td ID="201">&lt;...&gt;</td><td>Used to indicate template parameters - data to be supplied</td></tr>
+<tr><td ID="202">%</td><td>Indicates a comment in an m-file</td></tr>
+<tr><td ID="203">{...}</td><td>Defines a cell array</td></tr>
+<tr><td ID="204">[ ]</td><td>The empty vector</td></tr>
+<tr><td ID="205">[...]</td><td>Concatenates data, vectors, and arrays</td></tr>
+<tr><td ID="206">( )</td><td>Used to override operator precedence</td></tr>
+<tr><td ID="207">( )</td><td>Used to identify the formal and actual parameters of a function</td></tr>
+<tr><td ID="208">(...)</td><td>Used to index an array</td></tr>
+<tr><td ID="209">(&lt;variable&gt;)</td><td>Used to allow a variable to be used as a structure field</td></tr>
+<tr><td ID="210">'abc'</td><td>Encloses a literal character string</td></tr>
+<tr><td>'</td><td>Transposes an array</td></tr>
+<tr><td ID="211">;</td><td>Suppresses output when after an assignment statement (explicit or implied) </td></tr>
+<tr><td ID="212">;</td><td>Separates rows in an array definition</td></tr>
+<tr><td ID="213">:</td><td>Specifies a vector in the form <from:incr:to></td></tr>
+<tr><td ID="214">:</td><td>Used in slicing vectors and arrays</td></tr>
+<tr><td ID="215">.</td><td>Used to access fields of a structure</td></tr>
+<tr><td ID="216">...</td><td>Used to continue a MATLAB command to the next line</td></tr>
+<tr><th>Mathematical Operators</th><th>Description</th></r>
+<tr><td>=</td><td>Assignment operator - assigns a value to a variable (memory location); not the same as an equality test</td></tr>
+<tr><td>+</td><td>Scalar and array addition</td></tr>
+<tr><td>−</td><td>Scalar and array subtraction</td></tr>
+<tr><td>−</td><td>Unary negation</td></tr>
+<tr><td>*</td><td>Matrix multiplication</td></tr>
+<tr><td>.*</td><td>Element-by-element multiplication</td></tr>
+<tr><td>/</td><td>Matrix division</td></tr>
+<tr><td>./</td><td>Element-by-element division</td></tr>
+<tr><td>^</td><td>Matrix exponentiation</td></tr>
+<tr><td>.^</td><td>Element-by-element   exponentiation</td></tr>
+<tr><th>Logical Operators</th><th>Description</th></r>
+<tr><td><</td><td>Less than</td></tr>
+<tr><td><=</td><td>Less than or equal to</td></tr>
+<tr><td>></td><td>Greater than</td></tr>
+<tr><td>>=</td><td>Greater than or equal to</td></tr>
+<tr><td>==</td><td>Is equal to</td></tr>
+<tr><td>&#126;=</td><td>Is not equal to</td></tr>
+<tr><td>&#126;</td><td>Unary negation</td></tr>
+<tr><td>&amp;</td><td>Element-by-element logical AND</td></tr>
+<tr><td>&amp;&amp;</td><td>Short-circuit logical AND (scalar)</td></tr>
+<tr><td>|</td><td>Element-by-element logical OR</td></tr>
+<tr><td>||</td><td>Short-circuit logical OR (scalar)</td></tr>
+<tr><th>Logical Functions</th><th>Description</th></r>
+<tr><td>all(a)</td><td>True if all the values in a (a logical vector) are true</td></tr>
+<tr><td>and(a, b)</td><td>True if both a and b are true</td></tr>
+<tr><td>any(a)</td><td>True if any of the values in a (a logical vector) are true</td></tr>
+<tr><td>not(a)</td><td>True if a is false; false if a is true</td></tr>
+<tr><td>or(a, b)</td><td>True if either a or b is true</td></tr>
+</table>
+<br>
+<table>
+<tr><th style="width="250 pixels">File Input and Output</th><th>Description</th></r>
+<tr><td>csvread(&lt;file&gt;)</td><td>Read comma-separated text files</td></tr>
+<tr><td>csvwrite(&lt;file&gt;,&lt;data&gt;)</td><td>Write comma-separated text files</td></tr>
+
+<tr><td>dlmread (&lt;file&gt;,&lt;dlm&gt;)</td><td>Read text files separated by the given delimiting character(s)</td></tr>
+
+<tr><td>dlmwrite(&lt;file&gt;,&lt;data&gt;,&lt;dlm&gt;)</td><td>Write text files separated by the given delimiting character(s)</td></tr>
+<tr><td>fclose(&lt;handle&gt;)</td><td>Close a text file</td></tr>
+<tr><td>fgetl(&lt;handle&gt;)</td><td>Read a line omitting the new-line character</td></tr>
+<tr><td>fgets(&lt;handle&gt;)</td><td>Read a line including the new-line character</td></tr>
+<tr><td>fh = fopen(&lt;name&gt;, &lt;why&gt;)</td><td>Open a text file</td></tr>
+<tr><td>fprintf(&lt;handle&gt;,...)</td><td>Write to the console, or to plain text files (when <handle> is present</td></tr>
+<tr><td>imread(&lt;&lt;file&gt;)</td><td>Read an image file</td></tr>
+<tr><td>imwrite(&lt;&lt;data&gt;,&lt;file&gt;, &lt;format&gt;)</td><td>Write an image file</td></tr>
+
+<tr><td>load &lt;file&gt;</td><td>Load the current workspace from a file</td></tr>
+<tr><td>save &lt;file&gt;</td><td>Save workspace variables in a file</td></tr>
+<tr><td>[tk rest] =	strtok(&lt;str&gt;,&lt;dlm&gt;)</td><td>Extract a token from a string and return the remainder of the string</td></tr>
+
+<tr><td>ca = textscan(&lt;handle&gt;,&lt;format&gt;)</td><td>Acquire and scan a line of text according to a specific format and save the data in a cell array</td></tr>
+<tr><td>[data Fs nb] = wavread(&lt;file&gt;</td><td>Read a sound file in .wav format</td></tr>
+<tr><td>wavwrite(&lt;data&gt;,&lt;Fs&gt;,&lt;nb&lt;file&gt;)</td><td>Write a sound file in .wav format</td></tr>
+<tr><td>[nums, txt,raw] = readcell(&lt;file&gt;)</td><td>Read an Excel spreadsheet</td></tr>
+<tr><td>writecell(&lt;file&gt;,&lt;data&gt;,&lt;sheet&gt;,&lt;range&gt;)</td><td>Write an Excel <tr><td>[nums, txt,raw] = xlsread(&lt;file&gt;)</td><td>Read an Excel spreadsheet</td></tr>
+<tr><td>xlswrite(&lt;file&gt;,&lt;data&gt;,&lt;sheet&gt;,&lt;range&gt;)</td><td>Write an Excel spreadsheet in a specific row/column range</td></tr>
+<tr><th>Format Control</th><th>Description</th></th>
+<tr><td>%&lt;m&gt;.&lt;n&gt;e</td><td>	Exponential notation</td></tr>
+<tr><td>%&lt;m&gt;.&lt;n&gt;f</td><td>	Fixed point or decimal notation</td></tr>
+<tr><td>%&lt;m&gt;.&lt;n&gt;g</td><td>	Fixed point or exponential notation</td></tr>
+<tr><td>%q</td><td>	A quoted string delimited by double quotes</td></tr>
+<tr><td>%<n>s</td><td>	Character string</td></tr>
+<tr><td>\b</td><td>	Backspace</td></tr>
+<tr><td>\n</td><td>	New Line</td></tr>
+<tr><td>\t</td><td>	Tab</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">User Interface
+Management</th><th>Description</th></r>
+
+<tr><td>ans</td><td>	Default variable name for results of calculations</td></tr>
+<tr><td>clc</td><td>Clear the interactions window</td></tr>
+<tr><td>clear &lt;selection&gt;</td><td>Remove all (or selected) variables from the workspace</td></tr>
+<tr><td>clf</td><td>Clear the current figure</td></tr>
+<tr><td>close all</td><td>Close all graphics windows</td></tr>
+<tr><td>exit</td><td>Terminate the user interface system</td></tr>
+<tr><td>help &lt;topic	or function&gt;</td><td>Invoke the help utility</td></tr>
+
+<tr><td>load &lt;file&gt;</td><td>Load the current workspace from a file</td></tr>
+<tr><td>quit</td><td>Terminate the user interface system</td></tr>
+<tr><td>save <file></td><td>Save workspace variables in a file</td></tr>
+<tr><td>who</td><td>List variables in the workspace</td></tr>
+<tr><td>whos</td><td>List variables and their sizes</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Special Constants</th><th>Description</th></r>
+<tr><td>eps</td><td>	Smallest possible difference between two floating point numbers</td></tr>
+<tr><td>false</td><td>	Logical false</td></tr>
+<tr><td>inf</td><td>	Infinity</td></tr>
+<tr><td>NaN</td><td>	Not a number</td></tr>
+<tr><td>pi</td><td>	Ratio of the circumference of a circle to its diameter</td></tr>
+<tr><td>true</td><td>	Logical true</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Basic Mathematical
+Functions</th><th>Description</th></r>
+<tr><td>abs(x)</td><td>Compute the absolute value</td></tr>
+<tr><td>ceil(x)</td><td>Round x to the nearest integer toward positive infinity</td></tr>
+<tr><td>cross(a, b)</td><td>Vector cross product</td></tr>
+<tr><td>exp(x)</td><td>Compute e to the power x</td></tr>
+<tr><td>fix(x)</td><td>Round x to the nearest integer toward zero</td></tr>
+<tr><td>floor(x)</td><td>Round x to the nearest integer toward minus infinity</td></tr>
+<tr><td>log(x)</td><td>Compute the natural log of x</td></tr>
+<tr><td>log10(x)</td><td>Compute the log base 10 of x</td></tr>
+<tr><td>mod(x, a)</td><td>Compute the remainder when x is divided by a</td></tr>
+<tr><td>rem(x, a)</td><td>Compute the remainder when x is divided by a</td></tr>
+<tr><td>round(x)</td><td>Round x to the nearest integer</td></tr>
+<tr><td>sqrt(x)</td><td>Calculate the square root of x</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Trigonometry Functions</th><th>Description</td></tr>
+<tr><td>acos(x)</td><td>Compute the inverse cosine (arcsine) of x</td></tr>
+<tr><td>asin(x)</td><td>Compute the inverse sine (arcsine) of x</td></tr>
+<tr><td>atan(x)</td><td>Compute the inverse tangent (arctan) of x</td></tr>
+<tr><td>atan2(y, x)</td><td>Compute the inverse tangent given the x and y values (4 quadrant
+resolution)</td></tr>
+<tr><td>cos(x)</td><td>Compute the cosine of x</td></tr>
+<tr><td>sin(x)</td><td>Compute the sine of x</td></tr>
+<tr><td>tan(x)</td><td>Compute the tangent of x</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Vector, Array, and Matrix
+Functions</th><th>Description</td></tr>
+<tr><td>cumsum(v)</td><td>Compute a cumulative sum of the values in v</td></tr>
+<tr><td>deal(...)</td><td>Distribute cell array results among variables</td></tr>
+<tr><td>det(a)</td><td>Compute the determinant of a matrix</td></tr>
+<tr><td>diag(a)</td><td>Extract the diagonal from a matrix or (if provided a is a vector) construct a matrix with a as the diagonal</td></tr>
+<tr><td>eye(n)</td><td>Generate the identity matrix of size n x n</td></tr>
+<tr><td>find(&lt;logical a&gt;)</td><td>Compute a linear list of the locations of the true values in a logical array</td></tr>
+<tr><td>fliplr(a)</td><td>Flip a matrix from left to right</td></tr>
+<tr><td>inv(a)</td><td>Compute the inverse of a matrix</td></tr>
+<tr><td>length(a)</td><td>Determine the largest dimension of an array</td></tr>
+<tr><td>linspace(from,to, n)</td><td>Define a linearly spaced vector</td></tr>
+<tr><td>magic(n)</td><td>Generate a magic square of size n x n</td></tr> 
+<tr><td>[v,in] = max(a)</td><td>Find the maximum value and its position in a </td></tr>
+<tr><td>mean(a)</td><td>Compute the average of the elements in a </td></tr>
+<tr><td>meshgrid(x, y)</td><td>Map each of two vectors into separate 2-D arrays</td></tr>
+<tr><td>[v,in] = min(a)</td><td>Find the minimum value and its position in a </td></tr>
+<tr><td>ones(r, c)</td><td>Generate an array filled with the value 1</td></tr>
+<tr><td>prod(x)</td><td>Compute the product of all the items in x</td></tr>
+<tr><td>rand(r, c)</td><td>Calculate an r x c array of evenly distributed random numbers in
+the range 0 - 1</td></tr>
+<tr><td>randi(IMAX,M,N)</td><td>Calculate an M x N array of evenly distributed random integers in the range 1..IMAX</td></tr>
+<tr><td>randn(r, c)</td><td>Calculate an r x c array of normally distributed random numbers in the range 0 - 1</td></tr>
+<tr><td>size(a)</td><td>Determine the dimensions of an array</td></tr>
+<tr><td>sparse</td><td>Define a sparse matrix</td></tr>
+<tr><td>[v,in] = sort(v)</td><td>Sort the vector v (a vector or a cell array of strings)</td></tr>
+<tr><td>sum(a)</td><td>Find the sum of an array</td></tr>
+<tr><td>zeros(r, c)</td><td>Build an array filled with the value 0</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">2-D Plotting</th><th>Description</td></tr>
+<tr><td>bar</td><td>Generate a bar graph</td></tr>
+<tr><td>barh</td><td>Generate a horizontal bar graph</td></tr>
+<tr><td>contour</td><td>Generate a contour plot</td></tr>
+<tr><td>hist</td><td>Draw a histogram</td></tr>
+<tr><td>loglog</td><td>Generate an x-y plot, with both axes scaled logarithmically</td></tr>
+<tr><td>pie</td><td>Generate a pie chart</td></tr>
+<tr><td>plot</td><td>Create an x-y plot</td></tr>
+<tr><td>polar</td><td>Create a polar plot</td></tr>
+<tr><td>semilogx</td><td>Generate an x-y plot, with the x-axis scaled logarithmically</td></tr>
+<tr><td>semilogy</td><td>Generate an x-y plot, with the y-axis scaled logarithmically</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">3-D Plotting</th><th>Description</td></tr>
+<tr><td>bar3</td><td>Generate a 3-D bar graph</td></tr>
+<tr><td>barh3</td><td>Generate a horizontal 3-D bar graph</td></tr>
+<tr><td>gplot</td><td>Plot a graph</td></tr>
+<tr><td>mesh</td><td>Generate a mesh plot of a surface</td></tr>
+<tr><td>meshc</td><td>Generate a mesh plot of a surface with contours</td></tr>
+<tr><td>meshz</td><td>Generate a mesh plot of a surface with a skirt</td></tr>
+<tr><td>meshgrid(r, c)</td><td>Create a plaid for 3-D plots</td></tr>
+<tr><td>peaks</td><td>Create a sample matrix used to demonstrate graphing functions</td></tr>
+<tr><td>pie3</td><td>Generate a 3-D pie chart</td></tr>
+<tr><td>plot3</td><td>Generate a 3-D line plot</td></tr>
+<tr><td>sphere</td><td>Example function used to demonstrate graphing</td></tr>
+<tr><td>surf</td><td>Generate a surface plot</td></tr>
+<tr><td>surfc</td><td>Generate a combination surface and contour plot</td></tr>
+<tr><td>waterfall</td><td>Generate a mesh plot of a surface with one skirt edge</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Plot Appearance Line
+Type Control</th><th>Description</td></tr>
+<tr><td>-</td><td>Solid</td></tr>
+<tr><td>:</td><td>Dotted</td></tr>
+<tr><td>-.</td><td>Dash-dot</td></tr>
+<tr><td>--</td><td>Dashed</td></tr>
+<tr><td>.</td><td>Point</td></tr>
+<tr><td>o</td><td>Circle</td></tr>
+<tr><td>x</td><td>x-mark</td></tr>
+<tr><td>+</td><td>Plus</td></tr>
+<tr><td>*</td><td>Star</td></tr>
+<tr><td>s</td><td>Square</td></tr>
+<tr><td>d</td><td>Diamond</td></tr>
+<tr><td>v</td><td>Triangle down</td></tr>
+<tr><td>^</td><td>Triangle up</td></tr>
+<tr><td>&lt;</td><td>Triangle left</td></tr>
+<tr><td>&gt;</td><td>Triangle right</td></tr>
+<tr><td>p</td><td>Pentagram</td></tr>
+<tr><td>h</td><td>Hexagram</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Color Control Character</th><th>Description</td></tr>
+<tr><td>b</td><td>Blue</td></tr>
+<tr><td>c</td><td>Cyan</td></tr>
+<tr><td>g</td><td>Green</td></tr>
+<tr><td>k</td><td>Black</td></tr>
+<tr><td>m</td><td>Magenta</td></tr>
+<tr><td>r</td><td>Red</td></tr>
+<tr><td>w</td><td>White</td></tr>
+<tr><td>y</td><td>Yellow</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Figure Control</th><th>Description</td></tr>
+<tr><td>axis</td><td>Freezes the current axis scaling for the current plot or specifies the axis dimensions</td></tr>
+<tr><td>figure <n></td><td>Open a new figure window. If present, <n> specifies a figure number</td></tr>
+<tr><td>grid off/on</td><td>Turn the grid off or on</td></tr>
+<tr><td>hold off/on</td><td>If hold is not set, erase figure contents before the next plotting instruction</td></tr>
+<tr><td>legend(ca)</td><td>Add a legend to a graph</td></tr>
+<tr><td>shading <value></td><td>Shade a surface plot with one color per grid section </td></tr>
+<tr><td>subplot(plts, n)</td><td>Divide the graphics window up into sections available for plotting</td></tr>
+<tr><td>text(x,y,str)</td><td>Add text to a plot</td></tr>
+<tr><td>title(str)</td><td>Add a title to a plot</td></tr>
+<tr><td>xlabel(str)</td><td>Add a label to the x-axis</td></tr>
+<tr><td>ylabel(str)</td><td>Add a label to the y-axis</td></tr>
+<tr><td>zlabel(str)</td><td>Add a label to the z-axis</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Color Map Values</th><th>Description</td></tr>
+<tr><td>autumn</td><td>yellow, orange, and red colors</td></tr>
+<tr><td>bone</td><td>shades of gray</td></tr>
+<tr><td>colorcube</td><td>multiple multi-color bands</td></tr>
+<tr><td>cool</td><td>light blue to purple</td></tr>
+<tr><td>copper</td><td>shades of red-brown</td></tr>
+<tr><td>flag</td><td>multiple red, white, and blue bands</td></tr>
+<tr><td>hot</td><td>deep red through orange to white</td></tr>
+<tr><td>hsv</td><td>single spectrum from red to purple</td></tr>
+<tr><td>jet</td><td>default) rainbow from blue to red</td></tr>
+<tr><td>pink</td><td>from dark to light pink</td></tr>
+<tr><td>prism</td><td>multiple bands of spectrum colors</td></tr>
+<tr><td>spring</td><td>from purple to yellow</td></tr>
+<tr><td>summer</td><td>from dark green to yellow</td></tr>
+<tr><td>white</td><td>all white</td></tr>
+<tr><td>winter</td><td>from dark blue to light green</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">String Operations</th><th>Description</td></tr>
+<tr><td>disp(...)</td><td>Display matrix or text</td></tr>
+<tr><td>fprintf(...)</td><td>Print formatted information</td></tr>
+<tr><td>input(...)</td><td>Prompt the user to enter a value and parse the result</td></tr>
+<tr><td>int2str(a)</td><td>Convert an integer to its numerical representation</td></tr>
+<tr><td>num2str(a,n)</td><td>Convert a number to its numerical representation with n
+decimal places</td></tr>
+<tr><td>sprintf(...)</td><td>Format a string result</td></tr>
+<tr><td>sscanf(...)</td><td>Formatted input conversion</td></tr>
+<tr><td>strcmp(s1, s2)</td><td>Compare two strings - returns true if equal</td></tr>
+<tr><td>strcmpi(s1, s2)</td><td>Compare two strings without regard to case - returns true if equal</td></tr>
+<tr><td>textscan</td><td>Scan a text string</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Time-Related Functions</th><th>Description</td></tr>
+<tr><td>clock</td><td>Determine the current time on the CPU clock</td></tr>
+<tr><td>etime</td><td>Find elapsed time</td></tr>
+<tr><td>pause</td><td>Pause the execution of a program, either until any key is hit or for a specified number of seconds</td></tr>
+<tr><td>tic</td><td>Start a timing sequence</td></tr>
+<tr><td>toc</td><td>Stop a timing sequence and return the elapsed time</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Numerical Methods</th><th>Description</td></tr>
+<tr><td>diff(v)</td><td>Compute the differences between adjacent values in a vector</td></tr>
+<tr><td>interp1</td><td>Compute linear and cubic interpolation</td></tr>
+<tr><td>interp2</td><td>Compute linear and cubic interpolation</td></tr>
+<tr><td>interp3</td><td>Compute linear and cubic interpolation </td></tr>
+<tr><td>polyfit(x, y, n)</td><td>Compute a least-squares polynomial </td></tr>
+<tr><td>polyval(c, x)</td><td>Evaluate a polynomial</td></tr>
+<tr><td>spline(x, y)</td><td>Spline interpolation</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Program Control</th><th>Description</td></tr>
+<tr><td>break</td><td>A command within a loop module that forces control to the statement following the innermost loop</td></tr>
+<tr><td>case</td><td>A specific value alternative within a switch statement</td></tr>
+<tr><td>catch</td><td>End of a suspect code block where the exception is trapped</td></tr>
+<tr><td>continue</td><td>Skip to the end of the innermost loop, but remains inside it</td></tr>
+<tr><td>else</td><td>Within an if statement, begin the code block executed when the condition is false</td></tr>
+<tr><td>elseif</td><td>Within an if statement, begin a subsequent test when the result of
+&lt;expression&gt;	the previous test is false</td></tr>
+<tr><td>end</td><td>Terminate a function specification or an if, switch, for, while, or catch block.</td></tr>
+<tr><td>end</td><td>When indexing, the value of the last element in an index vector</td></tr>
+<tr><td>for var = v</td><td>A code block repeated as many times as there are elements in the
+vector v</td></tr>
+<tr><td>function</td><td>Identify an m-file as a function or begin a helper function within a
+function file</td></tr>
+<tr><td>error(str)</td><td>Throw an exception to announce an error with the string provided</td></tr>
+<tr><td>global var</td><td>Define a variable as globally accessible</td></tr>
+<tr><td>if &lt;expression&gt;</td><td>Begin a conditional module—the following code block is executed if the logical expression is true</td></tr>
+<tr><td>lasterror</td><td>Provide a structure describing the environment from which an
+exception was thrown</td></tr>
+<tr><td>nargin</td><td>Determine the number of input parameters actually supplied by a function's caller</td></tr>
+<tr><td>nargout</td><td>Determine the number of output parameters actually requested by a function's caller</td></tr>
+<tr><td>otherwise</td><td>Catch-all code block at the end of a switch statement</td></tr>
+<tr><td>switch &lt;variable&gt;</td><td>Begin a code module selecting specific values of the variable>(must be countable)</td></tr>
+<tr><td>try</td><td>Begin a block of suspect code from which an exception might be thrown
+<tr><td>while &lt;expression&gt;</td><td>A code module repeated as long as the logical expression is true</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Data Class Operations</th><th>Description</td></tr>
+<tr><td>char(...)</td><td>Cast to a character type </td></tr>
+<tr><td>class(&lt;object&gt;)</td><td>Determine the data type of an <tr><td>object </td></tr>
+<tr><td>double(a)</td><td>Cast a to type double</td></tr>
+<tr><td>int8/16/32/64(a)</td><td>Cast a to integer type with the specified number of bits </td></tr>
+<tr><td>uint8/16/32/64(a)</td><td>Cast a to unsigned integer type with the specified number of bits </td></tr>
+<tr><td>isa(obj, str)</td><td>Test for a given data type</td></tr>
+<tr><td>ischar(ch)</td><td>Determine whether the given object is of type char iscell(...)	Determine whether the given object is a cell </td></tr>
+<tr><td>isempty(a)</td><td>Test for the empty vector [ ]</td></tr>
+<tr><td>islogical(a)</td><td>Determine whether the given object is of type logical </td></tr>
+<tr><td>isnumeric(a)</td><td>Determine whether the given object is of type double </td></tr>
+<tr><td>isspace(a)</td><td>Test for the space character</td></tr>
+<tr><td>isstruct(a)</td><td>Determine whether the given object is a structure</td></tr>
+</table>
+<table>
+<tr><th style="width="250 pixels">Structure Operations</th><th>Description</td></tr>
+<tr><td>fieldnames(str)</td><td>Return a cell array containing strings that are the names of the fields in the structure</td></tr>
+<tr><td>getfield(str,field)</td><td>Extract the value of the field</td></tr>
+
+<tr><td>isfield(str, field)</td><td>Return true if the string is a field in the specified structure</td></tr>
+<tr><td>str = rmfield(str, field)</td><td>Return a copy of the given structure with the given field removed</td></tr>
+
+<tr><td>str = setfield(str, field,value)</td><td>Construct a structure in which the value of the field has been changed to the given value</td></tr>
+
+<tr><td>struct(...)</td><td>Construct a structure from <fieldname> <value> pairs of
+parameters</td></tr>
+</table>
+
+ </div>
+
+
+</body>
+</html>
+
