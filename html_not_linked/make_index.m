@@ -8,7 +8,11 @@ clc
     global files
     global state
     global current_ID
+    global target
+    global tg_sz
     
+    target = 'for'
+    tg_sz = length(target)
     % <a class="nav-link" href="Preface.htm">Preface</a>
     cd 'C:\Users\dmsmi\Documents\textbook\html_not_linked'
     state = 'Symbols';
@@ -34,7 +38,11 @@ clc
         '14_Sounds.htm' ...
         '15_Numerical_Methods.htm' ...
         '16_Sorting.htm' ...
-        '17_Graphs.htm'};
+        '17_Graphs.htm' ...
+        'Appendix_A.htm' ...
+        'Appendix_B.htm' ...
+        'Appendix_C.htm' ...
+        'Appendix_D.htm'};
     in = fopen('dms_index.txt','r');
     line = fgetl(in);
     last_name = '';
@@ -64,7 +72,7 @@ function seek_in_files()
     
     last_marker = '';
 %    for ndx = 1:length(files)
-    for ndx = 1:4
+    for ndx = 1:length(files)
         name = files{ndx};
         fprintf(debug, '\n   *** look in %s\n', name);
         fprintf('look in %s\n', name);
@@ -87,45 +95,55 @@ end
 % % find_words
 % % 
 function find_words(name)
-    global file_str
+    global target
+    global tg_sz
     global data
     
     for ndx = 1:length(data)
         entry = data(ndx);
         if entry.type == 'N'
-            [found, word, at] = find_whole_word(name, entry);
-            if found
-                insert_link(word, at, name, ndx);
+            if length(entry.first) >= tg_sz && all(entry.first(1:tg_sz) == target)
+                ook = 1;
             end
+            entry = find_whole_word(name, entry);
         end
+        data(ndx) = entry;
     end
 end
 
 
 
-function insert_link(word, at, file_name, entry_ndx)
+function [entry plug_sz] = insert_link(word, at, file_name, entry)
     global file_str
     global data
     global current_ID
+    global target
+    global tg_sz
     
     current_ID = current_ID + 1;
-    plug = sprintf('<a id="%d">*</a>', current_ID);
+    plug = sprintf('<a id="%d">!</a>', current_ID);
     file_str = [file_str(1:at-1) plug file_str(at:end)];
     % add the reference in entry
-    entry = data(entry_ndx);
+    word = entry.first;
+    if length(word) > tg_sz && all(word(1:tg_sz) == target)
+        ook = 0;
+    end
     str = sprintf('#%d', current_ID);
     new_ref = [file_name str];
     entry.ref = [entry.ref {new_ref}];
-    data(entry_ndx) = entry;
+    plug_sz = length(plug);
 end
 
 
-function [found, word, wh] = find_whole_word(name, entry)
+function entry = find_whole_word(name, entry)
     global file_str
     global debug
     
     found = false;
     word = entry.first;
+    if length(word) > 5 && all(word(end-4:end) == '(...)')
+        word = word(1:end-4);
+    end
     where = strfind(file_str, word);
     wh = 0;
     for ndx = 1:length(where)
@@ -134,16 +152,20 @@ function [found, word, wh] = find_whole_word(name, entry)
         found = is_not_html(wh);
         % check for beginning with space or start of line
         if found
-            found = wh == 1 || file_str(wh-1) == ' ';
-            if found
-                at = wh + length(word);
-                found = at > length(file_str) || is_word_end(file_str(at));
+            front_OK = wh == 1 || is_word_end(file_str(wh-1));
+            at = wh + length(word);
+            str = file_str(at:at+6);
+            initial = ~strcmp(str,'<a id="');
+            if initial
+                back_OK = file_str(at-1) == '(' || ...
+                    at > length(file_str) || is_word_end(file_str(at));
+                found = front_OK && back_OK;
                 if found
-                    if strcmp(word, 'abstraction')
-                        ooh = true;
-                    end
-                    break
+                    [entry plug_sz] = insert_link(word, at, name, entry);
+                    where = where + plug_sz;
                 end
+            else
+                ooh = 1;
             end
         end
     end
@@ -154,23 +176,26 @@ end
 
 function found = is_not_html(where)
     global file_str
-    
-    % find nearest enclosing 13's
-    left = 0;
-    at = where - 1;
-    while file_str(at) ~= char(10)
-        if file_str(at) == '<',left = left + 1; end
-        if file_str(at) == '>',left = left - 1; end
-        at = at - 1;
+    try
+        % find nearest enclosing 13's
+        left = 0;
+        at = where - 1;
+        while at > 0 && file_str(at) ~= char(10)
+            if file_str(at) == '<',left = left + 1; end
+            if file_str(at) == '>',left = left - 1; end
+            at = at - 1;
+        end
+        right = 0;
+        at = where + 1;
+        while at <= length(file_str) && file_str(at) ~= char(13)
+            if file_str(at) == '<',right = right + 1; end
+            if file_str(at) == '>',right = right - 1; end
+            at = at + 1;
+        end
+        found = left <= 0 && right <= 0;
+    catch
+        error('in is_not_html');
     end
-    right = 0;
-    at = where + 1;
-    while file_str(at) ~= char(13)
-        if file_str(at) == '<',right = right + 1; end
-        if file_str(at) == '>',right = right - 1; end
-        at = at + 1;
-    end
-    found = left == 0 && right == 0;
 end
 
 
@@ -251,8 +276,6 @@ function it = make_entry(type, first, second, third, ref)
     %        - N: this is a normal entry
     %   refs - cell array of strings
     global debug
-    global ndx
-    global comment_there
     
     it.type = type;
     it.first = first;
@@ -287,7 +310,8 @@ end
 % % 
 function show_index()
     global data
-    global debug
+    global target
+    global tg_sz
     
     cd '../html/';
     out = fopen('text_index.htm', 'w');
@@ -311,6 +335,10 @@ function show_index()
     fprintf(out, '<title>Index</title>\n');
     fprintf(out, '</head>\n');
     fprintf(out, '<body>\n');
+    fprintf(out, '<div>#top_nav#</div>\n');
+    fprintf(out, '<div class="nav-obj">#nav_obj#</div>\n');
+    fprintf(out, '<div class="content">\n');
+    fprintf(out, '<h1 align="center" id="1">Index</h1>\n');
     fprintf(out, '<table>\n');
 % put this:
 %    A. at the top of the table
@@ -335,6 +363,10 @@ function show_index()
 % </table>
 
     for entry = data
+        word = entry.first;
+        if length(word) >= tg_sz && all(word(1:tg_sz) == target)
+            ook = 1;
+        end
         switch entry.type
             case 'H'
                 fprintf(out,'        <tr>\n');
@@ -348,11 +380,8 @@ function show_index()
                     [entry.second ' ' entry.third]);
                 for ndx = 1:length(entry.ref)
                     fprintf(out, ...
-                       '<td><a href="%s"><span class="blackText">(%d)</span></a></td>\n', ...
+                       '<td><a href="%s"><span class="blackText">(%d)</span></a> </td>\n', ...
                         entry.ref{ndx}, ndx);
-                    if ndx < length(entry.ref) 
-                        fprintf(out,', ');
-                    end
                 end
                 fprintf(out,'        <tr>\n');
             case 'C'
@@ -361,19 +390,17 @@ function show_index()
                 fprintf(out,'            <td> %s</td>\n', ...
                     [entry.second ' ' entry.third]);
                 for ndx = 1:length(entry.ref)
-                    fprintf(out,'<td><a href="%s">(%d)</a></td>\n', ...
+                    fprintf(out,'<td><a href="%s">(%d)</a> </td>\n', ...
                         entry.ref{ndx}, ndx);
-                    if ndx < length(entry.ref) 
-                        fprintf(out,', ');
-                    end
                 end
                 fprintf(out,'        <tr>\n');
         end
     end
     fprintf(out,'</table>\n');
+    fprintf(out,'</div>\n');
     fprintf(out,'</body>\n');
     fprintf(out,'</html>\n');
-    fclose(out)
+    fclose(out);
 end
 
 

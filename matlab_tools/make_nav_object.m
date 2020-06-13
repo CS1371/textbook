@@ -120,6 +120,10 @@ navobj = [navobj '<a class="nav-link" href="Appendix_A.htm">Appendix A</a></li>'
 navobj = [navobj '<li class="nav-item">'];
 navobj = [navobj '<a class="nav-link" href="Appendix_B.htm">Appendix B</a></li>'];
 navobj = [navobj '<li class="nav-item">'];
+navobj = [navobj '<a class="nav-link" href="Appendix_C.htm">Appendix C</a></li>'];
+navobj = [navobj '<li class="nav-item">'];
+navobj = [navobj '<a class="nav-link" href="Appendix_D.htm">Appendix D</a></li>'];
+navobj = [navobj '<li class="nav-item">'];
 navobj = [navobj '<a class="nav-link" href="text_index.htm">Index</a></li>'];
 
 % Close chapter list and overall nav

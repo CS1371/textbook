@@ -24,9 +24,9 @@
   <div class="container">
   <p>This chapter discusses the following:</p>
       <ul>
-          <li>How sound is physically recorded and played back and our internal storage of sound</li>
+          <li>How sound<a id="6827">!</a> is physically recorded and played back and our internal storage of sound<a id="6828">!</a></li>
           <li>Operations that can be performed with the original time trace</li>
-          <li>The ability to transform the data into the frequency domain and the physical significance of the transformed data</li>
+          <li>The ability to transform the data<a id="6656">!</a> into the frequency domain and the physical significance of the transformed data<a id="6657">!</a></li>
           <li>Operations that can be performed in the frequency domain</li>
       </ul>
   </div>
@@ -39,11 +39,11 @@
     <!-- The Physics of Sound -->
     <h2 id="14_1">14.1	The Physics of Sound</h2>
     <div class="container">
-        <p>Any sound source produces sound in the form of pressure fluctuations in the air. While the air molecules move infinitesimal distances in order to propagate the sound, the important part of sound propagation is that pressure waves move rapidly through the air by causing air molecules to “jostle” each other. These pressure fluctuations can be viewed as analog signals—data that have a continuous range of values. These signals have two attributes: their amplitude and their frequency characteristics.</p>
-        <p>In absolute terms, sound is measured as the <b>amplitude</b> of pressure fluctuations on a surface like an eardrum or a microphone. However, the challenging characteristic of these data is their dynamic range. Our ears are able to detect small sounds with amplitudes around 10<sup>10</sup> (10 billion) times smaller than the loudest comfortable sound. Sound intensity is therefore usually reported logarithmically, measured in decibels where the intensity of a sound in decibels is calculated as follows:</p>
+        <p>Any sound<a id="6829">!</a> source produces sound<a id="6830">!</a> in the form of pressure fluctuations in the air. While the air molecules move infinitesimal distances in order to propagate the sound<a id="6831">!</a>, the important part of sound<a id="6832">!</a> propagation is that pressure waves move rapidly through the air by causing air molecules to “jostle” each other. These pressure fluctuations can be viewed as analog signals—data<a id="6658">!</a> that have a continuous range of values. These signals have two attributes: their amplitude and their frequency characteristics.</p>
+        <p>In absolute terms, sound<a id="6833">!</a> is measured as the <b>amplitude</b> of pressure fluctuations on a surface<a id="6937">!</a> like an eardrum or a microphone. However, the challenging characteristic of these data<a id="6659">!</a> is their dynamic range. Our ears are able to detect small sounds with amplitudes around 10<sup>10</sup> (10 billion) times smaller than the loudest comfortable sound<a id="6834">!</a>. Sound intensity is therefore usually reported logarithmically, measured in decibels where the intensity of a sound<a id="6835">!</a> in decibels is calculated as follows:</p>
         <p><code>I<sub>DB</sub> = 10 log<sub>10</sub>(I / I<sub>0</sub>)</code></p>
         <p>where I is the measured pressure fluctuation and I<sub>0</sub> is a reference pressure usually established as the lowest pressure fluctuation a really good ear can detect, 2 x 10<sup>−4</sup> dynes/cm<sup>2</sup>.</p>
-        <p>Also, sounds are pressure fluctuations at certain <b>frequencies</b>. The human ear can hear sounds as low as 50 Hz and as high as 20 kHz. Voices on the telephone sound odd because the upper frequency is limited by the telephone equipment to 4 kHz. Typically, hearing damage due to aging or exposure to excessive sound levels causes an ear to lose sensitivity to high and/or low frequencies.</p>
+        <p>Also, sounds are pressure fluctuations at certain <b>frequencies</b>. The human ear can hear sounds as low as 50 Hz and as high as 20 kHz. Voices on the telephone sound<a id="6836">!</a> odd because the upper frequency is limited by the telephone equipment to 4 kHz. Typically, hearing damage due to aging or exposure to excessive sound<a id="6837">!</a> levels causes an ear to lose sensitivity to high and/or low frequencies.</p>
     </div>
   </div>
 
@@ -55,15 +55,15 @@
             <img src="..\Images\Fig_14_1.JPG" alt="Figure 14.1" class="fig card-img">
             <p class="figure-name card-title">Figure 14.1: Recording and Playback</p>
         </div>
-        <p>Early attempts at sound recording concentrated first on mechanical, and later magnetic, methods for storing and reproducing sound. The phonograph/record player depended on the motion of a needle in a groove as a cylinder or disk rotated at constant speed under the playback head. Not surprisingly, when you see the incredible dynamic range required, even the best stereos could not reproduce high-quality sound. Later, analog magnetic tape in various forms replaced the phonograph, offering less wear on the recording and better, but still limited, dynamic range. Digital recording has almost completely supplanted analog recording and will be the subject of this chapter.</p>
-        <p>Of course, sound amplitude in analog form is unintelligible to a computer—it must be turned into an electrical signal by a microphone, amplified to suitable voltage levels, digitized, and stored, as shown in Figure 14.1. The key to successful digital recording and playback—whether by digital tape machines, compact disks, or computer files—is the design of the analog-to-digital (A/D) and digital-to-analog (D/A) devices. The reader should remember that this is still low-level data. Each word coming out of the A/D or going into the D/A merely represents the pressure on the microphone at a point in time.</p>
-        <p>The primary parameter governing the sound quality is the recording rate—how quickly the mechanism records samples of the sound (the sampling rate). Basic sampling theory suggests that we should use a sampling rate twice the highest frequency you are interested in reproducing, usually around 20,000 samples per second for good music, 5,000 samples per second for speech.</p>
+        <p>Early attempts at sound<a id="6838">!</a> recording<a id="6800">!</a> concentrated first on mechanical, and later magnetic, methods for<a id="6691">!</a> storing and reproducing sound<a id="6839">!</a>. The phonograph/record player depended on the motion of a needle in a groove as a cylinder or disk rotated at constant speed under the playback<a id="6785">!</a> head. Not surprisingly, when you see the incredible dynamic range required, even the best stereos could not reproduce high-quality sound<a id="6840">!</a>. Later, analog magnetic tape in various forms replaced the phonograph, offering less<a id="6754">!</a> wear on the recording<a id="6801">!</a> and better, but still limited, dynamic range. Digital recording<a id="6802">!</a> has almost completely supplanted analog recording<a id="6803">!</a> and will be the subject of this chapter.</p>
+        <p>Of course, sound<a id="6841">!</a> amplitude in analog form is unintelligible to a computer<a id="6645">!</a>—it must be turned into an electrical signal by a microphone, amplified to suitable voltage levels, digitized, and stored, as shown in Figure 14.1. The key to successful digital recording<a id="6804">!</a> and playback<a id="6786">!</a>—whether by digital tape machines, compact disks, or computer<a id="6646">!</a> files<a id="6685">!</a>—is the design of the analog-to-digital<a id="6620">!</a> (A/D) and digital-to-analog (D/A) devices. The reader should remember that this is still low-level data<a id="6660">!</a>. Each word coming out of the A/D<a id="6618">!</a> or going into the D/A merely represents the pressure on the microphone at a point in time.</p>
+        <p>The primary parameter governing the sound<a id="6842">!</a> quality is the recording<a id="6805">!</a> rate—how quickly the mechanism records samples of the sound<a id="6843">!</a> (the sampling rate). Basic sampling theory suggests that we should use a sampling rate twice the highest frequency you are interested in reproducing, usually around 20,000 samples per second for<a id="6692">!</a> good music<a id="6760">!</a>, 5,000 samples per second for<a id="6693">!</a> speech.</p>
         <div class="float-sm-right card technical-insights">
             <p class="card-title">Technical Insight 14.1</p>
-            <p class="card-text">The background theory of sampling is beyond the scope of this text. Interested readers should research Nyquist on a good search engine.</p>
+            <p class="card-text">The background theory of sampling is beyond the scope of this text<a id="6938">!</a>. Interested readers should research Nyquist on a good search engine.</p>
         </div>
-        <p>The other parameter, the resolution of the recorded data, has remarkably little effect on the quality of the recording to an untrained ear. The resolution is usually either 8 bits (−128 to 127) or 16 bits (−32,768 to 32767). While 8-bit resolution ought to offer very limited dynamic range, and theoretically should be used only for recording speech, in practice it results in a quality of reproduction for music that is, to an untrained ear, indistinguishable from   that   provided   by   16-bit resolution.</p>
-        <p>These parameters must be stored with  any  digital  sound  recording medium and retrieved by the tools that play those sounds. To be able to play such a file, we must receive not only the data stream, but also information indicating the sample frequency, <code>Fs</code>, and the word size.</p>
+        <p>The other parameter, the resolution<a id="6812">!</a> of the recorded data<a id="6661">!</a>, has remarkably little effect on the quality of the recording<a id="6806">!</a> to an untrained ear. The resolution<a id="6813">!</a> is usually either 8 bits<a id="6629">!</a> (−128 to 127) or 16 bits<a id="6630">!</a> (−32,768 to 32767). While 8-bit resolution<a id="6814">!</a> ought to offer very limited dynamic range, and theoretically should be used only for<a id="6694">!</a> recording<a id="6807">!</a> speech, in practice it results in a quality of reproduction for<a id="6695">!</a> music<a id="6761">!</a> that is, to an untrained ear, indistinguishable from   that   provided   by   16-bit resolution<a id="6815">!</a>.</p>
+        <p>These parameters<a id="6778">!</a> must be stored with  any  digital  sound<a id="6844">!</a>  recording<a id="6808">!</a> medium and retrieved by the tools that play those sounds. To be able to play such a file, we must receive not only the data<a id="6662">!</a> stream, but also information indicating the sample frequency,<a id="6723">!</a> <code>Fs</code>, and the word size.</p>
     </div>
   </div>
 
@@ -72,9 +72,9 @@
     <h2 id="14_3">14.3	Implementation</h2>
      <!--[MAJOR REWRITE REQUIRED]-->
      <div class="container">
-        <p>MATLAB offers a number of tools for reading sound files: <code>audioread(...)</code>, for example. This function returns two variables: a vector of sound values and the sampling frequency in Hz (samples per second).</p>
-        <p>To play a sound file, MATLAB provides the function <code>sound(data, rate)</code> where <code>data</code> is the vector of sound values, and <code>rate</code> is the playback frequency, usually the frequency at which the sound values were recorded. We will see that the function <code>sound(...)</code> passes the data directly to the computer’s sound card, but different implementations will manage the behavior of the software that plays the sound in one of two ways.</p>
-        <p><i>Blocking vs. Non-blocking:</i> "Blocking" refers to the behavior of your system after you have called the <code>sound(...)</code> function to play a sound. Blocking players will not return control to the code playing the sound until the sound has completed. This will allow only one sound to be played from an application at a time. Non-blocking players will not wait for the sound card to finish playing the sound, so multiple calls to the <code>sound(...)</code> function will overlay different sounds. You will need to experiment with your particular system to determine whether it blocks or not.</p>
+        <p>MATLAB<a id="6757">!</a> offers a number of tools for<a id="6696">!</a> reading sound<a id="6845">!</a> files<a id="6686">!</a>: <code>audioread(<a id="6628">!</a>...)</code>, for<a id="6697">!</a> example. This function<a id="6731">!</a> returns two variables: a vector of sound<a id="6846">!</a> values and the sampling frequency in Hz (samples per second).</p>
+        <p>To play a sound<a id="6847">!</a> file, MATLAB<a id="6758">!</a> provides the function<a id="6732">!</a> <code>sound(<a id="6822">!</a>data, rate)</code> where <code>data<a id="6663">!</a></code> is the vector of sound<a id="6848">!</a> values, and <code>rate</code> is the playback<a id="6787">!</a> frequency,<a id="6724">!</a> usually the frequency at which the sound<a id="6849">!</a> values were recorded. We will see that the function<a id="6733">!</a> <code>sound(<a id="6823">!</a>...)</code> passes the data<a id="6664">!</a> directly to the computer<a id="6647">!</a>’s sound<a id="6850">!</a> card, but different implementations will manage the behavior of the software that plays the sound<a id="6851">!</a> in one of two ways.</p>
+        <p><i>Blocking vs. Non-blocking:</i> "Blocking" refers to the behavior of your system after you have called the <code>sound(<a id="6824">!</a>...)</code> function<a id="6734">!</a> to play a sound<a id="6852">!</a>. Blocking players will not return control to the code<a id="6635">!</a> playing the sound<a id="6853">!</a> until the sound<a id="6854">!</a> has completed. This will allow only one sound<a id="6855">!</a> to be played from an application at a time. Non-blocking players will not wait for<a id="6698">!</a> the sound<a id="6856">!</a> card to finish playing the sound<a id="6857">!</a>, so multiple calls to the <code>sound(<a id="6825">!</a>...)</code> function<a id="6735">!</a> will overlay different sounds. You will need to experiment with your particular system to determine whether it blocks or not.</p>
     </div>
      <!--Put these online??A number of .wav files are included on the book’s Companion Web site to demonstrate many aspects of sound files.<-->
    </div>
@@ -83,7 +83,7 @@
      <!-- Time Domain Operations -->
     <h2 id="14_4">14.4	Time Domain Operations</h2>
     <div class="container">
-        <p>First, we consider three kinds of operations on sound files in the time domain: slicing, playback frequency changes, and sound file frequency changes.</p>
+        <p>First, we consider three kinds of operations<a id="6777">!</a> on sound<a id="6858">!</a> files<a id="6687">!</a> in the time domain: slicing, playback<a id="6788">!</a> frequency changes, and sound<a id="6859">!</a> file frequency changes.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="2" data-sub-name="Slicing and Concatenating Sounds">
@@ -96,7 +96,7 @@
                   <p class="figure-name card-title">Figure 14.2: Gone With the Wind Speech</p>
               </div>
               <p>Consider the problem of constructing comedic sayings by choosing and assembling words from published speeches. One example of a speech clip is "Frankly, my dear..." from <em>Gone with the Wind</em>. Listing 14.1 describes the process of assembling parts of this speech into a semi-coherent conversation.</p>
-              <p>In Listing 14.1, we first read and play the sound from the "frankly, my dear..." speech; the plotted data can be seen in Figure 14.2. Then, we play it louder by increasing the amplitude and then play it softer by decreasing the amplitude. It is then played faster by dropping half the data and then played slower by reducing the playback frequency. Then, all of the speech pieces are pasted together to construct the final sound clip.</p>
+              <p>In Listing 14.1, we first read and play the sound<a id="6860">!</a> from the "frankly, my dear..." speech; the plotted data<a id="6665">!</a> can be seen in Figure 14.2. Then, we play it louder by increasing the amplitude and then play it softer by decreasing the amplitude. It is then played faster by dropping half the data<a id="6666">!</a> and then played slower by reducing the playback<a id="6789">!</a> frequency. Then, all of the speech pieces are pasted together to construct the final sound<a id="6861">!</a> clip.</p>
           </div>
           <div class="row">
               <div class="col-sm-6">
@@ -130,13 +130,13 @@
               <img src="..\Images\Fig_14_3.JPG" alt="Figure 14.3" class="fig card-img">
               <p class="figure-name card-title">Figure 14.3: Musical Notes</p>
           </div>
-          <p>For good historical reasons, music is usually described graphically on a music score. The graphics describe for each note to be played its pitch and its duration, together with other notations indicating how to introduce expression and quality into the music. However, this graphical notation is not amenable to the simple representation of music we need for these experiments. Rather, we will use the representation illustrated in Figure 14.3. The right side of this figure shows a standard piano keyboard, the index of each white note, and the number of half steps necessary to achieve the pitch of each note. On the left side of the figure, we see the method to be used in this text to describe simple tunes. It will consist of an array with two columns and n rows, where n is the number of notes to be played for each tune. The first column is the key number to play, and the second column is the number of beats each note should be played.</p>
-          <p>The example to follow in Listing 14.2 will manipulate the file <code>instr_piano.wav</code> to produce a snippet of music. This file is a recording of a single note played on a piano. <!--Other files provided in the Companion Web site are the same note played on a variety of instruments.--> There are two ways to accomplish this, as follows:</p>
+          <p>For good historical reasons, music<a id="6762">!</a> is usually described graphically on a music<a id="6763">!</a> score. The graphics describe for<a id="6699">!</a> each note to be played its pitch and its duration, together with other notations indicating how to introduce expression and quality into the music<a id="6764">!</a>. However, this graphical notation is not amenable to the simple representation of music<a id="6765">!</a> we need for<a id="6700">!</a> these experiments. Rather, we will use the representation illustrated in Figure 14.3. The right side of this figure shows a standard piano keyboard, the index of each white note, and the number of half steps necessary to achieve the pitch of each note. On the left side of the figure, we see the method to be used in this text<a id="6939">!</a> to describe simple tunes. It will consist of an array<a id="6621">!</a> with two columns and n rows, where n is the number of notes to be played for<a id="6701">!</a> each tune. The first column<a id="6640">!</a> is the key number to play, and the second column<a id="6641">!</a> is the number of beats each note should be played.</p>
+          <p>The example to follow in Listing 14.2 will manipulate the file <code>instr_piano.wav<a id="6950">!</a></code> to produce a snippet of music<a id="6766">!</a>. This file is a recording<a id="6809">!</a> of a single note played on a piano. <!--Other files provided in the Companion Web site are the same note played on a variety of instruments.--> There are two ways to accomplish this, as follows:</p>
           <ol>
-           <li>Playing each note at a different playback frequency</li>
-           <li>Stretching or shrinking each note to match the required note pitch and playing them all at the same playback frequency</li>
+           <li>Playing each note at a different playback<a id="6790">!</a> frequency</li>
+           <li>Stretching or shrinking<a id="6820">!</a> each note to match the required note pitch and playing them all at the same playback<a id="6791">!</a> frequency</li>
           </ol>
-          <p>The first way is easier to understand and code, but very inflexible; the second method is a little more difficult to implement, but completely extensible. Musically speaking, if a sound is played at twice its natural frequency, it is heard as one musical octave higher. When you play a scale by playing each white key in turn from one note to the next octave, there are 8 keys to play with 7 frequency changes: 5 whole note steps (those separated by a black note) and 2 half note steps, for a total of 12 half note steps. These 12 half steps are logarithmically divided where the frequency multiplier between half note steps is 2<sup>1/12</sup>.</p>
+          <p>The first way is easier to understand and code<a id="6636">!</a>, but very inflexible; the second method is a little more difficult to implement, but completely extensible. Musically speaking, if a sound<a id="6862">!</a> is played at twice its natural frequency,<a id="6725">!</a> it is heard as one musical<a id="6770">!</a> octave higher. When you play a scale<a id="6817">!</a> by playing each white key in turn from one note to the next octave, there are 8 keys to play with 7 frequency changes: 5 whole note steps (those separated by a black<a id="6631">!</a> note) and 2 half note steps, for<a id="6702">!</a> a total of 12 half note steps. These 12 half steps are logarithmically divided where the frequency multiplier between half note steps is 2<sup>1/12</sup>.</p>
           <div class="row">
             <div class="col-sm-6">
               <audio controls><source src="../audio/instr_piano.wav" type="audio/wav">Piano Note</audio>
@@ -156,24 +156,24 @@
               <img src="..\Images\Fig_14_4.JPG" alt="Figure 14.4" class="fig card-img">
               <p class="figure-name card-title">Figure 14.4: Creating a Tune File</p>
           </div>
-          <p>We will leave as an exercise for the reader the question of playing a tune by changing the playback frequency of each note, which is really never a practical thing to do, and concentrate on playing all the notes of a tune with the same playback frequency. This allows the different notes to be copied into a single sound file and saved to be played back on any digital sound system.</p>
-          <p>In order to change the perceived note frequency without changing the playback frequency, we have to change the number of data samples in the original data file much as we stretched or shrunk an image in Section 13.4.1.</p>
-          <p><b>Play a Scale</b> Listing 14.2 shows a script that uses this capability to play the C Major scale (all white notes) on the piano. It repeatedly shortens the vector to increase the frequency of the note played.</p>
-          <p><b>Play a Simple Tune</b> We now write a script to build a playable <code>.wav</code> file using the note shrinking technique, also shown in Listing 14.2. It reads in the script <code>ramblinWreck</code> to define the tune in which the first column of each cell array specifies the relative pitch (the note on teh scale) and the second the duration in "beats".</p>
-          <p>The goal is to put the notes into a single sound array called <code>wreck</code>, as illustrated in Figure 14.4, rather than playing the notes "on the fly." For each part, or instrument, this is accomplished as follows:</p>
+          <p>We will leave as an exercise for<a id="6703">!</a> the reader the question of playing a tune by changing the playback<a id="6792">!</a> frequency of each note, which is really never a practical thing to do, and concentrate on playing all the notes of a tune with the same playback<a id="6793">!</a> frequency. This allows the different notes to be copied into a single sound<a id="6863">!</a> file and saved to be played back on any digital sound<a id="6864">!</a> system.</p>
+          <p>In order to change the perceived note frequency without changing the playback<a id="6794">!</a> frequency,<a id="6726">!</a> we have to change the number of data<a id="6667">!</a> samples in the original data<a id="6668">!</a> file much as we stretched or shrunk an image in Section 13.4.1.</p>
+          <p><b>Play a Scale</b> Listing 14.2 shows a script that uses this capability to play the C Major scale<a id="6818">!</a> (all white notes) on the piano. It repeatedly shortens the vector to increase the frequency of the note played.</p>
+          <p><b>Play a Simple Tune</b> We now write a script to build a playable <code>.wav<a id="6951">!</a></code> file using the note shrinking<a id="6821">!</a> technique, also shown in Listing 14.2. It reads in the script <code>ramblinWreck</code> to define the tune in which the first column<a id="6642">!</a> of each cell<a id="6634">!</a> array<a id="6622">!</a> specifies the relative pitch (the note on teh scale<a id="6819">!</a>) and the second the duration in "beats".</p>
+          <p>The goal is to put the notes into a single sound<a id="6865">!</a> array<a id="6623">!</a> called <code>wreck</code>, as illustrated in Figure 14.4, rather than playing the notes "on the fly." For each part, or instrument, this is accomplished as follows:</p>
           <ul>
-           <li>In the <code>play_part</code> function, create an empty array, <code>part</code>, of the appropriate length (the length of the original note plus the total number of beats in the song)</li>
+           <li>In the <code>play_part</code> function<a id="6736">!</a>, create an empty<a id="6676">!</a> array<a id="6624">!</a>, <code>part</code>, of the appropriate length (the length of the original note plus the total number of beats in the song)</li>
            <li>Initialize <code>where</code> to store the first note at the start of the tune</li>
-           <li>Iterate across the <code>part</code> definition array <code>score</code> with the following steps:
+           <li>Iterate across the <code>part</code> definition array<a id="6625">!</a> <code>score</code> with the following steps:
                <ul>
-                   <li>In the <code>getPitch</code> function, start with the original <code>note</code></li>
-                   <li>Get the power of the note to decide how many times to raise the note array by half a step</li>
+                   <li>In the <code>getPitch</code> function<a id="6737">!</a>, start with the original <code>note</code></li>
+                   <li>Get the power of the note to decide how many times to raise the note array<a id="6626">!</a> by half a step</li>
                    <li>Raise the <code>power</code> to the right pitch and save it as <code>pitch</code></li>
                    <li>Add that <code>pitch</code> vector to the <code>part</code> vector, starting at <code>where</code></li>
-                   <li>Move the <code>where</code> variable down the <code>part</code> vector a distance equivalent to the duration of that note</li>
+                   <li>Move the <code>where</code> variable<a id="6947">!</a> down the <code>part</code> vector a distance equivalent to the duration of that note</li>
                </ul>
            </li>
-           <li>When all the parts have been added to the tune file, play the tune and save it as a <code>.wav</code> file.</li>
+           <li>When all the parts have been added to the tune file, play the tune and save it as a <code>.wav<a id="6952">!</a></code> file.</li>
           </ul>
       </div>
     </div>
@@ -181,9 +181,9 @@
 
   <div class="chp-section" data-sect-num="5" data-sect-name="The Fast Fourier Transform">
     <!-- The Fast Fourier Transform -->
-    <h2 id="14_5">14.5  The Fast Fourier Transform</h2>
+    <h2 id="14_5">14.5  The Fast<a id="6681">!</a> Fourier Transform</h2>
     <div class="container">
-        <p>Typically, the time history display of a sound shows you the amplitude of the sound as a function of time but makes no attempt at showing the frequency content. While this works for the exercises above, we are often more interested in the frequency content of a sound file, for which we need a different presentation—a spectrum display.</p>
+        <p>Typically, the time history display of a sound<a id="6866">!</a> shows you the amplitude of the sound<a id="6867">!</a> as a function<a id="6738">!</a> of time but makes no attempt at showing the frequency content. While this works for<a id="6704">!</a> the exercises above, we are often more interested in the frequency content of a sound<a id="6868">!</a> file, for<a id="6705">!</a> which we need a different presentation—a spectrum display.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Background">
@@ -194,18 +194,18 @@
               <img src="..\Images\Fig_14_5.JPG" alt="Figure 14.5" class="fig card-img">
               <p class="figure-name card-title">Figure 14.5: A typical spectrum display</p>
           </div>
-          <p>In general, a spectrum display shows the amount of sound energy in a given frequency band throughout the duration of the sound analyzed but ignores the time at which the sound at that frequency was generated. Many acoustic amplifiers (see Figure 14.5) include two features that allow you to customize the sound output:</p>
+          <p>In general, a spectrum display shows the amount of sound<a id="6869">!</a> energy in a given frequency band throughout the duration of the sound<a id="6870">!</a> analyzed but ignores the time at which the sound<a id="6871">!</a> at that frequency was generated. Many acoustic amplifiers (see Figure 14.5) include two features that allow you to customize the sound<a id="6872">!</a> output:</p>
           <ul>
-           <li>A spectral display that changes values as the sound is played, indicating the amount of sound energy (vertically) in different frequency bands (horizontally)</li>
+           <li>A spectral display that changes values as the sound<a id="6873">!</a> is played, indicating the amount of sound<a id="6874">!</a> energy (vertically) in different frequency bands (horizontally)</li>
            <li>Filter controls to change the relative amplification in different frequency bands</li>
           </ul>
           <div class="float-sm-right card">
               <img src="..\Images\Fig_14_6.JPG" alt="Figure 14.6" class="fig card-img">
               <p class="figure-name card-title">Figure 14.6: Mechanics of the Fourier Transform</p>
           </div>
-          <p> In the following paragraphs, we will consider only the analysis of the sound frequency content. The ability to reshape the sound frequency content as the sound plays is beyond the scope of this text.</p>
-          <p>To achieve the motion of the spectrum display, software to analyze a segment of the sound file runs periodically and updates the spectrum display. Typically, perhaps 20 times a second, 1/20th second of sound file is analyzed and transformed. The software used for this conversion is known as the Fourier transform.</p>
-          <p>While the mathematics of the Fourier transform is beyond the scope of this book, we can make use of the tools it offers without concerning ourselves with the details. There are a number of implementations of this transform; perhaps the most commonly used is the Fast Fourier Transform (FFT).  The  FFT  uses  clever  matrix  manipulations  to  optimize  the algorithm needed to generate the forward (time to frequency) and reverse (frequency to time) transforms.</p>
+          <p> In the following paragraphs, we will consider only the analysis of the sound<a id="6875">!</a> frequency content. The ability to reshape the sound<a id="6876">!</a> frequency content as the sound<a id="6877">!</a> plays is beyond the scope of this text<a id="6940">!</a>.</p>
+          <p>To achieve the motion of the spectrum display, software to analyze a segment of the sound<a id="6878">!</a> file runs periodically and updates the spectrum display. Typically, perhaps 20 times a second, 1/20th second of sound<a id="6879">!</a> file is analyzed and transformed. The software used for<a id="6706">!</a> this conversion is known as the Fourier transform.</p>
+          <p>While the mathematics of the Fourier transform is beyond the scope of this book, we can make use of the tools it offers without concerning ourselves with the details. There are a number of implementations of this transform; perhaps the most commonly used is the Fast<a id="6682">!</a> Fourier Transform (FFT).  The  FFT  uses  clever  matrix<a id="6759">!</a>  manipulations  to  optimize  the algorithm needed to generate the forward<a id="6722">!</a> (time to frequency) and reverse (frequency to time) transforms.</p>
       </div>
     </div>
 
@@ -213,7 +213,7 @@
        <!-- Implementation -->
       <h3 id="14_5_2">14.5.2	Implementation</h3>
       <div class="container clearfix">
-          <p>Figure 14.6 illustrates the overall process of transforming between the time domain and frequency domain. It starts with a simple sound file, a vector of N sound values in the range (−1.0 to 1.0), which, if played back at a sample frequency <code>Fs</code> samples per second, reproduces the sound. The parameters of interest for characterizing the time trace are:</p>
+          <p>Figure 14.6 illustrates the overall process of transforming between the time domain and frequency domain. It starts with a simple sound<a id="6880">!</a> file, a vector of N sound<a id="6881">!</a> values in the range (−1.0 to 1.0), which, if played back at a sample frequency <code>Fs</code> samples per second, reproduces the sound<a id="6882">!</a>. The parameters<a id="6779">!</a> of interest for<a id="6707">!</a> characterizing the time trace are:</p>
           <table class="table">
            <tr>
                <td><code>N</code></td>
@@ -224,35 +224,35 @@
                <td>the sampling frequency</td>
            </tr>
            <tr>
-               <td><code>&Delta;t</code></td>
+               <td><code>&<a id="6780">!</a>Delta;t</code></td>
                <td>the time between samples, computed as <code>1/Fs</code></td>
            </tr>
            <tr>
                <td><code>T<sub>max</sub></code></td>
-               <td>the maximum time is N x &Delta;t</td>
+               <td>the maximum time is N x &<a id="6781">!</a>Delta;t</td>
            </tr>
           </table>
-          <p>The FFT consumes a file describing the time history of the sound sampled at regular intervals &Delta;t and produces a frequency spectrum with a corresponding set of characteristics. The frequency spectrum consists of the same number, <code>N</code>, of data points, each of which is a complex value with real and imaginary parts. (While many displays actually plot the magnitude of the spectrum values, to accomplish the inverse transform, the complex values must be retained.) The frequency values are "folded" on the plot so that zero frequency occurs at either end of the spectrum, and the maximum frequency occurs in the middle, at spectrum data point <code>N/2</code>.</p>
-          <p>The equivalent characteristics for the spectrum data are as follows:</p>
+          <p>The FFT consumes a file describing the time history of the sound<a id="6883">!</a> sampled at regular intervals &<a id="6782">!</a>Delta;t and produces a frequency spectrum with a corresponding set of characteristics. The frequency spectrum consists of the same number, <code>N</code>, of data<a id="6669">!</a> points, each of which is a complex value<a id="6941">!</a> with real and imaginary parts. (While many displays actually plot the magnitude of the spectrum values, to accomplish the inverse transform, the complex values must be retained.) The frequency values are "folded" on the plot so that zero frequency occurs at either end<a id="6677">!</a> of the spectrum, and the maximum frequency occurs in the middle, at spectrum data<a id="6670">!</a> point <code>N/2</code>.</p>
+          <p>The equivalent characteristics for<a id="6708">!</a> the spectrum data<a id="6671">!</a> are as follows:</p>
           <table class="table">
            <tr>
                <td><code>N</code></td>
                <td>the number of samples</td>
            </tr>
            <tr>
-               <td><code>&Delta;f</code></td>
+               <td><code>&<a id="6783">!</a>Delta;f</code></td>
                <td>the frequency difference between samples, computed as <code>1/T<sub>max</sub></code></td>
            </tr>
            <tr>
                <td><code>F<sub>max</sub></code></td>
-               <td>the frequency value at the end of the plot, is <code>N x &Delta;f</code> However, since the mathematics force this frequency to actually replicate the beginning frequency, the maximum effective frequency actually occurs at the mid-point with value <code>F<sub>max</sub>/2</code>.</td>
+               <td>the frequency value<a id="6942">!</a> at the end<a id="6678">!</a> of the plot, is <code>N x &<a id="6784">!</a>Delta;f</code> However, since the mathematics force this frequency to actually replicate the beginning frequency,<a id="6727">!</a> the maximum effective frequency actually occurs at the mid-point with value<a id="6943">!</a> <code>F<sub>max</sub>/2</code>.</td>
            </tr>
           </table>
           <div class="float-sm-right card technical-insights">
               <p class="card-title">Technical Insight 14.2</p>
-              <p class="card-text">The fact that the actual maximum frequency is half of the sampling frequency is consistent with the Nyquist criterion that the maximum frequency you can discern with digital sampling is half the sampling frequency.</p>
+              <p class="card-text">The fact that the actual<a id="6619">!</a> maximum frequency is half of the sampling frequency is consistent with the Nyquist criterion that the maximum frequency you can discern with digital sampling is half the sampling frequency.</p>
           </div>
-          <p>The FFT is mechanized using the function <code>fft(...)</code>, which consumes the time history and produces the complex spectrum file. The inverse FFT  function, <code>ifft(...)</code>,  takes  a spectrum array and reconstructs the time history. This pair of functions provides a powerful set of tools for manipulating sound files.</p>
+          <p>The FFT is mechanized using the function<a id="6739">!</a> <code>fft(<a id="6684">!</a>...)</code>, which consumes the time history and produces the complex spectrum file. The inverse FFT  function<a id="6740">!</a>, <code>ifft(<a id="6752">!</a>...)</code>,  takes  a spectrum array<a id="6627">!</a> and reconstructs the time history. This pair of functions provides a powerful set of tools for<a id="6709">!</a> manipulating sound<a id="6884">!</a> files<a id="6688">!</a>.</p>
       </div>
     </div>
 
@@ -264,16 +264,16 @@
               <img src="..\Images\Fig_14_7.JPG" alt="Figure 14.7" class="fig card-img">
               <p class="figure-name card-title">Figure 14.7: FFT of a sine wave</p>
           </div>
-          <p>Listing 14.3 illustrates a script that creates 10 seconds of an 8 Hz sine wave, plots the first second of it, performs the FFT, and plots the real and imaginary parts of the spectrum. Notice the following:</p>
+          <p>Listing 14.3 illustrates a script that creates 10 seconds of an 8 Hz sine wave, plots<a id="6795">!</a> the first second of it, performs the FFT, and plots<a id="6796">!</a> the real and imaginary parts of the spectrum. Notice the following:</p>
           <ul>
            <li>A sine wave in the time domain transforms to a line in the frequency domain because all its energy is concentrated at that frequency—8 Hz in this example.</li>
-           <li>Since the FFT is a linear process, multiple sine or cosine waves added together at different frequencies have additive effects in the spectrum.</li>
-           <li>The resulting spectrum is complex (with real and imaginary parts) and symmetrical about its center, the point of maximum frequency. On the plot, of course, one cannot make the frequency axis labels reduce from the center to the end.</li>
-           <li>The real part of the spectrum is mirrored about the center; the imaginary part is mirrored and inverted (the complex conjugate of the original data).</li>
-           <li>The phase of the complex spectrum retains the position of the sine wave in the time domain—it would be totally real for a cosine wave symmetrically placed in time and totally imaginary for a sine wave in the same relationship.</li>
+           <li>Since the FFT is a linear<a id="6755">!</a> process, multiple sine or cosine waves added together at different frequencies have additive effects in the spectrum.</li>
+           <li>The resulting spectrum is complex (with real and imaginary parts) and symmetrical about its center, the point of maximum frequency. On the plot, of course, one cannot make the frequency axis labels reduce from the center to the end<a id="6679">!</a>.</li>
+           <li>The real part of the spectrum is mirrored about the center; the imaginary part is mirrored and inverted (the complex conjugate of the original data<a id="6672">!</a>).</li>
+           <li>The phase of the complex spectrum retains the position of the sine wave in the time domain—it would be totally real for<a id="6710">!</a> a cosine wave symmetrically placed in time and totally imaginary for<a id="6711">!</a> a sine wave in the same relationship.</li>
           </ul>
-          <p>The script in Listing 14.3 creates three sub-plots: the original sine wave and then the amplitude and phase of the spectrum.</p>
-          <p>Figure 14.7 shows the result from running this script. It confirms the earlier statement that the real part of the spectrum is mirrored about the center frequency, and the imaginary part is mirrored and inverted.</p>
+          <p>The script in Listing 14.3 creates three sub-plots<a id="6797">!</a>: the original sine wave and then the amplitude and phase of the spectrum.</p>
+          <p>Figure 14.7 shows the result from running this script. It confirms the earlier statement that the real part of the spectrum is mirrored about the center frequency,<a id="6728">!</a> and the imaginary part is mirrored and inverted.</p>
           <div class="listing">#listing_14_3#</div>
       </div>
     </div>
@@ -283,8 +283,8 @@
      <!-- Frequency Domain Operations -->
     <h2 id="14_6">14.6  Frequency Domain Operations</h2>
     <div class="container">
-      <p>This section is intended to set up the process of building a synthesizer that will replicate with a reasonable level of fidelity the sound of a piano without resorting, as we did above, to reading and manipulating a piano time history. To do this, we must understand the basics of the frequency spectrum of the instrument and shaping its time history.</p>
-    	<p>As a typical example of operating in the frequency domain, we will consider analyzing the spectral quality of different musical instruments. The intent of this section is to develop a plot showing the spectra of a selection of different musical instruments. <!--We will first build a function that plots the spectrum for a single instrument and then build the script to create all the plots.--> Listing 14.4 shows a function that reads the .wav file of an instrument. The author is deeply indebted to the University of Miami's Audio and Signal Processing Laboratory who gave permission to use their musical instrument sound collection.  This provided us with a series of sound traces recording different instruments.  All were recorded in a quiet room playing the same musical note giving us clean, pure recordings of a large number of instruments. http://chronos.ece.miami.edu/~dasp/samples/samples.html. <!--All the instruments are carefully playing a note at about 260 Hz.--></p>
+      <p>This section is intended to set up the process of building<a id="6632">!</a> a synthesizer that will replicate with a reasonable level of fidelity the sound<a id="6885">!</a> of a piano without resorting, as we did above, to reading and manipulating a piano time history. To do this, we must understand the basics of the frequency spectrum of the instrument and shaping its time history.</p>
+    	<p>As a typical example of operating<a id="6776">!</a> in the frequency domain, we will consider analyzing the spectral quality of different musical<a id="6771">!</a> instruments. The intent of this section is to develop a plot showing the spectra of a selection of different musical<a id="6772">!</a> instruments. <!--We will first build a function that plots the spectrum for a single instrument and then build the script to create all the plots.--> Listing 14.4 shows a function<a id="6741">!</a> that reads the .wav<a id="6953">!</a> file of an instrument. The author is deeply indebted to the University of Miami's Audio and Signal Processing Laboratory who<a id="6958">!</a> gave permission to use their musical<a id="6773">!</a> instrument sound<a id="6886">!</a> collection<a id="6639">!</a>.  This provided us with a series of sound<a id="6887">!</a> traces recording<a id="6810">!</a> different instruments.  All were recorded in a quiet room playing the same musical<a id="6774">!</a> note giving us clean, pure recordings of a large number of instruments. http://chronos.ece.miami.edu/~dasp/samples/samples.html. <!--All the instruments are carefully playing a note at about 260 Hz.--></p>
       <div class="row">
           <div class="col-sm-6">
               <audio controls><source src="../audio/instr_violin.wav" type="audio/wav">Violin Frequency Spectrum</audio>
@@ -308,9 +308,9 @@
           </div>
           <p>The results are shown in Figure 14.8. It is interesting to notice the following:</p>
           <ul>
-            <li>None of the instruments produce a pure tone. The lowest frequency at which there is energy is usually called the fundamental frequency, and successive peaks to the right at multiples of the fundamental frequency are referred to, for example, as the first, second, and third harmonics.</li>
+            <li>None of the instruments produce a pure tone. The lowest frequency at which there is energy is usually called the fundamental frequency,<a id="6729">!</a> and successive peaks to the right at multiples of the fundamental frequency are referred to, for<a id="6712">!</a> example, as the first, second, and third harmonics.</li>
             <li>Several instruments have much more energy in the harmonics than in the fundamental frequency.</li>
-            <li>"Families" of instruments have similar spectral shapes—the strings, for example, have strong fundamental and second harmonic energy. In principle, these characteristic spectral "signatures" can be used to synthesize the sound of instruments, and even to identify individual instruments when played in groups.</li>
+            <li>"Families" of instruments have similar spectral shapes—the strings<a id="6936">!</a>, for<a id="6713">!</a> example, have strong fundamental and second harmonic energy. In principle, these characteristic spectral "signatures" can be used to synthesize the sound<a id="6888">!</a> of instruments, and even to identify individual instruments when played in groups.</li>
           </ul>
       </div>
       <div class="listing">#listing_14_4#</div>
@@ -323,7 +323,7 @@
                   <img src="..\Images\Fig_14_9.JPG" alt="Figure 14.9" class="fig card-img">
                   <p class="figure-name card-title">Figure 14.9: Instrument Spectra</p>
               </div>
-              <p>We will now look carefully at the characteristics of the Frequency Spectrum using the code in Listing 14.5.  The first view we create is the spectrum plot of a sine wave at 261.6 Hz which musicians would recognize as Middle C.  Since all the sound energy is at that one frequency, the spectrum is a vertical line at 261.6 Hz.  The scaling on the vertical axis is complicated and irrelevant to this discussion. Consider the vertical axis to show the relative amounts of energy as a function of frequency. Note that the FFT function is assuming that the sound being analyzed is the sum of a number of sine waves at different frequencies.  The task of the FFT is to separate out and display the sound energy at each frequency.  In this example, there is only one frequency.</p>
+              <p>We will now look carefully at the characteristics of the Frequency Spectrum using the code<a id="6637">!</a> in Listing 14.5.  The first view we create is the spectrum plot of a sine wave at 261.6 Hz which musicians would recognize as Middle C.  Since all the sound<a id="6889">!</a> energy is at that one frequency,<a id="6730">!</a> the spectrum is a vertical line at 261.6 Hz.  The scaling on the vertical axis is complicated and irrelevant to this discussion. Consider the vertical axis to show the relative amounts of energy as a function<a id="6742">!</a> of frequency. Note that the FFT function<a id="6743">!</a> is assuming that the sound<a id="6890">!</a> being analyzed is the sum of a number of sine waves at different frequencies.  The task of the FFT is to separate out and display the sound<a id="6891">!</a> energy at each frequency.  In this example, there is only one frequency.</p>
           </div>
           <div class="container clearfix">
               <div class="float-sm-right card">
@@ -333,9 +333,9 @@
               <p>In this next example, we will plot the absolute values of the frequency spectrum of a trumpet playing the same note at 261.6 Hz. Notice some interesting characteristics of this spectrum:
           		<ul>
             		<li>There is some energy at 261.6 Hz (normally called the "fundamental frequency" - the note intended to to be played by the musician.)  </li>
-            		<li>However, the bulk of the sound energy is at higher frequencies.</li>
-            		<li>"Musical" sounds in general are composed of energy at the fundamental frequency combined with energy at integer multipliers of the fundamental frequency referred to as the "harmonics." Contrast this with the "dirty" looking frequency spectrum of the train whistle in Figure 14.8 that is not normally classed as "musical"</li>
-                <li>		Notice with the trumpet that the maximum energy is in the 4th harmonic and the first ten harmonics all have more energy than the fundamental.  This gives the trumpet its "brilliant" sound.</li>
+            		<li>However, the bulk of the sound<a id="6892">!</a> energy is at higher frequencies.</li>
+            		<li>"Musical" sounds in general are composed of energy at the fundamental frequency combined with energy at integer multipliers of the fundamental frequency referred to as the "harmonics." Contrast this with the "dirty" looking frequency spectrum of the train whistle in Figure 14.8 that is not normally classed as "musical<a id="6775">!</a>"</li>
+                <li>		Notice with the trumpet that the maximum energy is in the 4th harmonic and the first ten harmonics all have more energy than the fundamental.  This gives the trumpet its "brilliant" sound<a id="6893">!</a>.</li>
           		</ul></p>
           </div>
           <div class="container clearfix">
@@ -355,7 +355,7 @@
                   <img src="..\Images\Fig_14_12.JPG" alt="Figure 14.12" class="fig card-img">
                   <p class="figure-name card-title">Figure 14.12: trumpet time history</p>
               </div>
-              <p>Many instruments have a relatively constant amplitude when played.  For example, a trumpet's amplitude is controlled by the musician's breath, and could be assumed to be constant over the duration of the note as illustrated in Figure 14.12. If this is the case, everything necessary to make a synthesizer has been accomplished. Listing 14.6 was used to generate this figure, together with the frequency spectrum not repeated here.</p>
+              <p>Many instruments have a relatively constant amplitude when played.  For example, a trumpet's amplitude is controlled by the musician's breath, and could be assumed to be constant over the duration of the note as illustrated in Figure 14.12. If this is the case<a id="6633">!</a>, everything necessary to make a synthesizer has been accomplished. Listing 14.6 was used to generate this figure, together with the frequency spectrum not repeated here.</p>
           </div>
           <div class="listing">#listing_14_6#</div>
           <div class="container clearfix">
@@ -363,11 +363,11 @@
                   <img src="..\Images\Fig_14_13.JPG" alt="Figure 14.13" class="fig card-img">
                   <p class="figure-name card-title">Figure 14.13: piano time history</p>
               </div>
-              <p>Some instruments, however, are played by striking a string, for example, and the allowing the reverberation of the sound to continue, gradually fading over time.  Figure 14.13 illustrates the changes over time when a piano note is played. In order to apply a profile over time to our synthetic piano note, we need to reach ahead to Chapter 15 to use curve fitting to model the shape of the sound decay.  We will merely report the general steps here and refer the reader to section 15.2 for the details.
+              <p>Some instruments, however, are played by striking a string, for<a id="6714">!</a> example, and the allowing the reverberation of the sound<a id="6894">!</a> to continue<a id="6649">!</a>, gradually fading over time.  Figure 14.13 illustrates the changes over time when a piano note is played. In order to apply a profile over time to our synthetic piano note, we need to reach ahead to Chapter 15 to use curve<a id="6650">!</a> fitting to model the shape of the sound<a id="6895">!</a> decay.  We will merely report the general steps here and refer the reader to section 15.2 for<a id="6715">!</a> the details.
               <ul>
-                <li>In general, we need first to define some data points shown as red plus signs that define the decay.</li>
-                <li>We then use the tools of chapter 15 to compute a small number of coefficients that force a polynomial curve to best fit these data points shown as the cyan colored curve.  </li>
-                <li>Finally, we generate that curve and multiply the sound at each sample point by the interpolated value of that curve.</li>
+                <li>In general, we need first to define some data<a id="6673">!</a> points shown as red plus signs that define the decay.</li>
+                <li>We then use the tools of chapter 15 to compute a small number of coefficients that force a polynomial<a id="6799">!</a> curve<a id="6651">!</a> to best fit these data<a id="6674">!</a> points shown as the cyan colored curve<a id="6652">!</a>.  </li>
+                <li>Finally, we generate that curve<a id="6653">!</a> and multiply the sound<a id="6896">!</a> at each sample point by the interpolated value<a id="6944">!</a> of that curve<a id="6654">!</a>.</li>
               </ul>
             </p>
           </div>
@@ -380,7 +380,7 @@
        <!-- Engineering Example -->
       <h2 id="14_7">14.7 Engineering Example - Music Synthesizer</h2>
       <div class="container">
-          <p>A music synthesizer is an electronic instrument with a piano style keyboard that is able to simulate the sound of multiple instruments. Unlike the instrument sounds we have used so far, the instrument sounds are not stored as large time histories. Rather, they are stored as the Fourier coefficients  similar to those illustrated in Figure 14.11. The sound is then reconstructed by multiplying sin or cosine waves of the right frequency by the stored coefficients. For some instruments, this is sufficient. Other instruments such as pianos need to have the amplitude of the resulting sound modified to match a typical profile. Listings 14.8 illustrates a possible technique for extracting the most important Fourier coefficients from the piano sound. We would then apply the fading curve created in section 14.6.2 above to each note and create the music from the individual notes.</p>
+          <p>A music<a id="6767">!</a> synthesizer is an electronic instrument with a piano style keyboard that is able to simulate the sound<a id="6897">!</a> of multiple instruments. Unlike the instrument sounds we have used so far, the instrument sounds are not stored as large time histories. Rather, they are stored as the Fourier coefficients  similar to those illustrated in Figure 14.11. The sound<a id="6898">!</a> is then reconstructed by multiplying sin or cosine waves of the right frequency by the stored coefficients. For some instruments, this is sufficient. Other instruments such as pianos need to have the amplitude of the resulting sound<a id="6899">!</a> modified to match a typical profile. Listings 14.8 illustrates a possible technique for<a id="6716">!</a> extracting the most important Fourier coefficients from the piano sound<a id="6900">!</a>. We would then apply the fading curve<a id="6655">!</a> created in section 14.6.2 above to each note and create the music<a id="6768">!</a> from the individual notes.</p>
           <div class="listing">#listing_14_8#</div>
           <div class="row">
               <div class="col-sm-6">
@@ -397,11 +397,11 @@
       <p>This chapter presented the following:</p>
       <ul>
           <li>Sounds are read with specific readers that provide a time history and sampling frequency</p>
-          <li>Sounds can be played through the computer’s sound system and saved to disk as a sound file ready for playing on any digital player</li>
-          <li>We can slice and concatenate sounds to edit speeches and change the frequency of the sound to change its pitch</li>
-          <li>We can analyze the frequency content of sound using the Fast Fourier Transform (FFT)</li>
-          <li>We can modify the spectra by adding, deleting, or changing the sound levels at chosen frequencies under certain controlled conditions</li>
-          <li>We can reconstruct a sound from the FFT coefficients.</li>
+          <li>Sounds can be played through the computer<a id="6648">!</a>’s sound<a id="6901">!</a> system and saved to disk as a sound<a id="6902">!</a> file ready for<a id="6717">!</a> playing on any digital player</li>
+          <li>We can slice and concatenate sounds to edit speeches and change the frequency of the sound<a id="6903">!</a> to change its pitch</li>
+          <li>We can analyze the frequency content of sound<a id="6904">!</a> using the Fast<a id="6683">!</a> Fourier Transform (FFT)</li>
+          <li>We can modify the spectra by adding, deleting, or changing the sound<a id="6905">!</a> levels at chosen frequencies under certain controlled conditions</li>
+          <li>We can reconstruct a sound<a id="6906">!</a> from the FFT coefficients.</li>
       </ul>
   </div>
 <h2>Self Test</h2>
@@ -411,15 +411,15 @@ Use the following questions to check your understanding of the material in this
 chapter:
 <h3>True or False</h3>
 <ol>
-<li>Playing a sound file at double the recorded sample frequency raises
+<li>Playing a sound<a id="6907">!</a> file at double the recorded sample frequency raises
 its pitch by an octave.</li>
-          <li>Removing every other sample from a sound file lowers the pitch by
+          <li>Removing every other sample from a sound<a id="6908">!</a> file lowers the pitch by
 an octave.</li>
-          <li>The resolution of the recorded data has a significant effect on the
-quality of the recording.</li>
-          <li>After performing an FFT, the zero frequency occurs at either end of
+          <li>The resolution<a id="6816">!</a> of the recorded data<a id="6675">!</a> has a significant effect on the
+quality of the recording<a id="6811">!</a>.</li>
+          <li>After performing an FFT, the zero frequency occurs at either end<a id="6680">!</a> of
 the spectrum and the maximum frequency occurs in the middle.</li>
-          <li>Since the mathematics of the FFT are linear, the spectrum of a sound
+          <li>Since the mathematics of the FFT are linear<a id="6756">!</a>, the spectrum of a sound<a id="6909">!</a>
 added in the time domain is also added in the frequency domain.</li>
 </ol>
 <h3>Fill in the Blanks</h3>
@@ -431,55 +431,55 @@ _______________ merely represents the _______________ on the
 microphone at a point in time.</li>
           <li>The steps from one note to the next higher octave are divided into
 _______________ increments: _______________ whole note steps and
-_______________ half note steps, for a total of _______________ half
+_______________ half note steps, for<a id="6718">!</a> a total of _______________ half
 note steps.</li>
           <li>A spectrum display shows the amount of _______________ in a
-given _______________ throughout the duration of the sound
+given _______________ throughout the duration of the sound<a id="6910">!</a>
 analyzed.</li>
 </ol>
 
 <h3>Programming Projects</h3>
 <ol>
-<li>These are fundamental exercises with sound files. You should not
-hard-code any of the answers for this problem, and you should not
-need iteration.
+<li>These are fundamental exercises with sound<a id="6911">!</a> files<a id="6689">!</a>. You should not
+hard-code<a id="6638">!</a> any of the answers for<a id="6719">!</a> this problem, and you should not
+need iteration<a id="6753">!</a>.
 <ol type="a">
-<li>Select and read a suitable .wav file, and save the sound values
+<li>Select and read a suitable .wav<a id="6954">!</a> file, and save the sound<a id="6912">!</a> values
 and sampling frequency.</li>
-          <li>Create a new sound that has double the frequency of the original
-sound, and store your answer in the variable sound_Double.</li>
-          <li>Create a new sound that is the same as the original except that
+          <li>Create a new sound<a id="6913">!</a> that has double the frequency of the original
+sound<a id="6914">!</a>, and store your answer in the variable<a id="6948">!</a> sound<a id="6915">!</a>_Double.</li>
+          <li>Create a new sound<a id="6916">!</a> that is the same as the original except that
 the pitch is raised by five half tones. Store your answer in the
-variable raised_pitch.</li>
+variable<a id="6949">!</a> raised_pitch.</li>
           <li>We need a figure showing two views each of these three
 sounds, created using subplot. <br>
-In the left column, plot the
-original sound, sound_Double, and raised_pitch, labeling each
+In the left column<a id="6643">!</a>, plot the
+original sound<a id="6917">!</a>, sound<a id="6918">!</a>_Double, and raised_pitch, labeling each
 plot accordingly.<br>
-In the right column, plot the first quarter of the values of the
-power spectrum of each sound with the proper frequency values
+In the right column<a id="6644">!</a>, plot the first quarter of the values of the
+power spectrum of each sound<a id="6919">!</a> with the proper frequency values
 on the horizontal axis.</li>
-          <li>Play each of the sounds in the following order: original sound,
-sound_Double , and raised_pitch each at the original sampling
+          <li>Play each of the sounds in the following order: original sound<a id="6920">!</a>,
+sound<a id="6921">!</a>_Double , and raised_pitch each at the original sampling
 frequency.</li>
           </ol></li>
-          <li>Write a function that will accept a string specifying a sound file and
+          <li>Write a function<a id="6744">!</a> that will accept a string specifying a sound<a id="6922">!</a> file and
 do the following:
 <ol type="a">
-<li>Play back the sound..</li>
-          <li>Plot the sound in the time domain, titling and labeling your plot
+<li>Play back the sound<a id="6923">!</a>..</li>
+          <li>Plot the sound<a id="6924">!</a> in the time domain, titling and labeling your plot
 appropriately..</li>
           <li>Compute the frequency with the most energy in this file.
 Validate your answer by plotting the lower quarter of the
-frequencies of the Fourier Transform of the sound. Don't forget
+frequencies of the Fourier Transform of the sound<a id="6925">!</a>. Don't forget
 that the Fourier Transform is complex; you will need to reason
-with and plot the absolute value of the spectrum..</li>
-          <li>Test this function with suitable .wav files.</li>
+with and plot the absolute value<a id="6945">!</a> of the spectrum..</li>
+          <li>Test this function<a id="6745">!</a> with suitable .wav<a id="6955">!</a> files<a id="6690">!</a>.</li>
 		  </ol>
-          <li>Write a function named plotSound that takes in the name of a sound
-file and produces a 1 3 2 figure with two plots. The first plot should
-be a plot of the sound in the time domain. The second plot should
-be a plot of the sound in the frequency domain. Your function
+          <li>Write a function<a id="6746">!</a> named plotSound that takes in the name of a sound<a id="6926">!</a>
+file and produces a 1 3 2 figure with two plots<a id="6798">!</a>. The first plot should
+be a plot of the sound<a id="6927">!</a> in the time domain. The second plot should
+be a plot of the sound<a id="6928">!</a> in the frequency domain. Your function<a id="6747">!</a>
 should not return anything. Label the first plot 'Time Domain' and
 label its axes appropriately. Label second plot 'Frequency Domain'
 and label its axes appropriately.
@@ -487,32 +487,32 @@ The Time Domain plot should be an amplitude vs. time plot. For
 simplicity make sure that your time vector starts at dt (delta time)
 and goes to n*dt (t max ) where n is the number of samples.
 <br>The Frequency Domain plot should be a power vs. frequency plot
-where power is the absolute value of the FFT of the amplitude
+where power is the absolute value<a id="6946">!</a> of the FFT of the amplitude
 values. For simplicity make sure that your frequency vector starts at
 df (delta frequency) and goes to n*df (2*f max ).</li>
-          <li>In this exercise, we will write a script to create an instrument sound
+          <li>In this exercise, we will write a script to create an instrument sound<a id="6929">!</a>
 from scratch.
 <ol type="a">
 <li>Create a vector, t , of time values from 0 to 2 seconds with length
 40,000 samples.</li>
           <li>Convert the frequency of middle C (261.6 Hz) to v radians per
 second.</li>
-          <li>Compute a sound sample as cos(vt) over the range of t in part a.</li>
-          <li>Play that sound at a sample frequency of 20,000, and verify that it
+          <li>Compute a sound<a id="6930">!</a> sample as cos(vt) over the range of t in part a.</li>
+          <li>Play that sound<a id="6931">!</a> at a sample frequency of 20,000, and verify that it
 sounds "about right."</li>
-          <li>Perform the Fourier Transform on the sound vector, establish the
-correct axis values, and prove that the sound is exactly Middle C.
+          <li>Perform the Fourier Transform on the sound<a id="6932">!</a> vector, establish the
+correct axis values, and prove that the sound<a id="6933">!</a> is exactly Middle C.
 </ol></li>
-          <li>Write a function named playNote that takes in a string representing
-a note on the piano. Your function should return a vector
+          <li>Write a function<a id="6748">!</a> named playNote that takes in a string representing
+a note on the piano. Your function<a id="6749">!</a> should return a vector
 representing the amplitude values of the note in addition to the
 correct sampling frequency to be used to play it back. You should
-do this by modifying the sound in the provided instr_piano.wav file
+do this by modifying the sound<a id="6934">!</a> in the provided instr_piano.wav<a id="6956">!</a> file
 which is Middle C played on the piano. Note that the returned
-sampling frequency should be the same as that in instr_piano..wav .
+sampling frequency should be the same as that in instr_piano..wav<a id="6957">!</a> .
 Here is a list of all the possible note names representing notes that
-your function should work with and below that is the number of
-half steps above/below the middle C for that note:
+your function<a id="6750">!</a> should work with and below that is the number of
+half steps above/below the middle C for<a id="6720">!</a> that note:
 <table>
 <tr><td >cn</td><td>cn#</td><td>dn</td><td>dn#</td><td>en</td><td>fn</td><td>fn#</td><td>gn</td><td>gn#</td><td>a(n+1)</td><td>a(n+1)#</td><td>b(n+1)</td><td>c(n+1)</td></tr>
 <tr><td>-12</td><td>-11</td><td>-10</td><td>-9</td><td>-8</td><td>-7</td><td>-6</td><td>-5</td><td>-4</td><td>-3</td><td>-2</td><td>-1</td><td>0</td></tr>
@@ -520,12 +520,12 @@ half steps above/below the middle C for that note:
 where c4 is the middle C, c5 is 1 octave above it, and c3 is 1 octave
 below it. Similarly, f5 is 1 octave higher than f4, etc. For example,
 [y1 fs] = playNote('c5'); should return a vector such that
-sound(y1, fs) should sound like middle C</li>
+sound(<a id="6826">!</a>y1, fs) should sound<a id="6935">!</a> like middle C</li>
           <li>Finally, you will use these tools to play your favorite song.
 		  <ol type = "a">
-<li>Find the music for your favorite song, and translate it into the
+<li>Find the music<a id="6769">!</a> for<a id="6721">!</a> your favorite song, and translate it into the
 symbology of Problem 14.5.</li>
-          <li> Write a script that uses the playNote function to play your song
+          <li> Write a script that uses the playNote function<a id="6751">!</a> to play your song
 on the piano.</li>
           <li>Modify playNote to use your synthetic instrument from Problem
 14.3, and save it as playSynthetic .</li>
@@ -539,3 +539,4 @@ futuristic style.
 
 </body>
 </html>
+

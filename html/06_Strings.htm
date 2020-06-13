@@ -20,45 +20,45 @@
   <h1>Chapter Objectives</h1>
   <div class="container">
     <p>This chapter discusses the nature, implementation, and behavior of
-    character strings in the MATLAB language:</p>
+    character<a id="2976">!</a> strings<a id="3330">!</a> in the MATLAB<a id="3213">!</a> language:</p>
     <ul>
-      <li>The internal workings of character strings as vectors</li>
-      <li>Operations on character strings</li>
-      <li>Converting between numeric and character string representations</li>
+      <li>The internal workings of character<a id="2977">!</a> strings<a id="3331">!</a> as vectors<a id="3440">!</a></li>
+      <li>Operations on character<a id="2978">!</a> strings<a id="3332">!</a></li>
+      <li>Converting between numeric and character<a id="2979">!</a> string representations</li>
       <li>Input and output functions</li>
-      <li>The construction and uses for arrays of strings</li>
+      <li>The construction and uses for<a id="3093">!</a> arrays of strings<a id="3333">!</a></li>
     </ul>
-    <p>To this point in the text, we have seen the use of character strings that we can store in variables and display in the Command window. In reality, we have already seen a significant amount of character manipulation that we have taken for granted. The m-files we use to store scripts and functions contain lines of legible characters separated by an invisible “new-line” character.</p>
+    <p>To this point in the text<a id="3368">!</a>, we have seen the use of character<a id="2980">!</a> strings<a id="3334">!</a> that we can store in variables and display in the Command<a id="3049">!</a> window. In reality, we have already seen a significant amount of character<a id="2981">!</a> manipulation that we have taken for<a id="3094">!</a> granted. The m-files<a id="3092">!</a> we use to store scripts<a id="3318">!</a> and functions contain lines of legible characters separated by an invisible “new-line” character<a id="2982">!</a>.</p>
   </div>
 
   <!-- Introduction -->
   <h1>Introduction</h1>
   <div class="container">
-    <p>This chapter presents the underlying concept of character storage and the tools MATLAB provides for operating on character strings. We need to distinguish two different relationships between characters and
-    numbers:</p>
+    <p>This chapter presents the underlying concept of character<a id="2983">!</a> storage and the tools MATLAB<a id="3214">!</a> provides for<a id="3095">!</a> operating<a id="3287">!</a> on character<a id="2984">!</a> strings<a id="3335">!</a>. We need to distinguish two different relationships between characters and
+    numbers<a id="3246">!</a>:</p>
     <ol>
-      <li>Individual characters have an internal numerical representation: the visible character shapes we see in windows are created as a collection of white and black dots by special software called a character generator. Character generators allow us to take the underlying concept of a character - say, “w” - and “draw” that character on screen or paper in accordance with the rules defined by the current font. A complete study of fonts is beyond the scope of
+      <li>Individual characters have an internal numerical<a id="3261">!</a> representation: the visible character<a id="2985">!</a> shapes we see in windows<a id="3447">!</a> are created as a collection<a id="3044">!</a> of white and black<a id="2958">!</a> dots by special software called a character<a id="2986">!</a> generator. Character generators allow us to take the underlying concept of a character<a id="2987">!</a> - say, “w” - and “draw” that character<a id="2988">!</a> on screen or paper in accordance with the rules defined by the current font. A complete study of fonts is beyond the scope of
       this discussion, but we need to understand how computers in general and the
-      MATLAB language in particular represent that “underlying concept” of a character. This is achieved by representing each individual character by its
-      numerical equivalent. Not long ago, there were many different representations.
+      MATLAB<a id="3215">!</a> language in particular represent that “underlying concept” of a character<a id="2989">!</a>. This is achieved by representing each individual character<a id="2990">!</a> by its
+      numerical<a id="3262">!</a> equivalent. Not long ago, there were many different representations.
       Today, the dominant representation is the one defined by the American
-      Standard Code for Information Interchange (ASCII). In this representation, the
-      most common uppercase and lowercase characters, numbers, and many
-      punctuation marks are represented by numbers between 0 and 127. A
+      Standard Code for<a id="3096">!</a> Information Interchange (ASCII). In this representation, the
+      most common uppercase and lowercase characters, numbers<a id="3247">!</a>, and many
+      punctuation marks are represented by numbers<a id="3248">!</a> between 0 and 127. A
       complete listing of the first 255 values is included in Appendix B.</li>
-      <li>Strings of characters represent numerical values to the user: numerical values
-      are stored in a special, internal representation for efficient numerical
+      <li>Strings of characters represent numerical<a id="3263">!</a> values to the user: numerical<a id="3264">!</a> values
+      are stored in a special, internal representation for<a id="3097">!</a> efficient numerical<a id="3265">!</a>
       computation as described in Appendix C . However, whenever we need to see
-      the value of that number in the Command window, that internal
-      representation is automatically converted by MATLAB into a character string
-      representing its value in a form we can read. For example, if the variable a
-      contained the integer value 124, internally that number could be stored in a
-      single byte (8 bits) with a binary value of 011111100—not a very meaningful
-      representation, but efficient internally for performing arithmetic and logical
-      operations. For the user to understand that value, internal MATLAB logic must
+      the value<a id="3388">!</a> of that number in the Command<a id="3050">!</a> window, that internal
+      representation is automatically converted by MATLAB<a id="3216">!</a> into a character<a id="2991">!</a> string
+      representing its value<a id="3389">!</a> in a form we can read. For example, if the variable<a id="3421">!</a> a
+      contained the integer value<a id="3390">!</a> 124, internally that number could be stored in a
+      single byte (8 bits<a id="2956">!</a>) with a binary<a id="2955">!</a> value<a id="3391">!</a> of 011111100—not a very meaningful
+      representation, but efficient internally for<a id="3098">!</a> performing arithmetic<a id="2938">!</a> and logical<a id="3200">!</a>
+      operations<a id="3290">!</a>. For the user to understand that value<a id="3392">!</a>, internal MATLAB<a id="3217">!</a> logic<a id="3199">!</a> must
       convert it to the three printable characters: '124' . Similarly, when we type in
-      the Command window or use the input(...) function, the set of characters
-      that we enter is automatically translated from a character string into the
+      the Command<a id="3051">!</a> window or use the input(...) function<a id="3143">!</a>, the set of characters
+      that we enter is automatically translated from a character<a id="2992">!</a> string into the
       internal number representation.</li>
     </ol>
   </div>
@@ -67,76 +67,76 @@
     <!-- Character String Concepts -->
     <h2 id="6_1">6.1 Character String Concepts: Mapping, Casting, Tokens, and Delimiting</h2>
     <div class="container">
-      <p>Here we see the MATLAB language tools that deal with the first relationship
-      between characters and numbers: the numerical representation of individual
+      <p>Here we see the MATLAB<a id="3218">!</a> language tools that deal with the first relationship
+      between characters and numbers<a id="3249">!</a>: the numerical<a id="3266">!</a> representation of individual
       characters.</p>
-      <p>The basic idea of <b>mapping</b> is that it defines a relationship between two
-      entities. The most obvious example of mapping is the idea that the function<br><br>
-      <code>f(x) = 2 &#215; x</code><br><br>
-      defines the mapping between the value of <code>x</code> and the value of <code>f(x)</code> .
-      We will apply that concept to the process of translating a character (like
-      "A") from its graphical form to a numerical internal code. Character
-      mapping allows each individual graphic character to be uniquely
-      represented by a numerical value.</p>
+      <p>The basic idea of <b>mapping<a id="3204">!</a></b> is that it defines a relationship between two
+      entities. The most obvious example of mapping<a id="3205">!</a> is the idea that the function<a id="3144">!</a><br><br>
+      <code>f(x) = 2 &<a id="3311">!</a>#215; x</code><br><br>
+      defines the mapping<a id="3206">!</a> between the value<a id="3393">!</a> of <code>x</code> and the value<a id="3394">!</a> of <code>f(x)</code> .
+      We will apply that concept to the process of translating a character<a id="2993">!</a> (like
+      "A") from its graphical form to a numerical<a id="3267">!</a> internal code<a id="3032">!</a>. Character
+      mapping<a id="3207">!</a> allows each individual graphic character<a id="2994">!</a> to be uniquely
+      represented by a numerical<a id="3268">!</a> value<a id="3395">!</a>.</p>
       <p><b>Casting</b> is the process of changing the way a language views a piece of
-      data without actually changing the data value. Under normal circumstances,
-      a language like MATLAB automatically presents a set of data in the "right"
+      data<a id="3063">!</a> without actually changing the data<a id="3064">!</a> value<a id="3396">!</a>. Under normal circumstances,
+      a language like MATLAB<a id="3219">!</a> automatically presents a set of data<a id="3065">!</a> in the "right"
       form. However, there are times when we wish to force the language to
-      treat a data item in a specific way. For example, if we create a variable containing a character string, MATLAB will consistently display it as a character string. However, we might want to view the underlying
-      numerical representation as a number, in which case we have to cast the
-      variable containing the characters to a numerical data type. MATLAB
-      implements casting as a function with the name of the data type expected.
-      In essence, these functions implement the mapping from one character
+      treat a data<a id="3066">!</a> item in a specific way. For example, if we create a variable<a id="3422">!</a> containing a character<a id="2995">!</a> string, MATLAB<a id="3220">!</a> will consistently display it as a character<a id="2996">!</a> string. However, we might want to view the underlying
+      numerical<a id="3269">!</a> representation as a number, in which case<a id="2959">!</a> we have to cast the
+      variable<a id="3423">!</a> containing the characters to a numerical<a id="3270">!</a> data<a id="3067">!</a> type. MATLAB<a id="3221">!</a>
+      implements casting<a id="2962">!</a> as a function<a id="3145">!</a> with the name of the data<a id="3068">!</a> type expected.
+      In essence, these functions implement the mapping<a id="3208">!</a> from one character<a id="2997">!</a>
       representation to another. For example:<br><br>
       <code> &gt;&gt; str = 'ABCD'<br>
       str =
       &nbsp;&nbsp;&nbsp;&nbsp; ABCD<br>
-      &gt;&gt; double(str)<br>
+      &gt;&gt; double(<a id="3084">!</a>str)<br>
       ans =
       &nbsp;&nbsp;&nbsp;&nbsp; 65 66 67 68<br><br>
       </code>In your workspace window, <code>ans</code> will be of type <code>double</code>.</p>
-      <p>A <b>token</b> is a collection of characters to which we may wish to attach
-      meaning. Obvious examples of tokens are the name of a MATLAB variable
+      <p>A <b>token<a id="3378">!</a></b> is a collection<a id="3045">!</a> of characters to which we may wish to attach
+      meaning. Obvious examples of tokens are the name of a MATLAB<a id="3222">!</a> variable<a id="3424">!</a>
       or the characters representing the values of a number to be used in an
       expression.</p>
-      <p>A <b>delimiter</b> is a character used to separate tokens. The space character,
-      for example, can delimit words in a sentence; punctuation marks provide
+      <p>A <b>delimiter<a id="3077">!</a></b> is a character<a id="2998">!</a> used to separate tokens. The space character<a id="2999">!</a>,
+      for<a id="3099">!</a> example, can delimit words in a sentence; punctuation marks provide
       additional delimiters with specific meanings.</p>
     </div>
   </div>
 
   <div class="chp-section" data-sect-num="2" data-sect-name="MATLAB Implementation">
-    <h2 id="6_2">6.2 MATLAB Implementation</h2>
+    <h2 id="6_2">6.2 MATLAB<a id="3223">!</a> Implementation</h2>
     <div class="container">
-      <p>When you enter a string in the Command window or the editor, MATLAB
+      <p>When you enter a string in the Command<a id="3052">!</a> window or the editor, MATLAB<a id="3224">!</a>
       requires that you delimit the characters of a string with a single quote mark
       ( ' ). Note that you can include a single quote mark within the string by
-      doubling the character. For example, if you entered the following in the
-      Command window:<br><br>
-      <code>>> refusal = 'I can''t do that!'</code><br><br>
+      doubling the character<a id="3000">!</a>. For example, if you entered the following in the
+      Command<a id="3053">!</a> window:<br><br>
+      <code>>> refusal = 'I can''t do that!'</code<a id="3033">!</a>><br><br>
       The result displayed would be<br><br>
       <code>refusal = <br>
         &nbsp;&nbsp;&nbsp;&nbsp;I can't do that</code><br><br></p>
-      <p>Exercise 6.1 illustrates the concept of casting between data types <code>char</code> and
+      <p>Exercise 6.1 illustrates the concept of casting<a id="2963">!</a> between data<a id="3069">!</a> types <code>char</code> and
       <code>double</code>.</p>
       <div class="exercise">#exercise_6_1#</div>
       <p>In Exercise 6.1:</p>
       <ul>
-        <li>the casting function <code>uint8(...)</code> takes a character or
-        character string and changes its representation to a vector of the same
+        <li>the casting<a id="2964">!</a> function<a id="3146">!</a> <code>uint8(...)</code> takes a character<a id="3001">!</a> or
+        character<a id="3002">!</a> string and changes its representation to a vector of the same
         length as the original string.</li>
-        <li>Then the casting function <code>char(...)</code> takes a
+        <li>Then the casting<a id="2965">!</a> function<a id="3147">!</a> <code>char(<a id="2970">!</a>...)</code> takes a
         number or vector and causes it to be presented as a string. </li>
-        <li>The casting function <code>double(...)</code> appears to act in the same way as <code>uint8(...)</code>, but it
-        actually uses 64 bits to store the values. </li>
+        <li>The casting<a id="2966">!</a> function<a id="3148">!</a> <code>double(<a id="3085">!</a>...)</code> appears to act in the same way as <code>uint8(...)</code>, but it
+        actually uses 64 bits<a id="2957">!</a> to store the values. </li>
         <li>Single quotes delimit a string to be
-        assigned to the variable <code>fred</code>. Notice that when a string is presented as a
+        assigned to the variable<a id="3425">!</a> <code>fred</code>. Notice that when a string is presented as a
         result, the delimiters are omitted.</li>
-        <li>When you apply arithmetic operations to
-        a string, the operation is illegal on characters; therefore, an implicit casting
-        to the numerical equivalent occurs.</li>
-        <li>You can perform any mathematical operation on the vector and use the
-          cast, <code>char(...)</code>, to cast it back to a string.</li>
+        <li>When you apply arithmetic<a id="2939">!</a> operations<a id="3291">!</a> to
+        a string, the operation<a id="3288">!</a> is illegal on characters; therefore, an implicit casting<a id="2967">!</a>
+        to the numerical<a id="3271">!</a> equivalent occurs.</li>
+        <li>You can perform any mathematical operation<a id="3289">!</a> on the vector and use the
+          cast, <code>char(<a id="2971">!</a>...)</code>, to cast it back to a string.</li>
       </ul>
     </div>
 
@@ -144,14 +144,14 @@
       <!-- Slicing and Concatenating Strings -->
       <h3 id="6_2_1">6.2.1 Slicing and Concatenating Strings</h3>
       <div class="container">
-        <p>Strings are internally represented as vectors; therefore, we can perform all
-        the usual vector operations on strings. Try it in Exercise 6.2.</p>
+        <p>Strings are internally represented as vectors<a id="3441">!</a>; therefore, we can perform all
+        the usual vector operations<a id="3292">!</a> on strings<a id="3336">!</a>. Try it in Exercise 6.2.</p>
         <div class="exercise">#exercise_6_2#</div>
         <ul>
-          <li>First, we set the variable <code>first</code>.</li>
-          <li>Then, the variable <code>last</code>.</li>
-          <li>Then we concatenate the strings with a space separating them.</li>
-          <li>Then we display every other character in the name.</li>
+          <li>First, we set the variable<a id="3426">!</a> <code>first</code>.</li>
+          <li>Then, the variable<a id="3427">!</a> <code>last</code>.</li>
+          <li>Then we concatenate the strings<a id="3337">!</a> with a space separating them.</li>
+          <li>Then we display every other character<a id="3003">!</a> in the name.</li>
           <li>Then we display the letters of name in reverse order.</li>
         </ul>
       </div>
@@ -161,13 +161,13 @@
       <!-- Arithmetic and Logical Operations -->
       <h3 id="6_2_2">6.2.2 Arithmetic and Logical Operations</h3>
       <div class="container">
-        <p>Mathematical operations can be performed on the numerical mapping of a
-        character string. If you do not explicitly perform that casting first, MATLAB
-        will do the cast for you and create a result of type double (not usually
-        suitable for character values). Note that <code>char('a' + 1 )</code> returning <code>'b'</code> is an
-        accident of the character type mapping.</p>
-        <p>Logical operations on character strings are also exactly equivalent to
-        logical operations on vectors, with the same automatic casting. Exercise 6.3
+        <p>Mathematical operations<a id="3293">!</a> can be performed on the numerical<a id="3272">!</a> mapping<a id="3209">!</a> of a
+        character<a id="3004">!</a> string. If you do not explicitly perform that casting<a id="2968">!</a> first, MATLAB<a id="3225">!</a>
+        will do the cast for<a id="3100">!</a> you and create a result of type double (not usually
+        suitable for<a id="3101">!</a> character<a id="3005">!</a> values). Note that <code>char(<a id="2972">!</a>'a' + 1 )</code> returning <code>'b'</code> is an
+        accident of the character<a id="3006">!</a> type mapping<a id="3210">!</a>.</p>
+        <p>Logical operations<a id="3294">!</a> on character<a id="3007">!</a> strings<a id="3338">!</a> are also exactly equivalent to
+        logical<a id="3201">!</a> operations<a id="3295">!</a> on vectors<a id="3442">!</a>, with the same automatic casting<a id="2969">!</a>. Exercise 6.3
         gives you an opportunity to try it yourself.</p>
         <div class="exercise">#exercise_6_3#</div>
       </div>
@@ -177,10 +177,10 @@
       <!-- Userful Functions -->
       <h3 id="6_2_3">6.2.3 Useful Functions</h3>
       <div class="container">
-        <p>The following functions are useful in analyzing character strings:</p>
+        <p>The following functions are useful in analyzing character<a id="3008">!</a> strings<a id="3339">!</a>:</p>
         <ul>
-          <li><code>ischar(a)</code> returns true if <code>a</code> is a character string</li>
-          <li><code>isspace(ch)</code> returns true if the character <code>ch</code> is the space character</li>
+          <li><code>ischar(<a id="3196">!</a>a)</code> returns true if <code>a</code> is a character<a id="3009">!</a> string</li>
+          <li><code>isspace(<a id="3197">!</a>ch)</code> returns true if the character<a id="3010">!</a> <code>ch</code> is the space character<a id="3011">!</a></li>
         </ul>
       </div>
     </div>
@@ -190,86 +190,86 @@
     <!-- Format Conversion Functions -->
     <h2 id="6_3">6.3 Format Conversion Functions</h2>
     <div class="container">
-      <p>Now we turn to the second relationship between characters and numbers:
-      using character strings to represent individual number values. We need
-      two separate capabilities: converting numbers from the efficient, internal
-      form to legible strings and converting strings provided by users of MATLAB
-      into the internal number representation. MATLAB provides a number of
-      functions that transform data between string format and numerical format.</p>
+      <p>Now we turn to the second relationship between characters and numbers<a id="3250">!</a>:
+      using character<a id="3012">!</a> strings<a id="3340">!</a> to represent individual number values. We need
+      two separate capabilities: converting numbers<a id="3251">!</a> from the efficient, internal
+      form to legible strings<a id="3341">!</a> and converting strings<a id="3342">!</a> provided by users of MATLAB<a id="3226">!</a>
+      into the internal number representation. MATLAB<a id="3227">!</a> provides a number of
+      functions that transform data<a id="3070">!</a> between string format<a id="3128">!</a> and numerical<a id="3273">!</a> format<a id="3129">!</a>.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Conversion from Numbers to Strings">
       <!-- Conversion from Numbers to Strings -->
       <h3 id="6_3_1">6.3.1 Conversion from Numbers to Strings</h3>
       <div class="container">
-        <p>Use the following built-in MATLAB functions for a simple conversion of a
+        <p>Use the following built-in MATLAB<a id="3228">!</a> functions for<a id="3102">!</a> a simple conversion of a
         single number, <code>x</code>, to its string representation:</p>
         <ul>
-          <li><code>int2str(x)</code> if you want it displayed as an integer value</li>
-          <li><code>num2str(x, n)</code> to see the decimal parts; the parameter <code>n</code> represents
+          <li><code>int2str(<a id="3195">!</a>x)</code> if you want it displayed as an integer value<a id="3397">!</a></li>
+          <li><code>num2str(<a id="3286">!</a>x, n)</code> to see the decimal parts; the parameter <code>n</code> represents
           the number of decimal places required—if not specified, its default
-          value is <code>3</code>.</li>
+          value<a id="3398">!</a> is <code>3</code>.</li>
         </ul>
-        <p>Frequently, however,  you need better control over the data conversion, and the
-        function <code><b>sprintf(...)</b></code> provides fine-grained control. The MATLAB version
-        of <code>sprintf(...)</code> is very similar to the C/C++ implementation of this
-        capability. The first parameter to <code>sprintf</code> is a <b>format control string</b> that
-        defines exactly how the resulting string should be formatted. A variable
-        number of <b>value parameters</b> follow the format string, providing data items
+        <p>Frequently, however,  you need better control over the data<a id="3071">!</a> conversion, and the
+        function<a id="3149">!</a> <code><b>sprintf(<a id="3320">!</a>...)</b></code> provides fine-grained control. The MATLAB<a id="3229">!</a> version
+        of <code>sprintf(<a id="3321">!</a>...)</code> is very similar to the C/C++ implementation of this
+        capability. The first parameter to <code>sprintf</code> is a <b>format<a id="3130">!</a> control string</b> that
+        defines exactly how the resulting string should be formatted. A variable<a id="3428">!</a>
+        number of <b>value<a id="3399">!</a> parameters<a id="3302">!</a></b> follow the format<a id="3131">!</a> string, providing data<a id="3072">!</a> items
         as necessary to satisfy the formatting.</p>
-        <p>Basically, the format string contains characters to be copied to the
-        string returned from <code>sprintf(...)</code>; however, it also contains two types of functionality introduced by
+        <p>Basically, the format<a id="3132">!</a> string contains characters to be copied to the
+        string returned from <code>sprintf(<a id="3322">!</a>...)</code>; however, it also contains two types of functionality introduced by
         the following two special characters:</p>
         <ul>
-          <li>The <code>'%'</code> character introduces a conversion specification, indicating
-          how one of the value parameters should be represented. The most
+          <li>The <code>'%'</code> character<a id="3013">!</a> introduces a conversion specification, indicating
+          how one of the value<a id="3400">!</a> parameters<a id="3303">!</a> should be represented. The most
           common conversions are <code>%d</code> (integer), <code>%f</code> (real), <code>%g</code> (general), <code>%c</code>
           (character), and <code>%s</code> (string). A number may be placed immediately
-          after the <code>%</code> character to specify the minimum number of characters
-          in the conversion. If more characters than the specified minimum
-          are required to represent the data, they will be added. In addition,
+          after the <code>%</code> character<a id="3014">!</a> to specify the minimum<a id="3243">!</a> number of characters
+          in the conversion. If more characters than the specified minimum<a id="3244">!</a>
+          are required to represent the data<a id="3073">!</a>, they will be added. In addition,
           the <code>%f</code> and <code>%g</code> conversions can include <code>'.n'</code> to indicate the number
-          of decimal places required. If you actually want a <code>'%'</code> character, it
-          must be doubled, for example, <code>'%%'</code>. MATLAB processes each of the
-          value parameters in turn, inserting them in the result string
+          of decimal places required. If you actually want a <code>'%'</code> character<a id="3015">!</a>, it
+          must be doubled, for<a id="3103">!</a> example, <code>'%%'</code>. MATLAB<a id="3230">!</a> processes each of the
+          value<a id="3401">!</a> parameters<a id="3304">!</a> in turn, inserting<a id="3193">!</a> them in the result string
           according to the corresponding conversion specification. If there are
-          more parameters than conversion specifications in the format
-          control string, the format control string is repeated.</li>
-          <li id="120">The '\' character introduces format control information, the most
-          common of which are \n (new line) and \t (tab). If the '\' character
-          is actually wanted in the result string, it should be doubled, for
+          more parameters<a id="3305">!</a> than conversion specifications in the format<a id="3133">!</a>
+          control string, the format<a id="3134">!</a> control string is repeated.</li>
+          <li id="120">The '\' character<a id="3016">!</a> introduces format<a id="3135">!</a> control information, the most
+          common of which are \n (new line) and \t (tab). If the '\' character<a id="3017">!</a>
+          is actually wanted in the result string, it should be doubled, for<a id="3104">!</a>
           example, '\\'.</li>
         </ul>
         <p>For example, consider the following statements:<br><br>
         <code>&nbsp;&nbsp;&nbsp;&nbsp;A = [4.7 1321454.47 4.8];<br>
         &nbsp;&nbsp;&nbsp;&nbsp;index = 1;<br>
         &nbsp;&nbsp;&nbsp;&nbsp;v = 'values';<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;str = sprintf('%8s of A(%d) are \t%8.3f\t%12.4g\t%f\n'...<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;str = sprintf(<a id="3323">!</a>'%8s of A(%d) are \t%8.3f\t%12.4g\t%f\n'...<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v, index, A(index,1), A(index,2), A(index,3)) <br>
         &nbsp;&nbsp;&nbsp;&nbsp;str =<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values of A(1) are 4.700 1.321e+006 4.800000</code></p>
         <p>
         <ul>
-          <li>We first prepared the variables <code>A</code>, <code>index</code> and <code>v</code>, and then called for <code>sprintf(...)</code> to present their values.</li>
-          <li>The first conversion, <code>%8s</code>, takes the value of the first parameter, <code>v</code>, allows
-          eight spaces for its conversion, and copied its contents to the resulting string. Since this
+          <li>We first prepared the variables <code>A</code>, <code>index</code> and <code>v</code>, and then called for<a id="3105">!</a> <code>sprintf(<a id="3324">!</a>...)</code> to present their values.</li>
+          <li>The first conversion, <code>%8s</code>, takes the value<a id="3402">!</a> of the first parameter, <code>v</code>, allows
+          eight spaces for<a id="3106">!</a> its conversion, and copied its contents to the resulting string. Since this
           was a string conversion, the characters are merely copied.</li>
           <li>The characters <code>' of A('</code> are then appended to the output string.</li>
-          <li>The second conversion, <code>%d</code>, takes the value of the second parameter, index, and converts it as an
-          integer with the minimum space allocated.</li>
+          <li>The second conversion, <code>%d</code>, takes the value<a id="3403">!</a> of the second parameter, index, and converts it as an
+          integer with the minimum<a id="3245">!</a> space allocated.</li>
           <li>The characters <code>') are'</code> are then
-          appended to the output string, followed by a tab character that inserts enough spaces to bring the next characters to a column that is an even multiple of eight.</li>
+          appended to the output string, followed by a tab character<a id="3018">!</a> that inserts enough spaces to bring the next characters to a column<a id="3048">!</a> that is an even multiple of eight.</li>
           <li>The following three conversions appended the next three
-          value parameters with three decimal places, a general conversion
-          with at least 12 spaces and 4 decimal places, and the default numerical
+          value<a id="3404">!</a> parameters<a id="3306">!</a> with three decimal places, a general conversion
+          with at least 12 spaces and 4 decimal places, and the default numerical<a id="3274">!</a>
           conversion.</li>
-          <li>Finally, a new line character was inserted into the string.</li>
+          <li>Finally, a new line character<a id="3019">!</a> was inserted into the string.</li>
         </ul>
-        <p>We will formalize here the function<br><br>
-        <code>fprintf(&lt;control string&gt;, &lt;parameters&gt;)</code><br><br>
-        where the <code>&lt;control string&gt;</code> is the format control string discussed above, and<br>
-        <code>&lt;parameters&gt;</code> is a collection of 0 or more parameters whose values will be presented in each <code>'%'</code> entry in the control string.</p>
-        <p>The function <code>fprintf(...)</code> works exactly as <code>sprintf(...)</code> except that instead of returning the resulting string, it writes that string directly to the command window. Notice its use at the bottom of Listing 6.1 below.</p>
+        <p>We will formalize here the function<a id="3150">!</a><br><br>
+        <code>fprintf(<a id="3139">!</a>&lt;control string&gt;, &lt;parameters<a id="3307">!</a>&gt;)</code><br><br>
+        where the <code>&lt;control string&gt;</code> is the format<a id="3136">!</a> control string discussed above, and<br>
+        <code>&lt;parameters<a id="3308">!</a>&gt;</code> is a collection<a id="3046">!</a> of 0 or more parameters<a id="3309">!</a> whose values will be presented in each <code>'%'</code> entry in the control string.</p>
+        <p>The function<a id="3151">!</a> <code>fprintf(<a id="3140">!</a>...)</code> works exactly as <code>sprintf(<a id="3325">!</a>...)</code> except that instead of returning the resulting string, it writes that string directly to the command window. Notice its use at the bottom of Listing 6.1 below.</p>
       </div>
     </div>
 
@@ -277,60 +277,60 @@
       <!-- Conversion from Strings to Numbers and Other Stuff -->
       <h3 id="6_3_2">6.3.2 Conversion from Strings to Numbers and Other Stuff</h3>
       <div class="container">
-        <p>Conversion from strings to numbers is much messier. In order to understand the situation, let us emulate some of the Matlab behavior that you have already used, but probably not realized all the underlying complexity.</p>
-        <p><b>First Try</b>: Suppose, for example, you have the string: <code>'area = 3.14159265 .* radius .^ 2'</code>. In paragraph 6.1, we mentioned the idea of a token as a string whose meaning is important and the delimiters that separate tokens. Our first guess might be to assume that <code>'area'</code>, <code>'='</code>, <code>'3.14159265'</code>, <code>'.*',</code> <code>'radius'</code>, <code>'.^'</code> and <code>'2'</code> were the tokens because they carry the meaning of the equation, and the space character is the delimiter.</p>
-        <p>In order to separate this out into its individual tokens, we will repeatedly employ the function <code>strtok(...)</code>. This function consumes two inputs and produces two outputs:</p>
-        <p><code>[token, rest] = strtok(str, delims)</code></p>
+        <p>Conversion from strings<a id="3343">!</a> to numbers<a id="3252">!</a> is much messier. In order to understand the situation, let us emulate some of the Matlab behavior that you have already used, but probably not realized all the underlying complexity.</p>
+        <p><b>First Try</b>: Suppose, for<a id="3107">!</a> example, you have the string: <code>'area = 3.14159265 .* radius .^ 2'</code>. In paragraph 6.1, we mentioned the idea of a token<a id="3379">!</a> as a string whose meaning is important and the delimiters that separate tokens. Our first guess might be to assume that <code>'area'</code>, <code>'='</code>, <code>'3.14159265'</code>, <code>'.*',</code> <code>'radius'</code>, <code>'.^'</code> and <code>'2'</code> were the tokens because they carry the meaning of the equation, and the space character<a id="3020">!</a> is the delimiter<a id="3078">!</a>.</p>
+        <p>In order to separate this out into its individual tokens, we will repeatedly employ the function<a id="3152">!</a> <code>strtok(...)</code>. This function<a id="3153">!</a> consumes two inputs and produces two outputs:</p>
+        <p><code>[token<a id="3380">!</a>, rest] = strtok(str, delims)</code></p>
         <p>where <code>str</code> is the string to process, <br>
         <code>delims</code> is a string of delimiting characters, <br>
-        <code>token</code> is the first token returned, and<br>
-        <code>rest</code> is what remains of the string when that token is removed.</p>
-        <p>Look carefully through Listing 6.1 to see how we extract the meaning from the line of code.</p>
+        <code>token<a id="3381">!</a></code> is the first token<a id="3382">!</a> returned, and<br>
+        <code>rest</code> is what remains of the string when that token<a id="3383">!</a> is removed.</p>
+        <p>Look carefully through Listing 6.1 to see how we extract the meaning from the line of code<a id="3034">!</a>.</p>
         <div class="listing">#listing_06_1#</div>
-        <p>When you run this code, you see this in the Command Window:</p>
+        <p>When you run this code<a id="3035">!</a>, you see this in the Command<a id="3054">!</a> Window:</p>
         <p><code>
         calculate area by doing .^ with radius and 2, then doing .* with the result and 3.1416<br>
         </code></p>
-        <p>Notice that I deliberately changed the numerical resolution of <code>pi</code> to only 4 decimal places to assert that we really did convert the string <code>num_1</code> to the <code>double</code> value <code>n_1</code>.</p>
+        <p>Notice that I deliberately changed the numerical<a id="3275">!</a> resolution<a id="3317">!</a> of <code>pi</code> to only 4 decimal places to assert that we really did convert the string <code>num_1</code> to the <code>double</code> value<a id="3405">!</a> <code>n_1</code>.</p>
         <p><b>Second Thought</b>: now, what could possibly go wrong ... oh, wait a sec</p>
         <ul>
-          <li>although we have been inserting spaces in the code for clarity, this line is quite legal: <code>'area=3.14159265.*radius.^2'</code>.  So we have to treat the '<code>=</code>' and even worse, the '<code>.*</code>' and '<code>.^</code>' as delimiters. </li>
-          <li>Messier still, the simple parsing in Listing 6.1 had to assume that the first token was a variable name, the second was the '=' to make an assignment etc. We are certainly not intending to delve into the correct way to process this simple line of code.</li>
+          <li>although we have been inserting<a id="3194">!</a> spaces in the code<a id="3036">!</a> for<a id="3108">!</a> clarity, this line is quite legal: <code>'area=3.14159265.*radius.^2'</code>.  So we have to treat the '<code>=</code>' and even worse, the '<code>.*</code>' and '<code>.^</code>' as delimiters. </li>
+          <li>Messier still, the simple parsing in Listing 6.1 had to assume that the first token<a id="3384">!</a> was a variable<a id="3429">!</a> name, the second was the '=' to make an assignment<a id="2954">!</a> etc. We are certainly not intending to delve into the correct way to process this simple line of code<a id="3037">!</a>.</li>
         </ul>
         <p>I did warn you at the top of this paragraph about messes to come ...</p>
-        <p><b>Preferred Approach:</b> When possible, allow MATLAB’s built-in functions
-        <code>str2num</code>, <code>str2double</code> or <code>input(...)</code> to do the work of conversion for you:</p>
+        <p><b>Preferred Approach:</b> When possible, allow MATLAB<a id="3231">!</a>’s built-in functions
+        <code>str2num</code>, <code>str2double</code> or <code>input(...)</code> to do the work of conversion for<a id="3109">!</a> you:</p>
         <ul>
-          <li>The function <code>str2num(str)</code> consumes a string representing either a single
-          numerical value or an arbitrarily complex array of numbers and returns the numerical equivalent.</li>
-          <li>The function <code>str2double(str)</code> consumes a string representing only a single
-          numerical value and returns the numerical equivalent with <code>double</code> precision.</li>
-          <li>The function <code>input(prompt)</code> presents the prompt string to the user in the
-          Command window and waits for the user to type some characters and the [Enter] key, all of which are echoed in the Command window. Then it parses the input string in exactly the same manner as if you had typed that string to the command window, according to the following rules:<br>
+          <li>The function<a id="3154">!</a> <code>str2num(str)</code> consumes a string representing either a single
+          numerical<a id="3276">!</a> value<a id="3406">!</a> or an arbitrarily complex array<a id="2940">!</a> of numbers<a id="3253">!</a> and returns the numerical<a id="3277">!</a> equivalent.</li>
+          <li>The function<a id="3155">!</a> <code>str2double(<a id="3086">!</a>str)</code> consumes a string representing only a single
+          numerical<a id="3278">!</a> value<a id="3407">!</a> and returns the numerical<a id="3279">!</a> equivalent with <code>double</code> precision.</li>
+          <li>The function<a id="3156">!</a> <code>input(prompt)</code> presents the prompt string to the user in the
+          Command<a id="3055">!</a> window and waits for<a id="3110">!</a> the user to type some characters and the [Enter] key, all of which are echoed in the Command<a id="3056">!</a> window. Then it parses the input string in exactly the same manner as if you had typed that string to the command window, according to the following rules:<br>
           <ol>
-            <li>If the string begins with a numerical character, MATLAB converts
+            <li>If the string begins with a numerical<a id="3280">!</a> character<a id="3021">!</a>, MATLAB<a id="3232">!</a> converts
             the string to a number</li>
-            <li>If it begins with a non-numeric character, MATLAB constructs a
-            variable name and looks for its current value</li>
+            <li>If it begins with a non-numeric character<a id="3022">!</a>, MATLAB<a id="3233">!</a> constructs a
+            variable<a id="3430">!</a> name and looks for<a id="3111">!</a> its current value<a id="3408">!</a></li>
             <li>If you actually want a string literal entered, it must be enclosed in the
             string delimiters.</li>
             <li>If it begins with an open bracket, <code>'['</code>, a vector is constructed</li>
-            <li>If it begins with the single quote character, MATLAB creates a
+            <li>If it begins with the single quote character<a id="3023">!</a>, MATLAB<a id="3234">!</a> creates a
             string</li>
-            <li>If a format error occurs, MATLAB repeats the prompt and waits for another input</li>
+            <li>If a format<a id="3137">!</a> error occurs, MATLAB<a id="3235">!</a> repeats the prompt and waits for<a id="3112">!</a> another input</li>
           </ol>
           This behavior can be modified if <code>'s'</code> is provided as the second parameter,
-          <code>input(prompt, 's')</code>, in which case the complete input character sequence is
-          returned to the user as a string with no attempt to perform the above conversions. Exercise 6.4 demonstrates a number of capabilities of the <code>input(...)</code> function.
+          <code>input(prompt, 's')</code>, in which case<a id="2960">!</a> the complete input character<a id="3024">!</a> sequence is
+          returned to the user as a string with no attempt to perform the above conversions. Exercise 6.4 demonstrates a number of capabilities of the <code>input(...)</code> function<a id="3157">!</a>.
           </li>
         </ul>
         <div class="exercise">#exercise_6_4#</div>
-        <p><b>Severe Warning: </b> Be careful to separate in your mind the use of the <code>input(...)</code> function and the process of passing parameters into a function. When values are passed to a function, we refer to this as the function <b><i>consuming</i></b> the incoming parameter(s), and this process happens automatically as part of the function call processing.  The <code>input(...)</code> function is a manual process whereby the user has to type data to be processed. The <code>input(...)</code> function should only be used in scripts that test functions and <b><i>never</i></b> in the body of a function.</p>
+        <p><b>Severe Warning: </b> Be careful to separate in your mind the use of the <code>input(...)</code> function<a id="3158">!</a> and the process of passing parameters<a id="3310">!</a> into a function<a id="3159">!</a>. When values are passed to a function<a id="3160">!</a>, we refer to this as the function<a id="3161">!</a> <b><i>consuming</i></b> the incoming parameter(s), and this process happens automatically as part of the function<a id="3162">!</a> call processing.  The <code>input(...)</code> function<a id="3163">!</a> is a manual process whereby the user has to type data<a id="3074">!</a> to be processed. The <code>input(...)</code> function<a id="3164">!</a> should only be used in scripts<a id="3319">!</a> that test functions and <b><i>never</i></b> in the body of a function<a id="3165">!</a>.</p>
         <p><b>Hopeful footnote:</b> If you have to do some complex conversions
-        yourself, the function <code>sscanf(...)</code> was designed to extract the values of variables
+        yourself, the function<a id="3166">!</a> <code>sscanf(<a id="3327">!</a>...)</code> was designed to extract the values of variables
         from a string, but is really difficult to use. Instead,
         you can either split a string into tokens as we did above, and then convert each
-        token with the str2num(str) function or, you might be better off putting that string into a text file and using the techniques in Chapter 8 to extract the meaning you need.</p>
+        token<a id="3385">!</a> with the str2num(str) function<a id="3167">!</a> or, you might be better off putting that string into a text<a id="3369">!</a> file and using the techniques in Chapter 8 to extract the meaning you need.</p>
       </div>
     </div>
   </div>
@@ -340,20 +340,20 @@
     <h2 id="6_4">6.4 Character String Operations</h2>
     <div class="container">
       <p>As with the string-to-number conversions, input and output in the
-      Command window can be accomplished with simple functions that have
+      Command<a id="3057">!</a> window can be accomplished with simple functions that have
       little flexibility or with complex functions that have better control.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Simple Data Output: The disp(...) Function">
       <!-- Simple Data Output -->
-      <h3 id="6_4_1">6.4.1 Simple Data Output: The <code>disp(. . .)</code> Function</h3>
+      <h3 id="6_4_1">6.4.1 Simple Data Output: The <code>disp(<a id="3081">!</a>. . .)</code> Function</h3>
       <div class="container">
-        <p>We have already seen the use of the <code>disp(...)</code> function to present data in
-        readable form in the Command window. It can
-        present the values of any variable, regardless of type, or of strings
-        constructed by concatenation. Note, however, that an explicit number
-        conversion is required to concatenate variables with strings. Note also that conversion
-        from the ASCII code is not automatic; you need the <code>char(...)</code> cast function.</p>
+        <p>We have already seen the use of the <code>disp(<a id="3082">!</a>...)</code> function<a id="3168">!</a> to present data<a id="3075">!</a> in
+        readable form in the Command<a id="3058">!</a> window. It can
+        present the values of any variable<a id="3431">!</a>, regardless of type,<a id="3387">!</a> or of strings<a id="3344">!</a>
+        constructed by concatenation<a id="3061">!</a>. Note, however, that an explicit number
+        conversion is required to concatenate variables with strings<a id="3345">!</a>. Note also that conversion
+        from the ASCII<a id="2935">!</a> code<a id="3038">!</a> is not automatic; you need the <code>char(<a id="2973">!</a>...)</code> cast function<a id="3169">!</a>.</p>
       </div>
     </div>
 
@@ -361,7 +361,7 @@
       <!-- Complex Output -->
       <h3 id="6_4_2">6.4.2 Complex Output</h3>
       <div class="container">
-        <p>We discussed the functions fprintf(...) and sprintf(...) in Paragraph 6.3.1. While slightly messy to use, their flexibility makes them the functions of choice for displaying nicely formatted results.  Appendix A includes a complete discussion of the behavior of elements in the control strings of these functions.</p>
+        <p>We discussed the functions fprintf(<a id="3141">!</a>...) and sprintf(<a id="3326">!</a>...) in Paragraph 6.3.1. While slightly messy to use, their flexibility makes them the functions of choice for<a id="3113">!</a> displaying nicely formatted results.  Appendix A includes a complete discussion of the behavior of elements<a id="3087">!</a> in the control strings<a id="3346">!</a> of these functions.</p>
       </div>
     </div>
 
@@ -369,14 +369,14 @@
       <!-- Comparing Strings -->
       <h3 id="6_4_3">6.4.3 Comparing Strings</h3>
       <div class="container">
-        <p>Since strings are readily translated into vectors of numbers, they may be
-        compared in the obvious way with the logical operators we used on
-        numbers. However, there is the restriction that either the strings must be of the same length or one of them must be of length 1 before it is legal to
-        compare them with these operators. To avoid this restriction, MATLAB
-        provides the function <code>strcmp(&lt;s1&gt;, &lt;s2&gt;)</code> that returns <code>true</code> if the
-        strings are identical and <code>false</code> if they are not.
-        Unfortunately for C programmers, this is not quite the same behavior as the C version, which
-        does a more rigorous comparison returning <code>−1</code>, <code>0</code>, or <code>1</code>. You can study character string comparison in Exercise 6.5.</p>
+        <p>Since strings<a id="3347">!</a> are readily translated into vectors<a id="3443">!</a> of numbers<a id="3254">!</a>, they may be
+        compared in the obvious way with the logical<a id="3202">!</a> operators<a id="3299">!</a> we used on
+        numbers<a id="3255">!</a>. However, there is the restriction that either the strings<a id="3348">!</a> must be of the same length or one of them must be of length 1 before it is legal to
+        compare them with these operators<a id="3300">!</a>. To avoid this restriction, MATLAB<a id="3236">!</a>
+        provides the function<a id="3170">!</a> <code>strcmp(<a id="3328">!</a>&lt;s1&gt;, &lt;s2&gt;)</code> that returns <code>true</code> if the
+        strings<a id="3349">!</a> are identical and <code>false<a id="3091">!</a></code> if they are not.
+        Unfortunately for<a id="3114">!</a> C programmers, this is not quite the same behavior as the C version, which
+        does a more rigorous comparison returning <code>−1</code>, <code>0</code>, or <code>1</code>. You can study character<a id="3025">!</a> string comparison in Exercise 6.5.</p>
         <div class="exercise">#exercise_6_5#</div>
       </div>
     </div>
@@ -386,22 +386,22 @@
     <!-- Arrays of Strings -->
     <h2 id="6_5">6.5 Arrays of Strings</h2>
     <div class="container">
-      <p>Since a single character string is stored as a vector, it seems natural to
-      consider storing a collection of strings as an array. The most obvious way to
-      do this, as shown in previous examples, has some limitations, for which
-      there are nice, tidy cures built into the MATLAB language. Consider the
+      <p>Since a single character<a id="3026">!</a> string is stored as a vector, it seems natural to
+      consider storing a collection<a id="3047">!</a> of strings<a id="3350">!</a> as an array<a id="2941">!</a>. The most obvious way to
+      do this, as shown in previous examples, has some limitations, for<a id="3115">!</a> which
+      there are nice, tidy cures built into the MATLAB<a id="3237">!</a> language. Consider the
       example shown in Exercise 6.6. Character arrays can be constructed by
       either of the following:</p>
       <ul>
-        <li>As a vertical vector of strings, all of which must be the same
+        <li>As a vertical vector of strings<a id="3351">!</a>, all of which must be the same
         length</li>
         <li>By using a special version of
-        the char() cast function that
-        accepts a variable number of
-        strings with different lengths,
+        the char(<a id="2974">!</a>) cast function<a id="3171">!</a> that
+        accepts a variable<a id="3432">!</a> number of
+        strings<a id="3352">!</a> with different lengths,
         pads them with blanks to
         make all rows the same length,
-        and stores them in an array of
+        and stores them in an array<a id="2942">!</a> of
         characters</li>
       </ul>
       <div class="exercise">#exercise_6_6#</div>
@@ -417,44 +417,44 @@
       communications from unauthorized access. The following discussion is
       based on no direct knowledge of the latest encryption technology.
       However, it illustrates a very simple approach to developing an algorithm
-      that is immune to all but the most obvious, brute-force code-breaking
+      that is immune to all but the most obvious, brute-force code<a id="3039">!</a>-breaking
       techniques.</p>
       <div class="float-sm-right card">
           <img src="..\Images\Fig_6_1.JPG" alt="Figure 6.1" class="fig fig-long card-image">
           <p class="figure-name card-title">Figure 6.1: An Enigma Machine</p>
       </div>
-      <p><b>Background</b>  Historically, a simple encryption was accomplished using a Caesar cypher that used a single offset value,
-      say N, to replace all characters with the character N spaces farther down the alphabet. If the entered
-      value was 'A' and N was 4, the encrypted text would have 'E'. With strictly manual analysis, without
+      <p><b>Background</b>  Historically, a simple encryption was accomplished using a Caesar cypher that used a single offset value<a id="3409">!</a>,
+      say N, to replace all characters with the character<a id="3027">!</a> N spaces farther down the alphabet. If the entered
+      value<a id="3410">!</a> was 'A' and N was 4, the encrypted text<a id="3370">!</a> would have 'E'. With strictly manual analysis, without
       knowing N, it was deemed impossible to decipher messages. In World War II, the German armed forces
-      used a slight modification to this algorithm whereby each key in the alphabet had a different offset value.
-      Figure 6.1 shows an actual Enigma machine that automatically applied the key offset values to messages
-      typed on its keyboard. However, it was vulnerable for two reasons:</p>
+      used a slight modification to this algorithm whereby each key in the alphabet had a different offset value<a id="3411">!</a>.
+      Figure 6.1 shows an actual<a id="2934">!</a> Enigma machine that automatically applied the key offset values to messages
+      typed on its keyboard. However, it was vulnerable for<a id="3116">!</a> two reasons:</p>
       <ul>
-        <li>there was still a constant mapping between plain text and encrypted charaacters leaving it open to "simple" letter frequency analysis, and</li>
+        <li>there was still a constant mapping<a id="3211">!</a> between plain text<a id="3371">!</a> and encrypted charaacters leaving it open to "simple" letter frequency analysis, and</li>
         <li>since it was difficult to distribute fresh key maps, the maps were only changed once a day.</li>
       </ul>
-      <p>A massive effort in England led by Alan Turing produced "Colossus" discussed in Paragraph 1.2.2 that was generally recognized as one of the first "general-purpose" computers. It was able to decode a large majority of the intercepted German message traffic, and was credited with contributing to the end of that terrible war.</p>
+      <p>A massive effort in England led by Alan Turing produced "Colossus" discussed in Paragraph 1.2.2 that was generally recognized as one of the first "general-purpose" computers. It was able to decode a large majority of the intercepted German message traffic, and was credited with contributing to the end<a id="3090">!</a> of that terrible war.</p>
       <p><b>The Solution</b> We propose a simple algorithm whereby the key replacement map can be changed rapidly so that
-       the same letter in the original message is only replaced by the same substitute for a short period of time.  Hnce, no simple language analysis will crack the code. The <code>rand(...)</code> function is an excellent source for an appropriate random sequence. If the encryption and decryption processes use the same value to seed the same random generator, the same sequence of apparently random (pseudo-random) values will be generated. Since the seed can take on <code>2<sup>31</sup> – 2</code> values, it is virtually impossible to determine the decryption without knowing the seed value. The seed (i.e., the decryption key) can be transmitted to anyone authorized to decrypt the message by any number of ways. Furthermore, since there are abundant different techniques for generating pseudo-random sequences, the specific generation technique must be known in addition to the seed value for successful decryption.</p>
-       <p><b>Awkward Dilemma:</b> Unfortunately, earlier versions of Matlab had strange implementations of the ability to change the seed and generators of the rand(...) and randn(...) functions.  Rather than struggle with this deprecated implementation, we will take a short tour of the modern implementation for setting up rand(...).</p>
-       <p>There are currently three number generators that consume the current state and generate the next state: 'twister', the default generator, and 'v4' and 'v5uniform' and 'v5normal' the legacy generators.  Each generator can be seeded with an integer value. So we have these implementations:</p>
+       the same letter in the original message is only replaced by the same substitute for<a id="3117">!</a> a short period of time.  Hnce, no simple language analysis will crack the code<a id="3040">!</a>. The <code>rand(<a id="3312">!</a>...)</code> function<a id="3172">!</a> is an excellent source for<a id="3118">!</a> an appropriate random sequence. If the encryption and decryption processes use the same value<a id="3412">!</a> to seed the same random generator, the same sequence of apparently random (pseudo-random) values will be generated. Since the seed can take on <code>2<sup>31</sup> – 2</code> values, it is virtually impossible to determine the decryption without knowing the seed value<a id="3413">!</a>. The seed (i.e., the decryption key) can be transmitted to anyone authorized to decrypt the message by any number of ways. Furthermore, since there are abundant different techniques for<a id="3119">!</a> generating pseudo-random sequences, the specific generation technique must be known in addition to the seed value<a id="3414">!</a> for<a id="3120">!</a> successful decryption.</p>
+       <p><b>Awkward Dilemma:</b> Unfortunately, earlier versions of Matlab had strange implementations of the ability to change the seed and generators of the rand(<a id="3313">!</a>...) and randn(<a id="3316">!</a>...) functions.  Rather than struggle with this deprecated implementation, we will take a short tour of the modern implementation for<a id="3121">!</a> setting up rand(<a id="3314">!</a>...).</p>
+       <p>There are currently three number generators that consume the current state and generate the next state: 'twister', the default generator, and 'v4' and 'v5uniform' and 'v5normal' the legacy generators.  Each generator can be seeded with an integer value<a id="3415">!</a>. So we have these implementations:</p>
       <ul>
-        <li>to generate the next random state, <code>val = rand()</code></li>
-        <li>to set the seed value sd with the default generator:  <code>rnd(sd) </code></li>
+        <li>to generate the next random state, <code>val = rand(<a id="3315">!</a>)</code></li>
+        <li>to set the seed value<a id="3416">!</a> sd with the default generator:  <code>rnd(sd) </code></li>
         <li>to select another generator and seed it:  <code>rnd(sd, &lt;gen&gt;) </code> where <code>&lt;gen&gt;</code> is one of the generators above.</li>
       </ul>
-      <p>Listing 6.2 shows the code for encrypting, the corresponding decryption by this technique and two attempts at decryption decrypt - one with the wrong key and one with the wrong generator.</p>
+      <p>Listing 6.2 shows the code<a id="3041">!</a> for<a id="3122">!</a> encrypting, the corresponding decryption by this technique and two attempts at decryption decrypt - one with the wrong key and one with the wrong generator.</p>
     </div>
     <div class="listing">#listing_06_2#</div>
     <div class="container">
-      <p>This is the result when the code is run:</p>
+      <p>This is the result when the code<a id="3042">!</a> is run:</p>
       <p><code>
-      original text: The quality of mercy is not strain'd<br>
-      encrypted text: Xf% FmHH31$ {\ ove10 }M %~4 ]gB-~,yM<br>
-      decrypted text with right values: The quality of mercy is not strain'd (matched)<br>
-      decrypted text with bad seed: 2&gt;W 7Cr]lgq %@ ,N(nV ep [/x h4ac1n+a (not matched)<br>
-      decrypted text with bad generator: 8v&gt; (zx^G'+ /N |Xb!U KC PcN b6I.6$Q~ (not matched)<br>
+      original text<a id="3372">!</a>: The quality of mercy is not strain'd<br>
+      encrypted text<a id="3373">!</a>: Xf% FmHH31$ {\ ove10 }M %~4 ]gB-~,yM<br>
+      decrypted text<a id="3374">!</a> with right values: The quality of mercy is not strain'd (matched)<br>
+      decrypted text<a id="3375">!</a> with bad seed: 2&gt;W 7Cr]lgq %@ ,N(nV ep [/x h4ac1n+a (not matched)<br>
+      decrypted text<a id="3376">!</a> with bad generator: 8v&gt; (zx^G'+ /N |Xb!U KC PcN b6I.6$Q~ (not matched)<br>
     </code></p>
     </div>
   </div>
@@ -462,20 +462,20 @@
   <!-- Chapter Summary -->
   <h3>Chapter Summary</h3>
   <div class="container">
-    <p>This chapter discussed the nature, implementation, and behavior of character
-    strings. We learned the following:</p>
+    <p>This chapter discussed the nature, implementation, and behavior of character<a id="3028">!</a>
+    strings<a id="3353">!</a>. We learned the following:</p>
     <ul>
-      <li>Character strings are merely vectors of numbers that are presented
+      <li>Character strings<a id="3354">!</a> are merely vectors<a id="3444">!</a> of numbers<a id="3256">!</a> that are presented
       to the user as single characters</li>
-      <li>We can perform on strings the same operations that can be
-      performed on vectors; if mathematical operations are
-      performed, MATLAB first converts the characters to double
+      <li>We can perform on strings<a id="3355">!</a> the same operations<a id="3296">!</a> that can be
+      performed on vectors<a id="3445">!</a>; if mathematical operations<a id="3297">!</a> are
+      performed, MATLAB<a id="3238">!</a> first converts the characters to double
       values</li>
-      <li>We can convert between string representations of numbers and the
-      numbers themselves using built-in functions</li>
-      <li>MATLAB provides functions that convert numbers to text strings
-      for presentation in the Command window</li>
-      <li>Arrays of strings can be assembled using the char(...) function</li>
+      <li>We can convert between string representations of numbers<a id="3257">!</a> and the
+      numbers<a id="3258">!</a> themselves using built-in functions</li>
+      <li>MATLAB<a id="3239">!</a> provides functions that convert numbers<a id="3259">!</a> to text<a id="3377">!</a> strings<a id="3356">!</a>
+      for<a id="3123">!</a> presentation in the Command<a id="3059">!</a> window</li>
+      <li>Arrays of strings<a id="3357">!</a> can be assembled using the char(<a id="2975">!</a>...) function<a id="3173">!</a></li>
     </ul>
   </div>
 <h2>Self Test</h2>
@@ -485,52 +485,52 @@ Use the following questions to check your understanding of the material in this
 chapter:
 <h3>True or False</h3>
 <ol>
-<li>Casting changes the value of a piece of data.</li>
-<li>The ASCII code maps individual characters to their internal
-numerical representation.</li>
-<li>Because the single quote mark ( ' ) delimits strings, you cannot use it
+<li>Casting changes the value<a id="3417">!</a> of a piece of data<a id="3076">!</a>.</li>
+<li>The ASCII<a id="2936">!</a> code<a id="3043">!</a> maps individual characters to their internal
+numerical<a id="3281">!</a> representation.</li>
+<li>Because the single quote mark ( ' ) delimits strings<a id="3358">!</a>, you cannot use it
 within a string.</li>
-<li>If you attempt mathematical operations on a character string,
-MATLAB will throw an error.</li>
-<li>The function disp(...) can display multiple values to the
-Command window.</li>
-<li>The function strcmp(...) throws an error if the two strings are of
-unequal length, unless one of them is a single character.</li>
-<li>The switch statement will correctly compare strings of unequal
-length in the case tests.</li>
+<li>If you attempt mathematical operations<a id="3298">!</a> on a character<a id="3029">!</a> string,
+MATLAB<a id="3240">!</a> will throw an error.</li>
+<li>The function<a id="3174">!</a> disp(<a id="3083">!</a>...) can display multiple values to the
+Command<a id="3060">!</a> window.</li>
+<li>The function<a id="3175">!</a> strcmp(<a id="3329">!</a>...) throws an error if the two strings<a id="3359">!</a> are of
+unequal length, unless one of them is a single character<a id="3030">!</a>.</li>
+<li>The switch<a id="3367">!</a> statement will correctly compare strings<a id="3360">!</a> of unequal
+length in the case<a id="2961">!</a> tests.</li>
 </ol>
 <h3>Fill in the Blanks</h3>
 <ol>
-<li>Numerical values are stored in MATLAB in _______________ for
-efficient numerical computation.</li>
+<li>Numerical values are stored in MATLAB<a id="3241">!</a> in _______________ for<a id="3124">!</a>
+efficient numerical<a id="3282">!</a> computation.</li>
 <li>Most common __________________, _______________, and many
-_________________are represented in ASCII by the numbers
+_________________are represented in ASCII<a id="2937">!</a> by the numbers<a id="3260">!</a>
 ________________.</li>
-<li>The function ____________ casts a string to a vector of the same
-length as the string containing the numerical mapping of
+<li>The function<a id="3176">!</a> ____________ casts a string to a vector of the same
+length as the string containing the numerical<a id="3283">!</a> mapping<a id="3212">!</a> of
 _______________________.</li>
-<li>The function fprintf(...) requires a(n) _____________ that defines
-exactly how the resulting string should be formatted and a variable
+<li>The function<a id="3177">!</a> fprintf(<a id="3142">!</a>...) requires a(n) _____________ that defines
+exactly how the resulting string should be formatted and a variable<a id="3433">!</a>
 number of ________________.</li>
-<li>Since the _____________ statement tests a logical expression, it
-_____________ test strings of unequal length.</li>
-<li>A special version of the cast function accepts __________________
-strings with different lengths, _____________, and stores them in an
-array of characters.</li>
+<li>Since the _____________ statement tests a logical<a id="3203">!</a> expression, it
+_____________ test strings<a id="3361">!</a> of unequal length.</li>
+<li>A special version of the cast function<a id="3178">!</a> accepts __________________
+strings<a id="3362">!</a> with different lengths, _____________, and stores them in an
+array<a id="2943">!</a> of characters.</li>
 </ol>
 <h3>Programming Projects</h3>
 <ol>
-<li>Solve the following introductory problems on strings.
+<li>Solve the following introductory problems on strings<a id="3363">!</a>.
 <ul>
-<li>Write a function dayName that consumes a parameter, day ,
-containing the numerical value of a day in the month of
-September 2008. Your function should return the name of that
+<li>Write a function<a id="3179">!</a> dayName that consumes a parameter, day ,
+containing the numerical<a id="3284">!</a> value<a id="3418">!</a> of a day in the month of
+September 2008. Your function<a id="3180">!</a> should return the name of that
 day as a string. For example:
 dayName( 8 ) should return 'Monday'</li>
-<li>You are now given a variable named days, a vector that contains
+<li>You are now given a variable<a id="3434">!</a> named days, a vector that contains
 the numeric values of days in the month of
 September 2008. Write a script that will
-convert each numeric value in the vector
+convert each numeric value<a id="3419">!</a> in the vector
 days into a string named daysOfWeek with
 the day names separated by a comma and a space. For example, if days = [8, 9, 10], daysOfWeek should
 be 'Monday, Tuesday, Wednesday'
@@ -538,54 +538,54 @@ Notice that there is no separator before the first day name or after
 the last one.'</li>
 <li>
 </ul>
-<li>Consider the problem the MATLAB system has in parsing the string:<br>
+<li>Consider the problem the MATLAB<a id="3242">!</a> system has in parsing the string:<br>
 'V=[1 2 3 4; 5,6, 7;8; 9 10]'<br>
-Your task is to use strtok to parse this line and construct the array it
-represents. You will write a function arrayParse that consumes a
-string and returns two variables: a string that is the variable name
-and an array.
-<ul><li>Tokenize the string first using ' = ' as the delimiter to isolate the
-variable name and the expression to be evaluated. Return the
-variable name to the user and save the rest of the line as the
-variable str1 for further processing. You may assume that there
+Your task is to use strtok to parse this line and construct the array<a id="2944">!</a> it
+represents. You will write a function<a id="3181">!</a> array<a id="2945">!</a>Parse that consumes a
+string and returns two variables: a string that is the variable<a id="3435">!</a> name
+and an array<a id="2946">!</a>.
+<ul><li>Tokenize the string first using ' = ' as the delimiter<a id="3079">!</a> to isolate the
+variable<a id="3436">!</a> name and the expression to be evaluated. Return the
+variable<a id="3437">!</a> name to the user and save the rest of the line as the
+variable<a id="3438">!</a> str1 for<a id="3125">!</a> further processing. You may assume that there
 are no spaces outside the characters ' [. . .].</li>
-<li>Tokenize str1 with ' [ ' and ' ] ' to remove the concatenation
-operators and save the first token as str2.</li>
-<li>Tokenize str2 using ' ; ' as the delimiter. This will produce 0 or
-more strings that represent the rows of the array. Save each in the
-variable rowString . You may assume for now that the first row is
+<li>Tokenize str1 with ' [ ' and ' ] ' to remove the concatenation<a id="3062">!</a>
+operators<a id="3301">!</a> and save the first token<a id="3386">!</a> as str2.</li>
+<li>Tokenize str2 using ' ; ' as the delimiter<a id="3080">!</a>. This will produce 0 or
+more strings<a id="3364">!</a> that represent the rows of the array<a id="2947">!</a>. Save each in the
+variable<a id="3439">!</a> rowString . You may assume for<a id="3126">!</a> now that the first row is
 the longest one.</li>
-<li>Using nested while loops, tokenize each rowString with ' , ' and
-' ' as delimiters and use str2num (. . .) to extract the numerical
-value of each array entry. Save it as rowEntry .</li>
-<li>Concatenate the rowEntry elements horizontally to produce each
-row of the array. If the row is too short, pad it with zeros.</li>
-<li>Concatenate each row vertically to produce the resulting array
-and return that array to the caller.</li>
-<li>Test the function with cases like:<br>
-empty=[]<br>
+<li>Using nested while<a id="3446">!</a> loops, tokenize each rowString with ' , ' and
+' ' as delimiters and use str2num (. . .) to extract the numerical<a id="3285">!</a>
+value<a id="3420">!</a> of each array<a id="2948">!</a> entry. Save it as rowEntry .</li>
+<li>Concatenate the rowEntry elements<a id="3088">!</a> horizontally to produce each
+row of the array<a id="2949">!</a>. If the row is too short, pad it with zeros.</li>
+<li>Concatenate each row vertically to produce the resulting array<a id="2950">!</a>
+and return that array<a id="2951">!</a> to the caller.</li>
+<li>Test the function<a id="3182">!</a> with cases like:<br>
+empty<a id="3089">!</a>=[]<br>
 row=[1 2 3 4]<br>
 diag=[0 0 0 1; 0 0 1; 0 1; 1]<br>
 </li></ul>
 
-<li>Write a function called DNAcomplement that consumes a set of letters
-as a character array that forms a DNA sequence such as 'gattaca' . The
-function will produce the complement of the sequence so that a's
+<li>Write a function<a id="3183">!</a> called DNAcomplement that consumes a set of letters
+as a character<a id="3031">!</a> array<a id="2952">!</a> that forms a DNA sequence such as 'gattaca' . The
+function<a id="3184">!</a> will produce the complement of the sequence so that a's
 become t's , g's become c's , and vice versa. The string 'gattaca'
 would therefore become 'ctaatgt' . You may assume that all the
 letters in the sequence will be lowercase and that they will all be
 either a, t, g, or c .<br>
-Note: You may be tempted to use iteration for this problem, but you
+Note: You may be tempted to use iteration<a id="3198">!</a> for<a id="3127">!</a> this problem, but you
 don’t need it.</li>
-<li>The function rot(s, n) is a simple Caesar cipher encryption
-algorithm that replaces each English letter in places forward or
-backward along the alphabet in the strings. For example, the result
+<li>The function<a id="3185">!</a> rot(s, n) is a simple Caesar cipher encryption
+algorithm that replaces each English letter in places forward<a id="3138">!</a> or
+backward along the alphabet in the strings<a id="3365">!</a>. For example, the result
 of rot('Baz!',3) is 'Edc!' . An encrypted string can be deciphered
 by simply performing the inverse rotation on it, that is,
-rot('Edc!',3), which rotates each English letter in the strings three
+rot('Edc!',3), which rotates each English letter in the strings<a id="3366">!</a> three
 places to the left. Numbers, symbols, and non-letters are not
-transformed. Implement the following function:<br>
-function rotatedText=rot(text,n)<br>
+transformed. Implement the following function<a id="3186">!</a>:<br>
+function<a id="3187">!</a> rotatedText=rot(text,n)<br>
 To assist you as you solve this problem, you could write several
 functions as local functions in the rot.m file:<br>
 isUppercaseLetter(letter), getUppercaseLetter(n),
@@ -594,11 +594,11 @@ wish to use the built-in functions isletter (. . .), find (. . .), and
 mod (. . .).</li>
 <li>You have a big problem. In one of your CS courses, your professor
 decides that the only way you will pass the class is if you write a
-function to get him out of a mess. All the grades in his class have
+function<a id="3188">!</a> to get him out of a mess. All the grades in his class have
 been accidentally stored into one long string of characters
 containing only the letters A, B, C, D, F, and Y.
 <ul>
-<li>Your job is to write a function called CrazyGrade that will take in
+<li>Your job is to write a function<a id="3189">!</a> called CrazyGrade that will take in
 the string and flip the grades according to the following
 specifications:<br>
 A becomes F<br>
@@ -607,18 +607,18 @@ C remains unchanged<br>
 D becomes B<br>
 F becomes A<br>
 Y becomes W<br>
-Your function should take in a string and return an inverted string.
+Your function<a id="3190">!</a> should take in a string and return an inverted string.
 You may assume that the string will only consist of valid letter
 grades. For example,<br>
 CrazyGrade('BADDAD') should return 'DFBBFB'<br>
 CrazyGrade('BAYBAY') should return 'DFWDFW'<br></li>
 <li>To make matters worse, he wants you to organize this modified
-grade set. Write a function called GradeDist to bunch together all
+grade set. Write a function<a id="3191">!</a> called GradeDist to bunch together all
 the similar grades (put all the A's next to each other, B's next to
 each other, etc.) Then, calculate and return the professor's grade
-distribution. Your function should take in a string and return a
+distribution. Your function<a id="3192">!</a> should take in a string and return a
 string with all similar grades grouped together, along with an
-array containing percentage values from A's all the way to F's. For
+array<a id="2953">!</a> containing percentage values from A's all the way to F's. For
 example, if there are 15% A's, 16% B's, 33% C's, 16% D's, 16% F's,
 and 4% W's, GradeDist should return [15 16 33 16 16 4].</li>
 </ol>
@@ -628,3 +628,4 @@ and 4% W's, GradeDist should return [15 16 33 16 16 4].</li>
 
 </body>
 </html>
+

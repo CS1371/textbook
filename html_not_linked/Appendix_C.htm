@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <script async src="./javascript/index.js"></script>
+<title>Appendix C</title>
+</head>
+<body>
+<div>#top_nav#</div>
+<div class="nav-obj">#nav_obj#</div>
+
+<div class="content">
+  <h1 align="center" id="1">Appendix C - Internal Number Representation</h1>
+<p>There are two different techniques whereby most computers today store
+the values of numbers: integer and floating-point. Integer storage has the
+nice property that it represents the exact value of the number stored;
+floating-point storage only guarantees a certain number of digits of
+precision. There is an upper limit to the values that can be stored in both
+integer and floating-point form. However, significantly larger numbers can
+be stored in floating-point storage than in integer storage.
+By default, MATLAB sets the storage of numbers to double-precision
+floating-point representation. However, operations like reading images
+into MATLAB present the large volume of data in the more compact
+unsigned integer form.</p>
+<h2>Integers</h2>
+<p>Integers are represented in computer memory by blocks of data bits of
+various sizes. Memory is allocated in 8-bit increments, usually referred to
+as bytes; therefore, it is not surprising that integer storage comes in the
+same size increments. For a given size, the values of the data bits are
+represented in two different ways—signed or unsigned. Normally, of
+course, we expect a number to have both positive and negative values, and
+when the number of bits is large, this does not seem to have much impact.
+However, when a small number of bits are used to store a value, one of
+those bits must be used to show that the number is positive or negative. The
+range of numbers that can be stored is therefore reduced by 1 bit, a factor of
+2. The following figure illustrates the internal storage of 8-bit unsigned and
+signed values.
+Clearly, for 8 bits, the maximum value is 127 signed, or 255 unsigned. If
+this is not sufficient storage, numbers can be stored in 16-, 32-, or 64-bit
+words, with the corresponding increase in the maximum stored size.</p>
+<h2>Floating-Point Numbers</h2>
+Floating-point numbers are stored in single precision (32 bits) or double
+precision (64 bits) using the IEEE 754 standard. As the name suggests, the
+storage format includes a mantissa and an exponent, each expressed
+internally in a manner similar to integer storage. The fixed size of the
+mantissa leads to the fixed amount of precision of each storage type. The
+float data type gives 7 significant decimal digits; the double data type gives
+15 significant decimal digits.<br>
+ Note that although this seems to be a large amount of precision, you must always
+design your programs to preserve that precision. If, for example, you were to subtract
+two numbers almost equal in value, the precision of the result would be significantly
+worse than that of the original numbers.
+For details of these storage types, search the Web for “IEEE 754 standard.”
+At the time of writing, there was a good explanation at: http://www.
+geocities.com/SiliconValley/Pines/6639/docs/fp_summary.html
+Parameters of Each Storage Type
+The following table describes the most commonly used storage types
+available in MATLAB, their minimum and maximum values, and their
+equivalent names in C.
+
+<table>
+<tr><th>MATLAB Name</th><th>Size (Bytes)</th><th>Minimum Value</th><th>Maximum Value</th><th>C Name</th></tr>
+<tr><td>uint8</td><td>1</td><td>0</td><td>255</td><td>unsigned char</td></tr>
+<tr><td>int8</td><td>1</td><td>−128</td><td>127</td><td>char</td></tr>
+<tr><td>uint16</td><td>2</td><td>0</td><td>65,536</td><td>unsigned short</td></tr>
+<tr><td>int16</td><td>2</td><td>−32,768</td><td>32,767</td><td>short</td></tr>
+<tr><td>uint32</td><td>4</td><td>0</td><td>4,294,967,295</td><td>unsigned int</td></tr>
+<tr><td>int32</td><td>4</td><td>−2,147,483,648</td><td>2,147,483,647</td><td>int</td></tr>
+<tr><td>float</td><td>4</td><td>~−3.4x10<sup>38<sup></td><td>~3.4x10<sup>38</sup></td><td>float</td></tr>
+<tr><td>double</td><td>8</td><td>~<sup>−1.7x10<sup>308</sup></td><td>~1.7x10<sup>308</sup></td><td>double</td></tr>
+
+</table>
+ </div>
+
+
+</body>
+</html>
+
