@@ -169,7 +169,7 @@
         <p><b>Inserting in order</b> is usually accomplished using a while loop. If we are inserting item into a collection <code>C</code>, we will use a while loop to find the index of the insertion point, <code>ins</code>, and then concatenate the three parts of the new collection. Figure 10.1 shows the flowchart that applies here.</p>
         <div class="card-deck">
           <div class="col-sm-8">
-            <div class="exercise">#exercise_inserting#</div>
+            <div class="exercise">#exercise_10_1#</div>
           </div>
           <div class="col-sm-4 card">
             <img src="..\Images\Fig_10_1.JPG" alt="Figure 10.1" class="fig card-img">
@@ -186,7 +186,7 @@
         <p>Traversal involves moving across all elements of a collection and performing some step (not necessarily the same step) on each element without changing that element. Figure 10.2 illustrate the flowchart for traversing a collection. They assume that you are doing something like writing a file that needs to be initialized and finalized. These two steps may not always be required.</p>
         <div class="card-deck">
           <div class="col-sm-8">
-            <div class="exercise">#exercise_traversing#</div>
+            <div class="exercise">#exercise_10_2#</div>
           </div>
           <div class="col-sm-4 card">
               <img src="..\Images\Fig_10_2.JPG" alt="Figure 10.2" class="fig-long card-img">
@@ -203,7 +203,7 @@
         <p>In practice, frequently we combine traversal of one collection and building of another to copy data from one collection into another. Building a collection is the process of beginning with an empty collection and assembling data elements by inserting them one at a time into the new collection. The size of the collection increases continually until the process is finished. Figure 10.3 illustrates the algorithm for building a collection.</p>
         <div class="card-deck">
           <div class="col-sm-8">
-            <div class="exercise">#exercise_building#</div>
+            <div class="exercise">#exercise_10_3#</div>
           </div>
           <div class="col-sm-4 card">
               <img src="..\Images\Fig_10_3.JPG" alt="Figure 10.3" class="fig-long card-img">
@@ -220,7 +220,7 @@
         <p>The purpose of mapping is to transform a collection by changing the data in some or all of its elements according to some functional description without changing its length. It is distinct from traversal because its intent is to change the data elements. While many languages permit collections to be modified in place, the MATLAB language usually requires you to create a new collection. However, this is still considered mapping. The scalar mathematical and logical operations on vectors are good examples of mapping. Figure 10.4illustrates the basic algorithm for mapping.</p>
         <div class="card-deck">
           <div class="col-sm-8">
-            <div class="exercise">#exercise_mapping#</div>
+            <div class="exercise">#exercise_10_4#</div>
           </div>
           <div class="col-sm-4 card">
               <img src="..\Images\Fig_10_4.JPG" alt="Figure 10.4" class="fig-long card-img">
@@ -237,7 +237,7 @@
         <p>Filtering involves removing items from a collection according to specified selection criteria. The data contents of the remaining items in the collection should not be changed, and the collection will usually be shorter than before.  Filtering always requires that a new collection be built on the filtered items. Figure 10.5 illustrates the general algorithm for filtering a collection.</p>
         <div class="card-deck">
           <div class="col-sm-8">
-            <div class="exercise">#exercise_filtering#</div>
+            <div class="exercise">#exercise_10_5#</div>
           </div>
           <div class="col-sm-4 card">
               <img src="..\Images\Fig_10_5.JPG" alt="Figure 10.5" class="fig-long card-img">
@@ -254,7 +254,7 @@
         <p>Folding is the name given to summarizing a collection. It is a special case of traversal where all of the items in the collection are summarized as a single result. The collection is not altered in size or values by the operation. Totaling, averaging, and finding the largest element in a vector are typical examples of folding.Figure 10.6 shows the basic algorithm for folding a collection. The general form of a fold should be to initialize the summary value and then traverse the whole collection, updating the summary when necessary. There is an interesting problem in determining the starting value for a fold. If that value is not chosen well, there may be no relevant results in the collection.  A good approach is to initialize the state with the value of the first entry in the collection. This raises another issue to make sure that you deal with an empty input collection.</p>
         <div class="card-deck">
           <div class="col-sm-8">
-            <div class="exercise">#exercise_folding#</div>
+            <div class="exercise">#exercise_10_6#</div>
           </div>
           <div class="col-sm-4 card">
               <img src="..\Images\Fig_10_6.JPG" alt="Figure 10.6" class="fig-long card-img">
@@ -270,7 +270,7 @@
         <p>Searching is the process of traversing the collection and applying a specified test to each element in turn, terminating the process as soon as the test is satisfied. This is superficially similar to filtering, except that it is not necessary to touch all the elements of the collection; the search stops as soon as one element of the collection matches the search criteria. If the criteria are extremely complex, it is sometimes advisable to perform a mapping or folding before the search is performed. Figure 10.7 illustrates one way to implement searching a collection using a for loop with a break exit. There are always two exit criteria from a search — finding what you seek and failing to find it. Searching can also be implemented with a while loop, but the multiple exit criteria make the code generally more complex.</p>
         <div class="card-deck">
           <div class="col-sm-8">
-            <div class="exercise">#exercise_searching#</div>
+            <div class="exercise">#exercise_10_7#</div>
           </div>
           <div class="col-sm-4 card">
               <img src="..\Images\Fig_10_7.JPG" alt="Figure 10.7" class="fig-long card-img">
@@ -284,7 +284,7 @@
       <h3 id="10_3_9">10.3.9	Sorting a Collection</h3>
       <div class="container">
         <p>Sorting involves reordering the elements in a collection according to a specified ranking function that defines which item “comes before” another. Sorting is computationally expensive. However, if a large collection of data is stable—items are added or removed infrequently—but is frequently searched for specific items, keeping the data sorted can greatly improve the efficiency of the searches. Chapter 16 is devoted to the details of sorting algorithms, but the concept is included here to complete the list of operations we can perform on a collection.  In general, the built-in sort function can sort either a vector (of numbers, of course) or a cell array with either one row or one column containing strings.  Cell arrays are sorted alphabetically.  In either case, it returns not only the sorted values but also the order in which the original data were used to produce the sort.</p>
-        <div class="exercise">#exercise_sorting#</div>
+        <div class="exercise">#exercise_10_8#</div>
         <p><b>Notes:</b></p>
         <ul>
           <li>Since the sort was sensitive to case, 'In' was ranked before 'a'.</li>

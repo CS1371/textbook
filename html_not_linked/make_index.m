@@ -157,8 +157,9 @@ function entry = find_whole_word(name, entry)
             str = file_str(at:at+6);
             initial = ~strcmp(str,'<a id="');
             if initial
-                back_OK = file_str(at-1) == '(' || ...
-                    at > length(file_str) || is_word_end(file_str(at));
+                back_OK = file_str(at-1) == '(' ...
+                    || at > length(file_str) ...
+                    || is_word_end(file_str(at));
                 found = front_OK && back_OK;
                 if found
                     [entry plug_sz] = insert_link(word, at, name, entry);
