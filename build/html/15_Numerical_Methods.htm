@@ -163,9 +163,9 @@
           <p>Linear regression is the process that determines the linear<a id="7251">!</a> equation that is the best fit to a set of data<a id="7071">!</a> points in terms of minimizing the sum of the squared distances between the line and the data<a id="7072">!</a> points. To understand this process, first we consider the same set of data<a id="7073">!</a> values used previously and attempt to "eyeball" a straight line through the data<a id="7074">!</a>. Assume, for<a id="7146">!</a> example, that \(y = 20x\) is a good estimate of the curve<a id="7012">!</a>. Listing 15.3 shows the code<a id="6979">!</a> to plot the points and this estimate.</p>
           <p>Looking at the results in Figure 15.5, it appears that \(y = 20x\) is a reasonable estimate of a line through the points.</p>
           <p>We really need the ability to compare the quality of the fit of this line to other possible estimates, so we compute the difference between the actual<a id="6960">!</a> y value<a id="7348">!</a> and the value<a id="7349">!</a> calculated from the estimate:</p>
-          <p><code>>> dy = [0, 0, 20, 8, -3, 10]</code<a id="6980">!</a>></p>
+          <p><code>>> dy = [0, 0, 20, 8, -3, 10]</code><a id="6980">!</a></p>
           <p>It turns out that the best way to make this comparison is by the <b>least squares technique</b>, whereby the measure of the quality of the fit is the sum of the squared differences between the actual<a id="6961">!</a> data<a id="7075">!</a> points and the linear<a id="7252">!</a> estimates. This sum can be computed with the following command:</p>
-          <p><code>>> sum_sq = sum(<a id="7335">!</a>dy.^2)</code<a id="6981">!</a>></p>
+          <p><code>>> sum_sq = sum(<a id="7335">!</a>dy.^2)</code><a id="6981">!</a></p>
           <p>For the above set of data<a id="7076">!</a>, the value<a id="7350">!</a> of <code>sum_sq</code> is <code>573</code>. As we will see, MATLAB<a id="7266">!</a> can automatically produce the best linear<a id="7253">!</a> fit shown in Figure 15.6 whose sum of squares is <code>356.82</code>, a significant improvement over our original guess. This result was achieved by running Exercise 15.2.</p>
         </div>
         <div id="listing_15_3" class="listing"><iframe src="..\listings\listing_15_3_livehtml.html"></iframe></div>

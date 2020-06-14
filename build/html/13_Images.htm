@@ -104,13 +104,13 @@
     <h2 id="13_3">13.3	Reading, Displaying, and Writing Images</h2>
     <div class="container">
         <p>MATLAB<a id="6526">!</a> uses one image reading function<a id="6453">!</a>, <code>imread(...)</code>, for<a id="6429">!</a> all image file types. To read a file named <code>myPicture.jpg</code>, we use the following command:</p>
-        <p><code>>> pic = imread('myPicture.jpg', 'jpg')</code<a id="6314">!</a>></p>
+        <p><code>>> pic = imread('myPicture.jpg', 'jpg')</code><a id="6314">!</a></p>
         <p>where the result, <code>pic</code>, is an M x N x 3 <code>uint8</code> array<a id="6282">!</a> of pixel color<a id="6365">!</a> values, and the second parameter, <code>'jpg'</code>, provides the format<a id="6446">!</a> of the file explicitly. This parameter is optional; MATLAB<a id="6527">!</a> usually infers the file format<a id="6447">!</a> correctly from the file contents.</p>
         <p>Once the picture has been read, you can display it in a figure window with fixed size and axes visible by using the following command:</p>
-        <p><code>>> image(<a id="6475">!</a>pic)</code<a id="6315">!</a>></p>
+        <p><code>>> image(<a id="6475">!</a>pic)</code><a id="6315">!</a></p>
         <p>This actually stretches or shrinks the image to fit the size of the normal plot figure, a behavior you normally desire; however, occasionally, you want the plot figure to match the actual<a id="6274">!</a> image size (or at least, preserving its aspect ratio). Releases of MATLAB<a id="6528">!</a> after R2008a provide the <code>imshow(...)</code> function<a id="6454">!</a>, which presents the image without stretching<a id="6586">!</a>, shrinking<a id="6575">!</a>, or axes (unless the figure window is too small).</p>
         <p>Similarly, there is one function<a id="6455">!</a> for<a id="6430">!</a> writing files<a id="6416">!</a>: <code>imwrite(...)</code>, which can be used to write most common file formats. If we have made some changes to pic, the internal representation of the image, we could write a new version to the disk by using the following:</p>
-        <p><code>>> imwrite( pic, 'newPicture.jpg', 'jpg')</code<a id="6316">!</a>></p>
+        <p><code>>> imwrite( pic, 'newPicture.jpg', 'jpg')</code><a id="6316">!</a></p>
         <p>where the third parameter, <code>'jpg'</code>, is required to specify the output format<a id="6448">!</a> of the file.</p>
     </div>
   </div>
@@ -127,11 +127,11 @@
       <h3 id="13_4_1">13.4.1	Stretching or Shrinking Images</h3>
       <div class="container">
            <p>In earlier chapters we have seen the basic ability to use index vectors<a id="6616">!</a> to extract rows and columns from an array<a id="6284">!</a>. Now we extend these ideas to understand how to uniformly shrink or stretch an array<a id="6285">!</a> to match an exact size. Consider, for<a id="6431">!</a> example, <code>A</code>, a <code>rows x cols</code> array<a id="6286">!</a>. Assume for<a id="6432">!</a> a moment that the vertical size is good, but we want to stretch or shrink the image horizontally to <code>newRows</code>—a number that might be larger or smaller than <code>rows</code>. We use <code>linspace(<a id="6516">!</a>...)</code> to create an index vector as follows:</p>
-           <p><code>>> rowVector = linspace(<a id="6517">!</a>1, rows, newRows)</code<a id="6317">!</a>></p>
+           <p><code>>> rowVector = linspace(<a id="6517">!</a>1, rows, newRows)</code><a id="6317">!</a></p>
            <p>where the third parameter is the desired size of the new array<a id="6287">!</a>. In general, this index vector will contain fractional values, but MATLAB<a id="6529">!</a> will truncate the index values. We can round the results as follows:</p>
-           <p><code>>> rowVector = round(<a id="6568">!</a>rowVector)</code<a id="6318">!</a>></p>
+           <p><code>>> rowVector = round(<a id="6568">!</a>rowVector)</code><a id="6318">!</a></p>
            <p>Then we can use this vector to shrink or stretch the picture pic as follows:</p>
-           <p><code>>> newPic = pic(rowVector, cols, :)</code<a id="6319">!</a>></p>
+           <p><code>>> newPic = pic(rowVector, cols, :)</code><a id="6319">!</a></p>
            <p>Clearly, this can be applied to both dimensions simultaneously, as shown in Exercise 13.1.</p>
            <span class="exercise"><iframe src="..\exercises\exercise_13_1html.html"></iframe></span>
            <p>In this exercise, first we read an image and determine its size. Note that with 3-D images<a id="6494">!</a>, you must give to the <code>size(<a id="6580">!</a>...)</code> function<a id="6456">!</a> three variables. Then we illustrate the “normal” slicing operations<a id="6544">!</a> by reducing the image to the even rows, and every third column<a id="6382">!</a>. Next, we generalize this image slicing by stretching<a id="6587">!</a> the number of rows by a factor 1.43 and shrinking<a id="6576">!</a> the number of columns by a factor 0.75. This is accomplished by building<a id="6311">!</a> a row index vector, <code>rowVec</code>, and a column<a id="6383">!</a> index vector, <code>colVec</code>, according to the algorithm above. The stretching<a id="6588">!</a> is achieved by repeating selected values in the index vector, and shrinking<a id="6577">!</a> is achieved by omitting some.</p>

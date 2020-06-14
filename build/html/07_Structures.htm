@@ -398,10 +398,10 @@
         <p>Structures and structure<a id="4001">!</a> arrays can be manipulated in the following ways:
         <ul>
           <li>Single values can be changed using the '.' (dot) notation directly with a field<a id="3724">!</a> name:<br>
-          <code>>> cds(5).price = 19.95;</code<a id="3620">!</a>></li>
+          <code>>> cds(5).price = 19.95;</code><a id="3620">!</a></li>
           <li>Indirectly using the "." (dot) notation with a variable<a id="4071">!</a> containing the field<a id="3725">!</a> name:<br>
           <code>>> fld = 'price';<br>
-          >> cds(5).(fld) = 19.95;</li> </code<a id="3621">!</a>>
+          >> cds(5).(fld) = 19.95;</li> </code><a id="3621">!</a>
           <li>Using built-in functions:<br>
             <ul>
               <li> <code>nms = fieldnames(<a id="3750">!</a>str)</code>returns a cell<a id="3597">!</a> array<a id="3510">!</a> containing the names of the fields in a structure<a id="4002">!</a> or structure<a id="4003">!</a> array<a id="3511">!</a>.<br>
@@ -409,13 +409,13 @@
               <li>it = isfield(<a id="3864">!</a>str, <fldname>) </code>determines whether the given name is a field<a id="3726">!</a> in this structure<a id="4004">!</a> or structure<a id="4005">!</a> array<a id="3512">!</a>.<br>
               <code>>> if isfield(<a id="3865">!</a>cds, 'price') ... </li>
               <li>str = setfield(<a id="3939">!</a>str, &lt;fldname&gt;, &lt;value<a id="4050">!</a>&gt;) </code> returns a new structure<a id="4006">!</a> array<a id="3513">!</a> with the specified field<a id="3727">!</a> set to the specified value<a id="4051">!</a>.<br>
-              <code>>> cds(1) = setfield(<a id="3940">!</a>cds(1), 'price', 19.95); </code<a id="3622">!</a>></li>
+              <code>>> cds(1) = setfield(<a id="3940">!</a>cds(1), 'price', 19.95); </code><a id="3622">!</a></li>
               <li> <code>val = getfield(<a id="3844">!</a>str, &lt;fldname&gt;) </code> returns the value<a id="4052">!</a> of the specified field<a id="3728">!</a>.<br>
               <code>>> disp(<a id="3661">!</a>getfield(<a id="3845">!</a>cds(1), 'price') );</li>
               <li>str = rmfield(<a id="3936">!</a>str, &lt;fldname&gt;) </code> returns a new structure<a id="4007">!</a> array<a id="3514">!</a> with the specified field<a id="3729">!</a> removed.<br>
-              <code>>> noprice = rmfield(<a id="3937">!</a>cds, 'price');</li> </code<a id="3623">!</a>>
+              <code>>> noprice = rmfield(<a id="3937">!</a>cds, 'price');</li> </code><a id="3623">!</a>
               <li>Values across the whole array<a id="3515">!</a> can be retrieved using the “.” notation by accumulating them into either arrays or cell<a id="3598">!</a> arrays:<br>
-              <code>>> titles = {cds.title};<br>>> [alpha order] = sort(<a id="3941">!</a>titles); </li> </code<a id="3624">!</a>>
+              <code>>> titles = {cds.title};<br>>> [alpha order] = sort(<a id="3941">!</a>titles); </li> </code><a id="3624">!</a>
               <li>or, if the values are all numeric, into a vector:<br>
               <code>>> prices = [cds.price];<br>
               >> total = sum(<a id="4036">!</a>prices);<br>
