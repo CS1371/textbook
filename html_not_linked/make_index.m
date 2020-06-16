@@ -4,7 +4,7 @@ clc
     global debug
     global last_name
     global ndx
-    global data
+%     global data
     global files
     global state
     global current_ID
@@ -54,33 +54,83 @@ clc
         end
         line = fgetl(in);
     end
-    seek_in_files();
-    show_index();
+    data = seek_in_files(data);
+    data = patch_up_children(data);
+    show_index(data);
     fclose(debug);
     fprintf('Done!\n');
 end
 
 
+
+% % 
+% % patch_up_children()
+% % 
+    % an entry has fields:
+    %   first - string: the first word matched
+    %   second - string: the second word
+    %   type - H: this is a header
+    %        - C: this is a child
+    %        - S: this is a symbol
+    %        - N: this is a normal entry
+    %   ref - cell array of strings
+    
+function data = patch_up_children(data) 
+    global debug
+%     global data
+    
+    lead_name = '';
+    fprintf(debug, 'Patching Up Children\n');
+    for ndx = 1:length(data)
+        entry = data(ndx);
+        if entry.type == 'N'
+            lead_name = put_back_space(entry.first);
+%             fprintf(debug, 'lead name is %s\n', lead_name);
+        elseif entry.type == 'C' && ~isempty(lead_name)
+            child_name = put_back_space(entry.first);
+%             fprintf(debug, ' - child name is %s\n', child_name);
+            % get Normal refs list
+            found = false;
+            for parent = data
+                match = strcmp(parent.first, child_name);
+                if parent.type == 'N' && match 
+%                     fprintf(debug,'found parent %s of %s\n', ...
+%                         parent.first, child_name);
+                    found = true;
+                    entry.ref = parent.ref;
+                    data(ndx) = entry;
+                    break;
+                end
+            end
+            if ~found
+                fprintf(debug,'Couldn''t find parent of %s::%s\n', ...
+                    lead_name, child_name);
+            end
+        end
+    end
+end    
+    
+    
+
+    
 % % 
 % % seek_in_files()
 % % 
-function seek_in_files() 
+function data = seek_in_files(data) 
     global files
     global last_marker
-    global debug
     global file_str
     
     last_marker = '';
 %    for ndx = 1:length(files)
     for ndx = 1:length(files)
         name = files{ndx};
-        fprintf(debug, '\n   *** look in %s\n', name);
         fprintf('look in %s\n', name);
         file_str = fileread(name);
         if isempty(file_str)
             error(['file ' name ' ' not found']);
         end
-        find_words(name);
+        data = find_words(data, name);
         new_name = ['../html/' name];
         fid = fopen(new_name, 'w');
         fprintf(fid,'%s\n', file_str);
@@ -91,18 +141,19 @@ end
 
 
 
+
 % % 
 % % find_words
 % % 
-function find_words(name)
+function data = find_words(data, name)
     global target
     global tg_sz
-    global data
+%     global data
     
     for ndx = 1:length(data)
         entry = data(ndx);
         if entry.type == 'N'
-            if length(entry.first) >= tg_sz && all(entry.first(1:tg_sz) == target)
+            if any(entry.first == '_')
                 ook = 1;
             end
             entry = find_whole_word(name, entry);
@@ -113,9 +164,12 @@ end
 
 
 
+
+% % 
+% % insert_link
+% % 
 function [entry plug_sz] = insert_link(word, at, file_name, entry)
     global file_str
-    global data
     global current_ID
     global target
     global tg_sz
@@ -135,16 +189,21 @@ function [entry plug_sz] = insert_link(word, at, file_name, entry)
 end
 
 
+
+
+% % 
+% % find_whole_word
+% % 
 function entry = find_whole_word(name, entry)
     global file_str
-    global debug
     
     found = false;
     word = entry.first;
     if length(word) > 5 && all(word(end-4:end) == '(...)')
         word = word(1:end-4);
     end
-    where = strfind(file_str, word);
+    where = strfind(file_str, put_back_space(word));
+    split = any(word == '_');
     wh = 0;
     for ndx = 1:length(where)
         wh = where(ndx);
@@ -162,6 +221,9 @@ function entry = find_whole_word(name, entry)
                     || is_word_end(file_str(at));
                 found = front_OK && back_OK;
                 if found
+                    if split
+                        ooh = true;
+                    end
                     [entry plug_sz] = insert_link(word, at, name, entry);
                     where = where + plug_sz;
                 end
@@ -175,6 +237,22 @@ end
 
 
 
+% % 
+% % put_back_space
+% % 
+function word = put_back_space(word)
+    if any(word == '_')
+        word(word == '_') = ' ';
+    end
+end
+
+
+
+
+
+% % 
+% % is_not_html
+% % 
 function found = is_not_html(where)
     global file_str
     try
@@ -200,6 +278,9 @@ function found = is_not_html(where)
 end
 
 
+% % 
+% % is_word_end
+% % 
 function found = is_word_end(ch)
     found = ~any(ch == 'abcdefghijklmnopqrstuvwxyz(');
 end
@@ -249,25 +330,41 @@ function ntry = process_line()
                 first = [first '(...)'];
             end
             [second rest] = strtok(rest, ' ()');
-            [third rest] = strtok(rest, ' ()');
+            if strcmp(second, 'see')
+                state = 'Pointer';
+                type = 'P';
+                second = rest;
+                third = '';
+                fourth = '';
+            else
+                [third rest] = strtok(rest, ' ()');
+                [fourth rest] = strtok(rest, ' ()');
+            end
             ref = '';
+            state = 'Normal';
         case 'Head'
             [first rest] = strtok(line, ' ()');
             second = '';
             third = '';
+            fourth = '';
             ref = '';
             state = 'Normal';
     end
-    ntry = make_entry( type, first, second, third, ref);
+    try
+        ntry = make_entry( type, first, second, third, fourth, ref);
+    catch E
+        E
+        ooh = 'bad';
+    end
 end
 
 
 
 % % 
-% % make_entry(type, first, second, third, ref)
+% % make_entry(type, first, second, third, fourthref)
 % % 
 
-function it = make_entry(type, first, second, third, ref)
+function it = make_entry(type, first, second, third, fourth, ref)
     % an entry has fields:
     %   first - string: the first word matched
     %   second - string: the second word
@@ -275,6 +372,7 @@ function it = make_entry(type, first, second, third, ref)
     %        - C: this is a child
     %        - S: this is a symbol
     %        - N: this is a normal entry
+    %        - P: this is a forward pointer
     %   refs - cell array of strings
     global debug
     
@@ -282,12 +380,13 @@ function it = make_entry(type, first, second, third, ref)
     it.first = first;
     it.second = second;
     it.third = third;
+    it.fourth = fourth;
     it.ref = [];
     if ~isempty(ref)
         it.ref = {ref};
     end
-    fprintf(debug, 'Entry: type = %s; first = %s; second = %s; third = %s', ...
-         it.type, it.first, it.second, it.third);
+    fprintf(debug, 'Entry: type = %s; first = %s; second = %s; third = %s; fourth = %s', ...
+         it.type, it.first, it.second, it.third, it.fourth);
     if(~isempty(ref))
         fprintf(debug, ', %s', it.ref{1});
     end
@@ -309,8 +408,8 @@ end
 % % 
 % % show_index()
 % % 
-function show_index()
-    global data
+function show_index(data)
+%     global data
     global target
     global tg_sz
     
@@ -363,22 +462,37 @@ function show_index()
 % <tr><td>.! </td><td>  scalar transpose  </td><td><a href="01_Introduction.htm#1_1"><span class="blackText">1.1 Background</span></a></td></tr>
 % </table>
 
-    for entry = data
-        word = entry.first;
-        if length(word) >= tg_sz && all(word(1:tg_sz) == target)
-            ook = 1;
+    for ndx = 1:length(data)
+        entry = data(ndx);
+        word = put_back_space(entry.first);
+        if strcmp(entry.second, '...')
+            entry.second = '';
         end
         switch entry.type
             case 'H'
                 fprintf(out,'        <tr>\n');
-                fprintf(out,'            <th colspan="7">%s</th>\n', ...
-                    entry.first);
+                fprintf(out,'            <th colspan="07">%s</th>\n', ...
+                    word);
                 fprintf(out,'        </tr>\n');
-            case {'N', 'S'}
+            case 'N'
                 fprintf(out,'        <tr>\n');
-                fprintf(out,'            <td>%-0s</td>\n', entry.first);
-                fprintf(out,'            <td> %s</td>\n', ...
-                    [entry.second ' ' entry.third]);
+                fprintf(out,'            <td>%-0s</td>\n', ...
+                    [word ' ' entry.second ' ' entry.third ' ' entry.fourth]);
+                for ndx = 1:length(entry.ref)
+                    fprintf(out, ...
+                       '<td><a href="%s"><span class="blackText">(%d)</span></a> </td>\n', ...
+                        entry.ref{ndx}, ndx);
+                end
+                fprintf(out,'        <tr>\n');
+            case 'P' % foward pointer - just show entry first and entry.second
+                fprintf(out,'        <tr>\n');
+                fprintf(out,'            <td>%-0s</td>\n', word);
+                fprintf(out,'            <td colspan="20">%-0s</td>\n', ...
+                    ['see ' put_back_space(entry.second)]);
+                fprintf(out,'        <tr>\n');
+            case 'S'
+                fprintf(out,'        <tr>\n');
+                fprintf(out,'            <td>%-0s</td>\n', word);
                 for ndx = 1:length(entry.ref)
                     fprintf(out, ...
                        '<td><a href="%s"><span class="blackText">(%d)</span></a> </td>\n', ...
@@ -387,11 +501,10 @@ function show_index()
                 fprintf(out,'        <tr>\n');
             case 'C'
                 fprintf(out,'        <tr>\n');
-                fprintf(out,'            <td> - </td>\n', entry.first);
-                fprintf(out,'            <td> %s</td>\n', ...
-                    [entry.second ' ' entry.third]);
+                fprintf(out,'            <td> - %-0s</td>\n', ...
+                    [word ' ' entry.second ' ' entry.third ' ' entry.fourth]);
                 for ndx = 1:length(entry.ref)
-                    fprintf(out,'<td><a href="%s">(%d)</a> </td>\n', ...
+                    fprintf(out,'<td><a href="%s"><span class="blackText">(%d)</span></a> </td>\n', ...
                         entry.ref{ndx}, ndx);
                 end
                 fprintf(out,'        <tr>\n');

@@ -19,13 +19,13 @@
   <!-- Chapter Objectives -->
   <h1>Chapter Objectives</h1>
   <div class="container">
-    <p>Reading and writing data<a id="4184">!</a> in data<a id="4185">!</a> files<a id="4321">!</a> are fundamental to the utility of programming<a id="4487">!</a> languages in general, and MATLAB<a id="4443">!</a> in particular. In addition to the obvious need to save and restore scripts<a id="4497">!</a> and functions (covered in Chapter 2), here we consider four types of activities that read and write data<a id="4186">!</a> files<a id="4322">!</a> in MATLAB<a id="4444">!</a>, each including a discussion of the circumstances under which they are appropriate:
+    <p>Reading and writing data in data files are fundamental to the utility of programming<a id="3882">!</a> languages in general, and MATLAB<a id="3850">!</a> in particular. In addition to the obvious need to save and restore scripts<a id="3892">!</a> and functions (covered in Chapter 2), here we consider four types of activities that read and write data files in MATLAB<a id="3851">!</a>, each including a discussion of the circumstances under which they are appropriate:
     <ul>
-      <li><b>Saving and restoring the workspace:</b>The MATLAB<a id="4445">!</a> language provides for<a id="4355">!</a> the basic ability to save your workspace (or parts of your workspace) to a file and restore it later for<a id="4356">!</a> further processing.</li>
-      <li><b>High-level functions for<a id="4357">!</a> accessing files<a id="4323">!</a> in specific formats:</b>There are high-level<a id="4433">!</a> functions that consume the name of a file whose contents are in any one of a number of popular formats and produce an internal representation of the data<a id="4187">!</a> from that file in a form ready for<a id="4358">!</a> processing. Almost all these functions have an equivalent write function<a id="4401">!</a> that will write a new file in the same format<a id="4389">!</a> after you have manipulated the data<a id="4188">!</a>.</li>
-      <li><b>Lower-level file access programs for<a id="4359">!</a> general-purpose text<a id="4519">!</a> file processing:</b> we also need to deal with lower-level<a id="4441">!</a> capabilities for<a id="4360">!</a> manipulating text<a id="4520">!</a> files<a id="4324">!</a> that do not contain recognizable structures.
+      <li><b>Saving and restoring the workspace:</b>The MATLAB<a id="3852">!</a> language provides for<a id="3764">!</a> the basic ability to save your workspace (or parts of your workspace) to a file and restore it later for<a id="3765">!</a> further processing.</li>
+      <li><b>High-level functions for<a id="3766">!</a> accessing files in specific formats:</b>There are high-level functions that consume the name of a file whose contents are in any one of a number of popular formats and produce an internal representation of the data from that file in a form ready for<a id="3767">!</a> processing. Almost all these functions have an equivalent write function<a id="3810">!</a> that will write a new file in the same format<a id="3798">!</a> after you have manipulated the data.</li>
+      <li><b>Lower-level file access programs for<a id="3768">!</a> general-purpose text<a id="3914">!</a> file processing:</b> we also need to deal with lower-level<a id="3848">!</a> capabilities for<a id="3769">!</a> manipulating text<a id="3915">!</a> files that do not contain recognizable structures.
       </li>
-      <li><b>Really low-level binary<a id="4109">!</a> file access:</b> we recognize also that at the most fundamental level, file access is about reading and writing arbitrary bit patterns in a file. While the principles remain the same, the practice of operating<a id="4469">!</a> on binary<a id="4110">!</a> files<a id="4325">!</a> is unusual for<a id="4361">!</a> engineers to require and will not be further explored in this text<a id="4521">!</a>.
+      <li><b>Really low-level binary<a id="3660">!</a> file access:</b> we recognize also that at the most fundamental level, file access is about reading and writing arbitrary bit patterns in a file. While the principles remain the same, the practice of operating<a id="3876">!</a> on binary<a id="3661">!</a> files is unusual for<a id="3770">!</a> engineers to require and will not be further explored in this text<a id="3916">!</a>.
       </li>
     </ul></p>
   </div>
@@ -37,8 +37,8 @@
       <img src="..\Images\Fig_8_1.JPG" alt="Figure 8.1" class="fig card-image">
       <p class="figure-name card-title">Figure 8.1: Paper Tape I/O</p>
     </div>
-    <p>This chapter discusses files<a id="4326">!</a> that contain workspace variables, spreadsheet data<a id="4189">!</a>, and text<a id="4522">!</a>. Subsequent chapters will discuss image files<a id="4327">!</a> and sound<a id="4502">!</a> files<a id="4328">!</a> that have their own unique file access. MATLAB<a id="4446">!</a> has the ability to process the many file formats currently in use. For information on the other file formats, consult the MATLAB<a id="4447">!</a> help<a id="4429">!</a> documentation<a id="4294">!</a> for<a id="4362">!</a> details of their usage.</p>
-    <p>We frequently refer to the process of reading and writing data<a id="4190">!</a> files<a id="4329">!</a> as Input/Output<a id="4438">!</a> (I/O). We have already seen and used examples of file I/O to store and retrieve data<a id="4191">!</a> and programs. Your script and function<a id="4402">!</a> files<a id="4330">!</a> are stored in your current directory and could be invoked from there by name from the Command<a id="4175">!</a> window. To understand fully the concept of serial I/O, consider Figure 8.1. This figure takes us back to the early days of computing when paper tape was the only available storage medium. After the leader containing only the small holes used to move the tape forward<a id="4399">!</a>, each row of the paper tape represents the value<a id="4559">!</a> of one character<a id="4134">!</a> as 8 bits<a id="4113">!</a> of data<a id="4192">!</a>.  The 8 bits<a id="4114">!</a> represent the ASCII<a id="4085">!</a> value<a id="4560">!</a> in binary<a id="4111">!</a> form with a hole punched where a bit is set. These tapes were prepared on a tape punching machine, and were fed through a tape reader to recover all the characters. This illustrates the meaning of "serial" processing - in this case<a id="4115">!</a>, the data<a id="4193">!</a> are actually stored sequentially on the paper tape. In principle, while<a id="4575">!</a> the storage techniques have evolved beyond recognition and continue<a id="4182">!</a> to evolve, to a user's program<a id="4475">!</a>, any computer<a id="4178">!</a> file system saves and retrieves data<a id="4194">!</a> as a sequential stream of characters.</p>
+    <p>This chapter discusses files that contain workspace variables, spreadsheet data, and text<a id="3917">!</a>. Subsequent chapters will discuss image files and sound<a id="3897">!</a> files that have their own unique file access. MATLAB<a id="3853">!</a> has the ability to process the many file formats currently in use. For information on the other file formats, consult the MATLAB<a id="3854">!</a> help<a id="3838">!</a> documentation<a id="3734">!</a> for<a id="3771">!</a> details of their usage.</p>
+    <p>We frequently refer to the process of reading and writing data files as Input/Output<a id="3845">!</a> (I/O). We have already seen and used examples of file I/O to store and retrieve data and programs. Your script and function<a id="3811">!</a> files are stored in your current directory and could be invoked from there by name from the Command<a id="3720">!</a> window. To understand fully the concept of serial I/O, consider Figure 8.1. This figure takes us back to the early days of computing when paper tape was the only available storage medium. After the leader containing only the small holes used to move the tape forward<a id="3808">!</a>, each row of the paper tape represents the value<a id="3954">!</a> of one character<a id="3685">!</a> as 8 bits<a id="3664">!</a> of data.  The 8 bits<a id="3665">!</a> represent the ASCII<a id="3636">!</a> value<a id="3955">!</a> in binary<a id="3662">!</a> form with a hole punched where a bit is set. These tapes were prepared on a tape punching machine, and were fed through a tape reader to recover all the characters. This illustrates the meaning of "serial" processing - in this case<a id="3666">!</a>, the data are actually stored sequentially on the paper tape. In principle, while<a id="3970">!</a> the storage techniques have evolved beyond recognition and continue<a id="3727">!</a> to evolve, to a user's program, any computer<a id="3723">!</a> file system saves and retrieves data as a sequential stream of characters.</p>
   </div>
 
   <div class="chp-section" data-sect-num="1" data-sect-name="Concept: Serial Input and Output (I/O)">
@@ -48,36 +48,36 @@
       <div class="float-sm-right card style-points">
         <p class="card-title">Style Points 8.1</p>
         <p class="card-text">
-          In a practical sense, saving workspace data<a id="4195">!</a> is very rarely an
+          In a practical sense, saving workspace data is very rarely an
           appropriate approach to saving work because it saves the
-          results but not the code<a id="4161">!</a> that generated the results. It is
-          almost always better to save the scripts<a id="4498">!</a> and raw data<a id="4196">!</a> that
+          results but not the code that generated the results. It is
+          almost always better to save the scripts<a id="3893">!</a> and raw data that
           created the workspace. For example, this is a good idea
           when you have a lengthy computation (perhaps one run
-          overnight) to prepare data<a id="4197">!</a> for<a id="4363">!</a> a display. You could split that
+          overnight) to prepare data for<a id="3772">!</a> a display. You could split that
           script into two halves. The first half would do the overnight
           calculation and save the workspace. The second part can
           then read the workspace quickly, and you can develop
-          sophisticated ways to display the data<a id="4198">!</a> without having to
+          sophisticated ways to display the data without having to
           re-run the lengthy calculations.
         </p>
       </div>
-      <p>Although the media used to store data<a id="4199">!</a> have changed, the fundamental operations<a id="4471">!</a> needed to read and write sequential files<a id="4331">!</a> have not.  In order to create a paper tape from data<a id="4200">!</a> in the computer<a id="4179">!</a>, access to the tape punch was prepared, the leader and then the characters then a trailer are sent one item at a time to the punch.  When all the items had been sent, access to the punch was closed.  To read a paper tape, its leader was loaded into the tape reader and the reader motion started. As each character<a id="4135">!</a> passed the read head, it was received and stored in the computer<a id="4180">!</a> until no characters were left. The modern world of serial processing follows exactly the same pattern.</p>
-      <p>When a program<a id="4476">!</a> opens a file by name for<a id="4364">!</a> reading, it continually requests data<a id="4201">!</a> from the file data<a id="4202">!</a> stream until the end<a id="4301">!</a> of the file is reached. As the data<a id="4203">!</a> are received, the program<a id="4477">!</a> must identify any special characters that define specific data<a id="4204">!</a> characteristics and use them to format<a id="4390">!</a> the data<a id="4205">!</a> to reconstruct the organization of the data<a id="4206">!</a> stored in the file. Similarly, when writing data<a id="4207">!</a> to a file, the program<a id="4478">!</a> must serialize the data<a id="4208">!</a>, and include special character<a id="4136">!</a> to preserve the organization of the data<a id="4209">!</a>.  As we consider workspace I/O and high-level<a id="4434">!</a> I/O, most of these operations<a id="4472">!</a> will be invisible to the user inside the built-in functions.  However, when discussing text<a id="4523">!</a> files<a id="4332">!</a>, we will need to implement all of these concepts in our code<a id="4162">!</a>.</p>
+      <p>Although the media used to store data have changed, the fundamental operations<a id="3878">!</a> needed to read and write sequential files have not.  In order to create a paper tape from data in the computer<a id="3724">!</a>, access to the tape punch was prepared, the leader and then the characters then a trailer are sent one item at a time to the punch.  When all the items had been sent, access to the punch was closed.  To read a paper tape, its leader was loaded into the tape reader and the reader motion started. As each character<a id="3686">!</a> passed the read head, it was received and stored in the computer<a id="3725">!</a> until no characters were left. The modern world of serial processing follows exactly the same pattern.</p>
+      <p>When a program opens a file by name for<a id="3773">!</a> reading, it continually requests data from the file data stream until the end<a id="3741">!</a> of the file is reached. As the data are received, the program must identify any special characters that define specific data characteristics and use them to format<a id="3799">!</a> the data to reconstruct the organization of the data stored in the file. Similarly, when writing data to a file, the program must serialize the data, and include special character<a id="3687">!</a> to preserve the organization of the data.  As we consider workspace I/O and high-level I/O, most of these operations<a id="3879">!</a> will be invisible to the user inside the built-in functions.  However, when discussing text<a id="3918">!</a> files, we will need to implement all of these concepts in our code.</p>
     </div>
   </div>
 
   <div class="chp-section" data-sect-num="2" data-sect-name="Workspace I/O">
     <!-- Workspace I/O -->
-    <h2 id="8_2">8.2 Workspace<a id="4578">!</a> I/O</h2>
+    <h2 id="8_2">8.2 Workspace<a id="3973">!</a> I/O</h2>
     <div class="container">
-      <p>The MATLAB<a id="4448">!</a> language defines the tools to save your complete workspace to a file with the <code>save</code> command and reload it with the <code>load</code> command. If you provide a file name with the <code>save</code> command, a file of that name will be written into your current directory in such a form that a subsequent <code>load</code> command with that file name will restore the saved workspace. By convention, these files<a id="4333">!</a> will have a <code>".mat"</code> extension. If you do not provide a file name, the workspace is saved as <code>matlab.mat</code>.  If you are using MATLAB<a id="4449">!</a>, you can also identify specific variables that you want to save — either by listing them explicitly or by providing logical<a id="4440">!</a> expressions to indicate the variable<a id="4569">!</a> names. For example:<br>
-      <code>>> save mydata.mat a b c* </code<a id="4163">!</a>><br>
-      would save the variables  <code>a</code> and  <code>b</code> and any variable<a id="4570">!</a> beginning with the letter  <code>c</code>.</p>
-      <p>To recover the data<a id="4210">!</a>:<br>
-      <code>>> clear<a id="4156">!</a>  % if necessary to remove all existing variables from the workspace<br>
-      >> load mydata.mat</code<a id="4164">!</a>></p>
-      <p>For more details, consult the MATLAB<a id="4450">!</a> help<a id="4430">!</a> documentation<a id="4295">!</a>.</p>
+      <p>The MATLAB<a id="3855">!</a> language defines the tools to save your complete workspace to a file with the <code>save</code> command and reload it with the <code>load</code> command. If you provide a file name with the <code>save</code> command, a file of that name will be written into your current directory in such a form that a subsequent <code>load</code> command with that file name will restore the saved workspace. By convention, these files will have a <code>".mat"</code> extension. If you do not provide a file name, the workspace is saved as <code>matlab.mat</code>.  If you are using MATLAB<a id="3856">!</a>, you can also identify specific variables that you want to save — either by listing them explicitly or by providing logical<a id="3847">!</a> expressions to indicate the variable<a id="3964">!</a> names. For example:<br>
+      <code>>> save mydata.mat a b c* </code><br>
+      would save the variables  <code>a</code> and  <code>b</code> and any variable<a id="3965">!</a> beginning with the letter  <code>c</code>.</p>
+      <p>To recover the data:<br>
+      <code>>> clear<a id="3707">!</a>  % if necessary to remove all existing variables from the workspace<br>
+      >> load mydata.mat</code></p>
+      <p>For more details, consult the MATLAB<a id="3857">!</a> help<a id="3839">!</a> documentation<a id="3735">!</a>.</p>
     </div>
   </div>
 
@@ -85,7 +85,7 @@
     <!-- High Level I/O Functions -->
     <h2 id="8_3">8.3 High-Level I/O Functions</h2>
     <div class="container">
-      <p>We turn to a more specific case<a id="4116">!</a> of file I/O in which we expect to load a complete file from external sources with one function<a id="4403">!</a> call, thereby hiding from the user all the details of file access. We might wish to process that data<a id="4211">!</a>, and perhaps save the modified data<a id="4212">!</a> back to the file system with one function<a id="4404">!</a> call.  When  you  try  to process  data<a id="4213">!</a>  from  some  unknown source, it is difficult to write code<a id="4165">!</a> to process the data<a id="4214">!</a> without some initial exploration   of   the   nature   and organization of that data<a id="4215">!</a>. So a good habit is to explore the data<a id="4216">!</a> in a file by whatever means you have available and then decide how to process the data<a id="4217">!</a> according to your observations. Most programming<a id="4488">!</a> languages require the programmer to write detailed programs to read and write files<a id="4334">!</a>, especially those produced by other application programs or data<a id="4218">!</a> acquisition packages. Fortunately for<a id="4365">!</a> MATLAB<a id="4451">!</a> programmers, much of this messy work has been built into special file readers and writers. Table 8.1 identifies the type of data<a id="4219">!</a>, the name of the appropriate reader and writer, and the internal form in which MATLAB<a id="4452">!</a> returns the data<a id="4220">!</a>.</p>
+      <p>We turn to a more specific case<a id="3667">!</a> of file I/O in which we expect to load a complete file from external sources with one function<a id="3812">!</a> call, thereby hiding from the user all the details of file access. We might wish to process that data, and perhaps save the modified data back to the file system with one function<a id="3813">!</a> call.  When  you  try  to process  data  from  some  unknown source, it is difficult to write code to process the data without some initial exploration   of   the   nature   and organization of that data. So a good habit is to explore the data in a file by whatever means you have available and then decide how to process the data according to your observations. Most programming<a id="3883">!</a> languages require the programmer to write detailed programs to read and write files, especially those produced by other application programs or data acquisition packages. Fortunately for<a id="3774">!</a> MATLAB<a id="3858">!</a> programmers, much of this messy work has been built into special file readers and writers. Table 8.1 identifies the type of data, the name of the appropriate reader and writer, and the internal form in which MATLAB<a id="3859">!</a> returns the data.</p>
       <table class="table">
         <caption>Table 8.1: File Types</caption>
         <thead>
@@ -98,25 +98,25 @@
             <td>Binary</td><td>Anything</td><td><code>fread(...)</code></td><td><code>fwrite(...)</code></td><td>Any</td><td>various</td>
           </tr>
           <tr>
-            <td>Text</td><td>ASCII<a id="4086">!</a> Codes</td><td>See 8.4</td><td>See 8.4</td><td>Text Lines</td><td><code>.txt</code> etc</td>
+            <td>Text</td><td>ASCII<a id="3637">!</a> Codes</td><td>See 8.4</td><td>See 8.4</td><td>Text Lines</td><td><code>.txt</code> etc</td>
           </tr>
           <tr>
-            <td>CSV</td><td>Comma Separated Values</td><td><code>readcell(<a id="4489">!</a>...)</code></td><td><code>writecell(<a id="4580">!</a>...)</code><td><code>double</code> array<a id="4091">!</a></td><td><code>.csv</code></td>
+            <td>CSV</td><td>Comma Separated Values</td><td><code>readcell(<a id="3884">!</a>...)formerly xlsread(<a id="3980">!</a>...)</code></td><td><code>writecell(<a id="3975">!</a>...) formerly xlswrite(<a id="3983">!</a>...)</code><td><code>double</code> array<a id="3642">!</a></td><td><code>.csv</code></td>
           </tr>
           <tr>
-            <td>Delimited</td><td>Numbers separated  by delimiters</td><td><code>readcell(<a id="4490">!</a>...)</code></td><td><code>writecell(<a id="4581">!</a>...)</code></td><td><code>double</code> array<a id="4092">!</a></td><td><code>.txt</code> etc</td>
+            <td>Delimited</td><td>Numbers separated  by delimiters</td><td><code>readcell(<a id="3885">!</a>...) formerly xlsread(<a id="3981">!</a>...)</code></td><td><code>writecell(<a id="3976">!</a>...) formerly xlswrite(<a id="3984">!</a>...)</code></td><td><code>double</code> array<a id="3643">!</a></td><td><code>.txt</code> etc</td>
           </tr>
           <tr>
-            <td>Excel<a id="4311">!</a></td><td>Spread Sheet</td><td><code>readcell(<a id="4491">!</a>...)</code></td><td><code>writecell(<a id="4582">!</a>...)</code><td><code>cell<a id="4118">!</a></code> array<a id="4093">!</a></td><td><code>.xls, .xlsx</code></td>
+            <td>Excel<a id="3751">!</a></td><td>Spread Sheet</td><td><code>readcell(<a id="3886">!</a>...)formerly xlsread(<a id="3982">!</a>...)</code></td><td><code>writecell(<a id="3977">!</a>...) formerly xlswrite(<a id="3985">!</a>...)</code><td><code>cell<a id="3669">!</a></code> array<a id="3644">!</a></td><td><code>.xls, .xlsx</code></td>
           </tr>
           <tr>
-            <td>Image</td><td>Color image</td><td><code>imread(...)</code></td><td><code>imwrite(...)</code></td><td><code>uint8</code> array<a id="4094">!</a></td><td><code>.jpg </code>etc</td>
+            <td>Image</td><td>Color image</td><td><code>imread(...)</code></td><td><code>imwrite(...)</code></td><td><code>uint8</code> array<a id="3645">!</a></td><td><code>.jpg </code>etc</td>
           </tr>
           <tr>
-            <td>Audio</td><td>Multichannel Sound</td><td><code>audioread(<a id="4108">!</a>...)</code></td><td><code>audiowrite(...)</code><td><code>double</code> vector</td><td><code>.wav<a id="4574">!</a>, .mp3, .avi</code> etc</td>
+            <td>Audio</td><td>Multichannel Sound</td><td><code>audioread(<a id="3659">!</a>...)</code></td><td><code>audiowrite(...)</code><td><code>double</code> vector</td><td><code>.wav<a id="3969">!</a>, .mp3, .avi</code> etc</td>
           </tr>
           <tr>
-            <td>Workspace<a id="4579">!</a></td><td>variable<a id="4571">!</a> values</td><td><code>load ...</code></td><td><code>save ...</code><td>anything</td><td><code>.mat</code></td>
+            <td>Workspace<a id="3974">!</a></td><td>variable<a id="3966">!</a> values</td><td><code>load ...</code></td><td><code>save ...</code><td>anything</td><td><code>.mat</code></td>
           </tr>
         </tbody>
       </table>
@@ -126,7 +126,7 @@
       <!-- Exploration -->
       <h3 id="8_3_1">8.3.1	Exploration</h3>
       <div class="container">
-        <p>The types of data<a id="4221">!</a> of immediate interest are text<a id="4524">!</a> files<a id="4335">!</a> and spreadsheets<a id="4503">!</a>. In Table 8.1 notice that the delimited<a id="4284">!</a> text<a id="4525">!</a> files<a id="4336">!</a> are presumed to contain numerical<a id="4461">!</a> values, whereas the spreadsheet data<a id="4222">!</a> may be either numerical<a id="4462">!</a> data<a id="4223">!</a> stored as doubles or string data<a id="4224">!</a> stored in cell<a id="4119">!</a> arrays. Typically, text<a id="4526">!</a> files<a id="4337">!</a> are delimited<a id="4285">!</a> by a special character<a id="4137">!</a> (comma, tab, or anything else<a id="4298">!</a>) to designate the column<a id="4167">!</a> divider and a new-line character<a id="4138">!</a> to designate the rows. Once the data<a id="4225">!</a> are imported, all of our normal array<a id="4095">!</a> and matrix<a id="4459">!</a> processing tools can be applied. The exception to this rule is the plain text<a id="4527">!</a> reader that must be provided with a format<a id="4391">!</a> specifier to define the data<a id="4226">!</a>, and the names of the variables in which the data<a id="4227">!</a> are to be stored.  So when you are approached with a file, the file extension (the part of the file name after the dot<a id="4296">!</a>) gives you a significant clue to the nature of the data<a id="4228">!</a>. For example, if it is the output from a spreadsheet, you should open the data<a id="4229">!</a> in that spreadsheet program<a id="4479">!</a> to explore its contents and organization. [Typically, spreadsheet data<a id="4230">!</a> will not open well in a plain text<a id="4528">!</a> editor.] If you do not recognize the file extension as coming from a spreadsheet, try opening the file in a plain text<a id="4529">!</a> editor such as that used for<a id="4366">!</a> your scripts<a id="4499">!</a> and functions and see if the data<a id="4231">!</a> are legible. You should be able to discern the field<a id="4320">!</a> delimiters and the content of each line if the file contains plain text<a id="4530">!</a>.</p>
+        <p>The types of data of immediate interest are text<a id="3919">!</a> files and spreadsheets<a id="3898">!</a>. In Table 8.1 notice that the delimited text<a id="3920">!</a> files are presumed to contain numerical<a id="3868">!</a> values, whereas the spreadsheet data may be either numerical<a id="3869">!</a> data stored as doubles or string data stored in cell<a id="3670">!</a> arrays. Typically, text<a id="3921">!</a> files are delimited by a special character<a id="3688">!</a> (comma, tab, or anything else<a id="3738">!</a>) to designate the column<a id="3712">!</a> divider and a new-line character<a id="3689">!</a> to designate the rows. Once the data are imported, all of our normal array<a id="3646">!</a> and matrix<a id="3866">!</a> processing tools can be applied. The exception to this rule is the plain text<a id="3922">!</a> reader that must be provided with a format<a id="3800">!</a> specifier to define the data, and the names of the variables in which the data are to be stored.  So when you are approached with a file, the file extension (the part of the file name after the dot<a id="3736">!</a>) gives you a significant clue to the nature of the data. For example, if it is the output from a spreadsheet, you should open the data in that spreadsheet program to explore its contents and organization. [Typically, spreadsheet data will not open well in a plain text<a id="3923">!</a> editor.] If you do not recognize the file extension as coming from a spreadsheet, try opening the file in a plain text<a id="3924">!</a> editor such as that used for<a id="3775">!</a> your scripts<a id="3894">!</a> and functions and see if the data are legible. You should be able to discern the field<a id="3760">!</a> delimiters and the content of each line if the file contains plain text<a id="3925">!</a>.</p>
       </div>
     </div>
 
@@ -134,7 +134,7 @@
       <!-- Spreadsheets -->
       <h3 id="8_3_2">8.3.2 Spreadsheets</h3>
       <div class="container">
-        <p>Excel<a id="4312">!</a> is a Microsoft product that implements spreadsheets<a id="4504">!</a>. Spreadsheets are rectangular arrays containing labeled rows and columns of cells. The data<a id="4232">!</a> in the cells may be numbers<a id="4460">!</a>, strings<a id="4511">!</a>, or formulae that combine the data<a id="4233">!</a> values in other cells. Because of this computational capability, spreadsheets<a id="4505">!</a> can be used to solve many problems, and most offer flexible plotting packages for<a id="4367">!</a> presenting the results in colorful charts. There are occasions, however, when we need to apply the power of the MATLAB<a id="4453">!</a> language to the data<a id="4234">!</a> in a spreadsheet.  MATLAB<a id="4454">!</a> provides a reader for<a id="4368">!</a> Excel<a id="4313">!</a> spreadsheets<a id="4506">!</a> that gives you a significant amount of flexibility in retrieving the data<a id="4235">!</a> from the spreadsheet. Consider the typical set of data<a id="4236">!</a> in a spreadsheet named grades.xls shown in Table 8.2.</p>
+        <p>Excel<a id="3752">!</a> is a Microsoft product that implements spreadsheets<a id="3899">!</a>. Spreadsheets are rectangular arrays containing labeled rows and columns of cells. The data in the cells may be numbers<a id="3867">!</a>, strings<a id="3906">!</a>, or formulae that combine the data values in other cells. Because of this computational capability, spreadsheets<a id="3900">!</a> can be used to solve many problems, and most offer flexible plotting packages for<a id="3776">!</a> presenting the results in colorful charts. There are occasions, however, when we need to apply the power of the MATLAB<a id="3860">!</a> language to the data in a spreadsheet.  MATLAB<a id="3861">!</a> provides a reader for<a id="3777">!</a> Excel<a id="3753">!</a> spreadsheets<a id="3901">!</a> that gives you a significant amount of flexibility in retrieving the data from the spreadsheet. Consider the typical set of data in a spreadsheet named grades.xls shown in Table 8.2.</p>
         <table class="table table-bordered">
           <caption>Table 8.2: Sample Spreadsheet Data</caption>
           <thead>
@@ -160,19 +160,19 @@
             </tr>
           </tbody>
         </table>
-        <p>The goal of your spreadsheet reader is to separate the text<a id="4531">!</a> and numerical<a id="4463">!</a> portions of the spreadsheet. The parameter consumed by your spreadsheet reader is the name of the file; you can ask for<a id="4369">!</a> up to three return variables: the first will hold<a id="4435">!</a> all the numerical<a id="4464">!</a> values in an array<a id="4096">!</a> of doubles; the second will hold<a id="4436">!</a> all the text<a id="4532">!</a> data<a id="4237">!</a> in cell<a id="4120">!</a> arrays; and the third, if you request it, will hold<a id="4437">!</a> both string and numerical<a id="4465">!</a> data<a id="4238">!</a> in cell<a id="4121">!</a> arrays (try Exercise 8.1).</p>
+        <p>The goal of your spreadsheet reader is to separate the text<a id="3926">!</a> and numerical<a id="3870">!</a> portions of the spreadsheet. The parameter consumed by your spreadsheet reader is the name of the file; you can ask for<a id="3778">!</a> up to three return variables: the first will hold<a id="3842">!</a> all the numerical<a id="3871">!</a> values in an array<a id="3647">!</a> of doubles; the second will hold<a id="3843">!</a> all the text<a id="3927">!</a> data in cell<a id="3671">!</a> arrays; and the third, if you request it, will hold<a id="3844">!</a> both string and numerical<a id="3872">!</a> data in cell<a id="3672">!</a> arrays (try Exercise 8.1).</p>
         <div class="exercise">#exercise_8_1#</div>
-        <p><code>readcell(<a id="4492">!</a>...)</code> outputs the contents of the file as a cell<a id="4122">!</a> array<a id="4097">!</a>. In the cell<a id="4123">!</a> array<a id="4098">!</a>, each spot is a cell<a id="4124">!</a> containing the information from the spreadsheet, with a double inside if there was a number, char inside if there was text<a id="4533">!</a>, and missing if it was an empty<a id="4299">!</a> cell<a id="4125">!</a>; <code>missing</code> is its own data<a id="4239">!</a> type.</p>
-        <p>Frequently, after processing data<a id="4240">!</a>, you need to write the results back to a spreadsheet. Excel<a id="4314">!</a> spreadsheets<a id="4507">!</a> can be written using:<br>
-        <code>writecell(<a id="4583">!</a>&lt;data<a id="4241">!</a>&gt;, &lt;filename&gt;)</code><br>
-        where <code>&lt;data<a id="4242">!</a>&gt;</code> is the data<a id="4243">!</a> source (a cell<a id="4126">!</a> array<a id="4099">!</a>) and <code>&lt;filename&gt;</code> is the name of the file.</p>
+        <p><code>readcell(<a id="3887">!</a>...)</code> outputs the contents of the file as a cell<a id="3673">!</a> array<a id="3648">!</a>. In the cell<a id="3674">!</a> array<a id="3649">!</a>, each spot is a cell<a id="3675">!</a> containing the information from the spreadsheet, with a double inside if there was a number, char inside if there was text<a id="3928">!</a>, and missing if it was an empty<a id="3739">!</a> cell<a id="3676">!</a>; <code>missing</code> is its own data type.</p>
+        <p>Frequently, after processing data, you need to write the results back to a spreadsheet. Excel<a id="3754">!</a> spreadsheets<a id="3902">!</a> can be written using:<br>
+        <code>writecell(<a id="3978">!</a>&lt;data&gt;, &lt;filename&gt;)</code><br>
+        where <code>&lt;data&gt;</code> is the data source (a cell<a id="3677">!</a> array<a id="3650">!</a>) and <code>&lt;filename&gt;</code> is the name of the file.</p>
       </div>
     </div>
 
     <div class="chp-subsection" data-sub-num="3" data-sub-name="Delimited Text Files">
       <h3 id="8_3_3">8.3.3	Delimited Text Files</h3>
       <div class="container">
-        <p>If information is not available specifically in spreadsheet form, it can frequently be presented in text<a id="4534">!</a> file form. If the data<a id="4244">!</a> in a text<a id="4535">!</a> file are numerical<a id="4466">!</a> values only and are organized in a reasonable format<a id="4392">!</a>, you can read the file directly into an array<a id="4100">!</a>. It is necessary that the data<a id="4245">!</a> values are separated by commas, spaces, or tab characters [See 6.3.2 about delimiters]. Rows in the data<a id="4246">!</a> are separated as expected by a new-line character<a id="4139">!</a> combination [See 8.4]. These values might be saved in a file named, for<a id="4370">!</a> example, <code>nums.txt</code>.</p>
+        <p>If information is not available specifically in spreadsheet form, it can frequently be presented in text<a id="3929">!</a> file form. If the data in a text<a id="3930">!</a> file are numerical<a id="3873">!</a> values only and are organized in a reasonable format<a id="3801">!</a>, you can read the file directly into an array<a id="3651">!</a>. It is necessary that the data values are separated by commas, spaces, or tab characters [See 6.3.2 about delimiters]. Rows in the data are separated as expected by a new-line character<a id="3690">!</a> combination [See 8.4]. These values might be saved in a file named, for<a id="3779">!</a> example, <code>nums.txt</code>.</p>
         <table class="table table-borderless">
           <caption>Table 8.3: Delimited Data</caption>
             <tbody>
@@ -184,14 +184,14 @@
               <tr><td>19,51</td></tr>
             </tbody>
         </table>
-        <p>If the text<a id="4536">!</a> file contains only representation of data<a id="4247">!</a> separated by delimiters, it can be read using this:<br>
-        <code>arr = readcell(<a id="4493">!</a>&lt;file_name&gt;, &lt;Name&gt;, &lt;Value&gt;)</code>,<br>
-        where the <code>filename</code> parameter is the name of the file. The <code>readcell(<a id="4494">!</a>...)</code> function<a id="4405">!</a> produces a cell<a id="4127">!</a> array<a id="4101">!</a> containing the data<a id="4248">!</a> values with default delimiter<a id="4289">!</a> <code>','</code>. If you use a delimiter<a id="4290">!</a> other than a comma, you can specify <code>'Delimiter'</code> as the second input and <code>&lt;delimiter<a id="4291">!</a>_value<a id="4561">!</a>&gt;</code>, for<a id="4371">!</a> example <code>':'</code> as the third input. The second and third inputs are optional.</p>
-        <p>Try reading delimited<a id="4286">!</a> files<a id="4338">!</a> in Exercise 8.2 where Table 8.3 shows the content of the file <code>nums.txt</code>.  Notice that the array<a id="4102">!</a> elements<a id="4297">!</a> where data<a id="4249">!</a> are not supplied are filled with class <code>missing</code>.</p>
+        <p>If the text<a id="3931">!</a> file contains only representation of data separated by delimiters, it can be read using this:<br>
+        <code>arr = readcell(<a id="3888">!</a>&lt;file_name&gt;, &lt;Name&gt;, &lt;Value&gt;)</code>,<br>
+        where the <code>filename</code> parameter is the name of the file. The <code>readcell(<a id="3889">!</a>...)</code> function<a id="3814">!</a> produces a cell<a id="3678">!</a> array<a id="3652">!</a> containing the data values with default delimiter<a id="3729">!</a> <code>','</code>. If you use a delimiter<a id="3730">!</a> other than a comma, you can specify <code>'Delimiter'</code> as the second input and <code>&lt;delimiter<a id="3731">!</a>_value<a id="3956">!</a>&gt;</code>, for<a id="3780">!</a> example <code>':'</code> as the third input. The second and third inputs are optional.</p>
+        <p>Try reading delimited files in Exercise 8.2 where Table 8.3 shows the content of the file <code>nums.txt</code>.  Notice that the array<a id="3653">!</a> elements<a id="3737">!</a> where data are not supplied are filled with class <code>missing</code>.</p>
         <div class="exercise">#exercise_8_2#</div>
-        <p>Delimited data<a id="4250">!</a> files<a id="4339">!</a> can be written using:<br>
-        <code>writecell(<a id="4584">!</a>&lt;data<a id="4251">!</a>&gt;, &lt;filename&gt;, &lt;Name&gt;, &lt;Value&gt;)</code><br>
-        where <code>&lt;data<a id="4252">!</a>&gt;</code> is the data<a id="4253">!</a> source (a cell<a id="4128">!</a> array<a id="4103">!</a>) and <code>&lt;filename&gt;</code> is the name of the file. The third and fourth inputs can specify the delimiting correct, using <code>'Delimiter'</code> as the third input and <code>&lt;delimiter<a id="4292">!</a>_value<a id="4562">!</a>&gt;</code>, for<a id="4372">!</a> example <code>':'</code> as the fourth input. If  the  delimiting  character<a id="4140">!</a>  is  not  specified,  it  is  presumed  to  be  a comma.</p>
+        <p>Delimited data files can be written using:<br>
+        <code>writecell(<a id="3979">!</a>&lt;data&gt;, &lt;filename&gt;, &lt;Name&gt;, &lt;Value&gt;)</code><br>
+        where <code>&lt;data&gt;</code> is the data source (a cell<a id="3679">!</a> array<a id="3654">!</a>) and <code>&lt;filename&gt;</code> is the name of the file. The third and fourth inputs can specify the delimiting correct, using <code>'Delimiter'</code> as the third input and <code>&lt;delimiter<a id="3732">!</a>_value<a id="3957">!</a>&gt;</code>, for<a id="3781">!</a> example <code>':'</code> as the fourth input. If  the  delimiting  character<a id="3691">!</a>  is  not  specified,  it  is  presumed  to  be  a comma.</p>
       </div>
     </div>
   </div>
@@ -200,30 +200,30 @@
     <!-- Lower Level File I/O -->
     <h2 id="8_4">8.4 Lower-Level File I/O</h2>
     <div class="container">
-      <p>We will assume here that the file in which we are interested contains text<a id="4537">!</a> data<a id="4254">!</a> in the form of ASCII<a id="4087">!</a> character<a id="4141">!</a> codes.  Files for<a id="4373">!</a> which this is not the case<a id="4117">!</a> have to be treated as binary<a id="4112">!</a> files<a id="4340">!</a> which we will not discuss further. The MATLAB<a id="4455">!</a> language provides a set of lower-level<a id="4442">!</a> I/O functions that permit general-purpose text<a id="4538">!</a> file reading and writing. The following is a partial discussion of these functions that is sufficient for<a id="4374">!</a> most text<a id="4539">!</a> file processing needs. Recall in the discussion of the paper tape in 8.1 that once the tape has been loaded into the tape reader and begins to move (the file is opened), the individual characters are delivered to the calling program<a id="4480">!</a> until it reached the end<a id="4302">!</a> when the tape reader is stopped by the calling program<a id="4481">!</a> (the file is closed). Today, text<a id="4540">!</a> files<a id="4341">!</a> are delivered on many kinds of media, but to the calling program<a id="4482">!</a>, the same three features are required:
+      <p>We will assume here that the file in which we are interested contains text<a id="3932">!</a> data in the form of ASCII<a id="3638">!</a> character<a id="3692">!</a> codes.  Files for<a id="3782">!</a> which this is not the case<a id="3668">!</a> have to be treated as binary<a id="3663">!</a> files which we will not discuss further. The MATLAB<a id="3862">!</a> language provides a set of lower-level<a id="3849">!</a> I/O functions that permit general-purpose text<a id="3933">!</a> file reading and writing. The following is a partial discussion of these functions that is sufficient for<a id="3783">!</a> most text<a id="3934">!</a> file processing needs. Recall in the discussion of the paper tape in 8.1 that once the tape has been loaded into the tape reader and begins to move (the file is opened), the individual characters are delivered to the calling program until it reached the end<a id="3742">!</a> when the tape reader is stopped by the calling program (the file is closed). Today, text<a id="3935">!</a> files are delivered on many kinds of media, but to the calling program, the same three features are required:
       <ol>
         <li>the file must be successfully opened,</li>
-        <li>data<a id="4255">!</a> characters must be received by the calling program<a id="4483">!</a>, and</li>
-        <li>the files<a id="4342">!</a> should be closed.</li>
+        <li>data characters must be received by the calling program, and</li>
+        <li>the files should be closed.</li>
       </ol></p>
-      <p>Although MATLAB<a id="4456">!</a> may close<a id="4157">!</a> the file automatically when your program<a id="4484">!</a> exits, it is good practice to actually close<a id="4158">!</a> the file yourself when you have finished reading it.</p>
-      <p><b>The End-Of-File (EOF) Character:</b> The following question also arises: in the paper tape days, how do you know when you have reached the end<a id="4303">!</a> of the data<a id="4256">!</a>?  If you let the tape read until you reach the end<a id="4304">!</a> of the physical tape, no fresh data<a id="4257">!</a> will be passing the read heads and some kind of error condition will arise.  By convention, it was decided that a specific non-printable character<a id="4142">!</a> called 'EOF' with ASCII<a id="4088">!</a> value<a id="4563">!</a> 26 would be written at the end<a id="4305">!</a> of the data<a id="4258">!</a> on the tape. When that character<a id="4143">!</a> was read from the tape, the calling program<a id="4485">!</a> is informed that the end<a id="4306">!</a> of the tape has been reached and the tape can be stopped (the file closed). While the modern era has many different ways of delivering data<a id="4259">!</a> from a file to your program<a id="4486">!</a>, the need is still present to identify when there are no more data<a id="4260">!</a> to process, and the EOF character<a id="4144">!</a> is still used to terminate file reading.</p>
-      <p><b>New Line Markers:</b> There is another need for<a id="4375">!</a> special markers in a text<a id="4541">!</a> file inherited again from the paper tape era.  The tape reader was at that time directly connected to a primitive typewriter style printer of which the classic example was called the ASR-33. Each character<a id="4145">!</a> read from the tape was typed onto the paper and the carriage holding the print mechanism moved one place to the right waiting for<a id="4376">!</a> the next character<a id="4146">!</a>. When the carriage reached the 80th character<a id="4147">!</a> position, it could no longer advance to the right.  If nothing special happened, all the remaining characters on the tape were printed at the same location - not really what you want. In order to continue<a id="4183">!</a> printing legibly, two different actions were required, triggered by reading two different non-printable characters:
+      <p>Although MATLAB<a id="3863">!</a> may close<a id="3708">!</a> the file automatically when your program exits, it is good practice to actually close<a id="3709">!</a> the file yourself when you have finished reading it.</p>
+      <p><b>The End-Of-File (EOF) Character:</b> The following question also arises: in the paper tape days, how do you know when you have reached the end<a id="3743">!</a> of the data?  If you let the tape read until you reach the end<a id="3744">!</a> of the physical tape, no fresh data will be passing the read heads and some kind of error condition will arise.  By convention, it was decided that a specific non-printable character<a id="3693">!</a> called 'EOF' with ASCII<a id="3639">!</a> value<a id="3958">!</a> 26 would be written at the end<a id="3745">!</a> of the data on the tape. When that character<a id="3694">!</a> was read from the tape, the calling program is informed that the end<a id="3746">!</a> of the tape has been reached and the tape can be stopped (the file closed). While the modern era has many different ways of delivering data from a file to your program, the need is still present to identify when there are no more data to process, and the EOF character<a id="3695">!</a> is still used to terminate file reading.</p>
+      <p><b>New Line Markers:</b> There is another need for<a id="3784">!</a> special markers in a text<a id="3936">!</a> file inherited again from the paper tape era.  The tape reader was at that time directly connected to a primitive typewriter style printer of which the classic example was called the ASR-33. Each character<a id="3696">!</a> read from the tape was typed onto the paper and the carriage holding the print mechanism moved one place to the right waiting for<a id="3785">!</a> the next character<a id="3697">!</a>. When the carriage reached the 80th character<a id="3698">!</a> position, it could no longer advance to the right.  If nothing special happened, all the remaining characters on the tape were printed at the same location - not really what you want. In order to continue<a id="3728">!</a> printing legibly, two different actions were required, triggered by reading two different non-printable characters:
       <ul>
-        <li>return the carriage to the first column<a id="4168">!</a> by driving it all the way to the left, (CR, ASCII<a id="4089">!</a> 13), and</li>
-        <li>move the paper up so that the next character<a id="4148">!</a> will type below the previous line (LF, ASCII<a id="4090">!</a> 10).</li>
+        <li>return the carriage to the first column<a id="3713">!</a> by driving it all the way to the left, (CR, ASCII<a id="3640">!</a> 13), and</li>
+        <li>move the paper up so that the next character<a id="3699">!</a> will type below the previous line (LF, ASCII<a id="3641">!</a> 10).</li>
       </ul></p>
-      <p>In the modern era, of course, there may be no printing carriage to move to the left or paper to move up, but initially, the CR/LF sequence was still required to begin the next line of text<a id="4542">!</a>.  However, at some point, somebody said to themselves that it was wasting storage space to use two characters where only one action is required. Some people decided to leave off the CR, and some decided to leave off the LF, and so we are now blessed with three different possible end<a id="4307">!</a>-of-line indicators: CR, LF, or CR/LF.  This dilemma is usually hidden from the user, but can occasionally cause issues when moving text<a id="4543">!</a> files<a id="4343">!</a> from an Apple computer<a id="4181">!</a> to a Windows machine or a Unix machine.</p>
-      <p>In general, when reading a file, the file must be opened to return a value<a id="4564">!</a> to be used by subsequent functions to identify its data<a id="4261">!</a> stream. We usually refer to this identifier as the “file handle.” After the file contents have been manipulated, the file must be closed to complete the activity.</p>
+      <p>In the modern era, of course, there may be no printing carriage to move to the left or paper to move up, but initially, the CR/LF sequence was still required to begin the next line of text<a id="3937">!</a>.  However, at some point, somebody said to themselves that it was wasting storage space to use two characters where only one action is required. Some people decided to leave off the CR, and some decided to leave off the LF, and so we are now blessed with three different possible end<a id="3747">!</a>-of-line indicators: CR, LF, or CR/LF.  This dilemma is usually hidden from the user, but can occasionally cause issues when moving text<a id="3938">!</a> files from an Apple computer<a id="3726">!</a> to a Windows machine or a Unix machine.</p>
+      <p>In general, when reading a file, the file must be opened to return a value<a id="3959">!</a> to be used by subsequent functions to identify its data stream. We usually refer to this identifier as the “file handle.” After the file contents have been manipulated, the file must be closed to complete the activity.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Opening and Closing Files">
       <!-- Opening and Closing Files -->
       <h3 id="8_4_1">8.4.1	Opening and Closing Files</h3>
       <div class="container">
-        <p>To open a file for<a id="4377">!</a> reading or writing, use <code>fh = fopen(<a id="4352">!</a> &lt;file_name&gt;, &lt;purpose&gt;)</code>
-        where <code>fh</code> is a file handle used in subsequent function<a id="4406">!</a> calls to identify this particular input stream, <code>&lt;file_name&gt;</code> is the name of the file, and <code>&lt;purpose&gt;</code> is a string specifying the purpose for<a id="4378">!</a> opening the file. The most common purposes are <code>'r'</code> to read the file, <code>'w'</code> to write it, or <code>'a'</code> to append to an existing file. See the help<a id="4431">!</a> files<a id="4344">!</a> for<a id="4379">!</a> more complex situations. If the purpose is <code>'r'</code>, the file must already exist; if <code>'w'</code> and the file already exists, it will be overwritten; if <code>'a'</code> and the file already exists, the new data<a id="4262">!</a> will be appended to the end<a id="4308">!</a>. The consequence of failure to open the file is indicated by returning a file handle of –1 rather than a positive number. It is good practice to check the file handle upon return from a file open command.</p>
-        <p>To close<a id="4159">!</a> the file, call <code>fclose(<a id="4315">!</a> fh )</code>.
+        <p>To open a file for<a id="3786">!</a> reading or writing, use <code>fh = fopen(<a id="3761">!</a> &lt;file_name&gt;, &lt;purpose&gt;)</code>
+        where <code>fh</code> is a file handle used in subsequent function<a id="3815">!</a> calls to identify this particular input stream, <code>&lt;file_name&gt;</code> is the name of the file, and <code>&lt;purpose&gt;</code> is a string specifying the purpose for<a id="3787">!</a> opening the file. The most common purposes are <code>'r'</code> to read the file, <code>'w'</code> to write it, or <code>'a'</code> to append to an existing file. See the help<a id="3840">!</a> files for<a id="3788">!</a> more complex situations. If the purpose is <code>'r'</code>, the file must already exist; if <code>'w'</code> and the file already exists, it will be overwritten; if <code>'a'</code> and the file already exists, the new data will be appended to the end<a id="3748">!</a>. The consequence of failure to open the file is indicated by returning a file handle of –1 rather than a positive number. It is good practice to check the file handle upon return from a file open command.</p>
+        <p>To close<a id="3710">!</a> the file, call <code>fclose(<a id="3755">!</a> fh )</code>.
       </div>
     </div>
 
@@ -231,21 +231,21 @@
       <!-- Reading Text Files -->
       <h3 id="8_4_2">8.4.2	Reading Text Files</h3>
       <div class="container">
-        <p>It is possible, but rarely appropriate, to read one character<a id="4149">!</a> at a time from a text<a id="4544">!</a> file using <code>fread(...)</code> or <code>fwrite(...)</code> and we will not consider that here.  Rather, we will make use of the presence of the New Line Markers (whatever they are) to read and write whole lines or more from the file.</p>
-        <p>To read a file, three levels of support are provided: reading whole lines with or without the new-line character<a id="4150">!</a>, parsing into tokens with delimiters, or parsing into cell<a id="4129">!</a> arrays using a format<a id="4393">!</a> string:
+        <p>It is possible, but rarely appropriate, to read one character<a id="3700">!</a> at a time from a text<a id="3939">!</a> file using <code>fread(...)</code> or <code>fwrite(...)</code> and we will not consider that here.  Rather, we will make use of the presence of the New Line Markers (whatever they are) to read and write whole lines or more from the file.</p>
+        <p>To read a file, three levels of support are provided: reading whole lines with or without the new-line character<a id="3701">!</a>, parsing into tokens with delimiters, or parsing into cell<a id="3680">!</a> arrays using a format<a id="3802">!</a> string:
         <ul>
-          <li>To read a whole line including the new-line character<a id="4151">!</a>, use <code>str = fgets(<a id="4318">!</a> fh )</code> that will return each line as a string until the end<a id="4309">!</a> of the file, when the value<a id="4565">!</a> –1 is returned instead of a string. To leave out each new-line character<a id="4152">!</a>, use <code>fgetl(<a id="4316">!</a>...)</code> instead (the last character<a id="4153">!</a> is a lowercase L).</li>
-          <li>To parse each line into tokens (elementary text<a id="4545">!</a> strings<a id="4512">!</a>) separated by white space delimiters, use a combination of <code>fgetl(<a id="4317">!</a>...)</code> and the tokenizer function<a id="4407">!</a> <code>[&lt;tk&gt;, &lt;rest&gt;] = strtok( &lt;ln&gt; )</code>; where <code>&lt;tk&gt;</code> is a string token<a id="4557">!</a>, <code>&lt;rest&gt;</code> is the remainder of the line, and <code>&lt;ln&gt;</code> is a string to be parsed into tokens.</li>
-          <li>you could try to parse a line according to a specific format<a id="4394">!</a> string into a cell<a id="4130">!</a> array<a id="4104">!</a> by using
-          <code>ca = textscan(<a id="4556">!</a> fh, &lt;format<a id="4395">!</a>&gt; );</code>
-          where <code>ca</code> is the resulting cell<a id="4131">!</a> array<a id="4105">!</a>, <code>fh</code> is the file handle, and <code>&lt;format<a id="4396">!</a>&gt;</code> is a format<a id="4397">!</a> control string such as we used for<a id="4380">!</a> <code>sscanf(<a id="4510">!</a>...)</code> in para 6.3.2.</li>
+          <li>To read a whole line including the new-line character<a id="3702">!</a>, use <code>str = fgets(<a id="3758">!</a> fh )</code> that will return each line as a string until the end<a id="3749">!</a> of the file, when the value<a id="3960">!</a> –1 is returned instead of a string. To leave out each new-line character<a id="3703">!</a>, use <code>fgetl(<a id="3756">!</a>...)</code> instead (the last character<a id="3704">!</a> is a lowercase L).</li>
+          <li>To parse each line into tokens (elementary text<a id="3940">!</a> strings<a id="3907">!</a>) separated by white space delimiters, use a combination of <code>fgetl(<a id="3757">!</a>...)</code> and the tokenizer function<a id="3816">!</a> <code>[&lt;tk&gt;, &lt;rest&gt;] = strtok( &lt;ln&gt; )</code>; where <code>&lt;tk&gt;</code> is a string token<a id="3952">!</a>, <code>&lt;rest&gt;</code> is the remainder of the line, and <code>&lt;ln&gt;</code> is a string to be parsed into tokens.</li>
+          <li>you could try to parse a line according to a specific format<a id="3803">!</a> string into a cell<a id="3681">!</a> array<a id="3655">!</a> by using
+          <code>ca = textscan(<a id="3951">!</a> fh, &lt;format<a id="3804">!</a>&gt; );</code>
+          where <code>ca</code> is the resulting cell<a id="3682">!</a> array<a id="3656">!</a>, <code>fh</code> is the file handle, and <code>&lt;format<a id="3805">!</a>&gt;</code> is a format<a id="3806">!</a> control string such as we used for<a id="3789">!</a> <code>sscanf(<a id="3905">!</a>...)</code> in para 6.3.2.</li>
         </ul>
-        <p>When the read function<a id="4408">!</a> finds the EOF character<a id="4154">!</a>, instead of returning a string, it returns <code>-1</code>. This is actually the reason to exit a while<a id="4576">!</a> loop processing the text<a id="4546">!</a> which can conveniently be accomplished with the <code>ischar(<a id="4439">!</a>...)</code> function<a id="4409">!</a>.</p>
-        <p>To illustrate the use of these functions for<a id="4381">!</a> reading a text<a id="4547">!</a> file, the script in Listing 8.1 shows a script that will list any text<a id="4548">!</a> file in the Command<a id="4176">!</a> window.</p>
+        <p>When the read function<a id="3817">!</a> finds the EOF character<a id="3705">!</a>, instead of returning a string, it returns <code>-1</code>. This is actually the reason to exit a while<a id="3971">!</a> loop processing the text<a id="3941">!</a> which can conveniently be accomplished with the <code>ischar(<a id="3846">!</a>...)</code> function<a id="3818">!</a>.</p>
+        <p>To illustrate the use of these functions for<a id="3790">!</a> reading a text<a id="3942">!</a> file, the script in Listing 8.1 shows a script that will list any text<a id="3943">!</a> file in the Command<a id="3721">!</a> window.</p>
         <div class="listing">#listing_08_1#</div>
-        <p>As an example of the use of a strtok(...), consider the code<a id="4166">!</a> shown in Listing 8.2, which performs the same function<a id="4410">!</a> as Listing 8.1 but uses tokens.</p>
+        <p>As an example of the use of a strtok(...), consider the code shown in Listing 8.2, which performs the same function<a id="3819">!</a> as Listing 8.1 but uses tokens.</p>
         <div class="listing">#listing_08_2#</div>
-        <p>Run the scripts<a id="4500">!</a> in Listings 8.1 and 8.2. This will show the difference in output results between the conventional listing script and the tokenizing lister. With the tokenizer, we see each individual token<a id="4558">!</a> (really, each word in a normal text<a id="4549">!</a> file) separately listed.</p>
+        <p>Run the scripts<a id="3895">!</a> in Listings 8.1 and 8.2. This will show the difference in output results between the conventional listing script and the tokenizing lister. With the tokenizer, we see each individual token<a id="3953">!</a> (really, each word in a normal text<a id="3944">!</a> file) separately listed.</p>
       </div>
     </div>
 
@@ -253,7 +253,7 @@
       <!-- Writing Text Files -->
       <h3 id="8_4_3">8.4.3	Writing Text Files</h3>
       <div class="container">
-        <p>Once a file has been opened for<a id="4382">!</a> writing, the <code>fprintf(<a id="4400">!</a>...)</code>function<a id="4411">!</a> can be used to write to the file by including its file handle as the first parameter. For example, Listing 8.3 is a minor alteration to Listing 8.1, copying a text<a id="4550">!</a> file instead of listing it in the Command<a id="4177">!</a> window.</p>
+        <p>Once a file has been opened for<a id="3791">!</a> writing, the <code>fprintf(<a id="3809">!</a>...)</code>function<a id="3820">!</a> can be used to write to the file by including its file handle as the first parameter. For example, Listing 8.3 is a minor alteration to Listing 8.1, copying a text<a id="3945">!</a> file instead of listing it in the Command<a id="3722">!</a> window.</p>
         <div class="listing">#listing_08_3#</div>
       </div>
     </div>
@@ -267,12 +267,12 @@
         <img src="..\Images\Fig_8_2.JPG" alt="Figure 8.2" class="fig card-image">
         <p class="figure-name card-title">Figure 8.2: Spreadsheet Data</p>
       </div>
-      <p>Frequently, engineering<a id="4310">!</a> data<a id="4263">!</a> are provided in spreadsheets<a id="4508">!</a>. Here we will adapt the structure<a id="4516">!</a> assembly problem from Chapter 7. The script for<a id="4383">!</a> that solution created the data<a id="4264">!</a> using a constructor function<a id="4412">!</a>. Consider the situation in which the data<a id="4265">!</a> are provided in a spreadsheet such as that shown in Figure 8.2. To make it more interesting, we imagine that the spreadsheet would have numerical<a id="4467">!</a> information such as the node's coordinates and an index value<a id="4566">!</a> which other users might need, but we don't. We have to start by examining the layout of the data<a id="4266">!</a> and the process necessary to extract what we need. Based on the spreadsheet, there is both string and numerical<a id="4468">!</a> data<a id="4267">!</a>.</p>
-      <p>The other concern is that there are a different number of connections on each row of the sheet. Our solution to the beams problem requires the connections to be placed in a cell<a id="4132">!</a> array<a id="4106">!</a>. When a connection is present, it is a string. When it is not present, we can see from the behavior of the raw data<a id="4268">!</a> that the contents of empty<a id="4300">!</a> cells appear as a cell<a id="4133">!</a> containing <code>missiong</code>.</p>
-      <p>We need a function<a id="4413">!</a> that will read this spread sheet and produce the same model of the structure<a id="4517">!</a> used in Chapter 7. Such a function<a id="4414">!</a> is shown in Listing 8.4.</p>
+      <p>Frequently, engineering<a id="3750">!</a> data are provided in spreadsheets<a id="3903">!</a>. Here we will adapt the structure<a id="3911">!</a> assembly problem from Chapter 7. The script for<a id="3792">!</a> that solution created the data using a constructor function<a id="3821">!</a>. Consider the situation in which the data are provided in a spreadsheet such as that shown in Figure 8.2. To make it more interesting, we imagine that the spreadsheet would have numerical<a id="3874">!</a> information such as the node's coordinates and an index value<a id="3961">!</a> which other users might need, but we don't. We have to start by examining the layout of the data and the process necessary to extract what we need. Based on the spreadsheet, there is both string and numerical<a id="3875">!</a> data.</p>
+      <p>The other concern is that there are a different number of connections on each row of the sheet. Our solution to the beams problem requires the connections to be placed in a cell<a id="3683">!</a> array<a id="3657">!</a>. When a connection is present, it is a string. When it is not present, we can see from the behavior of the raw data that the contents of empty<a id="3740">!</a> cells appear as a cell<a id="3684">!</a> containing <code>missiong</code>.</p>
+      <p>We need a function<a id="3822">!</a> that will read this spread sheet and produce the same model of the structure<a id="3912">!</a> used in Chapter 7. Such a function<a id="3823">!</a> is shown in Listing 8.4.</p>
       <div class="listing">#listing_08_4#</div>
-      <p>To test this function<a id="4415">!</a>, replace the structure<a id="4518">!</a> array<a id="4107">!</a> construction in lines 1–22 of Listing 7.6 in Chapter 7 with the following line:<br>
-      <code>data<a id="4269">!</a> = readStruct(<a id="4496">!</a>'beams.xlsx');</code><br>
+      <p>To test this function<a id="3824">!</a>, replace the structure<a id="3913">!</a> array<a id="3658">!</a> construction in lines 1–22 of Listing 7.6 in Chapter 7 with the following line:<br>
+      <code>data = readStruct(<a id="3891">!</a>'beams.xlsx');</code><br>
       The script should then produce the same results as before.</p>
     </div>
   </div>
@@ -280,11 +280,11 @@
   <!-- Chapter Summary -->
   <h2>Chapter Summary</h2>
   <div class="container">
-    <p>We have described three levels of capability for<a id="4384">!</a> reading and writing files<a id="4345">!</a>:
+    <p>We have described three levels of capability for<a id="3793">!</a> reading and writing files:
     <ul>
-      <li>The save and load operators<a id="4474">!</a> allow you to save variables from the workspace and restore them to the workspace</li>
-      <li>Specialized functions read and write spreadsheets<a id="4509">!</a> and delimited<a id="4287">!</a> text<a id="4551">!</a> files<a id="4346">!</a></li>
-      <li>Lower-level functions provide the ability to open and close<a id="4160">!</a> files<a id="4347">!</a>, and to read and write text<a id="4552">!</a> files<a id="4348">!</a> in any form that is required</li>
+      <li>The save and load operators<a id="3881">!</a> allow you to save variables from the workspace and restore them to the workspace</li>
+      <li>Specialized functions read and write spreadsheets<a id="3904">!</a> and delimited text<a id="3946">!</a> files</li>
+      <li>Lower-level functions provide the ability to open and close<a id="3711">!</a> files, and to read and write text<a id="3947">!</a> files in any form that is required</li>
     </ul>
   </div>
 <h2>Self Test</h2>
@@ -294,118 +294,118 @@ Use the following questions to check your understanding of the material in this
 chapter:
 <h3>True or False</h3>
 <ol>
-<li>All data<a id="4270">!</a> files<a id="4349">!</a> should be treated as a sequential series of characters.</li>
-      <li> When you save a workspace,<a id="4577">!</a> you are actually saving the scripts<a id="4501">!</a> that
-generate the data<a id="4271">!</a> in the workspace.</li>
-      <li>MATLAB<a id="4457">!</a> reads strings<a id="4513">!</a> from tab- or comma-delimited<a id="4288">!</a> files<a id="4350">!</a> by
-recognizing the double quotes that delimit strings<a id="4514">!</a>.</li>
-      <li>If you use fopen(<a id="4353">!</a>...) to open an existing file and write to it, the
-original data<a id="4272">!</a> in the file will be overwritten.</li>
-      <li>The function<a id="4416">!</a> fgets(<a id="4319">!</a>fh) does not always return a string.</li>
+<li>All data files should be treated as a sequential series of characters.</li>
+      <li> When you save a workspace,<a id="3972">!</a> you are actually saving the scripts<a id="3896">!</a> that
+generate the data in the workspace.</li>
+      <li>MATLAB<a id="3864">!</a> reads strings<a id="3908">!</a> from tab- or comma-delimited files by
+recognizing the double quotes that delimit strings<a id="3909">!</a>.</li>
+      <li>If you use fopen(<a id="3762">!</a>...) to open an existing file and write to it, the
+original data in the file will be overwritten.</li>
+      <li>The function<a id="3825">!</a> fgets(<a id="3759">!</a>fh) does not always return a string.</li>
 </ol>
 <h3>Fill in the Blanks</h3>
 <ol>
-<li>In general, data<a id="4273">!</a> files<a id="4351">!</a> contain text<a id="4553">!</a> that represents the ________ of the
-data<a id="4274">!</a> and control characters that specify the _____________ of the
-data<a id="4275">!</a>.</li>
-      <li>The MATLAB<a id="4458">!</a> readcell(<a id="4495">!</a>...) function<a id="4417">!</a> returns three results: the
+<li>In general, data files contain text<a id="3948">!</a> that represents the ________ of the
+data and control characters that specify the _____________ of the
+data.</li>
+      <li>The MATLAB<a id="3865">!</a> readcell(<a id="3890">!</a>...) function<a id="3826">!</a> returns three results: the
 ____________ in a(n) __________, the __________ in a(n) __________,
 and _____________ in a ____________.</li>
-      <li>When using dlmread(<a id="4293">!</a>...) to populate a(n) ___________, any
+      <li>When using dlmread(<a id="3733">!</a>...) to populate a(n) ___________, any
 unassigned values are ___________.</li>
-      <li>When using fopen(<a id="4354">!</a>...) , the consequence of failure to open the file
+      <li>When using fopen(<a id="3763">!</a>...) , the consequence of failure to open the file
 is _____________.</li>
 </ol>
 
 <h3>Programming Projects</h3>
 <ol>
-<li>Write a script that performs the following operations<a id="4473">!</a>:
+<li>Write a script that performs the following operations<a id="3880">!</a>:
 <ul>
-<li>Set the value<a id="4567">!</a> of variables a, b, c1, c2, c3, and x . The values
+<li>Set the value<a id="3962">!</a> of variables a, b, c1, c2, c3, and x . The values
 don’t matter, except you should set c2 to 42.</li>
-      <li>Save the values of all the variable<a id="4572">!</a> except x to mydata.mat using
-the save operation<a id="4470">!</a>.</li>
-      <li>Set the value<a id="4568">!</a> of c2 to -99.</li>
+      <li>Save the values of all the variable<a id="3967">!</a> except x to mydata.mat using
+the save operation<a id="3877">!</a>.</li>
+      <li>Set the value<a id="3963">!</a> of c2 to -99.</li>
       <li>Load myData.mat and check that c2 is now 42.</li>
       <li>Clear all variables.</li>
-      <li>Load myData.mat again and note that the variable<a id="4573">!</a> x is not present.
+      <li>Load myData.mat again and note that the variable<a id="3968">!</a> x is not present.
 </ul></li>
-      <li>One requirement for<a id="4385">!</a> all freshmen classes<a id="4155">!</a> is an issue of a 'Standing'
+      <li>One requirement for<a id="3794">!</a> all freshmen classes<a id="3706">!</a> is an issue of a 'Standing'
 during the middle of the term. The results are either Satisfactory (S)
 or Unsatisfactory (U) . Since you are the office employee in charge of
-issuing these grades, you decide to write a function<a id="4418">!</a> called
-midtermGrades to help<a id="4432">!</a> yourself. You discover that the grades are on
+issuing these grades, you decide to write a function<a id="3827">!</a> called
+midtermGrades to help<a id="3841">!</a> yourself. You discover that the grades are on
 a spreadsheet organized like this:
 <ul>
 <li>Each student is represented by one row on the spreadsheet.</li>
       <li>Unfortunately, since these sheets are created by different
 instructors, they are not necessarily consistent in their layout.</li>
-      <li>The first row will contain the following six strings<a id="4515">!</a> in any order:<br>
+      <li>The first row will contain the following six strings<a id="3910">!</a> in any order:<br>
 'name', 'math', 'science', 'english', 'history', and 'cs'.</li>
-      <li>Under the name column<a id="4169">!</a> will be a string with the student's name.</li>
+      <li>Under the name column<a id="3714">!</a> will be a string with the student's name.</li>
       <li>Grades in the other columns can be 'A', 'B', 'C', 'D', 'F', or
 'W</li>
       <li>A student's grade is 'S' if there are more A's, B's and C's than
 not.</li>
       </ul>
-Your function<a id="4419">!</a> should print out grades ready to be entered consisting
+Your function<a id="3828">!</a> should print out grades ready to be entered consisting
 of a table with headings 'Name' and 'S/U'</li>
-      <li>Write a function<a id="4420">!</a> called genStats that will compute statistics for<a id="4386">!</a> a set
+      <li>Write a function<a id="3829">!</a> called genStats that will compute statistics for<a id="3795">!</a> a set
 of class grades. The grades will be stored in a spreadsheet, and your
-function<a id="4421">!</a> will compute statistics and then write the grades along
+function<a id="3830">!</a> will compute statistics and then write the grades along
 with the statistics to another spreadsheet. <br>
-You may assume that the initial spreadsheet will have a format<a id="4398">!</a>
+You may assume that the initial spreadsheet will have a format<a id="3807">!</a>
 similar to:<br>
 Student Name Exam1 Exam2 Exam3 ...<br>
 student 1 100 76 45 ...<br>
 student 2 34 83 89 ...<br>
-The first row is the header row, and the first column<a id="4170">!</a> is the list of
+The first row is the header row, and the first column<a id="3715">!</a> is the list of
 student names. There may be any number of exam grades, and there
 may be any number of students. Although, you may assume that
 there will be at least one student and that there will be at least one
 exam.<br>
-Also, every student will have a grade for<a id="4387">!</a> every exam.
-Your function<a id="4422">!</a> should only have one input (a string containing the
+Also, every student will have a grade for<a id="3796">!</a> every exam.
+Your function<a id="3831">!</a> should only have one input (a string containing the
 file name of the grades file) and no outputs. You must write your
-function<a id="4423">!</a> to perform the following steps:
+function<a id="3832">!</a> to perform the following steps:
 <ul>
 <li>Calculate the average grade of each student (across the rows) and
-store it in a new column<a id="4171">!</a> called 'Average' (to the right of the last
+store it in a new column<a id="3716">!</a> called 'Average' (to the right of the last
 exam grade).</li>
       <li>Calculate the deviation of each student's overall average
 (calculated in step a) from the maximum student average and
-store it in a new column<a id="4172">!</a> called 'Deviation' (to the right of the
-'Average' column<a id="4173">!</a>). Note that deviation is just the difference
+store it in a new column<a id="3717">!</a> called 'Deviation' (to the right of the
+'Average' column<a id="3718">!</a>). Note that deviation is just the difference
 between the maximum student average and a student's overall
 average.</li>
-      <li>Calculate the average of each column<a id="4174">!</a>'s data<a id="4276">!</a> (each exam), the
+      <li>Calculate the average of each column<a id="3719">!</a>'s data (each exam), the
 averages calculated in step a, and the deviations calculated in
 step b, then store these averages below the last row of the original
-data<a id="4277">!</a> and name that row 'Total Average'.</li>
-      <li>Write the original data<a id="4278">!</a> along with all of the new data<a id="4279">!</a> to a file
+data and name that row 'Total Average'.</li>
+      <li>Write the original data along with all of the new data to a file
 named 'Stats_&lt;name_of_original_file&gt;' (so if the inputted file
-name was 'Student_Grades.csv' , the new data<a id="4280">!</a> would be written
+name was 'Student_Grades.csv' , the new data would be written
 to the file named 'Stats_Student_Grades.csv' ).</li>
-      <li>Construct a spreadsheet with suitable test data<a id="4281">!</a> and use it to test
-your function<a id="4424">!</a>.</li>
+      <li>Construct a spreadsheet with suitable test data and use it to test
+your function<a id="3833">!</a>.</li>
       </ul></li>
-      <li>Write a function<a id="4425">!</a> called replaceStr . Your function<a id="4426">!</a> should take in the
+      <li>Write a function<a id="3834">!</a> called replaceStr . Your function<a id="3835">!</a> should take in the
 following order:<br>
 filename: A string that corresponds to the name of a file<br>
 wordA: A string that is a word (contains no spaces)<br>
 wordB: Another string that is also a word (contains no spaces)<br>
-Your function<a id="4427">!</a> should do the following:
+Your function<a id="3836">!</a> should do the following:
 <ul>
 <ul>Read the file a line at a time.</li>
       <li>On each line, replace every occurrence of wordA with wordB.</li>
-      <li>Write the modified text<a id="4554">!</a> file with the same name as the original
+      <li>Write the modified text<a id="3949">!</a> file with the same name as the original
 file, but preprended with 'new_' . For instance, if the input
-filename was 'data<a id="4282">!</a>.txt' , the output filename would be 'new_
-data<a id="4283">!</a>.txt'.</li>
-      <li>Prepare a test file by downloading a text<a id="4555">!</a> file from the Internet.
+filename was 'data.txt' , the output filename would be 'new_
+data.txt'.</li>
+      <li>Prepare a test file by downloading a text<a id="3950">!</a> file from the Internet.
 For example, the complete works of Shakespeare are accessible at
 http://www.william-shakespeare.info</li>
-      <li>Examine the file for<a id="4388">!</a> repeated words, and test your function<a id="4428">!</a> by
+      <li>Examine the file for<a id="3797">!</a> repeated words, and test your function<a id="3837">!</a> by
 writing a script that replaces frequently repeated words.</li>
 </ul></li>
  

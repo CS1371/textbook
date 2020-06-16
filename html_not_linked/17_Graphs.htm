@@ -259,21 +259,21 @@
       </div>
     </div>
 
-    <div class="chp-subsection" data-sub-num="3" data-sub-name="Dijkstra's Algorithm">
-      <!-- Dijkstra's Algorithm -->
-      <h3 id="17_6_3">17.6.3	Dijkstra’s Algorithm</h3>
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="Dijkstras Algorithm">
+      <!-- Dijkstras Algorithm -->
+      <h3 id="17_6_3">17.6.3	Dijkstras Algorithm</h3>
       <div class="container">
           <p>Although the minimal number of nodes is sometimes the right answer, frequently there is a path that uses more nodes but has a smaller overall cost. This is evident from a quick glance at Figure 17.5: the path 1-0-5-6-7 has a lower cost than the path 1-0-4-7 found by the BFS algorithm, which actually ignores the edge weights. Many algorithms exist for finding the optimal path through a graph. Here we illustrate the algorithm attributed to the Dutch computer scientist Dr. Edsger Dijkstra. Perhaps it is not the most efficient algorithm; but for our purposes, this approach has the virtue of being a minor extension to the while loop algorithm described in Listing 17.3.  The major differences arise from the use of a priority queue in place of the normal queue used in the BFS algorithm.</p>
           <ul>
               <li> As previously noted, priority queues differ from basic queues only to the extent that the <code>&lt;enqueue(...)&gt;</code> method puts the data in order, rather than at the tail of the queue. The ordering criterion required by the algorithm is to place the paths in increasing order of path cost. While we have not explicitly dealt with the Big O of these algorithms, it is clear in the micro sense that inserting at the end of a queue is O(1) while inserting in order in a priority queue is O(N) where N is the worst case of queue length.</li>
               <li>The objects contained in the priority queue need to contain not only the path, but also the total path weight.</li>
-              <li> we have to change the exit strategy in the template shown in Listing 17.2.  For DFS and BFS, once a path has been added to their collections, there is no possibility of a "better" path being inserted ahead of that result. Hence, it is fine to perform the exit test when inserting each child node.  However, this is not the case for the Dijkstra algorithm; better paths can be inserted before any of the paths entered. In a formal sense, it is safe to perform the exit test when a path is dequeued. However, when preparing the somewhat intimidating view of the priority view when the algorithm completed, we shortened that queue by realizing that the algorithm may be stopped when a path of cost N to the end is enqueued if it is logically impossible for the next step on any of the surviving shorter paths to reach the ending node with a cost less than N.</li>
+              <li> we have to change the exit strategy in the template shown in Listing 17.2.  For DFS and BFS, once a path has been added to their collections, there is no possibility of a "better" path being inserted ahead of that result. Hence, it is fine to perform the exit test when inserting each child node.  However, this is not the case for Dijkstras algorithm; better paths can be inserted before any of the paths entered. In a formal sense, it is safe to perform the exit test when a path is dequeued. However, when preparing the somewhat intimidating view of the priority view when the algorithm completed, we shortened that queue by realizing that the algorithm may be stopped when a path of cost N to the end is enqueued if it is logically impossible for the next step on any of the surviving shorter paths to reach the ending node with a cost less than N.</li>
           </ul>
           <p>Figures 17.11 and 17.12 show the animations for the same two problems and the resulting priority queue for the smaller case. While this algorithm does compute the path with the lowest cost, it does so at considerable extra computation cost, as is evident from the run time of the second animation, the increased Big O if the enqueue method and the enormous amount of extra stuff packed into the priority queue in Figure 17.12.</p>
           <div class="card-deck">
               <div class="col-sm-7 card">
-                  <video controls class="card-image"><source src="..\Images\Optimal.mp4" type="video/mp4">Fig 17.11: Animation of Dijkstra's Algorithm</video>
-                  <p class="figure-name card-title">Fig 17.11: Animation of Dijkstra's Algorithm</p>
+                  <video controls class="card-image"><source src="..\Images\Optimal.mp4" type="video/mp4">Fig 17.11: Animation of Dijkstras Algorithm</video>
+                  <p class="figure-name card-title">Fig 17.11: Animation of Dijkstras Algorithm</p>
               </div>
               <div class="col-sm-5 card">
                   <div class="fig-long">
@@ -289,7 +289,7 @@
       <!-- An Approximation Algorithm -->
       <h3 id="17_6_4">17.6.4	An Approximation Algorithm</h3>
       <div class="container clearfix">
-          <p>As we progressed from DFS to BFS to Dijkstra's algorithm, the answers became more precise, but the computational cost was increasing.  Even for a really small proportion of the streets in the Atlanta metropolitan area, the solution became unpleasantly slow. Yet, the Satellite Navigation system on any car  can compute the route from somewhere in the Atlanta, Georgia area to the suburbs of Los Angeles, California in a second or less. To understand how this can work, we need to look at a fundamental change in the path computation algorithm and then, in Section 17.6.5 examine some additions to that algorithm to improve the efficiency and remove some occasional strange behavior.</p>
+          <p>As we progressed from DFS to BFS to Dijkstras algorithm, the answers became more precise, but the computational cost was increasing.  Even for a really small proportion of the streets in the Atlanta metropolitan area, the solution became unpleasantly slow. Yet, the Satellite Navigation system on any car  can compute the route from somewhere in the Atlanta, Georgia area to the suburbs of Los Angeles, California in a second or less. To understand how this can work, we need to look at a fundamental change in the path computation algorithm and then, in Section 17.6.5 examine some additions to that algorithm to improve the efficiency and remove some occasional strange behavior.</p>
           <div class="float-sm-right">
               <div class="card">
                   <video controls class="card-image"><source src="..\Images\Greedy.mp4" type="video/mp4">Fig 17.13: Animation of a Greedy Algorithm</video>
@@ -319,7 +319,7 @@
           <p>We have seen earlier that theoretical algorithms are OK for small problems, but for commercial algorithms that process large quantities of data, much care must be taken to ensure that the algorithm is fast enough and covers the nasty cases that make algorithms look foolish.</p>
           <ul>
               <li><b>"Layering" the problem</b>: Returning to the Sat Nav problem of finding a path from a house in Atlanta to a house in Los Angeles, if you were personally planning that route, you would not need to consider all the surface streets across the country. Rather, you would probably use a greedy algorithm to compute the route from the starting place to the nearest expressway on ramp, and from the destination to the nearest off ramp. The remains of the trip would be taken care of with a greedy algorithm on expressways only from the selected on ramp to the selected off ramp, and then stitch the three paths together.</li>
-              <li><b>Informed Search</b>: A number of researchers have enhanced the basic greedy algorithm to avoid the silly solutions.  A* is one such algorithm. It uses heuristics to maintain a small number of competing paths until they either became too costly or merged to a point where the best can be selected. One aspect of the algorithm design is choosing how many paths to maintain. This becomes a trade-off between computational speed and the need to avoid ridiculous behavior.  A normal greedy algorithm is the fast end of that spectrum and algorithms like Dijkstra's is the slow end.</li>
+              <li><b>Informed Search</b>: A number of researchers have enhanced the basic greedy algorithm to avoid the silly solutions.  A* is one such algorithm. It uses heuristics to maintain a small number of competing paths until they either became too costly or merged to a point where the best can be selected. One aspect of the algorithm design is choosing how many paths to maintain. This becomes a trade-off between computational speed and the need to avoid ridiculous behavior.  A normal greedy algorithm is the fast end of that spectrum and algorithms like Dijkstras is the slow end.</li>
           </ul>
       </div>
     </div>
@@ -361,7 +361,7 @@ Summary
   <ul>
       <li>How to construct and use queues and priority queues as the underlying mechanism for graph traversal</li>
       <li>Prim's algorithm for finding the minimum spanning tree of a graph</li>
-      <li>Depth-first, Breadth-first and Dijkstra's algorithms for finding exact paths
+      <li>Depth-first, Breadth-first and Dijkstras algorithms for finding exact paths
       through a graph</li>
       <li>A greedy algorithm for finding approximate paths that are "good enough."</li>
   </ul>

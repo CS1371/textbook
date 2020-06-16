@@ -42,6 +42,7 @@ function one_at_a_time
         fprintf('22_Preface.htm\n')
         fprintf('23_text_index.htm\n')
         fprintf('99_Quit\n');
+        fprintf('last choice was %d\n', choice);
         choice = input('Choose your action: ');    
         if choice ~= 99
             doit(choice)
