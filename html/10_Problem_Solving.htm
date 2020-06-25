@@ -25,7 +25,7 @@
     <p>This chapter presents an overview of framing the solutions to problems:</p>
     <ul>
       <li>We begin with simple problems that can be solved in a single step</li>
-      <li>We continue<a id="4551">!</a> to strategies for<a id="4584">!</a> solving more complex problems involving data collections by dividing the solution into the following fundamental operations<a id="4662">!</a> that can be performed on any collection<a id="4460">!</a> of data:<ol>
+      <li>We continue<a id="3503"></a> to strategies for solving more complex problems involving data collections<a id="3496"></a> by dividing the solution into the following fundamental operations<a id="3573"></a> that can be performed on any collection of data:<ol>
       <li>Basic Computations</li>
       <li>Inserting</li>
       <li>Traversing</li>
@@ -42,7 +42,7 @@
   <!-- Introduction -->
   <h1>Introduction</h1>
   <div class="container">
-    <p>Programming is really all about applying the computer<a id="4550">!</a> as a tool to solve problems. One of the most difficult tasks facing novice programmers is the blank sheet of paper. Faced with a problem you have never seen before, how do you start to solve it? The problem-solving<a id="4676">!</a> style recommended in this text<a id="4702">!</a> is first to identify the basic character<a id="4458">!</a> of the data and the basic operation(s) we are asked to perform. If these two ideas are clear<a id="4459">!</a>, we can create a template or outline of the solution and begin to fill in the blanks.  As we gain more experience with the language, we have more computing tools to apply, and we can attack larger, more complex problems. We now have sufficient tools available to consider a more principled approach to data manipulation and problem solving. We will begin with the typical plan for<a id="4585">!</a> solving simple problems in one step and then continue<a id="4552">!</a> to consider assembling multiple steps to solve more complex problems.</p>
+    <p>Programming is really all about applying the computer as a tool to solve problems. One of the most difficult tasks facing novice programmers is the blank sheet of paper. Faced with a problem you have never seen before, how do you start to solve it? The problem-solving<a id="3587"></a> style recommended in this text<a id="3611"></a> is first to identify the basic character of the data and the basic operation(s) we are asked to perform. If these two ideas are clear<a id="3495"></a>, we can create a template or outline of the solution and begin to fill in the blanks.  As we gain more experience with the language, we have more computing tools to apply, and we can attack larger, more complex problems. We now have sufficient tools available to consider a more principled approach to data manipulation and problem solving. We will begin with the typical plan for solving simple problems in one step and then continue<a id="3504"></a> to consider assembling multiple steps to solve more complex problems.</p>
   </div>
 
   <div class="chp-section" data-sect-num="1" data-sect-name="Solving Simple Problems">
@@ -54,14 +54,14 @@
         <p class="card-text">You might question the necessity of putting a "simple" bit of code through a rigorous analysis. However, the time when you first write a module and start using it is the time of closest scrutiny of that module.  It is amazing how quickly three things happen:
           <ol>
             <li>You trust that module implicitly to do the right thing</li>
-            <li>You use it in circumstances for<a id="4586">!</a> which it was not intended</li>
+            <li>You use it in circumstances for which it was not intended</li>
             <li>You wish you had paid more attention to defining error conditions in it.
             </li>
           </ol>
         </p>
       </div>
 
-      <p>In Chapter 2 we saw the basic plan for<a id="4587">!</a> solving simple problems:</p>
+      <p>In Chapter 2 we saw the basic plan for solving simple problems:</p>
       <ul>
         <li>Define the input data</li>
         <li>Define the output data</li>
@@ -78,7 +78,7 @@
     <!-- Assembling Solution Steps -->
     <h2 id="10_2">10.2	Assembling Solution Steps</h2>
     <div class="container">
-      <p>Problem complexity frequently comes in the form of data collections that need to be transformed into other collections or summarized as intermediate results. Identifying the operation(s) that will create the output from the input requires some experience. The rest of this chapter provides some guidelines for<a id="4588">!</a> identifying elementary steps whose solutions can be combined to create solutions to many complex problems.</p>
+      <p>Problem complexity frequently comes in the form of data collections<a id="3497"></a> that need to be transformed into other collections<a id="3498"></a> or summarized as intermediate results. Identifying the operation(s) that will create the output from the input requires some experience. The rest of this chapter provides some guidelines for identifying elementary steps whose solutions can be combined to create solutions to many complex problems.</p>
     </div>
   </div>
 
@@ -86,7 +86,7 @@
     <!-- Summary of Operations -->
     <h2 id="10_3">10.3	Summary of Operations</h2>
     <div class="container">
-      <p>First, we document the operations<a id="4663">!</a> we expect to be able to perform on collections. Table 10.1 lists the generic operations<a id="4664">!</a>, a brief description of each, and a discussion of the consequences.</p>
+      <p>First, we document the operations<a id="3574"></a> we expect to be able to perform on collections<a id="3499"></a>. Table 10.1 lists the generic operations<a id="3575"></a>, a brief description of each, and a discussion of the consequences.</p>
       <table class="table">
         <thead class="thead-light">
           <tr>Table 10.1: Summary of Operations</tr>
@@ -100,46 +100,46 @@
           <tr>
             <td>Basic Step</td>
             <td>Perform elementary operation(s)</td>
-            <td>Resulting value(<a id="4716">!</a>s)</td>
+            <td>Resulting value(<a id="3625"></a>s)</td>
           </tr>
           <tr>
             <td>Insert</td>
-            <td>Inserts one item into a collection<a id="4461">!</a></td>
+            <td>Inserts one item into a collection</td>
             <td>Collection with one more item</td>
           </tr>
           <tr>
             <td>Build</td>
-            <td>Creates a collection<a id="4462">!</a> from a data source (external file or traversing another collection<a id="4463">!</a>); usually accomplished by starting with an empty<a id="4562">!</a> collection<a id="4464">!</a> and inserting<a id="4628">!</a> one item at a time</td>
-            <td>A new collection<a id="4465">!</a> of data</td>
+            <td>Creates a collection from a data source (external file or traversing another collection); usually accomplished by starting with an empty<a id="3505"></a> collection and inserting<a id="3544"></a> one item at a time</td>
+            <td>A new collection of data</td>
           </tr>
           <tr>
             <td>Traverse</td>
-            <td>Touches each item of data in the collection<a id="4466">!</a> - frequently used to display or copy a collection<a id="4467">!</a></td>
-            <td>The collection<a id="4468">!</a> is unchanged</td>
+            <td>Touches each item of data in the collection - frequently used to display or copy a collection</td>
+            <td>The collection is unchanged</td>
           </tr>
           <tr>
             <td>Map</td>
-            <td>Changes the content of some or all of the items in the collection<a id="4469">!</a></td>
-            <td>A new collection<a id="4470">!</a> of the same length, but the content of some or all items is changed</td>
+            <td>Changes the content of some or all of the items in the collection</td>
+            <td>A new collection of the same length, but the content of some or all items is changed</td>
           </tr>
           <tr>
             <td>Filter</td>
-            <td>Removes some items from the collection<a id="4471">!</a></td>
-            <td>A new collection<a id="4472">!</a> with reduced length, but the content of the items remains unchanged</td>
+            <td>Removes some items from the collection</td>
+            <td>A new collection with reduced length, but the content of the items remains unchanged</td>
           </tr>
           <tr>
             <td>Fold</td>
-            <td> Traverses the collection<a id="4473">!</a>, summarizing the contents with a single result (e.g., sum, max, or mean)</td><td>A single result summarizing the collection<a id="4474">!</a> in some way; the collection<a id="4475">!</a> is unchanged</td>
+            <td> Traverses the collection, summarizing the contents with a single result (e.g., sum, max, or mean)</td><td>A single result summarizing the collection in some way; the collection is unchanged</td>
           </tr>
           <tr>
             <td>Search</td>
-            <td>Traverses the collection<a id="4476">!</a> until an item matches a given search criterion and then stops, returning the result</td>
-            <td>A single result or the indication that the desired match was not achieved; the collection<a id="4477">!</a> is unchanged</td>
+            <td>Traverses the collection until an item matches a given search criterion and then stops, returning the result</td>
+            <td>A single result or the indication that the desired match was not achieved; the collection is unchanged</td>
           </tr>
           <tr>
             <td>Sort</td>
-            <td>Puts the collection<a id="4478">!</a> in order by some specific criterion</td>
-            <td>A new collection<a id="4479">!</a> of the same length</td>
+            <td>Puts the collection in order by some specific criterion</td>
+            <td>A new collection of the same length</td>
           </tr>
         </tbody>
       </table>
@@ -149,7 +149,7 @@
       <!-- Arithmetic Operations -->
       <h3 id="10_3_1">10.3.1	Basic Arithmetic Operations</h3>
       <div class="container">
-        <p>The simple problem solution described in Section 10.1 frequently needs to be used as part of a larger problem solution. We include that activity in this list for<a id="4589">!</a> completeness.</p>
+        <p>The simple problem solution described in Section 10.1 frequently needs to be used as part of a larger problem solution. We include that activity in this list for completeness.</p>
       </div>
     </div>
 
@@ -157,16 +157,16 @@
        <!-- Inserting into a Collection -->
       <h3 id="10_3_2">10.3.2	Inserting into a Collection</h3>
       <div class="container clearfix">
-        <p>Inserting an item into a collection<a id="4480">!</a> is a process usually used to build or maintain a collection<a id="4481">!</a> of information. In this text<a id="4703">!</a>, we have seen four basic data collection<a id="4482">!</a> types to which insertion<a id="4632">!</a> applies: vectors<a id="4718">!</a>, arrays, cell<a id="4454">!</a> arrays, and structure<a id="4687">!</a> arrays. We will discuss the peculiarities of each collection<a id="4483">!</a> and then the common processing algorithm that can be used to insert a new entry into the collection<a id="4484">!</a>.</p>
+        <p>Inserting an item into a collection is a process usually used to build or maintain a collection of information. In this text<a id="3612"></a>, we have seen four basic data collection types to which insertion applies: vectors, arrays, cell arrays<a id="3493"></a>, and structure<a id="3596"></a> arrays. We will discuss the peculiarities of each collection and then the common processing algorithm<a id="3468"></a> that can be used to insert a new entry into the collection.</p>
         <ul>
-          <li>Vectors and arrays are very flexible collections in the MATLAB<a id="4648">!</a> language, and suffer only from the obvious limitations that one can add only numbers<a id="4652">!</a> to a vector data, that data must be inserted a row or column<a id="4548">!</a> at a time, and that the size of the item inserted must match the existing array<a id="4434">!</a> rows or columns</li>
-          <li>Cell arrays can be indexed like numerical<a id="4654">!</a> arrays and can contain any object; however, to compare one element to another usually requires a special-purpose comparison function<a id="4612">!</a></li>
-          <li>Structure arrays as a collection<a id="4485">!</a> behave like cell<a id="4455">!</a> arrays, except that any structure<a id="4688">!</a> inserted must have the same fields as those in the existing structure<a id="4689">!</a></li>
+          <li>Vectors and arrays are very flexible collections<a id="3500"></a> in the MATLAB<a id="3559"></a> language, and suffer only from the obvious limitations that one can add only numbers<a id="3563"></a> to a vector data, that data must be inserted a row or column at a time, and that the size of the item inserted must match the existing array<a id="3475"></a> rows or columns</li>
+          <li>Cell arrays can be indexed like numerical<a id="3565"></a> arrays and can contain any object; however, to compare one element to another usually requires a special-purpose comparison function<a id="3529"></a></li>
+          <li>Structure arrays as a collection behave like cell arrays<a id="3494"></a>, except that any structure<a id="3597"></a> inserted must have the same fields as those in the existing structure<a id="3598"></a></li>
         </ul>
-        <p>In general, inserting<a id="4629">!</a> into any of these collections involves insertion<a id="4633">!</a> into the front of the collection<a id="4486">!</a>, the back of the collection<a id="4487">!</a>, or at some position in the middle in order to keep the collection<a id="4488">!</a> in order by a specific comparison method.</p>
-        <p><b>Inserting at the front</b> is accomplished by concatenating the new element before the existing collection<a id="4489">!</a>.</p>
-        <p><b>Inserting at the back</b> is accomplished by concatenating the new element after the existing collection<a id="4490">!</a>.</p>
-        <p><b>Inserting in order</b> is usually accomplished using a while<a id="4723">!</a> loop. If we are inserting<a id="4630">!</a> item into a collection<a id="4491">!</a> <code>C</code>, we will use a while<a id="4724">!</a> loop to find the index of the insertion<a id="4634">!</a> point, <code>ins</code>, and then concatenate the three parts of the new collection<a id="4492">!</a>. Figure 10.1 shows the flowchart that applies here.</p>
+        <p>In general, inserting<a id="3545"></a> into any of these collections<a id="3501"></a> involves insertion into the front of the collection, the back of the collection, or at some position in the middle in order to keep the collection in order by a specific comparison method.</p>
+        <p><b>Inserting at the front</b> is accomplished by concatenating the new element before the existing collection.</p>
+        <p><b>Inserting at the back</b> is accomplished by concatenating the new element after the existing collection.</p>
+        <p><b>Inserting in order</b> is usually accomplished using a while<a id="3627"></a> loop. If we are inserting<a id="3546"></a> item into a collection <code>C</code>, we will use a while<a id="3628"></a> loop to find the index of the insertion point, <code>ins</code>, and then concatenate the three parts of the new collection. Figure 10.1 shows the flowchart that applies here.</p>
         <div class="card-deck">
           <div class="col-sm-8">
             <div class="exercise">#exercise_10_1#</div>
@@ -183,7 +183,7 @@
       <!-- Traversing a Collection -->
       <h3 id="10_3_3">10.3.3	Traversing a Collection</h3>
       <div class="container clearfix">
-        <p>Traversal involves moving across all elements<a id="4553">!</a> of a collection<a id="4493">!</a> and performing some step (not necessarily the same step) on each element without changing that element. Figure 10.2 illustrate the flowchart for<a id="4590">!</a> traversing a collection<a id="4494">!</a>. They assume that you are doing something like writing a file that needs to be initialized and finalized. These two steps may not always be required.</p>
+        <p>Traversal involves moving across all elements of a collection and performing some step (not necessarily the same step) on each element without changing that element. Figure 10.2 illustrate the flowchart for traversing a collection. They assume that you are doing something like writing a file that needs to be initialized and finalized. These two steps may not always be required.</p>
         <div class="card-deck">
           <div class="col-sm-8">
             <div class="exercise">#exercise_10_2#</div>
@@ -200,7 +200,7 @@
       <!-- Building a Collection -->
       <h3 id="10_3_4">10.3.4	Building a Collection</h3>
       <div class="container clearfix">
-        <p>In practice, frequently we combine traversal<a id="4706">!</a> of one collection<a id="4495">!</a> and building<a id="4448">!</a> of another to copy data from one collection<a id="4496">!</a> into another. Building a collection<a id="4497">!</a> is the process of beginning with an empty<a id="4563">!</a> collection<a id="4498">!</a> and assembling data elements<a id="4554">!</a> by inserting<a id="4631">!</a> them one at a time into the new collection<a id="4499">!</a>. The size of the collection<a id="4500">!</a> increases continually until the process is finished. Figure 10.3 illustrates the algorithm for<a id="4591">!</a> building<a id="4449">!</a> a collection<a id="4501">!</a>.</p>
+        <p>In practice, frequently we combine traversal<a id="3615"></a> of one collection and building<a id="3487"></a> of another to copy data from one collection into another. Building a collection is the process of beginning with an empty<a id="3506"></a> collection and assembling data elements by inserting<a id="3547"></a> them one at a time into the new collection. The size of the collection increases continually until the process is finished. Figure 10.3 illustrates the algorithm<a id="3469"></a> for building<a id="3488"></a> a collection.</p>
         <div class="card-deck">
           <div class="col-sm-8">
             <div class="exercise">#exercise_10_3#</div>
@@ -217,7 +217,7 @@
       <!-- Mapping a Collection -->
       <h3 id="10_3_5">10.3.5	Mapping a Collection</h3>
       <div class="container clearfix">
-        <p>The purpose of mapping<a id="4641">!</a> is to transform a collection<a id="4502">!</a> by changing the data in some or all of its elements<a id="4555">!</a> according to some functional<a id="4627">!</a> description without changing its length. It is distinct from traversal<a id="4707">!</a> because its intent is to change the data elements<a id="4556">!</a>. While many languages permit collections to be modified in place, the MATLAB<a id="4649">!</a> language usually requires you to create a new collection<a id="4503">!</a>. However, this is still considered mapping<a id="4642">!</a>. The scalar<a id="4678">!</a> mathematical and logical<a id="4638">!</a> operations<a id="4665">!</a> on vectors<a id="4719">!</a> are good examples of mapping<a id="4643">!</a>. Figure 10.4illustrates the basic algorithm for<a id="4592">!</a> mapping<a id="4644">!</a>.</p>
+        <p>The purpose of mapping<a id="3552"></a> is to transform a collection by changing the data in some or all of its elements according to some functional description without changing its length. It is distinct from traversal<a id="3616"></a> because its intent is to change the data elements. While many languages permit collections<a id="3502"></a> to be modified in place, the MATLAB<a id="3560"></a> language usually requires you to create a new collection. However, this is still considered mapping<a id="3553"></a>. The scalar<a id="3589"></a> mathematical and logical<a id="3549"></a> operations<a id="3576"></a> on vectors are good examples of mapping<a id="3554"></a>. Figure 10.4illustrates the basic algorithm<a id="3470"></a> for mapping<a id="3555"></a>.</p>
         <div class="card-deck">
           <div class="col-sm-8">
             <div class="exercise">#exercise_10_4#</div>
@@ -234,7 +234,7 @@
       <!-- Filtering a Collection -->
       <h3 id="10_3_6">10.3.6	Filtering a Collection</h3>
       <div class="container clearfix">
-        <p>Filtering involves removing items from a collection<a id="4504">!</a> according to specified selection criteria. The data contents of the remaining items in the collection<a id="4505">!</a> should not be changed, and the collection<a id="4506">!</a> will usually be shorter than before.  Filtering always requires that a new collection<a id="4507">!</a> be built on the filtered items. Figure 10.5 illustrates the general algorithm for<a id="4593">!</a> filtering<a id="4574">!</a> a collection<a id="4508">!</a>.</p>
+        <p>Filtering involves removing items from a collection according to specified selection criteria. The data contents of the remaining items in the collection should not be changed, and the collection will usually be shorter than before.  Filtering always requires that a new collection be built on the filtered items. Figure 10.5 illustrates the general algorithm<a id="3471"></a> for filtering<a id="3517"></a> a collection.</p>
         <div class="card-deck">
           <div class="col-sm-8">
             <div class="exercise">#exercise_10_5#</div>
@@ -251,7 +251,7 @@
       <!-- Folding a Collection -->
       <h3 id="10_3_7">10.3.7	Folding a Collection</h3>
       <div class="container clearfix">
-        <p>Folding is the name given to summarizing a collection<a id="4509">!</a>. It is a special case<a id="4450">!</a> of traversal<a id="4708">!</a> where all of the items in the collection<a id="4510">!</a> are summarized as a single result. The collection<a id="4511">!</a> is not altered in size or values by the operation<a id="4659">!</a>. Totaling, averaging, and finding the largest element in a vector are typical examples of folding<a id="4577">!</a>.Figure 10.6 shows the basic algorithm for<a id="4594">!</a> folding<a id="4578">!</a> a collection<a id="4512">!</a>. The general form of a fold should be to initialize the summary value<a id="4711">!</a> and then traverse the whole collection<a id="4513">!</a>, updating the summary when necessary. There is an interesting problem in determining the starting value<a id="4712">!</a> for<a id="4595">!</a> a fold. If that value<a id="4713">!</a> is not chosen well, there may be no relevant results in the collection<a id="4514">!</a>.  A good approach is to initialize the state with the value<a id="4714">!</a> of the first entry in the collection<a id="4515">!</a>. This raises another issue to make sure that you deal with an empty<a id="4564">!</a> input collection<a id="4516">!</a>.</p>
+        <p>Folding is the name given to summarizing a collection. It is a special case<a id="3489"></a> of traversal<a id="3617"></a> where all of the items in the collection are summarized as a single result. The collection is not altered in size or values by the operation<a id="3570"></a>. Totaling, averaging, and finding the largest element in a vector are typical examples of folding<a id="3520"></a>.Figure 10.6 shows the basic algorithm<a id="3472"></a> for folding<a id="3521"></a> a collection. The general form of a fold should be to initialize the summary value<a id="3620"></a> and then traverse the whole collection, updating the summary when necessary. There is an interesting problem in determining the starting value<a id="3621"></a> for a fold. If that value<a id="3622"></a> is not chosen well, there may be no relevant results in the collection.  A good approach is to initialize the state with the value<a id="3623"></a> of the first entry in the collection. This raises another issue to make sure that you deal with an empty<a id="3507"></a> input collection.</p>
         <div class="card-deck">
           <div class="col-sm-8">
             <div class="exercise">#exercise_10_6#</div>
@@ -267,7 +267,7 @@
     <div class="chp-subsection" data-sub-num="8" data-sub-name="Searching a Collection">
       <h3 id="10_3_8">10.3.8	Searching a Collection</h3>
       <div class="container clearfix">
-        <p>Searching is the process of traversing the collection<a id="4517">!</a> and applying a specified test to each element in turn, terminating the process as soon as the test is satisfied. This is superficially similar to filtering<a id="4575">!</a>, except that it is not necessary to touch all the elements<a id="4557">!</a> of the collection<a id="4518">!</a>; the search stops as soon as one element of the collection<a id="4519">!</a> matches the search criteria. If the criteria are extremely complex, it is sometimes advisable to perform a mapping<a id="4645">!</a> or folding<a id="4579">!</a> before the search is performed. Figure 10.7 illustrates one way to implement searching<a id="4679">!</a> a collection<a id="4520">!</a> using a for<a id="4596">!</a> loop with a break<a id="4446">!</a> exit. There are always two exit criteria from a search — finding what you seek and failing to find it. Searching can also be implemented with a while<a id="4725">!</a> loop, but the multiple exit criteria make the code generally more complex.</p>
+        <p>Searching is the process of traversing the collection and applying a specified test to each element in turn, terminating the process as soon as the test is satisfied. This is superficially similar to filtering<a id="3518"></a>, except that it is not necessary to touch all the elements of the collection; the search stops as soon as one element of the collection matches the search criteria. If the criteria are extremely complex, it is sometimes advisable to perform a mapping<a id="3556"></a> or folding<a id="3522"></a> before the search is performed. Figure 10.7 illustrates one way to implement searching<a id="3590"></a> a collection using a for loop<a id="3527"></a> with a break exit. There are always two exit criteria from a search — finding what you seek and failing to find it. Searching can also be implemented with a while<a id="3629"></a> loop, but the multiple exit criteria make the code generally more complex.</p>
         <div class="card-deck">
           <div class="col-sm-8">
             <div class="exercise">#exercise_10_7#</div>
@@ -283,11 +283,11 @@
     <div class="chp-subsection" data-sub-num="9" data-sub-name="Sorting a Collection">
       <h3 id="10_3_9">10.3.9	Sorting a Collection</h3>
       <div class="container">
-        <p>Sorting involves reordering the elements<a id="4558">!</a> in a collection<a id="4521">!</a> according to a specified ranking function<a id="4613">!</a> that defines which item “comes before” another. Sorting is computationally expensive. However, if a large collection<a id="4522">!</a> of data is stable—items are added or removed infrequently—but is frequently searched for<a id="4597">!</a> specific items, keeping the data sorted can greatly improve the efficiency of the searches. Chapter 16 is devoted to the details of sorting<a id="4681">!</a> algorithms<a id="4432">!</a>, but the concept is included here to complete the list of operations<a id="4666">!</a> we can perform on a collection<a id="4523">!</a>.  In general, the built-in sort function<a id="4614">!</a> can sort either a vector (of numbers<a id="4653">!</a>, of course) or a cell<a id="4456">!</a> array<a id="4435">!</a> with either one row or one column<a id="4549">!</a> containing strings<a id="4685">!</a>.  Cell arrays are sorted alphabetically.  In either case<a id="4451">!</a>, it returns not only the sorted values but also the order in which the original data were used to produce the sort.</p>
+        <p>Sorting involves reordering the elements in a collection according to a specified ranking function<a id="3530"></a> that defines which item “comes before” another. Sorting is computationally expensive. However, if a large collection of data is stable—items are added or removed infrequently—but is frequently searched for specific items, keeping the data sorted can greatly improve the efficiency of the searches. Chapter 16 is devoted to the details of sorting<a id="3592"></a> algorithms, but the concept is included here to complete the list of operations<a id="3577"></a> we can perform on a collection.  In general, the built-in sort function<a id="3531"></a> can sort either a vector (of numbers<a id="3564"></a>, of course) or a cell array<a id="3476"></a> with either one row or one column containing strings.  Cell arrays are sorted alphabetically.  In either case<a id="3490"></a>, it returns not only the sorted values but also the order in which the original data were used to produce the sort.</p>
         <div class="exercise">#exercise_10_8#</div>
         <p><b>Notes:</b></p>
         <ul>
-          <li>Since the sort was sensitive to case<a id="4452">!</a>, 'In' was ranked before 'a'.</li>
+          <li>Since the sort was sensitive to case<a id="3491"></a>, 'In' was ranked before 'a'.</li>
           <li>Repeated words were retained, indicating that the word 'a' was the 10th and 17th words in the original sentence</li>
         </ul>
       </div>
@@ -316,9 +316,9 @@
             <p class="figure-name card-title">Fig 10.8d: The First Step</p>
         </div>
       </div>
-      <p>Problem statements are rarely simple enough to be able to seize one of the above steps and solve the whole problem. Usually, the solution involves choosing a number of known operations<a id="4667">!</a> and performing those operations<a id="4668">!</a> in order to solve the complete problem. Solution steps are combined in one of two ways—in sequence or nested. When considering the overall strategy for<a id="4598">!</a> solving a problem, one might identify steps A and B as contributing to the solution. Your logical<a id="4639">!</a> statement might say either “do A and then B” sequential steps—or “for<a id="4599">!</a> each part of A, do B”—nested steps.  For example, consider the baseball card problem originally proposed in Chapter 1. You have collected over the years a huge number of baseball cards, and you wish to find the names of the 10 “qualified” players with the highest lifetime batting average.</p>
-      <p>To qualify, the players must have been in the league at least five years, had at least 100 plate appearances per year, and made less<a id="4637">!</a> than 10 errors per year.  The first step is to build a collection<a id="4524">!</a> containing the relevant information on the cards for<a id="4600">!</a> each player, and the use of a structure<a id="4690">!</a> array<a id="4436">!</a> seems a good choice. Next, we need to operate on this collection<a id="4525">!</a> to solve the problem. Consider again the overall problem situation, as shown in Figure 10.8a. The original data are the structure<a id="4691">!</a> array<a id="4437">!</a> containing all the player data. The final result is a list of 10 names of the qualified players with the highest batting averages. There may be more than one sequence of operations<a id="4669">!</a> to solve this problem, and some may be more efficient than others.  First, we consider the operations<a id="4670">!</a> that could be performed on the original data. Since the end<a id="4565">!</a> result is a collection<a id="4526">!</a>, it is unlikely that the first step would reduce the collection<a id="4527">!</a> to one answer. This eliminates folding<a id="4580">!</a> and searching<a id="4680">!</a>. Since the collection<a id="4528">!</a> is already built, we do not need to insert or build, leaving four possible operations<a id="4671">!</a> to consider—traversal<a id="4709">!</a>, mapping<a id="4646">!</a>, filtering<a id="4576">!</a>, and sorting<a id="4682">!</a>.  Now, consider the last operation<a id="4660">!</a>—it seems reasonable that the last thing to do is a mapping<a id="4647">!</a>—taking the 10 selected structures and extracting the names.  Now, we must think about how to find these 10 structures. If we had a collection<a id="4529">!</a> of qualified players sorted by their batting average, we could accomplish this with a special filter taking the first 10 from these sorted, qualified players (Fig 10.8b).</p>
-      <p>Backing up one more step, we can see that the sorted collection<a id="4530">!</a> we need is just a sort of the qualified players, and we can chain these steps together to solve the whole problem. (Figures 10.8c and 10.8d)</p>
+      <p>Problem statements are rarely simple enough to be able to seize one of the above steps and solve the whole problem. Usually, the solution involves choosing a number of known operations<a id="3578"></a> and performing those operations<a id="3579"></a> in order to solve the complete problem. Solution steps are combined in one of two ways—in sequence or nested. When considering the overall strategy for solving a problem, one might identify steps A and B as contributing to the solution. Your logical<a id="3550"></a> statement might say either “do A and then B” sequential steps—or “for each part of A, do B”—nested steps.  For example, consider the baseball card problem originally proposed in Chapter 1. You have collected over the years a huge number of baseball cards, and you wish to find the names of the 10 “qualified” players with the highest lifetime batting average.</p>
+      <p>To qualify, the players must have been in the league at least five years, had at least 100 plate appearances per year, and made less<a id="3548"></a> than 10 errors per year.  The first step is to build a collection containing the relevant information on the cards for each player, and the use of a structure<a id="3599"></a> array<a id="3477"></a> seems a good choice. Next, we need to operate on this collection to solve the problem. Consider again the overall problem situation, as shown in Figure 10.8a. The original data are the structure<a id="3600"></a> array<a id="3478"></a> containing all the player data. The final result is a list of 10 names of the qualified players with the highest batting averages. There may be more than one sequence of operations<a id="3580"></a> to solve this problem, and some may be more efficient than others.  First, we consider the operations<a id="3581"></a> that could be performed on the original data. Since the end<a id="3508"></a> result is a collection, it is unlikely that the first step would reduce the collection to one answer. This eliminates folding<a id="3523"></a> and searching<a id="3591"></a>. Since the collection is already built, we do not need to insert or build, leaving four possible operations<a id="3582"></a> to consider—traversal<a id="3618"></a>, mapping<a id="3557"></a>, filtering<a id="3519"></a>, and sorting<a id="3593"></a>.  Now, consider the last operation<a id="3571"></a>—it seems reasonable that the last thing to do is a mapping<a id="3558"></a>—taking the 10 selected structures and extracting the names.  Now, we must think about how to find these 10 structures. If we had a collection of qualified players sorted by their batting average, we could accomplish this with a special filter taking the first 10 from these sorted, qualified players (Fig 10.8b).</p>
+      <p>Backing up one more step, we can see that the sorted collection we need is just a sort of the qualified players, and we can chain these steps together to solve the whole problem. (Figures 10.8c and 10.8d)</p>
     </div>
   </div>
 
@@ -326,54 +326,54 @@
     <!-- Engineering Example -->
     <h2 id="10_5">10.5  Engineering Example - Processing Geopolitical Data</h2>
     <div class="container clearfix">
-      <p>Imagine that you have decided to move your prosperous business overseas to the country with the most business-friendly environment. After considerable study, you decide that the best measure of friendliness would be to compute the rate of growth of the gross domestic product for<a id="4601">!</a> candidate countries, subtract their rate of population growth, and use this measure to choose the best country. An Internet search provides an interesting source of data. Figure 10.9 shows an excerpt from a spreadsheet containing historical data for<a id="4602">!</a> 154 countries from Penn World Table Version 9.1. described in detail in this paper: Feenstra, Robert C., Robert Inklaar and Marcel P. Timmer (2015), "The Next Generation of the Penn World Table" American Economic Review, 105(10), 3150-3182, found at <a style="color:black;" href="https://www.rug.nl/ggdc/">www.ggdc.net</a></p>
+      <p>Imagine that you have decided to move your prosperous business overseas to the country with the most business-friendly environment. After considerable study, you decide that the best measure of friendliness would be to compute the rate of growth of the gross domestic product for candidate countries, subtract their rate of population growth, and use this measure to choose the best country. An Internet search provides an interesting source of data. Figure 10.9 shows an excerpt from a spreadsheet containing historical data for 154 countries from Penn World Table Version 9.1. described in detail in this paper: Feenstra, Robert C., Robert Inklaar and Marcel P. Timmer (2015), "The Next Generation of the Penn World Table" American Economic Review, 105(10), 3150-3182, found at <a style="color:black;" href="https://www.rug.nl/ggdc/">www.ggdc.net</a></p>
       <div class="card">
           <img src="..\Images\Fig_10_9.JPG" alt="Figure 10.9" class="fig fig-wide card-img">
           <p class="figure-name card-title">Fig 10.9: World Data Example</p>
       </div>
       <p>The data columns of interest to us contain the following information:
       <ul>
-        <li><code>contrycode</code>: a TLA for<a id="4603">!</a> each country (col A)</li>
+        <li><code>contrycode</code>: a TLA for each country (col A)</li>
         <li><code>country</code>: name of the country (col B)</li>
-        <li><code>year</code>: year for<a id="4604">!</a> which values are quoted (col C)</li>
+        <li><code>year</code>: year for which values are quoted (col C)</li>
         <li><code>rgdpe</code>: Expenditure-side real GDP at chained PPPs (in mil. 2011US$) (col E)</li>
         <li><code>pop</code>: Population in millions (col G)</li>
       </ul>
-      <p>Figure 10.9 also illustrates one of the weaknesses of spreadsheets<a id="4684">!</a>: they are inherently two dimensional, and the data in this case<a id="4453">!</a> are three dimensional; each country has several sets of data as functions of the year when the information was recorded. Therefore, the data must be massaged into a  form more useful to us. A careful examination of the data also reveals the following challenges:</p>
+      <p>Figure 10.9 also illustrates one of the weaknesses of spreadsheets<a id="3595"></a>: they are inherently two dimensional, and the data in this case<a id="3492"></a> are three dimensional; each country has several sets of data as functions of the year when the information was recorded. Therefore, the data must be massaged into a  form more useful to us. A careful examination of the data also reveals the following challenges:</p>
       <ul>
         <li>The years in which the data were available vary from country to country—most have data from 1950 to 2017</li>
-        <li>There are some places within the numerical<a id="4655">!</a> data where the values are not available, signified by the blank cells at those locations.</li>
+        <li>There are some places within the numerical<a id="3566"></a> data where the values are not available, signified by the blank cells at those locations.</li>
       </ul>
-      <p>Our algorithm must take into account the variable<a id="4717">!</a> number of years and the potential presence of strings<a id="4686">!</a> within the data. Fortunately, the Matlab <code>xlsread(<a id="4726">!</a>...)</code> function<a id="4615">!</a> discussed earlier recognizes this situation and inserts <code>NaN<a id="4651">!</a></code> in the numerical<a id="4656">!</a> data fields. To ensure clarity and reliability in our solution, we need a careful design for<a id="4605">!</a> this data processing task as follows.</p>
+      <p>Our algorithm<a id="3473"></a> must take into account the variable<a id="3626"></a> number of years and the potential presence of strings within the data. Fortunately, the Matlab <code>xlsread(<a id="3630"></a>...)</code> function<a id="3532"></a> discussed earlier recognizes this situation and inserts <code>NaN<a id="3562"></a></code> in the numerical<a id="3567"></a> data fields. To ensure clarity and reliability in our solution, we need a careful design for this data processing task as follows.</p>
       <ul>
-        <li>Looking at the end<a id="4566">!</a> result desired, eventually we need to fold a collection<a id="4531">!</a> of data about each country and choose the friendliest one.</li>
-        <li>The information describing each country must include not only its name, but also vectors<a id="4720">!</a> of the population and CGDP as a function<a id="4616">!</a> of the year. It seems that a structure<a id="4692">!</a> array<a id="4438">!</a> by country would be an appropriate form for<a id="4606">!</a> the data.</li>
-        <li>Therefore, before actually solving the problem, we have to build this structure<a id="4693">!</a>.</li>
-        <li>Having built the structure<a id="4694">!</a>, the folding<a id="4581">!</a> operation<a id="4661">!</a> to find the friendliest country follows the folding<a id="4582">!</a> template shown in Section 10.3.7.</li>
+        <li>Looking at the end<a id="3509"></a> result desired, eventually we need to fold a collection of data about each country and choose the friendliest one.</li>
+        <li>The information describing each country must include not only its name, but also vectors of the population and CGDP as a function<a id="3533"></a> of the year. It seems that a structure<a id="3601"></a> array<a id="3479"></a> by country would be an appropriate form for the data.</li>
+        <li>Therefore, before actually solving the problem, we have to build this structure<a id="3602"></a>.</li>
+        <li>Having built the structure<a id="3603"></a>, the folding<a id="3524"></a> operation<a id="3572"></a> to find the friendliest country follows the folding<a id="3525"></a> template shown in Section 10.3.7.</li>
       </ul>
       <p>Listing 10.1 shows the script that accomplishes this analysis, although most of the work is actually done in the following functions. When we run this program, we see the following result:</p>
       <div class="listing">#listing_10_1#</div>
       <p><code>>>best country is Bosnia and Herzegovina</code></p>
-      <p>This may not be exactly the result we were hoping for<a id="4607">!</a>. In Chapter 16 we will revisit this example with some better tools that will allow us to apply additional criteria to selecting countries.</p>
+      <p>This may not be exactly the result we were hoping for. In Chapter 16 we will revisit this example with some better tools that will allow us to apply additional criteria to selecting countries.</p>
     </div>
   </div>
 
   <!-- Chapter Summary -->
   <h2>Chapter Summary</h2>
   <div class="container">
-    <p>This chapter presented the fundamental operations<a id="4672">!</a> that can be applied to problem solving:</p>
+    <p>This chapter presented the fundamental operations<a id="3583"></a> that can be applied to problem solving:</p>
     <ul>
-      <li>Using normal arithmetic<a id="4433">!</a> operations<a id="4673">!</a> with specific input and output values</li>
-      <li>Inserting new elements<a id="4559">!</a> in a collection<a id="4532">!</a></li>
-      <li>Traversing a collection<a id="4533">!</a></li>
-      <li>Building a collection<a id="4534">!</a> by repetitive insertion<a id="4635">!</a></li>
-      <li>Mapping a collection<a id="4535">!</a> - changing the values of the data items in the
-      collection<a id="4536">!</a>, but not the number of them</li>
-      <li>Filtering a collection<a id="4537">!</a> - reducing the number of entries, but not
-      changing the data contents of the collection<a id="4538">!</a></li>
-      <li>Folding the values in a collection<a id="4539">!</a> into a single quantity</li>
-      <li>Searching for<a id="4608">!</a> a specific match in a collection<a id="4540">!</a></li>
-      <li>Sorting a collection<a id="4541">!</a></li>
+      <li>Using normal arithmetic<a id="3474"></a> operations<a id="3584"></a> with specific input and output values</li>
+      <li>Inserting new elements in a collection</li>
+      <li>Traversing a collection</li>
+      <li>Building a collection by repetitive insertion</li>
+      <li>Mapping a collection - changing the values of the data items in the
+      collection, but not the number of them</li>
+      <li>Filtering a collection - reducing the number of entries, but not
+      changing the data contents of the collection</li>
+      <li>Folding the values in a collection into a single quantity</li>
+      <li>Searching for a specific match in a collection</li>
+      <li>Sorting a collection</li>
     </ul>
     <p>Then we briefly discussed how to combine these fundamental tools to solve more complex data manipulation problems.</p>
   </div>
@@ -384,30 +384,30 @@ Use the following questions to check your understanding of the material in this
 chapter:
 <h3>True or False</h3>
 <ol>
-<li>Copying the elements<a id="4560">!</a> of a structure<a id="4695">!</a> array<a id="4439">!</a> into a cell<a id="4457">!</a> array<a id="4440">!</a> is a
-combination of traversal<a id="4710">!</a> and insertion<a id="4636">!</a>.</li>
-      <li>If you map a collection<a id="4542">!</a>, you must change at least one of its elements<a id="4561">!</a>.</li>
-      <li>When you filter a collection<a id="4543">!</a>, at least one data element is changed.</li>
-      <li>The function<a id="4617">!</a> max(<a id="4650">!</a>...) is not folding<a id="4583">!</a> because it returns two values.</li>
-      <li>You can use a for<a id="4609">!</a> loop to search a collection<a id="4544">!</a> even if you need to
+<li>Copying the elements of a structure<a id="3604"></a> array<a id="3480"></a> into a cell array<a id="3481"></a> is a
+combination of traversal<a id="3619"></a> and insertion.</li>
+      <li>If you map a collection, you must change at least one of its elements.</li>
+      <li>When you filter a collection, at least one data element is changed.</li>
+      <li>The function<a id="3534"></a> max(<a id="3561"></a>...) is not folding<a id="3526"></a> because it returns two values.</li>
+      <li>You can use a for loop<a id="3528"></a> to search a collection even if you need to
 stop the search when you find the answer.</li>
-      <li>Sorting must involve putting the items in a collection<a id="4545">!</a> in numerical<a id="4657">!</a>
+      <li>Sorting must involve putting the items in a collection in numerical<a id="3568"></a>
 order (ascending or descending).</li>
 </ol>
 <h3>Fill in the Blanks</h3>
 <ol>
-<li>The problem-solving<a id="4677">!</a> style recommended in this text<a id="4704">!</a> is to identify
+<li>The problem-solving<a id="3588"></a> style recommended in this text<a id="3613"></a> is to identify
 the ___________and the _____________.</li>
       <li>Building is usually the process of ____________ and ___________
 _______________.</li>
       <li>Mapping may involve combining _____________ of the same length.</li>
-      <li>We _______________ vectors<a id="4721">!</a> by applying built-in logical<a id="4640">!</a> operations<a id="4674">!</a>
+      <li>We _______________ vectors by applying built-in logical<a id="3551"></a> operations<a id="3585"></a>
 and then indexing with the results to produce new, shorter arrays.</li>
       <li>Totaling, averaging, and finding the smallest element in a vector are
 typical examples of _____________.</li>
-      <li>There are almost always two exit criteria for<a id="4610">!</a> a search: ___________
+      <li>There are almost always two exit criteria for a search: ___________
 _______________ or ________________.</li>
-      <li>To save a collection<a id="4546">!</a> to a text<a id="4705">!</a> file, you ____________ the collection<a id="4547">!</a>
+      <li>To save a collection to a text<a id="3614"></a> file, you ____________ the collection
 ____________ it to the file.</li>
 </ol>
 
@@ -420,24 +420,24 @@ cross section shown in Figure 10.10. </p>
           <img src="..\Images\Fig_10_10.JPG" alt="Figure 10.10" class="fig card-img">
           <p class="figure-name card-title">Fig 10.10: The Problem</p>
       </div>
-<p>You will be given two vectors<a id="4722">!</a>, x and y, containing the coordinates of
-the corners of the pentagon, and the value<a id="4715">!</a> h , the vertical height of
-the cylinder. We will need to break<a id="4447">!</a> this problem apart, writing
+<p>You will be given two vectors, x and y, containing the coordinates of
+the corners of the pentagon, and the value<a id="3624"></a> h , the vertical height of
+the cylinder. We will need to break this problem apart, writing
 functions to solve each part:
 <ul>
 <li>The volume of the cylinder is the area of the pentagon multiplied by
-the vertical height; write a function<a id="4618">!</a> polyval(<a id="4675">!</a>x, y, h) to solve this.</li>
+the vertical height; write a function<a id="3535"></a> polyval(<a id="3586"></a>x, y, h) to solve this.</li>
       <li>The area of the pentagon is the sum of the areas of three
 triangles shown in Figure 10.11. </p>
       <div class="card">
           <img src="..\Images\Fig_10_11.JPG" alt="Figure 10.11" class="fig card-img">
           <p class="figure-name card-title">Fig 10.11: The Base</p>
       </div>
-<p>So we need to write a function<a id="4619">!</a>
-pent_area(x, y) that asks for<a id="4611">!</a> the area of the three triangles and
+<p>So we need to write a function<a id="3536"></a>
+pent_area(x, y) that asks for the area of the three triangles and
 adds them together.</li>
       <li>Given the coordinates of the corners of a triangle, we need a
-function<a id="4620">!</a> tri_area(x, y) to calculate the area of the triangle—see
+function<a id="3537"></a> tri_area(x, y) to calculate the area of the triangle—see
 Figure 10.12. </p>
       <div class="card">
           <img src="..\Images\Fig_10_12.JPG" alt="Figure 10.12" class="fig card-img">
@@ -448,22 +448,22 @@ values of a, b, and c . So if we had the lengths of the lines, the area
 of the triangle is given by Heron's formula:<br>
 A = ( s(s-a)(s-b)(s-c) )<br>
 where s is half the sum of a, b, and c.</li>
-      <li>So we need a function<a id="4621">!</a> tri_side(x, y) that computes the length
-of a line when given its end<a id="4567">!</a> points.</li>
+      <li>So we need a function<a id="3538"></a> tri_side(x, y) that computes the length
+of a line when given its end<a id="3510"></a> points.</li>
       <li>Then, we can put the pieces back together by calling the functions
 with the right parameters, and then build and test polyvol using
 the test cases provided.</li>
 </ul>
-      <li>This problem is about processing structure<a id="4696">!</a> arrays. Write a function<a id="4622">!</a>
-named structSort that sorts a structure<a id="4697">!</a> array<a id="4441">!</a> based on a given field<a id="4569">!</a>
-that contains numerical<a id="4658">!</a> values. Your function<a id="4623">!</a> should take in a
-structure<a id="4698">!</a> array<a id="4442">!</a> and a string that should correspond to one of the
-field<a id="4570">!</a> names of the structure<a id="4699">!</a> array<a id="4443">!</a> and return the original structure<a id="4700">!</a> array<a id="4444">!</a>
-sorted on the given field<a id="4571">!</a>. It should check to be sure that the
-specified field<a id="4572">!</a> name is in fact one of the fields of the structure<a id="4701">!</a> array<a id="4445">!</a>,
-and call the error(<a id="4568">!</a>...) function<a id="4624">!</a> if it is not.
-Test your function<a id="4625">!</a> by using the buildCDs script from Chapter 7,
-using the input function<a id="4626">!</a> to specify the sorting<a id="4683">!</a> field<a id="4573">!</a>.</li>
+      <li>This problem is about processing structure<a id="3605"></a> arrays. Write a function<a id="3539"></a>
+named structSort that sorts a structure<a id="3606"></a> array<a id="3482"></a> based on a given field<a id="3512"></a>
+that contains numerical<a id="3569"></a> values. Your function<a id="3540"></a> should take in a
+structure<a id="3607"></a> array<a id="3483"></a> and a string that should correspond to one of the
+field<a id="3513"></a> names of the structure<a id="3608"></a> array<a id="3484"></a> and return the original structure<a id="3609"></a> array<a id="3485"></a>
+sorted on the given field<a id="3514"></a>. It should check to be sure that the
+specified field<a id="3515"></a> name is in fact one of the fields of the structure<a id="3610"></a> array<a id="3486"></a>,
+and call the error(<a id="3511"></a>...) function<a id="3541"></a> if it is not.
+Test your function<a id="3542"></a> by using the buildCDs script from Chapter 7,
+using the input function<a id="3543"></a> to specify the sorting<a id="3594"></a> field<a id="3516"></a>.</li>
  
 </ol>
 </div>

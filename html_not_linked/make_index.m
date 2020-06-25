@@ -11,8 +11,8 @@ clc
     global target
     global tg_sz
     
-    target = 'for'
-    tg_sz = length(target)
+    target = 'for';
+    tg_sz = length(target);
     % <a class="nav-link" href="Preface.htm">Preface</a>
     cd 'C:\Users\dmsmi\Documents\textbook\html_not_linked'
     state = 'Symbols';
@@ -49,7 +49,8 @@ clc
     while ischar(line)
         ndx = ndx + 1;
         if length(line) > 0
-            ntry = process_line()
+            ntry = process_line();
+            write_entry(ntry);
             data = [data ntry];
         end
         line = fgetl(in);
@@ -62,6 +63,19 @@ clc
 end
 
 
+function write_entry(ntry)
+    global debug
+    fprintf(debug, '\nEntry type %c\n', ntry.type);
+    fprintf(debug, ' first: %s\n', ntry.first);
+    fprintf(debug, 'second: %s\n', ntry.second);
+    fprintf(debug, ' third: %s\n', ntry.third);
+    fprintf(debug, 'fourth: %s\n', ntry.fourth);
+    fprintf(debug, 'fifth: %s\n', ntry.fifth);
+    for ca = ntry.ref
+        fprintf(debug,' - ''%s''\n', ca{1});
+    end
+end
+
 
 % % 
 % % patch_up_children()
@@ -69,12 +83,14 @@ end
     % an entry has fields:
     %   first - string: the first word matched
     %   second - string: the second word
+    %   third - string: the third word
+    %   fourth - string: the fourth word
+    %   fifth - string: the fifth word
     %   type - H: this is a header
     %        - C: this is a child
     %        - S: this is a symbol
     %        - N: this is a normal entry
-    %   ref - cell array of strings
-    
+    %   ref - cell array of strings    
 function data = patch_up_children(data) 
     global debug
 %     global data
@@ -92,7 +108,7 @@ function data = patch_up_children(data)
             % get Normal refs list
             found = false;
             for parent = data
-                match = strcmp(parent.first, child_name);
+                match = strcmp(put_back_space(parent.first), child_name);
                 if parent.type == 'N' && match 
 %                     fprintf(debug,'found parent %s of %s\n', ...
 %                         parent.first, child_name);
@@ -175,7 +191,7 @@ function [entry plug_sz] = insert_link(word, at, file_name, entry)
     global tg_sz
     
     current_ID = current_ID + 1;
-    plug = sprintf('<a id="%d">!</a>', current_ID);
+    plug = sprintf('<a id="%d"></a>', current_ID);
     file_str = [file_str(1:at-1) plug file_str(at:end)];
     % add the reference in entry
     word = entry.first;
@@ -202,9 +218,19 @@ function entry = find_whole_word(name, entry)
     if length(word) > 5 && all(word(end-4:end) == '(...)')
         word = word(1:end-4);
     end
-    where = strfind(file_str, put_back_space(word));
-    split = any(word == '_');
-    wh = 0;
+    catchit = 'format_control';
+    n = length(catchit);
+    if length(word) < n
+        n = length(word);
+    end
+    if strcmpi(word(1:n), catchit)
+        ookk = true;
+    end
+    [first_token first_rest] = strtok(word, '_');
+    if ~isempty(first_rest)
+        oooh = true;
+    end
+    where = strfind(file_str, first_token);
     for ndx = 1:length(where)
         wh = where(ndx);
         % check if inside <...>
@@ -221,14 +247,23 @@ function entry = find_whole_word(name, entry)
                     || is_word_end(file_str(at));
                 found = front_OK && back_OK;
                 if found
-                    if split
-                        ooh = true;
+                    rest = first_rest;
+                    token = first_token;
+                    wh = wh + length(token);
+                    while found && ~isempty(rest)
+                        [token rest] = strtok(rest, '_');
+                        if ~isempty(token)
+                            [nxt wh] = get_next_word(wh);
+                            found = strcmp(token, nxt);
+                        else
+                            found = false;
+                        end
                     end
-                    [entry plug_sz] = insert_link(word, at, name, entry);
-                    where = where + plug_sz;
+                    if found
+                        [entry plug_sz] = insert_link(word, at, name, entry);
+                        where = where + plug_sz;
+                    end
                 end
-            else
-                ooh = 1;
             end
         end
     end
@@ -238,10 +273,64 @@ end
 
 
 % % 
+% % get_next_word(wh)
+% % 
+function [word wh] = get_next_word(wh)
+    global file_str
+    
+    word = '';
+    ch = file_str(wh);
+    wh = wh + 1;
+    % check for '<'
+    while ch == '<'
+        while ch ~= '>'
+            ch = file_str(wh);
+            wh = wh + 1;
+        end
+        ch = file_str(wh);
+        wh = wh + 1;
+    end
+    % if so, skip past '>'
+    while ch == ' '
+        ch = file_str(wh);
+        wh = wh + 1;
+    end
+    % check for alphabetic for first word
+    if is_alpha(ch)
+    % if so, keep on copying alphanumerics.
+        while is_alphanumeric(ch)
+            word = [word ch];
+            ch = file_str(wh);
+            wh = wh + 1;
+        end
+    end  
+end 
+
+
+% % 
+% % is_alpha(ch)
+% % 
+function yes = is_alpha(ch)
+    ch = lower(ch);
+    yes = (ch >= 'a' && ch <= 'z');
+end
+
+
+
+% % 
+% % is_alphanumeric(ch)
+% % 
+function yes = is_alphanumeric(ch)
+    yes = is_alpha(ch);
+    yes = yes || (ch >= '0' && ch <= '9');
+end
+    
+    
+% % 
 % % put_back_space
 % % 
 function word = put_back_space(word)
-    if any(word == '_')
+if any(word == '_')
         word(word == '_') = ' ';
     end
 end
@@ -278,12 +367,14 @@ function found = is_not_html(where)
 end
 
 
+
 % % 
 % % is_word_end
 % % 
 function found = is_word_end(ch)
     found = ~any(ch == 'abcdefghijklmnopqrstuvwxyz(');
 end
+
 
 
 
@@ -306,11 +397,12 @@ function ntry = process_line()
         type = 'C';
         line = line(4:end);
     elseif symhead
-        type = 'H'
+        type = 'H';
     elseif head
         state = 'Head';
         type = 'H';
     end
+    fifth = '';
     switch(state)
         case 'Symbols'
             [first rest] = strtok(line, ' ()');
@@ -351,7 +443,7 @@ function ntry = process_line()
             state = 'Normal';
     end
     try
-        ntry = make_entry( type, first, second, third, fourth, ref);
+        ntry = make_entry( type, first, second, third, fourth, fifth, ref);
     catch E
         E
         ooh = 'bad';
@@ -360,11 +452,11 @@ end
 
 
 
+
 % % 
 % % make_entry(type, first, second, third, fourthref)
 % % 
-
-function it = make_entry(type, first, second, third, fourth, ref)
+function it = make_entry(type, first, second, third, fourth, fifth, ref)
     % an entry has fields:
     %   first - string: the first word matched
     %   second - string: the second word
@@ -381,16 +473,17 @@ function it = make_entry(type, first, second, third, fourth, ref)
     it.second = second;
     it.third = third;
     it.fourth = fourth;
+    it.fifth = fifth;
     it.ref = [];
     if ~isempty(ref)
         it.ref = {ref};
     end
-    fprintf(debug, 'Entry: type = %s; first = %s; second = %s; third = %s; fourth = %s', ...
-         it.type, it.first, it.second, it.third, it.fourth);
-    if(~isempty(ref))
-        fprintf(debug, ', %s', it.ref{1});
-    end
-    fprintf(debug, '\n');
+%     fprintf(debug, 'Entry: type = %s; first = %s; second = %s; third = %s; fourth = %s', ...
+%          it.type, it.first, it.second, it.third, it.fourth, it.fifth);
+%     if(~isempty(ref))
+%         fprintf(debug, ', %s', it.ref{1});
+%     end
+%     fprintf(debug, '\n');
 end
 
 

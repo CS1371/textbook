@@ -17,15 +17,15 @@
 <div class="content">
 
 <h2>Appendix B</h2>
-<p>This appendix links most of the common characters with their numerical<a id="7421">!</a> value<a id="7430">!</a>.  For example, you see on the table below the letter A.  In the first column<a id="7412">!</a> to the left of the A is the value<a id="7431">!</a> 64.  In the first row above the A is the value<a id="7432">!</a> 1.  To find the numerical<a id="7422">!</a> value<a id="7433">!</a> corresponding to A, add these two together gives you 65, the numerical<a id="7423">!</a> equivalent of A.  You can check this in the Command<a id="7415">!</a> Window:<br>
-<code>&gt;&gt; double(<a id="7416">!</a>'A')<br>
+<p>This appendix links most of the common characters with their numerical<a id="5901"></a> value<a id="5910"></a>.  For example, you see on the table below the letter A.  In the first column to the left of the A is the value<a id="5911"></a> 64.  In the first row above the A is the value<a id="5912"></a> 1.  To find the numerical<a id="5902"></a> value<a id="5913"></a> corresponding to A, add these two together gives you 65, the numerical<a id="5903"></a> equivalent of A.  You can check this in the Command Window<a id="5896"></a>:<br>
+<code>&gt;&gt; double(<a id="5897"></a>'A')<br>
 ans =
 &nbsp;&nbsp;&nbsp;&nbsp; 65<br> 
 &gt;&gt; </code> </p>
 <p>
-The original agreement relating numerical<a id="7424">!</a> values to characters was developed and approved as the American Standard Code for<a id="7417">!</a> Information Interchange (ASCII). This standard was originally developed to facilitate data transfer across telephone lines one byte at a time, or on paper tape. These data controlled communication between two simple devices like a teletype machines. They had to not only deliver characters, but also manage the communications link and control the behavior of the teletype by forcing the print mechanism back to the first column<a id="7413">!</a> (Carriage Return, CR), advancing the platen to the next print row (Line Feed, LF) or skipping to the column<a id="7414">!</a> whose number was the next multiple of 8 (tabbing, HT). The first 32 values on the ASCII<a id="7402">!</a> table were set aside as non-printable characters that performed control tasks such as these. While most of the control characters are now unused, we still make use of the three mentioned above as '\r', '\n', and '\t' to control the behavior of text<a id="7429">!</a> presented in a window or on a document.</p>
+The original agreement relating numerical<a id="5904"></a> values to characters was developed and approved as the American Standard Code for Information Interchange (ASCII). This standard was originally developed to facilitate data transfer across telephone lines one byte at a time, or on paper tape. These data controlled communication between two simple devices like a teletype machines. They had to not only deliver characters, but also manage the communications link and control the behavior of the teletype by forcing the print mechanism back to the first column (Carriage Return, CR), advancing the platen to the next print row (Line Feed, LF) or skipping to the column whose number was the next multiple of 8 (tabbing, HT). The first 32 values on the ASCII<a id="5892"></a> table were set aside as non-printable characters that performed control tasks such as these. While most of the control characters are now unused, we still make use of the three mentioned above as '\r', '\n', and '\t' to control the behavior of text<a id="5909"></a> presented in a window or on a document.</p>
 <p>
-The original ASCII<a id="7403">!</a> table defined a mapping<a id="7418">!</a>, whereby a specific set of printable characters was assigned the numerical<a id="7425">!</a> values 32 - 126. This was sufficient to represent the number symbols, the lowercase and uppercase alphabet, and all the common punctuation marks. However, as the need arose to represent more international characters, this numerical<a id="7426">!</a> range was inadequate, and the next 128 values were assigned to meet this need. There is no universal agreement on this second mapping<a id="7419">!</a>. The following table shows the first 256 values used by the MATLAB<a id="7420">!</a> language.</p>
+The original ASCII<a id="5893"></a> table defined a mapping<a id="5898"></a>, whereby a specific set of printable characters was assigned the numerical<a id="5905"></a> values 32 - 126. This was sufficient to represent the number symbols, the lowercase and uppercase alphabet, and all the common punctuation marks. However, as the need arose to represent more international characters, this numerical<a id="5906"></a> range was inadequate, and the next 128 values were assigned to meet this need. There is no universal agreement on this second mapping<a id="5899"></a>. The following table shows the first 256 values used by the MATLAB<a id="5900"></a> language.</p>
 <p>
 
 When a still broader set of characters was required by the international community, it became necessary to use multiple bytes to encode the symbols. A Unicode Character Set was defined, followed by an international agreement on how to transmit these codes efficiently called UTF-8, the UCS Transformation Format.</p>
@@ -33,13 +33,13 @@ When a still broader set of characters was required by the international communi
 Two almost totally irrelevant historical observations:</p>
 <p>
 <ol>
-<li>Astute observers will note that the values 0 - 127 occupy only the lower 7 bits<a id="7406">!</a> of one byte of data. The 8th bit was used as an error detection bit during transmission. An agreement was required in transmitting between two machines as to the parity of the transmission. Even parity meant that there would always be an even number of bits<a id="7407">!</a> set, and the 8th bit was set or reset to ensure that this was true. If there were an odd number of bits<a id="7408">!</a> set in a byte, the system knew that the data had been corrupted.</li>
-<li>ASCII<a id="7404">!</a> 127 and 255 are two more non-printing control characters used when editing paper tape. Since the values 127 and 255 have the first 7 bits<a id="7409">!</a> set and a hole in the tape signified 1, if operators<a id="7427">!</a> made a mistake when typing a message, they would back the tape up in the punch and hit DEL to make holes all across the byte, thereby erasing the erroneous character<a id="7410">!</a>.</li>
+<li>Astute observers will note that the values 0 - 127 occupy only the lower 7 bits of one byte of data. The 8th bit was used as an error detection bit during transmission. An agreement was required in transmitting between two machines as to the parity of the transmission. Even parity meant that there would always be an even number of bits set, and the 8th bit was set or reset to ensure that this was true. If there were an odd number of bits set in a byte, the system knew that the data had been corrupted.</li>
+<li>ASCII<a id="5894"></a> 127 and 255 are two more non-printing control characters used when editing paper tape. Since the values 127 and 255 have the first 7 bits set and a hole in the tape signified 1, if operators<a id="5907"></a> made a mistake when typing a message, they would back the tape up in the punch and hit DEL to make holes all across the byte, thereby erasing the erroneous character.</li>
 </ol>
 </p>
 
 <table style="border: 1px solid black;">
-<caption><h3>ASCII<a id="7405">!</a> character<a id="7411">!</a> values</h3></caption>
+<caption><h3>ASCII<a id="5895"></a> character values</h3></caption>
 <tr>
 <th></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th></tr>
 <tr>
@@ -47,7 +47,7 @@ Two almost totally irrelevant historical observations:</p>
 <tr>
 <th>16</th><td>DLE</td><td>DC1</td><td>DC2</td><td>DC3</td><td>DC4</td><td>NAK</td><td>SYN</td><td>ETB</td><td>CAN</td><td>EM</td><td>SUB</td><td>ESC</td><td>FS</td><td>GS</td><td>RS</td><td>US</td></tr>
 <tr>
-<th>32</th><td> </td><td>!</td><td>"</td><td>#</td><td>$</td><td>%</td><td>&<a id="7428">!</a></td><td>'</td><td>(</td><td>)</td><td>*</td><td>+</td><td>,</td><td>-</td><td>.</td><td>/</td></tr>
+<th>32</th><td> </td><td>!</td><td>"</td><td>#</td><td>$</td><td>%</td><td>&<a id="5908"></a></td><td>'</td><td>(</td><td>)</td><td>*</td><td>+</td><td>,</td><td>-</td><td>.</td><td>/</td></tr>
 <tr>
 <th>48</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>:</td><td>;</td><td><</td><td>=</td><td>></td><td>?</td></tr>
 <tr>

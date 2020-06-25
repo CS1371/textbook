@@ -161,7 +161,8 @@
       <!-- Arithmetic and Logical Operations -->
       <h3 id="6_2_2">6.2.2 Arithmetic and Logical Operations</h3>
       <div class="container">
-        <p>Mathematical operations can be performed on the numerical mapping of a
+        <p>Exactly as operating on vectors, string operations may be either mathematical or logical operations.</p> 
+		<p>Mathematical operations can be performed on the numerical mapping of a
         character string. If you do not explicitly perform that casting first, MATLAB
         will do the cast for you and create a result of type double (not usually
         suitable for character values). Note that <code>char('a' + 1 )</code> returning <code>'b'</code> is an
@@ -191,7 +192,8 @@
     <h2 id="6_3">6.3 Format Conversion Functions</h2>
     <div class="container">
       <p>Now we turn to the second relationship between characters and numbers:
-      using character strings to represent individual number values. We need
+      using character strings to represent individual number values. To move seamlessly 
+	  between their internal representation and the visual, external representation, we need string conversion. We actually need
       two separate capabilities: converting numbers from the efficient, internal
       form to legible strings and converting strings provided by users of MATLAB
       into the internal number representation. MATLAB provides a number of
