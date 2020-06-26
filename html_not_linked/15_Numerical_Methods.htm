@@ -65,8 +65,8 @@
       <div class="container">
           <p>Linear interpolation is one of the most common techniques for estimating data values between two given data points. With this technique, we assume that the function between the points can be represented by a straight line drawn between the points, as shown in Figure 15.2.</p>
           <p>Since we can find the equation of a straight line defined by the two known points, we can find \(y\) for any value of \(x\). The closer the points are to each other, the more accurate our approximation is likely to be. Of course, we could use this equation to extrapolate points past our collected data. This is rarely wise, however, and often leads to significant errors. The function that performs linear interpolation is as follows:</p>
-          <p><code>new_y = interpl(x, y, new_x)</code></p>
-          <p>where the vectors <code>x</code> and <code>y</code> contain the original data values and the vector <code>new_x</code> contains the point(s) for which we want to compute interpolated <code>new_y</code> values. The <code>x</code> values should be in ascending order, and the <code>new_x</code> values should be within the range of the original <code>x</code> values. Note that the last character in the name <code>interpl</code> is the numeric 1 (one), not a lowercase L.</p>
+          <p><code>new_y = interp1(x, y, new_x)</code></p>
+          <p>where the vectors <code>x</code> and <code>y</code> contain the original data values and the vector <code>new_x</code> contains the point(s) for which we want to compute interpolated <code>new_y</code> values. The <code>x</code> values should be in ascending order, and the <code>new_x</code> values should be within the range of the original <code>x</code> values. Note that the last character in the name <code>interp1</code> is the numeric 1 (one), not a lowercase L.</p>
           <div class="card-deck">
               <div class="card">
                   <img src="..\Images\Fig_15_2.JPG" alt="Figure 15.2" class="fig card-image">
@@ -77,9 +77,9 @@
                   <p class = "figure-name card-title">Figure 15.3: Linear Interpolation</p>
               </div>
           </div>
-          <p>The use of <code>interpl(...)</code> is demonstrated in Listing 15.1.</p>
+          <p>The use of <code>interp1(...)</code> is demonstrated in Listing 15.1.</p>
           <div id="listing_15_1" class="listing">#listing_15_1#</div>
-          <p>The MATLAB language allows us to provide a fourth parameter to the interp1 function that must be a string that modifies its behavior. The choices are as follows:</p>
+          <p>The MATLAB language allows us to provide a fourth parameter to the interp1(...) function that must be a string that modifies its behavior. The choices are as follows:</p>
           <ul style="list-style-type:none">
               <li><code>'nearest'</code> nearest neighbor interpolation </li>
               <li><code>'1inear'</code> linear interpolation—the default</li>
@@ -88,7 +88,7 @@
               <li><code>'cubic'</code> same as <code>'pchip'</code></li>
               <li><code>'v5cubic'</code> cubic interpolation that does not extrapolate, and uses <code>'spline'</code> if <code>x</code> is not equally spaced </li>
           </ul>
-          <p>The MATLAB language also provides for two-dimensional (<code>interp2</code>) and three-dimensional (<code>interp3</code>) interpolation functions, which are not discussed here.</p>
+          <p>The MATLAB language also provides for two-dimensional (<code>interp2(...)</code>) and three-dimensional (<code>interp3(...)</code>) interpolation functions, which are not discussed here.</p>
       </div>
     </div>
 
@@ -129,7 +129,7 @@
       <!-- Extrapolation -->
       <h3 id="15_1_3">15.1.3	Extrapolation</h3>
       <div class="container">
-        <p>A note of caution about extrapolation - attempting to infer the values of data points outside the range of data provided is problematic at best and usually gives misleading results. Although logically your code may allow you to, you should never do it. The interp1 and spline functions behave differently in this respect. As we saw previously, the interp1 function refuses to supply results outside the range of the original <code>x</code> data. If you try, for every <code>new_x</code> value outside the range of the original <code>x</code> values, it will return <code>NaN</code> - not a number.</p>
+        <p>A note of caution about extrapolation - attempting to infer the values of data points outside the range of data provided is problematic at best and usually gives misleading results. Although logically your code may allow you to, you should never do it. The interp1(...) and spline(...) functions behave differently in this respect. As we saw previously, the interp1(...) function refuses to supply results outside the range of the original <code>x</code> data. If you try, for every <code>new_x</code> value outside the range of the original <code>x</code> values, it will return <code>NaN</code> - not a number.</p>
         <p>This is actually quite nice because if you accidentally request interpolated data like this, the plot programs ignore <code>NaN</code> values. The spline function, however, has no such scruples and allows you to request any <code>x</code> values you want, using the equation of the closest line segment. So considering Figure 15.4, if you asked for the value at <code>x = -3</code>, it would use the segment between 0 and 1, which has a violent upswing at the lower end (see Exercise 15.1).</p>
         <p>This might be what you want, but it looks odd! Chances are the data are not as accurate as you thought, and you probably need to fit a curve to the data, as explained in the following section.</p>
         <div class="exercise">#exercise_15_1#</div>
@@ -379,7 +379,7 @@
   <div class="container">
       <p><i>In this chapter, we saw the implementations of four common numerical techniques:</i></p>
       <ul>
-          <li>We can estimate data points between given data values using linear <code>(interp1/2/3)</code> or spline interpolation</li>
+          <li>We can estimate data points between given data values using linear <code>(interp1(...)/interp2(...)/interp3(...))</code> or spline(...) interpolation</li>
           <li>We can smooth noisy data by fitting polynomial curves of suitable order to the raw data</li>
           <li>Given, for example, the velocity of an object over time, we can determine its position by integrating using <code>cumtrapz(...)</code> or <code>cumsum(...)</code></li>
           <li>We can differentiate to generate its acceleration</li>

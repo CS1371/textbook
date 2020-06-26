@@ -69,6 +69,7 @@
             <li><code>grid on</code> puts a grid on the plot; <code>grid off</code> (the default) removes grid lines.</li>
             <li><code>hold on</code> keeps the existing data on the current figure to allow the results of subsequent plotting calls to be added to the current figure without first erasing the existing plot; <code>hold off</code> (the default) allows you to redraw the current figure at the next plot call, erasing the previous contents.</li>
             <li><code>legend(...)</code> takes a cell array of strings, one for each of the multiple plots on a single figure, and creates a legend box. By default, that box appears in the top-right corner of the figure. However, this default can be overridden by explicitly specifying the location of the legend. See the help files for a complete discussion of the legend options.</li>
+            <li><code>lightangle(...)</code> a function to place a light source at given angles in azimuth and elevation from the object being viewed. Up to eight light sources can be added to any figure. In practice, only plots using <code>surf(...)</code> and <code>shading interp</code> really benefit from light angles.</li>
             <li><code>shading &lt;spec&gt;</code> defines the method for shading surfaces. See the help files for a complete discussion of the shading specification options.</li>
             <li><code>text(x, y, {z,}, str)</code> places the text provided at the specified (x, y) location on a 2-D plot, or at the (x, y, z) location on a 3-D plot.</li>
             <li><code>title(&lt;string&gt;)</code> places the text provided as the title of the current plot.</li>
@@ -126,7 +127,7 @@
         <ul>
           <li>Setting line styles and symbols to mark the data points (details in Appendix A)</li>
           <li>Using <code>plotyy(...)</code> to put a second axis on the right side of the figure</li>
-          <li>Obtaining logarithmic plots on the x-axis <code>(semilogx(...))</code>, y-axis <code>(semilogy(...))</code>, or both axes (<code>loglog(...)</code>)</li>
+          <li>Obtaining logarithmic plots on the x-axis, <code>semilogx(...)</code>, y-axis, <code>semilogy(...)</code>, or both axes <code>loglog(...)</code>.</li>
         </ul>
         <p>We strongly suggest that the reader experiment with these features and observe their effects.</p>
       </div>

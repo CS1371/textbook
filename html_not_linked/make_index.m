@@ -107,14 +107,20 @@ function data = patch_up_children(data)
 %             fprintf(debug, ' - child name is %s\n', child_name);
             % get Normal refs list
             found = false;
-            for parent = data
+            for pndx = 1:length(data)
+                parent = data(pndx);
                 match = strcmp(put_back_space(parent.first), child_name);
                 if parent.type == 'N' && match 
 %                     fprintf(debug,'found parent %s of %s\n', ...
 %                         parent.first, child_name);
                     found = true;
-                    entry.ref = parent.ref;
-                    data(ndx) = entry;
+                    if ~isempty(parent.ref)
+                        entry.ref = parent.ref;
+                        data(ndx) = entry;
+                    elseif ~isempty(entry.ref)
+                        parent.ref = entry.ref;
+                        data(pndx) = parent;
+                    end
                     break;
                 end
             end
@@ -162,13 +168,10 @@ end
 % % find_words
 % % 
 function data = find_words(data, name)
-    global target
-    global tg_sz
-%     global data
     
     for ndx = 1:length(data)
         entry = data(ndx);
-        if entry.type == 'N'
+        if entry.type == 'N' || entry.type == 'C'
             if any(entry.first == '_')
                 ook = 1;
             end
@@ -219,11 +222,12 @@ function entry = find_whole_word(name, entry)
         word = word(1:end-4);
     end
     catchit = 'format_control';
+    get_name = '06_Strings.htm';
     n = length(catchit);
     if length(word) < n
         n = length(word);
     end
-    if strcmpi(word(1:n), catchit)
+    if strcmp(word(1:n), catchit) && strcmp(get_name, name)
         ookk = true;
     end
     [first_token first_rest] = strtok(word, '_');
@@ -233,6 +237,7 @@ function entry = find_whole_word(name, entry)
     where = strfind(file_str, first_token);
     for ndx = 1:length(where)
         wh = where(ndx);
+        
         % check if inside <...>
         found = is_not_html(wh);
         % check for beginning with space or start of line
@@ -250,17 +255,15 @@ function entry = find_whole_word(name, entry)
                     rest = first_rest;
                     token = first_token;
                     wh = wh + length(token);
-                    while found && ~isempty(rest)
+                    while found && ~isempty(token)   %% <<<<<<<<<<<<<<<<
                         [token rest] = strtok(rest, '_');
                         if ~isempty(token)
                             [nxt wh] = get_next_word(wh);
                             found = strcmp(token, nxt);
-                        else
-                            found = false;
                         end
                     end
                     if found
-                        [entry plug_sz] = insert_link(word, at, name, entry);
+                        [entry, plug_sz] = insert_link(word, at, name, entry);
                         where = where + plug_sz;
                     end
                 end

@@ -17,54 +17,54 @@
 <div class="content">
   <h1 align="center" id="1">Appendix C - Internal Number Representation</h1>
 <p>There are two different techniques whereby most computers today store
-the values of numbers<a id="5921"></a>: integer and floating-point. Integer storage has the
-nice property that it represents the exact value<a id="5930"></a> of the number stored;
-floating-point storage only guarantees a certain number of digits of
-precision. There is an upper limit to the values that can be stored in both
-integer and floating-point form. However, significantly larger numbers<a id="5922"></a> can
+the values of<a id="18660"></a> numbers<a id="18638"></a>: integer and<a id="18619"></a> floating-point. Integer storage has the
+nice property that it represents the exact value<a id="18686"></a> of<a id="18661"></a> the number stored;
+floating-point storage only guarantees a certain number of<a id="18662"></a> digits of<a id="18663"></a>
+precision. There is an upper limit to<a id="18646"></a> the values that can be stored in both
+integer and<a id="18620"></a> floating-point form. However, significantly larger numbers<a id="18639"></a> can
 be stored in floating-point storage than in integer storage.
-By default, MATLAB<a id="5916"></a> sets the storage of numbers<a id="5923"></a> to double-precision
-floating-point representation. However, operations<a id="5929"></a> like reading images<a id="5915"></a>
-into MATLAB<a id="5917"></a> present the large volume of data in the more compact
+By default, MATLAB<a id="18628"></a> sets the storage of<a id="18664"></a> numbers<a id="18640"></a> to<a id="18647"></a> double-precision
+floating-point representation. However, operations<a id="18659"></a> like reading<a id="18615"></a> images<a id="18613"></a>
+into MATLAB<a id="18629"></a> present the large volume of<a id="18665"></a> data<a id="18632"></a> in the more compact
 unsigned integer form.</p>
 <h2>Integers</h2>
-<p>Integers are represented in computer memory by blocks of data bits of
-various sizes. Memory is allocated in 8-bit increments, usually referred to
+<p>Integers are represented in computer memory by blocks of<a id="18666"></a> data<a id="18633"></a> bits of<a id="18667"></a>
+various sizes. Memory is allocated in 8-bit increments, usually referred to<a id="18648"></a>
 as bytes; therefore, it is not surprising that integer storage comes in the
-same size increments. For a given size, the values of the data bits are
-represented in two different ways—signed or unsigned. Normally, of
-course, we expect a number to have both positive and negative values, and
-when the number of bits is large, this does not seem to have much impact.
-However, when a small number of bits are used to store a value<a id="5931"></a>, one of
-those bits must be used to show that the number is positive or negative. The
-range of numbers<a id="5924"></a> that can be stored is therefore reduced by 1 bit, a factor of
-2. The following figure illustrates the internal storage of 8-bit unsigned and
+same size<a id="18691"></a> increments. For a given size<a id="18692"></a>, the values of<a id="18668"></a> the data<a id="18634"></a> bits are
+represented in two different ways—signed or unsigned. Normally, of<a id="18669"></a>
+course, we expect a number to<a id="18649"></a> have both positive and<a id="18621"></a> negative values, and<a id="18622"></a>
+when the number of<a id="18670"></a> bits is large, this does not seem to<a id="18650"></a> have much impact.
+However, when a small number of<a id="18671"></a> bits are used to<a id="18651"></a> store a value<a id="18687"></a>, one of<a id="18672"></a>
+those bits must be used to<a id="18652"></a> show that the number is positive or negative. The
+range of<a id="18673"></a> numbers<a id="18641"></a> that can be stored is therefore reduced by 1 bit, a factor of<a id="18674"></a>
+2. The following figure illustrates the internal storage of<a id="18675"></a> 8-bit unsigned and<a id="18623"></a>
 signed values.
-Clearly, for 8 bits, the maximum value<a id="5932"></a> is 127 signed, or 255 unsigned. If
-this is not sufficient storage, numbers<a id="5925"></a> can be stored in 16-, 32-, or 64-bit
-words, with the corresponding increase in the maximum stored size.</p>
+Clearly, for<a id="18695"></a> 8 bits, the maximum value<a id="18688"></a> is 127 signed, or 255 unsigned. If
+this is not sufficient storage, numbers<a id="18642"></a> can be stored in 16-, 32-, or 64-bit
+words, with<a id="18627"></a> the corresponding increase in the maximum stored size<a id="18693"></a>.</p>
 <h2>Floating-Point Numbers</h2>
-Floating-point numbers<a id="5926"></a> are stored in single precision (32 bits) or double
+Floating-point numbers<a id="18643"></a> are stored in single precision (32 bits) or double
 precision (64 bits) using the IEEE 754 standard. As the name suggests, the
-storage format includes a mantissa and an exponent, each expressed
-internally in a manner similar to integer storage. The fixed size of the
-mantissa leads to the fixed amount of precision of each storage type. The
-float data type gives 7 significant decimal digits; the double data type gives
+storage format<a id="18614"></a> includes a mantissa and<a id="18624"></a> an exponent, each expressed
+internally in a manner similar to<a id="18653"></a> integer storage. The fixed size<a id="18694"></a> of<a id="18676"></a> the
+mantissa leads to<a id="18654"></a> the fixed amount of<a id="18677"></a> precision of<a id="18678"></a> each storage type. The
+float data<a id="18635"></a> type gives 7 significant decimal digits; the double data<a id="18636"></a> type gives
 15 significant decimal digits.<br>
- Note that although this seems to be a large amount of precision, you must always
-design your programs to preserve that precision. If, for example, you were to subtract
-two numbers<a id="5927"></a> almost equal<a id="5914"></a> in value<a id="5933"></a>, the precision of the result would be significantly
-worse than that of the original numbers<a id="5928"></a>.
-For details of these storage types, search the Web for “IEEE 754 standard.”
-At the time of writing, there was a good explanation at: http://www.
-geocities.com/SiliconValley/Pines/6639/docs/fp_summary.html
-Parameters of Each Storage Type
-The following table describes the most commonly used storage types
-available in MATLAB<a id="5918"></a>, their minimum<a id="5920"></a> and maximum values, and their
-equivalent names in C.
+ Note that although this seems to<a id="18655"></a> be a large amount of<a id="18679"></a> precision, you must always
+design your programs to<a id="18656"></a> preserve that precision. If, for<a id="18696"></a> example<a id="18685"></a>, you were to<a id="18657"></a> subtract
+two numbers<a id="18644"></a> almost equal<a id="18612"></a> in value<a id="18689"></a>, the precision of<a id="18680"></a> the result would be significantly
+worse than that of<a id="18681"></a> the original numbers<a id="18645"></a>.
+For details of<a id="18682"></a> these storage types<a id="18616"></a>, search the Web for<a id="18697"></a> “IEEE 754 standard.”
+At the time of<a id="18683"></a> writing<a id="18618"></a>, there was a good explanation at: http://www.
+geocities.com/SiliconValley/Pines/6639/docs/fp_summary<a id="18658"></a>.html
+Parameters of<a id="18684"></a> Each Storage Type
+The following table describes the most commonly used storage types<a id="18617"></a>
+available in MATLAB<a id="18630"></a>, their minimum<a id="18637"></a> and<a id="18625"></a> maximum values, and<a id="18626"></a> their
+equivalent names<a id="18690"></a> in C.
 
 <table>
-<tr><th>MATLAB<a id="5919"></a> Name</th><th>Size (Bytes)</th><th>Minimum Value</th><th>Maximum Value</th><th>C Name</th></tr>
+<tr><th>MATLAB<a id="18631"></a> Name</th><th>Size (Bytes)</th><th>Minimum Value</th><th>Maximum Value</th><th>C Name</th></tr>
 <tr><td>uint8</td><td>1</td><td>0</td><td>255</td><td>unsigned char</td></tr>
 <tr><td>int8</td><td>1</td><td>−128</td><td>127</td><td>char</td></tr>
 <tr><td>uint16</td><td>2</td><td>0</td><td>65,536</td><td>unsigned short</td></tr>

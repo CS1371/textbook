@@ -16,36 +16,36 @@
 <div class="nav-obj">#nav_obj#</div>
 
 <div class="content">
-<h1 align="center" id="4">Chapter 4: Vectors and Arrays</h1>
+<h1 align="center" id="4">Chapter 4: Vectors and<a id="4028"></a> Arrays</h1>
 <!-- Chapter Objectives -->
 
 <h2>Chapter Objectives</h2>
 
 <div class="container">
-<p>This chapter discusses the basic calculations involving rectangular collections<a id="1258"></a> of numbers<a id="1489"></a> in the form of arrays. For each of these collections<a id="1259"></a>, you will learn how to:</p>
+<p>This chapter discusses the basic calculations involving rectangular collections<a id="3801"></a> of<a id="4641"></a> numbers<a id="4380"></a> in the form of<a id="4642"></a> arrays. For each of<a id="4643"></a> these collections<a id="3802"></a>, you will learn how to<a id="4404"></a>:</p>
 
 <ul>
 	<li>Create them</li>
 	<li>Manipulate them</li>
-	<li>Access their elements</li>
-	<li>Perform mathematical and logical<a id="1383"></a> operations<a id="1524"></a> on them</li>
+	<li>Access their elements<a id="5038"></a></li>
+	<li>Perform mathematical and<a id="4029"></a> logical<a id="3743"></a> operations<a id="4571"></a> on<a id="4283"></a> them</li>
 </ul>
 
-<p>This study of arrays will introduce the first of many language characteristics that sets MATLAB<a id="1428"></a> apart from other languages: its ability to perform arithmetic<a id="1148"></a> and logical<a id="1384"></a> operations<a id="1525"></a> on collections<a id="1260"></a> of numbers<a id="1490"></a> as a whole. You need to understand how to create these collections<a id="1261"></a>, access the data in them, and manipulate the values in the collections<a id="1262"></a> with mathematical and logical<a id="1385"></a> operators<a id="1561"></a>. First, however, we need to understand the idea of functions built into the language.</p>
+<p>This study of<a id="4644"></a> arrays will introduce the first of<a id="4645"></a> many language characteristics that sets MATLAB<a id="4314"></a> apart from<a id="3901"></a> other languages: its ability to<a id="4405"></a> perform arithmetic<a id="3626"></a> and<a id="4030"></a> logical<a id="3744"></a> operations<a id="4572"></a> on<a id="4284"></a> collections<a id="3803"></a> of<a id="4646"></a> numbers<a id="4381"></a> as a whole. You need to<a id="4406"></a> understand how to<a id="4407"></a> create these collections<a id="3804"></a>, access the data<a id="4340"></a> in them, and<a id="4031"></a> manipulate the values in the collections<a id="3805"></a> with<a id="4217"></a> mathematical and<a id="4032"></a> logical<a id="3745"></a> operators<a id="4608"></a>. First, however, we need to<a id="4408"></a> understand the idea of<a id="4647"></a> functions<a id="4973"></a> built into the language.</p>
 </div>
 
 <div class="chp-section" data-sect-name="Concept: Data Collection" data-sect-num="1"><!-- Data Collection -->
 <h2 id="4_1">4.1 Concept: Data Collections</h2>
 
 <div class="container">
-<p>Chapter 2 showed how to perform mathematical operations<a id="1526"></a> on single data items. This section considers the concept of grouping data items in general, and then specifically considers two very common ways to group data: in arrays and in vectors, which are a powerful subset of arrays.</p>
+<p>Chapter 2 showed how to<a id="4409"></a> perform mathematical operations<a id="4573"></a> on<a id="4285"></a> single data<a id="4341"></a> items. This section considers the concept of<a id="4648"></a> grouping data<a id="4342"></a> items in general, and<a id="4033"></a> then specifically considers two very common ways to<a id="4410"></a> group data<a id="4343"></a>: in arrays and<a id="4034"></a> in vectors, which are a powerful subset of<a id="4649"></a> arrays.</p>
 </div>
 
 <div class="chp-subsection" data-sub-name="Data Abstraction" data-sub-num="1"><!-- Data Abstraction -->
 <h3 id="4_1_1">4.1.1 Data Abstraction</h3>
 
 <div class="container">
-<p>It is frequently convenient to refer to groups of data collectively, for example, &quot;all the temperature readings for May&quot; or &quot;all the purchases from Amazon.&quot; This allows us not only to move these items around as a group, but also to consider mathematical or logical<a id="1386"></a> operations<a id="1527"></a> on these groups. For example, we could discuss the average, maximum, or minimum<a id="1480"></a> temperatures for a month, or that the cost of the Amazon purchases had gone down 3%.</p>
+<p>It is frequently convenient to<a id="4411"></a> refer to<a id="4412"></a> groups of<a id="4650"></a> data<a id="4344"></a> collectively, for<a id="5114"></a> example<a id="4931"></a>, &quot;all the temperature readings for<a id="5115"></a> May&quot; or &quot;all the purchases from<a id="3902"></a> Amazon.&quot; This allows us not only to<a id="4413"></a> move these items around as a group, but also to<a id="4414"></a> consider mathematical or logical<a id="3746"></a> operations<a id="4574"></a> on<a id="4286"></a> these groups. For example<a id="4932"></a>, we could discuss the average, maximum, or minimum<a id="4377"></a> temperatures for<a id="5116"></a> a month, or that the cost of<a id="4651"></a> the Amazon purchases had gone down 3%.</p>
 </div>
 </div>
 
@@ -53,7 +53,7 @@
 <h3 id="4_1_2">4.1.2 Homogeneous Collections</h3>
 
 <div class="container">
-<p>In Chapter 7, we will encounter more general collection implementations that <b>appear to</b> allow items in a collection to be of different data types. The collections<a id="1263"></a> discussed in this chapter, however, will be constrained to accept only items of the same data type. Collections with this constraint are called homogeneous<a id="1364"></a> collections<a id="1264"></a>.</p>
+<p>In Chapter 7, we will encounter more general collection implementations that <b>appear to<a id="4415"></a></b> allow items in a collection to<a id="4416"></a> be of<a id="4652"></a> different data<a id="4345"></a> types<a id="4026"></a>. The collections<a id="3806"></a> discussed in this chapter, however, will be constrained to<a id="4417"></a> accept only items of<a id="4653"></a> the same data<a id="4346"></a> type. Collections with<a id="4218"></a> this constraint are called homogeneous<a id="3997"></a> collections<a id="3807"></a>.</p>
 </div>
 </div>
 </div>
@@ -66,50 +66,50 @@
 <p class="figure-name card-title">Fig 4.1 A General Vector</p>
 </div>
 
-<p>A vector is an array<a id="1155"></a> with only one row of vector elements<a id="1664"></a>. It is the simplest means of grouping a collection of like data items. Initially we will consider vectors of numbers<a id="1491"></a> or logical<a id="1387"></a> values. Some languages refer to vectors as linear<a id="1373"></a> arrays or linear<a id="1374"></a> matrices<a id="1454"></a>. As these names suggest, a vector is a one-dimensional grouping of data, as shown in Figure 4.1. Individual items in a vector are usually referred to as its elements. Vector elements have two separate and distinct attributes that make them unique in a specific vector: their numerical<a id="1513"></a> value<a id="1626"></a> and their position in that vector. For example, the individual number 66 is in the third position in the vector in Figure 4.1. Its value<a id="1627"></a> is 66 and its index is 3. There may be other items in the vector with the value<a id="1628"></a> of 66, but no other item will be located in this vector at position 3. Experienced programmers should note that due to its FOR<a id="1573"></a>TRAN roots, indices in the MATLAB<a id="1429"></a> language start from 1 and not 0.</p>
+<p>A vector is an array<a id="3633"></a> with<a id="4219"></a> only one row of<a id="4654"></a> vector elements<a id="5039"></a>. It is the simplest means of<a id="4655"></a> grouping a collection of<a id="4656"></a> like data<a id="4347"></a> items. Initially we will consider vectors of<a id="4657"></a> numbers<a id="4382"></a> or logical<a id="3747"></a> values. Some languages refer to<a id="4418"></a> vectors as linear<a id="4211"></a> arrays or linear<a id="4212"></a> matrices<a id="4358"></a>. As these names<a id="5036"></a> suggest, a vector is a one-dimensional grouping of<a id="4658"></a> data<a id="4348"></a>, as shown in Figure<a id="5161"></a> 4.1. Individual items in a vector are usually referred to<a id="4419"></a> as its elements<a id="5040"></a>. Vector elements<a id="5041"></a> have two separate and<a id="4035"></a> distinct attributes that make them unique in a specific vector: their numerical<a id="4568"></a> value<a id="4999"></a> and<a id="4036"></a> their position in that vector. For example<a id="4933"></a>, the individual number 66 is in the third position in the vector in Figure<a id="5162"></a> 4.1. Its value<a id="5000"></a> is 66 and<a id="4037"></a> its index is 3. There may be other items in the vector with<a id="4220"></a> the value<a id="5001"></a> of<a id="4659"></a> 66, but no other item will be located in this vector at position 3. Experienced programmers should note that due to<a id="4420"></a> its FOR<a id="4624"></a>TRAN roots, indices in the MATLAB<a id="4315"></a> language start from<a id="3903"></a> 1 and<a id="4038"></a> not 0.</p>
 </div>
 
 <div class="chp-subsection" data-sub-name="Creating a Vector" data-sub-num="2"><!-- Creating a Vector -->
 <h3 id="4_2_1">4.2.1 Creating a Vector</h3>
 
 <div class="container">
-<p>There are seven ways to create vectors that are directly analogous to the techniques for creating individual data items and fall into two broad categories:</p>
+<p>There are seven ways to<a id="4421"></a> create vectors that are directly analogous to<a id="4422"></a> the techniques for<a id="5117"></a> creating<a id="3983"></a> individual data<a id="4349"></a> items and<a id="4039"></a> fall into two broad categories:</p>
 
 <ul>
-	<li>Creating vectors from constant values</li>
-	<li>Producing new vectors with special-purpose functions</li>
+	<li>Creating vectors from<a id="3904"></a> constant values</li>
+	<li>Producing new vectors with<a id="4221"></a> special-purpose functions<a id="4974"></a></li>
 </ul>
 
-<p>The following shows how you can create vectors from constant values:</p>
+<p>The following shows how you can create vectors from<a id="3905"></a> constant values:</p>
 
 <ul>
-	<li>Entering the values directly, for example, <code>A = [2, 5, 7, 1, 3]</code> (the commas are optional and are frequently omitted)</li>
-	<li>Entering the values as a range of numbers<a id="1492"></a> using the colon<a id="1267"></a> operator, for example, <code>B = 1:3:20</code>, where the first number is the starting value<a id="1629"></a>, the second number is the increment, and the third number is the ending value<a id="1630"></a> (you may omit the increment if the desired increment is 1)</li>
+	<li>Entering the values directly, for<a id="5118"></a> example<a id="4934"></a>, <code>A = [2, 5, 7, 1, 3]</code> (the commas are optional and<a id="4040"></a> are frequently omitted)</li>
+	<li>Entering the values as a range of<a id="4660"></a> numbers<a id="4383"></a> using the colon<a id="3810"></a> operator, for<a id="5119"></a> example<a id="4935"></a>, <code>B = 1:3:20</code>, where the first number is the starting value<a id="5002"></a>, the second number is the increment, and<a id="4041"></a> the third number is the ending value<a id="5003"></a> (you may omit the increment if the desired increment is 1)</li>
 </ul>
 
-<p>The following introduces the most common MATLAB<a id="1430"></a> functions that create vectors from scratch:</p>
+<p>The following introduces the most common MATLAB<a id="4316"></a> functions<a id="4975"></a> that create vectors from<a id="3906"></a> scratch:</p>
 
 <ul>
-	<li>The <code>linspace(<a id="1379"></a>...)</code> function<a id="1342"></a> creates a fixed number of values between two limits, for example, <code>C = linspace (0, 20, 11)</code>, where the first parameter is the lower limit, the second parameter is the upper limit, and the third parameter is the number of values in the vector</li>
-	<li>The functions <code>zeros(<a id="1670"></a>1,n)</code> and <code>ones(<a id="1516"></a>1,n)</code> create vectors filled with 0 or 1 respectively.</li>
-	<li>There are several functions that create vectors of random values. <code>rand(<a id="1585"></a>1,n)</code> generates a vector of random numbers<a id="1493"></a> uniformly distributed between 0 and 1; <code>randn(<a id="1588"></a>1,n)</code> generates a vector of normally distributed values with zero mean and unit standard deviation; <code>randi([min max], 1, n)</code> generates a vector of random integers in the range min to max.</li>
+	<li>The <code>linspace(<a id="3943"></a>...)</code> function<a id="3881"></a> creates a fixed number of<a id="4661"></a> values between two limits, for<a id="5120"></a> example<a id="4936"></a>, <code>C = linspace (0, 20, 11)</code>, where the first parameter is the lower limit, the second parameter is the upper limit, and<a id="4042"></a> the third parameter is the number of<a id="4662"></a> values in the vector</li>
+	<li>The functions<a id="4976"></a> <code>zeros(<a id="3980"></a>1,n)</code> and<a id="4043"></a> <code>ones(<a id="3955"></a>1,n)</code> create vectors filled with<a id="4222"></a> 0 or 1 respectively.</li>
+	<li>There are several functions<a id="4977"></a> that create vectors of<a id="4663"></a> random values. <code>rand(<a id="3958"></a>1,n)</code> generates a vector of<a id="4664"></a> random numbers<a id="4384"></a> uniformly distributed between 0 and<a id="4044"></a> 1; <code>randn(<a id="3961"></a>1,n)</code> generates a vector of<a id="4665"></a> normally distributed values with<a id="4223"></a> zero mean and<a id="4045"></a> unit standard deviation; <code>randi([min max], 1, n)</code> generates a vector of<a id="4666"></a> random integers in the range min to<a id="4423"></a> max.</li>
 </ul>
 
-<p>Try working with vectors in Exercise 4.1.</p>
+<p>Try working with<a id="4224"></a> vectors in Exercise 4.1.</p>
 
 <div class="exercise">#exercise_4_1#</div>
 
-<p>The Workspace<a id="1666"></a> window enables you to choose the attributes of each variable<a id="1655"></a> to be displayed. Select the Workspace<a id="1667"></a> window and you will see a row of column headings beginning with &<a id="1576"></a>#39;Name.&<a id="1577"></a>#39; Right click on that headings row; a drop-down menu offers the attributes to display. Common selections are &<a id="1578"></a>#39;Value&#39; and &<a id="1579"></a>#39;Class.&<a id="1580"></a>#39; You may also select and drag the column width markers to change the column layout.</p>
+<p>The Workspace<a id="5174"></a> window enables you to<a id="4424"></a> choose the attributes of<a id="4667"></a> each variable<a id="5028"></a> to<a id="4425"></a> be displayed. Select the Workspace<a id="5175"></a> window and<a id="4046"></a> you will see a row of<a id="4668"></a> column headings beginning with<a id="4225"></a> &<a id="4632"></a>#39;Name.&<a id="4633"></a>#39; Right click on<a id="4287"></a> that headings row; a drop-down menu offers the attributes to<a id="4426"></a> display. Common selections are &<a id="4634"></a>#39;Value&#39; and<a id="4047"></a> &<a id="4635"></a>#39;Class.&<a id="4636"></a>#39; You may also select and<a id="4048"></a> drag the column width markers to<a id="4427"></a> change the column layout.</p>
 
-<p>Notice that if the size of the vector is small enough, the value<a id="1631"></a> field<a id="1332"></a> shows its actual contents; otherwise, you see a description of its attributes, like &lt;1 &times; 11 double&gt;. Exercise 4.1 deliberately created the vector D with only one element, and perhaps the result surprised you. D was presented in both the Interactions window and the Workspace<a id="1668"></a> window as if it were a scalar<a id="1594"></a> quantity. This is generally true in the MATLAB<a id="1431"></a> language - all scalar<a id="1595"></a> quantities are considered vectors of unit length.</p>
+<p>Notice that if the size<a id="5094"></a> of<a id="4669"></a> the vector is small enough, the value<a id="5004"></a> field<a id="3872"></a> shows its actual contents; otherwise, you see a description of<a id="4670"></a> its attributes, like &lt;1 &times; 11 double&gt;. Exercise 4.1 deliberately created the vector D with<a id="4226"></a> only one element, and<a id="4049"></a> perhaps the result surprised you. D was presented in both the Interactions window and<a id="4050"></a> the Workspace<a id="5176"></a> window as if it were a scalar<a id="4920"></a> quantity. This is generally true<a id="4007"></a> in the MATLAB<a id="4317"></a> language - all scalar<a id="4921"></a> quantities are considered vectors of<a id="4671"></a> unit length.</p>
 </div>
 </div>
 
 <div class="chp-subsection" data-sub-name="Size of a Vector" data-sub-num="2"><!-- Size of a Vector -->
-<h3 id="4_2_2">4.2.2 Size of a Vector</h3>
+<h3 id="4_2_2">4.2.2 Size of<a id="4672"></a> a Vector</h3>
 
 <div class="container">
-<p>A vector also has a specific attribute: its length (<code>n</code> in Figure 4.1). In most implementations, this length is fixed when the vector is created. However, as you will see shortly, the MATLAB<a id="1432"></a> language provides the ability to increase or decrease the size of a vector by adding or removing elements. MATLAB<a id="1433"></a> also provides two functions to determine the size of arrays in general, and of vectors in particular. The function<a id="1343"></a> <code>size(<a id="1606"></a>V)</code> when applied to the vector <code>V</code> returns another vector containing two quantities: the number of rows in the vector (always 1) and the number of columns (the length of the vector). The function<a id="1344"></a> <code>length(<a id="1366"></a>V)</code> returns the maximum value<a id="1632"></a> in the size of the size array<a id="1156"></a> - for a vector, this is a number indicating its length.</p>
+<p>A vector also has a specific attribute: its length (<code>n</code> in Figure<a id="5163"></a> 4.1). In most implementations, this length is fixed when the vector is created. However, as you will see shortly, the MATLAB<a id="4318"></a> language provides the ability to<a id="4428"></a> increase or decrease the size<a id="5095"></a> of<a id="4673"></a> a vector by adding or removing elements<a id="5042"></a>. MATLAB<a id="4319"></a> also provides two functions<a id="4978"></a> to<a id="4429"></a> determine the size<a id="5096"></a> of<a id="4674"></a> arrays in general, and<a id="4051"></a> of<a id="4675"></a> vectors in particular. The function<a id="3882"></a> <code>size(<a id="3968"></a>V)</code> when applied to<a id="4430"></a> the vector <code>V</code> returns another vector containing two quantities: the number of<a id="4676"></a> rows in the vector (always 1) and<a id="4052"></a> the number of<a id="4677"></a> columns (the length of<a id="4678"></a> the vector). The function<a id="3883"></a> <code>length(<a id="3939"></a>V)</code> returns the maximum value<a id="5005"></a> in the size<a id="5097"></a> of<a id="4679"></a> the size<a id="5098"></a> array<a id="3634"></a> - for<a id="5121"></a> a vector, this is a number indicating its length.</p>
 </div>
 </div>
 
@@ -117,7 +117,7 @@
 <h3 id="4_2_3">4.2.3 Indexing a Vector</h3>
 
 <div class="container">
-<p>As mentioned in section 4.2.2, each element in a vector has two attributes: its value<a id="1633"></a> and its position in the vector. You can access the elements in a vector in either of two ways: using a numerical<a id="1514"></a> vector or a logical<a id="1388"></a> vector. We refer to the process of accessing array<a id="11<a id="1250"></a>57"></a> elements by their position as &quot;indexing.&quot;</p>
+<p>As mentioned in section 4.2.2, each element in a vector has two attributes: its value<a id="5006"></a> and<a id="4053"></a> its position in the vector. You can access the elements<a id="5043"></a> in a vector in either of<a id="4680"></a> two ways: using a numerical<a id="4569"></a> vector or a logical<a id="3748"></a> vector. We refer to<a id="4431"></a> the process of<a id="4681"></a> accessing array<a id="36<a id="3793"></a>35"></a> elements<a id="5044"></a> by their position as &quot;indexing<a id="5083"></a>.&quot;</p>
 </div>
 </div>
 
@@ -125,60 +125,60 @@
 <h3 id="4_2_4">4.2.4 Shortening a Vector</h3>
 
 <div class="container">
-<p>There are times when we need to remove elements from a vector. For example, if we had a vector of measurements from an instrument, and it was known that the setup for the third reading was incorrect, we would want to remove that erroneous reading before processing the data. To accomplish this, we make a rather strange use of the empty<a id="1288"></a> vector, []. The empty<a id="1289"></a> vector, as its name and symbol suggest, is a vector with no elements in it. When you assign the empty<a id="1290"></a> vector to an element in another vector - say, A - that element is removed from A, and A is shortened by one element. Try Exercise 4.2. As you can see in step {3.}, we asked for the fourth element to be removed from a vector initially with eight elements. The resulting vector has only seven elements, and the fourth element, originally with value<a id="1634"></a> 1, has been removed.</p>
+<p>There are times when we need to<a id="4432"></a> remove elements<a id="5045"></a> from<a id="3907"></a> a vector. For example<a id="4937"></a>, if we had a vector of<a id="4682"></a> measurements from<a id="3908"></a> an instrument, and<a id="4054"></a> it was known that the setup for<a id="5122"></a> the third reading<a id="4005"></a> was incorrect, we would want to<a id="4433"></a> remove that erroneous reading<a id="4006"></a> before processing<a id="3992"></a> the data<a id="4350"></a>. To accomplish this, we make a rather strange use of<a id="4683"></a> the empty<a id="3826"></a> vector, []. The empty<a id="3827"></a> vector, as its name and<a id="4055"></a> symbol suggest, is a vector with<a id="4227"></a> no elements<a id="5046"></a> in it. When you assign the empty<a id="3828"></a> vector to<a id="4434"></a> an element in another vector - say, A - that element is removed from<a id="3909"></a> A, and<a id="4056"></a> A is shortened by one element. Try Exercise 4.2. As you can see in step {3.}, we asked for<a id="5123"></a> the fourth element to<a id="4435"></a> be removed from<a id="3910"></a> a vector initially with<a id="4228"></a> eight elements<a id="5047"></a>. The resulting vector has only seven elements<a id="5048"></a>, and<a id="4057"></a> the fourth element, originally with<a id="4229"></a> value<a id="5007"></a> 1, has been removed.</p>
 
 <div class="exercise">#exercise_4_2#</div>
 
-<p>Shortening a vector, however, is very rarely the right solution to a problem and can lead to logical<a id="1389"></a> difficulties. Wherever possible, you should use indexing to copy the elements you want to keep rather than using <code>[]</code>to erase elements you want to remove.</p>
+<p>Shortening a vector, however, is very rarely the right solution to<a id="4436"></a> a problem and<a id="4058"></a> can lead to<a id="4437"></a> logical<a id="3749"></a> difficulties. Wherever possible, you should use indexing<a id="5084"></a> to<a id="4438"></a> copy the elements<a id="5049"></a> you want to<a id="4439"></a> keep rather than using <code>[]</code>to<a id="4440"></a> erase elements<a id="5050"></a> you want to<a id="4441"></a> remove.</p>
 </div>
 </div>
 
 <div class="chp-subsection" data-sub-name="Operating on Vectors" data-sub-num="5"><!-- Operating on Vectors -->
-<h3 id="4_2_5">4.2.5 Operating on Vectors</h3>
+<h3 id="4_2_5">4.2.5 Operating on<a id="4288"></a> Vectors</h3>
 
 <div class="container">
-<p>The essential core of the MATLAB<a id="1434"></a> language is a rich collection of tools for manipulating vectors and arrays. This section first shows how these tools operate on vectors, and then generalizes to how they apply to arrays (multi-dimensional vectors) and, later, matrices<a id="1455"></a>. Three techniques extend directly from operations<a id="1528"></a> on scalar<a id="1596"></a> values:</p>
+<p>The essential core of<a id="4684"></a> the MATLAB<a id="4320"></a> language is a rich collection of<a id="4685"></a> tools for<a id="5124"></a> manipulating vectors and<a id="4059"></a> arrays. This section first shows how these tools operate on<a id="4289"></a> vectors, and<a id="4060"></a> then generalizes to<a id="4442"></a> how they apply to<a id="4443"></a> arrays (multi-dimensional vectors) and<a id="4061"></a>, later, matrices<a id="4359"></a>. Three techniques extend directly from<a id="3911"></a> operations<a id="4575"></a> on<a id="4290"></a> scalar<a id="4922"></a> values:</p>
 
 <ul>
-	<li>Arithmetic operations<a id="1529"></a></li>
-	<li>Logical operations<a id="1530"></a></li>
-	<li>Applying library functions</li>
+	<li>Arithmetic operations<a id="4576"></a></li>
+	<li>Logical operations<a id="4577"></a></li>
+	<li>Applying library functions<a id="4979"></a></li>
 </ul>
 
-<p>Two techniques are unique to arrays in general, and to vectors in particular:</p>
+<p>Two techniques are unique to<a id="4444"></a> arrays in general, and<a id="4062"></a> to<a id="4445"></a> vectors in particular:</p>
 
 <ul>
 	<li>Concatenation</li>
-	<li>Slicing (generalized indexing)</li>
+	<li>Slicing (generalized indexing<a id="5085"></a>)</li>
 </ul>
 
-<p><b>Arithmetic Operations:</b> Arithmetic operations<a id="1531"></a> can be performed collectively on the individual components of two vectors as long as both vectors are the same length, or one of the vectors is a scalar<a id="1597"></a> (i.e., a vector of length 1). Addition and subtraction have exactly the syntax you would expect, as illustrated in Exercise 4.3. Multiplication, division, and exponentiation<a id="1309"></a>, however, have a small syntactic idiosyncrasy related to the fact that these are element-by-element operations<a id="1532"></a>, not matrix<a id="1458"></a> operations<a id="1533"></a>. We will discuss matrix<a id="1459"></a> operations<a id="1534"></a> in Chapter 12. When the MATLAB<a id="1435"></a> language was designed, the ordinary symbols (<code>*</code>,<code>/</code>, and <code>^</code>) were reserved for matrix<a id="1460"></a> operations<a id="1535"></a>. However, element-by-element multiplicative operations<a id="1536"></a> are fundamentally different from matrix<a id="1461"></a> operations<a id="1537"></a>, and a new set of operators<a id="1562"></a> is required to specify these operations<a id="1538"></a>.</p>
+<p><b>Arithmetic Operations:</b> Arithmetic operations<a id="4578"></a> can be performed collectively on<a id="4291"></a> the individual components of<a id="4686"></a> two vectors as long as both vectors are the same length, or one of<a id="4687"></a> the vectors is a scalar<a id="4923"></a> (i.e., a vector of<a id="4688"></a> length 1). Addition and<a id="4063"></a> subtraction have exactly the syntax you would expect, as illustrated in Exercise 4.3. Multiplication, division<a id="3733"></a>, and<a id="4064"></a> exponentiation<a id="3849"></a>, however, have a small syntactic idiosyncrasy related to<a id="4446"></a> the fact that these are element-by-element operations<a id="4579"></a>, not matrix<a id="4362"></a> operations<a id="4580"></a>. We will discuss matrix<a id="4363"></a> operations<a id="4581"></a> in Chapter 12. When the MATLAB<a id="4321"></a> language was designed, the ordinary symbols (<code>*</code>,<code>/</code>, and<a id="4065"></a> <code>^</code>) were reserved for<a id="5125"></a> matrix<a id="4364"></a> operations<a id="4582"></a>. However, element-by-element multiplicative operations<a id="4583"></a> are fundamentally different from<a id="3912"></a> matrix<a id="4365"></a> operations<a id="4584"></a>, and<a id="4066"></a> a new set of<a id="4689"></a> operators<a id="4609"></a> is required to<a id="4447"></a> specify these operations<a id="4585"></a>.</p>
 
 <div class="exercise">#exercise_4_3#</div>
 
-<p>These are the symbols <code>.*</code>, <code>./</code>, and <code>.^</code> {the dots are part of the operators<a id="1563"></a>, but the commas are not} that are used respectively for element-by- element multiplication<a id="1483"></a>, division, and exponentiation<a id="1310"></a>. Note that because matrix<a id="1462"></a> and element-by-element addition and subtraction are identical, no special operation<a id="1519"></a> symbols are required for <code>+</code> and <code>-</code>.</p>
+<p>These are the symbols <code>.*</code>, <code>./</code>, and<a id="4067"></a> <code>.^</code> {the dots are part of<a id="4690"></a> the operators<a id="4610"></a>, but the commas are not} that are used respectively for<a id="5126"></a> element-by- element multiplication<a id="3787"></a>, division<a id="3734"></a>, and<a id="4068"></a> exponentiation<a id="3850"></a>. Note that because matrix<a id="4366"></a> and<a id="4069"></a> element-by-element addition and<a id="4070"></a> subtraction are identical, no special operation<a id="4000"></a> symbols are required for<a id="5127"></a> <code>+</code> and<a id="4071"></a> <code>-</code>.</p>
 
-<p>In Exercise 4.3, we first see the addition and multiplication<a id="1484"></a> of a vector by a scalar<a id="1598"></a> quantity, and then element-by-element multiplication<a id="1485"></a> of <code>A</code> and <code>B</code>. The first error is generated because we omitted the &acirc;&euro;&tilde;<code>.</code>&acirc;&euro;&trade; on the multiply symbol, thereby invoking matrix<a id="1463"></a> multiplication<a id="1486"></a>, which is improper with the vector <code>A</code> and <code>B</code>. The second error occurs because two vectors involved in arithmetic<a id="1149"></a> operations<a id="1539"></a> must have the same size. Notice, incidentally, the use of the <code>%</code> sign indicating that the rest of the line is a comment.</p>
+<p>In Exercise 4.3, we first see the addition and<a id="4072"></a> multiplication<a id="3788"></a> of<a id="4691"></a> a vector by a scalar<a id="4924"></a> quantity, and<a id="4073"></a> then element-by-element multiplication<a id="3789"></a> of<a id="4692"></a> <code>A</code> and<a id="4074"></a> <code>B</code>. The first error is generated because we omitted the &acirc;&euro;&tilde;<code>.</code>&acirc;&euro;&trade; on<a id="4292"></a> the multiply symbol, thereby invoking matrix<a id="4367"></a> multiplication<a id="3790"></a>, which is improper with<a id="4230"></a> the vector <code>A</code> and<a id="4075"></a> <code>B</code>. The second error occurs because two vectors involved in arithmetic<a id="3627"></a> operations<a id="4586"></a> must have the same size<a id="5099"></a>. Notice, incidentally, the use of<a id="4693"></a> the <code>%</code> sign indicating that the rest of<a id="4694"></a> the line is a comment.</p>
 
-<p>You can change the signs of all the values of a vector with the unary<a id="1624"></a> minus (<code>-</code>) operator.</p>
+<p>You can change the signs of<a id="4695"></a> all the values of<a id="4696"></a> a vector with<a id="4231"></a> the unary<a id="4997"></a> minus (<code>-</code>) operator.</p>
 
-<p><b>Logical Operations:</b> In Exercise 4.2, you might have wondered why you would ever use logical<a id="1390"></a> indexing. In this section, we will see that logical<a id="1391"></a> operations<a id="1540"></a> on vectors produce vectors of logical<a id="1392"></a> results. We can then use these logical<a id="1393"></a> result vectors to index vectors in a style that makes the logic<a id="1381"></a> of complex expressions very clear<a id="1257"></a>. As with arithmetic<a id="1150"></a> operations<a id="1541"></a>, logical<a id="1394"></a> operations<a id="1542"></a> can be performed element-by-element on two vectors as long as both vectors are the same length, or if one of the vectors is a scalar<a id="1599"></a> (i.e., a vector of length 1). The result will be a vector of logical<a id="1395"></a> values with the same length as the longer of the original vector(<a id="1663"></a>s).</p>
+<p><b>Logical Operations:</b> In Exercise 4.2, you might have wondered why you would ever use logical<a id="3750"></a> indexing<a id="5086"></a>. In this section, we will see that logical<a id="3751"></a> operations<a id="4587"></a> on<a id="4293"></a> vectors produce vectors of<a id="4697"></a> logical<a id="3752"></a> results. We can then use these logical<a id="3753"></a> result vectors to<a id="4448"></a> index vectors in a style that makes the logic<a id="4281"></a> of<a id="4698"></a> complex expressions very clear<a id="3800"></a>. As with<a id="4232"></a> arithmetic<a id="3628"></a> operations<a id="4588"></a>, logical<a id="3754"></a> operations<a id="4589"></a> can be performed element-by-element on<a id="4294"></a> two vectors as long as both vectors are the same length, or if one of<a id="4699"></a> the vectors is a scalar<a id="4925"></a> (i.e., a vector of<a id="4700"></a> length 1). The result will be a vector of<a id="4701"></a> logical<a id="3755"></a> values with<a id="4233"></a> the same length as the longer of<a id="4702"></a> the original vector(<a id="5037"></a>s).</p>
 
-<p>Try Exercise 4.4 to see how vector logical<a id="1396"></a> expressions work. First we built the vectors <code>A</code> and <code>B</code>, and then we performed two legal logical<a id="1397"></a> operations<a id="1543"></a>: finding where each element of <code>A</code> is not less<a id="1370"></a> than <code>5</code>, and where each element of <code>A</code> is not less<a id="1371"></a> than the corresponding element of <code>B</code>. As with arithmetic<a id="1151"></a> operations<a id="1544"></a>, an error occurs if you attempt a logical<a id="1398"></a> operation<a id="1520"></a> with vectors of different sizes (neither size being 1). Note to our eternal sadness that when MATLAB<a id="1436"></a> reports a logical<a id="1399"></a> result, it displays the values <code>1</code> for true and <code>0</code> for false<a id="1315"></a>. If you check in the Workspace<a id="1669"></a> window, the values are in fact of class <code>Logical</code>.</p>
+<p>Try Exercise 4.4 to<a id="4449"></a> see how vector logical<a id="3756"></a> expressions work. First we built the vectors <code>A</code> and<a id="4076"></a> <code>B</code>, and<a id="4077"></a> then we performed two legal logical<a id="3757"></a> operations<a id="4590"></a>: finding where each element of<a id="4703"></a> <code>A</code> is not less<a id="4214"></a> than <code>5</code>, and<a id="4078"></a> where each element of<a id="4704"></a> <code>A</code> is not less<a id="4215"></a> than the corresponding element of<a id="4705"></a> <code>B</code>. As with<a id="4234"></a> arithmetic<a id="3629"></a> operations<a id="4591"></a>, an error occurs if you attempt a logical<a id="3758"></a> operation<a id="4001"></a> with<a id="4235"></a> vectors of<a id="4706"></a> different sizes (neither size<a id="5100"></a> being 1). Note to<a id="4450"></a> our eternal sadness that when MATLAB<a id="4322"></a> reports a logical<a id="3759"></a> result, it displays the values <code>1</code> for<a id="5128"></a> true<a id="4008"></a> and<a id="4079"></a> <code>0</code> for<a id="5129"></a> false<a id="3855"></a>. If you check in the Workspace<a id="5177"></a> window, the values are in fact of<a id="4707"></a> class <code>Logical</code>.</p>
 
 <div class="exercise">#exercise_4_4#</div>
 
-<p>Logical operators<a id="1564"></a> can be assembled into more complex operations<a id="1545"></a> using logical<a id="1400"></a> and (<code>&amp;</code>) and or (<code>|</code>) operators<a id="1565"></a>. These operators<a id="1566"></a> actually come in two flavors: &amp;/| and &amp;&amp; / ||. The single operators<a id="1567"></a> operate on logical<a id="1401"></a> arrays of matching size to perform element-wise matches of the individual logical<a id="1402"></a> values. The doubled operators<a id="1568"></a> combine individual logical<a id="1403"></a> results and are usually associated with conditional statements (see Chapter 4).</p>
+<p>Logical operators<a id="4611"></a> can be assembled into more complex operations<a id="4592"></a> using logical<a id="3760"></a> and<a id="4080"></a> (<code>&amp;</code>) and<a id="4081"></a> or (<code>|</code>) operators<a id="4612"></a>. These operators<a id="4613"></a> actually come in two flavors: &amp;/| and<a id="4082"></a> &amp;&amp; / ||. The single operators<a id="4614"></a> operate on<a id="4295"></a> logical<a id="3761"></a> arrays of<a id="4708"></a> matching size<a id="5101"></a> to<a id="4451"></a> perform element-wise<a id="4627"></a> matches of<a id="4709"></a> the individual logical<a id="3762"></a> values. The doubled operators<a id="4615"></a> combine individual logical<a id="3763"></a> results and<a id="4083"></a> are usually associated with<a id="4236"></a> conditional statements (see Chapter 4).</p>
 
-<p>In Exercise 4.4{2.}, we combine two logical<a id="1404"></a> vectors of the same length successfully, but in {3.} we fail, since just like with arithmetic<a id="1152"></a> operations<a id="1546"></a>, we cannot combine vectors of different lengths. If you need the indices in a vector where the elements of a logical<a id="1405"></a> vector are <code>true</code>, the function<a id="1345"></a> <code>find(<a id="1333"></a>...)</code> accomplishes this by consuming a vector of logical<a id="1406"></a> values and producing a vector of the positions of the true elements.</p>
+<p>In Exercise 4.4{2.}, we combine two logical<a id="3764"></a> vectors of<a id="4710"></a> the same length successfully, but in {3.} we fail, since just like with<a id="4237"></a> arithmetic<a id="3630"></a> operations<a id="4593"></a>, we cannot combine vectors of<a id="4711"></a> different lengths. If you need the indices in a vector where the elements<a id="5051"></a> of<a id="4712"></a> a logical<a id="3765"></a> vector are <code>true<a id="4009"></a></code>, the function<a id="3884"></a> <code>find(<a id="3873"></a>...)</code> accomplishes this by consuming a vector of<a id="4713"></a> logical<a id="3766"></a> values and<a id="4084"></a> producing a vector of<a id="4714"></a> the positions of<a id="4715"></a> the true<a id="4010"></a> elements<a id="5052"></a>.</p>
 
-<p>You can invert the values of all elements of a logical<a id="1407"></a> vector (changing <code>true</code> to <code>false<a id="1316"></a></code> and <code>false<a id="1317"></a></code> to <code>true</code>) using the unary<a id="1625"></a> not operator, <code>~</code>. For example:</p>
+<p>You can invert the values of<a id="4716"></a> all elements<a id="5053"></a> of<a id="4717"></a> a logical<a id="3767"></a> vector (changing <code>true<a id="4011"></a></code> to<a id="4452"></a> <code>false<a id="3856"></a></code> and<a id="4085"></a> <code>false<a id="3857"></a></code> to<a id="4453"></a> <code>true<a id="4012"></a></code>) using the unary<a id="4998"></a> not operator, <code>~</code>. For example<a id="4938"></a>:</p>
 
-<p><code>&gt;&gt; na = ~[true true false<a id="1318"></a> true]<br />
+<p><code>&gt;&gt; na = ~[true<a id="4013"></a> true<a id="4014"></a> false<a id="3858"></a> true<a id="4015"></a>]<br />
 na =<br />
 &nbsp;&nbsp;&nbsp;&nbsp;0 0 1 0</code></p>
 
-<p>As you can see, each element of <code>na</code> is the logical<a id="1408"></a> inverse of the corresponding original element. As is usual with arithmetic<a id="1153"></a> and logical<a id="1409"></a> operations<a id="1547"></a>, the precedence of operators<a id="1569"></a> governs the order in which operations<a id="1548"></a> are performed. Table 4.1 shows the operator precedence in the MATLAB<a id="1437"></a> language. Operations listed on the same row of the table are performed from left to right. The normal precedence of operators<a id="1570"></a> can be overruled by enclosing preferred operations<a id="1549"></a> in parentheses: (...).</p>
+<p>As you can see, each element of<a id="4718"></a> <code>na</code> is the logical<a id="3768"></a> inverse of<a id="4719"></a> the corresponding original element. As is usual with<a id="4238"></a> arithmetic<a id="3631"></a> and<a id="4086"></a> logical<a id="3769"></a> operations<a id="4594"></a>, the precedence<a id="4620"></a> of<a id="4720"></a> operators<a id="4616"></a> governs the order in which operations<a id="4595"></a> are performed. Table 4.1 shows the operator precedence<a id="4621"></a> in the MATLAB<a id="4323"></a> language. Operations listed on<a id="4296"></a> the same row of<a id="4721"></a> the table are performed from<a id="3913"></a> left to<a id="4454"></a> right. The normal precedence<a id="4622"></a> of<a id="4722"></a> operators<a id="4617"></a> can be overruled by enclosing preferred operations<a id="4596"></a> in parentheses: (...).</p>
 
 <table class="table">
 	<thead class="thead-light">
@@ -192,12 +192,12 @@ na =<br />
 	</thead>
 	<tbody>
 		<tr>
-			<td id="101" pbzloc="1"><code>.&<a id="1581"></a>#39;, .^ </code></td>
-			<td>Scalar transpose<a id="1620"></a> and</td>
+			<td id="101" pbzloc="1"><code>.&<a id="4637"></a>#39;, .^ </code></td>
+			<td>Scalar transpose<a id="4993"></a> and<a id="4087"></a></td>
 		</tr>
 		<tr>
-			<td id="102" pbzloc="2"><code>&<a id="1582"></a>#39;, ^ </code></td>
-			<td>Matrix transpose<a id="1621"></a> and exponentiation<a id="1311"></a></td>
+			<td id="102" pbzloc="2"><code>&<a id="4638"></a>#39;, ^ </code></td>
+			<td>Matrix transpose<a id="4994"></a> and<a id="4088"></a> exponentiation<a id="3851"></a></td>
 		</tr>
 		<tr>
 			<td id="103"><code>+, -, ~ </code></td>
@@ -205,11 +205,11 @@ na =<br />
 		</tr>
 		<tr>
 			<td id="104"><code>.*, ./, .\, *, /, \ </code></td>
-			<td>Multiplication, division, left division</td>
+			<td>Multiplication, division<a id="3735"></a>, left division<a id="3736"></a></td>
 		</tr>
 		<tr>
 			<td id="105"><code>+, - </code></td>
-			<td>Addition and Subtraction</td>
+			<td>Addition and<a id="4089"></a> Subtraction</td>
 		</tr>
 		<tr>
 			<td id="106"><code>: </code></td>
@@ -221,92 +221,92 @@ na =<br />
 		</tr>
 		<tr>
 			<td id="108"><code>&amp; </code></td>
-			<td>Element-wise AND</td>
+			<td>Element-wise AND<a id="4960"></a></td>
 		</tr>
 		<tr>
 			<td id="109"><code>| </code></td>
-			<td>Element-wise OR<a id="1574"></a></td>
+			<td>Element-wise OR<a id="4625"></a></td>
 		</tr>
 		<tr>
 			<td id="110"><code>&amp;&amp; </code></td>
-			<td>Logical AND</td>
+			<td>Logical AND<a id="4961"></a></td>
 		</tr>
 		<tr>
 			<td id="111"><code>|| </code></td>
-			<td>Logical OR<a id="1575"></a></td>
+			<td>Logical OR<a id="4626"></a></td>
 		</tr>
 	</tbody>
 </table>
 
-<p>One final note on logical<a id="1410"></a> indexing. There is an interesting exception to the problem of indexing beyond the end<a id="1293"></a> of a vector. Consider this example:<br />
+<p>One final note on<a id="4297"></a> logical<a id="3770"></a> indexing<a id="5087"></a>. There is an interesting exception to<a id="4455"></a> the problem of<a id="4723"></a> indexing<a id="5088"></a> beyond the end<a id="3831"></a> of<a id="4724"></a> a vector. Consider this example<a id="4939"></a>:<br />
 <code>&gt;&gt; A = [2 -4 5 0 1]<br />
-B = A(true false<a id="1319"></a> true true false<a id="1320"></a> false<a id="1321"></a> false<a id="1322"></a> false<a id="1323"></a>)<br />
+B = A(true false<a id="3859"></a> true<a id="4016"></a> true<a id="4017"></a> false<a id="3860"></a> false<a id="3861"></a> false<a id="3862"></a> false<a id="3863"></a>)<br />
 B =<br />
 &nbsp;&nbsp;&nbsp;&nbsp;2 5 0</code></p>
 
-<p>It is acceptable to index with a logical<a id="1411"></a> vector whose length is greater than the indexed vector as long as all the elements beyond the end<a id="1294"></a> of the indexed vector are <code>false<a id="1324"></a></code>. It might help<a id="1362"></a> to consider a slightly different mechanization of the same code snippet:<br />
+<p>It is acceptable to<a id="4456"></a> index with<a id="4239"></a> a logical<a id="3771"></a> vector whose length is greater than the indexed vector as long as all the elements<a id="5054"></a> beyond the end<a id="3832"></a> of<a id="4725"></a> the indexed vector are <code>false<a id="3864"></a></code>. It might help<a id="3995"></a> to<a id="4457"></a> consider a slightly different mechanization of<a id="4726"></a> the same code snippet:<br />
 <code>&gt;&gt; A = [2 -4 5 0 1];<br />
-ndxl = [true false<a id="1325"></a> true true false<a id="1326"></a> false<a id="1327"></a> false<a id="1328"></a> false<a id="1329"></a>);<br />
-ndxn = find(<a id="1334"></a>ndxl)<br />
+ndxl = [true<a id="4018"></a> false<a id="3865"></a> true<a id="4019"></a> true<a id="4020"></a> false<a id="3866"></a> false<a id="3867"></a> false<a id="3868"></a> false<a id="3869"></a>);<br />
+ndxn = find(<a id="3874"></a>ndxl)<br />
 ndxn =&nbsp;&nbsp;&nbsp;&nbsp;1 3 4<br />
 B = A(ndxn)<br />
 B =<br />
 &nbsp;&nbsp;&nbsp;&nbsp;2 5 0</code></p>
 
-<p>This does not fail because the length of the numerical<a id="1515"></a> indices <code>ndxn</code> is less<a id="1372"></a> than the length of A.</p>
+<p>This does not fail because the length of<a id="4727"></a> the numerical<a id="4570"></a> indices <code>ndxn</code> is less<a id="4216"></a> than the length of<a id="4728"></a> A.</p>
 
-<p><b>Applying Library Functions:</b> The MATLAB<a id="1438"></a> language defines a rich collection of mathematical functions that cover mathematical, trigonometric, and statistics capabilities. A partial list is provided in Appendix A. For a complete list of those implemented in MATLAB<a id="1439"></a>, refer to the Help menu option in the MATLAB<a id="1440"></a> tool bar. With few exceptions<a id="1307"></a>, all functions defined in the MATLAB<a id="1441"></a> language accept vectors of numbers<a id="1494"></a> rather than single values and return a vector of the same length. The following functions deserve special mention because they provide specific capabilities that are frequently useful:</p>
+<p><b>Applying Library Functions:</b> The MATLAB<a id="4324"></a> language defines a rich collection of<a id="4729"></a> mathematical functions<a id="4980"></a> that cover mathematical, trigonometric, and<a id="4090"></a> statistics capabilities. A partial list is provided in Appendix A. For a complete list of<a id="4730"></a> those implemented in MATLAB<a id="4325"></a>, refer to<a id="4458"></a> the Help menu option in the MATLAB<a id="4326"></a> tool bar. With few exceptions<a id="3847"></a>, all functions<a id="4981"></a> defined<a id="3987"></a> in the MATLAB<a id="4327"></a> language accept vectors of<a id="4731"></a> numbers<a id="4385"></a> rather than single values and<a id="4091"></a> return a vector of<a id="4732"></a> the same length. The following functions<a id="4982"></a> deserve special mention because they provide specific capabilities that are frequently useful:</p>
 
 <ul>
-	<li><code>sum(<a id="1615"></a>v)</code> and <code>mean(<a id="1476"></a>v)</code> consume a vector and return the sum and mean of all the elements of the vector respectively.</li>
-	<li><code>min(<a id="1478"></a>v)</code> and <code>max(<a id="1471"></a>v)</code> return two quantities: the minimum<a id="1481"></a> or maximum value<a id="1635"></a> in a vector, as well as the position in that vector where that value<a id="1636"></a> occurred. For example:<br />
-	<code>&gt;&gt; [value<a id="1637"></a> where] = max(<a id="1472"></a>[2 7 42 9 -4])<br />
-	value<a id="1638"></a> = 42<br />
+	<li><code>sum(<a id="3973"></a>v)</code> and<a id="4092"></a> <code>mean(<a id="3951"></a>v)</code> consume a vector and<a id="4093"></a> return the sum and<a id="4094"></a> mean of<a id="4733"></a> all the elements<a id="5055"></a> of<a id="4734"></a> the vector respectively.</li>
+	<li><code>min(<a id="3953"></a>v)</code> and<a id="4095"></a> <code>max(<a id="3946"></a>v)</code> return two quantities: the minimum<a id="4378"></a> or maximum value<a id="5008"></a> in a vector, as well as the position in that vector where that value<a id="5009"></a> occurred. For example<a id="4940"></a>:<br />
+	<code>&gt;&gt; [value<a id="5010"></a> where] = max(<a id="3947"></a>[2 7 42 9 -4])<br />
+	value<a id="5011"></a> = 42<br />
 	where = 3</code><br />
-	indicates that the largest value<a id="1639"></a> is <code>42</code>, and it occurs in the third element of the vector. You saw in Chapter 3 how to implement returning multiple results from a function<a id="1346"></a>.</li>
-	<li><code>round(<a id="1593"></a>v)</code> , <code>ceil(<a id="1256"></a>v)</code> , <code>floor(<a id="1340"></a>v)</code> , and <code>fix(<a id="1339"></a>v)</code> remove the fractional part of the numbers<a id="1495"></a> in a vector by conventional rounding, rounding up, rounding down, and rounding toward zero, respectively.</li>
+	indicates that the largest value<a id="5012"></a> is <code>42</code>, and<a id="4096"></a> it occurs in the third element of<a id="4735"></a> the vector. You saw in Chapter 3 how to<a id="4459"></a> implement returning<a id="3966"></a> multiple results from<a id="3914"></a> a function<a id="3885"></a>.</li>
+	<li><code>round(<a id="3967"></a>v)</code> , <code>ceil(<a id="3799"></a>v)</code> , <code>floor(<a id="3880"></a>v)</code> , and<a id="4097"></a> <code>fix(<a id="3879"></a>v)</code> remove the fractional part of<a id="4736"></a> the numbers<a id="4386"></a> in a vector by conventional rounding, rounding up, rounding down, and<a id="4098"></a> rounding toward zero, respectively.</li>
 </ul>
 
-<p><b>Concatenation</b> In Section 4.2.1, we saw the technique for creating a vector by assembling numbers<a id="1496"></a> between square<a id="1611"></a> brackets:<br />
+<p><b>Concatenation</b> In Section 4.2.1, we saw the technique for<a id="5130"></a> creating<a id="3984"></a> a vector by assembling numbers<a id="4387"></a> between square<a id="4968"></a> brackets:<br />
 <code>A = [2 5 7 1 3]</code><br />
-This is in fact a special case<a id="1253"></a> of concatenation<a id="1273"></a>. The MATLAB<a id="1442"></a> language lets you construct a new vector by concatenating other vectors:<br />
+This is in fact a special case<a id="3796"></a> of<a id="4737"></a> concatenation<a id="3728"></a>. The MATLAB<a id="4328"></a> language lets you construct a new vector by concatenating<a id="4963"></a> other vectors:<br />
 <code>A = [B C D ...]</code><br />
-where the individual items in the brackets may be any vector defined as a constant or variable<a id="1656"></a>, and the length of A will be the sum of the lengths of the individual vectors. The simple vector constructor in Section 4.2.1 is a special case<a id="1254"></a> of this rule because each number is implicitly a <code>1 &<a id="1583"></a>Atilde;&mdash; 1</code> vector. The result is therefore a <code>1 &<a id="1584"></a>Atilde;&mdash; N</code> vector, where N is the sum of the lengths of <code>A</code> and <code>B</code>. Try concatenating the vectors in Exercise 4.5.</p>
+where the individual items in the brackets may be any vector defined<a id="3988"></a> as a constant or variable<a id="5029"></a>, and<a id="4099"></a> the length of<a id="4738"></a> A will be the sum of<a id="4739"></a> the lengths of<a id="4740"></a> the individual vectors. The simple vector constructor in Section 4.2.1 is a special case<a id="3797"></a> of<a id="4741"></a> this rule because each number is implicitly a <code>1 &<a id="4639"></a>Atilde;&mdash; 1</code> vector. The result is therefore a <code>1 &<a id="4640"></a>Atilde;&mdash; N</code> vector, where N is the sum of<a id="4742"></a> the lengths of<a id="4743"></a> <code>A</code> and<a id="4100"></a> <code>B</code>. Try concatenating<a id="4964"></a> the vectors in Exercise 4.5.</p>
 
 <div class="exercise">#exercise_4_5#</div>
 
-<p><b>Slicing</b> is the name given to complex operations<a id="1550"></a> where elements are copied from specified locations in one vector to different locations in another vector. As we saw earlier, the basic operation<a id="1521"></a> of extracting and replacing the elements of a vector is called indexing. Furthermore, we saw that indexing is not confined to single elements in a vector; you can also use vectors of indices. These index vectors either can be the values of previously named variables, or they can be created anonymously as they are needed. When you index a single element in a vector, for example, <code>A(4)</code>, you are actually creating an anonymous <code>1 &times; 1</code> index vector, <code>4</code>, and then using it to access the specified element(s) from the array<a id="1158"></a> <code>A</code>.</p>
+<p><b>Slicing</b> is the name given to<a id="4460"></a> complex operations<a id="4597"></a> where elements<a id="5056"></a> are copied from<a id="3915"></a> specified locations in one vector to<a id="4461"></a> different locations in another vector. As we saw earlier, the basic operation<a id="4002"></a> of<a id="4744"></a> extracting and<a id="4101"></a> replacing the elements<a id="5057"></a> of<a id="4745"></a> a vector is called indexing<a id="5089"></a>. Furthermore, we saw that indexing<a id="5090"></a> is not confined to<a id="4462"></a> single elements<a id="5058"></a> in a vector; you can also use vectors of<a id="4746"></a> indices. These index vectors either can be the values of<a id="4747"></a> previously named variables, or they can be created anonymously as they are needed. When you index a single element in a vector, for<a id="5131"></a> example<a id="4941"></a>, <code>A(4)</code>, you are actually creating<a id="3985"></a> an anonymous <code>1 &times; 1</code> index vector, <code>4</code>, and<a id="4102"></a> then using it to<a id="4463"></a> access the specified element(s) from<a id="3916"></a> the array<a id="3636"></a> <code>A</code>.</p>
 
-<p>Creating anonymous index vectors as needed makes some additional features of the colon<a id="1268"></a> operator available. The general form for generating a vector of numbers<a id="1497"></a> is:<br />
-<code>&lt;start&gt; : &lt;increment&gt; : &lt;end<a id="1295"></a>&gt;</code>.<br />
-We already know that by omitting the <code>&lt;increment&gt;</code> portion, the default increment is <code>1</code>. When used anonymously while<a id="1665"></a> indexing a vector, the following features are also available:</p>
+<p>Creating anonymous index vectors as needed makes some additional features of<a id="4748"></a> the colon<a id="3811"></a> operator available. The general form for<a id="5132"></a> generating a vector of<a id="4749"></a> numbers<a id="4388"></a> is:<br />
+<code>&lt;start&gt; : &lt;increment&gt; : &lt;end<a id="3833"></a>&gt;</code>.<br />
+We already know that by omitting the <code>&lt;increment&gt;</code> portion, the default increment is <code>1</code>. When used anonymously while<a id="5113"></a> indexing<a id="5091"></a> a vector, the following features are also available:</p>
 &nbsp;
 
 <ul>
-	<li>The key word <code>end<a id="1296"></a></code> is defined as the length of the index vector in which it is used</li>
-	<li>The operator <code>:</code> by itself is short for <code>1:end<a id="1297"></a></code></li>
+	<li>The key word <code>end<a id="3834"></a></code> is defined<a id="3989"></a> as the length of<a id="4750"></a> the index vector in which it is used</li>
+	<li>The operator <code>:</code> by itself is short for<a id="5133"></a> <code>1:end<a id="3835"></a></code></li>
 </ul>
 
 <p>&nbsp;</p>
 
-<p>Finally, as you saw earlier, it is legal to index with a vector of logical<a id="1412"></a> values. For example, if <code>A</code> is defined as:<br />
+<p>Finally, as you saw earlier, it is legal to<a id="4464"></a> index with<a id="4240"></a> a vector of<a id="4751"></a> logical<a id="3772"></a> values. For example<a id="4942"></a>, if <code>A</code> is defined<a id="3990"></a> as:<br />
 <code>A = [2 5 7 1 3];</code><br />
-then <code>A([false<a id="1330"></a> true false<a id="1331"></a> true])</code> returns:<br />
+then <code>A([false<a id="3870"></a> true<a id="4021"></a> false<a id="3871"></a> true<a id="4022"></a>])</code> returns:<br />
 <code>ans =<br />
 &nbsp;&nbsp;&nbsp;&nbsp;5 1</code><br />
-yielding a new vector containing only those values of the original vector where the corresponding logical<a id="1413"></a> index is <code>true</code>. This is extremely useful, as you will see later in this chapter, for indexing items in a vector that match a specific test.</p>
+yielding a new vector containing only those values of<a id="4752"></a> the original vector where the corresponding logical<a id="3773"></a> index is <code>true<a id="4023"></a></code>. This is extremely useful, as you will see later in this chapter, for<a id="5134"></a> indexing<a id="5092"></a> items in a vector that match a specific test.</p>
 
-<p>The general form of statements for slicing vectors is:<br />
+<p>The general form of<a id="4753"></a> statements for<a id="5135"></a> slicing<a id="4966"></a> vectors is:<br />
 <code>B(&lt;rangeB&gt;) = A(&lt;rangeA&gt;)</code><br />
-where <code>&lt;rangeA&gt;</code> and <code>&lt;rangeB&gt;</code> are both index vectors, <code>A</code> is an existing array<a id="1159"></a>, and <code>B</code> can be an existing array<a id="1160"></a> or a new array<a id="1161"></a>. The values in <code>B</code> at the indices in <code>rangeB</code> are assigned the values of <code>A</code> from <code>rangeA</code>. The rules for use of this template are as follows:</p>
+where <code>&lt;rangeA&gt;</code> and<a id="4103"></a> <code>&lt;rangeB&gt;</code> are both index vectors, <code>A</code> is an existing array<a id="3637"></a>, and<a id="4104"></a> <code>B</code> can be an existing array<a id="3638"></a> or a new array<a id="3639"></a>. The values in <code>B</code> at the indices in <code>rangeB</code> are assigned the values of<a id="4754"></a> <code>A</code> from<a id="3917"></a> <code>rangeA</code>. The rules for<a id="5136"></a> use of<a id="4755"></a> this template<a id="3993"></a> are as follows:</p>
 &nbsp;
 
 <ul>
-	<li>Either the size of <code>rangeB</code> must be equal<a id="1301"></a> to the size of <code>rangeA</code> or <code>rangeA</code> must be of size <code>1</code></li>
+	<li>Either the size<a id="5102"></a> of<a id="4756"></a> <code>rangeB</code> must be equal<a id="3841"></a> to<a id="4465"></a> the size<a id="5103"></a> of<a id="4757"></a> <code>rangeA</code> or <code>rangeA</code> must be of<a id="4758"></a> size<a id="5104"></a> <code>1</code></li>
 	<li>If <code>B</code> did not exist before this statement was implemented, it is zero filled where assignments were not explicitly made</li>
 	<li>If <code>B</code> did exist before this statement, the values not directly assigned in <code>rangeB</code> remain unchanged.</li>
 </ul>
-Study the comments<a id="1272"></a> in Listing 4.1 and do Exercise 4.6.
+Study the comments<a id="3815"></a> in Listing 4.1 and<a id="4105"></a> do Exercise 4.6.
 
 <p>&nbsp;</p>
 
@@ -318,24 +318,24 @@ Study the comments<a id="1272"></a> in Listing 4.1 and do Exercise 4.6.
 </div>
 
 <div class="chp-section" data-sect-name="Engineering Example - Forces and Moments" data-sect-num="3"><!-- Engineering Examples -->
-<h2 id="4_3">4.3 Engineering Example - Forces and Moments</h2>
+<h2 id="4_3">4.3 Engineering Example - Forces and<a id="4106"></a> Moments</h2>
 
 <div class="container clearfix">
 <div class="float-sm-right card"><img alt="Figure 4.2" class="fig card-img" src="..\Images\Fig_4_2.JPG" />
-<p class="figure-name card-title">Figure 4.2: Vector Analysis</p>
+<p class="figure-name card-title">Figure<a id="5164"></a> 4.2: Vector Analysis</p>
 </div>
 
-<p>Vectors are ideal representations of the concept of a vector used in physics. Consider two forces<a id="1341"></a> acting on an object at a point P, as shown in Figure 4.2. Calculate the resultant force at P, the unit vector in the direction of that resultant, and the moment of that force about the point M. We can represent each of the vectors in this problem as a MATLAB<a id="1443"></a> vector with three components: the x, y, and z values of the vector. The solution to this problem for specific vectors is shown in Listing 4.2.</p>
+<p>Vectors are ideal representations of<a id="4759"></a> the concept of<a id="4760"></a> a vector used in physics<a id="4962"></a>. Consider two forces<a id="3839"></a> acting on<a id="4298"></a> an object at a point P, as shown in Figure<a id="5165"></a> 4.2. Calculate the resultant force at P, the unit vector in the direction of<a id="4761"></a> that resultant, and<a id="4107"></a> the moment of<a id="4762"></a> that force about the point M. We can represent each of<a id="4763"></a> the vectors in this problem as a MATLAB<a id="4329"></a> vector with<a id="4241"></a> three components: the x, y, and<a id="4108"></a> z values of<a id="4764"></a> the vector. The solution to<a id="4466"></a> this problem for<a id="5137"></a> specific vectors is shown in Listing 4.2.</p>
 </div>
 
 <div class="listing">#listing_04_2#</div>
 
 <div class="container">
-<p><b>Strong Suggestion:</b> After any nontrivial computation, a good engineer will always perform a sanity check on the answers. When you run the code for this problem, for example, the answers returned are:<br />
+<p><b>Strong Suggestion:</b> After any nontrivial computation, a good engineer will always perform a sanity check on<a id="4299"></a> the answers. When you run the code for<a id="5138"></a> this problem, for<a id="5139"></a> example<a id="4943"></a>, the answers returned are:<br />
 <code>PC = [ 1 2 1]</code><br />
 <code>unit_vector = [0.4082 0.8165 0.4082]</code><br />
 <code>mom = [ 1 2 -5]</code><br />
-To check the moment result, visualize the rotation of PC about M and apply the right-hand rule to find the axis of rotation of the moment. Roughly speaking, the right-hand rule states that the direction of the moment is the direction in which a normal, right-handed screw at point M would turn under the influence of this force. Without being too accurate, we can conclude that the axis of the moment is approximately along the negative z -axis, an estimate confirmed by the result shown.</p>
+To check the moment result, visualize the rotation<a id="4375"></a> of<a id="4765"></a> PC about M and<a id="4109"></a> apply the right-hand rule to<a id="4467"></a> find the axis of<a id="4766"></a> rotation<a id="4376"></a> of<a id="4767"></a> the moment. Roughly speaking, the right-hand rule states that the direction of<a id="4768"></a> the moment is the direction in which a normal, right-handed screw at point M would turn under the influence of<a id="4769"></a> this force. Without being too accurate, we can conclude that the axis of<a id="4770"></a> the moment is approximately along the negative z -axis, an estimate confirmed by the result shown.</p>
 </div>
 </div>
 
@@ -344,38 +344,38 @@ To check the moment result, visualize the rotation of PC about M and apply the r
 
 <div class="container clearfix">
 <div class="float-sm-right card"><img alt="Figure 4.3" class="fig card-img" src="..\Images\Fig_4_3.JPG" />
-<p class="figure-name card-title">Figure 4.3: An Array</p>
+<p class="figure-name card-title">Figure<a id="5166"></a> 4.3: An Array</p>
 </div>
 
-<p>In Section 4.2, we saw that a vector is the simplest way to group a collection of similar data items. We will now extend these ideas to include collections<a id="1265"></a> of array<a id="11<a id="1251"></a>62"></a> elements with multiple dimensions, initially confined to two dimensions, rows and columns. Each row will have the same number of columns, and each column will have the same number of rows.</p>
+<p>In Section 4.2, we saw that a vector is the simplest way to<a id="4468"></a> group a collection of<a id="4771"></a> similar data<a id="4351"></a> items. We will now extend these ideas to<a id="4469"></a> include collections<a id="3808"></a> of<a id="4772"></a> array<a id="36<a id="3794"></a>40"></a> elements<a id="5059"></a> with<a id="4242"></a> multiple dimensions, initially confined to<a id="4470"></a> two dimensions, rows and<a id="4110"></a> columns. Each row will have the same number of<a id="4773"></a> columns, and<a id="4111"></a> each column will have the same number of<a id="4774"></a> rows.</p>
 
-<p>At this point, we will refer to these collections<a id="1266"></a> as arrays to distinguish them from the matrices<a id="1456"></a> discussed in Chapter 12. While arrays and matrices<a id="1457"></a> are stored in the same way, they differ in their multiplication<a id="1487"></a>, division, and exponentiation<a id="1312"></a> operations<a id="1551"></a>. Figure 4.3 illustrates a typical two-dimensional array<a id="1163"></a> <code>A</code> with <code>m</code> rows and <code>n</code> columns, commonly referred to as an <code>m &times; n</code> array<a id="1164"></a>.</p>
+<p>At this point, we will refer to<a id="4471"></a> these collections<a id="3809"></a> as arrays to<a id="4472"></a> distinguish them from<a id="3918"></a> the matrices<a id="4360"></a> discussed in Chapter 12. While arrays and<a id="4112"></a> matrices<a id="4361"></a> are stored in the same way, they differ in their multiplication<a id="3791"></a>, division<a id="3737"></a>, and<a id="4113"></a> exponentiation<a id="3852"></a> operations<a id="4598"></a>. Figure<a id="5167"></a> 4.3 illustrates a typical two-dimensional array<a id="3641"></a> <code>A</code> with<a id="4243"></a> <code>m</code> rows and<a id="4114"></a> <code>n</code> columns, commonly referred to<a id="4473"></a> as an <code>m &times; n</code> array<a id="3642"></a>.</p>
 </div>
 
 <div class="chp-subsection" data-sub-name="Properties of an Array" data-sub-num="1"><!-- Properties of an Array -->
-<h3 id="4_4_1">4.4.1 Properties of an Array</h3>
+<h3 id="4_4_1">4.4.1 Properties of<a id="4775"></a> an Array</h3>
 
 <div class="container">
-<p>As with vectors, individual items in an array<a id="1165"></a> are referred to as its elements. These elements also have the unique attributes combining their value<a id="1640"></a> and their position. In a two-dimensional array<a id="1166"></a>, the position will be the row and column (in that order) of the element. In general, in an n-dimensional array<a id="1167"></a>, the element position will be a vector of <code>n</code> index values. When applied to an array<a id="1168"></a> <code>A</code> with <code>n</code> dimensions, the function<a id="1347"></a> <code>size(<a id="1607"></a>A)</code> will return the information in one of two forms:</p>
+<p>As with<a id="4244"></a> vectors, individual items in an array<a id="3643"></a> are referred to<a id="4474"></a> as its elements<a id="5060"></a>. These elements<a id="5061"></a> also have the unique attributes combining their value<a id="5013"></a> and<a id="4115"></a> their position. In a two-dimensional array<a id="3644"></a>, the position will be the row and<a id="4116"></a> column (in that order) of<a id="4776"></a> the element. In general, in an n-dimensional array<a id="3645"></a>, the element position will be a vector of<a id="4777"></a> <code>n</code> index values. When applied to<a id="4475"></a> an array<a id="3646"></a> <code>A</code> with<a id="4245"></a> <code>n</code> dimensions, the function<a id="3886"></a> <code>size(<a id="3969"></a>A)</code> will return the information in one of<a id="4778"></a> two forms:</p>
 
 <ul>
-	<li>If called with a single return value<a id="1641"></a> like <code>sz = size(<a id="1608"></a>A)</code>, it will return a vector of length <code>n</code> containing the size of each dimension of the array<a id="1169"></a>.</li>
-	<li>If called with multiple return values like <code>[rows, cols] = size(<a id="1609"></a>A)</code>, it returns the individual array<a id="1170"></a> dimension up to the number of values requested. To avoid erroneous results with this approach, you should always provide as many variables as there are dimensions of the array<a id="1171"></a>.</li>
+	<li>If called with<a id="4246"></a> a single return value<a id="5014"></a> like <code>sz = size(<a id="3970"></a>A)</code>, it will return a vector of<a id="4779"></a> length <code>n</code> containing the size<a id="5105"></a> of<a id="4780"></a> each dimension of<a id="4781"></a> the array<a id="3647"></a>.</li>
+	<li>If called with<a id="4247"></a> multiple return values like <code>[rows, cols] = size(<a id="3971"></a>A)</code>, it returns the individual array<a id="3648"></a> dimension up to<a id="4476"></a> the number of<a id="4782"></a> values requested. To avoid erroneous results with<a id="4248"></a> this approach, you should always provide as many variables as there are dimensions of<a id="4783"></a> the array<a id="3649"></a>.</li>
 </ul>
 
 <div class="float-sm-right card"><img alt="Figure 4.4" class="fig card-img" src="..\Images\Fig_4_4.JPG" />
-<p class="figure-name card-title">Figure 4.4: An Array Transposed</p>
+<p class="figure-name card-title">Figure<a id="5168"></a> 4.4: An Array Transposed</p>
 </div>
 
-<p>The <code>length(<a id="1367"></a>...)</code> function<a id="1348"></a> returns the <b>maximum dimension</b> of the array<a id="1172"></a>. So if we created an array<a id="1173"></a> <code>A</code> dimensioned 2 &times; 8 &times; 3, <code>size(<a id="1610"></a>A)</code> would return <code>[2 8 3]</code> and <code>length(<a id="1368"></a>A)</code> would return <code>8</code>. The <b>transpose<a id="1622"></a></b> of an <code>m &times; n</code> array<a id="1174"></a>, indicated by the apostrophe character (&#39;) placed after the array<a id="1175"></a> identifier, returns an <code>n &times; m</code> array<a id="1176"></a> with the values in the rows and columns interchanged. Figure 4.4 shows a transposed array<a id="1177"></a>.</p>
+<p>The <code>length(<a id="3940"></a>...)</code> function<a id="3887"></a> returns the <b>maximum dimension</b> of<a id="4784"></a> the array<a id="3650"></a>. So if we created an array<a id="3651"></a> <code>A</code> dimensioned 2 &times; 8 &times; 3, <code>size(<a id="3972"></a>A)</code> would return <code>[2 8 3]</code> and<a id="4117"></a> <code>length(<a id="3941"></a>A)</code> would return <code>8</code>. The <b>transpose<a id="4995"></a></b> of<a id="4785"></a> an <code>m &times; n</code> array<a id="3652"></a>, indicated by the apostrophe character<a id="4313"></a> (&#39;) placed after the array<a id="3653"></a> identifier, returns an <code>n &times; m</code> array<a id="3654"></a> with<a id="4249"></a> the values in the rows and<a id="4118"></a> columns interchanged. Figure<a id="5169"></a> 4.4 shows a transposed array<a id="3655"></a>.</p>
 
-<p>A number of special cases arise that are worthy of note:</p>
+<p>A number of<a id="4786"></a> special cases arise that are worthy of<a id="4787"></a> note:</p>
 
 <ul>
-	<li>When a 2-D matrix<a id="1464"></a> has the same number of rows and columns, it is called square<a id="1612"></a>.</li>
-	<li>When the only nonzero values in an array<a id="1178"></a> occur when the row and column indices are the same, the array<a id="1179"></a> is called diagonal<a id="1283"></a>.</li>
-	<li>When there is only one row, the array<a id="1180"></a> is a row vector, or just a vector as you saw earlier.</li>
-	<li>When there is only one column, the array<a id="1181"></a> is a column vector<a id="1270"></a>, the transpose<a id="1623"></a> of a row vector.</li>
+	<li>When a 2-D<a id="4628"></a> matrix<a id="4368"></a> has the same number of<a id="4788"></a> rows and<a id="4119"></a> columns, it is called square<a id="4969"></a>.</li>
+	<li>When the only nonzero values in an array<a id="3656"></a> occur when the row and<a id="4120"></a> column indices are the same, the array<a id="3657"></a> is called diagonal<a id="3821"></a>.</li>
+	<li>When there is only one row, the array<a id="3658"></a> is a row vector, or just a vector as you saw earlier.</li>
+	<li>When there is only one column, the array<a id="3659"></a> is a column vector<a id="3813"></a>, the transpose<a id="4996"></a> of<a id="4789"></a> a row vector.</li>
 </ul>
 </div>
 </div>
@@ -384,37 +384,37 @@ To check the moment result, visualize the rotation of PC about M and apply the r
 <h3 id="4_4_2">4.4.2 Creating an Array</h3>
 
 <div class="container">
-<p>Arrays can be created either by entering values directly or by using one of a number of built-in functions that create arrays with specific characteristics.</p>
+<p>Arrays can be created either by entering values directly or by using one of<a id="4790"></a> a number of<a id="4791"></a> built-in functions<a id="4983"></a> that create arrays with<a id="4250"></a> specific characteristics.</p>
 
 <ul>
-	<li>As with vectors, you can directly enter the values in an array<a id="1182"></a> using either a semicolon<a id="1605"></a> (;) or a new line to indicate the end<a id="1298"></a> of a row, for example: <code>A = [2, 5, 7; 1, 3, 42]</code>.</li>
-	<li>The functions <code>zeros(<a id="1671"></a>m, n)</code> and <code>ones(<a id="1517"></a>m, n)</code> create arrays with <code>m</code> rows and <code>n</code> columns filled with zeros and ones, respectively.</li>
-	<li>The function<a id="1349"></a> <code>rand(<a id="1586"></a>m, n)</code> fills an array<a id="1183"></a> with random numbers<a id="1498"></a> in the range <code>0 .. 1</code>.</li>
-	<li>The function<a id="1350"></a> <code>randn(<a id="1589"></a>m, n)</code> fills an array<a id="1184"></a> with random numbers<a id="1499"></a> normally distributed about <code>0</code> with a standard deviation of <code>1</code>.</li>
-	<li>The function<a id="1351"></a> <code>diag(<a id="1279"></a>...)</code> takes several forms, the most useful of which are <code>diag(<a id="1280"></a>A)</code>, where <code>A</code> is an array<a id="1185"></a>, that returns its diagonal<a id="1284"></a> as a vector, and <code>diag(<a id="1281"></a>V)</code>, where <code>V</code> is a vector, that returns a square<a id="1613"></a> matrix<a id="1465"></a> with that diagonal<a id="1285"></a>. Type <code>help<a id="1363"></a> diag</code> in the Command window for a full description of the capabilities of <code>diag(<a id="1282"></a>...)</code></li>
-	<li>The MATLAB<a id="1444"></a> language also defines the function<a id="1352"></a> <code>magic(<a id="1427"></a>m)</code>, which fills a square<a id="1614"></a> matrix<a id="1466"></a> with the numbers<a id="1500"></a> <code>1</code> to <code>m<sup>2</sup></code> organized in such a way that its rows, columns, and diagonals all add up to the same value<a id="1642"></a>.</li>
+	<li>As with<a id="4251"></a> vectors, you can directly enter the values in an array<a id="3660"></a> using either a semicolon<a id="4959"></a> (;) or a new line to<a id="4477"></a> indicate the end<a id="3836"></a> of<a id="4792"></a> a row, for<a id="5140"></a> example<a id="4944"></a>: <code>A = [2, 5, 7; 1, 3, 42]</code>.</li>
+	<li>The functions<a id="4984"></a> <code>zeros(<a id="3981"></a>m, n)</code> and<a id="4121"></a> <code>ones(<a id="3956"></a>m, n)</code> create arrays with<a id="4252"></a> <code>m</code> rows and<a id="4122"></a> <code>n</code> columns filled with<a id="4253"></a> zeros<a id="3977"></a> and<a id="4123"></a> ones, respectively.</li>
+	<li>The function<a id="3888"></a> <code>rand(<a id="3959"></a>m, n)</code> fills an array<a id="3661"></a> with<a id="4254"></a> random numbers<a id="4389"></a> in the range <code>0 .. 1</code>.</li>
+	<li>The function<a id="3889"></a> <code>randn(<a id="3962"></a>m, n)</code> fills an array<a id="3662"></a> with<a id="4255"></a> random numbers<a id="4390"></a> normally distributed about <code>0</code> with<a id="4256"></a> a standard deviation of<a id="4793"></a> <code>1</code>.</li>
+	<li>The function<a id="3890"></a> <code>diag(<a id="3817"></a>...)</code> takes several forms, the most useful of<a id="4794"></a> which are <code>diag(<a id="3818"></a>A)</code>, where <code>A</code> is an array<a id="3663"></a>, that returns its diagonal<a id="3822"></a> as a vector, and<a id="4124"></a> <code>diag(<a id="3819"></a>V)</code>, where <code>V</code> is a vector, that returns a square<a id="4970"></a> matrix<a id="4369"></a> with<a id="4257"></a> that diagonal<a id="3823"></a>. Type <code>help<a id="3996"></a> diag</code> in the Command<a id="5160"></a> window for<a id="5141"></a> a full description of<a id="4795"></a> the capabilities of<a id="4796"></a> <code>diag(<a id="3820"></a>...)</code></li>
+	<li>The MATLAB<a id="4330"></a> language also defines the function<a id="3891"></a> <code>magic(<a id="3945"></a>m)</code>, which fills a square<a id="4971"></a> matrix<a id="4370"></a> with<a id="4258"></a> the numbers<a id="4391"></a> <code>1</code> to<a id="4478"></a> <code>m<sup>2</sup></code> organized in such a way that its rows, columns, and<a id="4125"></a> diagonals all add up to<a id="4479"></a> the same value<a id="5015"></a>.</li>
 </ul>
 
-<p>Try Exercise 4.7 to practice creating arrays.</p>
+<p>Try Exercise 4.7 to<a id="4480"></a> practice creating<a id="3986"></a> arrays.</p>
 
 <div class="exercise">#exercise_4_7#</div>
 </div>
 </div>
 
 <div class="chp-subsection" data-sub-name="Accessing Elements of an Array" data-sub-num="3"><!-- Accessing Elements -->
-<h3 id="4_4_3">4.4.3 Accessing Elements of an Array</h3>
+<h3 id="4_4_3">4.4.3 Accessing Elements of<a id="4797"></a> an Array</h3>
 
 <div class="container">
-<p>The elements of an array<a id="1186"></a> may be addressed by enclosing the indices of the required element in parentheses, with the first index being the row index and the second index the column index. Considering the values produced by Exercise 4.7, <code>A(2, 3)</code> would return the element in the second row, third column: <code>42</code>. If you were to attempt to read outside the length of the rows or columns, an error would result.</p>
+<p>The elements<a id="5062"></a> of<a id="4798"></a> an array<a id="3664"></a> may be addressed by enclosing the indices of<a id="4799"></a> the required element in parentheses, with<a id="4259"></a> the first index being the row index and<a id="4126"></a> the second index the column index. Considering the values produced by Exercise 4.7, <code>A(2, 3)</code> would return the element in the second row, third column: <code>42</code>. If you were to<a id="4481"></a> attempt to<a id="4482"></a> read outside the length of<a id="4800"></a> the rows or columns, an error would result.</p>
 
-<p>We can also store values that are elements of an array<a id="1187"></a>. For example, continuing Exercise 4.7,<br />
+<p>We can also store values that are elements<a id="5063"></a> of<a id="4801"></a> an array<a id="3665"></a>. For example<a id="4945"></a>, continuing Exercise 4.7,<br />
 <code>A(2, 3) = 0</code><br />
 would result in this answer:</p>
 <code>A =<br />
 &nbsp;&nbsp;&nbsp;&nbsp;2 5 7<br />
 &nbsp;&nbsp;&nbsp;&nbsp;1 3 0</code>
 
-<p>As with vectors, MATLAB<a id="1445"></a> will automatically extend the array<a id="1188"></a> if you write beyond its boundaries. If there are missing elements between the current array<a id="11<a id="1252"></a>89"></a> elements and the index at which you attempt to store a new value<a id="1643"></a>, the missing elements will be zero filled. For example, again continuing Exercise 4.7,<br />
+<p>As with<a id="4260"></a> vectors, MATLAB<a id="4331"></a> will automatically extend the array<a id="3666"></a> if you write beyond its boundaries. If there are missing elements<a id="5064"></a> between the current array<a id="36<a id="3795"></a>67"></a> elements<a id="5065"></a> and<a id="4127"></a> the index at which you attempt to<a id="4483"></a> store a new value<a id="5016"></a>, the missing elements<a id="5066"></a> will be zero filled. For example<a id="4946"></a>, again continuing Exercise 4.7,<br />
 <code>A(4, 1) = 3</code><br />
 would result in this answer:<br />
 <code>A =<br />
@@ -426,12 +426,12 @@ would result in this answer:<br />
 </div>
 
 <div class="chp-subsection" data-sub-name="Removing Elements of an Array" data-sub-num="4"><!-- Removing -->
-<h3 id="4_4_4">4.4.4 Removing Elements of an Array</h3>
+<h3 id="4_4_4">4.4.4 Removing Elements of<a id="4802"></a> an Array</h3>
 
 <div class="container">
-<p>You can remove elements from arrays in the same way that you remove elements from a vector. However, since the arrays must remain rectangular, elements have to be removed as complete rows or columns. For example, for the array<a id="1190"></a> <code>A</code> in the previous section, entering:<br />
+<p>You can remove elements<a id="5067"></a> from<a id="3919"></a> arrays in the same way that you remove elements<a id="5068"></a> from<a id="3920"></a> a vector. However, since the arrays must remain rectangular, elements<a id="5069"></a> have to<a id="4484"></a> be removed as complete rows or columns. For example<a id="4947"></a>, for<a id="5142"></a> the array<a id="3668"></a> <code>A</code> in the previous section, entering:<br />
 <code>A(3, :) = []</code><br />
-would remove all elements from the third row, and the result would be:<br />
+would remove all elements<a id="5070"></a> from<a id="3921"></a> the third row, and<a id="4128"></a> the result would be:<br />
 <code>A =<br />
 &nbsp;&nbsp;&nbsp;&nbsp;2 5 7<br />
 &nbsp;&nbsp;&nbsp;&nbsp;1 3 0<br />
@@ -447,134 +447,134 @@ was then entered, the result would be:<br />
 </div>
 
 <div class="chp-subsection" data-sub-name="Operating on Arrays" data-sub-num="5"><!-- Operating on Arrays -->
-<h3 id="4_4_5">4.4.5 Operating on Arrays</h3>
+<h3 id="4_4_5">4.4.5 Operating on<a id="4300"></a> Arrays</h3>
 
 <div class="container">
-<p pbzloc="1">This section discusses how array<a id="1191"></a> operations<a id="1552"></a> extend directly from vector operations<a id="1553"></a>: arithmetic<a id="1154"></a> and logical<a id="1414"></a> operations<a id="1554"></a>, the application of functions, concatenation<a id="1274"></a>, and slicing. This section will also discuss two topics peculiar to arrays: reshaping and linearizing arrays.</p>
+<p pbzloc="1">This section discusses how array<a id="3669"></a> operations<a id="4599"></a> extend directly from<a id="3922"></a> vector operations<a id="4600"></a>: arithmetic<a id="3632"></a> and<a id="4129"></a> logical<a id="3774"></a> operations<a id="4601"></a>, the application of<a id="4803"></a> functions<a id="4985"></a>, concatenation<a id="3729"></a>, and<a id="4130"></a> slicing<a id="4967"></a>. This section will also discuss two topics peculiar to<a id="4485"></a> arrays: reshaping and<a id="4131"></a> linearizing arrays.</p>
 
-<p pbzloc="3"><b>Array Arithmetic Operations</b>: Arithmetic operations<a id="1555"></a> can be performed collectively on the individual components of two arrays as long as both arrays have the same dimensions or one of them is a scalar<a id="1600"></a> (i.e., has a vector of length 1). Addition and subtraction have exactly the syntax you would expect, as shown in Exercise 4.8. Multiplication, division, and exponentiation<a id="1313"></a>, however, must use the &quot;dot operator<a id="1287"></a>&quot; symbols: .*, ./, and .^ (the dot is part of the symbol, but the commas are not) for scalar<a id="1601"></a> multiplication<a id="1488"></a>, division, and exponentiation<a id="1314"></a>.</p>
+<p pbzloc="3"><b>Array Arithmetic Operations</b>: Arithmetic operations<a id="4602"></a> can be performed collectively on<a id="4301"></a> the individual components of<a id="4804"></a> two arrays as long as both arrays have the same dimensions or one of<a id="4805"></a> them is a scalar<a id="4926"></a> (i.e., has a vector of<a id="4806"></a> length 1). Addition and<a id="4132"></a> subtraction have exactly the syntax you would expect, as shown in Exercise 4.8. Multiplication, division<a id="3738"></a>, and<a id="4133"></a> exponentiation<a id="3853"></a>, however, must use the &quot;dot operator<a id="3825"></a>&quot; symbols: .*, ./, and<a id="4134"></a> .^ (the dot is part of<a id="4807"></a> the symbol, but the commas are not) for<a id="5143"></a> scalar<a id="4927"></a> multiplication<a id="3792"></a>, division<a id="3739"></a>, and<a id="4135"></a> exponentiation<a id="3854"></a>.</p>
 
 <div class="exercise">#exercise_4_8#</div>
 
-<p><b>Array Logical Operations:</b> As with vectors, logical<a id="1415"></a> array<a id="1192"></a> operations<a id="1556"></a> can be performed collectively on the individual components of two arrays as long as both arrays have the same dimensions or one of the arrays is a scalar<a id="1602"></a> (i.e., has a vector of length 1). The result will be an array<a id="1193"></a> of logical<a id="1416"></a> values with the same size as the original array(s). Do Exercise 4.9 to see how array<a id="1194"></a> logical<a id="1417"></a> operations<a id="1557"></a> work. Here, we successfully compare the array<a id="1195"></a> <code>A</code> to a scalar<a id="1603"></a> value<a id="1644"></a>, and to the array<a id="1196"></a> <code>B</code> that has the same dimensions as <code>A</code>. However, comparing to the array<a id="1197"></a> <code>C</code> that has the same number of elements but the wrong shape produces an error.</p>
+<p><b>Array Logical Operations:</b> As with<a id="4261"></a> vectors, logical<a id="3775"></a> array<a id="3670"></a> operations<a id="4603"></a> can be performed collectively on<a id="4302"></a> the individual components of<a id="4808"></a> two arrays as long as both arrays have the same dimensions or one of<a id="4809"></a> the arrays is a scalar<a id="4928"></a> (i.e., has a vector of<a id="4810"></a> length 1). The result will be an array<a id="3671"></a> of<a id="4811"></a> logical<a id="3776"></a> values with<a id="4262"></a> the same size<a id="5106"></a> as the original array(s). Do Exercise 4.9 to<a id="4486"></a> see how array<a id="3672"></a> logical<a id="3777"></a> operations<a id="4604"></a> work. Here, we successfully compare the array<a id="3673"></a> <code>A</code> to<a id="4487"></a> a scalar<a id="4929"></a> value<a id="5017"></a>, and<a id="4136"></a> to<a id="4488"></a> the array<a id="3674"></a> <code>B</code> that has the same dimensions as <code>A</code>. However, comparing to<a id="4489"></a> the array<a id="3675"></a> <code>C</code> that has the same number of<a id="4812"></a> elements<a id="5071"></a> but the wrong shape produces an error.</p>
 
 <div class="exercise">#exercise_4_9#</div>
 
-<p><b>Applying Library Functions:</b> In addition to being able to consume vectors, most mathematical functions in the MATLAB<a id="1446"></a> language can consume an array<a id="1198"></a> of numbers<a id="1501"></a> and return an array<a id="1199"></a> of the same shape. The following functions deserve special mention because they are exceptions<a id="1308"></a> to this rule and provide specific capabilities that are frequently useful:</p>
+<p><b>Applying Library Functions:</b> In addition to<a id="4490"></a> being able to<a id="4491"></a> consume vectors, most mathematical functions<a id="4986"></a> in the MATLAB<a id="4332"></a> language can consume an array<a id="3676"></a> of<a id="4813"></a> numbers<a id="4392"></a> and<a id="4137"></a> return an array<a id="3677"></a> of<a id="4814"></a> the same shape. The following functions<a id="4987"></a> deserve special mention because they are exceptions<a id="3848"></a> to<a id="4492"></a> this rule and<a id="4138"></a> provide specific capabilities that are frequently useful:</p>
 
 <ul>
-	<li><code>sum(<a id="1616"></a>v)</code> and <code>mean(<a id="1477"></a>v)</code> when applied to a 2-D array<a id="1200"></a> return a row vector containing the sum and mean of each column of the array<a id="1201"></a>, respectively. If you want the sum of the whole array<a id="1202"></a>, use <code>sum(<a id="1617"></a>sum(<a id="1618"></a>v))</code>.</li>
-	<li><code>min(<a id="1479"></a>v)</code> and <code>max(<a id="1473"></a>v)</code> return two row vectors: the minimum<a id="1482"></a> or maximum value<a id="1645"></a> in each column and also the row in that column where that value<a id="1646"></a> occurred. For example:<br />
-	<code>&gt;&gt; [values rows] = max(<a id="1474"></a>[2 7 42;<br />
+	<li><code>sum(<a id="3974"></a>v)</code> and<a id="4139"></a> <code>mean(<a id="3952"></a>v)</code> when applied to<a id="4493"></a> a 2-D<a id="4629"></a> array<a id="3678"></a> return a row vector containing the sum and<a id="4140"></a> mean of<a id="4815"></a> each column of<a id="4816"></a> the array<a id="3679"></a>, respectively. If you want the sum of<a id="4817"></a> the whole array<a id="3680"></a>, use <code>sum(<a id="3975"></a>sum(<a id="3976"></a>v))</code>.</li>
+	<li><code>min(<a id="3954"></a>v)</code> and<a id="4141"></a> <code>max(<a id="3948"></a>v)</code> return two row vectors: the minimum<a id="4379"></a> or maximum value<a id="5018"></a> in each column and<a id="4142"></a> also the row in that column where that value<a id="5019"></a> occurred. For example<a id="4948"></a>:<br />
+	<code>&gt;&gt; [values rows] = max(<a id="3949"></a>[2 7 42;<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;9 14 8;<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;10 12 -6])<br />
 	values =<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;[10 14 42]<br />
 	rows =<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;[3 2 1]</code><br />
-	This indicates that the maximum values in each column are <code>10</code>, <code>14</code>, and <code>42</code>, respectively, and they occur in rows <code>3</code>, <code>2</code>, and <code>1</code>.<br />
-	If you really need the row and column containing, say, the maximum value<a id="1647"></a> of the whole array<a id="1203"></a>, continue<a id="1278"></a> the preceding example with the following lines:<br />
-	<code>&gt;&gt; [value<a id="1648"></a> col] = max(<a id="1475"></a>values)<br />
-	value<a id="1649"></a> =<br />
+	This indicates that the maximum values in each column are <code>10</code>, <code>14</code>, and<a id="4143"></a> <code>42</code>, respectively, and<a id="4144"></a> they occur in rows <code>3</code>, <code>2</code>, and<a id="4145"></a> <code>1</code>.<br />
+	If you really need the row and<a id="4146"></a> column containing, say, the maximum value<a id="5020"></a> of<a id="4818"></a> the whole array<a id="3681"></a>, continue<a id="3816"></a> the preceding example<a id="4949"></a> with<a id="4263"></a> the following lines:<br />
+	<code>&gt;&gt; [value<a id="5021"></a> col] = max(<a id="3950"></a>values)<br />
+	value<a id="5022"></a> =<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;42<br />
 	col =<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;3</code><br />
-	This finds the maximum value<a id="1650"></a> in the whole array<a id="1204"></a> and determines that it occurs in column <code>3</code>. So to determine the row in which that maximum occurred, we index the vector of row maximum locations, <code>rows</code>, with the column in which the maximum occurred.<br />
+	This finds the maximum value<a id="5023"></a> in the whole array<a id="3682"></a> and<a id="4147"></a> determines that it occurs in column <code>3</code>. So to<a id="4494"></a> determine the row in which that maximum occurred, we index the vector of<a id="4819"></a> row maximum locations, <code>rows</code>, with<a id="4264"></a> the column in which the maximum occurred.<br />
 	<code>&gt;&gt; row = rows(col)<br />
 	row =<br />
 	1</code><br />
-	Therefore, we correctly conclude that the maximum number in this array<a id="1205"></a> is <code>42</code>, and it occurs at row <code>1</code>, column <code>3</code>.</li>
+	Therefore, we correctly conclude that the maximum number in this array<a id="3683"></a> is <code>42</code>, and<a id="4148"></a> it occurs at row <code>1</code>, column <code>3</code>.</li>
 </ul>
 
-<p><b>Array Concatenation:</b> The MATLAB<a id="1447"></a> language permits programmers to construct a new array<a id="1206"></a> by concatenating other arrays in the following ways:</p>
+<p><b>Array Concatenation:</b> The MATLAB<a id="4333"></a> language permits programmers to<a id="4495"></a> construct a new array<a id="3684"></a> by concatenating<a id="4965"></a> other arrays in the following ways:</p>
 
 <ul>
-	<li>Horizontally, as long as each component has the same number of rows:<br />
+	<li>Horizontally, as long as each component has the same number of<a id="4820"></a> rows:<br />
 	<code>A = [B C D ... X Y Z]</code></li>
-	<li>Vertically, as long as each has the same number of columns:<br />
+	<li>Vertically, as long as each has the same number of<a id="4821"></a> columns:<br />
 	<code>A = [B; C; D; ... X; Y; Z]</code></li>
 </ul>
 
-<p>The result of horizontal concatenation<a id="1275"></a> will be an array<a id="1207"></a> with the number of rows common to all and for the number of columns, the sum of the columns of each element concatenated. Similarly, the result of vertical concatenation<a id="1276"></a> will be an array<a id="1208"></a> with the number of columns common to all and for the number of rows, the sum of the rows of each element concatenated. Exercise 4.10 gives you the opportunity to concatenate an array<a id="1209"></a>.</p>
+<p>The result of<a id="4822"></a> horizontal concatenation<a id="3730"></a> will be an array<a id="3685"></a> with<a id="4265"></a> the number of<a id="4823"></a> rows common to<a id="4496"></a> all and<a id="4149"></a> for<a id="5144"></a> the number of<a id="4824"></a> columns, the sum of<a id="4825"></a> the columns of<a id="4826"></a> each element concatenated. Similarly, the result of<a id="4827"></a> vertical concatenation<a id="3731"></a> will be an array<a id="3686"></a> with<a id="4266"></a> the number of<a id="4828"></a> columns common to<a id="4497"></a> all and<a id="4150"></a> for<a id="5145"></a> the number of<a id="4829"></a> rows, the sum of<a id="4830"></a> the rows of<a id="4831"></a> each element concatenated. Exercise 4.10 gives you the opportunity to<a id="4498"></a> concatenate an array<a id="3687"></a>.</p>
 
 <div class="exercise">#exercise_4_10#</div>
 
-<p><b>Slicing Arrays:</b> The general form of statements for moving sections of one array<a id="1210"></a> into sections of another is as follows:<br />
+<p><b>Slicing Arrays:</b> The general form of<a id="4832"></a> statements for<a id="5146"></a> moving sections of<a id="4833"></a> one array<a id="3688"></a> into sections of<a id="4834"></a> another is as follows:<br />
 <code>B(&lt;rangeBR&gt;, &lt;rangeBC&gt;) = A(&lt;rangeAR&gt;,&lt;rangeAC&gt;)</code><br />
-where each <code>&lt;range..&gt;</code> is an index vector, <code>A</code> is an existing array<a id="1211"></a>, and <code>B</code> can be either an existing array<a id="1212"></a> or a new array<a id="1213"></a>. The values in <code>B</code> at the specified indices are all assigned the corresponding values copied from A. The rules for using this template are as follows:</p>
+where each <code>&lt;range..&gt;</code> is an index vector, <code>A</code> is an existing array<a id="3689"></a>, and<a id="4151"></a> <code>B</code> can be either an existing array<a id="3690"></a> or a new array<a id="3691"></a>. The values in <code>B</code> at the specified indices are all assigned the corresponding values copied from<a id="3923"></a> A. The rules for<a id="5147"></a> using this template<a id="3994"></a> are as follows:</p>
 
 <ul>
 	<li>Either
 	<ul>
-		<li>each dimension of each sliced array<a id="1214"></a> must be equal<a id="1302"></a>,</li>
-		<li>or the number of elements moved must match (i.e. the product <code>&lt;rangeAR&gt;*&lt;rangeAC&gt;</code> must equal<a id="1303"></a> the product <code>&lt;rangeBR&gt;*&lt;rangeBC&gt;</code>)</li>
-		<li>or the size of the slice from <code>A</code> must be <code>1&times;1</code>.</li>
+		<li>each dimension of<a id="4835"></a> each sliced array<a id="3692"></a> must be equal<a id="3842"></a>,</li>
+		<li>or the number of<a id="4836"></a> elements<a id="5072"></a> moved must match (i.e. the product <code>&lt;rangeAR&gt;*&lt;rangeAC&gt;</code> must equal<a id="3843"></a> the product <code>&lt;rangeBR&gt;*&lt;rangeBC&gt;</code>)</li>
+		<li>or the size<a id="5107"></a> of<a id="4837"></a> the slice from<a id="3924"></a> <code>A</code> must be <code>1&times;1</code>.</li>
 	</ul>
 	</li>
 	<li>If B did not exist before this statement was implemented, it would be zero filled where assignments were not explicitly made.</li>
 	<li>If B did exist before this statement, the values not directly assigned would remain unchanged.</li>
 </ul>
 
-<p><b>Reshaping Arrays:</b> Occasionally, it is useful to take an array<a id="1215"></a> with one set of dimensions and reshape it to another set. The function<a id="1353"></a> <code>reshape(<a id="1590"></a> ... )</code> accomplishes this. The command <code>reshape(<a id="1591"></a>A, rows, cols, ...)</code> will take the array<a id="1216"></a> <code>A</code>, whatever its dimensions, and reform it into an array<a id="1217"></a> sized <code>(rows &times; cols &times; ...)</code> out to as many dimensions as desired. However, <code>reshape(<a id="1592"></a>...)</code> neither discards excess data nor pads the data to fill any empty<a id="1291"></a> space. The product of all the original dimensions of <code>A</code> must equal<a id="1304"></a> the product of the new dimensions. Try Exercise 4.11 to see how to reshape an array<a id="1218"></a>. Here, we first take a 1 x 10 array<a id="1219"></a>, A, and attempt to reshape it to 4 x 3. Since the element count does not match, an error results. When we concatenate two zeros to the array<a id="1220"></a> A, it has the right element count and the reshape succeeds.</p>
+<p><b>Reshaping Arrays:</b> Occasionally, it is useful to<a id="4499"></a> take an array<a id="3693"></a> with<a id="4267"></a> one set of<a id="4838"></a> dimensions and<a id="4152"></a> reshape it to<a id="4500"></a> another set. The function<a id="3892"></a> <code>reshape(<a id="3963"></a> ... )</code> accomplishes this. The command <code>reshape(<a id="3964"></a>A, rows, cols, ...)</code> will take the array<a id="3694"></a> <code>A</code>, whatever its dimensions, and<a id="4153"></a> reform it into an array<a id="3695"></a> sized <code>(rows &times; cols &times; ...)</code> out to<a id="4501"></a> as many dimensions as desired. However, <code>reshape(<a id="3965"></a>...)</code> neither discards excess data<a id="4352"></a> nor pads the data<a id="4353"></a> to<a id="4502"></a> fill any empty<a id="3829"></a> space. The product of<a id="4839"></a> all the original dimensions of<a id="4840"></a> <code>A</code> must equal<a id="3844"></a> the product of<a id="4841"></a> the new dimensions. Try Exercise 4.11 to<a id="4503"></a> see how to<a id="4504"></a> reshape an array<a id="3696"></a>. Here, we first take a 1 x 10 array<a id="3697"></a>, A, and<a id="4154"></a> attempt to<a id="4505"></a> reshape it to<a id="4506"></a> 4 x 3. Since the element count does not match, an error results. When we concatenate two zeros<a id="3978"></a> to<a id="4507"></a> the array<a id="3698"></a> A, it has the right element count and<a id="4155"></a> the reshape succeeds.</p>
 
 <div class="exercise">#exercise_4_11#</div>
 
-<p><b>Linearized Arrays:</b> A discussion of arrays would not be complete without revealing an infamous secret of the MATLAB<a id="1448"></a> language: multi-dimensional arrays are not stored in some nice, rectangular chunk of memory. Rather, like all other blocks of memory, the block allocated for an array<a id="1221"></a> is sequential, and the array<a id="1222"></a> is stored in that space in column order. Normally, if MATLAB<a id="1449"></a> behaved as we &quot;have a right to expect,&quot; we would not care how an array<a id="1223"></a> is stored. However, there are circumstances under which the designers of MATLAB<a id="1450"></a> needed to expose this secret. The primary situation in which array<a id="1224"></a> linearization becomes evident is the mechanization of the <code>find(<a id="1335"></a>...)</code> function<a id="1354"></a>. If we perform a logical<a id="1418"></a> operation<a id="1522"></a> on an array<a id="1225"></a>, the result is an array<a id="1226"></a> of logical<a id="1419"></a> values of the same size as the original array<a id="1227"></a>. In general, the true values would be scattered randomly about that resulting array<a id="1228"></a>. If we wanted to convert this to a collection of indices, what would we expect to see? The <code>find(<a id="1336"></a>...)</code> function<a id="1355"></a> has two modes of operation<a id="1523"></a>: we can give it separate variables in which to store the rows and columns by saying:<br />
-<code>[rows cols] = find(<a id="1337"></a>...)</code><br />
-or we can receive back just one result by asking for:<br />
-<code>ndx = find(<a id="1338"></a>...)</code>.<br />
-Indexing with this result exposes the linearized<a id="1376"></a> nature of arrays. The way this feature manifests itself is shown in Exercise 4.12.</p>
+<p><b>Linearized Arrays:</b> A discussion of<a id="4842"></a> arrays would not be complete without revealing an infamous secret of<a id="4843"></a> the MATLAB<a id="4334"></a> language: multi-dimensional arrays are not stored in some nice, rectangular chunk of<a id="4844"></a> memory. Rather, like all other blocks of<a id="4845"></a> memory, the block allocated for<a id="5148"></a> an array<a id="3699"></a> is sequential, and<a id="4156"></a> the array<a id="3700"></a> is stored in that space in column order. Normally, if MATLAB<a id="4335"></a> behaved as we &quot;have a right to<a id="4508"></a> expect,&quot; we would not care how an array<a id="3701"></a> is stored. However, there are circumstances under which the designers of<a id="4846"></a> MATLAB<a id="4336"></a> needed to<a id="4509"></a> expose this secret. The primary situation in which array<a id="3702"></a> linearization becomes evident is the mechanization of<a id="4847"></a> the <code>find(<a id="3875"></a>...)</code> function<a id="3893"></a>. If we perform a logical<a id="3778"></a> operation<a id="4003"></a> on<a id="4303"></a> an array<a id="3703"></a>, the result is an array<a id="3704"></a> of<a id="4848"></a> logical<a id="3779"></a> values of<a id="4849"></a> the same size<a id="5108"></a> as the original array<a id="3705"></a>. In general, the true<a id="4024"></a> values would be scattered randomly about that resulting array<a id="3706"></a>. If we wanted to<a id="4510"></a> convert this to<a id="4511"></a> a collection of<a id="4850"></a> indices, what would we expect to<a id="4512"></a> see? The <code>find(<a id="3876"></a>...)</code> function<a id="3894"></a> has two modes of<a id="4851"></a> operation<a id="4004"></a>: we can give it separate variables in which to<a id="4513"></a> store the rows and<a id="4157"></a> columns by saying:<br />
+<code>[rows cols] = find(<a id="3877"></a>...)</code><br />
+or we can receive back just one result by asking for<a id="5149"></a>:<br />
+<code>ndx = find(<a id="3878"></a>...)</code>.<br />
+Indexing with<a id="4268"></a> this result exposes the linearized<a id="3740"></a> nature<a id="3999"></a> of<a id="4852"></a> arrays. The way this feature manifests itself is shown in Exercise 4.12.</p>
 
 <div class="exercise">#exercise_4_12#</div>
 
-<p>Here, we build a 4 &times; 3 array<a id="1229"></a> <code>A</code> and calculate the logical<a id="1420"></a> array<a id="1230"></a> where <code>A</code> is greater than <code>5</code>. When we save the result of finding these locations in the variable<a id="1657"></a> <code>ix</code>, we see that this is a vector of values. If we count down the columns from the top left, we see that the second, seventh, eighth, and eleventh values in the linearized<a id="1377"></a> version of <code>A</code> are indeed <code>true</code>. We also see that it is legal to use this linearized<a id="1378"></a> index vector to access the values in the original array<a id="1231"></a>&acirc;&euro;&rdquo;in this case<a id="1255"></a>, to add <code>3</code> to each one.</p>
+<p>Here, we build a 4 &times; 3 array<a id="3707"></a> <code>A</code> and<a id="4158"></a> calculate the logical<a id="3780"></a> array<a id="3708"></a> where <code>A</code> is greater than <code>5</code>. When we save the result of<a id="4853"></a> finding these locations in the variable<a id="5030"></a> <code>ix</code>, we see that this is a vector of<a id="4854"></a> values. If we count down the columns from<a id="3925"></a> the top left, we see that the second, seventh, eighth, and<a id="4159"></a> eleventh values in the linearized<a id="3741"></a> version of<a id="4855"></a> <code>A</code> are indeed <code>true<a id="4025"></a></code>. We also see that it is legal to<a id="4514"></a> use this linearized<a id="3742"></a> index vector to<a id="4515"></a> access the values in the original array<a id="3709"></a>&acirc;&euro;&rdquo;in this case<a id="3798"></a>, to<a id="4516"></a> add <code>3</code> to<a id="4517"></a> each one.</p>
 
 <p><b>Hints:</b></p>
 &nbsp;
 
 <ol>
-	<li>It is best not to expose the detailed steps of finding logical<a id="1421"></a> results in arrays, but to use an integrated approach:<br />
+	<li>It is best not to<a id="4518"></a> expose the detailed steps of<a id="4856"></a> finding logical<a id="3781"></a> results in arrays, but to<a id="4519"></a> use an integrated approach:<br />
 	<code>A(A&gt;5) = A(A&gt;5) + 3</code><br />
 	This produces the expected answers without exposing the nasty secrets underneath.</li>
-	<li>Never use an array<a id="1232"></a> linearization as part of your program logic<a id="1382"></a>. It makes the code hideous to look at and/or understand, and it is never the &acirc;&euro;&oelig;only way to do&acirc;&euro; anything.</li>
+	<li>Never use an array<a id="3710"></a> linearization as part of<a id="4857"></a> your program logic<a id="4282"></a>. It makes the code hideous to<a id="4520"></a> look at and<a id="4160"></a>/or understand, and<a id="4161"></a> it is never the &acirc;&euro;&oelig;only way to<a id="4521"></a> do&acirc;&euro; anything.</li>
 </ol>
 
-<p>Finally, we have a right to express a loud complaint when trying to reference the eleventh element of an array<a id="1233"></a> with only three rows. In fact MATLAB<a id="1451"></a> &acirc;&euro;&oelig;unwinds&acirc;&euro; the storage of the array<a id="1234"></a>, counts down to the eleventh entry&acirc;&euro;&rdquo;3 for column 1, 3 for column 2, and 3 for column 3&acirc;&euro;&rdquo;and then extracts the second element of column 4.</p>
+<p>Finally, we have a right to<a id="4522"></a> express a loud complaint when trying to<a id="4523"></a> reference the eleventh element of<a id="4858"></a> an array<a id="3711"></a> with<a id="4269"></a> only three rows. In fact MATLAB<a id="4337"></a> &acirc;&euro;&oelig;unwinds&acirc;&euro; the storage of<a id="4859"></a> the array<a id="3712"></a>, counts down to<a id="4524"></a> the eleventh entry&acirc;&euro;&rdquo;3 for<a id="5150"></a> column 1, 3 for<a id="5151"></a> column 2, and<a id="4162"></a> 3 for<a id="5152"></a> column 3&acirc;&euro;&rdquo;and<a id="4163"></a> then extracts the second element of<a id="4860"></a> column 4.</p>
 
-<p>To understand all these array<a id="1235"></a> manipulation ideas fully, you should work carefully through the script in Listing 4.3, study the explanatory notes that follow, and do Exercise 4.13.</p>
+<p>To understand all these array<a id="3713"></a> manipulation<a id="4972"></a> ideas fully, you should work carefully through the script in Listing 4.3, study the explanatory notes that follow, and<a id="4164"></a> do Exercise 4.13.</p>
 
 <div class="listing">#listing_04_3#</div>
 
 <div class="exercise">#exercise_4_13#</div>
 
-<p>Notice that all the results are consistent with our expectations.</p>
+<p>Notice that all the results are consistent with<a id="4270"></a> our expectations.</p>
 </div>
 </div>
 </div>
 
 <div class="chp-section" data-sect-name="Engineering Example - Computing Soil Volume" data-sect-num="5"><!-- Engineering Example -->
-<h2 id="4_5">4.5 Engineering Example - Computing Soil Volume</h2>
+<h2 id="4_5">4.5 Engineering Example - Computing Soil Volume<a id="3840"></a></h2>
 
 <div class="container clearfix">
 <div class="float-sm-right card"><img alt="Figure 4.5" class="fig card-img" src="..\Images\Fig_4_5.JPG" />
-<p class="figure-name card-title">Figure 4.5: A Road through Hilly Terrain</p>
+<p class="figure-name card-title">Figure<a id="5170"></a> 4.5: A Road through Hilly Terrain</p>
 </div>
 
 <div class="float-sm-right card"><img alt="Figure 4.6" class="fig card-img" src="..\Images\Fig_4_6.JPG" />
-<p class="figure-name card-title">Figure 4.6: Material to be Moved</p>
+<p class="figure-name card-title">Figure<a id="5171"></a> 4.6: Material to<a id="4525"></a> be Moved</p>
 </div>
 
 <p><b>Problem</b></p>
 &nbsp;
 
-<p>We consider now an interesting problem from civil engineering<a id="1300"></a>. Whenever a road [or railway track] is being run through hilly terrain, portions of hills need to be removed and valleys filled in. The preliminary planning for the road location, slope and height must include the problem of moving earth. It is most economical to use the earth removed from hills to fill in nearby valleys without having to haul surplus earth away or bring in extra fill dirt. Typically, the slopes of the cuttings and embankments are specified, for example, at 45 degrees. Figure 4.5 illustrates a typical example.</p>
+<p>We consider now an interesting problem from<a id="3926"></a> civil engineering<a id="3838"></a>. Whenever a road [or railway track] is being run through hilly terrain, portions of<a id="4861"></a> hills need to<a id="4526"></a> be removed and<a id="4165"></a> valleys filled in. The preliminary planning for<a id="5153"></a> the road location, slope and<a id="4166"></a> height must include the problem of<a id="4862"></a> moving earth. It is most economical to<a id="4527"></a> use the earth removed from<a id="3927"></a> hills to<a id="4528"></a> fill in nearby valleys without having to<a id="4529"></a> haul surplus earth away or bring in extra fill dirt. Typically, the slopes of<a id="4863"></a> the cuttings and<a id="4167"></a> embankments are specified, for<a id="5154"></a> example<a id="4950"></a>, at 45 degrees. Figure<a id="5172"></a> 4.5 illustrates a typical example<a id="4951"></a>.</p>
 
 <p><b>Solution</b></p>
 &nbsp;
 
-<p>Listing 4.4 shows one solution to this problem. Consider Figure 4.6 showing the earth to be removed in red and the earth needed to fill the valley in green. In order to balance the amount of earth to be moved, we need merely to sum the depths of the red patches and subtract the sum of the depth of the green patch.</p>
+<p>Listing 4.4 shows one solution to<a id="4530"></a> this problem. Consider Figure<a id="5173"></a> 4.6 showing the earth to<a id="4531"></a> be removed in red and<a id="4168"></a> the earth needed to<a id="4532"></a> fill the valley in green. In order to<a id="4533"></a> balance the amount of<a id="4864"></a> earth to<a id="4534"></a> be moved, we need merely to<a id="4535"></a> sum the depths of<a id="4865"></a> the red patches and<a id="4169"></a> subtract the sum of<a id="4866"></a> the depth of<a id="4867"></a> the green patch.</p>
 
-<p>There are a number of MATLAB<a id="1452"></a> language features in Listing 4.4 that will be dealt with in later chapters. Refer to MATLAB<a id="1453"></a> documentation<a id="1286"></a> or the subsequent chapters of this text<a id="1619"></a>.</p>
+<p>There are a number of<a id="4868"></a> MATLAB<a id="4338"></a> language features in Listing 4.4 that will be dealt with<a id="4271"></a> in later chapters. Refer to<a id="4536"></a> MATLAB<a id="4339"></a> documentation<a id="3824"></a> or the subsequent chapters of<a id="4869"></a> this text<a id="4992"></a>.</p>
 </div>
 
 <div class="listing">#listing_04_4#</div>
@@ -584,15 +584,15 @@ Indexing with this result exposes the linearized<a id="1376"></a> nature of arra
 <h2>Chapter Summary</h2>
 
 <div class="container">
-<p>This chapter introduced you to vectors and arrays. For each collection, you saw how to:</p>
+<p>This chapter introduced you to<a id="4537"></a> vectors and<a id="4170"></a> arrays. For each collection, you saw how to<a id="4538"></a>:</p>
 
 <ul>
-	<li>Create a vectors and arrays by concatenation<a id="1277"></a> and a variety of special-purpose functions</li>
-	<li>Access and remove elements, rows, or columns</li>
-	<li>Perform mathematical and logical<a id="1422"></a> operations<a id="1558"></a> on them</li>
-	<li>Apply library functions, including those that summarize whole columns or rows</li>
-	<li>Move arbitrary selected rows and columns from one array<a id="1236"></a> to another</li>
-	<li>Reshape and linearize arrays</li>
+	<li>Create a vectors and<a id="4171"></a> arrays by concatenation<a id="3732"></a> and<a id="4172"></a> a variety of<a id="4870"></a> special-purpose functions<a id="4988"></a></li>
+	<li>Access and<a id="4173"></a> remove elements<a id="5073"></a>, rows, or columns</li>
+	<li>Perform mathematical and<a id="4174"></a> logical<a id="3782"></a> operations<a id="4605"></a> on<a id="4304"></a> them</li>
+	<li>Apply library functions<a id="4989"></a>, including those that summarize whole columns or rows</li>
+	<li>Move arbitrary selected rows and<a id="4175"></a> columns from<a id="3928"></a> one array<a id="3714"></a> to<a id="4539"></a> another</li>
+	<li>Reshape and<a id="4176"></a> linearize arrays</li>
 </ul>
 
 <p>&nbsp;</p>
@@ -600,90 +600,90 @@ Indexing with this result exposes the linearized<a id="1376"></a> nature of arra
 
 <h2>Self Test</h2>
 
-<div class="container">Use the following questions to check your understanding of the material in this chapter:
+<div class="container">Use the following questions to<a id="4540"></a> check your understanding of<a id="4871"></a> the material in this chapter:
 <h3>True or False</h3>
 
 <ol>
-	<li>A homogeneous<a id="1365"></a> collection must consist entirely of numbers<a id="1502"></a>.</li>
-	<li>The function<a id="1356"></a> linspace(<a id="1380"></a>...) can create only vectors, whereas the functions zeros(<a id="1672"></a>...) , ones(<a id="1518"></a>...) , and rand(<a id="1587"></a>...) produce either vectors or arrays of any dimension.</li>
-	<li>The length(<a id="1369"></a>...) function<a id="1357"></a> applied to a column vector<a id="1271"></a> gives you the number of rows.</li>
-	<li>You can access any element(s) of an array<a id="1237"></a> of any dimension using a single index vector.</li>
-	<li>Mathematical or logical<a id="1423"></a> operators<a id="1571"></a> are allowed only between two arrays of the same shape (rows and columns).</li>
-	<li>You can access data in a vector A with an index vector that is longer than A .</li>
-	<li>You can access data in a vector A with a logical<a id="1424"></a> vector that is longer than A .</li>
-	<li>When moving a block of data in the form of specified rows and columns from array<a id="1238"></a> A to array<a id="1239"></a> B , the shape of the block in A must match the shape of the block in B .</li>
+	<li>A homogeneous<a id="3998"></a> collection must consist entirely of<a id="4872"></a> numbers<a id="4393"></a>.</li>
+	<li>The function<a id="3895"></a> linspace(<a id="3944"></a>...) can create only vectors, whereas the functions<a id="4990"></a> zeros(<a id="3982"></a>...) , ones(<a id="3957"></a>...) , and<a id="4177"></a> rand(<a id="3960"></a>...) produce either vectors or arrays of<a id="4873"></a> any dimension.</li>
+	<li>The length(<a id="3942"></a>...) function<a id="3896"></a> applied to<a id="4541"></a> a column vector<a id="3814"></a> gives you the number of<a id="4874"></a> rows.</li>
+	<li>You can access any element(s) of<a id="4875"></a> an array<a id="3715"></a> of<a id="4876"></a> any dimension using a single index vector.</li>
+	<li>Mathematical or logical<a id="3783"></a> operators<a id="4618"></a> are allowed only between two arrays of<a id="4877"></a> the same shape (rows and<a id="4178"></a> columns).</li>
+	<li>You can access data<a id="4354"></a> in a vector A with<a id="4272"></a> an index vector that is longer than A .</li>
+	<li>You can access data<a id="4355"></a> in a vector A with<a id="4273"></a> a logical<a id="3784"></a> vector that is longer than A .</li>
+	<li>When moving a block of<a id="4878"></a> data<a id="4356"></a> in the form of<a id="4879"></a> specified rows and<a id="4179"></a> columns from<a id="3929"></a> array<a id="3716"></a> A to<a id="4542"></a> array<a id="3717"></a> B , the shape of<a id="4880"></a> the block in A must match the shape of<a id="4881"></a> the block in B .</li>
 </ol>
 
 <h3>Fill in the Blanks</h3>
 
 <ol>
-	<li>Vector elements have two attributes that make them unique: their ____________ and their ____________.</li>
-	<li>Vectors can be created using the colon<a id="1269"></a> operator, for example, B = 1:3:20 , where the first number is the __________, the second number is the ______________, and the third number is the ______________.</li>
-	<li>When indexing a source vector with a logical<a id="1425"></a> vector, the result will contain the _____________of the source vector corresponding in position to the ____________ in the logical<a id="1426"></a> vector.</li>
-	<li>The normal precedence of operators<a id="1572"></a> can be overruled by the use of _____________________.</li>
-	<li>Arithmetic operations<a id="1559"></a> can be performed collectively on the individual components of two arrays as long as both arrays _______________or one of them is _____________.</li>
-	<li>To remove elements from arrays, you write ______________in ___________________________.</li>
-	<li>Removing rows or columns from an array<a id="1240"></a> is ________________, and can lead to ______________. Wherever possible, use _____________ to _____________________.</li>
+	<li>Vector elements<a id="5074"></a> have two attributes that make them unique: their ____________ and<a id="4180"></a> their ____________.</li>
+	<li>Vectors can be created using the colon<a id="3812"></a> operator, for<a id="5155"></a> example<a id="4952"></a>, B = 1:3:20 , where the first number is the __________, the second number is the ______________, and<a id="4181"></a> the third number is the ______________.</li>
+	<li>When indexing<a id="5093"></a> a source vector with<a id="4274"></a> a logical<a id="3785"></a> vector, the result will contain the _____________of<a id="4882"></a> the source vector corresponding in position to<a id="4543"></a> the ____________ in the logical<a id="3786"></a> vector.</li>
+	<li>The normal precedence<a id="4623"></a> of<a id="4883"></a> operators<a id="4619"></a> can be overruled by the use of<a id="4884"></a> _____________________.</li>
+	<li>Arithmetic operations<a id="4606"></a> can be performed collectively on<a id="4305"></a> the individual components of<a id="4885"></a> two arrays as long as both arrays _______________or one of<a id="4886"></a> them is _____________.</li>
+	<li>To remove elements<a id="5075"></a> from<a id="3930"></a> arrays, you write ______________in ___________________________.</li>
+	<li>Removing rows or columns from<a id="3931"></a> an array<a id="3718"></a> is ________________, and<a id="4182"></a> can lead to<a id="4544"></a> ______________. Wherever possible, use _____________ to<a id="4545"></a> _____________________.</li>
 </ol>
 
 <h3>Programming Projects</h3>
-For these exercises, do not use the direct entry method to construct the vectors.
+For these exercises, do not use the direct entry method to<a id="4546"></a> construct the vectors.
 
 <ol>
 	<li>Write a script that does the following:
 	<ul>
-		<li>Construct a vector containing all of the even numbers<a id="1503"></a> between 6 and 33, inclusive of the end<a id="1299"></a> points. Store your answer in the variable<a id="1658"></a> evens . ( Note: 33 is not an even number)</li>
-		<li>Construct a vector, threes , containing every third number starting with 8 and ending at 38.</li>
-		<li>Construct a vector, reverse , containing numbers<a id="1504"></a> starting at 20 and counting backward by 1 to 10.</li>
-		<li>Construct a vector, theta , containing 100 evenly spaced values between 0 and 2pi.</li>
-		<li>Construct a vector, myZeros , containing 15 elements, all of which are zeros.</li>
-		<li>Construct a vector, random , containing 15 randomly generated numbers<a id="1505"></a> between 1 and 12.</li>
+		<li>Construct a vector containing all of<a id="4887"></a> the even numbers<a id="4394"></a> between 6 and<a id="4183"></a> 33, inclusive of<a id="4888"></a> the end<a id="3837"></a> points. Store your answer in the variable<a id="5031"></a> evens . ( Note: 33 is not an even number)</li>
+		<li>Construct a vector, threes , containing every third number starting with<a id="4275"></a> 8 and<a id="4184"></a> ending at 38.</li>
+		<li>Construct a vector, reverse , containing numbers<a id="4395"></a> starting at 20 and<a id="4185"></a> counting backward by 1 to<a id="4547"></a> 10.</li>
+		<li>Construct a vector, theta , containing 100 evenly spaced values between 0 and<a id="4186"></a> 2pi.</li>
+		<li>Construct a vector, myZeros , containing 15 elements<a id="5076"></a>, all of<a id="4889"></a> which are zeros<a id="3979"></a>.</li>
+		<li>Construct a vector, random , containing 15 randomly generated numbers<a id="4396"></a> between 1 and<a id="4187"></a> 12.</li>
 	</ul>
 	</li>
-	<li>Write a script that performs the following exercises on vectors:
+	<li>Write a script that performs the following exercises on<a id="4306"></a> vectors:
 	<ul>
-		<li>You are given a vector vec, defined as: vec = [45 8 2 6 98 55 45 -48 75] . You decide that you don&#39;t want the numbers<a id="1506"></a> with even values. Write as script to remove all of the even numbers<a id="1507"></a> (i.e., 8, 2, 6, 98, and 248) from vec . You should alter the vector vec rather than storing your answer in a new variable<a id="1659"></a>. Since your commands must work for any vector of any length, you must not use direct entry.</li>
-		<li>Create a variable<a id="1660"></a> called vLength that holds the length of the vector vec modified in part a. You should use a built-in function<a id="1358"></a> to calculate the value<a id="1651"></a> based on the vector itself.</li>
-		<li>Create a variable<a id="1661"></a> called vSum that holds the sum of the elements in vector vec . Do not just enter the value<a id="1652"></a>. You should use a built-in function<a id="1359"></a> to calculate the value<a id="1653"></a> based on the vector itself.</li>
-		<li>Calculate the average of the values in the vector vec two ways. First, use a built-in function<a id="1360"></a> to find the average of vec . Then, use the results from parts b and c to calculate the average of vec.</li>
-		<li>Create a variable<a id="1662"></a> called vProd that holds the product of the elements in vector vec . You should use a built-in function<a id="1361"></a> to calculate the value<a id="1654"></a> based on the vector itself.</li>
+		<li>You are given a vector vec, defined<a id="3991"></a> as: vec = [45 8 2 6 98 55 45 -48 75] . You decide that you don&#39;t want the numbers<a id="4397"></a> with<a id="4276"></a> even values. Write as script to<a id="4548"></a> remove all of<a id="4890"></a> the even numbers<a id="4398"></a> (i.e., 8, 2, 6, 98, and<a id="4188"></a> 248) from<a id="3932"></a> vec . You should alter the vector vec rather than storing your answer in a new variable<a id="5032"></a>. Since your commands must work for<a id="5156"></a> any vector of<a id="4891"></a> any length, you must not use direct entry.</li>
+		<li>Create a variable<a id="5033"></a> called vLength that holds the length of<a id="4892"></a> the vector vec modified in part a. You should use a built-in function<a id="3897"></a> to<a id="4549"></a> calculate the value<a id="5024"></a> based on<a id="4307"></a> the vector itself.</li>
+		<li>Create a variable<a id="5034"></a> called vSum that holds the sum of<a id="4893"></a> the elements<a id="5077"></a> in vector vec . Do not just enter the value<a id="5025"></a>. You should use a built-in function<a id="3898"></a> to<a id="4550"></a> calculate the value<a id="5026"></a> based on<a id="4308"></a> the vector itself.</li>
+		<li>Calculate the average of<a id="4894"></a> the values in the vector vec two ways. First, use a built-in function<a id="3899"></a> to<a id="4551"></a> find the average of<a id="4895"></a> vec . Then, use the results from<a id="3933"></a> parts b and<a id="4189"></a> c to<a id="4552"></a> calculate the average of<a id="4896"></a> vec.</li>
+		<li>Create a variable<a id="5035"></a> called vProd that holds the product of<a id="4897"></a> the elements<a id="5078"></a> in vector vec . You should use a built-in function<a id="3900"></a> to<a id="4553"></a> calculate the value<a id="5027"></a> based on<a id="4309"></a> the vector itself.</li>
 	</ul>
 	</li>
-	<li>Write a script to solve the following problems using only vector operations<a id="1560"></a>:
+	<li>Write a script to<a id="4554"></a> solve the following problems using only vector operations<a id="4607"></a>:
 	<ul>
-		<li>Assume that you have two vectors named A1 and B1 of equal<a id="1305"></a> length, and create a vector C1 that combines A1 and B1 such that C1 = [A1(1) B1(1) A1(2) B1(2) ... . A1(end) B1(end)] . For example, if A1 = [2, 4, 8] and B1 = [3, 9, 27] , C1 should contain [2, 3, 4, 9, 8, 27]</li>
-		<li>Assume that you have two vectors named A2 and B2 of different lengths. Create a vector C2 that combines A2 and B2 in a manner similar to part a. However, if you run out of elements in one of the vectors, C2 also contains the elements remaining from the longer vector.<br />
-		For example, if A2 = [1, 2, 3, 4, 5, 6] and B2 = [10, 20, 30] , then C2 = [1, 10, 2, 20, 3, 30, 4, 5, 6] ;<br />
-		if A2 = [1, 2, 3] and B2 = [10, 20, 30, 40, 50] , then C2 = [1, 10, 2, 20, 3, 30, 40, 50]</li>
+		<li>Assume that you have two vectors named A1 and<a id="4190"></a> B1 of<a id="4898"></a> equal<a id="3845"></a> length, and<a id="4191"></a> create a vector C1 that combines A1 and<a id="4192"></a> B1 such that C1 = [A1(1) B1(1) A1(2) B1(2) ... . A1(end) B1(end)] . For example<a id="4953"></a>, if A1 = [2, 4, 8] and<a id="4193"></a> B1 = [3, 9, 27] , C1 should contain [2, 3, 4, 9, 8, 27]</li>
+		<li>Assume that you have two vectors named A2 and<a id="4194"></a> B2 of<a id="4899"></a> different lengths. Create a vector C2 that combines A2 and<a id="4195"></a> B2 in a manner similar to<a id="4555"></a> part a. However, if you run out of<a id="4900"></a> elements<a id="5079"></a> in one of<a id="4901"></a> the vectors, C2 also contains the elements<a id="5080"></a> remaining from<a id="3934"></a> the longer vector.<br />
+		For example<a id="4954"></a>, if A2 = [1, 2, 3, 4, 5, 6] and<a id="4196"></a> B2 = [10, 20, 30] , then C2 = [1, 10, 2, 20, 3, 30, 4, 5, 6] ;<br />
+		if A2 = [1, 2, 3] and<a id="4197"></a> B2 = [10, 20, 30, 40, 50] , then C2 = [1, 10, 2, 20, 3, 30, 40, 50]</li>
 	</ul>
 	</li>
-	<li>Write a script that, when given a vector of numbers<a id="1508"></a>, nums , creates a vector newNums containing every other element of the original vector, starting with the first element. For example, if nums = [6 3 56 7 8 9 445 6 7 437 357 5 4 3] , newNums should be [6 56 8 445 7 357 4] . Note: You must not simply hard-code the numbers<a id="1509"></a> into your answer; your script should work with any vector of numbers<a id="1510"></a>.</li>
-	<li>You are given a vector, tests, of test scores and wish to normalize these scores by computing a new vector, normTests , that will contain the test scores on linear<a id="1375"></a> scale<a id="1604"></a> from 0 to 100. A zero still corresponds to a zero, and the highest test score will correspond to 100.<br />
-	For example,<br />
+	<li>Write a script that, when given a vector of<a id="4902"></a> numbers<a id="4399"></a>, nums , creates a vector newNums containing every other element of<a id="4903"></a> the original vector, starting with<a id="4277"></a> the first element. For example<a id="4955"></a>, if nums = [6 3 56 7 8 9 445 6 7 437 357 5 4 3] , newNums should be [6 56 8 445 7 357 4] . Note: You must not simply hard-code the numbers<a id="4400"></a> into your answer; your script should work with<a id="4278"></a> any vector of<a id="4904"></a> numbers<a id="4401"></a>.</li>
+	<li>You are given a vector, tests, of<a id="4905"></a> test scores and<a id="4198"></a> wish to<a id="4556"></a> normalize these scores by computing a new vector, normTests , that will contain the test scores on<a id="4310"></a> linear<a id="4213"></a> scale<a id="4930"></a> from<a id="3935"></a> 0 to<a id="4557"></a> 100. A zero still corresponds to<a id="4558"></a> a zero, and<a id="4199"></a> the highest test score will correspond to<a id="4559"></a> 100.<br />
+	For example<a id="4956"></a>,<br />
 	if tests = [90 45 76 21 85 97 91 84 79 67 76 72 89 95 55] ,<br />
 	normTests should be [92.78 46.39 78.35 21.65 87.63 100 93.81 86.6 ... 81.44 69.07 78.35 74.23 91.75 97.94 56.7];</li>
-	<li>Write a script that takes a vector of numbers<a id="1511"></a>, A , and return a new vector B , containing the cubes of the positive numbers<a id="1512"></a> in A . If a particular entry is negative, replace its cube with 0.<br />
-	For example,<br />
+	<li>Write a script that takes a vector of<a id="4906"></a> numbers<a id="4402"></a>, A , and<a id="4200"></a> return a new vector B , containing the cubes of<a id="4907"></a> the positive numbers<a id="4403"></a> in A . If a particular entry is negative, replace its cube<a id="4991"></a> with<a id="4279"></a> 0.<br />
+	For example<a id="4957"></a>,<br />
 	if A = [1 2 -1 5 6 7 -4 3 -2 0] , B should be [1 8 0 125 216 343 0 27 0 0]</li>
-	<li>Great news! You have just been selected to appear on Jeopardy this fall. You decide that it might be to your advantage to generate an array<a id="1241"></a> representing the values of the questions on the board.
+	<li>Great news! You have just been selected to<a id="4560"></a> appear on<a id="4311"></a> Jeopardy this fall. You decide that it might be to<a id="4561"></a> your advantage to<a id="4562"></a> generate an array<a id="3719"></a> representing the values of<a id="4908"></a> the questions on<a id="4312"></a> the board.
 	<ul>
-		<li>Write a script to generate the matrix<a id="1467"></a> jeopardy that consists of six columns and five rows. The columns are all identical, but the values of the rows range from 200 to 1,000 in equal<a id="1306"></a> increments.</li>
-		<li>Next, generate the matrix<a id="1468"></a> doubleJeopardy , which has the same dimensions as jeopardy but whose values range from 400 to 2,000.</li>
-		<li>You&#39;ve decided to go even one step further and practice for a round that doesn&#39;t even exist yet. Generate the matrix<a id="1469"></a> squaredJeopardy that contains each entry of the original jeopardy matrix<a id="1470"></a> squared.</li>
+		<li>Write a script to<a id="4563"></a> generate the matrix<a id="4371"></a> jeopardy that consists of<a id="4909"></a> six columns and<a id="4201"></a> five rows. The columns are all identical, but the values of<a id="4910"></a> the rows range from<a id="3936"></a> 200 to<a id="4564"></a> 1,000 in equal<a id="3846"></a> increments.</li>
+		<li>Next, generate the matrix<a id="4372"></a> doubleJeopardy , which has the same dimensions as jeopardy but whose values range from<a id="3937"></a> 400 to<a id="4565"></a> 2,000.</li>
+		<li>You&#39;ve decided to<a id="4566"></a> go even one step further and<a id="4202"></a> practice for<a id="5157"></a> a round that doesn&#39;t even exist yet. Generate the matrix<a id="4373"></a> squaredJeopardy that contains each entry of<a id="4911"></a> the original jeopardy matrix<a id="4374"></a> squared.</li>
 	</ul>
 	</li>
-	<li>Write a script named array<a id="1242"></a>Collide that will combine two arrays, sort them, and then return a new array<a id="1243"></a> of a specified size.<br />
-	Your script should process the following data:
+	<li>Write a script named array<a id="3720"></a>Collide that will combine two arrays, sort them, and<a id="4203"></a> then return a new array<a id="3721"></a> of<a id="4912"></a> a specified size<a id="5109"></a>.<br />
+	Your script should process the following data<a id="4357"></a>:
 	<ul>
-		<li>A : a 2-D array<a id="1244"></a> of any size</li>
-		<li>B : another 2-D array<a id="1245"></a> that may be a different size from A</li>
-		<li>N : a number specifying the number of rows for the new array<a id="1246"></a></li>
-		<li>M : a number specifying the number of columns for the new array<a id="1247"></a>.</li>
+		<li>A : a 2-D<a id="4630"></a> array<a id="3722"></a> of<a id="4913"></a> any size<a id="5110"></a></li>
+		<li>B : another 2-D<a id="4631"></a> array<a id="3723"></a> that may be a different size<a id="5111"></a> from<a id="3938"></a> A</li>
+		<li>N : a number specifying the number of<a id="4914"></a> rows for<a id="5158"></a> the new array<a id="3724"></a></li>
+		<li>M : a number specifying the number of<a id="4915"></a> columns for<a id="5159"></a> the new array<a id="3725"></a>.</li>
 	</ul>
-	Your script should produce an array<a id="1248"></a>, res , of size N x M that contains the first N x M elements of A and B and is sorted columnwise. If N x M is larger than the total number of elements in A and B , you should fill empty<a id="1292"></a> spots with 0. Test this script by writing another script that repeatedly sets the values of A , B , M , and N and then invokes your array<a id="1249"></a>Collide script. You can then create as many test cases as you wish.<br />
-	For example,<br />
-	if A = [1 2 3; 5 4 6] , B = [7 8; 9 10; 12 11] , N = 3 and M = 4 , res will be [1 4 7 10 2 5 8 11 3 6 9 12]<br />
-	Change N to 4, and res will be [1 5 9 0 2 6 10 0 3 7 11 0 4 8 12 0</li>
+	Your script should produce an array<a id="3726"></a>, res , of<a id="4916"></a> size<a id="5112"></a> N x M that contains the first N x M elements<a id="5081"></a> of<a id="4917"></a> A and<a id="4204"></a> B and<a id="4205"></a> is sorted columnwise. If N x M is larger than the total number of<a id="4918"></a> elements<a id="5082"></a> in A and<a id="4206"></a> B , you should fill empty<a id="3830"></a> spots with<a id="4280"></a> 0. Test this script by writing<a id="4027"></a> another script that repeatedly sets the values of<a id="4919"></a> A , B , M , and<a id="4207"></a> N and<a id="4208"></a> then invokes your array<a id="3727"></a>Collide script. You can then create as many test cases as you wish.<br />
+	For example<a id="4958"></a>,<br />
+	if A = [1 2 3; 5 4 6] , B = [7 8; 9 10; 12 11] , N = 3 and<a id="4209"></a> M = 4 , res will be [1 4 7 10 2 5 8 11 3 6 9 12]<br />
+	Change N to<a id="4567"></a> 4, and<a id="4210"></a> res will be [1 5 9 0 2 6 10 0 3 7 11 0 4 8 12 0</li>
 </ol>
 </div>
 </div>

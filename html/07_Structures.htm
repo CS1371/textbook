@@ -16,27 +16,27 @@
 <div class="nav-obj">#nav_obj#</div>
 
 <div class="content">
-  <h1 id="7" align="center">Chapter 7: Cell Arrays and Structures</h1>
+  <h1 id="7" align="center">Chapter 7: Cell Arrays and<a id="7659"></a> Structures</h1>
 
   <!-- Chapter Objectives -->
   <h2>Chapter Objectives</h2>
   <div class="container">
-    <p>This chapter discusses the nature, implementation, and behavior of collections<a id="2460"></a> that may contain data items of any class, size, or shape. We will deal with two different heterogeneous<a id="2624"></a> storage mechanisms:
+    <p>This chapter discusses the nature<a id="7649"></a>, implementation<a id="7989"></a>, and<a id="7660"></a> behavior of<a id="7991"></a> collections<a id="7389"></a> that may contain data<a id="7821"></a> items of<a id="7992"></a> any class, size<a id="8346"></a>, or shape. We will deal with<a id="7744"></a> two different heterogeneous<a id="7637"></a> storage mechanisms:
       <ul>
       <li>Those accessed by index (cell arrays) </li>
-      <li>Those accessed by field<a id="2507"></a> name (structures) </li>
+      <li>Those accessed by field<a id="7434"></a> name (structures) </li>
       </ul>
-    In addition, we will consider collecting structures into arrays of structures.</p>
+    In addition, we will consider collecting structures<a id="7593"></a> into arrays of<a id="7993"></a> structures<a id="7594"></a>.</p>
   </div>
 
   <!-- Introduction -->
   <h1>Introduction</h1>
   <div class="container">
-     <p>This chapter covers data collections<a id="2461"></a> that are more general and flexible than the <b>homogeneous<a id="2633"></a></b> arrays we have considered so far. Conceptually, <b>heterogeneous<a id="2625"></a></b> collections<a id="2462"></a> may contain objects<a id="2688"></a> of any type,<a id="2809"></a> rather than just numbers<a id="2664"></a>. Consequently, none of the collective operations<a id="2691"></a> defined for numerical<a id="2679"></a> arrays can be applied to cell arrays<a id="2442"></a> or structures. To perform most operations<a id="2692"></a> on their contents, the items must be extracted one at a time and replaced if necessary. We will consider three different mechanisms for building<a id="2435"></a> heterogeneous<a id="2626"></a> collections<a id="2463"></a>:
+     <p>This chapter covers data<a id="7822"></a> collections<a id="7390"></a> that are more general and<a id="7661"></a> flexible than the <b>homogeneous<a id="7646"></a></b> arrays we have considered so far. Conceptually, <b>heterogeneous<a id="7638"></a></b> collections<a id="7391"></a> may contain objects<a id="7971"></a> of<a id="7994"></a> any type,<a id="8280"></a> rather than just numbers<a id="7834"></a>. Consequently, none of<a id="7995"></a> the collective operations<a id="7974"></a> defined<a id="7627"></a> for<a id="8355"></a> numerical<a id="7962"></a> arrays can be applied to<a id="7849"></a> cell<a id="<a id="7371"></a>7294"></a> arrays or structures<a id="7595"></a>. To perform most operations<a id="7975"></a> on<a id="7793"></a> their contents, the items must be extracted one at a time and<a id="7662"></a> replaced if necessary. We will consider three different mechanisms for<a id="8356"></a> building<a id="7364"></a> heterogeneous<a id="7639"></a> collections<a id="7392"></a>:
      <ul>
-     <li>you access components of a <b>cell array<a id="2340"></a></b> with a numerical<a id="2680"></a> index;</li>
-     <li>you access components of a <b>structure<a id="2716"></a></b> with a symbolic field<a id="2508"></a> name; and</li>
-     <li>you access components of a <b>structure<a id="2717"></a> array<a id="2341"></a></b> by way of a numerical<a id="2681"></a> index to reach a specific structure<a id="2718"></a> then a symbolic field<a id="2509"></a> name.</li>
+     <li>you access components of<a id="7996"></a> a <b>cell<a id="7295"></a> array<a id="7207"></a></b> with<a id="7745"></a> a numerical<a id="7963"></a> index;</li>
+     <li>you access components of<a id="7997"></a> a <b>structure<a id="8181"></a></b> with<a id="7746"></a> a symbolic field<a id="7435"></a> name; and<a id="7663"></a></li>
+     <li>you access components of<a id="7998"></a> a <b>structure<a id="8182"></a> array<a id="7208"></a></b> by way of<a id="7999"></a> a numerical<a id="7964"></a> index to<a id="7850"></a> reach a specific structure<a id="8183"></a> then a symbolic field<a id="7436"></a> name.</li>
     </ul></p>
   </div>
 
@@ -44,8 +44,8 @@
     <!-- Collecting Dissimilar Objects -->
     <h2 id="7_1">7.1	Concept: Collecting Dissimilar Objects</h2>
     <div class="container">
-      <p>Heterogeneous collections<a id="2464"></a> permit objects<a id="2689"></a> of different data types to be grouped in a collection. They allow data abstraction<a id="2482"></a> to apply to a much broader range of content. However, the fact that the contents of these collections<a id="2465"></a> may be of any data type severely restricts the operations<a id="2693"></a> that can be performed on the collections<a id="2466"></a> as a whole. Whereas a significant number of arithmetic<a id="2339"></a> and logical<a id="2648"></a> operations<a id="2694"></a> can be performed on whole number arrays, algorithms that process heterogeneous<a id="2627"></a> collections<a id="2467"></a> almost always deal with the data contents one item at a time.</p>
-      <p><b>Insignificant Footnote:</b> There is a fundamental aspect of computing that is carefully hidden by the Matlab but fully exposed in other languages especially Java. That aspect is this: computer languages that deal with complex concepts such as the subject of this chapter actually need to implement the classes<a id="2458"></a> that define behavior in a hierarchy.  At the root of that hierarchy in Java is a class called Object, and all Java classes<a id="2459"></a> actually respond as if they were Objects in addition to their specific behavior.  Matlab hides exactly the same behavior. Hence, while<a id="2841"></a> we discuss these collections<a id="2468"></a> as if they were heterogeneous<a id="2628"></a>, because of this hierarchy, the Matlab infrastructure treats them as homogeneous<a id="2634"></a> collections<a id="2469"></a> of Objects.</p>
+      <p>Heterogeneous collections<a id="7393"></a> permit objects<a id="7972"></a> of<a id="8000"></a> different data<a id="7823"></a> types<a id="7657"></a> to<a id="7851"></a> be grouped in a collection. They allow data<a id="7824"></a> abstraction<a id="7408"></a> to<a id="7852"></a> apply to<a id="7853"></a> a much broader range of<a id="8001"></a> content. However, the fact that the contents of<a id="8002"></a> these collections<a id="7394"></a> may be of<a id="8003"></a> any data<a id="7825"></a> type severely restricts the operations<a id="7976"></a> that can be performed on<a id="7794"></a> the collections<a id="7395"></a> as a whole. Whereas a significant number of<a id="8004"></a> arithmetic<a id="7206"></a> and<a id="7664"></a> logical<a id="7354"></a> operations<a id="7977"></a> can be performed on<a id="7795"></a> whole number arrays, algorithms that process heterogeneous<a id="7640"></a> collections<a id="7396"></a> almost always deal with<a id="7747"></a> the data<a id="7826"></a> contents one item at a time.</p>
+      <p><b>Insignificant Footnote:</b> There is a fundamental aspect of<a id="8005"></a> computing that is carefully hidden by the Matlab but fully exposed in other languages especially Java. That aspect is this: computer languages that deal with<a id="7748"></a> complex concepts such as the subject of<a id="8006"></a> this chapter actually need to<a id="7854"></a> implement the classes<a id="7387"></a> that define behavior in a hierarchy.  At the root of<a id="8007"></a> that hierarchy in Java is a class called Object, and<a id="7665"></a> all Java classes<a id="7388"></a> actually respond as if they were Objects in addition to<a id="7855"></a> their specific behavior.  Matlab hides exactly the same behavior. Hence, while<a id="8353"></a> we discuss these collections<a id="7397"></a> as if they were heterogeneous<a id="7641"></a>, because of<a id="8008"></a> this hierarchy, the Matlab infrastructure treats them as homogeneous<a id="7647"></a> collections<a id="7398"></a> of<a id="8009"></a> Objects.</p>
     </div>
   </div>
 
@@ -55,10 +55,10 @@
     <div class="container clearfix">
       <div class="card float-sm-right">
            <img src="..\Images\Fig_7_1.JPG" alt="Figure 7.1" class="fig card-img">
-           <p class="figure-name card-title">Figure 7.1: Conceptual Cell Array</p>
+           <p class="figure-name card-title">Figure<a id="8400"></a> 7.1: Conceptual Cell Array</p>
       </div>
-      <p>Cell arrays, as the name suggests, have the general form of arrays and can be indexed numerically as arrays. However, each element of a cell array<a id="2342"></a> should be considered as a container in which one data object of any class can be stored. They can be treated as arrays of containers for the purpose of concatenation<a id="2479"></a> and slicing. However, if you wish to access or modify the contents of the containers, the cells must be accessed individually.</p>
-      <p><b>Nomenclature:</b> Cells and cell arrays<a id="2443"></a> have dual meanings.  In one sense, the braces specify a <b>cell</b>, a <b>container</b> of whatever is inside the braces. The other sense suggests that within the cell is an arbitrary <b>collection of objects<a id="2690"></a></b> we will refer to as a cell's <b>contents</b>.</p>
+      <p>Cell arrays, as the name suggests, have the general form of<a id="8010"></a> arrays and<a id="7666"></a> can be indexed numerically as arrays. However, each element of<a id="8011"></a> a cell<a id="7296"></a> array<a id="7209"></a> should be considered as a container in which one data<a id="7827"></a> object of<a id="8012"></a> any class can be stored. They can be treated as arrays of<a id="8013"></a> containers for<a id="8357"></a> the purpose of<a id="8014"></a> concatenation<a id="7350"></a> and<a id="7667"></a> slicing<a id="8179"></a>. However, if you wish to<a id="7856"></a> access or modify the contents of<a id="8015"></a> the containers, the cells must be accessed individually.</p>
+      <p><b>Nomenclature:</b> Cells and<a id="7668"></a> cell<a id="<a id="7372"></a>7297"></a> arrays have dual meanings.  In one sense, the braces specify a <b>cell<a id="7298"></a></b>, a <b>container</b> of<a id="8016"></a> whatever is inside the braces. The other sense suggests that within the cell<a id="7299"></a> is an arbitrary <b>collection of<a id="8017"></a> objects<a id="7973"></a></b> we will refer to<a id="7857"></a> as a cell<a id="7300"></a>'s <b>contents</b>.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Creating Cell Arrays">
@@ -67,32 +67,32 @@
       <div class="container">
         <p>Cell arrays may be constructed in the following ways:
         <ul>
-          <li>By assigning values individually to a variable<a id="2828"></a> indexed with braces:<br>
+          <li>By assigning<a id="8315"></a> values individually to<a id="7858"></a> a variable<a id="8302"></a> indexed with<a id="7749"></a> braces:<br>
           <code>>> A{1} = 42<br>
           A =<br>
           &nbsp;&nbsp;&nbsp;&nbsp;[42] </li></code>
-          <li>By assigning anything contained within braces individually to a variable<a id="2829"></a> normally indexed with parentheses:<br>
+          <li>By assigning<a id="8316"></a> anything contained within braces individually to<a id="7859"></a> a variable<a id="8303"></a> normally indexed with<a id="7750"></a> parentheses:<br>
           <code>>> B(1) = {[4 6]};<br>
           B =<br>
           &nbsp;&nbsp;&nbsp;&nbsp;[1x2 double] </code></li>
-          <li>By concatenating cell contents using braces <code>{. . .}:<br>
+          <li>By concatenating<a id="8177"></a> cell<a id="7301"></a> contents using braces <code>{. . .}:<br>
           >> C = {3, [1,2,3], 'abcde'}<br>
           C = <br>
           &nbsp;&nbsp;&nbsp;&nbsp;[3] [1x3 double] 'abcde'</li></code>
-          <li>By concatenating cell containers:<br>
+          <li>By concatenating<a id="8178"></a> cell<a id="7302"></a> containers:<br>
           <code>>> D = [A B C {'xyz'}]<br>
           D = <br>
           &nbsp;&nbsp;&nbsp;&nbsp;[42] [1x2 double] [3] [1x3 double] 'abcde' 'xyz'</li> </code>
           </ul>
-          <p>Based on these examples, we observe the following:
+          <p>Based on<a id="7796"></a> these examples<a id="7629"></a>, we observe the following:
           <ul>
-            <li>A cell array<a id="2343"></a> can contain any legal MATLAB<a id="2650"></a> object</li>
-            <li>Just as with numerical<a id="2682"></a> arrays, cell arrays<a id="2444"></a> can be created "on the fly" by assigning values to an indexed variable<a id="2830"></a>. </li>
-            <li> When the values from a cell array<a id="2344"></a> are displayed, their appearance is different from that of the contents of a numerical<a id="2683"></a> array<a id="2345"></a>.
+            <li>A cell<a id="7303"></a> array<a id="7210"></a> can contain any legal MATLAB<a id="7807"></a> object</li>
+            <li>Just as with<a id="7751"></a> numerical<a id="7965"></a> arrays, cell<a id="<a id="7373"></a>7304"></a> arrays can be created "on<a id="7797"></a> the fly" by assigning<a id="8317"></a> values to<a id="7860"></a> an indexed variable<a id="8304"></a>. </li>
+            <li> When the values from<a id="7546"></a> a cell<a id="7305"></a> array<a id="7211"></a> are displayed, their appearance is different from<a id="7547"></a> that of<a id="8018"></a> the contents of<a id="8019"></a> a numerical<a id="7966"></a> array<a id="7212"></a>.
             <ul>
-            <li>Individual numbers<a id="2665"></a>, vectors and arrays are shown in brackets, for example, <code>[1 2 3];</code></li>
-            <li>larger numerical<a id="2684"></a> arrays display their size, for example, <code>[2&<a id="2700"></a>#215;3 double]</code>; and</li>
-            <li>character strings<a id="2456"></a> are displayed with the enclosing quotes, for example, <code>'abcde'</code>. </li>
+            <li>Individual numbers<a id="7835"></a>, vectors and<a id="7669"></a> arrays are shown in brackets, for<a id="8358"></a> example<a id="8157"></a>, <code>[1 2 3];</code></li>
+            <li>larger numerical<a id="7967"></a> arrays display their size<a id="8347"></a>, for<a id="8359"></a> example<a id="8158"></a>, <code>[2&<a id="7983"></a>#215;3 double]</code>; and<a id="7670"></a></li>
+            <li>character<a id="7805"></a> strings<a id="7385"></a> are displayed with<a id="7752"></a> the enclosing quotes, for<a id="8360"></a> example<a id="8159"></a>, <code>'abcde'</code>. </li>
           </ul></p>
         </div>
     </div>
@@ -101,28 +101,28 @@
       <!-- Accessing Cell Arrays -->
       <h3 id="7_2_2">7.2.2	Accessing Cell Arrays</h3>
       <div class="container">
-        <p>Since cell arrays<a id="2445"></a> can be considered as conventional arrays of containers, the containers can be accessed and manipulated normally. For example, continuing the previous examples, we have the following:<br>
+        <p>Since cell<a id="<a id="7374"></a>7306"></a> arrays can be considered as conventional arrays of<a id="8020"></a> containers, the containers can be accessed and<a id="7671"></a> manipulated normally. For example<a id="8160"></a>, continuing the previous examples<a id="7630"></a>, we have the following:<br>
          <code>>> E = D(2) % parentheses - fetching a container<br>
         E = <br>
         &nbsp;&nbsp;&nbsp;&nbsp;[4 6]</code></p>
-        <p>However, braces are used to access the contents of the containers as follows:<br>
+        <p>However, braces are used to<a id="7861"></a> access the contents of<a id="8021"></a> the containers as follows:<br>
         <code>>> D{2} % braces - fetching the contents<br>
         ans =<br>
         &nbsp;&nbsp;&nbsp;&nbsp;4 6</code></p>
-        <p>Exercise 7.1 shows details of cell indexing behavior.</p>
+        <p>Exercise 7.1 shows details of<a id="8022"></a> cell<a id="7307"></a> indexing<a id="8341"></a> behavior.</p>
         <div class="exercise">#exercise_7_1#</div>
-        <p><b>Lessons to learn:</b>
+        <p><b>Lessons to<a id="7862"></a> learn:</b>
         <ul>
-          <li>If the right-hand side of an assignment<a id="2428"></a> statement results in multiple cell arrays<a id="2446"></a>, the assignment<a id="2429"></a> must be to the same number of variables.</li>
-          <li> The built-in function<a id="2572"></a> <code>deal(<a id="2483"></a>...)</code> is used to make these allocations.</li>
-          <li>When we extract the contents of multiple cells using, for example,<code> A{1:2}</code>, this results in multiple assignments being made. </li>
-          <li>These multiple assignments must go to separate variables. This is the fundamental mechanism behind returning multiple results from a function<a id="2573"></a>.</li>
-          <li>These multiple assignments cannot be made to a single variable<a id="2831"></a>; sufficient storage must be provided either as a collection of variables or explicitly as a vector.</li>
-          <li>Cell arrays can be “sliced” with normal vector indexing assignments as long as the sizes match on the left and right sides of the assignment<a id="2430"></a>. Any unassigned array<a id="23<a id="2427"></a>46"></a> elements are filled with an empty<a id="2496"></a> vector.</li>
-          <li>The assignment<a id="2431"></a> <code>B{[1 3]} = A{[1 2]}</code> that produced an error needs some thought. Since <code>A{[1 2]}</code> produces two separate assignments, MATLAB<a id="2651"></a> will not assign the answers, even to the right number of places in another cell array<a id="2347"></a>.</li>
-          <li> The <code>deal(<a id="2484"></a>...)</code> function<a id="2574"></a> is provided to capture these multiple results in different variables. Notice the difference between using <code>A{:}</code> and <code>A</code> as a parameter to <code>deal(<a id="2485"></a>...)</code>. When <code>deal(<a id="2486"></a>...)</code> is provided with a parameter other than a collection of cells, it merely copies that parameter to each variable<a id="2832"></a>.</li>
-          <li>Assignments work normally if cell arrays<a id="2447"></a> are treated as vectors and the extraction of items can be indexed — <code>s</code> is a vector of the sums of the elements in <code>A</code>.</li>
-          <li>When accessing cell arrays<a id="2448"></a>, it is normal to have braces on one side or the other of an assignment<a id="2432"></a>; it is rarely appropriate to have braces on both sides of an assignment<a id="2433"></a>. The result in the last example is that a container is loaded into the third container in the cell array<a id="2348"></a>.</li>
+          <li>If the right-hand side of<a id="8023"></a> an assignment<a id="7357"></a> statement results in multiple cell<a id="<a id="7375"></a>7308"></a> arrays, the assignment<a id="7358"></a> must be to<a id="7863"></a> the same number of<a id="8024"></a> variables.</li>
+          <li> The built-in function<a id="7498"></a> <code>deal(<a id="7409"></a>...)</code> is used to<a id="7864"></a> make these allocations.</li>
+          <li>When we extract the contents of<a id="8025"></a> multiple cells using, for<a id="8361"></a> example<a id="8161"></a>,<code> A{1:2}</code>, this results in multiple assignments being made. </li>
+          <li>These multiple assignments must go to<a id="7865"></a> separate variables. This is the fundamental mechanism behind returning<a id="7573"></a> multiple results from<a id="7548"></a> a function<a id="7499"></a>.</li>
+          <li>These multiple assignments cannot be made to<a id="7866"></a> a single variable<a id="8305"></a>; sufficient storage must be provided either as a collection of<a id="8026"></a> variables or explicitly as a vector.</li>
+          <li>Cell arrays can be “sliced” with<a id="7753"></a> normal vector indexing<a id="8342"></a> assignments as long as the sizes match on<a id="7798"></a> the left and<a id="7672"></a> right sides of<a id="8027"></a> the assignment<a id="7359"></a>. Any unassigned array<a id="72<a id="7356"></a>13"></a> elements<a id="8331"></a> are filled with<a id="7754"></a> an empty<a id="7422"></a> vector.</li>
+          <li>The assignment<a id="7360"></a> <code>B{[1 3]} = A{[1 2]}</code> that produced an error needs some thought. Since <code>A{[1 2]}</code> produces two separate assignments, MATLAB<a id="7808"></a> will not assign the answers, even to<a id="7867"></a> the right number of<a id="8028"></a> places in another cell<a id="7309"></a> array<a id="7214"></a>.</li>
+          <li> The <code>deal(<a id="7410"></a>...)</code> function<a id="7500"></a> is provided to<a id="7868"></a> capture these multiple results in different variables. Notice the difference between using <code>A{:}</code> and<a id="7673"></a> <code>A</code> as a parameter to<a id="7869"></a> <code>deal(<a id="7411"></a>...)</code>. When <code>deal(<a id="7412"></a>...)</code> is provided with<a id="7755"></a> a parameter other than a collection of<a id="8029"></a> cells, it merely copies that parameter to<a id="7870"></a> each variable<a id="8306"></a>.</li>
+          <li>Assignments work normally if cell<a id="<a id="7376"></a>7310"></a> arrays are treated as vectors and<a id="7674"></a> the extraction of<a id="8030"></a> items can be indexed — <code>s</code> is a vector of<a id="8031"></a> the sums of<a id="8032"></a> the elements<a id="8332"></a> in <code>A</code>.</li>
+          <li>When accessing cell<a id="<a id="7377"></a>7311"></a> arrays, it is normal to<a id="7871"></a> have braces on<a id="7799"></a> one side or the other of<a id="8033"></a> an assignment<a id="7361"></a>; it is rarely appropriate to<a id="7872"></a> have braces on<a id="7800"></a> both sides of<a id="8034"></a> an assignment<a id="7362"></a>. The result in the last example<a id="8162"></a> is that a container is loaded into the third container in the cell<a id="7312"></a> array<a id="7215"></a>.</li>
         </ul></p>
       </div>
     </div>
@@ -131,10 +131,10 @@
       <!-- Using Cell Arrays -->
       <h3 id="7_2_3">7.2.3	Using Cell Arrays</h3>
       <div class="container">
-       <p>There are a number of uses for cell arrays<a id="2449"></a>, some of which will be evident in upcoming chapters. For now, the following examples will suffice:
+       <p>There are a number of<a id="8035"></a> uses for<a id="8362"></a> cell<a id="<a id="7378"></a>7313"></a> arrays, some of<a id="8036"></a> which will be evident in upcoming chapters. For now, the following examples<a id="7631"></a> will suffice:
        <ul>
-         <li>Containing lists of possible values for switch<a id="2806"></a>/case<a id="2438"></a> statements, as we saw in Chapter 4</li>
-         <li>Substituting for parameter lists in function<a id="2575"></a> calls.  For example, suppose you have a function<a id="2576"></a> largest(a, b, c) that consumes three variables and produces the largest of the three values provided. It can be used in the following styles, as shown in Listing 7.1.</li>
+         <li>Containing lists of<a id="8037"></a> possible values for<a id="8363"></a> switch<a id="8277"></a>/case<a id="7367"></a> statements, as we saw in Chapter 4</li>
+         <li>Substituting for<a id="8364"></a> parameter lists in function<a id="7501"></a> calls.  For example<a id="8163"></a>, suppose you have a function<a id="7502"></a> largest(<a id="7572"></a>a, b, c) that consumes three variables and<a id="7675"></a> produces the largest of<a id="8038"></a> the three values provided. It can be used in the following styles, as shown in Listing 7.1.</li>
        </ul></p>
        <div class="listing">#listing_07_1#</div>
       </div>
@@ -144,19 +144,19 @@
       <!-- Processing Cell Arrays -->
       <h3 id="7_2_4">7.2.4	Processing Cell Arrays</h3>
       <div class="container">
-       <p>The general template for processing cell arrays<a id="2450"></a> is shown in Template 7.1.</p>
-       <div class="template">#template_7_1#</div>
-       <p>Checking the class of the element can be achieved in one of two ways:
+       <p>The general template<a id="7634"></a> for<a id="8365"></a> processing<a id="7633"></a> cell<a id="<a id="7379"></a>7314"></a> arrays is shown in Template 7.1.</p>
+       <div class="template">#template<a id="7635"></a>_7_1#</div>
+       <p>Checking the class of<a id="8039"></a> the element can be achieved in one of<a id="8040"></a> two ways:
        <ul>
-         <li>The function<a id="2577"></a> <code>class(<a id="2457"></a>item)</code> returns a string specifying the item type that can be used in a switch<a id="2807"></a> statement</li>
-         <li>Individual test functions can be used in an <code>if... elseif<a id="2495"></a></code> construct; examples of the individual test functions are <code>isa(<a id="2637"></a>item, 'class')</code>, <code>iscell(<a id="2638"></a>...)</code>, <code>ischar(<a id="2639"></a>...)</code>, <code>islogical(<a id="2642"></a>...)</code>, <code>isnumeric(<a id="2643"></a>...)</code>, and <code>isstruct(<a id="2644"></a>...)</code>. </li>
+         <li>The function<a id="7503"></a> <code>class(<a id="7386"></a>item)</code> returns a string specifying the item type that can be used in a switch<a id="8278"></a> statement</li>
+         <li>Individual test functions<a id="8270"></a> can be used in an <code>if... elseif<a id="7421"></a></code> construct; examples<a id="7632"></a> of<a id="8041"></a> the individual test functions<a id="8271"></a> are <code>isa(<a id="7564"></a>item, 'class')</code>, <code>iscell(<a id="7565"></a>...)</code>, <code>ischar(<a id="7566"></a>...)</code>, <code>islogical(<a id="7569"></a>...)</code>, <code>isnumeric(<a id="7570"></a>...)</code>, and<a id="7676"></a> <code>isstruct(<a id="7571"></a>...)</code>. </li>
        </ul></p>
-       <p>For example, suppose you are provided with a cell array<a id="2349"></a> and have been asked for a function<a id="2578"></a> that finds the total length of all the vectors it contains. The function<a id="2579"></a> might look like that shown in Listing 7.2.</p>
+       <p>For example<a id="8164"></a>, suppose you are provided with<a id="7756"></a> a cell<a id="7315"></a> array<a id="7216"></a> and<a id="7677"></a> have been asked for<a id="8366"></a> a function<a id="7504"></a> that finds the total length of<a id="8042"></a> all the vectors it contains. The function<a id="7505"></a> might look like that shown in Listing 7.2.</p>
        <div class="listing">#listing_07_2#</div>
-       <p>MATLAB<a id="2652"></a> provides two functions that can cast data between a cell array<a id="2350"></a> containing only numbers<a id="2666"></a>, <code>ca</code>, and a numerical<a id="2685"></a> array<a id="2351"></a>, <code>arr</code>:<br>
-        <code>arr = cell2num(ca) % consumes a cell array<a id="2352"></a> and returns a numerical<a id="2686"></a> array<a id="2353"></a><br>
-        </code>and<br>
-        <code>ca = num2cell(arr) % consumes a number array<a id="2354"></a> and returns a cell array<a id="2355"></a><br>
+       <p>MATLAB<a id="7809"></a> provides two functions<a id="8272"></a> that can cast data<a id="7828"></a> between a cell<a id="7316"></a> array<a id="7217"></a> containing only numbers<a id="7836"></a>, <code>ca</code>, and<a id="7678"></a> a numerical<a id="7968"></a> array<a id="7218"></a>, <code>arr</code>:<br>
+        <code>arr = cell<a id="7317"></a>2num(ca) % consumes a cell<a id="7318"></a> array<a id="7219"></a> and<a id="7679"></a> returns a numerical<a id="7969"></a> array<a id="7220"></a><br>
+        </code>and<a id="7680"></a><br>
+        <code>ca = num2cell(arr) % consumes a number array<a id="7221"></a> and<a id="7681"></a> returns a cell<a id="7319"></a> array<a id="7222"></a><br>
         </code></p>
       </div>
     </div>
@@ -168,45 +168,45 @@
     <div class="container clearfix">
       <div class="card float-sm-right">
            <img src="..\Images\Fig_7_2.JPG" alt="Figure 7.2" class="fig card-img">
-           <p class="figure-name card-title">Figure 7.2: Conceptual Structure Array</p>
+           <p class="figure-name card-title">Figure<a id="8401"></a> 7.2: Conceptual Structure Array</p>
       </div>
-     <p>Where cell arrays<a id="2451"></a> implemented the concept of homogeneous<a id="2635"></a> collections<a id="2470"></a> as indexed collections<a id="2471"></a>, a structure<a id="2719"></a> provides for items to be accessed by field<a id="2510"></a> name rather than by indexing. Most modern languages implement the concept of a structure<a id="2720"></a> in a similar style. The data contained in a structure<a id="2721"></a> are referenced by field<a id="2511"></a> name, for example, <code>item1</code>. The rules for making a field<a id="2512"></a> name are the same as those for a variable<a id="2833"></a>. Fields of a structure<a id="2722"></a>, like the elements of a cell array<a id="2356"></a>, are heterogeneous<a id="2629"></a> — they can contain any MATLAB<a id="2653"></a> object. First, we will see how to construct and manipulate one structure<a id="2723"></a>, and then how to aggregate individual structures into an array<a id="2357"></a> of structures.</p>
+     <p>Where cell<a id="<a id="7380"></a>7320"></a> arrays implemented the concept of<a id="8043"></a> homogeneous<a id="7648"></a> collections<a id="7399"></a> as indexed collections<a id="7400"></a>, a structure<a id="8184"></a> provides for<a id="8367"></a> items to<a id="7873"></a> be accessed by field<a id="7437"></a> name rather than by indexing<a id="8343"></a>. Most modern languages implement the concept of<a id="8044"></a> a structure<a id="8185"></a> in a similar style. The data<a id="7829"></a> contained in a structure<a id="8186"></a> are referenced by field<a id="7438"></a> name, for<a id="8368"></a> example<a id="8165"></a>, <code>item1</code>. The rules for<a id="8369"></a> making a field<a id="7439"></a> name are the same as those for<a id="8370"></a> a variable<a id="8307"></a>. Fields of<a id="8045"></a> a structure<a id="8187"></a>, like the elements<a id="8333"></a> of<a id="8046"></a> a cell<a id="7321"></a> array<a id="7223"></a>, are heterogeneous<a id="7642"></a> — they can contain any MATLAB<a id="7810"></a> object. First, we will see how to<a id="7874"></a> construct and<a id="7682"></a> manipulate one structure<a id="8188"></a>, and<a id="7683"></a> then how to<a id="7875"></a> aggregate individual structures<a id="7596"></a> into an array<a id="7224"></a> of<a id="8047"></a> structures<a id="7597"></a>.</p>
    </div>
 
      <div class="chp-subsection" data-sub-num="1" data-sub-name="Constructing and Accessing One Structure">
        <!-- Constructing and Accessing One Structure -->
-      <h3 id="7_3_1">7.3.1	Constructing and Accessing One Structure</h3>
+      <h3 id="7_3_1">7.3.1	Constructing and<a id="7684"></a> Accessing One Structure</h3>
       <div class="container">
-         <p>To set the value<a id="2812"></a> of items in a structure<a id="2724"></a> <code>A</code>, the syntax is as follows:<br>
+         <p>To set the value<a id="8283"></a> of<a id="8048"></a> items in a structure<a id="8189"></a> <code>A</code>, the syntax is as follows:<br>
         <code>&gt;&gt;  A.item1 = 'abcde'<br>
         A =<br>
         &nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcde'<br>
         &gt;&gt; A.item2 = 42<br>A =<br>
         &nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcde'<br>
         &nbsp;&nbsp;&nbsp;&nbsp;item2: 42<br></code></p>
-        <p>Notice that MATLAB<a id="2654"></a> displays the elements of an emerging structure<a id="2725"></a> by name. Fields in a structure<a id="2726"></a> are accessed in the same way — by using the dot notation<a id="2488"></a>.<br>
+        <p>Notice that MATLAB<a id="7811"></a> displays the elements<a id="8334"></a> of<a id="8049"></a> an emerging structure<a id="8190"></a> by name. Fields in a structure<a id="8191"></a> are accessed in the same way — by using the dot notation<a id="7414"></a>.<br>
         <code>&gt;&gt; A.item2 = A.item2 ./ 2<br>
         A =<br>
         &nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcde'<br>
         &nbsp;&nbsp;&nbsp;&nbsp;item2: 21<br>
         </code></p>
-        <p>You can determine the names of the fields in a structure<a id="2727"></a> using the built-in function<a id="2580"></a> <code>fieldnames(<a id="2565"></a>...)</code>. It returns a cell array<a id="2358"></a> containing the field<a id="2513"></a> names as strings.<br>
-        <code>>> names = fieldnames(<a id="2566"></a>A)<br>
-        names = <br>
+        <p>You can determine the names<a id="8318"></a> of<a id="8050"></a> the fields in a structure<a id="8192"></a> using the built-in function<a id="7506"></a> <code>fieldnames(<a id="7492"></a>...)</code>. It returns a cell<a id="7322"></a> array<a id="7225"></a> containing the field<a id="7440"></a> names<a id="8319"></a> as strings.<br>
+        <code>>> names<a id="8320"></a> = fieldnames(<a id="7493"></a>A)<br>
+        names<a id="8321"></a> = <br>
         &nbsp;&nbsp;&nbsp;&nbsp;'item1' 'item2'<br></code></p>
-        <p>Fields can also be accessed “indirectly” by setting a variable<a id="2834"></a> to the name of the field<a id="2514"></a>, and then by using parentheses to indicate that the variable<a id="2835"></a> contents should be used as the field<a id="2515"></a> name:<br>
-        <code>>> fn = names{1};<br>
+        <p>Fields can also be accessed “indirectly” by setting a variable<a id="8308"></a> to<a id="7876"></a> the name of<a id="8051"></a> the field<a id="7441"></a>, and<a id="7685"></a> then by using parentheses to<a id="7877"></a> indicate that the variable<a id="8309"></a> contents should be used as the field<a id="7442"></a> name:<br>
+        <code>>> fn = names<a id="8322"></a>{1};<br>
         >> A.(fn) = [A.(fn) 'fg']<br>
         A =<br>
         &nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcdefg'<br>
         &nbsp;&nbsp;&nbsp;&nbsp;item2: 21</code></p>
         <div class="exercise">#exercise_7_2#</div>
-        <p>You can also remove a field<a id="2516"></a> from a structure<a id="2728"></a> using the built-in function<a id="2581"></a> <code>rmfield(<a id="2704"></a>...)</code>. Its specification is <code>function<a id="2582"></a> &lt;res&gt; = rmfield(<a id="2705"></a>&lt;str&gt;, &lt;fld_name&gt;)</code>
-        where <code>&lt;str&gt;</code> represents a structure<a id="2729"></a> consumed by the function<a id="2583"></a>
-        <code>&lt;fld_name&gt;</code> represents a field<a id="2517"></a> name and
-        <code>&lt;res&gt;</code> represents a structure<a id="2730"></a> returned with the field<a id="2518"></a> removed.</p>
-        <p>You must remember the scope rules for variables within a function<a id="2584"></a>. Code inside a function<a id="2585"></a> has no ability to "reach outside" that function<a id="2586"></a> to affect any changes at all to the workspace of the code that called the function<a id="2587"></a>. The only real problem here is the name of the function<a id="2588"></a>, <code>rmfield(<a id="2706"></a>...)</code>, which suggests that mystically, this function<a id="2589"></a> removes the field<a id="2519"></a> in <code>&lt;fld_name&gt;</code> from the structure<a id="2731"></a> <code>&lt;str&gt;</code> passed in. It probably should have been called <code>return_a_copy_of_the_structure<a id="2732"></a>_with_the_specified_field<a id="2520"></a>_removed(...)</code>!</p>
-        <p>Exercise 7.2 gives you an opportunity to understand how to build structures. Here we build a typical structure<a id="2733"></a> that could be used as one entry in a telephone book. Since phone numbers<a id="2667"></a> usually contain punctuation, we could store them as strings. Notice that since a structure<a id="2734"></a> may contain any object, it is quite legal to make a structure<a id="2735"></a> containing a date and insert that structure<a id="2736"></a> in the date field<a id="2521"></a> of the entry. The structure<a id="2737"></a> display function<a id="2590"></a>, however, does not display the contents of the structures.</p>
+        <p>You can also remove a field<a id="7443"></a> from<a id="7549"></a> a structure<a id="8193"></a> using the built-in function<a id="7507"></a> <code>rmfield(<a id="7574"></a>...)</code>. Its specification is <code>function<a id="7508"></a> &lt;res&gt; = rmfield(<a id="7575"></a>&lt;str&gt;, &lt;fld_name&gt;)</code>
+        where <code>&lt;str&gt;</code> represents a structure<a id="8194"></a> consumed by the function<a id="7509"></a>
+        <code>&lt;fld_name&gt;</code> represents a field<a id="7444"></a> name and<a id="7686"></a>
+        <code>&lt;res&gt;</code> represents a structure<a id="8195"></a> returned with<a id="7757"></a> the field<a id="7445"></a> removed.</p>
+        <p>You must remember the scope rules for<a id="8371"></a> variables within a function<a id="7510"></a>. Code inside a function<a id="7511"></a> has no ability to<a id="7878"></a> "reach outside" that function<a id="7512"></a> to<a id="7879"></a> affect any changes at all to<a id="7880"></a> the workspace of<a id="8052"></a> the code that called the function<a id="7513"></a>. The only real problem here is the name of<a id="8053"></a> the function<a id="7514"></a>, <code>rmfield(<a id="7576"></a>...)</code>, which suggests that mystically, this function<a id="7515"></a> removes the field<a id="7446"></a> in <code>&lt;fld_name&gt;</code> from<a id="7550"></a> the structure<a id="8196"></a> <code>&lt;str&gt;</code> passed in. It probably should have been called <code>return_a_copy_of<a id="8054"></a>_the_structure<a id="8197"></a>_with<a id="7758"></a>_the_specified_field<a id="7447"></a>_removed(...)</code>!</p>
+        <p>Exercise 7.2 gives you an opportunity to<a id="7881"></a> understand how to<a id="7882"></a> build structures<a id="7598"></a>. Here we build a typical structure<a id="8198"></a> that could be used as one entry in a telephone book. Since phone numbers<a id="7837"></a> usually contain punctuation, we could store them as strings. Notice that since a structure<a id="8199"></a> may contain any object, it is quite legal to<a id="7883"></a> make a structure<a id="8200"></a> containing a date and<a id="7687"></a> insert that structure<a id="8201"></a> in the date field<a id="7448"></a> of<a id="8055"></a> the entry. The structure<a id="8202"></a> display function<a id="7516"></a>, however, does not display the contents of<a id="8056"></a> the structures<a id="7599"></a>.</p>
       </div>
     </div>
 
@@ -214,28 +214,28 @@
       <!-- Constructor Functions -->
       <h3 id="7_3_2">7.3.2	Constructor Functions</h3>
       <div class="container">
-        <p>This section discusses functions that assign their parameters to the fields of a structure<a id="2738"></a> and then return that structure<a id="2739"></a>. You do this, as opposed to “manually” entering data into structures, for the following reasons:
+        <p>This section discusses functions<a id="8273"></a> that assign their parameters<a id="8299"></a> to<a id="7884"></a> the fields of<a id="8057"></a> a structure<a id="8203"></a> and<a id="7688"></a> then return that structure<a id="8204"></a>. You do this, as opposed to<a id="7885"></a> “manually<a id="7987"></a>” entering data<a id="7830"></a> into structures<a id="7600"></a>, for<a id="8372"></a> the following reasons:
         <ul>
-           <li>Manual entry can result in strange behavior due to typographical<a id="2810"></a> errors or having fields in the wrong order</li>
-           <li>The resulting code is generally more compact and easier to understand</li>
-           <li>When constructing collections<a id="2472"></a> of structures, it enforces consistency across the collections<a id="2473"></a>.
+           <li>Manual entry can result in strange behavior due to<a id="7886"></a> typographical<a id="8281"></a> errors or having fields in the wrong order</li>
+           <li>The resulting code is generally more compact and<a id="7689"></a> easier to<a id="7887"></a> understand</li>
+           <li>When constructing<a id="8269"></a> collections<a id="7401"></a> of<a id="8058"></a> structures<a id="7601"></a>, it enforces consistency across the collections<a id="7402"></a>.
           </li>
         </ul></p>
-        <p>There are two approaches to the use of constructor functions: using built-in capabilities or writing your own constructor.</p>
-        <p><b>Built-in Constructor: </b> There is a built-in function<a id="2591"></a>, <code>struct(...)</code>, that consumes pairs of entries, each consisting of a field<a id="2522"></a> name as a string and a cell array<a id="2359"></a> of field<a id="2523"></a> contents and produces a structure<a id="2740"></a>. If all the cell arrays<a id="2452"></a> have more than one entry, this actually creates a structure<a id="2741"></a> array<a id="2360"></a>, as discussed in Section 7.4.1.  The following command would construct the address book entry created in the previous section. Note the use of ellipses<a id="2492"></a> <code>(...)</code> to indicate to the MATLAB<a id="2655"></a> machinery that the logic<a id="2647"></a> is continued onto the next line.</p>
-         <code>>>struct('first','Fred', ...<br>
+        <p>There are two approaches to<a id="7888"></a> the use of<a id="8059"></a> constructor functions<a id="8274"></a>: using built-in capabilities or writing<a id="7658"></a> your own constructor.</p>
+        <p><b>Built-in Constructor: </b> There is a built-in function<a id="7517"></a>, <code>struct(<a id="7586"></a>...)</code>, that consumes pairs of<a id="8060"></a> entries, each consisting of<a id="8061"></a> a field<a id="7449"></a> name as a string and<a id="7690"></a> a cell<a id="7323"></a> array<a id="7226"></a> of<a id="8062"></a> field<a id="7450"></a> contents and<a id="7691"></a> produces a structure<a id="8205"></a>. If all the cell<a id="<a id="7381"></a>7324"></a> arrays have more than one entry, this actually creates a structure<a id="8206"></a> array<a id="7227"></a>, as discussed in Section 7.4.1.  The following command would construct the address book entry created in the previous section. Note the use of<a id="8063"></a> ellipses<a id="7418"></a> <code>(...)</code> to<a id="7889"></a> indicate to<a id="7890"></a> the MATLAB<a id="7812"></a> machinery that the logic<a id="7792"></a> is continued onto the next line.</p>
+         <code>>>struct(<a id="7587"></a>'first','Fred', ...<br>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'last','Jones', ... <br>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'phone','(123) 555-1212', ...<br>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'birth', struct( 'day', 31, 'month', 'February', 'year', 1965 ))<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'birth', struct(<a id="7588"></a> 'day', 31, 'month', 'February', 'year', 1965 ))<br>
          ans = <br>
         &nbsp;&nbsp;&nbsp;&nbsp;first: 'Fred'<br>
         &nbsp;&nbsp;&nbsp;&nbsp;last: 'Jones'<br>
         &nbsp;&nbsp;&nbsp;&nbsp;phone: '(123) 555-1212'<br>
         &nbsp;&nbsp;&nbsp;&nbsp;birth: [1x1 struct]<br>
         </code> <br>
-        <p><b>Custom Constructor:</b>The <code>struct(...)</code> constructor is useful in general to create structures, but the need to repeat the field<a id="2524"></a> names makes this general-purpose approach a little annoying. We can create a special-purpose function<a id="2592"></a> that “knows” the necessary field<a id="2525"></a> names to create multiple structures in an organized way.  Listing 7.3 shows the code for a function<a id="2593"></a> that consumes parameters that describe a CD and assembles a structure<a id="2742"></a> containing those attributes by name.</p>
+        <p><b>Custom Constructor:</b>The <code>struct(<a id="7589"></a>...)</code> constructor is useful in general to<a id="7891"></a> create structures<a id="7602"></a>, but the need to<a id="7892"></a> repeat the field<a id="7451"></a> names<a id="8323"></a> makes this general-purpose approach a little annoying. We can create a special-purpose function<a id="7518"></a> that “knows” the necessary field<a id="7452"></a> names<a id="8324"></a> to<a id="7893"></a> create multiple structures<a id="7603"></a> in an organized way.  Listing 7.3 shows the code for<a id="8373"></a> a function<a id="7519"></a> that consumes parameters<a id="8300"></a> that describe a CD and<a id="7692"></a> assembles a structure<a id="8207"></a> containing those attributes by name.</p>
         <div class="listing">#listing_07_3#</div>
-        <p>In Exercise 7.3, you can try your hand at using this function<a id="2594"></a> to construct a CD structure<a id="2743"></a> and then verify the structure<a id="2744"></a> contents.</p>
+        <p>In Exercise 7.3, you can try your hand at using this function<a id="7520"></a> to<a id="7894"></a> construct a CD structure<a id="8208"></a> and<a id="7693"></a> then verify the structure<a id="8209"></a> contents.</p>
         <div class="exercise">#exercise_7_3#</div>
       </div>
     </div>
@@ -245,18 +245,18 @@
     <!-- Structure Arrays -->
     <h2 id="7_4">7.4 Structure Arrays</h2>
     <div class="container">
-      <p>To be useful, collections<a id="2474"></a> like address books or CD collections<a id="2475"></a> require multiple structure<a id="2745"></a> entries with the same fields. This is accomplished by forming an array<a id="2361"></a> of data items, each of which contains the same fields of information.  MATLAB<a id="2656"></a> implements the concept of structure<a id="2746"></a> arrays with the properties described in the following paragraphs.</p>
+      <p>To be useful, collections<a id="7403"></a> like address books or CD collections<a id="7404"></a> require multiple structure<a id="8210"></a> entries with<a id="7759"></a> the same fields. This is accomplished by forming an array<a id="7228"></a> of<a id="8064"></a> data<a id="7831"></a> items, each of<a id="8065"></a> which contains the same fields of<a id="8066"></a> information.  MATLAB<a id="7813"></a> implements the concept of<a id="8067"></a> structure<a id="8211"></a> arrays with<a id="7760"></a> the properties described in the following paragraphs.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Constructing Structure Arrays">
        <!-- Constructing Structure Arrays -->
       <h3 id="7_4_1">7.4.1	Constructing Structure Arrays</h3>
       <div class="container">
-        <p>Structure arrays can be created either by using MATLAB<a id="2657"></a>’s <code>struct(...)</code> function<a id="2595"></a> to build the whole structure<a id="2747"></a> array<a id="2362"></a>, or by using a custom function<a id="2596"></a> to create each individual structure<a id="2748"></a>.</p>
-        <p>Built-in Constructor:</b> Listing 7.4 illustrates these concepts by implementing a collection of CDs as a structure<a id="2749"></a> array<a id="2363"></a> using the function<a id="2597"></a> <code>struct(...)</code> from Listing 7.3.</p>
+        <p>Structure arrays can be created either by using MATLAB<a id="7814"></a>’s <code>struct(<a id="7590"></a>...)</code> function<a id="7521"></a> to<a id="7895"></a> build the whole structure<a id="8212"></a> array<a id="7229"></a>, or by using a custom function<a id="7522"></a> to<a id="7896"></a> create each individual structure<a id="8213"></a>.</p>
+        <p>Built-in Constructor:</b> Listing 7.4 illustrates these concepts by implementing a collection of<a id="8068"></a> CDs as a structure<a id="8214"></a> array<a id="7230"></a> using the function<a id="7523"></a> <code>struct(<a id="7591"></a>...)</code> from<a id="7551"></a> Listing 7.3.</p>
         <div class="listing">#listing_07_4#</div>
-        <p>When using the built-in <code>struct(...)</code> function<a id="2598"></a> to create a structure<a id="2750"></a> array<a id="2364"></a>, the form of the function<a id="2599"></a> call is identical to that used in Para 7.3.2. The only difference is the usage of the second parameter of each field<a id="2526"></a>_name/value<a id="2813"></a> pair. If the value<a id="2814"></a> is a cell array<a id="2365"></a>, the structure<a id="2751"></a> to be created becomes a structure<a id="2752"></a> array<a id="2366"></a> whose size (in the general sense) is the size of that cell array<a id="2367"></a>. Then, each field<a id="2527"></a> of the structure<a id="2753"></a> array<a id="2368"></a> receives the corresponding value<a id="2815"></a> from the cell array<a id="2369"></a>. If the field<a id="2528"></a> content is anything other than a cell array<a id="2370"></a>, the content of each structure<a id="2754"></a> array<a id="2371"></a> field<a id="2529"></a> becomes a copy of that item.  It is possible that the first field<a id="2530"></a> may not have a cell array<a id="2372"></a> as its value<a id="2816"></a> such as, for example, a last_name field<a id="2531"></a>. The first field<a id="2532"></a> whose value<a id="2817"></a> is a cell array<a id="2373"></a> will define the size of the structure<a id="2755"></a> array<a id="2374"></a>.  Subsequent fields may have the same size, but it is illegal for any subsequent fields to have cell array<a id="2375"></a> of a different size.</p>
-        <p><b>Built-in Constructor:</b> Listing 7.5 illustrates these concepts by implementing a collection of CDs as a structure<a id="2756"></a> array<a id="2376"></a> using the function<a id="2600"></a> <code>makeCD(...)</code> from Listing 7.3.</p>
+        <p>When using the built-in <code>struct(<a id="7592"></a>...)</code> function<a id="7524"></a> to<a id="7897"></a> create a structure<a id="8215"></a> array<a id="7231"></a>, the form of<a id="8069"></a> the function<a id="7525"></a> call is identical to<a id="7898"></a> that used in Para 7.3.2. The only difference is the usage of<a id="8070"></a> the second parameter of<a id="8071"></a> each field<a id="7453"></a>_name/value<a id="8284"></a> pair. If the value<a id="8285"></a> is a cell<a id="7325"></a> array<a id="7232"></a>, the structure<a id="8216"></a> to<a id="7899"></a> be created becomes a structure<a id="8217"></a> array<a id="7233"></a> whose size<a id="8348"></a> (in the general sense) is the size<a id="8349"></a> of<a id="8072"></a> that cell<a id="7326"></a> array<a id="7234"></a>. Then, each field<a id="7454"></a> of<a id="8073"></a> the structure<a id="8218"></a> array<a id="7235"></a> receives the corresponding value<a id="8286"></a> from<a id="7552"></a> the cell<a id="7327"></a> array<a id="7236"></a>. If the field<a id="7455"></a> content is anything other than a cell<a id="7328"></a> array<a id="7237"></a>, the content of<a id="8074"></a> each structure<a id="8219"></a> array<a id="7238"></a> field<a id="7456"></a> becomes a copy of<a id="8075"></a> that item.  It is possible that the first field<a id="7457"></a> may not have a cell<a id="7329"></a> array<a id="7239"></a> as its value<a id="8287"></a> such as, for<a id="8374"></a> example<a id="8166"></a>, a last_name field<a id="7458"></a>. The first field<a id="7459"></a> whose value<a id="8288"></a> is a cell<a id="7330"></a> array<a id="7240"></a> will define the size<a id="8350"></a> of<a id="8076"></a> the structure<a id="8220"></a> array<a id="7241"></a>.  Subsequent fields may have the same size<a id="8351"></a>, but it is illegal for<a id="8375"></a> any subsequent fields to<a id="7900"></a> have cell<a id="7331"></a> array<a id="7242"></a> of<a id="8077"></a> a different size<a id="8352"></a>.</p>
+        <p><b>Built-in Constructor:</b> Listing 7.5 illustrates these concepts by implementing a collection of<a id="8078"></a> CDs as a structure<a id="8221"></a> array<a id="7243"></a> using the function<a id="7526"></a> <code>makeCD(...)</code> from<a id="7553"></a> Listing 7.3.</p>
         <div class="listing">#listing_07_5#</div>
       </div>
     </div>
@@ -265,30 +265,30 @@
       <!-- Accessing Structure Elements -->
       <h3 id="7_4_2">7.4.2	Accessing Structure Elements</h3>
       <div class="container">
-        <p>Like normal arrays or cell arrays<a id="2453"></a>, items can be stored and retrieved by their index in the array<a id="2377"></a>. As structures are added to the array<a id="2378"></a>, MATLAB<a id="2658"></a> forces<a id="2571"></a> all elements in the structure<a id="2757"></a> array<a id="2379"></a> to implement the same field<a id="2533"></a> names in the same order, even if the inserted structure<a id="2758"></a> has the fields in the wrong order, or with some missing. Fields in the original structure<a id="2759"></a> not changed by the addition are filled with empty<a id="2497"></a> vector, <code>[]</code>. If you are trying to add a non-existent field<a id="2534"></a>, you should first add that field<a id="2535"></a> to the whole structure<a id="2760"></a> array<a id="2380"></a> before adding another structure<a id="2761"></a> containing that field<a id="2536"></a>.</p>
+        <p>Like normal arrays or cell<a id="<a id="7382"></a>7332"></a> arrays, items can be stored and<a id="7694"></a> retrieved by their index in the array<a id="7244"></a>. As structures<a id="7604"></a> are added to<a id="7901"></a> the array<a id="7245"></a>, MATLAB<a id="7815"></a> forces<a id="7427"></a> all elements<a id="8335"></a> in the structure<a id="8222"></a> array<a id="7246"></a> to<a id="7902"></a> implement the same field<a id="7460"></a> names<a id="8325"></a> in the same order, even if the inserted structure<a id="8223"></a> has the fields in the wrong order, or with<a id="7761"></a> some missing. Fields in the original structure<a id="8224"></a> not changed by the addition are filled with<a id="7762"></a> empty<a id="7423"></a> vector, <code>[]</code>. If you are trying to<a id="7903"></a> add a non-existent field<a id="7461"></a>, you should first add that field<a id="7462"></a> to<a id="7904"></a> the whole structure<a id="8225"></a> array<a id="7247"></a> before adding another structure<a id="8226"></a> containing that field<a id="7463"></a>.</p>
         <p>Elements can be accessed in three ways:
         <ul>
           <li>Individually
           <ul>
             <li>Manually (not recommended)</li>
-            <li>Creating new structures with a constructor and adding them (recommended)</li>
+            <li>Creating new structures<a id="7605"></a> with<a id="7763"></a> a constructor and<a id="7695"></a> adding them (recommended)</li>
           </ul>
-          <li>By collectively accessing specific fields across the whole structure<a id="2762"></a> array<a id="2381"></a></li>
+          <li>By collectively accessing specific fields across the whole structure<a id="8227"></a> array<a id="7248"></a></li>
         </ul><p>
-        <p><b>Manually:</b> If you elect to manipulate the elements of a structure<a id="2763"></a> array<a id="2382"></a> manually, you merely identify the array<a id="2383"></a> element by indexing and use the <code>.field<a id="2537"></a></code> operator. For example, for the CD collection <code>cds</code>, we could change the price of one of them as follows:<br>
+        <p><b>Manually:</b> If you elect to<a id="7905"></a> manipulate the elements<a id="8336"></a> of<a id="8079"></a> a structure<a id="8228"></a> array<a id="7249"></a> manually<a id="7988"></a>, you merely identify the array<a id="7250"></a> element by indexing<a id="8344"></a> and<a id="7696"></a> use the <code>.field<a id="7464"></a></code> operator. For example<a id="8167"></a>, for<a id="8376"></a> the CD collection <code>cds</code>, we could change the price of<a id="8080"></a> one of<a id="8081"></a> them as follows:<br>
         <code>>> cds(3).price = 11.95<br>
         cds = <br>
-        &nbsp;&nbsp;1x3 struct array<a id="2384"></a> with fields:<br>
+        &nbsp;&nbsp;1x3 struct array<a id="7251"></a> with<a id="7764"></a> fields:<br>
         &nbsp;&nbsp;&nbsp;&nbsp;genre<br>
         &nbsp;&nbsp;&nbsp;&nbsp;artist<br>
         &nbsp;&nbsp;&nbsp;&nbsp;title<br>
         &nbsp;&nbsp;&nbsp;&nbsp;year<br>
         &nbsp;&nbsp;&nbsp;&nbsp;stars<br>
         &nbsp;&nbsp;&nbsp;&nbsp;price<br></code></p>
-        <p>This is a little hazardous when making manual additions to a structure<a id="2764"></a> array<a id="2385"></a>. A typographical<a id="2811"></a> error while<a id="2842"></a> entering a field<a id="2538"></a> name results in all the structures having that bad field<a id="2539"></a> name. For example, consider this error:<br>
+        <p>This is a little hazardous when making manual additions to<a id="7906"></a> a structure<a id="8229"></a> array<a id="7252"></a>. A typographical<a id="8282"></a> error while<a id="8354"></a> entering a field<a id="7465"></a> name results in all the structures<a id="7606"></a> having that bad field<a id="7466"></a> name. For example<a id="8168"></a>, consider this error:<br>
         <code>>> cds(3).prce = 11.95<br>
         cds = <br>
-        &nbsp;&nbsp;1x31 struct array<a id="2386"></a> with fields:<br>
+        &nbsp;&nbsp;1x31 struct array<a id="7253"></a> with<a id="7765"></a> fields:<br>
         &nbsp;&nbsp;&nbsp;&nbsp;genre<br>
         &nbsp;&nbsp;&nbsp;&nbsp;artist<br>
         &nbsp;&nbsp;&nbsp;&nbsp;title<br>
@@ -297,10 +297,10 @@
         &nbsp;&nbsp;&nbsp;&nbsp;price<br>
         &nbsp;&nbsp;&nbsp;&nbsp;prce
         </code></p>
-        <p>You have accidentally added a new field<a id="2540"></a> to the whole collection. You can check this by looking at one entry:<br>
+        <p>You have accidentally added a new field<a id="7467"></a> to<a id="7907"></a> the whole collection. You can check this by looking at one entry:<br>
         <code>>> cds(1)<br>
         ans = <br>
-        &nbsp;&nbsp;struct with fields:<br>
+        &nbsp;&nbsp;struct with<a id="7766"></a> fields:<br>
         &nbsp;&nbsp;&nbsp;&nbsp;genre: 'Blues'<br>
         &nbsp;&nbsp;&nbsp;&nbsp;artist: 'Sessions For Robert J'<br>
         &nbsp;&nbsp;&nbsp;&nbsp;title: 'Clapton, Eric'<br>
@@ -308,8 +308,8 @@
         &nbsp;&nbsp;&nbsp;&nbsp;stars: 2<br>
         &nbsp;&nbsp;&nbsp;&nbsp;price: 18.95<br>
         &nbsp;&nbsp;&nbsp;&nbsp;prce: []</code></p>
-        <p>If this happens, you can use the <code>fieldnames(<a id="2567"></a>...)</code> function<a id="2601"></a> to determine the situation and then the <code>rmfield(<a id="2707"></a>...)</code> function<a id="2602"></a> to remove the offending entry.<br>
-        <code>>> fieldnames(<a id="2568"></a>cds)<br>
+        <p>If this happens, you can use the <code>fieldnames(<a id="7494"></a>...)</code> function<a id="7527"></a> to<a id="7908"></a> determine the situation and<a id="7697"></a> then the <code>rmfield(<a id="7577"></a>...)</code> function<a id="7528"></a> to<a id="7909"></a> remove the offending entry.<br>
+        <code>>> fieldnames(<a id="7495"></a>cds)<br>
         ans =  <br>
         &nbsp;&nbsp;&nbsp;&nbsp;{'genre'}<br>
         &nbsp;&nbsp;&nbsp;&nbsp;{'artist'}<br>
@@ -318,8 +318,8 @@
         &nbsp;&nbsp;&nbsp;&nbsp;{'stars'}<br>
         &nbsp;&nbsp;&nbsp;&nbsp;{'price'}<br>
         &nbsp;&nbsp;&nbsp;&nbsp;{'prce'}<br>
-        >> cds = rmfield(<a id="2708"></a>cds,'prce')<font color<a id="2478"></a>="#00A000">% recall that the result must be assigned to replace the original. </font><br>
-        cds = 1x32 struct array<a id="2387"></a> with fields:<br>
+        >> cds = rmfield(<a id="7578"></a>cds,'prce')<font color<a id="7407"></a>="#00A000">% recall that the result must be assigned to<a id="7910"></a> replace the original. </font><br>
+        cds = 1x32 struct array<a id="7254"></a> with<a id="7767"></a> fields:<br>
         &nbsp;&nbsp;&nbsp;&nbsp;genre<br>
         &nbsp;&nbsp;&nbsp;&nbsp;artist<br>
         &nbsp;&nbsp;&nbsp;&nbsp;title<br>
@@ -327,11 +327,11 @@
         &nbsp;&nbsp;&nbsp;&nbsp;stars<br>
         &nbsp;&nbsp;&nbsp;&nbsp;price</code><br>
       </code></p>
-      <p><b>Custom Constructor:</b> It is best to use the custom constructor to make a complete structure<a id="2765"></a> and then insert it into the structure<a id="2766"></a> array<a id="2388"></a>. For example:<br>
+      <p><b>Custom Constructor:</b> It is best to<a id="7911"></a> use the custom constructor to<a id="7912"></a> make a complete structure<a id="8230"></a> and<a id="7698"></a> then insert it into the structure<a id="8231"></a> array<a id="7255"></a>. For example<a id="8169"></a>:<br>
       <code>>> newCD = makeCD( 'Oldies', 'Greatest Hits', ... 'Ricky Nelson', 2005, 5, 15.79 );<br>
       >> cds = [cds  newCD]<br>
       cds =<br>
-      &nbsp;&nbsp;1x3 struct array<a id="2389"></a> with fields:<br>
+      &nbsp;&nbsp;1x3 struct array<a id="7256"></a> with<a id="7768"></a> fields:<br>
       &nbsp;&nbsp;&nbsp;&nbsp;genre<br>
       &nbsp;&nbsp;&nbsp;&nbsp;artist<br>
       &nbsp;&nbsp;&nbsp;&nbsp;title<br>
@@ -339,10 +339,10 @@
       &nbsp;&nbsp;&nbsp;&nbsp;stars<br>
       &nbsp;&nbsp;&nbsp;&nbsp;price
       </code></p>
-      <p>If you insert that new CD beyond the end<a id="2500"></a> of the array<a id="2390"></a>, as one might expect, MATLAB<a id="2659"></a> fills out the array<a id="2391"></a> with empty<a id="2498"></a> structures:<br>
+      <p>If you insert that new CD beyond the end<a id="7426"></a> of<a id="8082"></a> the array<a id="7257"></a>, as one might expect, MATLAB<a id="7816"></a> fills out the array<a id="7258"></a> with<a id="7769"></a> empty<a id="7424"></a> structures<a id="7607"></a>:<br>
       <code>>> cds(end+2) = newCD<br>
       cds =<br>
-      &nbsp;&nbsp;1&<a id="2701"></a>#215;5 struct array<a id="2392"></a> with fields:<br>
+      &nbsp;&nbsp;1&<a id="7984"></a>#215;5 struct array<a id="7259"></a> with<a id="7770"></a> fields:<br>
       &nbsp;&nbsp;&nbsp;&nbsp;genre<br>
       &nbsp;&nbsp;&nbsp;&nbsp;artist<br>
       &nbsp;&nbsp;&nbsp;&nbsp;title<br>
@@ -358,12 +358,12 @@
       &nbsp;&nbsp;&nbsp;&nbsp;stars []<br>
       &nbsp;&nbsp;&nbsp;&nbsp;price []
       </code></p>
-      <p><b>Accessing one field<a id="2541"></a> from the whole structure<a id="2767"></a> array<a id="2393"></a></b>: Suppose we really want to extract, for example, all the prices from the cd array<a id="2394"></a>. Let's try the obvious way first:<br>
+      <p><b>Accessing one field<a id="7468"></a> from<a id="7554"></a> the whole structure<a id="8232"></a> array<a id="7260"></a></b>: Suppose we really want to<a id="7913"></a> extract, for<a id="8377"></a> example<a id="8170"></a>, all the prices from<a id="7555"></a> the cd array<a id="7261"></a>. Let's try the obvious way first:<br>
       <code>>> prices = cds.price;<br>
       prices =<br>
       &nbsp;&nbsp;&nbsp;&nbsp;18.9500
       </code></p>
-      <p>Hmmm - seems to have given me just the first one.  How about letting <code>ans</code> have them all?<br>
+      <p>Hmmm - seems to<a id="7914"></a> have given me just the first one.  How about letting <code>ans</code> have them all?<br>
       <code>>> cds.price;<br>
       ans =<br>
       &nbsp;&nbsp;&nbsp;&nbsp;18.9500<br>
@@ -376,17 +376,17 @@
       ans =<br>
       &nbsp;&nbsp;&nbsp;&nbsp;15.7900<br>
       </code></p>
-      <p>That looks familiar - sending too many results (in this case<a id="2439"></a>, one result for each of the structures in the array<a id="2395"></a>) to the default variable<a id="2836"></a>.  See the beginning of Exercise 7.1 above. There, we solved the problem by providing at least one actual variable<a id="2837"></a> to capture a result, just as we did in our first try above. But what if we actually want all the values of a field<a id="2542"></a>? Since the number of structures is variable<a id="2838"></a>, we can't really provide the right number of variables to save all the results. So we use a different strategy: "catching" all the values in a collection of the appropriate type: a vector for fields containing only single numbers<a id="2668"></a>, a cell array<a id="2396"></a> for everything else<a id="2493"></a>. For example,<br>
+      <p>That looks familiar - sending too many results (in this case<a id="7368"></a>, one result for<a id="8378"></a> each of<a id="8083"></a> the structures<a id="7608"></a> in the array<a id="7262"></a>) to<a id="7915"></a> the default variable<a id="8310"></a>.  See the beginning of<a id="8084"></a> Exercise 7.1 above. There, we solved the problem by providing at least one actual variable<a id="8311"></a> to<a id="7916"></a> capture a result, just as we did in our first try above. But what if we actually want all the values of<a id="8085"></a> a field<a id="7469"></a>? Since the number of<a id="8086"></a> structures<a id="7609"></a> is variable<a id="8312"></a>, we can't really provide the right number of<a id="8087"></a> variables to<a id="7917"></a> save all the results. So we use a different strategy: "catching" all the values in a collection of<a id="8088"></a> the appropriate type: a vector for<a id="8379"></a> fields containing only single numbers<a id="7838"></a>, a cell<a id="7333"></a> array<a id="7263"></a> for<a id="8380"></a> everything else<a id="7419"></a>. For example<a id="8171"></a>,<br>
       <code>
       >> [cds.price]<br>
       ans =<br>
       &nbsp;&nbsp;&nbsp;&nbsp;18.9500   14.8900   13.4900   15.7900<br>
-      <font color="#00A000">% Be careful here - since the 4th structure<a id="2768"></a> has an empty<a id="2499"></a> vector for price,<br>
-      %    it was ignored by the concatenation<a id="2480"></a></font><br>
+      <font color="#00A000">% Be careful here - since the 4th structure<a id="8233"></a> has an empty<a id="7425"></a> vector for<a id="8381"></a> price,<br>
+      %    it was ignored by the concatenation<a id="7351"></a></font><br>
       >> {cds.genre}<br>
       ans =<br>
-      &nbsp;&nbsp;1&<a id="2702"></a>#215;5 cell array<a id="2397"></a><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;{'Blues'}    {'Classical'}    {'Country'}    {0&<a id="2703"></a>#215;0 double}    {'Oldies'}
+      &nbsp;&nbsp;1&<a id="7985"></a>#215;5 cell<a id="7334"></a> array<a id="7264"></a><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;{'Blues'}    {'Classical'}    {'Country'}    {0&<a id="7986"></a>#215;0 double}    {'Oldies'}
       </code>.</p>
     </div>
   </div>
@@ -395,34 +395,34 @@
       <!-- Manipulating Structures -->
       <h3 id="7_4_3">7.4.3	Manipulating Structures</h3>
       <div class="container">
-        <p>Structures and structure<a id="2769"></a> arrays can be manipulated in the following ways:
+        <p>Structures and<a id="7699"></a> structure<a id="8234"></a> arrays can be manipulated in the following ways:
         <ul>
-          <li>Single values can be changed using the dot notation<a id="2489"></a> ('.') directly with a field<a id="2543"></a> name:<br>
+          <li>Single values can be changed using the dot notation<a id="7415"></a> ('.') directly with<a id="7771"></a> a field<a id="7470"></a> name:<br>
           <code>>> cds(5).price = 19.95;</code></li>
-          <li>Indirectly using the dot notation<a id="2490"></a> ('.') with a variable<a id="2839"></a> containing the field<a id="2544"></a> name:<br>
+          <li>Indirectly using the dot notation<a id="7416"></a> ('.') with<a id="7772"></a> a variable<a id="8313"></a> containing the field<a id="7471"></a> name:<br>
           <code>>> fld = 'price';<br>
           >> cds(5).(fld) = 19.95;</li> </code>
-          <li>Using built-in functions:<br>
+          <li>Using built-in functions<a id="8275"></a>:<br>
             <ul>
-              <li> <code>nms = fieldnames(<a id="2569"></a>str)</code>returns a cell array<a id="2398"></a> containing the names of the fields in a structure<a id="2770"></a> or structure<a id="2771"></a> array<a id="2399"></a>.<br>
-              <code>>> flds = fieldnames(<a id="2570"></a>cds);</li>
-              <li>it = isfield(<a id="2640"></a>str, <fldname>) </code>determines whether the given name is a field<a id="2545"></a> in this structure<a id="2772"></a> or structure<a id="2773"></a> array<a id="2400"></a>.<br>
-              <code>>> if isfield(<a id="2641"></a>cds, 'price') ... </li>
-              <li>str = setfield(<a id="2712"></a>str, &lt;fldname&gt;, &lt;value<a id="2818"></a>&gt;) </code> returns a new structure<a id="2774"></a> array<a id="2401"></a> with the specified field<a id="2546"></a> set to the specified value<a id="2819"></a>.<br>
-              <code>>> cds(1) = setfield(<a id="2713"></a>cds(1), 'price', 19.95); </code></li>
-              <li> <code>val = getfield(<a id="2620"></a>str, &lt;fldname&gt;) </code> returns the value<a id="2820"></a> of the specified field<a id="2547"></a>.<br>
-              <code>>> disp(<a id="2487"></a>getfield(<a id="2621"></a>cds(1), 'price') );</li>
-              <li>str = rmfield(<a id="2709"></a>str, &lt;fldname&gt;) </code> returns a new structure<a id="2775"></a> array<a id="2402"></a> with the specified field<a id="2548"></a> removed.<br>
-              <code>>> noprice = rmfield(<a id="2710"></a>cds, 'price');</li> </code>
-              <li>Values across the whole array<a id="2403"></a> can be retrieved using the “.” notation by accumulating them into either arrays or cell arrays<a id="2454"></a>:<br>
-              <code>>> titles = {cds.title};<br>>> [alpha order] = sort(<a id="2714"></a>titles); </li> </code>
+              <li> <code>nms = fieldnames(<a id="7496"></a>str)</code>returns a cell<a id="7335"></a> array<a id="7265"></a> containing the names<a id="8326"></a> of<a id="8089"></a> the fields in a structure<a id="8235"></a> or structure<a id="8236"></a> array<a id="7266"></a>.<br>
+              <code>>> flds = fieldnames(<a id="7497"></a>cds);</li>
+              <li>it = isfield(<a id="7567"></a>str, <fldname>) </code>determines whether the given name is a field<a id="7472"></a> in this structure<a id="8237"></a> or structure<a id="8238"></a> array<a id="7267"></a>.<br>
+              <code>>> if isfield(<a id="7568"></a>cds, 'price') ... </li>
+              <li>str = setfield(<a id="7582"></a>str, &lt;fldname&gt;, &lt;value<a id="8289"></a>&gt;) </code> returns a new structure<a id="8239"></a> array<a id="7268"></a> with<a id="7773"></a> the specified field<a id="7473"></a> set to<a id="7918"></a> the specified value<a id="8290"></a>.<br>
+              <code>>> cds(1) = setfield(<a id="7583"></a>cds(1), 'price', 19.95); </code></li>
+              <li> <code>val = getfield(<a id="7561"></a>str, &lt;fldname&gt;) </code> returns the value<a id="8291"></a> of<a id="8090"></a> the specified field<a id="7474"></a>.<br>
+              <code>>> disp(<a id="7413"></a>getfield(<a id="7562"></a>cds(1), 'price') );</li>
+              <li>str = rmfield(<a id="7579"></a>str, &lt;fldname&gt;) </code> returns a new structure<a id="8240"></a> array<a id="7269"></a> with<a id="7774"></a> the specified field<a id="7475"></a> removed.<br>
+              <code>>> noprice = rmfield(<a id="7580"></a>cds, 'price');</li> </code>
+              <li>Values across the whole array<a id="7270"></a> can be retrieved using the “.” notation by accumulating them into either arrays or cell<a id="<a id="7383"></a>7336"></a> arrays:<br>
+              <code>>> titles = {cds.title};<br>>> [alpha order] = sort(<a id="7584"></a>titles); </li> </code>
               <li>or, if the values are all numeric, into a vector:<br>
               <code>>> prices = [cds.price];<br>
-              >> total = sum(<a id="2804"></a>prices);<br>
-              </code>Notice that after extracting the price values into a cell array<a id="2404"></a> or vector, all the normal operations<a id="2695"></a> - in this case<a id="2440"></a>,  <code>sort(<a id="2715"></a>...) </code> and  <code>sum(<a id="2805"></a>...) </code> - can be utilized.</li>
+              >> total = sum(<a id="7625"></a>prices);<br>
+              </code>Notice that after extracting the price values into a cell<a id="7337"></a> array<a id="7271"></a> or vector, all the normal operations<a id="7978"></a> - in this case<a id="7369"></a>,  <code>sort(<a id="7585"></a>...) </code> and<a id="7700"></a>  <code>sum(<a id="7626"></a>...) </code> - can be utilized.</li>
             </ul></li>
         </ul>
-        <p>Exercise 7.5 provides some practice in manipulating structure<a id="2776"></a> arrays using the above CD collection as an example.</p>
+        <p>Exercise 7.5 provides some practice in manipulating structure<a id="8241"></a> arrays using the above CD collection as an example<a id="8172"></a>.</p>
         <div class="exercise">#exercise_7_5#</div>
       </div>
     </div>
@@ -430,17 +430,17 @@
 
   <div class="chp-section" data-sect-num="5" data-sect-name="Comparing Cell Arrays to Structure Arrays">
     <!-- Comparing Cell Arrays to Structure Arrays -->
-    <h2 id="7_5">7.5  Comparing Cell Arrays to Structure Arrays</h2>
+    <h2 id="7_5">7.5  Comparing Cell Arrays to<a id="7919"></a> Structure Arrays</h2>
     <div class="container">
-      <p>To provide some context for this discussion, compare the cell array<a id="2405"></a> illustrated in Fig 7.1 with the structure<a id="2777"></a> array<a id="2406"></a> in Fig 7.2.</p>
-      <p><strong>Cell Array:</strong>  To access, for example, the year of the birthday of the third person in the Cell Array, you would need to:
+      <p>To provide some context for<a id="8382"></a> this discussion, compare the cell<a id="7338"></a> array<a id="7272"></a> illustrated in Fig 7.1 with<a id="7775"></a> the structure<a id="8242"></a> array<a id="7273"></a> in Fig 7.2.</p>
+      <p><strong>Cell Array:</strong>  To access, for<a id="8383"></a> example<a id="8173"></a>, the year of<a id="8091"></a> the birthday of<a id="8092"></a> the third person in the Cell Array, you would need to<a id="7920"></a>:
       <ul>
-        <li>figure out from some design document beyond the code itself which column contained the date structure<a id="2778"></a> and which row of the date structure<a id="2779"></a> contained the year.</li>
+        <li>figure out from<a id="7556"></a> some design document beyond the code itself which column contained the date structure<a id="8243"></a> and<a id="7701"></a> which row of<a id="8093"></a> the date structure<a id="8244"></a> contained the year.</li>
         <li>then you would enter this: <br><code>it = Obj{3}{3}{3}</code></li>
       </ul></p>
       <p><strong>Structure Array:</strong>  To access the same item, you would just enter this:<br>
        <code>it = Obj(3).birth.year</code></p>
-      <p>Most people would greatly prefer the simplicity and clarity of the Structure Array, and that seems appropriate.  Unfortunately, as you have seen already in this chapter, and will see even more in the next chapter, cell arrays<a id="2455"></a> are built into the infrastructure of Matlab and are frequently necessary to extract data from collections<a id="2476"></a> or files.</p>
+      <p>Most people would greatly prefer the simplicity and<a id="7702"></a> clarity of<a id="8094"></a> the Structure Array, and<a id="7703"></a> that seems appropriate.  Unfortunately, as you have seen already in this chapter, and<a id="7704"></a> will see even more in the next chapter, cell<a id="<a id="7384"></a>7339"></a> arrays are built into the infrastructure of<a id="8095"></a> Matlab and<a id="7705"></a> are frequently necessary to<a id="7921"></a> extract data<a id="7832"></a> from<a id="7557"></a> collections<a id="7405"></a> or files.</p>
     </div>
   </div>
 
@@ -450,208 +450,208 @@
     <div class="container clearfix">
       <div class="card float-sm-right">
            <img src="..\Images\Fig_7_3.JPG" alt="Figure 7.3" class="fig card-img">
-           <p class="figure-name card-title">Figure 7.3: Simple Bridge Structure</p>
+           <p class="figure-name card-title">Figure<a id="8402"></a> 7.3: Simple Bridge Structure</p>
       </div>
-      <p>Many large bridges today have steel frames as their basic structure<a id="2780"></a>. Engineers perform the analysis and design work for each steel component and deliver these designs to the steel company. The steel company manufactures all the components, and prepares them for delivery to the building<a id="2436"></a> site. At this point, each component is identified only by a unique identifier string stamped and/or chalked onto that component. For even a modest-sized bridge, this transportation may require a significant number of truckloads of components. The question we address here is how to decide the sequence in which the components are delivered to the building<a id="2437"></a> site so that components are available when needed, but not piled up waiting to be used.</p>
-      <p>Consider the relatively simple structure<a id="2781"></a> shown in Figure 7.3. The components have individual labels, and we can obtain from the architect the identities of the components that are connected together. The construction needs to start from the fixed point A. We need to analyze this information and compute the order in which the components would be used to assemble the structure<a id="2782"></a>.</p>
-      <p>The data will be organized as a structure<a id="2783"></a> array<a id="2407"></a> with one entry for each component. One of the fields in that structure<a id="2784"></a> will be a cell array<a id="2408"></a> of the names of the components to which this component is connected.</p>
-      <p>The code in Listing 7.6 shows the solution to this problem. When you run this, the output should be:<br>
+      <p>Many large bridges today have steel frames as their basic structure<a id="8245"></a>. Engineers perform the analysis and<a id="7706"></a> design work for<a id="8384"></a> each steel component and<a id="7707"></a> deliver these designs to<a id="7922"></a> the steel company. The steel company manufactures all the components, and<a id="7708"></a> prepares them for<a id="8385"></a> delivery to<a id="7923"></a> the building<a id="7365"></a> site. At this point, each component is identified only by a unique identifier string stamped and<a id="7709"></a>/or chalked onto that component. For even a modest-sized bridge, this transportation may require a significant number of<a id="8096"></a> truckloads of<a id="8097"></a> components. The question we address here is how to<a id="7924"></a> decide the sequence in which the components are delivered to<a id="7925"></a> the building<a id="7366"></a> site so that components are available when needed, but not piled up waiting to<a id="7926"></a> be used.</p>
+      <p>Consider the relatively simple structure<a id="8246"></a> shown in Figure<a id="8403"></a> 7.3. The components have individual labels, and<a id="7710"></a> we can obtain from<a id="7558"></a> the architect the identities of<a id="8098"></a> the components that are connected together. The construction needs to<a id="7927"></a> start from<a id="7559"></a> the fixed point A. We need to<a id="7928"></a> analyze this information and<a id="7711"></a> compute the order in which the components would be used to<a id="7929"></a> assemble the structure<a id="8247"></a>.</p>
+      <p>The data<a id="7833"></a> will be organized as a structure<a id="8248"></a> array<a id="7274"></a> with<a id="7776"></a> one entry for<a id="8386"></a> each component. One of<a id="8099"></a> the fields in that structure<a id="8249"></a> will be a cell<a id="7340"></a> array<a id="7275"></a> of<a id="8100"></a> the names<a id="8327"></a> of<a id="8101"></a> the components to<a id="7930"></a> which this component is connected.</p>
+      <p>The code in Listing 7.6 shows the solution to<a id="7931"></a> this problem. When you run this, the output should be:<br>
         <code>group 1 = { A B E F }<br>
         group 2 = { C G }<br>
         group 3 = { D }<br>
         Beams should arrive in this order:<br>
         E-A E-B E-F A-B B-F F-C F-G B-C C-G G-D C-D<br></code></p>
-      <p>Although this seems to be simple problem, there is not a natural ordering of the components.  The goal of algorithm<a id="2338"></a> cited within the listing is to identify small groups of components that do have natural ordering and then schedule the beams that make up each group for delivery.</p>
+      <p>Although this seems to<a id="7932"></a> be simple problem, there is not a natural ordering of<a id="8102"></a> the components.  The goal of<a id="8103"></a> algorithm<a id="7205"></a> cited within the listing is to<a id="7933"></a> identify small groups of<a id="8104"></a> components that do have natural ordering and<a id="7712"></a> then schedule the beams that make up each group for<a id="8387"></a> delivery.</p>
     </div>
     <div class="listing">#listing_07_6#</div>
   </div>
 
   <!-- Chapter Summary -->
   <h2>Chapter Summary</h2>
-  <p>This chapter covered the nature, implementation, and behavior of two heterogeneous<a id="2630"></a> collections<a id="2477"></a>:
+  <p>This chapter covered the nature<a id="7650"></a>, implementation<a id="7990"></a>, and<a id="7713"></a> behavior of<a id="8105"></a> two heterogeneous<a id="7643"></a> collections<a id="7406"></a>:
   <ul>
-    <li>Cell arrays are vectors of containers; their elements can be manipulated either as vectors of containers, or individually by inserting<a id="2636"></a> or extracting the contents of the container using braces in place of parentheses</li>
-    <li>The elements of a structure<a id="2785"></a> are accessed by name rather than by indexing, using the dot operator<a id="2491"></a>, ‘.’, to specify the field<a id="2549"></a> name to be used</li>
-    <li>Structures can be collected into structure<a id="2786"></a> arrays whose elements are structures all with the same field<a id="2550"></a> names. These elements can then be indexed and manipulated in the same manner as the cells in a cell array<a id="2409"></a></li>
+    <li>Cell arrays are vectors of<a id="8106"></a> containers; their elements<a id="8337"></a> can be manipulated either as vectors of<a id="8107"></a> containers, or individually by inserting<a id="7353"></a> or extracting the contents of<a id="8108"></a> the container using braces in place of<a id="8109"></a> parentheses</li>
+    <li>The elements<a id="8338"></a> of<a id="8110"></a> a structure<a id="8250"></a> are accessed by name rather than by indexing<a id="8345"></a>, using the dot operator<a id="7417"></a>, ‘.’, to<a id="7934"></a> specify the field<a id="7476"></a> name to<a id="7935"></a> be used</li>
+    <li>Structures can be collected into structure<a id="8251"></a> arrays whose elements<a id="8339"></a> are structures<a id="7610"></a> all with<a id="7777"></a> the same field<a id="7477"></a> names<a id="8328"></a>. These elements<a id="8340"></a> can then be indexed and<a id="7714"></a> manipulated in the same manner as the cells in a cell<a id="7341"></a> array<a id="7276"></a></li>
   </ul></p>
 <h2>Self Test</h2>
 <div class="container">
 
-Use the following questions to check your understanding of the material in this
+Use the following questions to<a id="7936"></a> check your understanding of<a id="8111"></a> the material in this
 chapter:
 <h3>True or False</h3>
 <ol>
-<li>Of all the collective operations<a id="2696"></a> defined for numerical<a id="2687"></a> arrays, only
-logical<a id="2649"></a> operations<a id="2697"></a> can be applied to a whole cell array<a id="2410"></a>.</li>
-    <li>A cell array<a id="2411"></a> or a structure<a id="2787"></a> can contain any legal MATLAB<a id="2660"></a> object.</li>
-    <li>You gain access to the contents of a cell by using braces, {...}.</li>
-    <li>Since the contents of a structure<a id="2788"></a> are heterogeneous<a id="2631"></a>, we can store
-other structures in any structure<a id="2789"></a>.</li>
-    <li>The statement rmfield(<a id="2711"></a>str, 'price') removes the field<a id="2551"></a> 'price' and
-its value<a id="2821"></a> from the structure<a id="2790"></a> str.</li>
-    <li>The statement getfield(<a id="2622"></a>str, <fldname>) returns the value<a id="2822"></a> of the
-specified field<a id="2552"></a>.</li>
-    <li>You cannot extract and process all of the values of a field<a id="2553"></a> in a
-structure<a id="2791"></a> array<a id="2412"></a>.</li>
+<li>Of all the collective operations<a id="7979"></a> defined<a id="7628"></a> for<a id="8388"></a> numerical<a id="7970"></a> arrays, only
+logical<a id="7355"></a> operations<a id="7980"></a> can be applied to<a id="7937"></a> a whole cell<a id="7342"></a> array<a id="7277"></a>.</li>
+    <li>A cell<a id="7343"></a> array<a id="7278"></a> or a structure<a id="8252"></a> can contain any legal MATLAB<a id="7817"></a> object.</li>
+    <li>You gain access to<a id="7938"></a> the contents of<a id="8112"></a> a cell<a id="7344"></a> by using braces, {...}.</li>
+    <li>Since the contents of<a id="8113"></a> a structure<a id="8253"></a> are heterogeneous<a id="7644"></a>, we can store
+other structures<a id="7611"></a> in any structure<a id="8254"></a>.</li>
+    <li>The statement rmfield(<a id="7581"></a>str, 'price') removes the field<a id="7478"></a> 'price' and<a id="7715"></a>
+its value<a id="8292"></a> from<a id="7560"></a> the structure<a id="8255"></a> str.</li>
+    <li>The statement getfield(<a id="7563"></a>str, <fldname>) returns the value<a id="8293"></a> of<a id="8114"></a> the
+specified field<a id="7479"></a>.</li>
+    <li>You cannot extract and<a id="7716"></a> process all of<a id="8115"></a> the values of<a id="8116"></a> a field<a id="7480"></a> in a
+structure<a id="8256"></a> array<a id="7279"></a>.</li>
 </ol>
 <h3>Fill in the Blanks</h3>
 <ol>
-<li>To perform any operations<a id="2698"></a> on the contents of a heterogeneous<a id="2632"></a>
-collection, the items must be _________ and if necessary,
+<li>To perform any operations<a id="7981"></a> on<a id="7801"></a> the contents of<a id="8117"></a> a heterogeneous<a id="7645"></a>
+collection, the items must be _________ and<a id="7717"></a> if necessary,
 ________________.</li>
-    <li>Cell arrays can be treated for the purpose of concatenation<a id="2481"></a> and
-slicing as ____________of ___________ .</li>
-    <li>The assignment<a id="2434"></a> B{3} = {42} results in the third entry in the cell
-array<a id="2413"></a> B being a(n) ______________.</li>
-    <li>If a variable<a id="2840"></a> called field<a id="2554"></a> contains the name of a field<a id="2555"></a> in a structure<a id="2792"></a>
-str , the expression ______________ will set the value<a id="2823"></a> of that field<a id="2556"></a> to
+    <li>Cell arrays can be treated for<a id="8389"></a> the purpose of<a id="8118"></a> concatenation<a id="7352"></a> and<a id="7718"></a>
+slicing<a id="8180"></a> as ____________of<a id="8119"></a> ___________ .</li>
+    <li>The assignment<a id="7363"></a> B{3} = {42} results in the third entry in the cell<a id="7345"></a>
+array<a id="7280"></a> B being a(n) ______________.</li>
+    <li>If a variable<a id="8314"></a> called field<a id="7481"></a> contains the name of<a id="8120"></a> a field<a id="7482"></a> in a structure<a id="8257"></a>
+str , the expression ______________ will set the value<a id="8294"></a> of<a id="8121"></a> that field<a id="7483"></a> to<a id="7939"></a>
 42.</li>
-    <li>MATLAB<a id="2661"></a> has a built-in function<a id="2603"></a> __________ that consumes pairs of
-entries, each consisting of a(n) _________and a(n) __________, and
-produces a structure<a id="2793"></a> array<a id="2414"></a>. </li>
+    <li>MATLAB<a id="7818"></a> has a built-in function<a id="7529"></a> __________ that consumes pairs of<a id="8122"></a>
+entries, each consisting of<a id="8123"></a> a(n) _________and<a id="7719"></a> a(n) __________, and<a id="7720"></a>
+produces a structure<a id="8258"></a> array<a id="7281"></a>. </li>
 </ol>
 
 <h3>Programming Projects</h3>
 <ol>
-<li>Write a function<a id="2604"></a> named cellParse that takes in a cell array<a id="2415"></a> with
-each element being either a string (character array<a id="2416"></a>), or a vector
-(containing numbers<a id="2669"></a>), or a boolean value<a id="2824"></a> (logical array<a id="2417"></a> of length 1).
-Your function<a id="2605"></a> should return the following:
+<li>Write a function<a id="7530"></a> named cell<a id="7346"></a>Parse that takes in a cell<a id="7347"></a> array<a id="7282"></a> with<a id="7778"></a>
+each element being either a string (character array<a id="7283"></a>), or a vector
+(containing numbers<a id="7839"></a>), or a boolean value<a id="8295"></a> (logical array<a id="7284"></a> of<a id="8124"></a> length 1).
+Your function<a id="7531"></a> should return the following:
 <ul>
-<li>nStr: the number of strings</li>
-<li>nVec: the number of vectors</li>
-<li>nBool: the number of boolean values</li>
-<li>cString: a cell array<a id="2418"></a> of all the strings in alphabetical order</li>
-<li>vecLength: the average length of all the vectors</li>
-<li>allTrue: true if all the boolean values are true and false<a id="2502"></a>
+<li>nStr: the number of<a id="8125"></a> strings</li>
+<li>nVec: the number of<a id="8126"></a> vectors</li>
+<li>nBool: the number of<a id="8127"></a> boolean values</li>
+<li>cString: a cell<a id="7348"></a> array<a id="7285"></a> of<a id="8128"></a> all the strings in alphabetical order</li>
+<li>vecLength: the average length of<a id="8129"></a> all the vectors</li>
+<li>allTrue: true<a id="7651"></a> if all the boolean values are true<a id="7652"></a> and<a id="7721"></a> false<a id="7429"></a>
 otherwise</li>
 </ul>
-For example,<br>
-[a b c d e f] = cellParse( { [1 2 3], true, 'hi there!', 42, false<a id="2503"></a>, 'abc'} ) <br>
+For example<a id="8174"></a>,<br>
+[a b c d e f] = cell<a id="7349"></a>Parse( { [1 2 3], true<a id="7653"></a>, 'hi there!', 42, false<a id="7430"></a>, 'abc'} ) <br>
 should return<br>
  a = 2, b = 2, c = 2, d = {'abc','hi there!},
-e = 2, and f = false<a id="2504"></a>.</li>
-<li>It turns out that since you have become an expert on rating clothing
-( Chapter 4 , Problem 5), Acme Clothing Company has hired you to
-rate its clothes. Clothes are now represented as structures instead of
-vectors with the fields (all of which are numbers<a id="2670"></a> between 0 and 5):
-Condition, Color, Price, Matches, and Comfort
-Acme has a much simpler way of rating its clothes than you used
+e = 2, and<a id="7722"></a> f = false<a id="7431"></a>.</li>
+<li>It turns out that since you have become an expert on<a id="7802"></a> rating clothing
+( Chapter 4 , Problem 5), Acme Clothing Company has hired you to<a id="7940"></a>
+rate its clothes. Clothes are now represented as structures<a id="7612"></a> instead of<a id="8130"></a>
+vectors with<a id="7779"></a> the fields (all of<a id="8131"></a> which are numbers<a id="7840"></a> between 0 and<a id="7723"></a> 5):
+Condition, Color, Price, Matches, and<a id="7724"></a> Comfort
+Acme has a much simpler way of<a id="8132"></a> rating its clothes than you used
 before:<br>
 Rating = 5 * Condition + 3 * Color + 2 * Price + Matches
 + 9 * Comfort<br>
-You have a script called makeClothes.m that will create a structure<a id="2794"></a>
-array<a id="2419"></a> called acmeClothes that contains clothes structures. You are to
-write a script called rateClothes that will add a Rating field<a id="2557"></a> and a
-Quality field<a id="2558"></a> to each of the structures in the acmeClothes array<a id="2420"></a>. The
-Rating field<a id="2559"></a> in each structure<a id="2795"></a> should contain the rating of that
-particular article of clothing. The Quality field<a id="2560"></a> is a string that is
+You have a script called makeClothes.m that will create a structure<a id="8259"></a>
+array<a id="7286"></a> called acmeClothes that contains clothes structures<a id="7613"></a>. You are to<a id="7941"></a>
+write a script called rateClothes that will add a Rating field<a id="7484"></a> and<a id="7725"></a> a
+Quality field<a id="7485"></a> to<a id="7942"></a> each of<a id="8133"></a> the structures<a id="7614"></a> in the acmeClothes array<a id="7287"></a>. The
+Rating field<a id="7486"></a> in each structure<a id="8260"></a> should contain the rating of<a id="8134"></a> that
+particular article of<a id="8135"></a> clothing. The Quality field<a id="7487"></a> is a string that is
 'premium' if the Rating is over 80, 'good' over 60, 'poor' over 20,
-and 'liquidated' for anything else<a id="2494"></a>.<br>
+and<a id="7726"></a> 'liquidated' for<a id="8390"></a> anything else<a id="7420"></a>.<br>
 Note:<br>
 <ul>
-<li>You MUST use iteration<a id="2645"></a> to solve this problem.</li>
-<li>To make things easy, just place the line makeClothes at the top of
-your script, so you're guaranteed to have the correct acmeClothes
-array<a id="2421"></a> to work with.</li>
-<li>The fields are case<a id="2441"></a> sensitive, so make sure that you capitalize them.</li>
+<li>You MUST use iteration<a id="7742"></a> to<a id="7943"></a> solve this problem.</li>
+<li>To make things easy, just place the line makeClothes at the top of<a id="8136"></a>
+your script, so you're guaranteed to<a id="7944"></a> have the correct acmeClothes
+array<a id="7288"></a> to<a id="7945"></a> work with<a id="7780"></a>.</li>
+<li>The fields are case<a id="7370"></a> sensitive, so make sure that you capitalize them.</li>
 </ul></li>
-<li>You have been hired by a used-car dealership to modify the price of
-cars that are up for sale. You will get the information about a car,
-and then change its price tag depending on a number of factors.
-Write a function<a id="2606"></a> called usedCar that takes in a structure<a id="2796"></a> with the
+<li>You have been hired by a used-car dealership to<a id="7946"></a> modify the price of<a id="8137"></a>
+cars that are up for<a id="8391"></a> sale. You will get the information about a car,
+and<a id="7727"></a> then change its price tag depending on<a id="7803"></a> a number of<a id="8138"></a> factors.
+Write a function<a id="7532"></a> called usedCar that takes in a structure<a id="8261"></a> with<a id="7781"></a> the
 following fields:<br>
-Make: A string that represents the make of the car (e.g., 'Toyota
+Make: A string that represents the make of<a id="8139"></a> the car (e.g., 'Toyota
 Corolla' )<br>
-Year: A number that corresponds to the year of the car (e.g., 1997 )<br>
-Cost : A number that holds the marked price of the car (e.g., 7,000 )<br>
-Miles : The number of miles clocked (e.g., 85,000 )<br>
-Accidents: The number of accidents the car has been in (e.g., 1 )<br>
-Your function<a id="2607"></a> should return a structure<a id="2797"></a> with all the above fields,
-with <b>exactly</b> the same names. It should have the same make, year,
-accidents, and miles. Here are the changes you must make:
+Year: A number that corresponds to<a id="7947"></a> the year of<a id="8140"></a> the car (e.g., 1997 )<br>
+Cost : A number that holds the marked price of<a id="8141"></a> the car (e.g., 7,000 )<br>
+Miles : The number of<a id="8142"></a> miles clocked (e.g., 85,000 )<br>
+Accidents: The number of<a id="8143"></a> accidents the car has been in (e.g., 1 )<br>
+Your function<a id="7533"></a> should return a structure<a id="8262"></a> with<a id="7782"></a> all the above fields,
+with<a id="7783"></a> <b>exactly</b> the same names<a id="8329"></a>. It should have the same make, year,
+accidents, and<a id="7728"></a> miles. Here are the changes you must make:
 <ul>
-<li>Add 5,000 to the cost if the car has clocked less<a id="2646"></a> than
+<li>Add 5,000 to<a id="7948"></a> the cost if the car has clocked less<a id="7743"></a> than
 20,000 miles</li>
 <li>Subtract 5,000 if it has clocked more than 100,000 miles.</li>
-<li>Reduce the price by 10,000 for every accident.</li>
+<li>Reduce the price by 10,000 for<a id="8392"></a> every accident.</li>
 </ul></li>
-<li>This problem deals with structures that represent dates.
+<li>This problem deals with<a id="7784"></a> structures<a id="7615"></a> that represent dates.
 <ul>
-<li>First, write a MATLAB<a id="2662"></a> function<a id="2608"></a> called createDate that will take
-in three numeric parameters. The first parameter represents the
-month , the second the day , and the third the year. The function<a id="2609"></a>
-should return a structure<a id="2798"></a> with the following fields:<br>
+<li>First, write a MATLAB<a id="7819"></a> function<a id="7534"></a> called createDate that will take
+in three numeric parameters<a id="8301"></a>. The first parameter represents the
+month , the second the day , and<a id="7729"></a> the third the year. The function<a id="7535"></a>
+should return a structure<a id="8263"></a> with<a id="7785"></a> the following fields:<br>
 Day: a number<br>
-Month: a 3 character string containing the first three characters
-of the month name<br>
+Month: a 3 character<a id="7806"></a> string containing the first three characters
+of<a id="8144"></a> the month name<br>
 Year: a number containing the year.<br>
-For example,<br>
-it = createDate(3,30,2008) should return a structure<a id="2799"></a> containing:<br>
+For example<a id="8175"></a>,<br>
+it = createDate(3,30,2008) should return a structure<a id="8264"></a> containing:<br>
 Day: 30<br>
 Month: Mar<br>
 Year: 2008<br></li>
-<li>Write a function<a id="2610"></a> called printDate that displays a date in the form
+<li>Write a function<a id="7536"></a> called printDate that displays a date in the form
 Mar 30, 2007</li>
-<li>Write a function<a id="2611"></a> inBetween that will take in three date
-structures. The function<a id="2612"></a> should return true if the second date is
-between the first and third dates, otherwise the function<a id="2613"></a> should
-return false<a id="2505"></a>.</li>
-<li>Write a function<a id="2614"></a> called isSorted that takes in a single parameter,
-an array<a id="2422"></a> of date structures. This function<a id="2615"></a> should return true if
-all the dates in the array<a id="2423"></a> are in a chronological order (regardless
-of whether they are in ascending or descending order),<br>
- -> It might help<a id="2623"></a> to add a field<a id="2561"></a> to the date class.<br>
- -> The third date does not have to be chronologically
+<li>Write a function<a id="7537"></a> inBetween that will take in three date
+structures<a id="7616"></a>. The function<a id="7538"></a> should return true<a id="7654"></a> if the second date is
+between the first and<a id="7730"></a> third dates, otherwise the function<a id="7539"></a> should
+return false<a id="7432"></a>.</li>
+<li>Write a function<a id="7540"></a> called isSorted that takes in a single parameter,
+an array<a id="7289"></a> of<a id="8145"></a> date structures<a id="7617"></a>. This function<a id="7541"></a> should return true<a id="7655"></a> if
+all the dates in the array<a id="7290"></a> are in a chronological order (regardless
+of<a id="8146"></a> whether they are in ascending or descending order),<br>
+ -> It might help<a id="7636"></a> to<a id="7949"></a> add a field<a id="7488"></a> to<a id="7950"></a> the date class.<br>
+ -> The third date does not have to<a id="7951"></a> be chronologically
 later than the first date.
-otherwise the function<a id="2616"></a> should return false<a id="2506"></a>.</li>
+otherwise the function<a id="7542"></a> should return false<a id="7433"></a>.</li>
 <li>Write a test script that creates an
-array<a id="2424"></a> of date structures, prints out
-each date, and then states whether
+array<a id="7291"></a> of<a id="8147"></a> date structures<a id="7618"></a>, prints out
+each date, and<a id="7731"></a> then states whether
 or not the dates are in order.</li>
 </ul></li>
-<li>Your university has added a new award for students who<a id="2843"></a> were "almost there" last
-semester and just missed getting into the Dean's List. Write a function<a id="2617"></a> called almost
-that consumes an array<a id="2425"></a> of student structures, and produces an array<a id="2426"></a> of names of
-those who<a id="2844"></a> have a semester GPA between 2.9 and 2.99 (inclusive). The student
-structure<a id="2800"></a> has the following fields:<br>
+<li>Your university has added a new award for<a id="8393"></a> students who<a id="8398"></a> were "almost there" last
+semester and<a id="7732"></a> just missed getting into the Dean's List. Write a function<a id="7543"></a> called almost
+that consumes an array<a id="7292"></a> of<a id="8148"></a> student structures<a id="7619"></a>, and<a id="7733"></a> produces an array<a id="7293"></a> of<a id="8149"></a> names<a id="8330"></a> of<a id="8150"></a>
+those who<a id="8399"></a> have a semester GPA between 2.9 and<a id="7734"></a> 2.99 (inclusive). The student
+structure<a id="8265"></a> has the following fields:<br>
 Name - string (e.g., 'George P. Burdell')<br>
 Semester_GPA - decimal number (e.g., 2.97)<br>
 Cumulative_GPA - decimal number (e.g., 3.01)<br></li>
-<li>The MATLAB<a id="2663"></a> language has the built-in ability to perform
-mathematical operations<a id="2699"></a> on complex numbers<a id="2671"></a>. However, there are
-times when it is useful to treat complex numbers<a id="2672"></a> as a structure<a id="2801"></a>.
-Write a set of functions with the following capability and a script to
+<li>The MATLAB<a id="7820"></a> language has the built-in ability to<a id="7952"></a> perform
+mathematical operations<a id="7982"></a> on<a id="7804"></a> complex numbers<a id="7841"></a>. However, there are
+times when it is useful to<a id="7953"></a> treat complex numbers<a id="7842"></a> as a structure<a id="8266"></a>.
+Write a set of<a id="8151"></a> functions<a id="8276"></a> with<a id="7786"></a> the following capability and<a id="7735"></a> a script to<a id="7954"></a>
 verify that they work correctly:<br>
 cmplx = makeComplex(real, imag)<br>
 res = cmplxAdd( cmpxa, cmpxb )<br>
 res = cmplxMult( cmpxa, cmpxb )</li>
-<li>In terms of atomic physics, every electron has four numbers<a id="2673"></a>
-associated with it, called the quantum numbers<a id="2674"></a>. These are
+<li>In terms of<a id="8152"></a> atomic physics<a id="8176"></a>, every electron has four numbers<a id="7843"></a>
+associated with<a id="7787"></a> it, called the quantum numbers<a id="7844"></a>. These are
 'principal' (energy), 'azimuthal' (angular momentum), 'magnetic'
-(orientation of angular momentum), and 'spin' (particle spin)
-quantum numbers<a id="2675"></a>. Wolfgang Pauli hypothesized (correctly) that no
-two electrons in an atom can have the same set of four quantum
-numbers<a id="2676"></a>; that is, if the Principal, Azimuthal, and Magnetic
-numbers<a id="2677"></a> are the same for two electrons, then it is necessary for the
-electrons to have different Spin numbers<a id="2678"></a>.
-You need to write a function<a id="2618"></a> called spinSwitch that takes in two
-structures and returns both structures. Each structure<a id="2802"></a> represents an
-electron in a hydrogen atom and has the following fields:<br>
+(orientation of<a id="8153"></a> angular momentum), and<a id="7736"></a> 'spin' (particle spin)
+quantum numbers<a id="7845"></a>. Wolfgang Pauli hypothesized (correctly) that no
+two electrons in an atom can have the same set of<a id="8154"></a> four quantum
+numbers<a id="7846"></a>; that is, if the Principal, Azimuthal, and<a id="7737"></a> Magnetic
+numbers<a id="7847"></a> are the same for<a id="8394"></a> two electrons, then it is necessary for<a id="8395"></a> the
+electrons to<a id="7955"></a> have different Spin numbers<a id="7848"></a>.
+You need to<a id="7956"></a> write a function<a id="7544"></a> called spinSwitch that takes in two
+structures<a id="7620"></a> and<a id="7738"></a> returns both structures<a id="7621"></a>. Each structure<a id="8267"></a> represents an
+electron in a hydrogen atom and<a id="7739"></a> has the following fields:<br>
 principal (this is always > 0)<br>
 azimuthal (a number)<br>
 magnetic (a number)<br>
-spin (a string with value<a id="2825"></a> 'up' or 'down')<br>
-Your function<a id="2619"></a> will compare the values in the two structures and
-check if they all have the same values for the four fields. If true, you
-are required to switch<a id="2808"></a> the spin of the second structure<a id="2803"></a>. You also
-have to add a field<a id="2562"></a> called "energy" to both structures. The value<a id="2826"></a>
-stored in this field<a id="2563"></a> must be ( -2.18*(10^18))/(n^2), where n is the
-value<a id="2827"></a> of the principal quantum number for that electron. You have
-to return both the structures with the energy field<a id="2564"></a> added to both, so
-that the one with the higher energy is first. If the energies are equal<a id="2501"></a>,
-return the one with the 'up' spin first. If both have the same spin
-and the same energy, the order does not matter.
+spin (a string with<a id="7788"></a> value<a id="8296"></a> 'up' or 'down')<br>
+Your function<a id="7545"></a> will compare the values in the two structures<a id="7622"></a> and<a id="7740"></a>
+check if they all have the same values for<a id="8396"></a> the four fields. If true<a id="7656"></a>, you
+are required to<a id="7957"></a> switch<a id="8279"></a> the spin of<a id="8155"></a> the second structure<a id="8268"></a>. You also
+have to<a id="7958"></a> add a field<a id="7489"></a> called "energy" to<a id="7959"></a> both structures<a id="7623"></a>. The value<a id="8297"></a>
+stored in this field<a id="7490"></a> must be ( -2.18*(10^18))/(n^2), where n is the
+value<a id="8298"></a> of<a id="8156"></a> the principal quantum number for<a id="8397"></a> that electron. You have
+to<a id="7960"></a> return both the structures<a id="7624"></a> with<a id="7789"></a> the energy field<a id="7491"></a> added to<a id="7961"></a> both, so
+that the one with<a id="7790"></a> the higher energy is first. If the energies are equal<a id="7428"></a>,
+return the one with<a id="7791"></a> the 'up' spin first. If both have the same spin
+and<a id="7741"></a> the same energy, the order does not matter.
 </ol>
 </div>
 </div>

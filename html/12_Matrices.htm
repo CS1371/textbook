@@ -25,17 +25,17 @@
   <!-- Chapter Objectives -->
   <h1>Chapter Objectives</h1>
   <div class="container">
-      <p>This chapter shows matrices<a id="4062"></a> as logical<a id="4051"></a> extensions of arrays. You will learn about two specialized operations<a id="4175"></a> performed with matrices<a id="4063"></a>: </p>
+      <p>This chapter shows matrices<a id="12725"></a> as logical<a id="12477"></a> extensions of<a id="12913"></a> arrays. You will learn about two specialized operations<a id="12887"></a> performed with<a id="12661"></a> matrices<a id="12726"></a>: </p>
       <ul>
-          <li>Multiplication for coordinate rotation</li>
-          <li>Division for solving simultaneous<a id="4207"></a> equations</li>
+          <li>Multiplication for<a id="13087"></a> coordinate rotation<a id="12807"></a></li>
+          <li>Division for<a id="13088"></a> solving simultaneous<a id="13053"></a> equations</li>
       </ul>
   </div>
 
   <!-- Introduction -->
   <h1>Introduction</h1>
   <div class="container">
-      <p>Although the matrix<a id="4078"></a> operations<a id="4176"></a> that are the subject of this chapter can be performed on pairs of vectors or arrays that meet certain criteria, when using these operations<a id="4177"></a>, we tend to refer to the data objects<a id="4169"></a> as matrices<a id="4064"></a>. In most mathematical discussions, the words "matrix<a id="4079"></a>" and "array<a id="3982"></a>" can be used interchangeably, and rightly so, because they store data in exactly the same form. Moreover, almost all of the operations<a id="4178"></a> we can perform on an array<a id="3983"></a> can also be performed on a matrix<a id="4080"></a>—logical<a id="4052"></a> operations<a id="4179"></a>, concatenation<a id="4012"></a>, slicing, and most of the arithmetic<a id="3980"></a> operations<a id="4180"></a> behave identically. The fact that some of the mathematical operations<a id="4181"></a> are defined differently gives us a chance to think about an important concept that is usually well hidden within the MATLAB<a id="4056"></a> language definition.</p>
+      <p>Although the matrix<a id="12741"></a> operations<a id="12888"></a> that are the subject of<a id="12914"></a> this chapter can be performed on<a id="12695"></a> pairs of<a id="12915"></a> vectors or arrays that meet certain criteria, when using these operations<a id="12889"></a>, we tend to<a id="12822"></a> refer to<a id="12823"></a> the data<a id="12714"></a> objects<a id="12885"></a> as matrices<a id="12727"></a>. In most mathematical discussions, the words "matrix<a id="12742"></a>" and<a id="12575"></a> "array<a id="12456"></a>" can be used interchangeably, and<a id="12576"></a> rightly so, because they store data<a id="12715"></a> in exactly the same form. Moreover, almost all of<a id="12916"></a> the operations<a id="12890"></a> we can perform on<a id="12696"></a> an array<a id="12457"></a> can also be performed on<a id="12697"></a> a matrix<a id="12743"></a>—logical<a id="12478"></a> operations<a id="12891"></a>, concatenation<a id="12463"></a>, slicing<a id="13062"></a>, and<a id="12577"></a> most of<a id="12917"></a> the arithmetic<a id="12454"></a> operations<a id="12892"></a> behave identically. The fact that some of<a id="12918"></a> the mathematical operations<a id="12893"></a> are defined<a id="12564"></a> differently gives us a chance to<a id="12824"></a> think about an important concept that is usually well hidden within the MATLAB<a id="12708"></a> language definition.</p>
   </div>
 
   <div class="chp-section" data-sect-num="1" data-sect-name="Concept: Behavioral Abstraction">
@@ -44,12 +44,12 @@
     <div class="container">
         <p>Recall the following concepts:</p>
         <ul>
-            <li><em>Abstraction</em> is the ability to ignore specific details and generalize the description of an entity</li>
-            <li><em>Data abstraction</em> is the specific example of abstraction that we first considered whereby we could treat vectors of data (and later other collections<a id="4004"></a> like structures and arrays) as single entities rather than enumerating their elements individually</li>
-            <li><em>Procedural abstraction</em> are functions that collect multiple operations<a id="4182"></a> into a form; once they are developed, we can overlook the specific details and treat them as a "black box," much as we treat built-in functions</li>
+            <li><em>Abstraction</em> is the ability to<a id="12825"></a> ignore specific details and<a id="12578"></a> generalize the description of<a id="12919"></a> an entity</li>
+            <li><em>Data abstraction</em> is the specific example<a id="13042"></a> of<a id="12920"></a> abstraction that we first considered whereby we could treat vectors of<a id="12921"></a> data<a id="12716"></a> (and later other collections<a id="12518"></a> like structures<a id="12563"></a> and<a id="12579"></a> arrays) as single entities rather than enumerating their elements<a id="13081"></a> individually</li>
+            <li><em>Procedural abstraction</em> are functions<a id="13068"></a> that collect multiple operations<a id="12894"></a> into a form; once they are developed, we can overlook the specific details and<a id="12580"></a> treat them as a "black box," much as we treat built-in functions<a id="13069"></a></li>
         </ul>
-        <p>Behavioral abstraction combines data and procedural abstraction<a id="4191"></a>, encapsulating not only collections<a id="4005"></a> of data, but also the operations<a id="4183"></a> that are legal to perform on that data. One might argue that this is a new, irrelevant concept best ignored until “we just have to!” However, consider the rules we have had to establish for what we can and cannot do with data collections<a id="4006"></a> we have seen so far. For example, am I able to add two arrays together? Yes, but only if they have the same number of rows and columns, or if one of them is scalar<a id="4194"></a>. Can I add two character strings<a id="4000"></a>? Almost the same answer, except that each string is first converted to a numerical<a id="4168"></a> quantity and the result is a vector of numbers<a id="4165"></a> and not a string. Can I add two cell arrays<a id="3998"></a>? No.</p>
-        <p>So at least some, and maybe all, data collections<a id="4007"></a> also "understand" the set of operations<a id="4184"></a> that are permitted on the data. This encapsulation<a id="4014"></a> of data and operations<a id="4185"></a> is the essence of behavioral<a id="3988"></a> abstraction. Therefore, we distinguish arrays from matrices<a id="4065"></a> not by the data they collect, but by the operations<a id="4186"></a> that are legal to perform on them.</p>
+        <p>Behavioral abstraction combines data<a id="12717"></a> and<a id="12581"></a> procedural abstraction<a id="12911"></a>, encapsulating not only collections<a id="12519"></a> of<a id="12922"></a> data<a id="12718"></a>, but also the operations<a id="12895"></a> that are legal to<a id="12826"></a> perform on<a id="12698"></a> that data<a id="12719"></a>. One might argue that this is a new, irrelevant concept best ignored until “we just have to<a id="12827"></a>!” However, consider the rules we have had to<a id="12828"></a> establish for<a id="13089"></a> what we can and<a id="12582"></a> cannot do with<a id="12662"></a> data<a id="12720"></a> collections<a id="12520"></a> we have seen so far. For example<a id="13043"></a>, am I able to<a id="12829"></a> add two arrays together? Yes, but only if they have the same number of<a id="12923"></a> rows and<a id="12583"></a> columns, or if one of<a id="12924"></a> them is scalar<a id="13030"></a>. Can I add two character<a id="12707"></a> strings<a id="12514"></a>? Almost the same answer, except that each string is first converted to<a id="12830"></a> a numerical<a id="12884"></a> quantity and<a id="12584"></a> the result is a vector of<a id="12925"></a> numbers<a id="12819"></a> and<a id="12585"></a> not a string. Can I add two cell<a id="<a id="12512"></a>12462"></a> arrays? No.</p>
+        <p>So at least some, and<a id="12586"></a> maybe all, data<a id="12721"></a> collections<a id="12521"></a> also "understand" the set of<a id="12926"></a> operations<a id="12896"></a> that are permitted on<a id="12699"></a> the data<a id="12722"></a>. This encapsulation<a id="12528"></a> of<a id="12927"></a> data<a id="12723"></a> and<a id="12587"></a> operations<a id="12897"></a> is the essence of<a id="12928"></a> behavioral<a id="12502"></a> abstraction. Therefore, we distinguish arrays from<a id="12548"></a> matrices<a id="12728"></a> not by the data<a id="12724"></a> they collect, but by the operations<a id="12898"></a> that are legal to<a id="12831"></a> perform on<a id="12700"></a> them.</p>
     </div>
   </div>
 
@@ -57,7 +57,7 @@
     <!-- Matrix Operations -->
     <h2 id="12_2">12.2	Matrix Operations</h2>
     <div class="container">
-        <p>The arithmetic<a id="3981"></a> operations<a id="4187"></a> that differ between arrays and matrices<a id="4066"></a> are multiplication<a id="4145"></a>, division, and exponentiation<a id="4019"></a>.</p>
+        <p>The arithmetic<a id="12455"></a> operations<a id="12899"></a> that differ between arrays and<a id="12588"></a> matrices<a id="12729"></a> are multiplication<a id="12482"></a>, division<a id="12464"></a>, and<a id="12589"></a> exponentiation<a id="12534"></a>.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Matrix Multiplication">
@@ -66,38 +66,38 @@
       <div class="container clearfix">
           <div class="float-sm-right card">
               <img src="..\Images\Fig_12_1.JPG" alt="Figure 12.1" class="fig card-img">
-              <p class="figure-name card-title">Figure 12.1: Matrix Dot Multiply</p>
+              <p class="figure-name card-title">Figure<a id="13109"></a> 12.1: Matrix Dot Multiply</p>
           </div>
           <div class="float-sm-right card">
               <img src="..\Images\Fig_12_2.JPG" alt="Figure 12.2" class="fig card-img">
-              <p class="figure-name card-title">Figure 12.2: Mechanics of Matrix Multiplication</p>
+              <p class="figure-name card-title">Figure<a id="13110"></a> 12.2: Mechanics of<a id="12929"></a> Matrix Multiplication</p>
           </div>
           <div class="float-sm-right card">
               <img src="..\Images\Fig_12_3.JPG" alt="Figure 12.3" class="fig card-img">
-              <p class="figure-name card-title">Figure 12.3: Matrix Multiplication</p>
+              <p class="figure-name card-title">Figure<a id="13111"></a> 12.3: Matrix Multiplication</p>
           </div>
-          <p>Previously, when we considered multiplying two arrays, we called this scalar<a id="4195"></a> multiplication<a id="4146"></a>, and it had the following typical array<a id="3984"></a> operation<a id="4171"></a> characteristics:</p>
+          <p>Previously, when we considered multiplying two arrays, we called this scalar<a id="13031"></a> multiplication<a id="12483"></a>, and<a id="12590"></a> it had the following typical array<a id="12458"></a> operation<a id="12569"></a> characteristics:</p>
           <ul>
-              <li>Either the two arrays must be the same size, or one of them must be scalar<a id="4196"></a></li>
-              <li>The multiplication<a id="4147"></a> was indicated with the .* operator</li>
-              <li>The result was an array<a id="3985"></a> with the same size as the larger original array<a id="3986"></a></li>
-              <li>Each element of the result was the product of the corresponding elements in the original two arrays</li>
+              <li>Either the two arrays must be the same size<a id="13084"></a>, or one of<a id="12930"></a> them must be scalar<a id="13032"></a></li>
+              <li>The multiplication<a id="12484"></a> was indicated with<a id="12663"></a> the .* operator</li>
+              <li>The result was an array<a id="12459"></a> with<a id="12664"></a> the same size<a id="13085"></a> as the larger original array<a id="12460"></a></li>
+              <li>Each element of<a id="12931"></a> the result was the product of<a id="12932"></a> the corresponding elements<a id="13082"></a> in the original two arrays</li>
           </ul>
-          <p>This is best illustrated in Figure 12.1. Scalar division and exponentiation<a id="4020"></a> have the same constraints.</p>
-          <p>Matrix multiplication<a id="4148"></a>, on the other hand, performed using the normal * operator, is an entirely different logical<a id="4053"></a> operation<a id="4172"></a>, as shown in Figure 12.2. The logical<a id="4054"></a> characteristics of matrix<a id="4081"></a> multiplication<a id="4149"></a> are as follows:</p>
+          <p>This is best illustrated in Figure<a id="13112"></a> 12.1. Scalar division<a id="12465"></a> and<a id="12591"></a> exponentiation<a id="12535"></a> have the same constraints.</p>
+          <p>Matrix multiplication<a id="12485"></a>, on<a id="12701"></a> the other hand, performed using the normal * operator, is an entirely different logical<a id="12479"></a> operation<a id="12570"></a>, as shown in Figure<a id="13113"></a> 12.2. The logical<a id="12480"></a> characteristics of<a id="12933"></a> matrix<a id="12744"></a> multiplication<a id="12486"></a> are as follows:</p>
           <ul>
-              <li>The two matrices<a id="4067"></a> do not have to be the same size.</li>
+              <li>The two matrices<a id="12730"></a> do not have to<a id="12832"></a> be the same size<a id="13086"></a>.</li>
               <ul>The requirements are either:
-                  <li>One of the matrices<a id="4068"></a> is a scalar<a id="4197"></a>, in which case<a id="3991"></a> the matrix<a id="4082"></a> operation<a id="4173"></a> reduces to a scalar<a id="4198"></a> multiply.</li>
-                  <li>The number of columns in the first matrix<a id="4083"></a> must equal<a id="4018"></a> the number of rows in the second. We refer to these as the <b>inner dimensions</b>. The result is a new matrix<a id="4084"></a> with the column count of the first matrix<a id="4085"></a> and the row count of the second.</li>
+                  <li>One of<a id="12934"></a> the matrices<a id="12731"></a> is a scalar<a id="13033"></a>, in which case<a id="12505"></a> the matrix<a id="12745"></a> operation<a id="12571"></a> reduces to<a id="12833"></a> a scalar<a id="13034"></a> multiply.</li>
+                  <li>The number of<a id="12935"></a> columns in the first matrix<a id="12746"></a> must equal<a id="12533"></a> the number of<a id="12936"></a> rows in the second. We refer to<a id="12834"></a> these as the <b>inner dimensions</b>. The result is a new matrix<a id="12747"></a> with<a id="12665"></a> the column count of<a id="12937"></a> the first matrix<a id="12748"></a> and<a id="12592"></a> the row count of<a id="12938"></a> the second.</li>
               </ul>
-              <li>If, as illustrated, <code>A</code> is an <code>m x n</code> matrix<a id="4086"></a> and B is an <code>n x p</code> matrix<a id="4087"></a>, the result of <code>A * B</code> is an <code>m x p</code> matrix<a id="4088"></a>.</li>
-              <li>The item at <code>(i, j)</code> in the result matrix<a id="4089"></a> is the sum of the scalar<a id="4199"></a> product of the <code>ith</code> row of <code>A</code> and the <code>jth</code> column of <code>B</code>.</li>
-              <li>Whereas with scalar<a id="4200"></a> multiplication<a id="4150"></a> <code>A .* B</code> gives the same result as <code>B .* A</code>, this is not the case<a id="3992"></a> with matrix<a id="4090"></a> multiplication<a id="4151"></a>. In fact, if <code>A * B</code> works, <code>B * A</code> will not work unless both matrices<a id="4069"></a> are square<a id="4216"></a>, and even then the results are different. (Proof of this can be derived immediately from Figure 12.3 by eliminating the third row and column and exchanging <code>a</code> for <code>b</code>. All four terms of the result of <code>A * B</code> are different from <code>B * A</code>.)</li>
-              <li>Whereas with scalar<a id="4201"></a> multiplication<a id="4152"></a> the original array<a id="3987"></a> <code>A</code> can be recovered by dividing the result by <code>B</code>, this is not the case<a id="3993"></a> with matrix<a id="4091"></a> multiplication<a id="4153"></a> unless both matrices<a id="4070"></a> are square<a id="4217"></a>.</li>
-              <li>The <b>identity matrix<a id="4092"></a></b>, sometimes given the symbol <code>I<sub>n</sub></code>, is a square<a id="4218"></a> matrix<a id="4093"></a> with <code>n</code> rows and <code>n</code> columns that is zero everywhere except on its major diagonal<a id="4013"></a>, which contains the value<a id="4224"></a> 1. In has the special property that when pre-multiplied by any matrix<a id="4094"></a> <code>A</code> with <code>n</code> columns, or post-multiplied with any matrix<a id="4095"></a> <code>A</code> with <code>n</code> rows, the result is <code>A</code>. We will need this property to derive matrix<a id="4096"></a> division below. (The built-in function<a id="4025"></a> <code>eye(<a id="4024"></a>...)</code> generates the identity matrix<a id="4097"></a>.)</li>
+              <li>If, as illustrated, <code>A</code> is an <code>m x n</code> matrix<a id="12749"></a> and<a id="12593"></a> B is an <code>n x p</code> matrix<a id="12750"></a>, the result of<a id="12939"></a> <code>A * B</code> is an <code>m x p</code> matrix<a id="12751"></a>.</li>
+              <li>The item at <code>(i, j)</code> in the result matrix<a id="12752"></a> is the sum of<a id="12940"></a> the scalar<a id="13035"></a> product of<a id="12941"></a> the <code>ith</code> row of<a id="12942"></a> <code>A</code> and<a id="12594"></a> the <code>jth</code> column of<a id="12943"></a> <code>B</code>.</li>
+              <li>Whereas with<a id="12666"></a> scalar<a id="13036"></a> multiplication<a id="12487"></a> <code>A .* B</code> gives the same result as <code>B .* A</code>, this is not the case<a id="12506"></a> with<a id="12667"></a> matrix<a id="12753"></a> multiplication<a id="12488"></a>. In fact, if <code>A * B</code> works, <code>B * A</code> will not work unless both matrices<a id="12732"></a> are square<a id="13063"></a>, and<a id="12595"></a> even then the results are different. (Proof of<a id="12944"></a> this can be derived immediately from<a id="12549"></a> Figure<a id="13114"></a> 12.3 by eliminating the third row and<a id="12596"></a> column and<a id="12597"></a> exchanging <code>a</code> for<a id="13090"></a> <code>b</code>. All four terms of<a id="12945"></a> the result of<a id="12946"></a> <code>A * B</code> are different from<a id="12550"></a> <code>B * A</code>.)</li>
+              <li>Whereas with<a id="12668"></a> scalar<a id="13037"></a> multiplication<a id="12489"></a> the original array<a id="12461"></a> <code>A</code> can be recovered by dividing the result by <code>B</code>, this is not the case<a id="12507"></a> with<a id="12669"></a> matrix<a id="12754"></a> multiplication<a id="12490"></a> unless both matrices<a id="12733"></a> are square<a id="13064"></a>.</li>
+              <li>The <b>identity matrix<a id="12755"></a></b>, sometimes given the symbol <code>I<sub>n</sub></code>, is a square<a id="13065"></a> matrix<a id="12756"></a> with<a id="12670"></a> <code>n</code> rows and<a id="12598"></a> <code>n</code> columns that is zero everywhere except on<a id="12702"></a> its major diagonal<a id="12527"></a>, which contains the value<a id="13074"></a> 1. In has the special property that when pre-multiplied by any matrix<a id="12757"></a> <code>A</code> with<a id="12671"></a> <code>n</code> columns, or post-multiplied with<a id="12672"></a> any matrix<a id="12758"></a> <code>A</code> with<a id="12673"></a> <code>n</code> rows, the result is <code>A</code>. We will need this property to<a id="12835"></a> derive matrix<a id="12759"></a> division<a id="12466"></a> below. (The built-in function<a id="12540"></a> <code>eye(<a id="12539"></a>...)</code> generates the identity matrix<a id="12760"></a>.)</li>
           </ul>
-          <p>Figure 12.3 illustrates the mathematics for the case<a id="3994"></a> where a 3 x 2 matrix<a id="4098"></a> is multiplied by a 2 x 3 matrix<a id="4099"></a>, resulting in a 3 x 3 matrix<a id="4100"></a>.</p>
+          <p>Figure<a id="13115"></a> 12.3 illustrates the mathematics for<a id="13091"></a> the case<a id="12508"></a> where a 3 x 2 matrix<a id="12761"></a> is multiplied by a 2 x 3 matrix<a id="12762"></a>, resulting in a 3 x 3 matrix<a id="12763"></a>.</p>
       </div>
     </div>
 
@@ -105,13 +105,13 @@
       <!-- Matrix Division -->
       <h3 id="12_2_2">12.2.2	Matrix Division</h3>
       <div class="container">
-          <p>Matrix division is the logical<a id="4055"></a> process of reversing the effects of a matrix<a id="4101"></a> multiplication<a id="4154"></a>. The goal is as follows: given <code>A<sub>nxn</sub></code>, <code>B<sub>nxp</sub></code>, and <code>C<sub>nxp</sub></code>, where <code>C = A * B</code>, we wish to define the mathematical equivalent of <code>C/A</code> that will result in <code>B</code>.</p>
-          <p>Since <code>C = A * B</code>, we are actually searching<a id="4206"></a> for some matrix<a id="4102"></a> Kn3n by which we can multiply each side of the above equation:</p>
+          <p>Matrix division<a id="12467"></a> is the logical<a id="12481"></a> process of<a id="12947"></a> reversing the effects of<a id="12948"></a> a matrix<a id="12764"></a> multiplication<a id="12491"></a>. The goal is as follows: given <code>A<sub>nxn</sub></code>, <code>B<sub>nxp</sub></code>, and<a id="12599"></a> <code>C<sub>nxp</sub></code>, where <code>C = A * B</code>, we wish to<a id="12836"></a> define the mathematical equivalent of<a id="12949"></a> <code>C/A</code> that will result in <code>B</code>.</p>
+          <p>Since <code>C = A * B</code>, we are actually searching<a id="12522"></a> for<a id="13092"></a> some matrix<a id="12765"></a> Kn3n by which we can multiply each side of<a id="12950"></a> the above equation:</p>
           <p><code>K * C = K * A * B</code></p>
-          <p>This multiplication<a id="4155"></a> would accomplish the division we desire if <code>K * A</code> were to result in <code>I<sub>n</sub></code>, the identity matrix<a id="4103"></a>. If this were the case<a id="3995"></a>, pre-multiplying <code>C</code> by <code></code> would result in <code>I<sub>n</sub> * B</code>, or simply <code>B</code> by the definition of <code>In</code> above. The matrix<a id="4104"></a> <code>K</code> is referred to as the inverse of <code>A</code>, or <code>A<sup>-1</sup></code>. The algebra for computing this inverse is messy but well defined. In fact, Gaussian Elimination to solve linear<a id="4044"></a> simultaneous<a id="4208"></a> equations accomplishes the same thing. The MATLAB<a id="4057"></a> language defines both functions (<code>inv(<a id="4033"></a>A)</code>) and operators<a id="4190"></a> (“back divide,” \) that accomplish this. However, two things should be noted:</p>
+          <p>This multiplication<a id="12492"></a> would accomplish the division<a id="12468"></a> we desire if <code>K * A</code> were to<a id="12837"></a> result in <code>I<sub>n</sub></code>, the identity matrix<a id="12766"></a>. If this were the case<a id="12509"></a>, pre-multiplying <code>C</code> by <code></code> would result in <code>I<sub>n</sub> * B</code>, or simply <code>B</code> by the definition of<a id="12951"></a> <code>In</code> above. The matrix<a id="12767"></a> <code>K</code> is referred to<a id="12838"></a> as the inverse of<a id="12952"></a> <code>A</code>, or <code>A<sup>-1</sup></code>. The algebra for<a id="13093"></a> computing this inverse is messy but well defined<a id="12565"></a>. In fact, Gaussian Elimination to<a id="12839"></a> solve linear<a id="12650"></a> simultaneous<a id="13054"></a> equations accomplishes the same thing. The MATLAB<a id="12709"></a> language defines both functions<a id="13070"></a> (<code>inv(<a id="12555"></a>A)</code>) and<a id="12600"></a> operators<a id="12902"></a> (“back divide,” \) that accomplish this. However, two things should be noted:</p>
           <ul>
-              <li>This inverse does not exist for all matrices<a id="4071"></a>—if any two rows or columns of a matrix<a id="4105"></a> are linearly related, the matrix<a id="4106"></a> is <b><em>singular</em></b> and does not have an inverse</li>
-              <li>Only non-singular, square<a id="4219"></a> matrices<a id="4072"></a> have an inverse (just as a set of linear<a id="4045"></a> equations is soluble only if there are as many equations as there are unknown variables)</li>
+              <li>This inverse does not exist for<a id="13094"></a> all matrices<a id="12734"></a>—if any two rows or columns of<a id="12953"></a> a matrix<a id="12768"></a> are linearly related, the matrix<a id="12769"></a> is <b><em>singular</em></b> and<a id="12601"></a> does not have an inverse</li>
+              <li>Only non-singular, square<a id="13066"></a> matrices<a id="12735"></a> have an inverse (just as a set of<a id="12954"></a> linear<a id="12651"></a> equations is soluble only if there are as many equations as there are unknown variables)</li>
           </ul>
       </div>
     </div>
@@ -120,7 +120,7 @@
       <!-- Matrix Exponentiation -->
       <h3 id="12_2_3">12.2.3	Matrix  Exponentiation</h3>
       <div class="container">
-          <p>For completeness, we mention here that matrix<a id="4107"></a> operations<a id="4188"></a> include exponentiation<a id="4021"></a>. However, this does not suggest that one would encounter <code>A<sub>nxn</sub><sup>B<sub>nxn</sub></sup></code> in the scope of our applications. Rather, our usage of matrix<a id="4108"></a> exponentiation<a id="4022"></a> will be confined to <code>A<sup>k</sup></code> where <code>k</code> is any non-zero integer value<a id="4225"></a>. The result for positive <code>k</code> is accomplished by multiplying <code>A</code> by itself <code>k</code> times (using matrix<a id="4109"></a> multiplication<a id="4156"></a>). The result for negative <code>k</code> is accomplished by inverting <code>A<sup>-k</sup></code>. (There is, in fact, meaning in matrix<a id="4110"></a> exponentials with non- scalar<a id="4202"></a> exponents, but this involves advanced concepts with eigen values and eigenvectors and is beyond the scope of this text<a id="4222"></a>.)</p>
+          <p>For completeness, we mention here that matrix<a id="12770"></a> operations<a id="12900"></a> include exponentiation<a id="12536"></a>. However, this does not suggest that one would encounter <code>A<sub>nxn</sub><sup>B<sub>nxn</sub></sup></code> in the scope of<a id="12955"></a> our applications. Rather, our usage of<a id="12956"></a> matrix<a id="12771"></a> exponentiation<a id="12537"></a> will be confined to<a id="12840"></a> <code>A<sup>k</sup></code> where <code>k</code> is any non-zero integer value<a id="13075"></a>. The result for<a id="13095"></a> positive <code>k</code> is accomplished by multiplying <code>A</code> by itself <code>k</code> times (using matrix<a id="12772"></a> multiplication<a id="12493"></a>). The result for<a id="13096"></a> negative <code>k</code> is accomplished by inverting <code>A<sup>-k</sup></code>. (There is, in fact, meaning in matrix<a id="12773"></a> exponentials with<a id="12674"></a> non- scalar<a id="13038"></a> exponents, but this involves advanced concepts with<a id="12675"></a> eigen values and<a id="12602"></a> eigenvectors and<a id="12603"></a> is beyond the scope of<a id="12957"></a> this text<a id="13072"></a>.)</p>
       </div>
     </div>
   </div>
@@ -129,14 +129,14 @@
     <!-- Implementation -->
     <h2 id="12_3">12.3  Implementation</h2>
     <div class="container">
-        <p>In this section, we see how MATLAB<a id="4058"></a> implements matrix<a id="4111"></a> multiplication<a id="4157"></a> and division. However, since applications that require matrix<a id="4112"></a> exponentiation<a id="4023"></a> A<sup>k</sup> where k is anything but a scalar<a id="4203"></a> quantity are beyond the scope of this text<a id="4223"></a>, we will not look at its implementation in MATLAB<a id="4059"></a>. </p>
+        <p>In this section, we see how MATLAB<a id="12710"></a> implements matrix<a id="12774"></a> multiplication<a id="12494"></a> and<a id="12604"></a> division<a id="12469"></a>. However, since applications that require matrix<a id="12775"></a> exponentiation<a id="12538"></a> A<sup>k</sup> where k is anything but a scalar<a id="13039"></a> quantity are beyond the scope of<a id="12958"></a> this text<a id="13073"></a>, we will not look at its implementation<a id="12912"></a> in MATLAB<a id="12711"></a>. </p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Matrix Multiplication">
       <!-- Matrix Multiplication -->
       <h3 id="12_3_1">12.3.1	Matrix Multiplication</h3>
       <div class="container">
-          <p>Matrix multiplication<a id="4158"></a> is accomplished by using the “normal” multiplication<a id="4159"></a> symbol, as illustrated in Exercise 12.1.</p>
+          <p>Matrix multiplication<a id="12495"></a> is accomplished by using the “normal” multiplication<a id="12496"></a> symbol, as illustrated in Exercise 12.1.</p>
           <div class="exercise">#exercise_12_1#</div>
       </div>
     </div>
@@ -145,13 +145,13 @@
       <!-- Matrix Division -->
       <h3 id="12_3_2">12.3.2	Matrix Division</h3>
       <div class="container">
-          <p>Matrix division is accomplished in a number of ways, all of which appear to work, but some give the wrong answer. Returning to the division problem described in Section 12.2.2, we know that <code>A</code> is a square<a id="4220"></a> matrix<a id="4113"></a> of side <code>n</code>, and <code>B</code> and <code>C</code> have <code>n</code> rows, and <code>C = A * B</code>. If we are actually given the matrices<a id="4073"></a> <code>A</code> and <code>B</code>, we can compute <code>B</code> in one of the following ways:</p>
+          <p>Matrix division<a id="12470"></a> is accomplished in a number of<a id="12959"></a> ways, all of<a id="12960"></a> which appear to<a id="12841"></a> work, but some give the wrong answer. Returning to<a id="12842"></a> the division<a id="12471"></a> problem described in Section 12.2.2, we know that <code>A</code> is a square<a id="13067"></a> matrix<a id="12776"></a> of<a id="12961"></a> side <code>n</code>, and<a id="12605"></a> <code>B</code> and<a id="12606"></a> <code>C</code> have <code>n</code> rows, and<a id="12607"></a> <code>C = A * B</code>. If we are actually given the matrices<a id="12736"></a> <code>A</code> and<a id="12608"></a> <code>B</code>, we can compute <code>B</code> in one of<a id="12962"></a> the following ways:</p>
           <ul>
-              <li><code>B = inv(<a id="4034"></a>A) * C</code> — using the MATLAB<a id="4060"></a> <code>inv(<a id="4035"></a>...)</code> function<a id="4026"></a> to compute the inverse of <code>B</code></li>
-              <li><code>B = A \ C</code> — "back dividing" <code>B</code> into <code>C</code> to produce the same result</li>
-              <li><code>B = C / A</code> — apparently performing the same operation<a id="4174"></a>, but <em>giving different answers</em></li>
+              <li><code>B = inv(<a id="12556"></a>A) * C</code> — using the MATLAB<a id="12712"></a> <code>inv(<a id="12557"></a>...)</code> function<a id="12541"></a> to<a id="12843"></a> compute the inverse of<a id="12963"></a> <code>B</code></li>
+              <li><code>B = A \ C</code> — "back dividing" <code>B</code> into <code>C</code> to<a id="12844"></a> produce the same result</li>
+              <li><code>B = C / A</code> — apparently performing the same operation<a id="12572"></a>, but <em>giving different answers</em></li>
           </ul>
-          <p>The order in which the matrix<a id="4114"></a> multiply is done affects the value<a id="4226"></a> of the result; therefore, care must be taken to ensure that the appropriate inversion or division is used. Study the results of Exercise 12.2 carefully.</p>
+          <p>The order in which the matrix<a id="12777"></a> multiply is done affects the value<a id="13076"></a> of<a id="12964"></a> the result; therefore, care must be taken to<a id="12845"></a> ensure that the appropriate inversion or division<a id="12472"></a> is used. Study the results of<a id="12965"></a> Exercise 12.2 carefully.</p>
           <div class="exercise">#exercise_12_2#</div>
       </div>
     </div>
@@ -161,45 +161,45 @@
     <!-- Rotating Coordinates -->
     <h2 id="12_4">12.4  Rotating Coordinates</h2>
     <div class="container">
-        <p>A common use for matrix<a id="4115"></a> multiplication<a id="4160"></a> is for rotating coordinates in two or three dimensions. Previously we have seen the ability to rotate a complete picture by changing the viewing angle. We can move and scale<a id="4205"></a> items on a plot by adding coordinate offsets or multiplying them by scalar<a id="4204"></a> quantities. However, frequently the need arises to rotate the coordinates of a graphical object by some angle. We can use matrix<a id="4116"></a> multiplication<a id="4161"></a> to rotate individual items in a picture in two or three dimensions.</p>
+        <p>A common use for<a id="13097"></a> matrix<a id="12778"></a> multiplication<a id="12497"></a> is for<a id="13098"></a> rotating<a id="12690"></a> coordinates in two or three dimensions. Previously we have seen the ability to<a id="12846"></a> rotate a complete picture by changing<a id="12818"></a> the viewing angle. We can move and<a id="12609"></a> scale<a id="13041"></a> items on<a id="12703"></a> a plot by adding coordinate offsets or multiplying them by scalar<a id="13040"></a> quantities. However, frequently the need arises to<a id="12847"></a> rotate the coordinates of<a id="12966"></a> a graphical object by some angle. We can use matrix<a id="12779"></a> multiplication<a id="12498"></a> to<a id="12848"></a> rotate individual items in a picture in two or three dimensions.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="2-D Rotation">
       <!-- 2-D Rotation -->
-      <h3 id="12_4_1">12.4.1	2-D Rotation</h3>
+      <h3 id="12_4_1">12.4.1	2-D<a id="12903"></a> Rotation</h3>
       <div class="container clearfix">
           <div class="float-sm-right card">
               <img src="..\Images\Fig_12_4.JPG" alt="Figure 12.4" class="fig card-img">
-              <p class="figure-name card-title">Figure 12.4: Rotating Cartesian Coordinates</p>
+              <p class="figure-name card-title">Figure<a id="13116"></a> 12.4: Rotating Cartesian Coordinates</p>
           </div>
-          <p>The mathematics implementing rotation in two dimensions is relatively straightforward, as shown in Figure 12.4. If the original point location P is (x, y) and you wish to find the point P* (x*, y*) that is the result of rotating P by the angle &theta; about the origin of coordinates, the mathematics are as follows:</p>
+          <p>The mathematics implementing rotation<a id="12808"></a> in two dimensions is relatively straightforward, as shown in Figure<a id="13117"></a> 12.4. If the original point location P is (x, y) and<a id="12610"></a> you wish to<a id="12849"></a> find the point P* (x*, y*) that is the result of<a id="12967"></a> rotating<a id="12691"></a> P by the angle &theta; about the origin of<a id="12968"></a> coordinates, the mathematics are as follows:</p>
           <p><code>x* = x cos&theta;  − y sin&theta;</code><br>
           <code>y* = x sin&theta;  + y cos&theta;</code></p>
-          <p>which can be expressed as the matrix<a id="4117"></a> equation:</p>
+          <p>which can be expressed as the matrix<a id="12780"></a> equation:</p>
           <p><code>P* = A * P</code></p>
           <p>where A is found by:</p>
           <p>A = [cos&theta; −sin&theta;; sin&theta; cos&theta;]</p>
-          <p>To rotate the x-y coordinates of a graphic object in the x-y plane about some point, P, other than the origin, you would do as follows:</p>
+          <p>To rotate the x-y coordinates of<a id="12969"></a> a graphic object in the x-y plane about some point, P, other than the origin, you would do as follows:</p>
           <ol>
-              <li>Translate the object so that P is at the origin by subtracting P from all the object’s coordinates</li>
-              <li>Perform the rotation by multiplying each coordinate by the rotation matrix<a id="4118"></a> shown above</li>
-              <li>Translate the rotated object back to P by adding P to all the rotated coordinates</li>
+              <li>Translate the object so that P is at the origin by subtracting P from<a id="12551"></a> all the object’s coordinates</li>
+              <li>Perform the rotation<a id="12809"></a> by multiplying each coordinate by the rotation<a id="12810"></a> matrix<a id="12781"></a> shown above</li>
+              <li>Translate the rotated object back to<a id="12850"></a> P by adding P to<a id="12851"></a> all the rotated coordinates</li>
           </ol>
-          <p><b>Rotating a Line</b> Listing 12.1 illustrates a simple script to rotate a line about the origin.</p>
-          <p>Figure 12.5 shows the plot resulting from this script.</p>
+          <p><b>Rotating a Line</b> Listing 12.1 illustrates a simple script to<a id="12852"></a> rotate a line about the origin.</p>
+          <p>Figure<a id="13118"></a> 12.5 shows the plot resulting from<a id="12552"></a> this script.</p>
           <span class="listing">Listing 12.1</span>
           <div class="card-deck">
               <div class="col-sm-6 card">
                   <img src="..\Images\Fig_12_5.JPG" alt="Figure 12.5" class="fig card-img">
-                  <p class="figure-name card-title">Figure 12.5: Line Rotations</p>
+                  <p class="figure-name card-title">Figure<a id="13119"></a> 12.5: Line Rotations</p>
               </div>
               <div class="col-sm-6">
-                  <video controls class="fig"><source src="..\Images\Fig_12_6.mp4" type="video/mp4">Figure 12.6</video>
-                  <p class="figure-name"><b>Figure 12.6: Stars</b></p>
+                  <video controls class="fig"><source src="..\Images\Fig_12_6.mp4" type="video/mp4">Figure<a id="13120"></a> 12.6</video>
+                  <p class="figure-name"><b>Figure<a id="13121"></a> 12.6: Stars</b></p>
               </div>
           </div>
-          <p><b>Twinkling Stars</b> As a second example, consider the problem of simulating twinkling stars. One way to accomplish this is to draw two triangles for each star rotating in opposite directions. The script shown in Listing 12.2 accomplishes this.<p>
-          <p>The results of this script are shown in Figure 12.6.</p>
+          <p><b>Twinkling Stars</b> As a second example<a id="13044"></a>, consider the problem of<a id="12970"></a> simulating twinkling stars. One way to<a id="12853"></a> accomplish this is to<a id="12854"></a> draw two triangles for<a id="13099"></a> each star rotating<a id="12692"></a> in opposite directions. The script shown in Listing 12.2 accomplishes this.<p>
+          <p>The results of<a id="12971"></a> this script are shown in Figure<a id="13122"></a> 12.6.</p>
           <div class="listing">#listing_12_2#</div>
           <div class="listing">#listing_12_3#</div>
       </div>
@@ -207,22 +207,22 @@
 
     <div class="chp-subsection" data-sub-num="2" data-sub-name="3-D Rotation">
       <!-- 3-D Rotation -->
-      <h3 id="12_4_2">12.4.2	3-D Rotation</h3>
+      <h3 id="12_4_2">12.4.2	3-D<a id="12907"></a> Rotation</h3>
       <div class="container clearfix">
-          <p>The mathematics implementing rotation in three dimensions is a natural extension of the 2-D rotation case<a id="3996"></a>. We present here a simple way to make this extension. The 2-D rotation in Section 12.4.1 that rotates by the angle &theta; in the x-y plane is actually rotating about the z-axis. If P* and P are now 3-D coordinates, we can rotate P by an angle &theta; about the z-axis with the equation:</p>
+          <p>The mathematics implementing rotation<a id="12811"></a> in three dimensions is a natural extension of<a id="12972"></a> the 2-D<a id="12904"></a> rotation<a id="12812"></a> case<a id="12510"></a>. We present here a simple way to<a id="12855"></a> make this extension. The 2-D<a id="12905"></a> rotation<a id="12813"></a> in Section 12.4.1 that rotates by the angle &theta; in the x-y plane is actually rotating<a id="12693"></a> about the z-axis. If P* and<a id="12611"></a> P are now 3-D<a id="12908"></a> coordinates, we can rotate P by an angle &theta; about the z-axis with<a id="12676"></a> the equation:</p>
           <p><code>P* = R<sub>z</sub> * P</code></p>
           <p>where R<sub>z</sub> is computed as</p>
           <p><code>R<sub>z</sub> =	[cos&theta;, -sin&theta;, 0; sin&theta;, cos&theta;, 0; 0, 0 1]</code></p>
-          <p>Similarly, we can develop matrices<a id="4074"></a> R<sub>x</sub> and R<sub>y</sub> that rotate about the x and y axes by angles &phi; and &psi;, respectively.</p>
+          <p>Similarly, we can develop matrices<a id="12737"></a> R<sub>x</sub> and<a id="12612"></a> R<sub>y</sub> that rotate about the x and<a id="12613"></a> y axes by angles &phi; and<a id="12614"></a> &psi;, respectively.</p>
           <p><code>R<sub>x</sub> =	[1,	0, 0; 0, cos&phi;, -sin&phi;; 0, sin&phi;, cos&phi;]</code></p>
           <p><code>R<sub>y</sub> =	[cos&psi;, 0, sin&psi;; 0, 1, 0; -sin&psi;, 0, cos&psi;]</code></p>
           <p><code>P* = R<sub>x</sub> * R<sub>y</sub> * R<sub>z</sub> * P</code></p>
           <div class="float-sm-right">
-              <video controls class="fig"><source src="..\Images\Fig_12_7.mp4" type="video/mp4">Figure 12.7</video>
-              <p class="figure-name"><b>Figure 12.7: Solid Cubes</b></p>
+              <video controls class="fig"><source src="..\Images\Fig_12_7.mp4" type="video/mp4">Figure<a id="13123"></a> 12.7</video>
+              <p class="figure-name"><b>Figure<a id="13124"></a> 12.7: Solid Cubes</b></p>
           </div>
-          <p>An example of a script to rotate the solid cube drawn in Chapter 11 is shown in Listing 12.4. The major problem with rotating solid objects<a id="4170"></a> is that the coordinates of the object are defined as arrays of points. However, the rotation matrices<a id="4075"></a> need each set of coordinates in single rows. To accomplish this, we will use the <code>reshape(<a id="4192"></a>...)</code> function<a id="4027"></a> to transform the coordinates to and from the row vectors necessary for the coordinate rotation.</p>
-          <p>The results after running this script are shown in Figure 12.7. Notice that the mechanization of the top face has caused a "wrapped parcel" effect on the light reflections off that surface<a id="4221"></a>.</p>
+          <p>An example<a id="13045"></a> of<a id="12973"></a> a script to<a id="12856"></a> rotate the solid cube<a id="13071"></a> drawn in Chapter 11 is shown in Listing 12.4. The major problem with<a id="12677"></a> rotating<a id="12694"></a> solid objects<a id="12886"></a> is that the coordinates of<a id="12974"></a> the object are defined<a id="12566"></a> as arrays of<a id="12975"></a> points. However, the rotation<a id="12814"></a> matrices<a id="12738"></a> need each set of<a id="12976"></a> coordinates in single rows. To accomplish this, we will use the <code>reshape(<a id="12562"></a>...)</code> function<a id="12542"></a> to<a id="12857"></a> transform the coordinates to<a id="12858"></a> and<a id="12615"></a> from<a id="12553"></a> the row vectors necessary for<a id="13100"></a> the coordinate rotation<a id="12815"></a>.</p>
+          <p>The results after running<a id="13052"></a> this script are shown in Figure<a id="13125"></a> 12.7. Notice that the mechanization of<a id="12977"></a> the top face has caused a "wrapped parcel" effect on<a id="12704"></a> the light reflections off that surface<a id="12910"></a>.</p>
           <div class="listing">#listing_12_4#</div>
       </div>
     </div>
@@ -232,17 +232,17 @@
     <!-- Solving Simultaneous Linear Equations -->
     <h2 id="12_5">12.5 Solving Simultaneous Linear Equations</h2>
     <div class="container">
-        <p>A common use for matrix<a id="4119"></a> division is solving simultaneous<a id="4209"></a> linear<a id="4046"></a> equations. To be solvable, simultaneous<a id="4210"></a> linear<a id="4047"></a> equations must be expressed as N independent equations involving N unknown variables, x<sub>i</sub>. They are usually expressed in the following form:</p>
+        <p>A common use for<a id="13101"></a> matrix<a id="12782"></a> division<a id="12473"></a> is solving simultaneous<a id="13055"></a> linear<a id="12652"></a> equations. To be solvable, simultaneous<a id="13056"></a> linear<a id="12653"></a> equations must be expressed as N independent equations involving N unknown variables, x<sub>i</sub>. They are usually expressed in the following form:</p>
         <p><code>A<sub>11</sub>x<sub>1</sub> + A<sub>12</sub>x<sub>2</sub> + ... + A<sub>1N</sub>x<sub>N</sub> = c<sub>1</sub></code></p>
         <p><code>A<sub>21</sub>x<sub>1</sub> + A<sub>22</sub>x<sub>2</sub> + ... + A<sub>2N</sub>x<sub>N</sub> = c<sub>2</sub></code></p>
         <p> ... </p>
         <p><code>A<sub>N1</sub>x<sub>1</sub> + A<sub>N2</sub>x<sub>2</sub> + ... + A<sub>NN</sub>x<sub>N</sub> = c<sub>N</sub></code></p>
-        <p>In matrix<a id="4120"></a> form, they can be expressed as follows:</p>
+        <p>In matrix<a id="12783"></a> form, they can be expressed as follows:</p>
         <p><code>A<sub>N x N</sub> = X<sub>N x 1</sub> = C<sub>N x 1</sub></code></p>
-        <p>from which, since all of the values in A and C are constants, we can immediately solve for the column vector<a id="4008"></a> X by back division:</p>
+        <p>from<a id="12554"></a> which, since all of<a id="12978"></a> the values in A and<a id="12616"></a> C are constants, we can immediately solve for<a id="13102"></a> the column vector<a id="12523"></a> X by back division<a id="12474"></a>:</p>
         <p><code>X = A\C</code></p>
-        <p>or by using the matrix<a id="4121"></a> inverse function<a id="4028"></a>:</p>
-        <p><code>X = inv(<a id="4036"></a>A) * C</code></p>
+        <p>or by using the matrix<a id="12784"></a> inverse function<a id="12543"></a>:</p>
+        <p><code>X = inv(<a id="12558"></a>A) * C</code></p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Intersecting Lines">
@@ -251,17 +251,17 @@
       <div class="container clearfix">
           <div class="float-sm-right card">
               <img src="..\Images\Fig_12_8.JPG" alt="Figure 12.8" class="fig card-img">
-              <p class="figure-name card-title">Figure 12.8: Lines intersecting</p>
+              <p class="figure-name card-title">Figure<a id="13126"></a> 12.8: Lines intersecting<a id="12688"></a></p>
           </div>
-          <p>A typical example of a simultaneous<a id="4211"></a> equation problem might take the following form. Consider two straight lines on a plot with the following general form:</p>
+          <p>A typical example<a id="13046"></a> of<a id="12979"></a> a simultaneous<a id="13057"></a> equation problem might take the following form. Consider two straight lines on<a id="12705"></a> a plot with<a id="12678"></a> the following general form:</p>
           <p><code>A<sub>11</sub>x + A<sub>12</sub>y = c<sub>1</sub></code></p>
           <p><code>A<sub>21</sub>x + A<sub>22</sub>y = c<sub>2</sub></code></p>
-          <p>These lines intersect at some point P (x, y) that is the solution to both of these equations. The equations can be rewritten in matrix<a id="4122"></a> form as follows:</p>
+          <p>These lines intersect at some point P (x, y) that is the solution to<a id="12859"></a> both of<a id="12980"></a> these equations. The equations can be rewritten in matrix<a id="12785"></a> form as follows:</p>
           <p><code>A * V = c</code></p>
-          <p>where <code>c</code> is the column vector<a id="4009"></a> <code>[c1 c2]'</code> and <code>V</code> is the required result, the column vector<a id="4010"></a> <code>[x y]'</code>. The solution is obtained by matrix<a id="4123"></a> division as follows:</p>
+          <p>where <code>c</code> is the column vector<a id="12524"></a> <code>[c1 c2]'</code> and<a id="12617"></a> <code>V</code> is the required result, the column vector<a id="12525"></a> <code>[x y]'</code>. The solution is obtained by matrix<a id="12786"></a> division<a id="12475"></a> as follows:</p>
           <p><code>V = A \ c</code></p>
-          <p>Recall that back divide, like the <code>inv(<a id="4037"></a>...)</code> function<a id="4029"></a>, will fail to produce a result if the matrix<a id="4124"></a> is singular, that is, has two rows or columns that have a linear<a id="4048"></a> relationship. In the specific example of two intersecting lines, this singularity occurs when the two lines are parallel, in which case<a id="3997"></a> there is no point of intersection. Listing 12.5 shows the solution to a pair of simultaneous<a id="4212"></a> equations.</p>
-          <p>Figure 12.8 shows the result of this script.</p>
+          <p>Recall that back divide, like the <code>inv(<a id="12559"></a>...)</code> function<a id="12544"></a>, will fail to<a id="12860"></a> produce a result if the matrix<a id="12787"></a> is singular, that is, has two rows or columns that have a linear<a id="12654"></a> relationship. In the specific example<a id="13047"></a> of<a id="12981"></a> two intersecting<a id="12689"></a> lines, this singularity occurs when the two lines are parallel, in which case<a id="12511"></a> there is no point of<a id="12982"></a> intersection. Listing 12.5 shows the solution to<a id="12861"></a> a pair of<a id="12983"></a> simultaneous<a id="13058"></a> equations.</p>
+          <p>Figure<a id="13127"></a> 12.8 shows the result of<a id="12984"></a> this script.</p>
           <div class="listing">#listing_12_5#</div>
       </div>
     </div>
@@ -271,14 +271,14 @@
     <!-- Engineering Examples -->
     <h2 id="12_6">12.6 Engineering Examples</h2>
     <div class="container">
-        <p>The following examples illustrate applications of the matrix<a id="4125"></a> capabilities discussed in this chapter.</p>
+        <p>The following examples<a id="12568"></a> illustrate applications of<a id="12985"></a> the matrix<a id="12788"></a> capabilities discussed in this chapter.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Ceramic Composition">
       <!-- Ceramic Composition -->
-      <h3 id="12_6_1">12.6.1 Ceramic Composition<a id="3999"></a></h3>
+      <h3 id="12_6_1">12.6.1 Ceramic<a id="12530"></a> Composition<a id="12513"></a></h3>
       <div class="container">
-          <p>Industrial ceramics plants require mixtures with precise formulations in order to produce products of consistent quality. For example, a factory might require 100 kg of a mix consisting of 67% silica, 5% alumina, 2% calcium oxide, and 26% magnesium oxide. However, the raw material provided is not pure quantities of these materials. Rather, they are delivered as batches of material that consist of the required components in different proportions. Each batch of raw materials is analyzed to determine their composition, and we will need to do the analysis to determine the proportions of the raw materials to mix in order to accomplish the appropriate formulation. The raw materials we will use here are feldspar, diatomite, magnesite, and talc. Table 12.1 illustrates a typical analysis of the composition of these compounds.</p>
+          <p>Industrial ceramics plants require mixtures with<a id="12679"></a> precise formulations in order to<a id="12862"></a> produce products of<a id="12986"></a> consistent quality. For example<a id="13048"></a>, a factory might require 100 kg of<a id="12987"></a> a mix consisting of<a id="12988"></a> 67% silica, 5% alumina, 2% calcium oxide, and<a id="12618"></a> 26% magnesium oxide. However, the raw material provided is not pure quantities of<a id="12989"></a> these materials. Rather, they are delivered as batches of<a id="12990"></a> material that consist of<a id="12991"></a> the required components in different proportions. Each batch of<a id="12992"></a> raw materials is analyzed to<a id="12863"></a> determine their composition, and<a id="12619"></a> we will need to<a id="12864"></a> do the analysis to<a id="12865"></a> determine the proportions of<a id="12993"></a> the raw materials to<a id="12866"></a> mix in order to<a id="12867"></a> accomplish the appropriate formulation. The raw materials we will use here are feldspar, diatomite, magnesite, and<a id="12620"></a> talc. Table 12.1 illustrates a typical analysis of<a id="12994"></a> the composition of<a id="12995"></a> these compounds.</p>
           <table class="table">
               <thead>
                   <tr>
@@ -318,9 +318,9 @@
                   <td>0.2670</td>
               </tr>
           </table>
-          <p>For example, if we mixed W<sub>f</sub> kg of feldspar, W<sub>d</sub> kg of diatomite, W<sub>m</sub> kg of magnesite, and W<sub>t</sub> kg of talc, the amount of silica would be 0.695 W<sub>f</sub> + 0.897 W<sub>d</sub> + 0.067 W<sub>m</sub> + 0.692 W<sub>t</sub>. Repeating this equation for the other components produces a matrix<a id="4126"></a> equation that reduces to:</p>
+          <p>For example<a id="13049"></a>, if we mixed W<sub>f</sub> kg of<a id="12996"></a> feldspar, W<sub>d</sub> kg of<a id="12997"></a> diatomite, W<sub>m</sub> kg of<a id="12998"></a> magnesite, and<a id="12621"></a> W<sub>t</sub> kg of<a id="12999"></a> talc, the amount of<a id="13000"></a> silica would be 0.695 W<sub>f</sub> + 0.897 W<sub>d</sub> + 0.067 W<sub>m</sub> + 0.692 W<sub>t</sub>. Repeating this equation for<a id="13103"></a> the other components produces a matrix<a id="12789"></a> equation that reduces to<a id="12868"></a>:</p>
           <p><code>C = A * W</code></p>
-          <p>where C is the required composition of the resulting mix, A is a 4 x 4 matrix<a id="4127"></a> showing the results of analyzing the four raw materials, and W is the proportions in which should we mix the raw material to produce the desired result. We find the appropriate amounts of the raw material by solving these equations:</p>
+          <p>where C is the required composition of<a id="13001"></a> the resulting mix, A is a 4 x 4 matrix<a id="12790"></a> showing the results of<a id="13002"></a> analyzing the four raw materials, and<a id="12622"></a> W is the proportions in which should we mix the raw material to<a id="12869"></a> produce the desired result. We find the appropriate amounts of<a id="13003"></a> the raw material by solving these equations:</p>
           <p><code>W = A\B</code></p>
           <p>A script that works this problem is shown in Listing 12.6.</p>
           <div class="listing">Listing 12.6</div>
@@ -331,19 +331,19 @@
       <!-- Analyzing an Electrical Circuit -->
       <h3 id="12_6_2">12.6.2 Analyzing an Electrical Circuit</h3>
       <div class="container clearfix">
-          <p>Figure 12.9 illustrates a typical electrical<a id="4016"></a> circuit with two voltage sources connected to five resistors with three closed loops. The voltages and resistances are given. We are asked to determine the voltage drop across R1. Solution techniques apply Ohm’s Law to the voltage drops around each closed circuit. When this technique is applied, the equations are as follows:</p>
+          <p>Figure<a id="13128"></a> 12.9 illustrates a typical electrical<a id="12531"></a> circuit with<a id="12680"></a> two voltage sources connected to<a id="12870"></a> five resistors with<a id="12681"></a> three closed loops. The voltages and<a id="12623"></a> resistances are given. We are asked to<a id="12871"></a> determine the voltage drop across R1. Solution techniques apply Ohm’s Law to<a id="12872"></a> the voltage drops around each closed circuit. When this technique is applied, the equations are as follows:</p>
           <div class="float-sm-right card">
               <img src="..\Images\Fig_12_9.JPG" alt="Figure 12.9" class="fig card-img">
-              <p class="figure-name card-title">Figure 12.9: Typical electrical<a id="4017"></a> circuit</p>
+              <p class="figure-name card-title">Figure<a id="13129"></a> 12.9: Typical electrical<a id="12532"></a> circuit</p>
           </div>
           <p><code>V<sub>1</sub> = i<sub>1</sub> * R<sub>1</sub> + (i<sub>1</sub> – i<sub>2</sub>) * R<sub>4</sub>
           <br>0 = i<sub>2</sub> * R<sub>2</sub> + (i<sub>2</sub> – i<sub>3</sub>) * R<sub>5</sub> + (i<sub>2</sub> – i<sub>1</sub>) * R<sub>4</sub>
           <br>–V<sub>2</sub> = i<sub>3</sub> * R<sub>3</sub> + (i<sub>3</sub> – i<sub>2</sub>) * R<sub>5</sub></code></p>
-          <p>When these three equations are manipulated to isolate the three currents, we have the following matrix<a id="4128"></a> equation:</p>
+          <p>When these three equations are manipulated to<a id="12873"></a> isolate the three currents, we have the following matrix<a id="12791"></a> equation:</p>
           <p><code>V = A * I</code></p>
           <p>which can be solved as usual by:</p>
           <p><code>I = A \ V</code></p>
-          <p>The script to accomplish this is shown in Listing 12.7.</p>
+          <p>The script to<a id="12874"></a> accomplish this is shown in Listing 12.7.</p>
           <div class="listing">#listing_12_7#</div>
       </div>
     </div>
@@ -352,100 +352,100 @@
   <!-- Chapter Summary -->
   <h3>Chapter Summary</h3>
   <div class="container">
-      <p><em>This chapter presented two specialized operations<a id="4189"></a> performed with matrices<a id="4076"></a>:</em></p>
+      <p><em>This chapter presented two specialized operations<a id="12901"></a> performed with<a id="12682"></a> matrices<a id="12739"></a>:</em></p>
       <ul>
-          <li>Matrix multiplication<a id="4162"></a> can be used for 2-D and 3-D coordinate rotations<a id="4193"></a> by building<a id="3990"></a> the appropriate rotation matrices<a id="4077"></a></li>
-          <li>Matrix division can be used for solving simultaneous<a id="4213"></a> equations by setting up the equations in the general form <code>B = A * x</code>, where the known matrix<a id="4129"></a> <code>A</code> is <code>n x n</code> and the known column vector<a id="4011"></a> <code>B</code> is <code>n x 1</code>; the unknown vector <code>x</code> is then found by <code>x = A\B</code> or <code>x = inv(<a id="4038"></a>A) * B</code></li>
+          <li>Matrix multiplication<a id="12499"></a> can be used for<a id="13104"></a> 2-D<a id="12906"></a> and<a id="12624"></a> 3-D<a id="12909"></a> coordinate rotations<a id="13029"></a> by building<a id="12504"></a> the appropriate rotation<a id="12816"></a> matrices<a id="12740"></a></li>
+          <li>Matrix division<a id="12476"></a> can be used for<a id="13105"></a> solving simultaneous<a id="13059"></a> equations by setting up the equations in the general form <code>B = A * x</code>, where the known matrix<a id="12792"></a> <code>A</code> is <code>n x n</code> and<a id="12625"></a> the known column vector<a id="12526"></a> <code>B</code> is <code>n x 1</code>; the unknown vector <code>x</code> is then found by <code>x = A\B</code> or <code>x = inv(<a id="12560"></a>A) * B</code></li>
       </ul>
   </div>
 <h2>Self Test</h2>
 <div class="container">
 
-Use the following questions to check your understanding of the material in this
+Use the following questions to<a id="12875"></a> check your understanding of<a id="13004"></a> the material in this
 chapter:
 <h3>True or False</h3>
 <ol>
-<li>All MATLAB<a id="4061"></a> classes<a id="4001"></a> exhibit some form of behavioral<a id="3989"></a> abstraction.</li>
-<li>Matrix multiplication<a id="4163"></a> requires that the inner dimensions match.</li>
-<li>The results of A * B and B * A are identical.</li>
-<li>Both A * A -1 and A -1 * A return the identity matrix<a id="4130"></a>.</li>
-<li>Multiplying inv(<a id="4039"></a>A) * B is logically equivalent to B / A.</li>
-<li>All sets of simultaneous<a id="4214"></a> linear<a id="4049"></a> equations can be solved by matrix<a id="4131"></a>
+<li>All MATLAB<a id="12713"></a> classes<a id="12515"></a> exhibit some form of<a id="13005"></a> behavioral<a id="12503"></a> abstraction.</li>
+<li>Matrix multiplication<a id="12500"></a> requires that the inner dimensions match.</li>
+<li>The results of<a id="13006"></a> A * B and<a id="12626"></a> B * A are identical.</li>
+<li>Both A * A -1 and<a id="12627"></a> A -1 * A return the identity matrix<a id="12793"></a>.</li>
+<li>Multiplying inv(<a id="12561"></a>A) * B is logically equivalent to<a id="12876"></a> B / A.</li>
+<li>All sets of<a id="13007"></a> simultaneous<a id="13060"></a> linear<a id="12655"></a> equations can be solved by matrix<a id="12794"></a>
 inversion.</li>
 </ol>
 <h3>Fill in the Blanks</h3>
 <ol>
-<li>Behavioral abstraction combines _____________ abstraction and
+<li>Behavioral abstraction combines _____________ abstraction and<a id="12628"></a>
 _______________ abstraction.</li>
-<li>The result of a matrix<a id="4132"></a> multiplication<a id="4164"></a> is a new matrix<a id="4133"></a> with the
-__________ count of the first matrix<a id="4134"></a> and the ___________ count of
+<li>The result of<a id="13008"></a> a matrix<a id="12795"></a> multiplication<a id="12501"></a> is a new matrix<a id="12796"></a> with<a id="12683"></a> the
+__________ count of<a id="13009"></a> the first matrix<a id="12797"></a> and<a id="12629"></a> the ___________ count of<a id="13010"></a>
 the second.</li>
 <li>To rotate a graphic object in the x-y plane about some point, P, other
-than the origin, you first ___________, then __________, and then
+than the origin, you first ___________, then __________, and<a id="12630"></a> then
 _____________________.</li>
-<li>To be soluble, simultaneous<a id="4215"></a> linear<a id="4050"></a> equations must be expressed as
+<li>To be soluble, simultaneous<a id="13061"></a> linear<a id="12656"></a> equations must be expressed as
 ______________ equations involving _______________variables, xi,
-and _____________values.</li>
+and<a id="12631"></a> _____________values.</li>
 </ol>
 
 <h3>Programming Projects</h3>
 <ol>
-<li>This is a set of simple matrix<a id="4135"></a> manipulations.
+<li>This is a set of<a id="13011"></a> simple matrix<a id="12798"></a> manipulations.
 <ul>
-<li>Create a five by six matrix<a id="4136"></a>, A , that contains random numbers<a id="4166"></a>
-between 0 and 10.</li>
-<li>Create a six by five matrix<a id="4137"></a>, B , that contains random numbers<a id="4167"></a>
-between 0 and 10.</li>
-<li>Find the inverse of matrix<a id="4138"></a> A*B and store it in the variable<a id="4229"></a>, C.</li>
-<li>Without iteration<a id="4040"></a>, create a new matrix<a id="4139"></a> D that is the same as A
-except that all values less<a id="4042"></a> than 5 are replaced by zero.</li>
-<li>Using iteration<a id="4041"></a>, create a new matrix<a id="4140"></a> F that is the same as A except
-that all values less<a id="4043"></a> than 5 are replaced by zero.</li>
-<li>Create a new matrix<a id="4141"></a> G that is the matrix<a id="4142"></a> A with the columns
+<li>Create a five by six matrix<a id="12799"></a>, A , that contains random numbers<a id="12820"></a>
+between 0 and<a id="12632"></a> 10.</li>
+<li>Create a six by five matrix<a id="12800"></a>, B , that contains random numbers<a id="12821"></a>
+between 0 and<a id="12633"></a> 10.</li>
+<li>Find the inverse of<a id="13012"></a> matrix<a id="12801"></a> A*B and<a id="12634"></a> store it in the variable<a id="13079"></a>, C.</li>
+<li>Without iteration<a id="12657"></a>, create a new matrix<a id="12802"></a> D that is the same as A
+except that all values less<a id="12659"></a> than 5 are replaced by zero.</li>
+<li>Using iteration<a id="12658"></a>, create a new matrix<a id="12803"></a> F that is the same as A except
+that all values less<a id="12660"></a> than 5 are replaced by zero.</li>
+<li>Create a new matrix<a id="12804"></a> G that is the matrix<a id="12805"></a> A with<a id="12684"></a> the columns
 reversed.<br>
-For example:<br>
+For example<a id="13050"></a>:<br>
 if A is [1 2 3; 3 2 5; 1 7 4], <br>
 G should be [3 2 1; 5 2 3; 4 7 1]</li>
-<li>Find the minimum<a id="4144"></a> value<a id="4227"></a> among all the elements in A and store
-your answer in the variable<a id="4230"></a> H.</li></ul>
+<li>Find the minimum<a id="12817"></a> value<a id="13077"></a> among all the elements<a id="13083"></a> in A and<a id="12635"></a> store
+your answer in the variable<a id="13080"></a> H.</li></ul>
 
-<li>Imagine that world leaders have decided to come up with a single
-currency for the world. This new currency, called the Eullar, is
-defined by the following:<br>
-Seven dollars and 3 Euros make 71 Eullars.<br>
-One dollar and 2 Euros make 20 Eullars.<br>
-You are a reputed economist, and your job is to find out the value<a id="4228"></a> of
-a dollar in terms of Eullars.</li>
-<li>As an enthusiastic and motivated student, you decided to go
-out and buy plenty of pens for all your classes<a id="4002"></a> this semester.
+<li>Imagine that world leaders have decided to<a id="12877"></a> come up with<a id="12685"></a> a single
+currency for<a id="13106"></a> the world. This new currency, called the Eullar, is
+defined<a id="12567"></a> by the following:<br>
+Seven dollars and<a id="12636"></a> 3 Euros make 71 Eullars.<br>
+One dollar and<a id="12637"></a> 2 Euros make 20 Eullars.<br>
+You are a reputed economist, and<a id="12638"></a> your job is to<a id="12878"></a> find out the value<a id="13078"></a> of<a id="13013"></a>
+a dollar in terms of<a id="13014"></a> Eullars.</li>
+<li>As an enthusiastic and<a id="12639"></a> motivated student, you decided to<a id="12879"></a> go
+out and<a id="12640"></a> buy plenty of<a id="13015"></a> pens for<a id="13107"></a> all your classes<a id="12516"></a> this semester.
 This spending spree unfortunately
 occurred before you realized your
-engineering<a id="4015"></a> classes<a id="4003"></a> seldom required the
-use of "ink." So now, you're left with
-four different types of pens and no
+engineering<a id="12529"></a> classes<a id="12517"></a> seldom required the
+use of<a id="13016"></a> "ink." So now, you're left with<a id="12686"></a>
+four different types<a id="12573"></a> of<a id="13017"></a> pens and<a id="12641"></a> no
 receipt—you only remember the total
-amount you spent, and not the price of
-each type of pen. You decide to get
-together with three of your friends who<a id="4231"></a>
+amount you spent, and<a id="12642"></a> not the price of<a id="13018"></a>
+each type of<a id="13019"></a> pen. You decide to<a id="12880"></a> get
+together with<a id="12687"></a> three of<a id="13020"></a> your friends who<a id="13108"></a>
 coincidentally did the same thing as
-you, buying the same four types of pens and knowing only
-the total amount. Write a script to find the prices of each type
-of pen.<br>
-<b>Hint</b>: In order to find the price of each individual pen, you
-could create a matrix<a id="4143"></a> called "pens," where each
-column represents a different type of pen and each
-row represents a different person and a column
-vector totals that contains the amount of money
-each of you spent on the pens.
+you, buying the same four types<a id="12574"></a> of<a id="13021"></a> pens and<a id="12643"></a> knowing only
+the total amount. Write a script to<a id="12881"></a> find the prices of<a id="13022"></a> each type
+of<a id="13023"></a> pen.<br>
+<b>Hint</b>: In order to<a id="12882"></a> find the price of<a id="13024"></a> each individual pen, you
+could create a matrix<a id="12806"></a> called "pens," where each
+column represents a different type of<a id="13025"></a> pen and<a id="12644"></a> each
+row represents a different person and<a id="12645"></a> a column
+vector totals that contains the amount of<a id="13026"></a> money
+each of<a id="13027"></a> you spent on<a id="12706"></a> the pens.
 </li>
-<li>Write a function<a id="4030"></a> called rotateLine that takes in two vectors, x and
-y , of the same length that represent a set or ordered pairs that
-could be used to plot a line. Your function<a id="4031"></a> should also take in a
+<li>Write a function<a id="12545"></a> called rotateLine that takes in two vectors, x and<a id="12646"></a>
+y , of<a id="13028"></a> the same length that represent a set or ordered pairs that
+could be used to<a id="12883"></a> plot a line. Your function<a id="12546"></a> should also take in a
 third parameter, theta , representing an angle in degrees. Your
-function<a id="4032"></a> should return xprime and yprime where xprime and yprime
-represent the line that is x and y rotated about the origin by the
+function<a id="12547"></a> should return xprime and<a id="12647"></a> yprime where xprime and<a id="12648"></a> yprime
+represent the line that is x and<a id="12649"></a> y rotated about the origin by the
 angle theta.<br>
-For example:<br>
+For example<a id="13051"></a>:<br>
 x = [ 7 7 11 11 7];<br>
 y = [-5 -9 -9 -5 -5];<br>
 [xprime yprime] = rotateLine(x, y, 90) returns:<br>
