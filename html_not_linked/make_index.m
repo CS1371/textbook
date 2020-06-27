@@ -125,6 +125,9 @@ function data = patch_up_children(data)
                 end
             end
             if ~found
+                if strcmp( child_name, 'slicing')
+                    ooh = 1;
+                end
                 fprintf(debug,'Couldn''t find parent of %s::%s\n', ...
                     lead_name, child_name);
             end
@@ -193,18 +196,23 @@ function [entry plug_sz] = insert_link(word, at, file_name, entry)
     global target
     global tg_sz
     
-    current_ID = current_ID + 1;
-    plug = sprintf('<a id="%d"></a>', current_ID);
-    file_str = [file_str(1:at-1) plug file_str(at:end)];
-    % add the reference in entry
-    word = entry.first;
-    if length(word) > tg_sz && all(word(1:tg_sz) == target)
-        ook = 0;
+    refs = entry.ref;
+    if length(refs) < 12
+        current_ID = current_ID + 1;
+        plug = sprintf('<a id="%d"></a>', current_ID);
+        file_str = [file_str(1:at-1) plug file_str(at:end)];
+        % add the reference in entry
+        word = entry.first;
+        if length(word) > tg_sz && all(word(1:tg_sz) == target)
+            ook = 0;
+        end
+        str = sprintf('#%d', current_ID);
+        new_ref = [file_name str];
+        entry.ref = [entry.ref {new_ref}];
+        plug_sz = length(plug);
+    else
+        plug_sz = 0;
     end
-    str = sprintf('#%d', current_ID);
-    new_ref = [file_name str];
-    entry.ref = [entry.ref {new_ref}];
-    plug_sz = length(plug);
 end
 
 

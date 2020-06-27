@@ -148,8 +148,8 @@
 <p>Two techniques are unique to arrays in general, and to vectors in particular:</p>
 
 <ul>
-	<li>Concatenation</li>
-	<li>Slicing (generalized indexing)</li>
+	<li>concatenation (stringing together)</li>
+	<li>slicing (generalized indexing)</li>
 </ul>
 
 <p><b>Arithmetic Operations:</b> Arithmetic operations can be performed collectively on the individual components of two vectors as long as both vectors are the same length, or one of the vectors is a scalar (i.e., a vector of length 1). Addition and subtraction have exactly the syntax you would expect, as illustrated in Exercise 4.3. Multiplication, division, and exponentiation, however, have a small syntactic idiosyncrasy related to the fact that these are element-by-element operations, not matrix operations. We will discuss matrix operations in Chapter 12. When the MATLAB language was designed, the ordinary symbols (<code>*</code>,<code>/</code>, and <code>^</code>) were reserved for matrix operations. However, element-by-element multiplicative operations are fundamentally different from matrix operations, and a new set of operators is required to specify these operations.</p>
@@ -158,7 +158,7 @@
 
 <p>These are the symbols <code>.*</code>, <code>./</code>, and <code>.^</code> {the dots are part of the operators, but the commas are not} that are used respectively for element-by- element multiplication, division, and exponentiation. Note that because matrix and element-by-element addition and subtraction are identical, no special operation symbols are required for <code>+</code> and <code>-</code>.</p>
 
-<p>In Exercise 4.3, we first see the addition and multiplication of a vector by a scalar quantity, and then element-by-element multiplication of <code>A</code> and <code>B</code>. The first error is generated because we omitted the &acirc;&euro;&tilde;<code>.</code>&acirc;&euro;&trade; on the multiply symbol, thereby invoking matrix multiplication, which is improper with the vector <code>A</code> and <code>B</code>. The second error occurs because two vectors involved in arithmetic operations must have the same size. Notice, incidentally, the use of the <code>%</code> sign indicating that the rest of the line is a comment.</p>
+<p>In Exercise 4.3, we first see the addition and multiplication of a vector by a scalar quantity, and then element-by-element multiplication of <code>A</code> and <code>B</code>. The first error is generated because we omitted the "<code>.</code>" on the multiply symbol, thereby invoking matrix multiplication, which is improper with the vector <code>A</code> and <code>B</code>. The second error occurs because two vectors involved in arithmetic operations must have the same size. Notice, incidentally, the use of the <code>%</code> sign indicating that the rest of the line is a comment.</p>
 
 <p>You can change the signs of all the values of a vector with the unary minus (<code>-</code>) operator.</p>
 
@@ -275,7 +275,7 @@ where the individual items in the brackets may be any vector defined as a consta
 
 <div class="exercise">#exercise_4_5#</div>
 
-<p><b>Slicing</b> is the name given to complex operations where elements are copied from specified locations in one vector to different locations in another vector. As we saw earlier, the basic operation of extracting and replacing the elements of a vector is called indexing. Furthermore, we saw that indexing is not confined to single elements in a vector; you can also use vectors of indices. These index vectors either can be the values of previously named variables, or they can be created anonymously as they are needed. When you index a single element in a vector, for example, <code>A(4)</code>, you are actually creating an anonymous <code>1 &times; 1</code> index vector, <code>4</code>, and then using it to access the specified element(s) from the array <code>A</code>.</p>
+<p><b>Vector slicing</b> is the name given to complex operations where elements are copied from specified locations in one vector to different locations in another vector. As we saw earlier, the basic operation of extracting and replacing the elements of a vector is called indexing. Furthermore, we saw that indexing is not confined to single elements in a vector; you can also use vectors of indices. These index vectors either can be the values of previously named variables, or they can be created anonymously as they are needed. When you index a single element in a vector, for example, <code>A(4)</code>, you are actually creating an anonymous <code>1 &times; 1</code> index vector, <code>4</code>, and then using it to access the specified element(s) from the array <code>A</code>.</p>
 
 <p>Creating anonymous index vectors as needed makes some additional features of the colon operator available. The general form for generating a vector of numbers is:<br />
 <code>&lt;start&gt; : &lt;increment&gt; : &lt;end&gt;</code>.<br />
@@ -296,7 +296,7 @@ then <code>A([false true false true])</code> returns:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;5 1</code><br />
 yielding a new vector containing only those values of the original vector where the corresponding logical index is <code>true</code>. This is extremely useful, as you will see later in this chapter, for indexing items in a vector that match a specific test.</p>
 
-<p>The general form of statements for slicing vectors is:<br />
+<p>The general form of statements for vector slicing is:<br />
 <code>B(&lt;rangeB&gt;) = A(&lt;rangeA&gt;)</code><br />
 where <code>&lt;rangeA&gt;</code> and <code>&lt;rangeB&gt;</code> are both index vectors, <code>A</code> is an existing array, and <code>B</code> can be an existing array or a new array. The values in <code>B</code> at the indices in <code>rangeB</code> are assigned the values of <code>A</code> from <code>rangeA</code>. The rules for use of this template are as follows:</p>
 &nbsp;
@@ -499,7 +499,7 @@ was then entered, the result would be:<br />
 
 <div class="exercise">#exercise_4_10#</div>
 
-<p><b>Slicing Arrays:</b> The general form of statements for moving sections of one array into sections of another is as follows:<br />
+<p><b>Array slicing:</b> The general form of statements for moving sections of one array into sections of another is as follows:<br />
 <code>B(&lt;rangeBR&gt;, &lt;rangeBC&gt;) = A(&lt;rangeAR&gt;,&lt;rangeAC&gt;)</code><br />
 where each <code>&lt;range..&gt;</code> is an index vector, <code>A</code> is an existing array, and <code>B</code> can be either an existing array or a new array. The values in <code>B</code> at the specified indices are all assigned the corresponding values copied from A. The rules for using this template are as follows:</p>
 

@@ -22,19 +22,19 @@
   <!-- Chapter Objectives -->
   <h2>Chapter Objectives</h2>
   <div class="container">
-    <p>This chapter discusses techniques for<a id="6077"></a> changing<a id="5595"></a> the flow of<a id="5743"></a> control in a program, which may be necessary for<a id="6078"></a> two reasons:
+    <p>This chapter discusses techniques for changing the flow of control in a program, which may be necessary for two reasons:
     <ul>
-      <li>You may want to<a id="5605"></a> execute some parts of<a id="5744"></a> the code under certain specific circumstances</li>
-      <li>You may want to<a id="5606"></a> repeat a section of<a id="5745"></a> code a certain number of<a id="5746"></a> times</li>
+      <li>You may want to execute some parts of the code under certain specific circumstances</li>
+      <li>You may want to repeat a section of code a certain number of times</li>
     </ul>
-    In Chapter 3 we used the array<a id="5185"></a> notation to<a id="5607"></a> gather numbers<a id="5597"></a> into a form where they could be processed collectively rather than individually. This chapter deals with<a id="5505"></a> code blocks (collections of<a id="5747"></a> one or more lines of<a id="5748"></a> code) that solve a particular segment of<a id="5749"></a> a problem in the same way. We will see how to<a id="5608"></a> define a code block, how to<a id="5609"></a> decide to<a id="5610"></a> execute a code block under certain conditions only, and<a id="5394"></a> how to<a id="5611"></a> repeat execution<a id="5276"></a> of<a id="5750"></a> a code block.</p>
+    In Chapter 3 we used the array notation to gather numbers into a form where they could be processed collectively rather than individually. This chapter deals with code blocks (collections of one or more lines of code) that solve a particular segment of a problem in the same way. We will see how to define a code block, how to decide to execute a code block under certain conditions only, and how to repeat execution<a id="1596"></a> of a code block.</p>
   </div>
 
   <div class="chp-section" data-sect-num="1" data-sect-name="Concept: Code Blocks">
     <!-- Concept: Code Blocks -->
     <h2 id="5_1">5.1	Concept: Code Blocks</h2>
     <div class="container">
-      <p>A code block is a collection of<a id="5751"></a> zero or more computer instructions packaged together in order to<a id="5612"></a> treat them as a single entity.  This allows us to<a id="5613"></a> selectively execute or skip some blocks or to<a id="5614"></a> repeat them under contolled circumstances. Some computer languages identify code blocks by enclosing them in braces (<code>{. . .}</code>); others identify them by the level of<a id="5752"></a> indentation of<a id="5753"></a> the text<a id="5981"></a>. The MATLAB<a id="5550"></a> language uses the occurrence of<a id="5754"></a> key words in the text<a id="5982"></a> to<a id="5615"></a> define the extent of<a id="5755"></a> code blocks. Keywords like <code><font color="blue">if, switch<a id="5966"></a>, while<a id="6052"></a>, for<a id="6079"></a>, case<a id="5229"></a>, otherwise, else<a id="5242"></a>, elseif<a id="5246"></a>, </code></font>and<a id="5395"></a><code><font color="blue"> end<a id="5251"></a></font></code> are identified with<a id="5506"></a> blue coloring by the MATLAB<a id="5551"></a> text<a id="5983"></a> editor. They are not part of<a id="5756"></a> the code block, but they serve as instructions on<a id="5537"></a> what to<a id="5616"></a> do with<a id="5507"></a> the code block and<a id="5396"></a> as delimiters that define the extent of<a id="5757"></a> the code block. So, for<a id="6080"></a> example<a id="5941"></a>, all the commands in a script are a code block that terminates either at the end<a id="5252"></a> of<a id="5758"></a> the script or at the beginning of<a id="5759"></a> the first function<a id="5312"></a> definition.  Similarly, in a function<a id="5313"></a> definition, the body of<a id="5760"></a> the code from<a id="5321"></a> the function<a id="5314"></a> key word to<a id="5617"></a> the "matching" end<a id="5253"></a> is a code block.  As we will soon see, code blocks can be nested within code blocks, each having a beginning key word with<a id="5508"></a> a matching end<a id="5254"></a>.</p>
+      <p>A code block is a collection of zero or more computer instructions packaged together in order to treat them as a single entity.  This allows us to selectively execute or skip some blocks or to repeat them under contolled circumstances. Some computer languages identify code blocks by enclosing them in braces (<code>{. . .}</code>); others identify them by the level of indentation of the text. The MATLAB language uses the occurrence of key words in the text to define the extent of code blocks. Keywords like <code><font color="blue">if, switch<a id="1666"></a>, while, for, case<a id="1556"></a>, otherwise, else<a id="1569"></a>, elseif<a id="1573"></a>, </code></font>and<code><font color="blue"> end<a id="1578"></a></font></code> are identified with blue coloring by the MATLAB text editor. They are not part of the code block, but they serve as instructions on what to do with the code block and as delimiters that define the extent of the code block. So, for example, all the commands in a script are a code block that terminates either at the end<a id="1579"></a> of the script or at the beginning of the first function definition.  Similarly, in a function definition, the body of the code from the function key word to the "matching" end<a id="1580"></a> is a code block.  As we will soon see, code blocks can be nested within code blocks, each having a beginning key word with a matching end<a id="1581"></a>.</p>
     </div>
   </div>
 
@@ -44,16 +44,16 @@
     <div class="container clearfix">
       <div class="float-sm-right card">
         <img src="..\Images\Fig_5_1.JPG" alt="Figure 5.1" class="fig fig-long card-image">
-        <p class="figure-name card-title">Figure<a id="6149"></a> 5.1: Simple if statement</p>
+        <p class="figure-name card-title">Figure 5.1: Simple if statement</p>
       </div>
-      <p>To this point, the statements written in our scripts<a id="5939"></a> and<a id="5397"></a> functions<a id="5962"></a> have been executed in sequence from<a id="5322"></a> the instruction at the top to<a id="5618"></a> the instruction at the bottom. However, it is frequently necessary to<a id="5619"></a> make choices about how to<a id="5620"></a> process a set of<a id="5761"></a> data<a id="5579"></a> based on<a id="5538"></a> some characteristic of<a id="5762"></a> that data<a id="5580"></a>. We have seen logical<a id="5193"></a> expressions that result in a Logical result — <code>true<a id="5362"></a></code> or <code>false<a id="5281"></a></code>. This section discusses the code that implements the idea shown in Figure<a id="6150"></a> 5.1.  </p>
-      <p>In the flowchart shown in Figure<a id="6151"></a> 5.1, a set of<a id="5763"></a> statements (the code block to<a id="5621"></a> be executed) is shown as a rectangle, a decision point is shown as a diamond, and<a id="5398"></a> the flow of<a id="5764"></a> program control is indicated by arrows. When decision points are drawn, there will be at least two arrows leaving that symbol, each labeled with<a id="5509"></a> the reason one would take that path. This concept makes the execution<a id="5277"></a> of<a id="5765"></a> a code block conditional upon some test. If the result of<a id="5766"></a> the test is <code>true<a id="5363"></a></code>, the code block is executed. Otherwise, the default code block is executed.  If the default code block is empty<a id="5248"></a> when the test fails, no code is executed and<a id="5399"></a> control proceeds to<a id="5622"></a> the instruction(s) after the end<a id="5255"></a> of<a id="5767"></a> the code block.</p>
-      <p>An important generalization of<a id="5768"></a> this concept is shown in Figure<a id="6152"></a> 5.2.  Here the solution is generalized to<a id="5623"></a> permit the first code block to<a id="5624"></a> be implemented under the first condition as before. Now, however, if that first logical<a id="5194"></a> test returns false<a id="5282"></a>, a second test is performed to<a id="5625"></a> determine whether the second code block should be executed. If that test returns false<a id="5283"></a>, as many further tests as necessary may be performed, each with<a id="5510"></a> the appropriate code block to<a id="5626"></a> be implemented when the result is true<a id="5364"></a>. Finally, if none of<a id="5769"></a> these tests return true<a id="5365"></a>, the last code block, usually identified by the else<a id="5243"></a> keyword—(n 1 1) in the figure—is executed. As the flowchart shows, as soon as one of<a id="5770"></a> the code blocks is executed, the next instruction to<a id="5627"></a> execute is the one that follows the conditional code after the end<a id="5256"></a> statement. In particular, if there is no else<a id="5244"></a> clause, it is possible that no code at all is executed in this conditional statement.<p>
+      <p>To this point, the statements written in our scripts and functions have been executed in sequence from the instruction at the top to the instruction at the bottom. However, it is frequently necessary to make choices about how to process a set of data based on some characteristic of that data. We have seen logical expressions<a id="1643"></a> that result in a Logical result — <code>true</code> or <code>false</code>. This section discusses the code that implements the idea shown in Figure 5.1.  </p>
+      <p>In the flowchart shown in Figure 5.1, a set of statements (the code block to be executed) is shown as a rectangle, a decision point is shown as a diamond, and the flow of program control is indicated by arrows. When decision points are drawn, there will be at least two arrows leaving that symbol, each labeled with the reason one would take that path. This concept makes the execution<a id="1597"></a> of a code block conditional upon some test. If the result of the test is <code>true</code>, the code block is executed. Otherwise, the default code block is executed.  If the default code block is empty<a id="1575"></a> when the test fails, no code is executed and control proceeds to the instruction(s) after the end<a id="1582"></a> of the code block.</p>
+      <p>An important generalization of this concept is shown in Figure 5.2.  Here the solution is generalized to permit the first code block to be implemented under the first condition as before. Now, however, if that first logical test returns false, a second test is performed to determine whether the second code block should be executed. If that test returns false, as many further tests as necessary may be performed, each with the appropriate code block to be implemented when the result is true. Finally, if none of these tests return true, the last code block, usually identified by the else<a id="1570"></a> keyword—(n 1 1) in the figure—is executed. As the flowchart shows, as soon as one of the code blocks is executed, the next instruction to execute is the one that follows the conditional code after the end<a id="1583"></a> statement. In particular, if there is no else<a id="1571"></a> clause, it is possible that no code at all is executed in this conditional statement.<p>
       <div class="float-sm-right card">
         <img src="..\Images\Fig_5_2.JPG" alt="Figure 5.2" class="fig-wide card-image">
-        <p class="figure-name card-title">Figure<a id="6153"></a> 5.2: Compound if statment</p>
+        <p class="figure-name card-title">Figure 5.2: Compound if statment</p>
       </div>
-      <p>There are two common styles in which to<a id="5628"></a> implement this conditional behavior. First we will discuss the most general form, the if statement, and<a id="5400"></a> then we will discuss the more restrictive, but tidier, switch<a id="5967"></a> statement. Both implementations are found in most modern languages, albeit with<a id="5511"></a> slightly different syntax. In each case<a id="5230"></a>, the code block to<a id="5629"></a> be implemented is all the statements between the key words colored blue by the MATLAB<a id="5552"></a> editor.</p>
+      <p>There are two common styles in which to implement this conditional behavior. First we will discuss the most general form, the if statement, and then we will discuss the more restrictive, but tidier, switch<a id="1667"></a> statement. Both implementations are found in most modern languages, albeit with slightly different syntax. In each case<a id="1557"></a>, the code block to be implemented is all the statements between the key words colored blue by the MATLAB editor.</p>
     </div>
   </div>
 
@@ -61,34 +61,34 @@
     <!-- if Statements -->
     <h2 id="5_3">5.3  if Statements</h2>
     <div class="container">
-      <p>Here we introduce the concept of<a id="5771"></a> a programming<a id="5584"></a> template<a id="5344"></a>. Many programming<a id="5585"></a> texts still use the idea of<a id="5772"></a> flowcharts<a id="5299"></a>, such as those illustrated in Figures 5.1 and<a id="5401"></a> 5.2, to<a id="5630"></a> describe the design of<a id="5773"></a> a solution in a manner independent of<a id="5774"></a> the code implementation<a id="5732"></a>. However, since this graphical form cannot be maintained with<a id="5512"></a> a text<a id="5984"></a> editor, if the design of<a id="5775"></a> the solution changes, it is difficult to<a id="5631"></a> maintain any design description that is separate from<a id="5323"></a> the code itself.</p>
-      <p>Throughout the remainder of<a id="5776"></a> this text<a id="5985"></a>, we will describe the overall design of<a id="5777"></a> a code module using a design template<a id="5345"></a>. Design templates are a textual form of<a id="5778"></a> flowchart consisting of<a id="5779"></a> the key words that control program flow and<a id="5402"></a> placeholders that identify the code blocks and<a id="5403"></a> expressions that are necessary to<a id="5632"></a> implement the solution logic<a id="5531"></a>. Design templates are powerful tools for<a id="6081"></a> the novice programmer to<a id="5633"></a> overcome the “blank sheet of<a id="5780"></a> paper” problem—“how do I start solving this problem?” All programmers need to<a id="5634"></a> do is recognize the nature<a id="5360"></a> of<a id="5781"></a> the solution and<a id="5404"></a> write down the appropriate template<a id="5346"></a>. Then solving a particular problem becomes the relatively simple task of<a id="5782"></a> writing<a id="5393"></a> the code blocks identified by the template<a id="5347"></a>.</p>
-      <p>To discuss the if statement, first we consider its general, language independent template<a id="5348"></a> and<a id="5405"></a> then its MATLAB<a id="5553"></a> implementation<a id="5733"></a>.</p>
+      <p>Here we introduce the concept of a programming template<a id="1625"></a>. Many programming texts still use the idea of flowcharts<a id="1598"></a>, such as those illustrated in Figures 5.1 and 5.2, to describe the design of a solution in a manner independent of the code implementation. However, since this graphical form cannot be maintained with a text editor, if the design of the solution changes, it is difficult to maintain any design description that is separate from the code itself.</p>
+      <p>Throughout the remainder of this text, we will describe the overall design of a code module using a design template<a id="1626"></a>. Design templates are a textual form of flowchart consisting of the key words that control program flow and placeholders that identify the code blocks and expressions that are necessary to implement the solution logic. Design templates are powerful tools for the novice programmer to overcome the “blank sheet of paper” problem—“how do I start solving this problem?” All programmers need to do is recognize the nature<a id="1632"></a> of the solution and write down the appropriate template<a id="1627"></a>. Then solving a particular problem becomes the relatively simple task of writing<a id="1633"></a> the code blocks identified by the template<a id="1628"></a>.</p>
+      <p>To discuss the if statement, first we consider its general, language independent template<a id="1629"></a> and then its MATLAB implementation.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="General Template">
       <!-- General Template -->
       <h3 id="5_3_1">5.3.1	General Template</h3>
       <div class="container">
-        <p>Template 5.1 shows the general form of<a id="5783"></a> the if statement</p>
-        <div class="template">#template<a id="5349"></a>_5_1#</div>
+        <p>Template 5.1 shows the general form of the if statement</p>
+        <div class="template">#template<a id="1630"></a>_5_1#</div>
         <p>Note the following:</p>
         <ul>
-          <li>The only essential ingredients are the first if statement, one code block, and<a id="5406"></a> the end<a id="5257"></a> statement. All other features may be added as your logic<a id="5532"></a> requires.</li>
-          <li>The code blocks may contain any sequence of<a id="5784"></a> legal MATLAB<a id="5554"></a> statements, including other if statements (nested ifs), switch<a id="5968"></a> statements, or iterations (see Section 5.5).</li>
-          <li>Nested if statements with<a id="5513"></a> a code block are an alternative implementation<a id="5734"></a> of<a id="5785"></a> a logical<a id="5195"></a> AND<a id="5955"></a> statement.</li>
-          <li>Recall that logical<a id="5196"></a> operations<a id="5724"></a> can be applied to<a id="5635"></a> a vector, resulting in a vector of<a id="5786"></a> Boolean values. This vector may be used as a logical<a id="5197"></a> expression. The if statement will accept this expression as true<a id="5366"></a> if all of<a id="5787"></a> the elements<a id="6046"></a> are true<a id="5367"></a>.</li>
+          <li>The only essential ingredients are the first if statement, one code block, and the end statement. All other features may be added as your logic requires.</li>
+          <li>The code blocks may contain any sequence of legal MATLAB statements, including other if statements (nested ifs), switch<a id="1668"></a> statements, or iterations (see Section 5.5).</li>
+          <li>Nested if statements with a code block are an alternative implementation of a logical AND<a id="1657"></a> statement.</li>
+          <li>Recall that logical operations can be applied to a vector, resulting in a vector of Boolean values. This vector may be used as a logical expression. The if statement will accept this expression as true if all of the elements are true.</li>
         </ul>
       </div>
     </div>
 
     <div class="chp-subsection" data-sub-num="2" data-sub-name="MATLAB Implementation">
       <!-- MATLAB Implementation -->
-      <h3 id="5_3_2">5.3.2	MATLAB<a id="5555"></a> Implementation</h3>
+      <h3 id="5_3_2">5.3.2	MATLAB Implementation</h3>
       <div class="container">
-        <p>Listing 5.1 is an example<a id="5942"></a> of<a id="5788"></a> the use of<a id="5789"></a> if statements. Notice that a compound<a id="5965"></a> if statement can select at most one code block, and<a id="5407"></a> if the default code block is empty<a id="5249"></a>, it could run no code blocks at all</p>
+        <p>Listing 5.1 is an example of the use of if statements. Notice that a compound<a id="1665"></a> if statement can select at most one code block, and if the default code block is empty<a id="1576"></a>, it could run no code blocks at all</p>
         <div class="listing">#listing_05_1#</div>
-        <p>Exercise 5.1 gives you the opportunity to<a id="5636"></a> practice using if statements, and<a id="5408"></a> Listing 5.2 shows a script that will satisfy Exercise 5.1.</p>
+        <p>Exercise 5.1 gives you the opportunity to practice using if statements, and Listing 5.2 shows a script that will satisfy Exercise 5.1.</p>
         <div class="exercise">#exercise_5_1#</div>
         <div class="listing">#listing_05_2#</div>
       </div>
@@ -98,73 +98,73 @@
       <!-- Important Ideas -->
       <h3 id="5_3_3">5.3.3	Important Ideas</h3>
       <div class="container">
-        <p>There are two important ideas that are necessary for<a id="6082"></a> the successful implementation<a id="5735"></a> of<a id="5790"></a> <code>if</code> statements: the general form of<a id="5791"></a> the logical<a id="5198"></a> expressions and<a id="5409"></a> short-circuit<a id="5342"></a> analysis.</p>
-        <p><b>Logical Expressions</b>: The <code>if</code> statement requires a logical<a id="5199"></a> expression for<a id="6083"></a> its condition. A logical<a id="5200"></a> expression is any collection of<a id="5792"></a> constants, variables, and<a id="5410"></a> operators<a id="5726"></a> whose result is a logical<a id="5201"></a> <code>true<a id="5368"></a></code> or <code>false<a id="5284"></a></code> value<a id="5989"></a>. Logical expressions can be created in the following ways:</p>
+        <p>There are two important ideas that are necessary for the successful implementation of <code>if</code> statements: the general form of the logical expressions<a id="1644"></a> and short-circuit<a id="1623"></a> analysis.</p>
+        <p><b>Logical Expressions</b>: The <code>if</code> statement requires a logical expression for its condition. A logical expression is any collection of constants, variables, and operators whose result is a logical <code>true</code> or <code>false</code> value. Logical expressions can be created in the following ways:</p>
         <ul>
-          <li>The value<a id="5990"></a> of<a id="5793"></a> a Logical constant (e.g., <code>true<a id="5369"></a></code> or <code>false<a id="5285"></a></code>)</li>
-          <li>The value<a id="5991"></a> of<a id="5794"></a> a variable<a id="6024"></a> containing a Logical result (e.g., <code>found</code>)</li>
-          <li>The result of<a id="5795"></a> a logical<a id="5202"></a> operation<a id="5361"></a> on<a id="5539"></a> two scalar<a id="5936"></a> quantities (e.g., <code>A > 5</code>)</li>
-          <li>The result of<a id="5796"></a> negating a logical<a id="5203"></a> quantity using the unary<a id="5988"></a> negation operator (e.g., <code>~found</code>)</li>
-          <li>The result of<a id="5797"></a> combining multiple scalar<a id="5937"></a> logical<a id="5204"></a> expressions with<a id="5514"></a> the operators<a id="5727"></a> and<a id="5411"></a> (<code>&amp;&amp;</code>) or or (<code>||</code>) (e.g., <code>A</code> and<a id="5412"></a> <code>B</code> (<code>A &amp;&amp; B</code>) or <code>A</code> or <code>B</code> (<code>A || B</code>)). </li>
-          <li>The results of<a id="5798"></a> the functions<a id="5963"></a> that are the logical<a id="5205"></a> equivalent of<a id="5799"></a> the <code>&amp;&amp;</code>,
-          <code>||</code>, and<a id="5413"></a> <code>~</code> operators<a id="5728"></a>: <code>and(<a id="5182"></a>A, B)</code> <code>or(A, B)</code> and<a id="5414"></a> <code>not(A)</code></li>
-          <li>The results of<a id="5800"></a> other functions<a id="5964"></a> that operate on<a id="5540"></a> logical<a id="5206"></a> vectors: <code>any(<a id="5183"></a>...)</code> and<a id="5415"></a> <code>all(<a id="5179"></a>...)</code></li>
+          <li>The value of a Logical constant (e.g., <code>true</code> or <code>false</code>)</li>
+          <li>The value of a variable containing a Logical result (e.g., <code>found</code>)</li>
+          <li>The result of a logical operation<a id="1649"></a> on two scalar<a id="1653"></a> quantities (e.g., <code>A > 5</code>)</li>
+          <li>The result of negating a logical quantity using the unary negation operator (e.g., <code>~found</code>)</li>
+          <li>The result of combining multiple scalar<a id="1654"></a> logical expressions<a id="1645"></a> with the operators and (<code>&amp;&amp;</code>) or or (<code>||</code>) (e.g., <code>A</code> and <code>B</code> (<code>A &amp;&amp; B</code>) or <code>A</code> or <code>B</code> (<code>A || B</code>)). </li>
+          <li>The results of the functions that are the logical equivalent of the <code>&amp;&amp;</code>,
+          <code>||</code>, and <code>~</code> operators: <code>and(<a id="1550"></a>A, B)</code> <code>or(A, B)</code> and <code>not(A)</code></li>
+          <li>The results of other functions that operate on logical vectors: <code>any(<a id="1551"></a>...)</code> and <code>all(<a id="1547"></a>...)</code></li>
         </ul>
         <p><b>Note carefully:</b>
         <ol>
-          <li>The "variables" <code>A</code> and<a id="5416"></a> <code>B</code> in the examples<a id="5334"></a> above may be considered as surrogates for<a id="6084"></a> arbitrarily complex expressions that may be enclosed in parentheses for<a id="6085"></a> clarity and<a id="5417"></a> result in the values <code>true<a id="5370"></a></code> or <code>false<a id="5286"></a></code>.</li>
-          <li>The result from<a id="5324"></a> <code>any(<a id="5184"></a>...)</code> will be <code>true<a id="5371"></a></code> if any logical<a id="5207"></a> value<a id="5992"></a> in the vector is <code>true<a id="5372"></a></code>. The result from<a id="5325"></a> <code>all(<a id="5180"></a>...)</code> will be true<a id="5373"></a> only if all logical<a id="5208"></a> values in the vector are <code>true<a id="5374"></a></code>. </li>
-          <li>The function<a id="5315"></a> <code>all(<a id="5181"></a>...)</code> is implicitly called if you supply a vector of<a id="5801"></a> logical<a id="5209"></a> values to<a id="5637"></a> the <code>if</code> statement, as shown in Listing 5.3.</li>
-          <li>The MATLAB<a id="5556"></a> Command<a id="6148"></a> window echoes logical<a id="5210"></a>
-          results as <code>1</code> (<code>true<a id="5375"></a></code>) or <code>0</code> (<code>false<a id="5287"></a></code>). In spite of<a id="5802"></a> this
-          appearance, logical<a id="5211"></a> values are not numeric and<a id="5418"></a> should
+          <li>The "variables" <code>A</code> and <code>B</code> in the examples<a id="1615"></a> above may be considered as surrogates for arbitrarily complex expressions that may be enclosed in parentheses for clarity and result in the values <code>true</code> or <code>false</code>.</li>
+          <li>The result from <code>any(<a id="1552"></a>...)</code> will be <code>true</code> if any logical value<a id="1646"></a> in the vector is <code>true</code>. The result from <code>all(<a id="1548"></a>...)</code> will be true only if all logical values in the vector are <code>true</code>. </li>
+          <li>The function <code>all(<a id="1549"></a>...)</code> is implicitly called if you supply a vector of logical values to the <code>if</code> statement, as shown in Listing 5.3.</li>
+          <li>The MATLAB Command window echoes logical
+          results as <code>1</code> (<code>true</code>) or <code>0</code> (<code>false</code>). In spite of this
+          appearance, logical values are not numeric and should
           never be treated as if they were.</li>
         </ol>
         <div class="listing">#listing_05_3#</div>
-        <p><b>Short-Circuit Evaluation</b>: When evaluating a sequence of<a id="5803"></a> logical<a id="5212"></a> <code>&amp;&amp;</code> or <code>||</code> expressions, MATLAB<a id="5557"></a> will stop processing<a id="5336"></a> when it finds the first result that makes all subsequent processing<a id="5337"></a> irrelevant. This concept is best illustrated by an example<a id="5943"></a>. Assume that <code>A</code> and<a id="5419"></a> <code>B</code> are logical<a id="5213"></a> results and<a id="5420"></a> you want to<a id="5638"></a> evaluate <code>A &amp;&amp; B</code>. Since the result of<a id="5804"></a> this is <code>true<a id="5376"></a></code> only if both <code>A</code> and<a id="5421"></a> <code>B</code> are <code>true<a id="5377"></a></code>, if you evaluate <code>A</code> and<a id="5422"></a> the result is <code>false<a id="5288"></a></code>, no value<a id="5993"></a> of<a id="5805"></a> <code>B</code> can possibly change the outcome <code>A &amp;&amp; B</code>.	Therefore, there is no reason to<a id="5639"></a> evaluate any more components of<a id="5806"></a> a logical<a id="5214"></a> and<a id="5423"></a> expression once a false<a id="5289"></a> result has been found. Similarly, if you want <code>A || B</code>, if <code>A</code> is found to<a id="5640"></a> be <code>true<a id="5378"></a></code>, you do not need to<a id="5641"></a> evaluate <code>B</code>.</p>
-        <p>For example<a id="5944"></a>,suppose you want to<a id="5642"></a> test the nth element of<a id="5807"></a> a vector <code>v</code> using a variable<a id="6025"></a> <code>n</code>,
-        and<a id="5424"></a> you are concerned that <code>n</code> might not be a legal index value<a id="5994"></a>. The following code could be used:</p>
-        <p><code>&nbsp;&nbsp;if (n &gt; 0) &amp;&amp; (n &lt;= length(<a id="5330"></a>v)) &amp;&amp; (v(n) &gt; 0)<br>
+        <p><b>Short-Circuit Evaluation</b>: When evaluating a sequence of logical <code>&amp;&amp;</code> or <code>||</code> expressions, MATLAB will stop processing<a id="1617"></a> when it finds the first result that makes all subsequent processing<a id="1618"></a> irrelevant. This concept is best illustrated by an example. Assume that <code>A</code> and <code>B</code> are logical results and you want to evaluate <code>A &amp;&amp; B</code>. Since the result of this is <code>true</code> only if both <code>A</code> and <code>B</code> are <code>true</code>, if you evaluate <code>A</code> and the result is <code>false</code>, no value of <code>B</code> can possibly change the outcome <code>A &amp;&amp; B</code>.	Therefore, there is no reason to evaluate any more components of a logical and expression once a false result has been found. Similarly, if you want <code>A || B</code>, if <code>A</code> is found to be <code>true</code>, you do not need to evaluate <code>B</code>.</p>
+        <p>For example,suppose you want to test the nth element of a vector <code>v</code> using a variable <code>n</code>,
+        and you are concerned that <code>n</code> might not be a legal index value. The following code could be used:</p>
+        <p><code>&nbsp;&nbsp;if (n &gt; 0) &amp;&amp; (n &lt;= length(<a id="1611"></a>v)) &amp;&amp; (v(n) &gt; 0)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;% success!<br>
-              &nbsp;&nbsp;end<a id="5258"></a>
+              &nbsp;&nbsp;end
         </code></p>
-        <p>If <code>n</code> were not a legal index, the indexed accessor <code>v(n)</code> would cause an error for<a id="6086"></a> attempting to<a id="5643"></a> reach beyond the end<a id="5259"></a> of<a id="5808"></a> the vector. However, by putting the tests of<a id="5809"></a> <code>n</code> first, the short-circuit<a id="5343"></a> logic<a id="5533"></a> would not process the last part of<a id="5810"></a> the expression if either test of<a id="5811"></a> <code>n</code> failed.</p>
+        <p>If <code>n</code> were not a legal index, the indexed accessor <code>v(n)</code> would cause an error for attempting to reach beyond the end of the vector. However, by putting the tests of <code>n</code> first, the short-circuit<a id="1624"></a> logic would not process the last part of the expression if either test of <code>n</code> failed.</p>
       </div>
     </div>
   </div>
 
   <div class="chp-section" data-sect-num="4" data-sect-name="switch Statements">
     <!-- Switch Statements -->
-    <h2 id="5_4">5.4 switch<a id="5969"></a> Statements</h2>
+    <h2 id="5_4">5.4 switch<a id="1669"></a> Statements</h2>
     <div class="container">
-      <p>A switch<a id="5970"></a> statement implements the logic<a id="5534"></a> shown in Figure<a id="6154"></a> 5.2 in a different programming<a id="5586"></a> style by allowing the programmer to<a id="5644"></a> consider a number of<a id="5812"></a> different possible values for<a id="6087"></a> the value<a id="5995"></a> of<a id="5813"></a> one variable<a id="6026"></a>. First we consider the general, language-independent template<a id="5350"></a> for<a id="6088"></a> switch<a id="5971"></a> statements, and<a id="5425"></a> then its MATLAB<a id="5558"></a> implementation<a id="5736"></a>.</p>
+      <p>A switch<a id="1670"></a> statement implements the logic shown in Figure 5.2 in a different programming style by allowing the programmer to consider a number of different possible values for the value of one variable. First we consider the general, language-independent template<a id="1631"></a> for switch<a id="1671"></a> statements, and then its MATLAB implementation.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="General Template">
       <!-- General Template -->
       <h3 id="5_4_1">5.4.1	General Template</h3>
       <div class="container">
-        <p>Template 5.2 shows the general template<a id="5351"></a> for<a id="6089"></a> the switch<a id="5972"></a> statement.</p>
-        <div class="template">#template<a id="5352"></a>_5_2#</div>
+        <p>Template 5.2 shows the general template<a id="1678"></a> for the switch<a id="1672"></a> statement.</p>
+        <div class="template">#template<a id="1679"></a>_5_2#</div>
         <p>Note the following:</p>
         <ul>
-          <li>All tests refer to<a id="5645"></a> the value<a id="5996"></a> of<a id="5814"></a> the same parameter that may be any legal MATLAB<a id="5559"></a> statement returning<a id="5333"></a> a single element or string {see chapter 6}</li>
-          <li>case<a id="5231"></a> specifications may be either a single value<a id="5997"></a> or string or a set of<a id="5815"></a> values or strings enclosed in braces { ... }</li>
-          <li>otherwise specifies the code block to<a id="5646"></a> be executed when none of<a id="5816"></a> the case<a id="5232"></a> values apply</li>
-          <li>The code blocks may contain any sequence of<a id="5817"></a> legal MATLAB<a id="5560"></a> statements, including other if statements (nested ifs), switch<a id="5973"></a> statements, or iterations</li>
+          <li>All tests refer to the value of the same parameter that may be any legal MATLAB statement returning<a id="1614"></a> a single element or string {see chapter 6}</li>
+          <li>case<a id="1558"></a> specifications may be either a single value or string or a set of values or strings enclosed in braces { ... }</li>
+          <li>otherwise specifies the code block to be executed when none of the case<a id="1559"></a> values apply</li>
+          <li>The code blocks may contain any sequence of legal MATLAB statements, including other if statements (nested ifs), switch<a id="1673"></a> statements, or iterations</li>
         </ul>
       </div>
     </div>
 
     <div class="chp-subsection" data-sub-num="2" data-sub-name="MATLAB Implementation">
       <!-- MATLAB Implmentation -->
-      <h3 id="5_4_2">5.4.2	MATLAB<a id="5561"></a> Implementation</h3>
+      <h3 id="5_4_2">5.4.2	MATLAB Implementation</h3>
       <div class="container clearfix">
         <div class="card style-points float-sm-right">
           <p class="card-title">Style Points 5.1</p>
-          <p class="card-text">The use of<a id="5818"></a> indentation is not required in the MATLAB<a id="5562"></a> language, and<a id="5426"></a> it has no significance with<a id="5515"></a> regard to<a id="5647"></a> syntax.However, the appropriate use of<a id="5819"></a> indentation greatly improves the legibility of<a id="5820"></a> code and<a id="5427"></a> you should use it. You have probably already noted that in addition to<a id="5648"></a> colorizing control statements, the text<a id="5986"></a> editor automatically places the control statements in the indented positions illustrated in Listings 5.3 and<a id="5428"></a> 5.4.
+          <p class="card-text">The use of indentation is not required in the MATLAB language, and it has no significance with regard to syntax.However, the appropriate use of indentation greatly improves the legibility of code and you should use it. You have probably already noted that in addition to colorizing control statements, the text editor automatically places the control statements in the indented positions illustrated in Listings 5.3 and 5.4.
         </div>
-        <p>Listing 5.4 shows the MATLAB<a id="5563"></a> implementation<a id="5737"></a> of<a id="5821"></a> a typical logical<a id="5215"></a> problem: determining the number of<a id="5822"></a> days in a month. It assumes that the value<a id="5998"></a> of<a id="5823"></a> month is 1 . . . 12, and<a id="5429"></a> leapYear is a logical<a id="5216"></a> variable<a id="6027"></a> identifying the current year as a leap year. Exercise 5.2 has you write and<a id="5430"></a> test the script in Listing 5.4. You will need to<a id="5649"></a> preset a value<a id="5999"></a> for<a id="6090"></a> <code>leapYear</code></p>
+        <p>Listing 5.4 shows the MATLAB implementation of a typical logical problem: determining the number of days in a month. It assumes that the value of month is 1 . . . 12, and leapYear is a logical variable identifying the current year as a leap year. Exercise 5.2 has you write and test the script in Listing 5.4. You will need to preset a value for <code>leapYear</code></p>
       </div>
       <div class="listing">#listing_05_4#</div>
     </div>
@@ -174,51 +174,51 @@
     <!-- Iteration in General -->
     <h2 id="5_5">5.5	Iteration in General</h2>
     <div class="container">
-      <p>The if and<a id="5431"></a> switch<a id="5974"></a> statements allow us to<a id="5650"></a> decide to<a id="5651"></a> skip code blocks based on<a id="5541"></a> conditions in the data<a id="5581"></a>. The for<a id="6091"></a> and<a id="5432"></a> while<a id="6053"></a> constructs allow us to<a id="5652"></a> repeat code blocks. Note, however, that the MATLAB<a id="5564"></a> language is designed to<a id="5653"></a> avoid iteration<a id="5487"></a>. Under most circumstances of<a id="5824"></a> processing<a id="5338"></a> numbers<a id="5598"></a>, the array<a id="5186"></a> processing<a id="5339"></a> operations<a id="5725"></a> built into the language make do-it-yourself loop constructs unnecessary.</p>
-      <p>When you do decide you have to<a id="5654"></a> use it, iteration<a id="5488"></a> allows controlled repetition of<a id="5825"></a> a code block. Control statements at the beginning of<a id="5826"></a> the code block specify the manner and<a id="5433"></a> extent of<a id="5827"></a> the repetition:
+      <p>The if and switch<a id="1674"></a> statements allow us to decide to skip code blocks based on conditions in the data. The for and while constructs allow us to repeat code blocks. Note, however, that the MATLAB language is designed to avoid iteration<a id="1634"></a>. Under most circumstances of processing<a id="1619"></a> numbers, the array processing<a id="1620"></a> operations built into the language make do-it-yourself loop constructs unnecessary.</p>
+      <p>When you do decide you have to use it, iteration<a id="1635"></a> allows controlled repetition of a code block. Control statements at the beginning of the code block specify the manner and extent of the repetition:
       <ul>
-        <li>The for<a id="6092"></a> loop<a id="5300"></a> is designed to<a id="5655"></a> repeat its code block a fixed number of<a id="5828"></a> times and<a id="5434"></a> largely automates the process of<a id="5829"></a> managing the iteration<a id="5489"></a>.</li>
-        <li>The while<a id="6054"></a> loop is more flexible in character<a id="5549"></a>. In contrast to<a id="5656"></a> the fixed repetition of<a id="5830"></a> the for<a id="6093"></a> loop<a id="5301"></a>, its code block can be repeated a variable<a id="6028"></a> number of<a id="5831"></a> times, depending on<a id="5542"></a> the values of<a id="5832"></a> data<a id="5582"></a> being processed. It is much more of<a id="5833"></a> a “do-it-yourself” iteration<a id="5490"></a> kit.</li>
+        <li>The for loop<a id="1599"></a> is designed to repeat its code block a fixed number of times and largely automates the process of managing the iteration<a id="1636"></a>.</li>
+        <li>The while loop<a id="1688"></a> is more flexible in character. In contrast to the fixed repetition of the for loop<a id="1600"></a>, its code block can be repeated a variable number of times, depending on the values of data being processed. It is much more of a “do-it-yourself” iteration<a id="1637"></a> kit.</li>
       </ul>
     </div>
   </div>
 
   <div class="chp-section" data-sect-num="6" data-sect-name="for Loops">
     <!-- for Loops -->
-    <h2 id="5_6">5.6	for<a id="6094"></a> Loops</h2>
+    <h2 id="5_6">5.6	for Loops</h2>
     <div class="container clearfix">
       <div class="float-sm-right card">
           <img src="..\Images\Fig_5_3.JPG" alt="Figure 5.3" class="fig fig-long card-image">
-          <p class="figure-name card-title">Figure<a id="6155"></a> 5.3: A for<a id="6095"></a> Loop</p>
+          <p class="figure-name card-title">Figure 5.3: A for Loop</p>
       </div>
-      <p>Figure<a id="6156"></a> 5.3 shows a simple for<a id="6096"></a> loop<a id="5302"></a>. The hexagonal shape illustrates the control of<a id="5834"></a> repetition. The repeated execution<a id="5278"></a> of<a id="5835"></a> the code block is performed under the control of<a id="5836"></a> a loop-control variable<a id="6029"></a>. It is first set to<a id="5657"></a> an initial value<a id="6000"></a> that is tested against a terminating condition. If the terminating test succeeds, the program leaves the for<a id="6097"></a> loop<a id="5303"></a>. Otherwise, the computations in the code block are performed using the current value<a id="6001"></a> of<a id="5837"></a> that variable<a id="6030"></a>. When one pass through the code block is finished, the variable<a id="6031"></a> is updated to<a id="5658"></a> its next value<a id="6002"></a>, and<a id="5435"></a> control returns to<a id="5659"></a> the termination test.</p>
+      <p>Figure 5.3 shows a simple for loop<a id="1601"></a>. The hexagonal shape illustrates the control of repetition. The repeated execution of the code block is performed under the control of a loop-control variable. It is first set to an initial value that is tested against a terminating condition. If the terminating test succeeds, the program leaves the for loop<a id="1602"></a>. Otherwise, the computations in the code block are performed using the current value of that variable. When one pass through the code block is finished, the variable is updated to its next value, and control returns to the termination test.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="General for Loop Template">
       <!-- General for Loop Template -->
-      <h3 id="5_6_1">5.6.1	General for<a id="6098"></a> Loop Template</h3>
+      <h3 id="5_6_1">5.6.1	General for Loop Template</h3>
       <div class="container">
-          <p>The general template<a id="5353"></a> for<a id="6099"></a> implementing for<a id="6100"></a> loops is shown in Template 5.3. All of<a id="5838"></a> the mechanics of<a id="5839"></a> iteration<a id="5491"></a> control are handled automatically in the variable<a id="6032"></a> specification section. In some languages - especially those with<a id="5516"></a> their origins in C - the variable<a id="6033"></a> specification is a formidable collection of<a id="5840"></a> statements that provide great generality of<a id="5841"></a> loop management. The designers of<a id="5842"></a> the MATLAB<a id="5565"></a> language, with<a id="5517"></a> its origins in matrix<a id="5594"></a> processing<a id="5340"></a>, chose a much simpler approach for<a id="6101"></a> specifying the variable<a id="6034"></a> range, as shown in the general template<a id="5354"></a>. The repetition of<a id="5843"></a> the code block is managed completely by the specification of<a id="5844"></a> the loop control variable<a id="6035"></a>.</p>
-          <div class="template">#template<a id="5355"></a>_5_3#</div>
+          <p>The general template<a id="1680"></a> for implementing for loops is shown in Template 5.3. All of the mechanics of iteration<a id="1638"></a> control are handled automatically in the variable specification section. In some languages - especially those with their origins in C - the variable specification is a formidable collection of statements that provide great generality of loop management. The designers of the MATLAB language, with its origins in matrix processing<a id="1621"></a>, chose a much simpler approach for specifying the variable range, as shown in the general template<a id="1681"></a>. The repetition of the code block is managed completely by the specification of the loop control variable.</p>
+          <div class="template">#template<a id="1682"></a>_5_3#</div>
       </div>
     </div>
 
     <div class="chp-subsection" data-sub-num="2" data-sub-name="MATLAB Implementation">
       <!-- MATLAB Implementation -->
-      <h3 id="5_6_2">5.6.2	MATLAB<a id="5566"></a> Implementation</h3>
+      <h3 id="5_6_2">5.6.2	MATLAB Implementation</h3>
       <div class="container">
-        <p>The core concept in the MATLAB<a id="5567"></a> for<a id="6102"></a> loop<a id="5304"></a> implementation<a id="5738"></a> is embedded in the logic<a id="5535"></a> of<a id="5845"></a> the variable<a id="6036"></a> specification, which is accomplished as follows:</p>
-        <p><code>&lt;variable<a id="6037"></a> specification&gt;: &lt;variable<a id="6038"></a>&gt; = &lt;vector&gt;</code></p>
-        <p>where <code>&lt;variable<a id="6039"></a>&gt;</code> is the name of<a id="5846"></a> the loop control variable<a id="6040"></a> and<a id="5436"></a> <code>&lt;vector&gt;</code> is any vector that can be created by the techniques discussed in Chapter 4.</p>
-        <p>If we were to<a id="5660"></a> use the variable<a id="6041"></a> specification <code> x = A</code>, MATLAB<a id="5568"></a> would proceed as follows:
+        <p>The core concept in the MATLAB for loop<a id="1603"></a> implementation is embedded in the logic of the variable specification, which is accomplished as follows:</p>
+        <p><code>&lt;variable specification&gt;: &lt;variable&gt; = &lt;vector&gt;</code></p>
+        <p>where <code>&lt;variable&gt;</code> is the name of the loop control variable and <code>&lt;vector&gt;</code> is any vector that can be created by the techniques discussed in Chapter 4.</p>
+        <p>If we were to use the variable specification <code> x = A</code>, MATLAB would proceed as follows:
         <ol>
-          <li>Set an invisible index to<a id="5661"></a> 1.</li>
-          <li>Repeat steps 3 to<a id="5662"></a> 5 as long as that index is less<a id="5502"></a> than or equal<a id="5275"></a> to<a id="5663"></a> the length of<a id="5847"></a> A.</li>
-          <li>Set the value<a id="6003"></a> of<a id="5848"></a> x to<a id="5664"></a> A(index)</li>
-          <li>Evaluate the code block with<a id="5518"></a> that value<a id="6004"></a> of<a id="5849"></a> x</li>
+          <li>Set an invisible index to 1.</li>
+          <li>Repeat steps 3 to 5 as long as that index is less<a id="1640"></a> than or equal<a id="1595"></a> to the length of A.</li>
+          <li>Set the value of x to A(index)</li>
+          <li>Evaluate the code block with that value of x</li>
           <li>Increment the index</li>
         </ol></p>
-        <p>For a simple example<a id="5945"></a> of<a id="5850"></a> for<a id="6103"></a> loops, the code shown in Listing 5.5 solves a problem that should be done in a single MATLAB<a id="5569"></a> instruction: <code>max(<a id="5331"></a>A)</code> where <code>A</code> is a vector of<a id="5851"></a> integers. However, by expanding this into a <code>for<a id="6104"></a></code> loop, we see the basic structure<a id="5961"></a> of<a id="5852"></a> the <code>for<a id="6105"></a></code> loop at work. </p>
+        <p>For a simple example of for loops, the code shown in Listing 5.5 solves a problem that should be done in a single MATLAB instruction: <code>max(<a id="1612"></a>A)</code> where <code>A</code> is a vector of integers. However, by expanding this into a <code>for</code> loop, we see the basic structure<a id="1664"></a> of the <code>for</code> loop at work. </p>
         <div class="row">
           <div class="col-sm-8">
             <div class="listing">#listing_05_5#</div>
@@ -226,7 +226,7 @@
           <div class="col-sm-4 card common-pitfalls common-pitfalls-col">
             <p class="card-title">Common Pitfalls 5.2</p>
             <p class="card-text">
-              By setting the default answer to<a id="5665"></a> the first value<a id="6005"></a>, we avoid the problem of<a id="5853"></a> seeding the result with<a id="5519"></a> a value<a id="6006"></a> that could be already outside the range of<a id="5854"></a> the vector values. For example<a id="5946"></a>, we might think that<br><code>theMax = 0;</code><br> would be a satisfactory seed. However, this would not do well if all the elements<a id="6047"></a> of<a id="5855"></a> A were negative.
+              By setting the default answer to the first value, we avoid the problem of seeding the result with a value that could be already outside the range of the vector values. For example, we might think that<br><code>theMax = 0;</code><br> would be a satisfactory seed. However, this would not do well if all the elements of A were negative.
             </p>
           </div>
         </div>
@@ -237,74 +237,74 @@
       <!-- Indexing Implementation -->
       <h3 id="5_6_3">5.6.3	Indexing Implementation</h3>
       <div class="container">
-        <p>The above for<a id="6106"></a> loop<a id="5305"></a> implementation<a id="5739"></a> may seem very strange to<a id="5666"></a> those with<a id="5520"></a> a C-based language background, in which the loop-control variable<a id="6042"></a> is usually an index into the array<a id="5187"></a> being traversed rather than an element from<a id="5326"></a> that array<a id="5188"></a>. In order to<a id="5667"></a> illustrate the difference, we will adapt the code from<a id="5327"></a> Listing 5.5 to<a id="5668"></a> solve a slightly different problem that approximates the behavior of<a id="5856"></a> max(<a id="5332"></a>A). This time we need to<a id="5669"></a> know not only the maximum value<a id="6007"></a> in the array<a id="5189"></a>, but also its index. This requires that we resort to<a id="5670"></a> indexing<a id="6049"></a> the array<a id="5190"></a> in a more conventional style, as shown in Listing 5.6. </p>
+        <p>The above for loop<a id="1604"></a> implementation may seem very strange to those with a C-based language background, in which the loop-control variable is usually an index into the array being traversed rather than an element from that array. In order to illustrate the difference, we will adapt the code from Listing 5.5 to solve a slightly different problem that approximates the behavior of max(<a id="1613"></a>A). This time we need to know not only the maximum value in the array, but also its index. This requires that we resort to indexing<a id="1685"></a> the array in a more conventional style, as shown in Listing 5.6. </p>
         <div class="listing">#listing_05_6#</div>
-        <p>Enter and<a id="5437"></a> run the scripts<a id="5940"></a> in Listings 5.5 and<a id="5438"></a> 5.6. They should each produce the vector A and<a id="5439"></a> its maximum value<a id="6008"></a>, and<a id="5440"></a> the second listing would also tell you at what index that maximum occurred.</p>
+        <p>Enter and run the scripts in Listings 5.5 and 5.6. They should each produce the vector A and its maximum value, and the second listing would also tell you at what index that maximum occurred.</p>
       </div>
     </div>
 
     <div class="chp-subsection" data-sub-num="4" data-sub-name="Breaking out of a for Loop">
       <!-- Breaking out of a for Loop -->
-      <h3 id="5_6_4">5.6.4	Breaking out of<a id="5857"></a> a for<a id="6107"></a> Loop</h3>
+      <h3 id="5_6_4">5.6.4	Breaking out of a for Loop</h3>
       <div class="container">
-        <p>If you are in a <code>for<a id="6108"></a></code> loop and<a id="5441"></a> find a circumstance where you really do not want to<a id="5671"></a> continue<a id="5235"></a> iterating, the <code>break</code> statement will skip immediately out of<a id="5858"></a> the innermost containing loop. If you want to<a id="5672"></a> continue<a id="5236"></a> iterating but omit all further steps of<a id="5859"></a> the current iteration<a id="5492"></a>, you can use the <code>continue<a id="5237"></a></code> statement. </p>
-        <p><b>Note:</b> This use of<a id="5860"></a> the <code>break</code> statement explains why it is really bad to<a id="5673"></a> put <code>break</code> statements inside switch<a id="5975"></a> statements.  Other languages require <code>break</code> statements between the <code>cases</code> to<a id="5674"></a> prevent "falling through" to<a id="5675"></a> the next code body.  MATLAB<a id="5570"></a> never allows that, and<a id="5442"></a> a <code>break</code> statement there will exit immediately from<a id="5328"></a> the nearest enclosing iteration<a id="5493"></a> - very rarely what you want, and<a id="5443"></a> very difficult to<a id="5676"></a> diagnose!</p>
+        <p>If you are in a <code>for</code> loop and find a circumstance where you really do not want to continue<a id="1562"></a> iterating, the <code>break<a id="1699"></a></code> statement will skip immediately out of the innermost containing loop. If you want to continue<a id="1563"></a> iterating but omit all further steps of the current iteration<a id="1639"></a>, you can use the <code>continue<a id="1564"></a></code> statement. </p>
+        <p><b>Note:</b> This use of the <code>break<a id="1700"></a></code> statement explains why it is really bad to put <code>break<a id="1701"></a></code> statements inside switch<a id="1675"></a> statements.  Other languages require <code>break<a id="1702"></a></code> statements between the <code>cases</code> to prevent "falling through" to the next code body.  MATLAB never allows that, and a <code>break<a id="1703"></a></code> statement there will exit immediately from the nearest enclosing iteration - very rarely what you want, and very difficult to diagnose!</p>
       </div>
     </div>
   </div>
 
   <div class="chp-section" data-sect-num="7" data-sect-name="while Loops">
     <!-- while Loops -->
-    <h2 id="5_7">5.7 while<a id="6055"></a> Loops</h2>
+    <h2 id="5_7">5.7 while Loops</h2>
     <div class="container clearfix">
       <div class="float-sm-right card">
           <img src="..\Images\Fig_5_4.JPG" alt="Figure 5.4" class="fig fig-long card-image">
-          <p class="figure-name card-title">Figure<a id="6157"></a> 5.4: Logic of<a id="5861"></a> a while<a id="6056"></a> Loop</p>
+          <p class="figure-name card-title">Figure 5.4: Logic of a while Loop</p>
       </div>
-      <p>We use while<a id="6057"></a> loops in general to<a id="5677"></a> obtain more control over the number of<a id="5862"></a> times the iteration<a id="5494"></a> is repeated. Figure<a id="6158"></a> 5.4 illustrates the control flow for<a id="6109"></a> a while<a id="6058"></a> loop. Since the termination test is performed as the loop is entered, the loop control expression must normally be initialized to<a id="5678"></a> a state that will permit the first loop entry. It is possible that the code block is not executed at all — for<a id="6110"></a> example<a id="5947"></a>, if there is/are no data<a id="5583"></a> to<a id="5679"></a> process.</p>
+      <p>We use while loops in general to obtain more control over the number of times the iteration is repeated. Figure 5.4 illustrates the control flow for a while loop<a id="1689"></a>. Since the termination test is performed as the loop is entered, the loop control expression must normally be initialized to a state that will permit the first loop entry. It is possible that the code block is not executed at all — for example, if there is/are no data to process.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="General while Template">
       <!-- General while Loop Template -->
-      <h3 id="5_7_1">5.7.1 General while<a id="6059"></a> Template</h3>
+      <h3 id="5_7_1">5.7.1 General while Template</h3>
       <div class="container">
-        <p>Template 5.4 shows the general template<a id="5356"></a> for<a id="6111"></a> implementing while<a id="6060"></a> loops. The logical<a id="5217"></a> expression controlling the iteration<a id="5495"></a> is testing<a id="5741"></a> some state of<a id="5863"></a> the workspace; therefore, two things that were automatic in the for<a id="6112"></a> loop<a id="5306"></a> must be manually<a id="5731"></a> accomplished with<a id="5521"></a> the while<a id="6061"></a> loop:<br>
-        &nbsp;&nbsp;1. initializing the test, and<a id="5444"></a><br>
-        &nbsp;&nbsp;2. updating the logic<a id="5536"></a> in the code block so that the test will eventually fail and<a id="5445"></a> the iteration<a id="5496"></a> will stop.<br>
-        <b>Note:</b> Sooner or later, everyone forgets to<a id="5680"></a> update the exit test and<a id="5446"></a> your code "locks up" in an endless<a id="5742"></a> while<a id="6062"></a> loop.  To force the process to<a id="5681"></a> exit, press Ctl-C on<a id="5543"></a> the keyboard.</p>
-        <div class="template">#template<a id="5357"></a>_5_4#</div>
+        <p>Template 5.4 shows the general template<a id="1683"></a> for implementing while loops. The logical expression controlling the iteration is testing<a id="1652"></a> some state of the workspace; therefore, two things that were automatic in the for loop<a id="1605"></a> must be manually<a id="1651"></a> accomplished with the while loop<a id="1690"></a>:<br>
+        &nbsp;&nbsp;1. initializing the test, and<br>
+        &nbsp;&nbsp;2. updating the logic in the code block so that the test will eventually fail and the iteration will stop.<br>
+        <b>Note:</b> Sooner or later, everyone forgets to update the exit test and your code "locks up" in an endless while loop<a id="1691"></a>.  To force the process to exit, press Ctl-C on the keyboard.</p>
+        <div class="template">#template<a id="1684"></a>_5_4#</div>
       </div>
     </div>
 
     <div class="chp-subsection" data-sub-num="2" data-sub-name="MATLAB while Loop Implementation">
       <!-- MATLAB while Loop Implmentation -->
-      <h3 id="5_7_2">5.7.2	MATLAB<a id="5571"></a> while<a id="6063"></a> Loop Implementation</h3>
+      <h3 id="5_7_2">5.7.2	MATLAB while Loop Implementation<a id="1705"></a></h3>
       <div class="container">
-        <p>To illustrate the use of<a id="5864"></a> a while<a id="6064"></a> loop, Listing 5.7 shows you how to<a id="5682"></a> solve the same problem of<a id="5865"></a> finding the largest value<a id="6009"></a> in a vector.using the while<a id="6065"></a> syntax.</p>
-        <p>Enter and<a id="5447"></a> run the script in Listing 5.7. It should produce similar results as before.</p>
+        <p>To illustrate the use of a while loop<a id="1692"></a>, Listing 5.7 shows you how to solve the same problem of finding the largest value in a vector.using the while syntax.</p>
+        <p>Enter and run the script in Listing 5.7. It should produce similar results as before.</p>
         <div class="listing">#listing_05_7#</div>
       </div>
     </div>
 
     <div class="chp-subsection" data-sub-num="3" data-sub-name="Loop-and-a-Half Implementation">
       <!-- Loop-and-a-Half Implementation -->
-      <h3 id="5_7_3">5.7.3	Loop-and<a id="5448"></a>-a-Half Implementation</h3>
+      <h3 id="5_7_3">5.7.3	Loop-and-a-Half<a id="1704"></a> Implementation</h3>
       <div class="container clearfix">
         <div class="card style-points float-sm-right">
           <p class="card-title">Style Points 5.2</p>
-          <p class="card-text">We wrote the for<a id="6113"></a> loop<a id="5307"></a> examples<a id="5335"></a> in two styles: the direct access style and<a id="5449"></a> the indexing<a id="6050"></a> style. Many people code in the indexing<a id="6051"></a> style even when the index value<a id="6010"></a> is not explicitly required. This is slightly tacky and<a id="5450"></a> demonstrates a lack of<a id="5866"></a> appreciation for<a id="6114"></a> the full power of<a id="5867"></a> the MATLAB<a id="5572"></a> language.</p>
+          <p class="card-text">We wrote the for loop<a id="1606"></a> examples<a id="1616"></a> in two styles: the direct access style and the indexing<a id="1686"></a> style. Many people code in the indexing<a id="1687"></a> style even when the index value is not explicitly required. This is slightly tacky and demonstrates a lack of appreciation for the full power of the MATLAB language.</p>
         </div>
-        <p>Listing 5.8 illustrates the implementation<a id="5740"></a> of<a id="5868"></a> the loop-and<a id="5451"></a>-a-half iteration<a id="5497"></a> style, in which we must enter the loop and<a id="5452"></a> perform some computation before realizing that we do not need to<a id="5683"></a> continue<a id="5238"></a>. Here we continually ask the user<a id="5587"></a> for<a id="6115"></a> the radius of<a id="5869"></a> a circle until an illegal radius is entered, which is our cue to<a id="5684"></a> terminate the iteration<a id="5498"></a>. For each radius entered, we want to<a id="5685"></a> display the area and<a id="5453"></a> circumference of<a id="5870"></a> the circle with<a id="5522"></a> that radius.</p>
-        <p>Try this script with<a id="5523"></a> any number of<a id="5871"></a> radius values.</p>
+        <p>Listing 5.8 illustrates the implementation of the loop-and-a-half<a id="1648"></a> iteration style, in which we must enter the loop and perform some computation before realizing that we do not need to continue<a id="1565"></a>. Here we continually ask the user for the radius of a circle until an illegal radius is entered, which is our cue to terminate the iteration. For each radius entered, we want to display the area and circumference of the circle with that radius.</p>
+        <p>Try this script with any number of radius values.</p>
       </div>
       <div class="listing">#listing_05_8#</div>
     </div>
 
     <div class="chp-subsection" data-sub-num="4" data-sub-name="Breaking a while Loop">
       <!-- Breaking a while Loop -->
-      <h3 id="5_7_4">5.7.4 Breaking a while<a id="6066"></a> Loop</h3>
+      <h3 id="5_7_4">5.7.4 Breaking a while Loop</h3>
       <div class="container">
-        <p>As with<a id="5524"></a> the <code>for<a id="6116"></a></code> loop, <code>break</code> will exit the innermost <code>while<a id="6067"></a></code> loop, and<a id="5454"></a> <code>continue<a id="5239"></a></code> will skip to<a id="5686"></a> the end<a id="5260"></a> of<a id="5872"></a> the loop but remain within it.</p>
+        <p>As with the <code>for</code> loop, <code>break</code> will exit the innermost <code>while</code> loop, and <code>continue<a id="1566"></a></code> will skip to the end of the loop but remain within it.</p>
       </div>
     </div>
   </div>
@@ -315,29 +315,29 @@
     <div class="container clearfix">
       <div class="float-sm-right card">
           <img src="..\Images\Fig_5_5.JPG" alt="Figure 5.5" class="fig fig-long card-image">
-          <p class="figure-name card-title">Figure<a id="6159"></a> 5.5: Partially Filled Tank</p>
+          <p class="figure-name card-title">Figure 5.5: Partially Filled Tank</p>
       </div>
-      <p>Figure<a id="6160"></a> 5.5 shows a cylindrical tank of<a id="5873"></a> height H  and<a id="5455"></a> radius r with<a id="5525"></a> a hemispherical cap on<a id="5544"></a> each end<a id="5261"></a> (also of<a id="5874"></a> radius, r ). If the height of<a id="5875"></a> the liquid<a id="5264"></a> is h, what is the volume of<a id="5876"></a> liquid<a id="5265"></a> in the tank? Clearly, the calculation of<a id="5877"></a> the volume of<a id="5878"></a> liquid<a id="5266"></a> in the tank depends upon the relationship between h, H, and<a id="5456"></a> r:</p>
+      <p>Figure 5.5 shows a cylindrical tank of height H  and radius r with a hemispherical cap on each end (also of radius, r ). If the height of the liquid<a id="1584"></a> is h, what is the volume of liquid<a id="1585"></a> in the tank? Clearly, the calculation of the volume of liquid<a id="1586"></a> in the tank depends upon the relationship between h, H, and r:</p>
     <ul>
-      <li><p>If h is less<a id="5503"></a> than r, we need the volume, v, of<a id="5879"></a> a partially filled sphere<a id="5956"></a> given by:</p>
+      <li><p>If h is less<a id="1641"></a> than r, we need the volume, v, of a partially filled sphere<a id="1659"></a> given by:</p>
         $$ v = {\frac{1}{3}}{\pi}{h^2}{(3r - h)} $$
       </li>
-      <li><p>If h is greater than r but less<a id="5504"></a> than H - r, we need the volume of<a id="5880"></a> a fully filled hemisphere plus the volume of<a id="5881"></a> a cylinder of<a id="5882"></a> height h - r:</p>
+      <li><p>If h is greater than r but less<a id="1642"></a> than H - r, we need the volume of a fully filled hemisphere plus the volume of a cylinder of height h - r:</p>
         $$ v = {\frac{2}{3}}{\pi}{r^3} + {\pi}{r^2}{(h-r)} $$
       </li>
-      <li><p>If h is greater than H + r, we need the volume of<a id="5883"></a> a fully filled sphere<a id="5957"></a> plus the volume of<a id="5884"></a> a cylinder of<a id="5885"></a> height H-2r minus the partially empty<a id="5250"></a> upper hemisphere of<a id="5886"></a> height H - h:</p>
+      <li><p>If h is greater than H + r, we need the volume of a fully filled sphere<a id="1660"></a> plus the volume of a cylinder of height H-2r minus the partially empty<a id="1577"></a> upper hemisphere of height H - h:</p>
         $$ v = {\frac{4}{3}}{\pi}{r^3} + {\pi}{r^2}{(H - 2r)} - {\frac{1}{3}}{pi}{(H - h)^2}{(3r - H - h)} $$
       </li>
     </ul>
-    <p>The script to<a id="5687"></a> perform this calculation is shown in Listing 5.9. Rather than performing the computations for<a id="6117"></a> one liquid<a id="5267"></a> level only, we should write the script so that we continue<a id="5240"></a> to<a id="5688"></a> consider tanks of<a id="5887"></a> different dimensions and<a id="5457"></a> different liquid<a id="5268"></a> heights for<a id="6118"></a> each tank until the user<a id="5588"></a> indicates that he needs no more results.  You may also uncomment the lines marked <code>auto gen</code> to<a id="5689"></a> allow the random number generator to<a id="5690"></a> process a number of<a id="5888"></a> different cases.</p>
+    <p>The script to perform this calculation is shown in Listing 5.9. Rather than performing the computations for one liquid<a id="1587"></a> level only, we should write the script so that we continue<a id="1567"></a> to consider tanks of different dimensions and different liquid<a id="1588"></a> heights for each tank until the user indicates that he needs no more results.  You may also uncomment the lines marked <code>auto gen</code> to allow the random number generator to process a number of different cases.</p>
   </div>
   <div class="listing">#listing_05_9#</div>
   <div class="data"><p>
-    Here are some typical results from<a id="5329"></a> the listing with<a id="5526"></a> <code>auto gen</code> set:<br>
+    Here are some typical results from the listing with <code>auto gen</code> set:<br>
     <code>
     rad 82.00 ht 10.00 level 69.00 vol 882470.23<br>
     rad 44.00 ht 3.00 level 38.00 vol 142142.41<br>
-    liquid<a id="5269"></a> level too high<br>
+    liquid<a id="1589"></a> level too high<br>
     rad 44.00 ht 3.00 level 19.00 vol 42718.33<br>
     rad 71.00 ht 65.00 level 28.00 vol 151885.53<br>
     rad 71.00 ht 65.00 level 66.00 vol 670554.10<br>
@@ -345,16 +345,16 @@
     rad 96.00 ht 50.00 level 22.00 vol 134820.40<br>
     rad 96.00 ht 50.00 level 26.00 vol 185471.25<br>
     rad 96.00 ht 50.00 level 70.00 vol 1118616.42<br>
-    liquid<a id="5270"></a> level too high<br>
+    liquid<a id="1590"></a> level too high<br>
     rad 96.00 ht 50.00 level 55.00 vol 738091.01<br>
     rad 84.00 ht 26.00 level 25.00 vol 148571.15<br>
     rad 84.00 ht 26.00 level 24.00 vol 137526.36<br>
     rad 84.00 ht 26.00 level 35.00 vol 278371.29<br>
     rad 47.00 ht 62.00 level 35.00 vol 135978.60<br>
     rad 47.00 ht 62.00 level 59.00 vol 211519.24<br>
-    liquid<a id="5271"></a> level too high<br>
+    liquid<a id="1591"></a> level too high<br>
     rad 47.00 ht 62.00 level 29.00 vol 98637.63<br>
-    liquid<a id="5272"></a> level too high<br>
+    liquid<a id="1592"></a> level too high<br>
     rad 47.00 ht 62.00 level 38.00 vol 155751.79<br>
     rad 47.00 ht 62.00 level 8.00 vol 8913.75<br>
     rad 93.00 ht 78.00 level 13.00 vol 47075.72<br>
@@ -366,94 +366,94 @@
 <!-- Chapter Summary -->
 <h2>Chapter Summary</h2>
 <div class="container">
-  <p>This chapter presented techniques for<a id="6119"></a> changing<a id="5596"></a> the flow of<a id="5889"></a> control of<a id="5890"></a> a program for<a id="6120"></a> condition execution<a id="5279"></a> and<a id="5458"></a> repetitive execution<a id="5280"></a>:</p>
+  <p>This chapter presented techniques for changing the flow of control of a program for condition execution and repetitive execution:</p>
   <ul>
-    <li>The most general conditional form is the if statement, with<a id="5527"></a> or without the accompanying elseif<a id="5247"></a> and<a id="5459"></a> else<a id="5245"></a> statements</li>
-    <li>The switch<a id="5976"></a> statement considers different cases of<a id="5891"></a> the values of<a id="5892"></a> a countable variable<a id="6043"></a></li>
-    <li>A for<a id="6121"></a> loop<a id="5308"></a> in its most basic form executes a code block for<a id="6122"></a> each of<a id="5893"></a> the elements<a id="6048"></a> of<a id="5894"></a> a vector</li>
-    <li>A while<a id="6068"></a> loop repeats a code block a variable<a id="6044"></a> number of<a id="5895"></a> times, as long as the conditions specified for<a id="6123"></a> continuing the repetition remain true<a id="5379"></a></li>
+    <li>The most general conditional form is the if statement, with or without the accompanying elseif<a id="1574"></a> and else<a id="1572"></a> statements</li>
+    <li>The switch<a id="1676"></a> statement considers different cases of the values of a countable variable</li>
+    <li>A for loop<a id="1607"></a> in its most basic form executes a code block for each of the elements of a vector</li>
+    <li>A while loop<a id="1693"></a> repeats a code block a variable number of times, as long as the conditions specified for continuing the repetition remain true</li>
   </ul>
 </div>
 <h2>Self Test</h2>
 <div class="container">
 
-Use the following questions to<a id="5691"></a> check your understanding of<a id="5896"></a> the material in this
+Use the following questions to check your understanding of the material in this
 chapter:
 <h3>True or False</h3>
 <ol>
-<li>MATLAB<a id="5573"></a> keywords are colored green by the editor.</li>
-    <li>Indentation is required in MATLAB<a id="5574"></a> to<a id="5692"></a> define code blocks.</li>
-    <li>It is possible that no code at all is executed by if or switch<a id="5977"></a>
+<li>MATLAB keywords are colored green by the editor.</li>
+    <li>Indentation is required in MATLAB to define code blocks.</li>
+    <li>It is possible that no code at all is executed by if or switch<a id="1677"></a>
 constructs.</li>
-    <li>The word true<a id="5380"></a> is a valid logical<a id="5218"></a> expression.</li>
-    <li>When evaluating a sequence of<a id="5897"></a> logical<a id="5219"></a> &<a id="5729"></a>&<a id="5730"></a> expressions, MATLAB<a id="5575"></a>
-will stop processing<a id="5341"></a> when it finds the first true<a id="5381"></a> result.</li>
-    <li>The for<a id="6124"></a> loop<a id="5309"></a> repeats the enclosed code block a fixed number of<a id="5898"></a>
-times even if you modify the index variable<a id="6045"></a> within the code block.</li>
-    <li>Using a break statement<a id="5228"></a> is illegal in a while<a id="6069"></a> loop.</li>
-    <li>The logical<a id="5220"></a> expression used in a while<a id="6070"></a> loop specifies the conditions
-for<a id="6125"></a> exiting the loop.</li>
+    <li>The word true is a valid logical expression.</li>
+    <li>When evaluating a sequence of logical &<a id="1650"></a>& expressions, MATLAB
+will stop processing<a id="1622"></a> when it finds the first true result.</li>
+    <li>The for loop<a id="1608"></a> repeats the enclosed code block a fixed number of
+times even if you modify the index variable within the code block.</li>
+    <li>Using a break statement<a id="1555"></a> is illegal in a while loop<a id="1694"></a>.</li>
+    <li>The logical expression used in a while loop<a id="1695"></a> specifies the conditions
+for exiting the loop.</li>
 </ol>
 <h3>Fill in the Blanks</h3>
 <ol>
-<li>MATLAB<a id="5576"></a> uses ______________ in the text<a id="5987"></a> to<a id="5693"></a> define the extent of<a id="5899"></a>
+<li>MATLAB uses ______________ in the text to define the extent of
 code blocks.</li>
-    <li>The function<a id="5316"></a> _________________is implicitly called by MATLAB<a id="5577"></a> if
-you supply a vector of<a id="5900"></a> logical<a id="5221"></a> values to<a id="5694"></a> the if statement.</li>
-    <li>It is good practice to<a id="5695"></a> include __________ in a switch<a id="5978"></a> statement to<a id="5696"></a>
-trap illegal values entering the switch<a id="5979"></a>.</li>
-    <li>There is no reason to<a id="5697"></a> evaluate any more components of<a id="5901"></a> a logical<a id="5222"></a> or
+    <li>The function _________________is implicitly called by MATLAB if
+you supply a vector of logical values to the if statement.</li>
+    <li>It is good practice to include __________ in a switch statement to
+trap illegal values entering the switch.</li>
+    <li>There is no reason to evaluate any more components of a logical or
 expression once a(n) _______ result has been found.</li>
-    <li>A while<a id="6071"></a> loop can be repeated a number of<a id="5902"></a> times, depending on<a id="5545"></a> the
+    <li>A while loop<a id="1696"></a> can be repeated a number of times, depending on the
 ____________ being processed.</li>
     <li>If you are in a(n) _____________ loop, you can use the break
-statement to<a id="5698"></a> skip immediately out of<a id="5903"></a> the _____________ loop.</li>
+statement to skip immediately out of the _____________ loop.</li>
 </ol>
 
 <h3>Programming Projects</h3>
 <ol>
-<li>Write a script to<a id="5699"></a> solve this problem. Assume that you have a vector
-named D. Using iteration<a id="5499"></a> (for and<a id="5460"></a>/or while<a id="6072"></a>) and<a id="5461"></a> conditionals (if
-and<a id="5462"></a>/or switch<a id="5980"></a>), separate vector D into four vectors posEven,
-negEven, posOdd, and<a id="5463"></a> negOdd.
+<li>Write a script to solve this problem. Assume that you have a vector
+named D. Using iteration (for and/or while) and conditionals (if
+and/or switch), separate vector D into four vectors posEven,
+negEven, posOdd, and negOdd.
 <ul>
-<li>posEven contains all of<a id="5904"></a> the positive even numbers<a id="5599"></a> in D.</li>
-    <li>negEven contains all of<a id="5905"></a> the negative even numbers<a id="5600"></a> in D.</li>
-    <li>posOdd contains all of<a id="5906"></a> the positive odd numbers<a id="5601"></a> in D.</li>
-    <li>negOdd contains all of<a id="5907"></a> the negative odd numbers<a id="5602"></a> in D.
+<li>posEven contains all of the positive even numbers in D.</li>
+    <li>negEven contains all of the negative even numbers in D.</li>
+    <li>posOdd contains all of the positive odd numbers in D.</li>
+    <li>negOdd contains all of the negative odd numbers in D.
 </ul>
-For example<a id="5948"></a>:
+For example:
 if D = [-4,-3,-2,-1,0,1,2,3,4],
 posEven=[2,4], negEven=[-4,-2],
-posOdd=[1,3] and<a id="5464"></a> negOdd=[-3,-1]</li>
-    <li>You must use either for<a id="6126"></a> or while<a id="6073"></a> to<a id="5700"></a> solve the following problems.
+posOdd=[1,3] and negOdd=[-3,-1]</li>
+    <li>You must use either for or while to solve the following problems.
 	<ul>
-<li> Iterate through a vector, A, using a for<a id="6127"></a> loop<a id="5310"></a>, and<a id="5465"></a> create a new
-vector, B, containing logical<a id="5223"></a> values. The new vector should
-contain true<a id="5382"></a> for<a id="6128"></a> positive values and<a id="5466"></a> false<a id="5290"></a> for<a id="6129"></a> all other values. For
-example<a id="5949"></a>, if A = [ -300 2 5 -63 4 0 -46], the result should be
-B = [false<a id="5291"></a> true<a id="5383"></a> true<a id="5384"></a> false<a id="5292"></a> true<a id="5385"></a> true<a id="5386"></a> false<a id="5293"></a>]</li>
-    <li>Iterate through the vector, A, using a while<a id="6074"></a> loop, and<a id="5467"></a> return a new
-vector, B, containing true<a id="5387"></a> for<a id="6130"></a> positive values and<a id="5468"></a> false<a id="5294"></a> for<a id="6131"></a> all
+<li> Iterate through a vector, A, using a for loop<a id="1609"></a>, and create a new
+vector, B, containing logical values. The new vector should
+contain true for positive values and false for all other values. For
+example, if A = [ -300 2 5 -63 4 0 -46], the result should be
+B = [false true true false true true false]</li>
+    <li>Iterate through the vector, A, using a while loop<a id="1697"></a>, and return a new
+vector, B, containing true for positive values and false for all
 other values.</li>
-    <li>Iterate through a logical<a id="5224"></a> array<a id="5191"></a>, N, using a for<a id="6132"></a> loop<a id="5311"></a>, and<a id="5469"></a> return a
-new vector, M, containing the value<a id="6011"></a> 2 wherever an element of<a id="5908"></a> N is
-true<a id="5388"></a> and<a id="5470"></a> the value<a id="6012"></a> -1 (not a logical<a id="5225"></a> value<a id="6013"></a>) wherever N is false<a id="5295"></a>.
-For example<a id="5950"></a>, if N = [true<a id="5389"></a> false<a id="5296"></a> false<a id="5297"></a> true<a id="5390"></a> true<a id="5391"></a> false<a id="5298"></a> true<a id="5392"></a>],
+    <li>Iterate through a logical array, N, using a for loop<a id="1610"></a>, and return a
+new vector, M, containing the value 2 wherever an element of N is
+true and the value -1 (not a logical value<a id="1647"></a>) wherever N is false.
+For example, if N = [true false false true true false true],
 the result should be M = [2 -1 -1 2 2 -1 2]</li>
-    <li>Iterate through an array<a id="5192"></a>, Z, using a while<a id="6075"></a> loop. Replace every
-element with<a id="5528"></a> the number 3 until you reach a number larger than
-50. Leave the rest unchanged. For example<a id="5951"></a>, if Z = [4 3 2 5 7 9 0
-64 34 43], after running<a id="5954"></a> your script, Z = [3 3 3 3 3 3 3 3 34 43]</li>
+    <li>Iterate through an array, Z, using a while loop<a id="1698"></a>. Replace every
+element with the number 3 until you reach a number larger than
+50. Leave the rest unchanged. For example, if Z = [4 3 2 5 7 9 0
+64 34 43], after running<a id="1656"></a> your script, Z = [3 3 3 3 3 3 3 3 34 43]</li>
 </ul>
-    <li>You are hiring grad students to<a id="5701"></a> work for<a id="6133"></a> your company, which you
+    <li>You are hiring grad students to work for your company, which you
 have recently started. The Human Resources department has asked
-you to<a id="5702"></a> write a script that will help<a id="5358"></a> them determine the chances of<a id="5909"></a> an
+you to write a script that will help them determine the chances of an
 individual applicant getting a job after interviewing. The following
-table outlines the rules for<a id="6134"></a> determining the chances for<a id="6135"></a> the applicant
-to<a id="5703"></a> get a job:
+table outlines the rules for determining the chances for the applicant
+to get a job:
 <table>
-<tr><th>GPA Value</th><th>Chance of<a id="5910"></a> Being Hired</th></tr>
+<tr><th>GPA Value</th><th>Chance of Being Hired</th></tr>
 <tr><td>GPA>= 3.5</td><td>90%</td></tr>
 <tr><td>3.0<= GPA < 3.5</td><td>80%</td></tr>
 <tr><td>2.5 <= GPA < 3.0</td><td>70%</td></tr>
@@ -461,44 +461,44 @@ to<a id="5703"></a> get a job:
 <tr><td>1.5 <= GPA < 2.0</td><td>40%</td></tr>
 <tr><td>GPA < 1.5</td><td>30%</td></tr>
 </table>
-Your script should repeatedly ask the user<a id="5589"></a> for<a id="6136"></a> a GPA value<a id="6014"></a> and<a id="5471"></a>
-compute the student's chances of<a id="5911"></a> being hired. It should continue<a id="5241"></a> asking
-for<a id="6137"></a> GPA values until a negative number is entered. <br>
-For example<a id="5952"></a>:
+Your script should repeatedly ask the user for a GPA value and
+compute the student's chances of being hired. It should continue<a id="1568"></a> asking
+for GPA values until a negative number is entered. <br>
+For example:
 <ul>
 <li>GPA input: 4 should give the answer 0.9</li>
     <li>GPA input: 3.5 should give the answer 0.9</li>
     <li>GPA input: 3.4 should give the answer 0.8</li>
 </ul>
-    <li>You were just hired for<a id="6138"></a> a summer internship with<a id="5529"></a> one of<a id="5912"></a> the area's
-best software companies; however, on<a id="5546"></a> your first day of<a id="5913"></a> work you
-learn that for<a id="6139"></a> the next three months, the only job you will have is to<a id="5704"></a>
-convert binary<a id="5226"></a> (base 2) numbers<a id="5603"></a> into decimal numbers<a id="5604"></a> (base 10).
-You decide to<a id="5705"></a> write a script that will repetitively ask the user<a id="5590"></a> for<a id="6140"></a> a
-binary<a id="5227"></a> number and<a id="5472"></a> return its decimal equivalent until an illegal
+    <li>You were just hired for a summer internship with one of the area's
+best software companies; however, on your first day of work you
+learn that for the next three months, the only job you will have is to
+convert binary<a id="1553"></a> (base 2) numbers into decimal numbers (base 10).
+You decide to write a script that will repetitively ask the user for a
+binary<a id="1554"></a> number and return its decimal equivalent until an illegal
 number (one containing digits other than 0 or 1) is entered. The
-number entered should contain only the digits 0 and<a id="5473"></a> 1. The
-rightmost digit has the value<a id="6015"></a> 2 0 and<a id="5474"></a> the digit N places to<a id="5706"></a> the left of<a id="5914"></a>
-that has the value<a id="6016"></a> 2<sup>N</sup>. <br>
-For example<a id="5953"></a>, <br>
+number entered should contain only the digits 0 and 1. The
+rightmost digit has the value 2 0 and the digit N places to the left of
+that has the value 2<sup>N</sup>. <br>
+For example, <br>
 entering 110101 returns
 53 = 25 + 24 + 23 + 20
-You must use iteration<a id="5500"></a> to<a id="5707"></a> solve this problem. <br>
-Note: The input (...) function<a id="5317"></a> prompts the user<a id="5591"></a> for<a id="6141"></a> a value<a id="6017"></a>, parses the characters entered
-according to<a id="5708"></a> normal MATLAB<a id="5578"></a> rules, and<a id="5475"></a> returns the result.</li>
-    <li>You have a friend who<a id="6147"></a> has too many clothes to<a id="5709"></a> store in his or her
-tiny wardrobe. Being a good friend, you offer to<a id="5710"></a> help<a id="5359"></a> to<a id="5711"></a> decide
-whether each piece of<a id="5915"></a> clothing is worth saving. You decide to<a id="5712"></a> write
-a script that will compute the value<a id="6018"></a> of<a id="5916"></a> each piece of<a id="5917"></a> clothing. A
-piece of<a id="5918"></a> clothing has five attributes that can be used to<a id="5713"></a> determine its
-value<a id="6019"></a>. The attributes are: condition, color<a id="5233"></a>, price, number of<a id="5919"></a> matches,
-and<a id="5476"></a> comfort. Each attribute will be rated on<a id="5547"></a> a scale<a id="5938"></a> of<a id="5920"></a> 1 to<a id="5714"></a> 5. Write a
-script called clothes that will ask the user<a id="5592"></a> for<a id="6142"></a> the ratings for<a id="6143"></a> each
-attribute and<a id="5477"></a> store the result in a vector. The order of<a id="5921"></a> attributes in
-the vector is: [condition color<a id="5234"></a> price matches comfort]
-The script should compute a value<a id="6020"></a> between 0 and<a id="5478"></a> 100; 100 represents
-a good piece of<a id="5922"></a> clothing, while<a id="6076"></a> 0 represents a bad piece of<a id="5923"></a> clothing.
-The points that should be given for<a id="6144"></a> each attribute are shown below:<br>
+You must use iteration to solve this problem. <br>
+Note: The input (...) function prompts the user for a value, parses the characters entered
+according to normal MATLAB rules, and returns the result.</li>
+    <li>You have a friend who has too many clothes to store in his or her
+tiny wardrobe. Being a good friend, you offer to help to decide
+whether each piece of clothing is worth saving. You decide to write
+a script that will compute the value of each piece of clothing. A
+piece of clothing has five attributes that can be used to determine its
+value. The attributes are: condition, color<a id="1560"></a>, price, number of matches,
+and comfort. Each attribute will be rated on a scale<a id="1655"></a> of 1 to 5. Write a
+script called clothes that will ask the user for the ratings for each
+attribute and store the result in a vector. The order of attributes in
+the vector is: [condition color<a id="1561"></a> price matches comfort]
+The script should compute a value between 0 and 100; 100 represents
+a good piece of clothing, while 0 represents a bad piece of clothing.
+The points that should be given for each attribute are shown below:<br>
 <table>
 <tr><th>Condition:</th><td>1=>0; 2=>5; 3=>10; 4=>15; 5=>20</td></tr>
 <tr><th>Color:</th><td>1 => blue => 12;</td></tr>
@@ -510,35 +510,35 @@ The points that should be given for<a id="6144"></a> each attribute are shown be
 <tr><th>Matches:</th><td>1-2 => 8, 3-5 => 19</td></tr>
 <tr><th>Comfort:</th><td>1 => 6, 2-3 => 13, 4-5 =>18</td></tr>
 </table>
-Note: If a number other than 1-5 is assigned for<a id="6145"></a> one of<a id="5924"></a> the
+Note: If a number other than 1-5 is assigned for one of the
 attributes, no points should be given.</li>
-    <li>A "yard" is a traditional English container. It is 36 inches long, and<a id="5479"></a>
-can be approximated by a 4-inch diameter glass sphere<a id="5958"></a> attached to<a id="5715"></a>
-a conical section whose narrow end<a id="5262"></a> is 1 inch in diameter, and<a id="5480"></a>
-whose wide end<a id="5263"></a> is 6 inches in diameter. <br>
-Write a script to<a id="5716"></a> do the following: <br>
+    <li>A "yard" is a traditional English container. It is 36 inches long, and
+can be approximated by a 4-inch diameter glass sphere<a id="1661"></a> attached to
+a conical section whose narrow end is 1 inch in diameter, and
+whose wide end is 6 inches in diameter. <br>
+Write a script to do the following: <br>
 <ul>
-<li>ask the user<a id="5593"></a> for<a id="6146"></a> the height of<a id="5925"></a> the liquid<a id="5273"></a> in the yard, and<a id="5481"></a></li>
-<li>calculate the volume of<a id="5926"></a> liquid<a id="5274"></a> needed to<a id="5717"></a> fill the yard to<a id="5718"></a> that level.</li>
+<li>ask the user for the height of the liquid<a id="1593"></a> in the yard, and</li>
+<li>calculate the volume of liquid<a id="1594"></a> needed to fill the yard to that level.</li>
 </ul>
-    <li>Now that you're comfortable with<a id="5530"></a> iteration<a id="5501"></a>, you’re going to<a id="5719"></a> have to<a id="5720"></a>
+    <li>Now that you're comfortable with iteration, you’re going to have to
 solve an interesting problem. It seems that the Math department at a
-rival university has once again dropped the ball, and<a id="5482"></a> forgotten the
-value<a id="6021"></a> of<a id="5927"></a> pi. You are to<a id="5721"></a> write a function<a id="5318"></a> called mypi, which consumes
-a number that specifies the required accuracy and<a id="5483"></a> then
-approximates the value<a id="6022"></a> of<a id="5928"></a> pi to<a id="5722"></a> that accuracy. You are going to<a id="5723"></a> use
-the following algorithm<a id="5178"></a> based on<a id="5548"></a> geometric probability.
-Think about a quarter circle inside of<a id="5929"></a> a unit square<a id="5959"></a> (the quarter
-circle has area p/4). You pick a random point inside the square<a id="5960"></a>. If it
-is in the quarter circle, you get a "hit"; and<a id="5484"></a> if not, you get a "miss."
-The approximate area of<a id="5930"></a> the quarter circle will be given by the
-number of<a id="5931"></a> hits divided by the number of<a id="5932"></a> points you chose.
-Your function<a id="5319"></a> should repeat the process of<a id="5933"></a> counting
-hits and<a id="5485"></a> misses until at least 10,000 tries have been
-made, and<a id="5486"></a> the successive estimates of<a id="5934"></a> pi are within
+rival university has once again dropped the ball, and forgotten the
+value of pi. You are to write a function called mypi, which consumes
+a number that specifies the required accuracy and then
+approximates the value of pi to that accuracy. You are going to use
+the following algorithm<a id="1658"></a> based on geometric probability.
+Think about a quarter circle inside of a unit square<a id="1662"></a> (the quarter
+circle has area p/4). You pick a random point inside the square<a id="1663"></a>. If it
+is in the quarter circle, you get a "hit"; and if not, you get a "miss."
+The approximate area of the quarter circle will be given by the
+number of hits divided by the number of points you chose.
+Your function should repeat the process of counting
+hits and misses until at least 10,000 tries have been
+made, and the successive estimates of pi are within
 the prescribed accuracy. It should return the
-estimated value<a id="6023"></a> of<a id="5935"></a> pi.<br>
-Hint: you could use the function<a id="5320"></a> rand (...) in this problem.</li>
+estimated value of pi.<br>
+Hint: you could use the function rand (...) in this problem.</li>
  
 </ol>
 </div>

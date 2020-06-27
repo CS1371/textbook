@@ -20,26 +20,26 @@
   <!-- Chapter Objectives -->
   <h1>Chapter Objectives</h1>
   <div class="container">
-    <p>This chapter discusses the following basic ideas of<a id="10130"></a> recursive programming<a id="9896"></a>:</p>
+    <p>This chapter discusses the following basic ideas of recursive programming:</p>
     <ul>
-    <li>Three basic characteristics must be present for<a id="10416"></a> a recursive function<a id="9513"></a> to<a id="9934"></a> work </li>
-    <li>Exceptions are a powerful mechanism for<a id="10417"></a> detecting<a id="9468"></a> and<a id="9720"></a> trapping errors</li>
-    <li>A wrapper<a id="10487"></a> function<a id="9514"></a> is used to<a id="9935"></a> set up the recursion<a id="10097"></a> </li>
-    <li>Other forms of<a id="10131"></a> recursion<a id="10098"></a> occur in special circumstances</li>
+    <li>Three basic characteristics must be present for a recursive function to work </li>
+    <li>Exceptions are a powerful mechanism for detecting<a id="2226"></a> and trapping errors</li>
+    <li>A wrapper function<a id="2347"></a> is used to set up the recursion<a id="2303"></a> </li>
+    <li>Other forms of recursion<a id="2304"></a> occur in special circumstances</li>
     </ul>
   </div>
 
   <!-- Introduction -->
   <h1>Introduction</h1>
   <div class="container">
-    <p>Recursion is an alternative technique by which a code block can be repeated in a controlled manner. In Chapter 4, we saw repetition achieved by inserting<a id="9431"></a> control statements in the code (either <code>for<a id="10418"></a></code> or <code>while<a id="10414"></a></code>) to<a id="9936"></a> determine how many times a code block would be repeated. Recursion uses the basic mechanism for<a id="10419"></a> invoking functions<a id="10363"></a> to<a id="9937"></a> manage the repetition of<a id="10132"></a> a block of<a id="10133"></a> code.  While some problems are naturally solved by iterative solutions, there are many problems for<a id="10420"></a> which a recursive solution is elegant and<a id="9721"></a> easily understood. Frequently, a recursive function<a id="9515"></a> needs a “wrapper<a id="10488"></a> function<a id="9516"></a>” to<a id="9938"></a> set up the recursion<a id="10099"></a> and<a id="9722"></a> to<a id="9939"></a> check for<a id="10421"></a> erroneous initial conditions that might cause errors. The recursive function<a id="9517"></a> itself then becomes a private helper<a id="9709"></a> function<a id="9518"></a>.</p>
+    <p>Recursion is an alternative technique by which a code block can be repeated in a controlled manner. In Chapter 4, we saw repetition achieved by inserting<a id="2206"></a> control statements in the code (either <code>for</code> or <code>while</code>) to determine how many times a code block would be repeated. Recursion uses the basic mechanism for invoking functions to manage the repetition of a block of code.  While some problems are naturally solved by iterative solutions, there are many problems for which a recursive solution is elegant and easily understood. Frequently, a recursive function needs a “wrapper function<a id="2348"></a>” to set up the recursion<a id="2305"></a> and to check for erroneous initial conditions that might cause errors. The recursive function itself then becomes a private helper<a id="2279"></a> function.</p>
   </div>
 
   <div class="chp-section" data-sect-num="1" data-sect-name="Concept: The Activation Stack">
     <!-- Stack Section -->
     <h2 id="9_1">9.1  Concept: The Activation Stack</h2>
     <div class="container">
-      <p>In order to<a id="9940"></a> understand recursive programming<a id="9897"></a>, we must look deeper into the mechanism by which function<a id="9519"></a> calls are mechanized. Calling any function<a id="9520"></a> depends on<a id="9855"></a> a special kind of<a id="10134"></a> data<a id="9878"></a> structure<a id="10356"></a> built into the architecture of<a id="10135"></a> the central processing<a id="9696"></a> unit (CPU). This is called the activation<a id="10108"></a> stack<a id="9402"></a>. It enables the CPU to<a id="9941"></a> determine which functions<a id="10364"></a> are active or suspended awaiting the completion of<a id="10136"></a> other function<a id="9521"></a> calls. To understand the activation<a id="10109"></a> stack<a id="9403"></a>, first we consider the basic concept of<a id="10137"></a> a stack<a id="10333"></a>.</p>
+      <p>In order to understand recursive programming, we must look deeper into the mechanism by which function calls are mechanized. Calling any function depends on a special kind of data structure built into the architecture of the central processing unit (CPU). This is called the activation stack<a id="2192"></a>. It enables the CPU to determine which functions are active or suspended awaiting the completion of other function calls. To understand the activation stack<a id="2193"></a>, first we consider the basic concept of a stack<a id="2330"></a>.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="A Stack">
@@ -48,14 +48,14 @@
       <div class="container clearfix">
         <div class="float-sm-right card">
             <img src="..\Images\Fig_9_1.JPG" alt="Figure 9.1" class="fig card-image">
-            <p class="figure-name card-title">Figure<a id="10474"></a> 9.1: A Stack</p>
+            <p class="figure-name card-title">Figure 9.1: A Stack</p>
         </div>
-        <p>A stack<a id="10334"></a> is one of<a id="10138"></a> the fundamental data<a id="9879"></a> structures<a id="9677"></a> of<a id="10139"></a> computer science. It is best modeled by considering the plates at the front of<a id="10140"></a> the cafeteria line. You cannot see how many plates there are on<a id="9856"></a> the stack<a id="10335"></a>, and<a id="9723"></a> the only access you have to<a id="9942"></a> them is to<a id="9943"></a> take the top plate off the top of<a id="10141"></a> the stack<a id="10336"></a> or put one on<a id="9857"></a>. So a stack<a id="10337"></a> is a collection of<a id="10142"></a> objects<a id="10068"></a> of<a id="10143"></a> arbitrary size<a id="10412"></a> with<a id="9819"></a> a restricted number of<a id="10144"></a> operations<a id="10072"></a> we are allowed to<a id="9944"></a> perform on<a id="9858"></a> that collection (see Figure<a id="10475"></a> 9.1). Unlike a vector, where it is permissible to<a id="9945"></a> read, add, or remove items anywhere in the collection, we are only allowed the following operations<a id="10073"></a> with<a id="9820"></a> a stack<a id="10338"></a>:</p>
+        <p>A stack<a id="2331"></a> is one of the fundamental data structures of computer science. It is best modeled by considering the plates at the front of the cafeteria line. You cannot see how many plates there are on the stack<a id="2332"></a>, and the only access you have to them is to take the top plate off the top of the stack<a id="2333"></a> or put one on. So a stack<a id="2334"></a> is a collection of objects<a id="2290"></a> of arbitrary size with a restricted number of operations we are allowed to perform on that collection (see Figure 9.1). Unlike a vector, where it is permissible to read, add, or remove items anywhere in the collection, we are only allowed the following operations with a stack:</p>
         <ul>
-          <li>Push an object onto the stack<a id="10339"></a></li>
-          <li>Pop an object off the stack<a id="10340"></a></li>
+          <li>Push an object onto the stack</li>
+          <li>Pop an object off the stack</li>
           <li>Peek at the top object without removing it</li>
-          <li>Check whether the stack<a id="10341"></a> is empty<a id="9462"></a></li>
+          <li>Check whether the stack is empty</li>
         </ul>
       </div>
     </div>
@@ -64,13 +64,13 @@
       <!-- Activation Stack -->
       <h3 id="9_1_2">9.1.2	Activation Stack</h3>
       <div class="container">
-        <p>The core concept that enables any function<a id="9522"></a> (especially a recursive function<a id="9523"></a>) to<a id="9946"></a> operate is the concept of<a id="10145"></a> an activation<a id="10110"></a> stack<a id="9404"></a>. The activation<a id="10111"></a> stack<a id="9405"></a> is the means by which the operating<a id="10069"></a> system allocates memory to<a id="9947"></a> functions<a id="10365"></a> for<a id="10422"></a> storing local data<a id="9880"></a>. Typically, local storage is required by a function<a id="9524"></a> for<a id="10423"></a> the following reasons:</p>
+        <p>The core concept that enables any function (especially a recursive function) to operate is the concept of an activation stack<a id="2194"></a>. The activation stack<a id="2195"></a> is the means by which the operating<a id="2342"></a> system allocates memory to functions for storing local data. Typically, local storage is required by a function for the following reasons:</p>
         <ul>
-          <li>Storing the location in memory to<a id="9948"></a> which control must be returned when the function<a id="9525"></a> execution<a id="9480"></a> completes</li>
-          <li>Storing copies of<a id="10146"></a> the function<a id="9526"></a> parameter values</li>
-          <li>Providing space for<a id="10424"></a> the values of<a id="10147"></a> any local variables defined<a id="9687"></a> within the function<a id="9527"></a></li>
+          <li>Storing the location in memory to which control must be returned when the function execution completes</li>
+          <li>Storing copies of the function parameter values</li>
+          <li>Providing space for the values of any local variables defined within the function</li>
         </ul>
-        <p>When MATLAB<a id="9872"></a> is initializing, the operating<a id="10070"></a> system allocates a block of<a id="10148"></a> memory to<a id="9949"></a> contain its activation<a id="10112"></a> stack<a id="9406"></a> and<a id="9724"></a> allocates the first item (usually called a “frame”) on<a id="9859"></a> the activation<a id="10113"></a> stack<a id="9407"></a> to<a id="9950"></a> store variables defined<a id="9688"></a> in the Command<a id="10470"></a> window and<a id="9725"></a> by scripts<a id="10315"></a>. An astute reader might recognize this as the initial workspace for<a id="10425"></a> the system. When the user<a id="9906"></a> starts a script or makes an entry in the Command<a id="10471"></a> window, any variables created are stored in that stack<a id="10342"></a> frame. When that application calls a function<a id="9528"></a>, a new stack<a id="10343"></a> frame is allocated and<a id="9726"></a> “pushed” onto the activation<a id="10114"></a> stack<a id="9408"></a>. The calling program is then suspended, actual parameters<a id="9423"></a> are copied to<a id="9951"></a> formal<a id="9509"></a> parameters<a id="10394"></a> in the new workspace and<a id="9727"></a> control is passed to<a id="9952"></a> the function<a id="9529"></a>. Any new variables created are stored in its stack<a id="10344"></a> frame. When that function<a id="9530"></a> completes, its frame is popped off the stack<a id="10345"></a> and<a id="9728"></a> destroyed, and<a id="9729"></a> control is returned   to<a id="9953"></a> the frame beneath, which is now the  top  of<a id="10149"></a>  the  stack<a id="10346"></a>.  If  an  active function<a id="9531"></a> calls another function<a id="9532"></a>, this process  is  repeated.  The  calling function<a id="9533"></a> is suspended, a stack<a id="10347"></a> frame is pushed onto the activation<a id="10115"></a> stack<a id="9409"></a> for<a id="10426"></a> the new function<a id="9534"></a>, and<a id="9730"></a> the original function<a id="9535"></a> is suspended until the new function<a id="9536"></a> completes.</p>
+        <p>When MATLAB is initializing, the operating<a id="2343"></a> system allocates a block of memory to contain its activation stack<a id="2196"></a> and allocates the first item (usually called a “frame”) on the activation stack<a id="2197"></a> to store variables defined in the Command window and by scripts. An astute reader might recognize this as the initial workspace for the system. When the user starts a script or makes an entry in the Command window, any variables created are stored in that stack frame. When that application calls a function, a new stack frame is allocated and “pushed” onto the activation stack<a id="2198"></a>. The calling program is then suspended, actual parameters<a id="2204"></a> are copied to formal<a id="2255"></a> parameters in the new workspace and control is passed to the function. Any new variables created are stored in its stack frame. When that function completes, its frame is popped off the stack and destroyed, and control is returned   to the frame beneath, which is now the  top  of  the  stack.  If  an  active function calls another function, this process  is  repeated.  The  calling function is suspended, a stack frame is pushed onto the activation stack<a id="2199"></a> for the new function, and the original function is suspended until the new function completes.</p>
       </div>
     </div>
 
@@ -78,7 +78,7 @@
       <!-- Function Instances -->
       <h3 id="9_1_3">9.1.3 Function Instances</h3>
       <div class="container">
-        <p>In Chapter 2 we discussed the difference between the type of<a id="10150"></a> data<a id="9881"></a> defined<a id="9689"></a> by its class and<a id="9731"></a> an object — an instance of<a id="10151"></a> that class assigned to<a id="9954"></a> a variable<a id="10400"></a>. In the same way, we draw the distinction between the .m file that defines the behavior of<a id="10152"></a> a function<a id="9537"></a> and<a id="9732"></a> the instance(s) of<a id="10153"></a> that function<a id="9538"></a> that result(s) when the function<a id="9539"></a> is called. Each new instance of<a id="10154"></a> a function<a id="9540"></a> has its own workspace that occupies a temporary stack<a id="10348"></a> frame allocated from<a id="9640"></a> the activation<a id="10116"></a> stack<a id="9410"></a>.</p>
+        <p>In Chapter 2 we discussed the difference between the type of data defined by its class and an object — an instance of that class assigned to a variable. In the same way, we draw the distinction between the .m file that defines the behavior of a function and the instance(s) of that function that result(s) when the function is called. Each new instance of a function has its own workspace that occupies a temporary stack frame allocated from the activation stack<a id="2200"></a>.</p>
       </div>
     </div>
   </div>
@@ -87,19 +87,19 @@
     <!-- Recursion Defined -->
     <h2 id="9_2">9.2	Recursion Defined</h2>
     <div class="container">
-      <p>Following the previous line of<a id="10155"></a> reasoning, in principle there is no reason why a function<a id="9541"></a> could not in fact “call itself,” and<a id="9733"></a> this is the logical<a id="9432"></a> basis for<a id="10427"></a> recursive programming<a id="9898"></a>. Of course, as with<a id="9821"></a> iterative programming<a id="9899"></a>, if there is no mechanism to<a id="9955"></a> stop the recursion<a id="10100"></a>, the process would repeat endlessly. In the case<a id="9436"></a> of<a id="10156"></a> endless<a id="10129"></a> recursion<a id="10101"></a>, since space is being consumed on<a id="9860"></a> the activation<a id="10117"></a> stack<a id="9411"></a>, the system will eventually terminate the process when the memory originally allocated for<a id="10428"></a> the activation<a id="10118"></a> stack<a id="9412"></a> is exhausted.</p>
-      <p>The canonical illustration of<a id="10157"></a> recursion<a id="10102"></a> is the computation of<a id="10158"></a> n factorial. We could view the calculation of<a id="10159"></a> <code>5!</code> in the following ways:</p>
+      <p>Following the previous line of reasoning, in principle there is no reason why a function could not in fact “call itself,” and this is the logical basis for recursive programming. Of course, as with iterative programming, if there is no mechanism to stop the recursion<a id="2306"></a>, the process would repeat endlessly. In the case of endless recursion<a id="2307"></a>, since space is being consumed on the activation stack<a id="2201"></a>, the system will eventually terminate the process when the memory originally allocated for the activation stack<a id="2202"></a> is exhausted.</p>
+      <p>The canonical illustration of recursion<a id="2308"></a> is the computation of n factorial. We could view the calculation of <code>5!</code> in the following ways:</p>
       <p><code>&nbsp;&nbsp;&nbsp;&nbsp;5! = 5 × 4 × 3 × 2 × 1</p>
       <p>&nbsp;&nbsp;&nbsp;&nbsp;5! = 5 × 4!</code></p>
       <p>The second representation is the recursive view, which warrants a closer examination as follows:</p>
       <code>&nbsp;&nbsp;&nbsp;&nbsp;n! = n × (n-1)!</code><br>
-      <p>This definition would not be complete, however, without realizing that it must stop somewhere. In the original definition above, we did not continue<a id="9458"></a> the chain of<a id="10160"></a> multiplication<a id="9434"></a> with<a id="9822"></a> "<code> * 0 * (-1) * (-2) ... </code>" for<a id="10429"></a> obvious reasons — multiplying by 0 makes all factorial values 0! Mathematically, we “artificially” define the terminating condition for<a id="10430"></a> the factorial calculation as the state where <code>0! = 1</code>. We can derive from<a id="9641"></a> this example<a id="10316"></a> the three necessary characteristics of<a id="10161"></a> a recursive function<a id="9542"></a>:</p>
+      <p>This definition would not be complete, however, without realizing that it must stop somewhere. In the original definition above, we did not continue<a id="2222"></a> the chain of multiplication<a id="2207"></a> with "<code> * 0 * (-1) * (-2) ... </code>" for obvious reasons — multiplying by 0 makes all factorial values 0! Mathematically, we “artificially” define the terminating condition for the factorial calculation as the state where <code>0! = 1</code>. We can derive from this example the three necessary characteristics of a recursive function:</p>
       <ol>
-        <li>There must be a terminating condition to<a id="9956"></a> stop the process</li>
-        <li>The function<a id="9543"></a> must call <b>a clone</b> of<a id="10162"></a> itself</li>
-        <li>The parameters<a id="10395"></a> to<a id="9957"></a> that call must move the function<a id="9544"></a> toward the terminating condition</li>
+        <li>There must be a terminating condition to stop the process</li>
+        <li>The function must call <b>a clone</b> of itself</li>
+        <li>The parameters to that call must move the function toward the terminating condition</li>
       </ol>
-      <p><b>Note:</b> The word <b>clone</b> is important here — a recursive function<a id="9545"></a> really does not “call itself,” because it requests a new stack<a id="10349"></a> frame and<a id="9734"></a> passes different parameters<a id="10396"></a> to<a id="9958"></a> the instance of<a id="10163"></a> the function<a id="9546"></a> that occupies the new frame.</p>
+      <p><b>Note:</b> The word <b>clone</b> is important here — a recursive function really does not “call itself,” because it requests a new stack frame and passes different parameters to the instance of the function that occupies the new frame.</p>
     </div>
   </div>
 
@@ -107,19 +107,19 @@
     <!-- Implementing a Recursive Function -->
     <h2 id="9_3">9.3	Implementing a Recursive Function</h2>
     <div class="container">
-      <p>Template 9.1 shows the general template<a id="9702"></a> for<a id="10431"></a> recursive functions<a id="10366"></a>. The following general guidelines indicate how the recursive template<a id="9703"></a> is implemented:</p>
-      <div class="template">#template<a id="9704"></a>_9_1#</div>
+      <p>Template 9.1 shows the general template<a id="2336"></a> for recursive functions. The following general guidelines indicate how the recursive template<a id="2337"></a> is implemented:</p>
+      <div class="template">#template<a id="2338"></a>_9_1#</div>
       <ul>
-        <li>The <code>&lt;function<a id="9547"></a>_name&gt;</code>, like the name of<a id="10164"></a> any other function<a id="9548"></a>, may be any legal variable<a id="10401"></a> name</li>
-        <li>The variable<a id="10402"></a> <code>&lt;result&gt;</code> may be any legal variable<a id="10403"></a> name or a vector of<a id="10165"></a> variable<a id="10404"></a> names<a id="10408"></a></li>
-        <li>As usual with<a id="9823"></a> functions<a id="10367"></a>, you should supply at least one line of<a id="10166"></a> <code>&lt;documentation<a id="9459"></a>&gt;</code> to<a id="9959"></a> define its purpose and<a id="9735"></a> implementation<a id="10088"></a></li>
-        <li>Each exit from<a id="9642"></a> the function<a id="9549"></a> must assign values to<a id="9960"></a> all the result variables</li>
-        <li>The first design decision is to<a id="9961"></a> determine the condition(s) under which the recursive process should stop, and<a id="9736"></a> how to<a id="9962"></a> express this as the <code>&lt;terminating condition N&gt;</code> tests</li>
-        <li>The <code>&lt;initial value<a id="10376"></a> N&gt;</code> entries are the value(<a id="10392"></a>s) of<a id="10167"></a> the result(s) at the terminating condition(s)</li>
-        <li>The second design decision is to<a id="9963"></a> determine the <code>&lt;operation<a id="9716"></a>&gt;</code> - the specific mathematical or logical<a id="9433"></a> operation<a id="9717"></a> that must be performed to<a id="9964"></a> combine the current formal<a id="9510"></a> parameters<a id="10397"></a> with<a id="9824"></a> the result of<a id="10168"></a> the recursive call to<a id="9965"></a> create a new value<a id="10377"></a> of<a id="10169"></a> the <code>&lt;result&gt;</code></li>
-        <li>The last design decision is to<a id="9966"></a> determine how to<a id="9967"></a> compute the &lt;actual_params&gt; of<a id="10170"></a> the recursive call to<a id="9968"></a> ensure that the process moves toward at least one of<a id="10171"></a> the <code>&lt;terminating condition N&gt;</code> states</li>
+        <li>The <code>&lt;function_name&gt;</code>, like the name of any other function, may be any legal variable name</li>
+        <li>The variable <code>&lt;result&gt;</code> may be any legal variable name or a vector of variable names</li>
+        <li>As usual with functions, you should supply at least one line of <code>&lt;documentation<a id="2223"></a>&gt;</code> to define its purpose and implementation</li>
+        <li>Each exit from the function must assign values to all the result variables</li>
+        <li>The first design decision is to determine the condition(s) under which the recursive process should stop, and how to express this as the <code>&lt;terminating condition N&gt;</code> tests</li>
+        <li>The <code>&lt;initial value N&gt;</code> entries are the value(<a id="2340"></a>s) of the result(s) at the terminating condition(s)</li>
+        <li>The second design decision is to determine the <code>&lt;operation<a id="2284"></a>&gt;</code> - the specific mathematical or logical operation<a id="2285"></a> that must be performed to combine the current formal<a id="2256"></a> parameters with the result of the recursive call to create a new value of the <code>&lt;result&gt;</code></li>
+        <li>The last design decision is to determine how to compute the &lt;actual_params&gt; of the recursive call to ensure that the process moves toward at least one of the <code>&lt;terminating condition N&gt;</code> states</li>
        </ul>
-      <p>The implementation<a id="10089"></a> of<a id="10172"></a> the factorial function<a id="9550"></a> is shown in Listing 9.1. In Listing 9.1 at Line 3, we show a diagnostic print call that, if not commented, enables you to<a id="9969"></a> observe the sequence of<a id="10173"></a> events.  Exercise 9.1 provides an analysis of<a id="10174"></a> recursive behavior. In particular, notice that all the mathematical operations<a id="10074"></a> are performed as the activation<a id="10119"></a> stack<a id="9413"></a> "unwinds."</p>
+      <p>The implementation of the factorial function is shown in Listing 9.1. In Listing 9.1 at Line 3, we show a diagnostic print call that, if not commented, enables you to observe the sequence of events.  Exercise 9.1 provides an analysis of recursive behavior. In particular, notice that all the mathematical operations are performed as the activation stack<a id="2203"></a> "unwinds."</p>
       <div class="row">
         <div class="col-sm-6">
           <div class="exercise">#exercise_9_1#</div>
@@ -135,17 +135,17 @@
     <!-- Exceptions -->
     <h2 id="9_4">9.4 Exceptions</h2>
     <div class="container">
-     <p>We digress here to<a id="9970"></a> discuss how programs deal with<a id="9825"></a> unexpected circumstances. Exceptions are a powerful tool for<a id="10432"></a> gracefully managing run- time errors caused by programming<a id="9900"></a> errors or bad data<a id="9882"></a>. The general need for<a id="10433"></a> an exception mechanism might best be established by way of<a id="10175"></a> an example<a id="10317"></a>. Suppose you write a program that requests some data<a id="9883"></a> from<a id="9643"></a> a user<a id="9907"></a> and<a id="9737"></a> then launches a significant number of<a id="10176"></a> nested function<a id="9551"></a> calls—perhaps even a recursive function<a id="9552"></a>—to<a id="9971"></a> perform an analysis on<a id="9861"></a> the data<a id="9884"></a> received. Somewhere in the depths of<a id="10177"></a> these function<a id="9553"></a> calls, the program divides something by a value<a id="10378"></a>, but in this instance that value<a id="10379"></a> is zero. The cause of<a id="10178"></a> this problem is probably bad data<a id="9885"></a> entered by the user<a id="9908"></a> in the top-level script. However, the effect is discovered deep in the activation<a id="10120"></a> stack<a id="9414"></a> in the middle of<a id="10179"></a> some obscure numerical<a id="10065"></a> computation.</p>
+     <p>We digress here to discuss how programs deal with unexpected circumstances. Exceptions are a powerful tool for gracefully managing run- time errors caused by programming errors or bad data. The general need for an exception mechanism might best be established by way of an example. Suppose you write a program that requests some data from a user and then launches a significant number of nested function calls—perhaps even a recursive function—to perform an analysis on the data received. Somewhere in the depths of these function calls, the program divides something by a value, but in this instance that value is zero. The cause of this problem is probably bad data entered by the user in the top-level script. However, the effect is discovered deep in the activation stack<a id="2314"></a> in the middle of some obscure numerical computation.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Historical Approaches">
       <!-- Historical Approaches -->
       <h3 id="9_4_1">9.4.1	Historical Approaches</h3>
       <div class="container">
-        <p>Early programming<a id="990<a id="10086"></a>1"></a> languages attempted to<a id="9972"></a> deal with<a id="9826"></a> this problem in one of<a id="10180"></a> two equally unpleasant ways:</p>
+        <p>Early programming languages attempted to deal with this problem in one of two equally unpleasant ways:</p>
         <ul>
-          <li>Some languages require any mathematical function<a id="9554"></a> that might produce an error to<a id="9973"></a> return the status of<a id="10181"></a> that calculation to<a id="9974"></a> the calling function<a id="9555"></a>. They allow errors to<a id="9975"></a> be reported and<a id="9738"></a> processed, but they have two unpleasant consequences: using up the ability of<a id="10182"></a> a function<a id="9556"></a> to<a id="9976"></a> return a value<a id="10380"></a> and<a id="9739"></a> calling this function<a id="9557"></a>, which means choosing between testing<a id="10096"></a> for<a id="10434"></a> errors and<a id="9740"></a> solving the problem locally and<a id="9741"></a> passing<a id="10084"></a> the error condition back to<a id="9977"></a> its calling function<a id="9558"></a> in the hope that somewhere the error will be dealt with<a id="9827"></a>.</li>
-          <li>Perhaps worse than this are the languages that use a globally accessible variable<a id="10405"></a>, such as <code>ierror</code>, to<a id="9978"></a> report status. For example<a id="10318"></a>, if <code>ierror</code> were normally set to<a id="9979"></a> <code>0</code>, an error could be announced by setting its value<a id="10381"></a> to<a id="9980"></a> something other than <code>0</code> to<a id="9981"></a> indicate the nature<a id="9712"></a> of<a id="10183"></a> the failure. This frees the function<a id="9559"></a> from<a id="9644"></a> needing to<a id="9982"></a> return status, but it does not relieve the calling function<a id="9560"></a> of<a id="10184"></a> the need to<a id="9983"></a> check whether the <code>ierror</code> value<a id="10382"></a> is bad, or solving the problem, or elevating it. Furthermore, if an error does occur within a function<a id="9561"></a>, since it is now still returning<a id="9674"></a> a value<a id="10383"></a>, what value<a id="10384"></a> should it return if it is unable to<a id="9984"></a> complete its assigned calculation? </li>
+          <li>Some languages require any mathematical function that might produce an error to return the status of that calculation to the calling function. They allow errors to be reported and processed, but they have two unpleasant consequences: using up the ability of a function to return a value and calling this function, which means choosing between testing<a id="2302"></a> for errors and solving the problem locally and passing the error condition back to its calling function in the hope that somewhere the error will be dealt with.</li>
+          <li>Perhaps worse than this are the languages that use a globally accessible variable, such as <code>ierror</code>, to report status. For example, if <code>ierror</code> were normally set to <code>0</code>, an error could be announced by setting its value to something other than <code>0</code> to indicate the nature<a id="2298"></a> of the failure. This frees the function from needing to return status, but it does not relieve the calling function of the need to check whether the <code>ierror</code> value is bad, or solving the problem, or elevating it. Furthermore, if an error does occur within a function, since it is now still returning<a id="2271"></a> a value, what value should it return if it is unable to complete its assigned calculation? </li>
         </ul>
       </div>
     </div>
@@ -154,30 +154,30 @@
       <!-- Generic Exception IMpmlementation -->
       <h3 id="9_4_2">9.4.2	Generic Exception Implementation</h3>
       <div class="container">
-        <p>By contrast, most modern programming<a id="990<a id="10087"></a>2"></a> languages provide an exception mechanism whereby if an error occurs, regardless of<a id="10185"></a> how deep in the activation<a id="10121"></a> stack<a id="9415"></a>, program implementation<a id="10090"></a> is immediately suspended in the current stack<a id="10350"></a> frame. The activation<a id="10122"></a> stack<a id="9416"></a> below this frame is then searched for<a id="10435"></a> the frame of<a id="10186"></a> a program that has “volunteered” to<a id="9985"></a> process this type of<a id="10187"></a> exception. When it is found, all the stack<a id="10351"></a> frames above this frame are removed from<a id="9645"></a> the stack<a id="10352"></a> and<a id="9742"></a> the code in the exception handling mechanism is activated. If no such frame is discovered, the overall program aborts with<a id="9828"></a> an error code.  The following mechanisms are necessary to<a id="9986"></a> implement the exception mechanism effectively:</p>
-        <div class="template">#template<a id="9705"></a>_9_2#</div>
+        <p>By contrast, most modern programming languages provide an exception mechanism whereby if an error occurs, regardless of how deep in the activation stack<a id="2315"></a>, program implementation is immediately suspended in the current stack frame. The activation stack<a id="2316"></a> below this frame is then searched for the frame of a program that has “volunteered” to process this type of exception. When it is found, all the stack frames above this frame are removed from the stack and the code in the exception handling mechanism is activated. If no such frame is discovered, the overall program aborts with an error code.  The following mechanisms are necessary to implement the exception mechanism effectively:</p>
+        <div class="template">#template_9_2#</div>
         <ul>
-          <li><b>Throwing an exception:</b> Whenever a problem occurs, the operating<a id="10071"></a> system must suspend operations<a id="10075"></a> at that point in the activation<a id="10123"></a> stack<a id="9417"></a> and<a id="9743"></a> go looking for<a id="10436"></a> a function<a id="9562"></a> equipped to<a id="9987"></a> handle the specific exception. If no such function<a id="9563"></a> is found, the program is terminated and<a id="9744"></a> an exception is shown to<a id="9988"></a> the user<a id="9909"></a> (in MATLAB<a id="9873"></a>, it is written in red in the Command<a id="10472"></a> window).</li>
-          <li><b>Catching an exception</b> A function<a id="9564"></a> that is able to<a id="9989"></a> deal with<a id="9829"></a> a specific exception uses a <code>try ... catch<a id="9444"></a></code> construct to<a id="9990"></a> identify the suspect code and<a id="9745"></a> resolve the problem. Between <code>try</code> and<a id="9746"></a> <code>catch<a id="9445"></a></code>, the programmer puts a code block that contains activities that could throw exceptions<a id="9477"></a>. After the <code>catch<a id="9446"></a></code> statement, there is a code block that should fix the problem.  Depending on<a id="9862"></a> the specific language implementation<a id="10091"></a>, the exception-catching mechanism usually offers facilities both for<a id="10437"></a> determining exactly where the exception occurred and<a id="9747"></a> for<a id="10438"></a> reconstructing the activation<a id="10124"></a> stack<a id="9418"></a> with<a id="9830"></a> all the variable<a id="10406"></a> values as they were at the time of<a id="10188"></a> the exception.</li>
+          <li><b>Throwing an exception:</b> Whenever a problem occurs, the operating<a id="2344"></a> system must suspend operations at that point in the activation stack<a id="2317"></a> and go looking for a function equipped to handle the specific exception. If no such function is found, the program is terminated and an exception is shown to the user (in MATLAB, it is written in red in the Command window).</li>
+          <li><b>Catching an exception</b> A function that is able to deal with a specific exception uses a <code>try ... catch<a id="2209"></a></code> construct to identify the suspect code and resolve the problem. Between <code>try</code> and <code>catch<a id="2210"></a></code>, the programmer puts a code block that contains activities that could throw exceptions<a id="2235"></a>. After the <code>catch<a id="2211"></a></code> statement, there is a code block that should fix the problem.  Depending on the specific language implementation, the exception-catching mechanism usually offers facilities both for determining exactly where the exception occurred and for reconstructing the activation stack<a id="2318"></a> with all the variable values as they were at the time of the exception.</li>
         </ul>
-        <p>In the previous example<a id="10319"></a>, the general template<a id="9706"></a> for<a id="10439"></a> successfully interacting with<a id="9831"></a> the user<a id="9910"></a> is shown in Template 9.2. The successful Boolean flag will be set only if the data<a id="9886"></a> are processed without error. It does not matter how deep in the data<a id="9887"></a> processing<a id="9697"></a> code the error occurs—the user<a id="9911"></a> interface catches the error, reports it to<a id="9991"></a> the user<a id="9912"></a>, and<a id="9748"></a> prompts the user<a id="9913"></a> for<a id="10440"></a> better data<a id="9888"></a>.  For example<a id="10320"></a>, you might have noticed earlier that the <code>input(<a id="9662"></a>...)</code> function<a id="9565"></a> has a built-in <code>try ... catch<a id="9447"></a></code> mechanism to<a id="9992"></a> deal with<a id="9832"></a> erroneous user<a id="9914"></a> input. If something is entered that cannot be parsed, rather than throw red ink in the Command<a id="10473"></a> window, the exception is caught and<a id="9749"></a> the prompt repeated for<a id="10441"></a> the user<a id="9915"></a>.</p>
+        <p>In the previous example, the general template for<a id="2346"></a> successfully interacting with the user is shown in Template 9.2. The successful Boolean flag will be set only if the data are processed without error. It does not matter how deep in the data processing code the error occurs—the user interface<a id="2286"></a> catches the error, reports it to the user, and prompts the user for better data.  For example, you might have noticed earlier that the <code>input(<a id="2259"></a>...)</code> function has a built-in <code>try ... catch<a id="2212"></a></code> mechanism to deal with erroneous user input. If something is entered that cannot be parsed, rather than throw red ink in the Command window, the exception is caught and the prompt repeated for the user.</p>
       </div>
     </div>
 
     <div class="chp-subsection" data-sub-num="3" data-sub-name="MATLAB Implementation">
       <!-- Matlab Implementation -->
-      <h3 id="9_4_3">9.4.3	MATLAB<a id="9874"></a> Implementation</h3>
+      <h3 id="9_4_3">9.4.3	MATLAB Implementation</h3>
       <div class="container">
-        <p>MATLAB<a id="9875"></a> implements a simplified version of<a id="10189"></a> the most general form of<a id="10190"></a> exception processing<a id="9698"></a>. The <code>try ... catch<a id="9448"></a> ... end<a id="9464"></a></code> construct is fully supported. However, unlike some languages, the MATLAB<a id="9876"></a> language does not distinguish between the kinds of<a id="10191"></a> exception that can be thrown.<p>
+        <p>MATLAB implements a simplified version of the most general form of exception processing. The <code>try ... catch<a id="2213"></a> ... end</code> construct is fully supported. However, unlike some languages, the MATLAB language does not distinguish between the kinds of exception that can be thrown.<p>
         <ul>
-          <li>All built-in functions<a id="10368"></a> throw exceptions<a id="9478"></a> when they discover error conditions—attempting to<a id="9993"></a> open a nonexistent file for<a id="10442"></a> reading<a id="9718"></a>, for<a id="10443"></a> example<a id="10321"></a>—and<a id="9750"></a> expect the programmer to<a id="9994"></a> catch<a id="9449"></a> these exceptions<a id="9479"></a> if they are recoverable.</li>
-          <li>To throw an exception manually<a id="10085"></a>, the program calls the error(<a id="9475"></a>...) function<a id="9566"></a> that takes one parameter, a string defining the error. If the exception is not caught, the string provided is displayed in red to<a id="9995"></a> the user<a id="9916"></a>. If the exception is caught, that string is ignored.</li>
-          <li>To handle an exception, a code block we suspect might throw an exception is placed between <code>try</code> and<a id="9751"></a> <code>catch<a id="9450"></a></code> statements. If no error occurs in the code block, the <code>catch<a id="9451"></a></code> statement is ignored. If an exception is thrown from<a id="9646"></a> that code block, however, execution<a id="9481"></a> is suspended at that point. No further processing<a id="9699"></a> is performed, no data<a id="9889"></a> are returned from<a id="9647"></a> functions<a id="10369"></a>, and<a id="9752"></a> the code in the closest <code>catch<a id="9452"></a></code> block is executed up to<a id="9996"></a> the associated end<a id="9465"></a> statement. To determine the cause of<a id="10192"></a> the exception, you can use the <code>lasterror(<a id="9671"></a>...)</code> function<a id="9567"></a>. It returns the textual information provided at the exception and<a id="9753"></a> a structure<a id="10357"></a> array<a id="9429"></a> describing the activation<a id="10125"></a> stack<a id="9419"></a>.</li>
-          <li>In more complex situations where this function<a id="9568"></a> may not be able to<a id="9997"></a> actually handle the error, a further exception can be thrown from<a id="9648"></a> the <code>catch<a id="9453"></a></code> block. This exception will escape from<a id="9649"></a> the current <code>try ... catch<a id="9454"></a></code> block and<a id="9754"></a> must be caught (if at all) by another function<a id="9569"></a> or script deeper in the activation<a id="10126"></a> stack<a id="9420"></a>.</li>
+          <li>All built-in functions throw exceptions<a id="2236"></a> when they discover error conditions—attempting to open a nonexistent file for reading<a id="2339"></a>, for example—and expect the programmer to catch<a id="2214"></a> these exceptions<a id="2237"></a> if they are recoverable.</li>
+          <li>To throw an exception manually<a id="2297"></a>, the program calls the error(<a id="2233"></a>...) function that takes one parameter, a string defining the error. If the exception is not caught, the string provided is displayed in red to the user. If the exception is caught, that string is ignored.</li>
+          <li>To handle an exception, a code block we suspect might throw an exception is placed between <code>try</code> and <code>catch<a id="2215"></a></code> statements. If no error occurs in the code block, the <code>catch<a id="2216"></a></code> statement is ignored. If an exception is thrown from that code block, however, execution is suspended at that point. No further processing is performed, no data are returned from functions, and the code in the closest <code>catch<a id="2217"></a></code> block is executed up to the associated end statement. To determine the cause of the exception, you can use the <code>lasterror(<a id="2268"></a>...)</code> function. It returns the textual information provided at the exception and a structure array describing the activation stack<a id="2319"></a>.</li>
+          <li>In more complex situations where this function may not be able to actually handle the error, a further exception can be thrown from the <code>catch<a id="2218"></a></code> block. This exception will escape from the current <code>try ... catch<a id="2219"></a></code> block and must be caught (if at all) by another function or script deeper in the activation stack<a id="2320"></a>.</li>
         </ul>
-        <p>Listing 9.2 illustrates a simple example<a id="10322"></a>. The objective is to<a id="9998"></a> have the user<a id="9917"></a> define a triangle by entering a vector of<a id="10193"></a> three sides and<a id="9755"></a> to<a id="9999"></a> calculate the angle between the first two sides. The<code> acosd(<a id="9400"></a>...)</code> function<a id="9570"></a> computes the inverse cosine of<a id="10194"></a> a ratio. If that ratio is greater than one, there is something seriously wrong with<a id="9833"></a> the triangle, and<a id="9756"></a> acosd(<a id="9401"></a>...) returns a complex number. This script detects that the answer is complex and<a id="9757"></a> throws an exception.</p>
+        <p>Listing 9.2 illustrates a simple example. The objective is to have the user define a triangle by entering a vector of three sides and to calculate the angle between the first two sides. The<code> acosd(<a id="2190"></a>...)</code> function computes the inverse cosine of a ratio. If that ratio is greater than one, there is something seriously wrong with the triangle, and acosd(<a id="2191"></a>...) returns a complex number. This script detects that the answer is complex and throws an exception.</p>
         <div class="listing">#listing_09_2#</div>
-        <p>You have an opportunity to<a id="10000"></a> work with<a id="9834"></a> exception processing<a id="9700"></a> in Exercise 9.2.</p>
+        <p>You have an opportunity to work with exception processing in Exercise 9.2.</p>
         <div class="exercise">#exercise_9_2#</div>
       </div>
     </div>
@@ -187,105 +187,105 @@
     <!-- Wrapper Functions -->
     <h2 id="9_5">9.5 Wrapper Functions</h2>
     <div class="container">
-      <p>Consider the factorial function<a id="9571"></a> again for<a id="10444"></a> a moment—specifically, ask how you would deal with<a id="9835"></a> a user<a id="9918"></a> who<a id="10467"></a> accidentally called for<a id="10445"></a> the factorial of<a id="10195"></a> a negative number or of<a id="10196"></a> a number containing a fractional part. Our original recursive <code>fact(<a id="9482"></a>...)</code> function<a id="9572"></a> is not protected from<a id="9650"></a> these programmer errors. There are three possible strategies for<a id="10446"></a> dealing with<a id="9836"></a> this situation:</p>
+      <p>Consider the factorial function again for a moment—specifically, ask how you would deal with a user who accidentally called for the factorial of a negative number or of a number containing a fractional part. Our original recursive <code>fact(<a id="2238"></a>...)</code> function is not protected from these programmer errors. There are three possible strategies for dealing with this situation:</p>
       <ol>
-        <li>The legalist approach ignores the bad values, lets the user<a id="9919"></a>’s program die, and<a id="9758"></a> then responds to<a id="10001"></a> user<a id="9920"></a> complaints by pointing out that the documentation<a id="9460"></a> clearly indicates that you should not call for<a id="10447"></a> the factorial of<a id="10197"></a> a negative number. Usually this is not the best approach from<a id="9651"></a> the customer relations viewpoint or from<a id="9652"></a> the technical support effort viewpoint, especially since recursive code that hangs up typically crashes with<a id="9837"></a> a stack<a id="10353"></a> overflow—not the easiest symptom to<a id="10002"></a> diagnose!</li>
-        <li>In-line coding builds into the code a test for<a id="10448"></a> N less<a id="9818"></a> than zero (or fractional) and<a id="9759"></a> throws an exception with<a id="9838"></a> a meaningful error message. Although this is an improvement over the first choice because it exits gracefully, the test is in a bad place. The function<a id="9573"></a> is recursive; therefore, the code for<a id="10449"></a> that test is repeated as many times as the function<a id="9574"></a> is called. While modern computers are fast enough that one would probably not notice the difference, in general this is a poor implementation<a id="10092"></a> that punishes those who<a id="10468"></a> are using the function<a id="9575"></a> correctly with<a id="9839"></a> the same test each time the recursive function<a id="9576"></a> is called.</li>
-        <li>A wrapper<a id="10489"></a> function<a id="9577"></a> is the best solution. A wrapper<a id="10490"></a> function<a id="9578"></a> is called once to<a id="10003"></a> perform any tests or setup that the recursion<a id="10103"></a> requires and<a id="9760"></a> then to<a id="10004"></a> call the recursive function<a id="9579"></a> as a helper<a id="9710"></a> to<a id="10005"></a> the main function<a id="9580"></a> call. While there is a small computational cost to<a id="10006"></a> using a wrapper<a id="10491"></a>, it is only executed once rather than each time the recursive function<a id="9581"></a> is called.</li>
+        <li>The legalist approach ignores the bad values, lets the user’s program die, and then responds to user complaints by pointing out that the documentation<a id="2224"></a> clearly indicates that you should not call for the factorial of a negative number. Usually this is not the best approach from the customer relations viewpoint or from the technical support effort viewpoint, especially since recursive code that hangs up typically crashes with a stack overflow—not the easiest symptom to diagnose!</li>
+        <li>In-line coding builds into the code a test for N less<a id="2282"></a> than zero (or fractional) and throws an exception with a meaningful error message. Although this is an improvement over the first choice because it exits gracefully, the test is in a bad place. The function is recursive; therefore, the code for that test is repeated as many times as the function is called. While modern computers are fast enough that one would probably not notice the difference, in general this is a poor implementation that punishes those who are using the function correctly with the same test each time the recursive function is called.</li>
+        <li>A wrapper function<a id="2349"></a> is the best solution. A wrapper function<a id="2350"></a> is called once to perform any tests or setup that the recursion<a id="2309"></a> requires and then to call the recursive function as a helper<a id="2280"></a> to the main function call. While there is a small computational cost to using a wrapper, it is only executed once rather than each time the recursive function is called.</li>
       </ol>
-      <p>Template 9.3 illustrates this idea. The first function<a id="9582"></a> named &lt;function<a id="9583"></a>_name&gt; is actually the wrapper<a id="10492"></a> function<a id="9584"></a> with<a id="9840"></a> the return result, parameters<a id="10398"></a>, and<a id="9761"></a> documentation<a id="9461"></a> expected by the caller. It makes whatever tests are necessary to<a id="10007"></a> validate the input data<a id="9890"></a>, cleans it up if necessary, and<a id="9762"></a> calls the helper<a id="9711"></a> function<a id="9585"></a> named &lt;private_name&gt;. Listing 9.3 is the implementation<a id="10093"></a> of<a id="10198"></a> the factorial function<a id="9586"></a> with<a id="9841"></a> a wrapper<a id="10493"></a> for<a id="10450"></a> protection from<a id="9653"></a> bad data<a id="9891"></a>.</p>
-      <div class="template">#template<a id="9707"></a>_9_3#</div>
+      <p>Template 9.3 illustrates this idea. The first function named &lt;function_name&gt; is actually the wrapper function<a id="2351"></a> with the return result, parameters, and documentation<a id="2225"></a> expected by the caller. It makes whatever tests are necessary to validate the input data, cleans it up if necessary, and calls the helper<a id="2281"></a> function named &lt;private_name&gt;. Listing 9.3 is the implementation of the factorial function with a wrapper for protection from bad data.</p>
+      <div class="template">#template_9_3#</div>
       <div class="listing">#listing_09_3#</div>
-      <p>Exercise  9.3  gives  you  an  opportunity  to<a id="10008"></a>  work  with<a id="9842"></a>  the  protected factorial.</p>
+      <p>Exercise  9.3  gives  you  an  opportunity  to  work  with  the  protected factorial.</p>
       <div class="exercise">#exercise_9_3#</div>
     </div>
   </div>
 
   <div class="chp-section" data-sect-num="6" data-sect-name="Examples of Recursion">
     <!-- Examples of Recursion -->
-    <h2 id="9_6">9.6 Examples of<a id="10199"></a> Recursion</h2>
+    <h2 id="9_6">9.6 Examples of Recursion</h2>
     <div class="container">
-      <p>We conclude this chapter with<a id="9843"></a> three examples<a id="9693"></a> of<a id="10200"></a> recursive programming<a id="9903"></a>: detecting<a id="9469"></a> palindromes<a id="10081"></a>, computing the Fibonacci<a id="9488"></a> series of<a id="10201"></a> numbers<a id="9929"></a>, and<a id="9763"></a> finding zeros<a id="9680"></a> of<a id="10202"></a> a function<a id="9587"></a>. The examples<a id="9694"></a> are followed by a practical engineering<a id="9467"></a> example<a id="10323"></a> of<a id="10203"></a> the use of<a id="10204"></a> zero finding.</p>
+      <p>We conclude this chapter with three examples of recursive programming: detecting<a id="2227"></a> palindromes<a id="2294"></a>, computing the Fibonacci<a id="2243"></a> series of numbers, and finding zeros<a id="2272"></a> of a function. The examples are followed by a practical engineering example of the use of zero finding.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Detecting Palindromes">
       <!-- Detecting Palindromes -->
       <h3 id="9_6_1">9.6.1	Detecting Palindromes</h3>
       <div class="container">
-        <p>We might want to<a id="10009"></a> determine whether a word or phrase received as a string is a palindrome, that is, whether it is spelled the same forward<a id="9511"></a> and<a id="9764"></a> backward. Of course, you could accomplish this in one line with<a id="9844"></a> vector operations<a id="10076"></a> (think about it!) but that would not be a good recursive exercise. If you look up what are considered official palindromes<a id="10082"></a>, the string can contain spaces and<a id="9765"></a> punctuation, and<a id="9766"></a> can have upper or lower case<a id="9437"></a> characters. One could design a recursive function<a id="9588"></a> named <code>isPal(<a id="9664"></a>&lt;string&gt;)</code> as follows:</p>
+        <p>We might want to determine whether a word or phrase received as a string is a palindrome, that is, whether it is spelled the same forward<a id="2257"></a> and backward. Of course, you could accomplish this in one line with vector operations (think about it!) but that would not be a good recursive exercise. If you look up what are considered official palindromes<a id="2295"></a>, the string can contain spaces and punctuation, and can have upper or lower case characters. One could design a recursive function named <code>isPal(<a id="2261"></a>&lt;string&gt;)</code> as follows:</p>
         <ul>
-          <li>Pre-process the string changing<a id="9925"></a> upper case<a id="9438"></a> to<a id="10010"></a> lower case<a id="9439"></a> and<a id="9767"></a> then removing all characters that are not lower case<a id="9440"></a> characters.</li>
-          <li>The function<a id="9589"></a> <code>isPal(<a id="9665"></a>&lt;string&gt;)</code> terminates if the <code>&lt;string&gt;</code> has zero or one character<a id="9871"></a>, returning<a id="9675"></a> true<a id="9719"></a>.</li>
-          <li>It also terminates if the first and<a id="9768"></a> last characters are not equal<a id="9471"></a>, returning<a id="9676"></a> false<a id="9483"></a>.</li>
-          <li>Otherwise (first and<a id="9769"></a> last are equal<a id="9472"></a>), the function<a id="9590"></a> returns <code>isPal(<a id="9666"></a>&lt;shorter string&gt;)</code>, where the shorter string is obtained by removing the first and<a id="9770"></a> last characters of<a id="10205"></a> the original string.</li>
+          <li>Pre-process the string changing upper case to lower case and then removing all characters that are not lower case characters.</li>
+          <li>The function <code>isPal(<a id="2262"></a>&lt;string&gt;)</code> terminates if the <code>&lt;string&gt;</code> has zero or one character, returning true.</li>
+          <li>It also terminates if the first and last characters are not equal<a id="2229"></a>, returning false.</li>
+          <li>Otherwise (first and last are equal<a id="2230"></a>), the function returns <code>isPal(<a id="2263"></a>&lt;shorter string&gt;)</code>, where the shorter string is obtained by removing the first and last characters of the original string.</li>
           <li>Clearly, since the string is always being shortened, the recursive solution is approaching the terminating condition.</li>
         </ul>
-        <p>The MATLAB<a id="9877"></a> implementation<a id="10094"></a> of<a id="10206"></a> the palindrome detector is shown in Listing 9.4.</p>
+        <p>The MATLAB implementation of the palindrome detector is shown in Listing 9.4.</p>
         <div class="listing">#listing_09_4#</div>
-        <p>Check this with<a id="9845"></a> these strings:</p>
-        <code>>> isPal(<a id="9667"></a>'Can I attain a C?')<br>
-        >> isPal(<a id="9668"></a>'Can I attain a&nbsp;&nbsp;C?')<br>
-        >> isPal(<a id="9669"></a>'Can I attain a A?')<br>
-        >> isPal(<a id="9670"></a>'Can I attain any C?')<br><br>
+        <p>Check this with these strings:</p>
+        <code>>> isPal(<a id="2264"></a>'Can I attain a C?')<br>
+        >> isPal(<a id="2265"></a>'Can I attain a&nbsp;&nbsp;C?')<br>
+        >> isPal(<a id="2266"></a>'Can I attain a A?')<br>
+        >> isPal(<a id="2267"></a>'Can I attain any C?')<br><br>
         </code>
       </div>
     </div>
 
     <div class="chp-subsection" data-sub-num="2" data-sub-name="Fibonacci Series">
       <!-- Fibonacci Series -->
-      <h3 id="9_6_2">9.6.2	Fibonacci<a id="9489"></a> Series</h3>
+      <h3 id="9_6_2">9.6.2	Fibonacci<a id="2244"></a> Series</h3>
       <div class="container clearfix">
         <div class="float-sm-right card">
             <img src="..\Images\Fig_9_2.JPG" alt="Figure 9.2" class="fig card-image">
-            <p class="figure-name card-title">Figure<a id="10476"></a> 9.2: Fibonacci<a id="9490"></a> with<a id="9846"></a> Rabbits</p>
+            <p class="figure-name card-title">Figure 9.2: Fibonacci<a id="2245"></a> with Rabbits</p>
         </div>
-        <p>The Fibonacci<a id="9491"></a> series was originally named for<a id="10451"></a> the Italian mathematician Leonardo Pisano Fibonacci<a id="9492"></a>, who<a id="10469"></a> was studying the growth of<a id="10207"></a> rabbit populations in the eleventh century. He hypothesized that rabbits mature one month after birth, after which time each pair would produce a new pair of<a id="10208"></a> rabbits each month. Starting with<a id="9847"></a> a pair of<a id="10209"></a> newborn rabbits free in a field<a id="9504"></a>, he wanted to<a id="10011"></a> calculate the rabbit population after a year. Figure<a id="10477"></a> 9.2 illustrates the calculation for<a id="10452"></a> the first six months, counting rabbit pairs. It soon becomes clear<a id="9456"></a> that the number of<a id="10210"></a> rabbits in month <code>N</code> comprises the number in month <code>N-1</code> (since in this ideal example<a id="10324"></a>, none of<a id="10211"></a> them die) plus the new rabbits born to<a id="10012"></a> the mature pairs. Since the rabbits mature after a month, the number of<a id="10212"></a> mature pairs that produce a new pair is the number of<a id="10213"></a> rabbits in the month before, <code>N-2</code>. So the algorithm<a id="9424"></a> for<a id="10453"></a> computing the population of<a id="10214"></a> pairs after <code>N</code> months, <code>fib(<a id="9484"></a>N)</code>, is recursive:</p>
+        <p>The Fibonacci<a id="2246"></a> series was originally named for the Italian mathematician Leonardo Pisano Fibonacci<a id="2247"></a>, who was studying the growth of rabbit populations in the eleventh century. He hypothesized that rabbits mature one month after birth, after which time each pair would produce a new pair of rabbits each month. Starting with a pair of newborn rabbits free in a field, he wanted to calculate the rabbit population after a year. Figure 9.2 illustrates the calculation for the first six months, counting rabbit pairs. It soon becomes clear<a id="2220"></a> that the number of rabbits in month <code>N</code> comprises the number in month <code>N-1</code> (since in this ideal example, none of them die) plus the new rabbits born to the mature pairs. Since the rabbits mature after a month, the number of mature pairs that produce a new pair is the number of rabbits in the month before, <code>N-2</code>. So the algorithm<a id="2324"></a> for computing the population of pairs after <code>N</code> months, <code>fib(<a id="2239"></a>N)</code>, is recursive:</p>
         <ul>
           <li>There is a terminating condition: when <code>N == 1</code> or <code>N == 2</code>, the answer is <code>1</code></li>
-          <li>The recursive condition is: <code>fib(<a id="9485"></a>N) = fib(<a id="9486"></a>N-1) + fib(<a id="9487"></a>N-2)</code></li>
-          <li>The solution is moving toward the terminating condition, since as long as <code>N</code> is a positive integer, computing <code>N-1</code> and<a id="9771"></a> <code>N-2</code> will move toward <code>1</code> or <code>2</code>.</li>
+          <li>The recursive condition is: <code>fib(<a id="2240"></a>N) = fib(<a id="2241"></a>N-1) + fib(<a id="2242"></a>N-2)</code></li>
+          <li>The solution is moving toward the terminating condition, since as long as <code>N</code> is a positive integer, computing <code>N-1</code> and <code>N-2</code> will move toward <code>1</code> or <code>2</code>.</li>
         </ul>
-        <p>The implementation<a id="10095"></a> of<a id="10215"></a> the Fibonacci<a id="9493"></a> function<a id="9591"></a> is shown in Listing 9.5.</p>
+        <p>The implementation of the Fibonacci<a id="2248"></a> function is shown in Listing 9.5.</p>
       </div>
       <div class="listing">#listing_09_5#</div>
       <div class="container clearfix">
-        <p>This algorithm<a id="9425"></a> produces the Fibonacci<a id="9494"></a> series: <code>1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, . . .</code>, giving a population after a year of<a id="10216"></a> <code>144</code> pairs of<a id="10217"></a> rabbits.</p>
+        <p>This algorithm<a id="2325"></a> produces the Fibonacci<a id="2249"></a> series: <code>1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, . . .</code>, giving a population after a year of <code>144</code> pairs of rabbits.</p>
         <div class="float-sm-right card">
             <img src="..\Images\Fig_9_3.JPG" alt="Figure 9.3" class="fig card-image">
-            <p class="figure-name card-title">Figure<a id="10478"></a> 9.3: Fibonacci<a id="9495"></a> in Nature</p>
+            <p class="figure-name card-title">Figure 9.3: Fibonacci<a id="2250"></a> in Nature</p>
         </div>
-        <p>A closely related phenomenon is the golden ratio or golden number computed as the limit of<a id="10218"></a> the ratio of<a id="10219"></a> successive Fibonacci<a id="9496"></a> series values — approximately <code>1.618034</code> — that has been found to<a id="10013"></a> occur in nature<a id="9713"></a>. To the surprise of<a id="10220"></a> naturalists, this series of<a id="10221"></a> numbers<a id="9930"></a> occurs in nature<a id="9714"></a> in a remarkable number of<a id="10222"></a> circumstances. Consider Figure<a id="10479"></a> 9.3 for<a id="10454"></a> example<a id="10325"></a>, where a set of<a id="10223"></a> squares placed side by side in a rotating<a id="9854"></a> sequence is drawn using the Fibonacci<a id="9497"></a> series for<a id="10455"></a> the size<a id="10413"></a> of<a id="10224"></a> each square<a id="10332"></a>. The resulting geometric figure is a close<a id="9457"></a> approximation to<a id="10014"></a> the logarithmic spiral so frequently found in nature<a id="9715"></a>, such as sea shells or seeds packed in pods.</p>
+        <p>A closely related phenomenon is the golden ratio or golden number computed as the limit of the ratio of successive Fibonacci<a id="2251"></a> series values — approximately <code>1.618034</code> — that has been found to occur in nature<a id="2299"></a>. To the surprise of naturalists, this series of numbers occurs in nature<a id="2300"></a> in a remarkable number of circumstances. Consider Figure 9.3 for example, where a set of squares placed side by side in a rotating<a id="2283"></a> sequence is drawn using the Fibonacci<a id="2252"></a> series for the size of each square<a id="2329"></a>. The resulting geometric figure is a close<a id="2221"></a> approximation to the logarithmic spiral so frequently found in nature<a id="2301"></a>, such as sea shells or seeds packed in pods.</p>
         <b>Notes: </b>
         <ol>
-          <li>Although not shown here, the Fibonacci<a id="9498"></a> function<a id="9592"></a> needs the same kind of<a id="10225"></a> wrapper<a id="10494"></a> as we used on<a id="9863"></a> the factorial function<a id="9593"></a> to<a id="10015"></a> protect against bad input values (negative or fractional).</li>
-          <li>Before we leave the Fibonacci<a id="9499"></a> function<a id="9594"></a>, we should run a few examples<a id="9695"></a>:</li>
+          <li>Although not shown here, the Fibonacci<a id="2253"></a> function needs the same kind of wrapper as we used on the factorial function to protect against bad input values (negative or fractional).</li>
+          <li>Before we leave the Fibonacci<a id="2254"></a> function, we should run a few examples:</li>
         </ol>
-        <p>Unless you are running<a id="10331"></a> on<a id="9864"></a> a really fast computer, that last computation probably took over a second to<a id="10016"></a> run.  This may be our first example<a id="10326"></a> of<a id="10226"></a> situations where the algorithm<a id="9426"></a> is stunningly inefficient, and<a id="9772"></a> need a total redesign.  In the case<a id="9441"></a> of<a id="10227"></a> Fibonacci<a id="9500"></a>, the answer is easy, and<a id="9773"></a> will be left to<a id="10017"></a> the student to<a id="10018"></a> implement and<a id="9774"></a> test.</p>
-        <p><b>Hint: </b> Could you do this iteratively instead of<a id="10228"></a> recursively by storing the previous two values of<a id="10229"></a> N?</p>
+        <p>Unless you are running<a id="2323"></a> on a really fast computer, that last computation probably took over a second to run.  This may be our first example of situations where the algorithm<a id="2326"></a> is stunningly inefficient, and need a total redesign.  In the case of Fibonacci, the answer is easy, and will be left to the student to implement and test.</p>
+        <p><b>Hint: </b> Could you do this iteratively instead of recursively by storing the previous two values of N?</p>
       </div>
     </div>
 
     <div class="chp-subsection" data-sub-num="3" data-sub-name="Zeros of a Function">
       <!-- Zeros of a Function -->
-      <h3 id="9_6_3">9.6.3 Zeros of<a id="10230"></a> a Function</h3>
+      <h3 id="9_6_3">9.6.3 Zeros of a Function</h3>
       <div class="container clearfix">
         <div class="float-sm-right card">
           <img src="..\Images\Fig_9_4.JPG" alt="Figure 9.4" class="fig card-image">
-          <p class="figure-name card-title">Figure<a id="10480"></a> 9.4: Find the zeros<a id="9681"></a> of<a id="10231"></a> this function<a id="9595"></a></p>
+          <p class="figure-name card-title">Figure 9.4: Find the zeros<a id="2273"></a> of this function</p>
         </div>
-        <p>Frequently we need to<a id="10019"></a> solve nonlinear equations by seeking the values of<a id="10232"></a> the independent variable<a id="10407"></a> that produced a zero result. There are a number of<a id="10233"></a> well-known numerical<a id="10066"></a> techniques for<a id="10456"></a> achieving this goal. We will examine a recursive approach to<a id="10020"></a> determining the zeros<a id="9682"></a> of<a id="10234"></a> functions<a id="10370"></a>. However, especially when there are multiple zero crossings, it is very helpful to<a id="10021"></a> have a good initial estimate of<a id="10235"></a> the location(s) of<a id="10236"></a> the crossing(s). As an example<a id="10327"></a>, consider a function<a id="9596"></a> <code>f(x)</code>. We will use the function<a id="9597"></a> given by:</p>
+        <p>Frequently we need to solve nonlinear equations by seeking the values of the independent variable that produced a zero result. There are a number of well-known numerical techniques for achieving this goal. We will examine a recursive approach to determining the zeros<a id="2274"></a> of functions. However, especially when there are multiple zero crossings, it is very helpful to have a good initial estimate of the location(s) of the crossing(s). As an example, consider a function <code>f(x)</code>. We will use the function given by:</p>
         <p><code>f(x) = 0.0333x<sup>6</sup> - 0.3x<sup>5</sup> - 1.3333x<sup>4</sup> + 16x<sup>3</sup> - 187.2x + 172.9</code></p>
-        <p>as plotted in Figure<a id="10481"></a> 9.4. Of course, this algorithm<a id="9427"></a> will work for<a id="10457"></a> any function<a id="9598"></a> of<a id="10237"></a> <code>x</code>. We assume that the continuous line describes the exact function<a id="9599"></a>, and<a id="9775"></a> the plus marks indicate locations for<a id="10458"></a> which we have measurements. Clearly, there are a number of<a id="10238"></a> zero crossings of<a id="10239"></a> this function<a id="9600"></a>, including a very messy looking crossing at around <code>x = 6</code>.  We will find the exact value<a id="10385"></a> of<a id="10240"></a> one of<a id="10241"></a> the zeros<a id="9683"></a> of<a id="10242"></a> this function<a id="9601"></a> by first estimating the zero crossings and<a id="9776"></a> then by using a recursive technique for<a id="10459"></a> refining a better estimate to<a id="10022"></a> arbitrary levels of<a id="10243"></a> accuracy.</p>
-        <p><b>Estimating Critical Points of<a id="10244"></a> a Function:</b> First, we need to<a id="10023"></a> compute an approximation to<a id="10024"></a> the roots of<a id="10245"></a> this equation illustrated by the red '+' marks on<a id="9865"></a> Fig 9.4. For our recursive algorithm<a id="9428"></a> to<a id="10025"></a> work nicely, we need a pair of<a id="10246"></a> x values whose y values straddle the x axis. These are marked by green circles on<a id="9866"></a> Fig 9.4. These approximations will be found by finding the x values at which adjacent values of<a id="10247"></a> the function<a id="9602"></a> change sign. The technique for<a id="10460"></a> determining where adjacent points change sign is simply to<a id="10026"></a> multiply adjacent values of<a id="10248"></a> f(x) and<a id="9777"></a> find where that product is not positive. Clearly, one could iterate here to<a id="10027"></a> find all of<a id="10249"></a> the roots. Listing 9.6 produces the following results, which can be verified by observing the circled data<a id="9892"></a> points shown in Figure<a id="10482"></a> 9.4:</p>
-        <p><code>zeros<a id="9684"></a> occur just after -6.3000	-4.6667	0.2333	5.9500</code></p>
-        <p>Having observed these results, we decide to<a id="10028"></a> compute the exact value<a id="10386"></a> of<a id="10250"></a> the first positive root, occurring at the third crossing.</p>
-        <p><b>Recursive Refinement of<a id="10251"></a> the Estimate:</b> The recursive function<a id="9603"></a> to<a id="10029"></a> find any root of<a id="10252"></a> <code>f(x)</code> works on<a id="9867"></a> the principle of<a id="10253"></a> binary<a id="9435"></a> division<a id="9430"></a>. It consumes a vector of<a id="10254"></a> adjacent values of<a id="10255"></a> <code>x</code> that are guaranteed to<a id="10030"></a> have values of<a id="10256"></a> <code>f(x)</code> of<a id="10257"></a> opposite sign. The fundamental features of<a id="10258"></a> the recursive solution are as follows:</p>
+        <p>as plotted in Figure 9.4. Of course, this algorithm<a id="2327"></a> will work for any function of <code>x</code>. We assume that the continuous line describes the exact function, and the plus marks indicate locations for which we have measurements. Clearly, there are a number of zero crossings of this function, including a very messy looking crossing at around <code>x = 6</code>.  We will find the exact value of one of the zeros<a id="2275"></a> of this function by first estimating the zero crossings and then by using a recursive technique for refining a better estimate to arbitrary levels of accuracy.</p>
+        <p><b>Estimating Critical Points of a Function:</b> First, we need to compute an approximation to the roots of this equation illustrated by the red '+' marks on Fig 9.4. For our recursive algorithm<a id="2328"></a> to work nicely, we need a pair of x values whose y values straddle the x axis. These are marked by green circles on Fig 9.4. These approximations will be found by finding the x values at which adjacent values of the function change sign. The technique for determining where adjacent points change sign is simply to multiply adjacent values of f(x) and find where that product is not positive. Clearly, one could iterate here to find all of the roots. Listing 9.6 produces the following results, which can be verified by observing the circled data points shown in Figure 9.4:</p>
+        <p><code>zeros<a id="2276"></a> occur just after -6.3000	-4.6667	0.2333	5.9500</code></p>
+        <p>Having observed these results, we decide to compute the exact value of the first positive root, occurring at the third crossing.</p>
+        <p><b>Recursive Refinement of the Estimate:</b> The recursive function to find any root of <code>f(x)</code> works on the principle of binary<a id="2208"></a> division<a id="2205"></a>. It consumes a vector of adjacent values of <code>x</code> that are guaranteed to have values of <code>f(x)</code> of opposite sign. The fundamental features of the recursive solution are as follows:</p>
         <ul>
-          <li>The terminating condition is when the two x values are within acceptable error—in this case<a id="9442"></a>, 0.001</li>
-          <li>Otherwise, we find the middle of<a id="10259"></a> this x range, mx, find its f(mx), and<a id="9778"></a> then make the recursive call either with<a id="9848"></a> [x(1) mx] or [mx x(2)], depending on<a id="9868"></a> the sign of<a id="10260"></a> f(mx) × f(x(1))</li>
+          <li>The terminating condition is when the two x values are within acceptable error—in this case, 0.001</li>
+          <li>Otherwise, we find the middle of this x range, mx, find its f(mx), and then make the recursive call either with [x(1) mx] or [mx x(2)], depending on the sign of f(mx) × f(x(1))</li>
           <li>This will always converge because each recursive call halves the distance between the x limits.</li>
         </ul>
-        <p>In general, this method is a little slower than Newton’s<a id="9927"></a> method, which uses the slope of<a id="10261"></a> <code>f(x)</code> to<a id="10031"></a> compute the next estimate. However, it is very strong and<a id="9779"></a> somewhat immune from<a id="9654"></a> the instability suffered by Newton’s<a id="9928"></a> method on<a id="9869"></a> undulating data<a id="9893"></a>. The function<a id="9604"></a> that solves this problem is shown in Listing 9.6.</p>
+        <p>In general, this method is a little slower than Newtons<a id="2287"></a> method, which uses the slope of <code>f(x)</code> to compute the next estimate. However, it is very strong and somewhat immune from the instability suffered by Newtons<a id="2288"></a> method on undulating data. The function that solves this problem is shown in Listing 9.6.</p>
         <div class="listing">#listing_09_6#</div>
       </div>
     </div>
@@ -297,154 +297,154 @@
     <div class="container clearfix">
       <div class="float-sm-right card">
         <img src="..\Images\fig_9_5.JPG" alt="Figure 9.5" class="fig card-image">
-        <p class="figure-name card-title">Figure<a id="10483"></a> 9.5: Robot Arm Problem</p>
+        <p class="figure-name card-title">Figure 9.5: Robot Arm Problem</p>
       </div>
-      <p>Here we consider the problem of<a id="10262"></a> programming<a id="9904"></a> the arm of<a id="10263"></a> a robot<a id="9470"></a> to<a id="10032"></a> move its tip in a straight line. Consider the arm shown in Figure<a id="10484"></a> 9.5. It consists of<a id="10264"></a> a base free to<a id="10033"></a> rotate by an angle <code>&alpha;</code> from<a id="9655"></a> the direction of<a id="10265"></a> the X axis and<a id="9780"></a> two jointed limbs of<a id="10266"></a> length <code>r<sub>1</sub></code> and<a id="9781"></a> <code>r<sub>2</sub></code> at angles <code>&beta;</code> and<a id="9782"></a> <code>&gamma;</code>, respectively, to<a id="10034"></a> the horizontal. We will simplify things a bit by assuming that <code>r<sub>1</sub></code> and<a id="9783"></a> <code>r<sub>2</sub></code> are both equal<a id="9473"></a> to<a id="10035"></a> the same length <code>l<sub>n</sub></code>.</p>
-      <p><b>Overall Objective:</b>The ultimate challenge of<a id="10267"></a> this situation is to<a id="10036"></a> calculate the sequence of<a id="10268"></a> values of<a id="10269"></a> <code>&alpha;</code>, <code>&beta;</code> and<a id="9784"></a> <code>&gamma;</code> that will guide the end<a id="9466"></a> of<a id="10270"></a> the arm, <code>P</code>, along the straight line defined<a id="9690"></a> by the points <code>P<sub>a</sub></code> and<a id="9785"></a> <code>P<sub>b</sub></code> where <code>P, P<sub>a</sub></code> and<a id="9786"></a> <code>P<sub>b</sub></code> are vectors showing the <code>x, y</code> and<a id="9787"></a> <code>z</code> coordinates of<a id="10271"></a> points on<a id="9870"></a> the red dashed line.  We will use a parametric<a id="10083"></a> definition of<a id="10272"></a> the line:</p>
+      <p>Here we consider the problem of programming the arm of a robot<a id="2228"></a> to move its tip in a straight line. Consider the arm shown in Figure 9.5. It consists of a base free to rotate by an angle <code>&alpha;</code> from the direction of the X axis and two jointed limbs of length <code>r<sub>1</sub></code> and <code>r<sub>2</sub></code> at angles <code>&beta;</code> and <code>&gamma;</code>, respectively, to the horizontal. We will simplify things a bit by assuming that <code>r<sub>1</sub></code> and <code>r<sub>2</sub></code> are both equal<a id="2231"></a> to the same length <code>l<sub>n</sub></code>.</p>
+      <p><b>Overall Objective:</b>The ultimate challenge of this situation is to calculate the sequence of values of <code>&alpha;</code>, <code>&beta;</code> and <code>&gamma;</code> that will guide the end of the arm, <code>P</code>, along the straight line defined by the points <code>P<sub>a</sub></code> and <code>P<sub>b</sub></code> where <code>P, P<sub>a</sub></code> and <code>P<sub>b</sub></code> are vectors showing the <code>x, y</code> and <code>z</code> coordinates of points on the red dashed line.  We will use a parametric<a id="2296"></a> definition of the line:</p>
       <p><code>P = P<sub>a</sub> + t&#215;(P<sub>b</sub> - P<sub>a</sub>)</code></p>
-      <p>where t can take any value<a id="10387"></a> between 0 and<a id="9788"></a> 1.</p>
-      <p>The value<a id="10388"></a> of<a id="10273"></a> <code>&alpha;</code> is easily determined to<a id="10037"></a> be the rotation<a id="9922"></a> to<a id="10038"></a> put P into the plane of<a id="10274"></a> the arm motion:</p>
+      <p>where t can take any value between 0 and 1.</p>
+      <p>The value of <code>&alpha;</code> is easily determined to be the rotation to put P into the plane of the arm motion:</p>
       <p><code>(1) &alpha; = atan2(P(1), P(2)) * 180/&pi;;</code></p>
 
-      <p>We create the solution for<a id="10461"></a> <code>&beta;</code> and<a id="9789"></a> <code>&gamma;</code> with<a id="9849"></a> three more equations:</p>
+      <p>We create the solution for <code>&beta;</code> and <code>&gamma;</code> with three more equations:</p>
       <ul>
-        <li><b>horizontally:</b> <code>(2) l<sub>n</sub>cos(&beta;) + l<sub>n</sub>cos(&gamma;) = |OR<a id="10078"></a>|</code> where O is the origin of<a id="10275"></a> coordinates and<a id="9790"></a> R is the projection of<a id="10276"></a> P onto the x-y plane.</li>
+        <li><b>horizontally:</b> <code>(2) l<sub>n</sub>cos(&beta;) + l<sub>n</sub>cos(&gamma;) = |OR<a id="2291"></a>|</code> where O is the origin of coordinates and R is the projection of P onto the x-y plane.</li>
         <li><b>vertically:</b> <code>(3) l<sub>n</sub>sin(&beta;) + l<sub>n</sub>sin(&gamma;) = P(3)</code></li>
-        <li><b>from<a id="9656"></a> algebra:</b><code>(4) cos<sup>2</sup>(&gamma;) + sin<sup>2</sup>(&gamma;) = 1</code><br></li>
+        <li><b>from algebra:</b><code>(4) cos<sup>2</sup>(&gamma;) + sin<sup>2</sup>(&gamma;) = 1</code><br></li>
       </ul>
       <div class="float-sm-right card">
         <img src="..\Images\Fig_9_6.JPG" alt="Figure 9.6" class="fig card-image">
-        <p class="figure-name card-title">Figure<a id="10485"></a> 9.6: The Zero Crossing Problem</p>
+        <p class="figure-name card-title">Figure 9.6: The Zero Crossing Problem</p>
       </div>
-      <p>After much manipulation<a id="10362"></a>, we determine this expression:</p>
-      <p><code>(5) |OR<a id="10079"></a>|<sup>2</sup> + P(3)<sup>2</sup> - 2l<sub>n</sub>(|OR<a id="10080"></a>|cos(&beta;) + P(3)sin(&beta;)) = 0</p></code>
-      <p>Pretty daunting until we plot the LHS of<a id="10277"></a> this equation against values of<a id="10278"></a> <code>&beta;</code> between <code>0</code> and<a id="9791"></a> <code>2&pi;</code> (Figure 9.6) and<a id="9792"></a> realize that we solve for<a id="10462"></a> <code>&beta;</code> by finding the value(<a id="10393"></a>s) of<a id="10279"></a> <code>&beta;</code> that reduce the LHS to<a id="10039"></a> 0 - a simple zero crossing problem.</p>
-      <p><b>Immediate Objective:</b>The sub-problem we address here is to<a id="10040"></a> determine the value<a id="10389"></a> of<a id="10280"></a> <code>&beta;</code> that will reduce the LHS of<a id="10281"></a> Equation <code>(5)</code> to<a id="10041"></a> zero.</p>
-      <p><b>The Solution to<a id="10042"></a> the Sub-problem:</b> as before, since there is no analytical<a id="10067"></a> solution to<a id="10043"></a> this function<a id="9605"></a>, we will find the approximate location of<a id="10282"></a> the zero crossings and<a id="9793"></a> then use a recursive function<a id="9606"></a> to<a id="10044"></a> find the exact roots. The script that accomplishes this is shown in Listing 9.7.<br></p>
+      <p>After much manipulation<a id="2335"></a>, we determine this expression:</p>
+      <p><code>(5) |OR<a id="2292"></a>|<sup>2</sup> + P(3)<sup>2</sup> - 2l<sub>n</sub>(|OR<a id="2293"></a>|cos(&beta;) + P(3)sin(&beta;)) = 0</p></code>
+      <p>Pretty daunting until we plot the LHS of this equation against values of <code>&beta;</code> between <code>0</code> and <code>2&pi;</code> (Figure 9.6) and realize that we solve for <code>&beta;</code> by finding the value(<a id="2341"></a>s) of <code>&beta;</code> that reduce the LHS to 0 - a simple zero crossing problem.</p>
+      <p><b>Immediate Objective:</b>The sub-problem we address here is to determine the value of <code>&beta;</code> that will reduce the LHS of Equation <code>(5)</code> to zero.</p>
+      <p><b>The Solution to the Sub-problem:</b> as before, since there is no analytical<a id="2289"></a> solution to this function, we will find the approximate location of the zero crossings and then use a recursive function to find the exact roots. The script that accomplishes this is shown in Listing 9.7.<br></p>
       <div class="listing">#listing_09_7#</div>
       <div class="float-sm-right card">
           <video controls class="card-image"><source src="..\Images\robot_arm.mp4" type="video/mp4">Fig 9.7</video>
-          <p class="figure-name card-title">Figure<a id="10486"></a> 9.7: The Solution</p>
+          <p class="figure-name card-title">Figure 9.7: The Solution</p>
       </div>
       <p><b>Reflections:</b></p>
       <ol>
-        <li>A modest amount of<a id="10283"></a> code is all that is required to<a id="10045"></a> create an elegant solution to<a id="10046"></a> a nontrivial problem. The structure<a id="10358"></a> of<a id="10284"></a> the recursive function<a id="9607"></a> <code>get_zero(b1, b2)</code> shown in Listing 9.8 clearly reflects the standard recursive template<a id="9708"></a>, and<a id="9794"></a> that function<a id="9608"></a> can be used to<a id="10047"></a> find zeros<a id="9685"></a> of<a id="10285"></a> any continuous function<a id="9609"></a> defined<a id="9691"></a> in the function<a id="9610"></a> <code>equation(bet)</code>.</li>
-        <li>At the risk of<a id="10286"></a> alarming students, I have left in place the not insignificant amount of<a id="10287"></a> code needed to<a id="10048"></a> verify that we are indeed solving the right problem correctly.  This code was pulled forward<a id="9512"></a> from<a id="9657"></a> concepts presented later in this text<a id="10375"></a>.</li>
+        <li>A modest amount of code is all that is required to create an elegant solution to a nontrivial problem. The structure of<a id="2345"></a> the recursive function <code>get_zero(b1, b2)</code> shown in Listing 9.8 clearly reflects the standard recursive template, and that function can be used to find zeros<a id="2277"></a> of any continuous function defined in the function <code>equation(bet)</code>.</li>
+        <li>At the risk of alarming students, I have left in place the not insignificant amount of code needed to verify that we are indeed solving the right problem correctly.  This code was pulled forward<a id="2258"></a> from concepts presented later in this text.</li>
       </ol>
     </div>
   </div>
 
   <h2>Chapter Summary</h2>
   <div class="container">
-    <p>This chapter discussed the three basic principles of<a id="10288"></a> recursive programming<a id="9905"></a> that must be present for<a id="10463"></a> a recursive program to<a id="10049"></a> succeed:</p>
+    <p>This chapter discussed the three basic principles of recursive programming that must be present for a recursive program to succeed:</p>
     <ul>
       <li>There must be a terminating condition</li>
-      <li>The function<a id="9611"></a> must call a clone of<a id="10289"></a> itself</li>
-      <li>The parameters<a id="10399"></a> of<a id="10290"></a> that clone must move the function<a id="9612"></a> toward the terminating condition.</li>
+      <li>The function must call a clone of itself</li>
+      <li>The parameters of that clone must move the function toward the terminating condition.</li>
     </ul>
     <p>We have also seen some other important capabilities as follows:</p>
     <ul>
-      <li>Exceptions are declared either within system functions<a id="10371"></a> or by the user<a id="9921"></a> using the error(<a id="9476"></a>...) function<a id="9613"></a>; they are trapped and<a id="9795"></a> perhaps remedied using try ... catch<a id="9455"></a> code blocks</li>
-      <li>A wrapper<a id="10495"></a> function<a id="9614"></a> is used to<a id="10050"></a> set up a recursive solution by validating the incoming data<a id="9894"></a>.</li>
+      <li>Exceptions are declared either within system functions or by the user using the error(<a id="2234"></a>...) function; they are trapped and perhaps remedied using try ... catch code blocks</li>
+      <li>A wrapper function<a id="2352"></a> is used to set up a recursive solution by validating the incoming data.</li>
     </ul>
   </div>
 <h2>Self Test</h2>
 <div class="container">
 
-Use the following questions to<a id="10051"></a> check your understanding of<a id="10291"></a> the material in this
+Use the following questions to check your understanding of the material in this
 chapter:
 <h3>True or False</h3>
 <ol>
-<li>We limit the functionality of<a id="10292"></a> a stack<a id="10354"></a> in order to<a id="10052"></a> protect the data<a id="9895"></a> from<a id="9658"></a>
+<li>We limit the functionality of a stack in order to protect the data from
 corruption.</li>
-      <li>The only way to<a id="10053"></a> remove a stack<a id="10355"></a> frame from<a id="9659"></a> the activation<a id="10127"></a> stack<a id="9421"></a> is to<a id="10054"></a>
-exit from<a id="9660"></a> the function<a id="9615"></a> instance hosted by that frame.</li>
-      <li>All the math operations<a id="10077"></a> in a recursive function<a id="9616"></a> are performed as the
-activation<a id="10128"></a> stack<a id="9422"></a> unwinds.</li>
-      <li>Exception processing<a id="9701"></a> can be used as a clever means of<a id="10293"></a> changing<a id="9926"></a> the
-normal flow of<a id="10294"></a> program control.</li>
-      <li>The name of<a id="10295"></a> the first function<a id="9617"></a> in a function<a id="9618"></a> definition m-file must
-match the name of<a id="10296"></a> the file.</li>
+      <li>The only way to remove a stack frame from the activation stack<a id="2321"></a> is to
+exit from the function instance hosted by that frame.</li>
+      <li>All the math operations in a recursive function are performed as the
+activation stack<a id="2322"></a> unwinds.</li>
+      <li>Exception processing can be used as a clever means of changing the
+normal flow of program control.</li>
+      <li>The name of the first function in a function definition m-file must
+match the name of the file.</li>
 </ol>
 <h3>Fill in the Blanks</h3>
 <ol>
 <li>Recursion is ____________ by which a code block can be repeated in
 a controlled manner.</li>
-      <li>Very frequently, a recursive function<a id="9619"></a> needs a(n) ________________
-to<a id="10055"></a> set up the recursion<a id="10104"></a> correctly and<a id="9796"></a> to<a id="10056"></a> _________________ .</li>
-      <li>Exceptions are a powerful tool for<a id="10464"></a> managing ______________ caused
+      <li>Very frequently, a recursive function needs a(n) ________________
+to set up the recursion<a id="2310"></a> correctly and to _________________ .</li>
+      <li>Exceptions are a powerful tool for managing ______________ caused
 by either ____________ or _____________ .</li>
-      <li>A wrapper<a id="10496"></a> function<a id="9620"></a> is called once to<a id="10057"></a> perform _________________
-that the recursion<a id="10105"></a> requires, and<a id="9797"></a> then to<a id="10058"></a> call the recursive function<a id="9621"></a>
+      <li>A wrapper function<a id="2353"></a> is called once to perform _________________
+that the recursion<a id="2311"></a> requires, and then to call the recursive function
 _________________.</li>
-      <li>You can ________ one of<a id="10297"></a> the zeros<a id="9686"></a> of<a id="10298"></a> a function<a id="9622"></a> by first
-_______________, and<a id="9798"></a> then using a(n) ____________ for<a id="10465"></a> refining a
-better estimate to<a id="10059"></a> arbitrary levels of<a id="10299"></a> accuracy.</li>
+      <li>You can ________ one of the zeros<a id="2278"></a> of a function by first
+_______________, and then using a(n) ____________ for refining a
+better estimate to arbitrary levels of accuracy.</li>
 </ol>
 
 <h3>Programming Projects</h3>
 <ol>
-<li>For this problem, you will be required to<a id="10060"></a> write three functions<a id="10372"></a>:
-recurSum, recurProd, and<a id="9799"></a> fibVector . The first one will take in a
-vector and<a id="9800"></a> compute the sum of<a id="10300"></a> the elements<a id="10409"></a> of<a id="10301"></a> the vector. The
-second one will take in a vector and<a id="9801"></a> compute the product of<a id="10302"></a> the
-elements<a id="10410"></a> of<a id="10303"></a> the vector. The third one will take in a number, N , and<a id="9802"></a>
-return a vector containing the first N terms of<a id="10304"></a> the Fibonacci<a id="9501"></a>
-sequence. You must use recursion<a id="10106"></a> to<a id="10061"></a> complete these functions<a id="10373"></a>. You
-may not use for<a id="10466"></a> loops, while<a id="10415"></a> loops or the functions<a id="10374"></a> sum, prod, or
-factorial. Your function<a id="9623"></a> headers should be:<br>
-function<a id="9624"></a> ans = recurSum(arr)<br>
-function<a id="9625"></a> ans = recurProd(arr)<br>
-function<a id="9626"></a> vec = fibVector (num)</li>
-      <li>Write a recursive function<a id="9627"></a> called oddfact(n) that takes in a number
-and<a id="9803"></a> returns the factorial of<a id="10305"></a> the odd numbers<a id="9931"></a> between the given
-number and<a id="9804"></a> 1.<br>
-For example<a id="10328"></a>:<br>
+<li>For this problem, you will be required to write three functions:
+recurSum, recurProd, and fibVector . The first one will take in a
+vector and compute the sum of the elements of the vector. The
+second one will take in a vector and compute the product of the
+elements of the vector. The third one will take in a number, N , and
+return a vector containing the first N terms of the Fibonacci
+sequence. You must use recursion<a id="2312"></a> to complete these functions. You
+may not use for loops, while loops or the functions sum, prod, or
+factorial. Your function headers should be:<br>
+function ans = recurSum(arr)<br>
+function ans = recurProd(arr)<br>
+function vec = fibVector (num)</li>
+      <li>Write a recursive function called oddfact(n) that takes in a number
+and returns the factorial of the odd numbers between the given
+number and 1.<br>
+For example:<br>
 oddfact(4) returns 3<br>
 oddfact(9) returns 945 = 9*7*5*3*1<br></li>
-      <li>Consider the problem of<a id="10306"></a> structures<a id="9678"></a> with<a id="9850"></a> nested fields.
+      <li>Consider the problem of structures with nested fields.
 	  <ul>
-<li>Write a function<a id="9628"></a> called tracker that takes in a structure<a id="10359"></a> and<a id="9805"></a>
-returns the number of<a id="10307"></a> levels at which it has a field<a id="9505"></a> called
-'Inner' . Each of<a id="10308"></a> these fields can also be structures<a id="9679"></a> having a field<a id="9506"></a>
-called 'Inner' , but at each level there can be only one field<a id="9507"></a> called
-'Inner' . The innermost structure<a id="10360"></a> will not contain a field<a id="9508"></a> called
-'Inner' . You must use recursion<a id="10107"></a>. Hint: use the isfield(<a id="9663"></a>...)
-function<a id="9629"></a>. Your function<a id="9630"></a> header should be:
-function<a id="9631"></a> num = tracker(astruct)</li>
-      <li>Create a structure<a id="10361"></a> with<a id="9851"></a> at least three levels of<a id="10309"></a> recurring fields,
-and<a id="9806"></a> use it to<a id="10062"></a> test your tracker function<a id="9632"></a>.</li>
+<li>Write a function called tracker that takes in a structure and
+returns the number of levels at which it has a field called
+'Inner' . Each of these fields can also be structures having a field
+called 'Inner' , but at each level there can be only one field called
+'Inner' . The innermost structure will not contain a field called
+'Inner' . You must use recursion<a id="2313"></a>. Hint: use the isfield(<a id="2260"></a>...)
+function. Your function header should be:
+function num = tracker(astruct)</li>
+      <li>Create a structure with at least three levels of recurring fields,
+and use it to test your tracker function.</li>
 </ul></li>
-      <li>Create a recursive function<a id="9633"></a> with<a id="9852"></a> a wrapper<a id="10497"></a> to<a id="10063"></a> protect it from<a id="9661"></a> illegal
-values. The function<a id="9634"></a> name should be recursiveFib . It should take in
-a number n and<a id="9807"></a> return the n th Fibonacci<a id="9502"></a> number. You should ensure
-that n is a non-negative integer, and<a id="9808"></a> announce an error if that is not
-the case<a id="9443"></a>.<br>
-Fibonacci<a id="9503"></a> numbers<a id="9932"></a> are defined<a id="9692"></a> as:<br>
+      <li>Create a recursive function with a wrapper to protect it from illegal
+values. The function name should be recursiveFib . It should take in
+a number n and return the n th Fibonacci number. You should ensure
+that n is a non-negative integer, and announce an error if that is not
+the case.<br>
+Fibonacci numbers are defined as:<br>
 F(n) = 0 if n = 0<br>
 F(n) = 1 if n = 1<br>
 F(n) = F(n-1) + F(n-2) otherwise.<br>
-This produces the following sequence of<a id="10310"></a> numbers<a id="9933"></a>:<br>
+This produces the following sequence of numbers:<br>
 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55...<br>
-For example<a id="10329"></a>:<br>
+For example:<br>
 a = recursiveFib(0) should return 0<br>
 b = recursiveFib(1) should return 1<br>
 c = recursiveFib(-1) should cause an error<br>
 d = recursiveFib(8) should return 21<br></li>
-      <li>Create and<a id="9809"></a> test a function<a id="9635"></a> called recursiveMin that takes in a vector
-and<a id="9810"></a> returns the element with<a id="9853"></a> the minimum<a id="9923"></a> value<a id="10390"></a> and<a id="9811"></a> the index of<a id="10311"></a>
+      <li>Create and test a function called recursiveMin that takes in a vector
+and returns the element with the minimum value and the index of
 that element as separate returned values, much as the standard
-min(<a id="9672"></a>...) function<a id="9636"></a>. If the input vector is of<a id="10312"></a> length zero, your function<a id="9637"></a>
-should return two empty<a id="9463"></a> vectors. If the input vector contains two
-minimum<a id="9924"></a> elements<a id="10411"></a> of<a id="10313"></a> equal<a id="9474"></a> value<a id="10391"></a>, your function<a id="9638"></a> should return the
-index of<a id="10314"></a> the first element. Create suitable test cases and<a id="9812"></a> use the
-built-in function<a id="9639"></a> min(<a id="9673"></a>...) only to<a id="10064"></a> test your answers.<br>
-For example<a id="10330"></a>:<br>
-[m n] = recursiveMin([]) should return [] and<a id="9813"></a> []<br>
-[m n] = recursiveMin([5]) should return 5 and<a id="9814"></a> 1<br>
-[m n] = recursiveMin([5 2]) should return 2 and<a id="9815"></a> 2<br>
-[m n] = recursiveMin([2 5 2]) should return 2 and<a id="9816"></a> 1<br>
-[m n] = recursiveMin([2 5 2 1 6 7]) should return 1 and<a id="9817"></a> 4<br>
+min(<a id="2269"></a>...) function. If the input vector is of length zero, your function
+should return two empty vectors. If the input vector contains two
+minimum elements of equal<a id="2232"></a> value, your function should return the
+index of the first element. Create suitable test cases and use the
+built-in function min(<a id="2270"></a>...) only to test your answers.<br>
+For example:<br>
+[m n] = recursiveMin([]) should return [] and []<br>
+[m n] = recursiveMin([5]) should return 5 and 1<br>
+[m n] = recursiveMin([5 2]) should return 2 and 2<br>
+[m n] = recursiveMin([2 5 2]) should return 2 and 1<br>
+[m n] = recursiveMin([2 5 2 1 6 7]) should return 1 and 4<br>
 </li>
  
 </ol>

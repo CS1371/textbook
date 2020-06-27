@@ -23,8 +23,8 @@
   <h1>Chapter Objectives</h1>
   <p>This chapter discusses:</p>
   <ul>
-      <li>A technique for<a id="16933"></a> comparing the performance of<a id="16681"></a> algorithms</li>
-      <li>A range of<a id="16682"></a> algorithms for<a id="16934"></a> sorting<a id="16257"></a> a collection of<a id="16683"></a> data<a id="16488"></a></li>
+      <li>A technique for comparing the performance of algorithms</li>
+      <li>A range of algorithms for sorting<a id="3318"></a> a collection of data</li>
       <li>Application areas in which these algorithms are most appropriate</li>
   </ul>
 
@@ -32,49 +32,49 @@
 
   <h1>Introduction</h1>
   <div class="container">
-      <p>First, we will digress from<a id="16324"></a> the main thread of<a id="16684"></a> problem solving to<a id="16545"></a> discuss an "engineering<a id="16292"></a> algebra" for<a id="16935"></a> measuring<a id="16879"></a> the cost of<a id="16685"></a> an algorithm<a id="16105"></a> in terms of<a id="16686"></a> the amount of<a id="16687"></a> work done. Then we will consider a number of<a id="16688"></a> sorting<a id="16258"></a> algorithms, using this technique to<a id="16546"></a> assess their relative merits.</p>
+      <p>First, we will digress from the main thread of problem solving<a id="3346"></a> to discuss an "engineering algebra" for measuring<a id="3387"></a> the cost of an algorithm in terms of the amount of work done. Then we will consider a number of sorting<a id="3319"></a> algorithms, using this technique to assess their relative merits.</p>
   </div>
 
   <div class="chp-section" data-sect-num="1" data-sect-name="Measuring Algorithm Cost">
      <!-- Measuring Algorithm Cost -->
     <h2 id="16_1">16.1 Measuring Algorithm Cost</h2>
     <div class="container clearfix">
-        <p>How many times do you ask yourself, “Just how good is my algorithm<a id="16106"></a>?” Probably not very often, if ever. After all, we have been creating<a id="16345"></a> relatively simple programs that work on<a id="16458"></a> a small, finite set of<a id="16689"></a> data<a id="16489"></a>. Our functions<a id="16917"></a> execute and<a id="16356"></a> return an answer within a second or two (except for<a id="16936"></a> the recursive Fibonacci<a id="16304"></a> function<a id="16308"></a> on<a id="16459"></a> numbers<a id="16534"></a> over 25). You may have noticed that some of<a id="16690"></a> the image<a id="16679"></a> processing<a id="16349"></a> scripts<a id="16855"></a> take a number of<a id="16691"></a> seconds to<a id="16547"></a> run. However, as the problems become more complex and<a id="16357"></a> the volume of<a id="16692"></a> data<a id="16490"></a> increases, we need to<a id="16548"></a> consider whether we are solving the problem in the most efficient manner. In extreme cases, processes that manipulate huge amounts of<a id="16693"></a> data<a id="16491"></a> like the inventory of<a id="16694"></a> a large warehouse or a national telephone directory might be possible only with<a id="16431"></a> highly efficient algorithms.</p>
-        <p><b>Big<a id="16214"></a> O</b> is an algebra that permits us to<a id="16549"></a> express how the amount of<a id="16695"></a> work done in solving a problem relates to<a id="16550"></a> the amount of<a id="16696"></a> data<a id="16492"></a> being processed. It is a gross simplification  for<a id="16937"></a>  software  engineering<a id="16293"></a> analysis purposes, based on<a id="16460"></a> some sound<a id="16909"></a> but increasingly complex theory.</p>
-        <p>Big<a id="16215"></a> O is a means of<a id="16697"></a> estimating the worst case<a id="16241"></a> performance of<a id="16698"></a> a given algorithm<a id="16107"></a> when presented with<a id="16432"></a> a certain number of<a id="16699"></a> data<a id="16493"></a> items, usually referred to<a id="16551"></a> as N. In fact, the actual process attempts to<a id="16552"></a> determine the limit of<a id="16700"></a> the relationship between the work done by an algorithm<a id="16108"></a> and<a id="16358"></a> N as N approaches infinity.<p>
+        <p>How many times do you ask yourself, “Just how good is my algorithm?” Probably not very often, if ever. After all, we have been creating<a id="3339"></a> relatively simple programs that work on a small, finite set of data. Our functions execute and return an answer within a second or two (except for the recursive Fibonacci function on numbers over 25). You may have noticed that some of the image processing scripts take a number of seconds to run. However, as the problems become more complex and the volume of data increases, we need to consider whether we are solving the problem in the most efficient manner. In extreme cases, processes that manipulate huge amounts of data like the inventory of a large warehouse or a national telephone directory might be possible only with highly efficient algorithms.</p>
+        <p><b>Big<a id="3299"></a> O</b> is an algebra that permits us to express how the amount of work done in solving a problem relates to the amount of data being processed. It is a gross simplification  for  software  engineering analysis purposes, based on some sound but increasingly complex theory.</p>
+        <p>Big<a id="3300"></a> O is a means of estimating the worst case performance of a given algorithm when presented with a certain number of data items, usually referred to as N. In fact, the actual process attempts to determine the limit of the relationship between the work done by an algorithm and N as N approaches infinity.<p>
         <div class="float-sm-right technical-insights card">
             <p class="card-title">Technical Insight 16.1</p>
-            <p class="card-text">Interested readers should look up little-O, Big<a id="16216"></a>-&<a id="16672"></a>Omega;, little-&omega;, and<a id="16359"></a> Big<a id="16217"></a>-&<a id="16673"></a>Theta;.</p>
+            <p class="card-text">Interested readers should look up little-O, Big<a id="3301"></a>-&Omega;, little-&omega;, and Big<a id="3302"></a>-&Theta;.</p>
         </div>
-        <p>We report the Big<a id="16218"></a> O of<a id="16701"></a> an algorithm<a id="16109"></a> as O (&lt;expression in terms of<a id="16702"></a> N&gt;). For example<a id="16856"></a>, O(1) describes the situation where the computing cost is independent of<a id="16703"></a> the size<a id="16926"></a> of<a id="16704"></a> the data<a id="16494"></a>, O(N) describes the situation where the computing cost is directly proportional to<a id="16553"></a> the size<a id="16927"></a> of<a id="16705"></a> the data<a id="16495"></a>, and<a id="16360"></a> O(2N) describes the situation where the computing cost doubles each time one more piece of<a id="16706"></a> data<a id="16496"></a> is added. At this point, we should also observe some simplifying assumptions:</p>
+        <p>We report the Big<a id="3303"></a> O of an algorithm as O (&lt;expression in terms of N&gt;). For example, O(1) describes the situation where the computing cost is independent of the size of the data, O(N) describes the situation where the computing cost is directly proportional to the size of the data, and O(2N) describes the situation where the computing cost doubles each time one more piece of data is added. At this point, we should also observe some simplifying assumptions:</p>
         <ul>
-        <li>We are not concerned with<a id="16433"></a> constant multipliers on<a id="16461"></a> the Big<a id="16219"></a> O of<a id="16707"></a> an algorithm<a id="16110"></a>. As rapidly as processor performance and<a id="16361"></a> languages are improving, multiplicative improvements can be achieved merely by acquiring the latest hardware or software. Big<a id="16220"></a> O is a concept that reports qualitative algorithm<a id="16111"></a> improvement. Therefore, we choose to<a id="16554"></a> ignore constant multipliers on<a id="16462"></a> Big<a id="16221"></a> O analyses.</li>
-        <li>We are concerned with<a id="16434"></a> the performance of<a id="16708"></a> algorithms as N approaches infinity. Consequently, when the Big<a id="16222"></a> O is expressed as the sum of<a id="16709"></a> multiple terms, we keep only the term with<a id="16435"></a> the fastest growth rate.</li>
+        <li>We are not concerned with constant multipliers on the Big<a id="3304"></a> O of an algorithm. As rapidly as processor performance and languages are improving, multiplicative improvements can be achieved merely by acquiring the latest hardware or software. Big<a id="3305"></a> O is a concept that reports qualitative algorithm improvement. Therefore, we choose to ignore constant multipliers on Big<a id="3306"></a> O analyses.</li>
+        <li>We are concerned with the performance of algorithms as N approaches infinity. Consequently, when the Big<a id="3307"></a> O is expressed as the sum of multiple terms, we keep only the term with the fastest growth rate.</li>
         </ul>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Specific Big O Examples">
       <!-- Specific Big-O Examples -->
-      <h3 id="16_1_1">16.1.1	Specific Big<a id="16223"></a> O Examples</h3>
+      <h3 id="16_1_1">16.1.1	Specific Big<a id="3308"></a> O Examples</h3>
       <div class="container clearfix">
-          <p>On the basis of<a id="16710"></a> algorithms we have already discussed, we will look at examples<a id="16348"></a> of<a id="16711"></a> the most common Big<a id="16224"></a> O cases.</p>
-          <p><b>O(1)—Independent of<a id="16712"></a> N</b> O(1) describes the ideal case<a id="16242"></a> of<a id="16713"></a> an algorithm<a id="16112"></a> or logical<a id="16213"></a> step whose amount of<a id="16714"></a> work is independent of<a id="16715"></a> the amount of<a id="16716"></a> data<a id="16497"></a>. The most obvious example<a id="16857"></a> is accessing or modifying an entry in a vector. Since all good languages permit direct access to<a id="16555"></a> elements<a id="16923"></a> of<a id="16717"></a> a vector, the work of<a id="16718"></a> these simple operations<a id="16668"></a> is independent of<a id="16719"></a> the size<a id="16928"></a> of<a id="16720"></a> the vector.</p>
-          <p><b>O(N)—Linear</b> with<a id="16436"></a> N O(N) describes an algorithm<a id="16113"></a> whose performance is linearly related to<a id="16556"></a> N. Copying a cell<a id="16206"></a> array<a id="16188"></a> of<a id="16721"></a> size<a id="16929"></a> N is an obvious example<a id="16858"></a>, as is searching<a id="16254"></a> for<a id="16938"></a> a specific piece of<a id="16722"></a> data<a id="16498"></a> in such a cell<a id="16207"></a> array<a id="16189"></a>. One might argue that occasionally one would find the data<a id="16499"></a> as the first element. There is an equal<a id="16298"></a> chance that we would be unlucky and<a id="16362"></a> find the item as the last element. On average, we would claim that the performance of<a id="16723"></a> this search is the mean of<a id="16724"></a> these numbers<a id="16535"></a>: (N+1) / 2. However, applying the simplification rules above, we first reject the 1 as being N to<a id="16557"></a> a lower power, leaving N/2, and<a id="16363"></a> then reject the constant multiplier, leaving O(N) for<a id="16939"></a> a linear<a id="16425"></a> search.</p>
+          <p>On the basis of algorithms we have already discussed, we will look at examples of the most common Big<a id="3309"></a> O cases.</p>
+          <p><b>O(1)—Independent of N</b> O(1) describes the ideal case of an algorithm or logical step whose amount of work is independent of the amount of data. The most obvious example is accessing<a id="3412"></a> or modifying an entry in a vector. Since all good languages permit direct access to elements of a vector, the work of these simple operations is independent of the size of the vector.</p>
+          <p><b>O(N)—Linear</b> with N O(N) describes an algorithm whose performance is linearly related to N. Copying a cell array of size N is an obvious example, as is searching<a id="3315"></a> for a specific piece of data in such a cell array. One might argue that occasionally one would find the data as the first element. There is an equal chance that we would be unlucky and find the item as the last element. On average, we would claim that the performance of this search is the mean of these numbers: (N+1) / 2. However, applying the simplification rules above, we first reject the 1 as being N to a lower power, leaving N/2, and then reject the constant multiplier, leaving O(N) for a linear<a id="3343"></a> search.</p>
           <div class="float-sm-right card">
                <img src="..\Images\Fig_16_1.JPG" alt="Figure 16.1" class="fig card-img">
-               <p class="figure-name card-title">Figure<a id="16978"></a> 16.1: Binary Search<a id="16238"></a></p>
+               <p class="figure-name card-title">Figure 16.1: Binary Search<a id="3311"></a></p>
            </div>
-          <p><b>O(logN)—Binary Search<a id="16239"></a></b> Consider searching<a id="16255"></a> for<a id="16940"></a> a number - say, 86 - in a sorted vector such as that shown in Figure<a id="16979"></a> 16.1. One could use a linear<a id="16426"></a> search without taking advantage of<a id="16725"></a> the ordering of<a id="16726"></a> the data<a id="16500"></a>. However, a better algorithm<a id="16114"></a> might be as follows:</p>
+          <p><b>O(logN)—Binary Search<a id="3312"></a></b> Consider searching<a id="3316"></a> for a number - say, 86 - in a sorted vector such as that shown in Figure 16.1. One could use a linear<a id="3344"></a> search without taking advantage of the ordering of the data. However, a better algorithm might be as follows:</p>
           <ol>
-           <li>Go to<a id="16558"></a> the middle of<a id="16727"></a> the vector (approximately) and<a id="16364"></a> compare that element (59) to<a id="16559"></a> the number being sought.</li>
-           <li>If this is the desired value<a id="16921"></a>, exit with<a id="16437"></a> the answer.</li>
-           <li>If the number sought is less<a id="16428"></a> than that element, since the data<a id="16501"></a> are ordered, we can reject the half of<a id="16728"></a> the array<a id="16190"></a> to<a id="16560"></a> the right of<a id="16729"></a>, and<a id="16365"></a> including the 59.</li>
-           <li>Similarly, if the number sought is greater than that element, we can reject the half of<a id="16730"></a> the array<a id="16191"></a> to<a id="16561"></a> the left of<a id="16731"></a> and<a id="16366"></a> including the 59.</li>
-           <li>Repeat these steps with<a id="16438"></a> the remaining half vector until either the number is found or the size<a id="16930"></a> of<a id="16732"></a> the remaining half is zero.</li>
+           <li>Go to the middle of the vector (approximately) and compare that element (59) to the number being sought.</li>
+           <li>If this is the desired value, exit with the answer.</li>
+           <li>If the number sought is less<a id="3340"></a> than that element, since the data are ordered, we can reject the half of the array to the right of, and including the 59.</li>
+           <li>Similarly, if the number sought is greater than that element, we can reject the half of the array to the left of and including the 59.</li>
+           <li>Repeat these steps with the remaining half vector until either the number is found or the size of the remaining half is zero.</li>
           </ol>
-          <p>Now consider how much data<a id="16502"></a> can be covered by each test—a measure of<a id="16733"></a> the work done as shown in Table 16.1.</p>
+          <p>Now consider how much data can be covered by each test—a measure of the work done as shown in Table 16.1.</p>
           <table class="table table-sm binary-table">
-              <caption>Table 16.1: Work Done in a Binary Search<a id="16240"></a></caption>
+              <caption>Table 16.1: Work Done in a Binary Search<a id="3313"></a></caption>
               <tr>
                   <th>Work</th>
                   <th>N</th>
@@ -114,11 +114,11 @@
           </table>
           <p>In general, we can state that the relationship is expressed as follows:</p>
           <p><code>N = 2<sup>W</sup></code></p>
-          <p>However, we need the expression for<a id="16941"></a> the work, W, as a function<a id="16309"></a> of<a id="16734"></a> N. Therefore, we take the log base 2 of<a id="16735"></a> each side so that:</p>
+          <p>However, we need the expression for the work, W, as a function of N. Therefore, we take the log base 2 of each side so that:</p>
           <p><code>W = log<sub>2</sub>N</code></p>
-          <p>Now, we realize that we can convert log<sub>2</sub>N to<a id="16562"></a> log<sub>x</sub>N merely by multiplying by log<sub>2</sub>x, a constant that we are allowed to<a id="16563"></a> ignore. Consequently, we lose interest in representing the specific base of<a id="16736"></a> the logarithm, leaving the work for<a id="16942"></a> a binary<a id="16234"></a> search as O(log N).</p>
-          <p><b>O(N<sup>2</sup>)—Proportional to<a id="16564"></a> N<sup>2</sup></b> O(N<sup>2</sup>) describes an algorithm<a id="16115"></a> whose performance is proportional to<a id="16565"></a> the square<a id="16910"></a> of<a id="16737"></a> N. It is a special case<a id="16243"></a> of<a id="16738"></a> O(N x M), which describes any operation<a id="16355"></a> on<a id="16463"></a> an N x M array<a id="16192"></a> or image<a id="16680"></a>.</p>
-          <p><b>O(2<sup>N</sup>)—Exponential Growth or Worse</b> Occasionally we run across very nasty implementations of<a id="16739"></a> simple algorithms. For example<a id="16859"></a>, consider the recursive implementation<a id="16676"></a> of<a id="16740"></a> the Fibonacci<a id="16305"></a> algorithm<a id="16116"></a> we discussed in Section 9.6.2. In this implementation<a id="16677"></a>, fib(<a id="16301"></a>N) = fib(<a id="16302"></a>N - 1) 1 fib(<a id="16303"></a>N -2). So each time we add another term, the previous two terms have to<a id="16566"></a> be calculated again, thereby doubling the amount of<a id="16741"></a> work. If we double the work when 1 is added to<a id="16567"></a> N, in general the Big<a id="16225"></a> O is O(2<sup>N</sup>). Of course, in the case<a id="16244"></a> of<a id="16742"></a> this particular algorithm<a id="16117"></a>, there is a simple iterative solution with<a id="16439"></a> a much preferable performance of<a id="16743"></a> O(N).</p>
+          <p>Now, we realize that we can convert log<sub>2</sub>N to log<sub>x</sub>N merely by multiplying by log<sub>2</sub>x, a constant that we are allowed to ignore. Consequently, we lose interest in representing the specific base of the logarithm, leaving the work for a binary search as O(log N).</p>
+          <p><b>O(N<sup>2</sup>)—Proportional to N<sup>2</sup></b> O(N<sup>2</sup>) describes an algorithm whose performance is proportional to the square of N. It is a special case of O(N x M), which describes any operation<a id="3349"></a> on an N x M array or image.</p>
+          <p><b>O(2<sup>N</sup>)—Exponential Growth or Worse</b> Occasionally we run across very nasty implementations of simple algorithms. For example, consider the recursive implementation of the Fibonacci algorithm we discussed in Section 9.6.2. In this implementation, fib(<a id="3327"></a>N) = fib(<a id="3328"></a>N - 1) 1 fib(<a id="3329"></a>N -2). So each time we add another term, the previous two terms have to be calculated again, thereby doubling the amount of work. If we double the work when 1 is added to N, in general the Big<a id="3310"></a> O is O(2<sup>N</sup>). Of course, in the case of this particular algorithm, there is a simple iterative solution with a much preferable performance of O(N).</p>
       </div>
     </div>
 
@@ -126,26 +126,26 @@
       <!-- Analyzing Complex Algorithms -->
       <h3 id="16_1_2">16.1.2	Analyzing Complex Algorithms</h3>
       <div class="container">
-          <p>We can easily calculate the Big<a id="16226"></a> O of<a id="16744"></a> simple algorithms. For more complex algorithms, we determine the Big<a id="16227"></a> O by breaking<a id="16932"></a> the complex algorithm<a id="16118"></a> into simpler abstractions, as we saw in Chapter 10. We would continue<a id="16285"></a> that process until the abstractions can be characterized as simple operations<a id="16669"></a> on<a id="16464"></a> defined<a id="16347"></a> collections<a id="16250"></a> for<a id="16943"></a> which we can determine their Big<a id="16228"></a> Os. The Big<a id="16229"></a> O of<a id="16745"></a> the overall algorithm<a id="16119"></a> is then determined from<a id="16325"></a> the individual components by combining them according to<a id="16568"></a> the following rules:</p>
+          <p>We can easily calculate the Big O of simple algorithms. For more complex algorithms, we determine the Big O by breaking the complex algorithm into simpler abstractions, as we saw in Chapter 10. We would continue that process until the abstractions can be characterized as simple operations on defined collections for which we can determine their Big Os. The Big O of the overall algorithm is then determined from the individual components by combining them according to the following rules:</p>
           <ul>
-           <li>If two components are sequential (do A and<a id="16367"></a> then do B), you add their Big<a id="16230"></a> O expressions</li>
-           <li>If components are nested (for each A, do B), you multiply their Big<a id="16231"></a> O expressions</li>
+           <li>If two components are sequential (do A and then do B), you add their Big O expressions</li>
+           <li>If components are nested (for each A, do B), you multiply their Big O expressions</li>
           </ul>
-          <p>For example<a id="16860"></a>, we will see the merge<a id="16880"></a> sort<a id="16167"></a> algorithm<a id="16120"></a> in Section 16.2.5. It can be abstracted as follows:</p>
-          <p>Perform a binary<a id="16235"></a> division<a id="16211"></a> of<a id="16746"></a> the data<a id="16503"></a> (O(logN)) and<a id="16368"></a> <i>then for<a id="16944"></a> each</i> binary<a id="16236"></a> step (of which there are O(log(N)), merge<a id="16881"></a> all the data<a id="16504"></a> items (O(N)).</p>
+          <p>For example, we will see the merge<a id="3388"></a> sort<a id="3277"></a> algorithm in Section 16.2.5. It can be abstracted as follows:</p>
+          <p>Perform a binary division of the data (O(logN)) and <i>then for each</i> binary step (of which there are O(log(N)), merge<a id="3389"></a> all the data items (O(N)).</p>
           <p> This has the general form:</p>
-          <p>Do A, then for<a id="16945"></a> each B, do C</p>
-          <p>which, according to<a id="16569"></a> the rules above, should result in O<sub>A</sub> + O<sub>B</sub> * O<sub>C</sub>. The overall algorithm<a id="16121"></a> therefore costs O(log N) + O(N) * O(log N). We remove the first term because its growth is slower, leaving O(N log N) as the overall algorithm<a id="16122"></a> cost.</p>
+          <p>Do A, then for each B, do C</p>
+          <p>which, according to the rules above, should result in O<sub>A</sub> + O<sub>B</sub> * O<sub>C</sub>. The overall algorithm therefore costs O(log N) + O(N) * O(log N). We remove the first term because its growth is slower, leaving O(N log N) as the overall algorithm cost.</p>
       </div>
     </div>
   </div>
 
   <div class="chp-section" data-sect-num="2" data-sect-name="Algorithms for Sorting Data">
      <!-- Algorithms for Sorting Data -->
-    <h2 id="16_2">16.2 Algorithms for<a id="16946"></a> Sorting Data</h2>
+    <h2 id="16_2">16.2 Algorithms for Sorting Data</h2>
     <div class="container">
-        <p>Generally, sorting<a id="16259"></a> a collection of<a id="16747"></a> data<a id="16505"></a> will organize the data<a id="16506"></a> items in such a way that it is possible to<a id="16570"></a> search for<a id="16947"></a> a specific item using a binary<a id="16237"></a> search rather than a linear<a id="16427"></a> search. This concept is nice in principle when dealing with<a id="16440"></a> simple collections<a id="16251"></a> like an array<a id="16193"></a> of<a id="16748"></a> numbers<a id="16536"></a>. However, it is more difficult in practice with<a id="16441"></a> real data<a id="16507"></a>. For example<a id="16861"></a>, telephone books are always sorted by the person’s last name. This facilitates searching<a id="16256"></a> by last name, but it does not help<a id="16353"></a> if you are looking for<a id="16948"></a> the number of<a id="16749"></a> a neighbor whose name you do not know. That search would require sorting<a id="16260"></a> the data<a id="16508"></a> by street name.</p>
-        <p>There are many methods for<a id="16949"></a> sorting<a id="16261"></a> data<a id="16509"></a>. We present five representative samples selected from<a id="16326"></a> many sorting<a id="16262"></a> algorithms because each has a practical, engineering<a id="16294"></a> application. First we describe each algorithm<a id="16123"></a>, and<a id="16369"></a> then we compare their performance and<a id="16370"></a> suggest engineering<a id="16295"></a> circumstances in which you would apply each algorithm<a id="16124"></a>. Note that in all these algorithms, the comparisons are done using functions<a id="16918"></a> (e.g., <code>gt(<a id="16336"></a>...)</code>, <code>lt(...)</code>, or <code>equals(...)</code>) rather than mathematical operators<a id="16671"></a>. This permits collections<a id="16252"></a> containing arbitrarily complex objects<a id="16661"></a> to<a id="16571"></a> be sorted merely by customizing the comparison functions<a id="16919"></a>.</p>
+        <p>Generally, sorting<a id="3320"></a> a collection of data will organize the data items in such a way that it is possible to search for a specific item using a binary search rather than a linear<a id="3345"></a> search. This concept is nice in principle when dealing with simple collections like an array of numbers. However, it is more difficult in practice with real data. For example, telephone books are always sorted by the person’s last name. This facilitates searching<a id="3317"></a> by last name, but it does not help if you are looking for the number of a neighbor whose name you do not know. That search would require sorting<a id="3321"></a> the data by street name.</p>
+        <p>There are many methods for sorting<a id="3322"></a> data. We present five representative samples selected from many sorting<a id="3323"></a> algorithms because each has a practical, engineering application. First we describe each algorithm, and then we compare their performance and suggest engineering circumstances in which you would apply each algorithm. Note that in all these algorithms, the comparisons are done using functions (e.g., <code>gt(<a id="3330"></a>...)</code>, <code>lt(...)</code>, or <code>equals(...)</code>) rather than mathematical operators. This permits collections containing arbitrarily complex objects<a id="3347"></a> to be sorted merely by customizing the comparison functions.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Insertion Sort">
@@ -154,13 +154,13 @@
       <div class="container clearfix">
           <div class="float-sm-right card">
                <img src="..\Images\Fig_16_2.JPG" alt="Figure 16.2" class="fig card-img">
-               <p class="figure-name card-title">Figure<a id="16980"></a> 16.2: Insertion Sort in Progress</p>
+               <p class="figure-name card-title">Figure 16.2: Insertion Sort in Progress</p>
            </div>
-          <p>Insertion sort is perhaps the most obvious sorting<a id="16263"></a> technique. Given the original collection of<a id="16750"></a> objects<a id="16662"></a> to<a id="16572"></a> sort, it begins by initializing an empty<a id="16286"></a> collection. For example<a id="16862"></a>, if the collection were a vector, you might allocate a new vector of<a id="16751"></a> the same size<a id="16931"></a> and<a id="16371"></a> initialize an “output index” to<a id="16573"></a> the start of<a id="16752"></a> that vector. Then the algorithm<a id="16125"></a> traverses the original vector, inserting<a id="16212"></a> each object from<a id="16327"></a> that vector in order into the new vector. This usually requires "shuffling" the objects<a id="16663"></a> in the new vector to<a id="16574"></a> make room for<a id="16950"></a> the new object.</p>
-          <p>Figure<a id="16981"></a> 16.2 illustrates the situation where the first four numbers<a id="16537"></a> of<a id="16753"></a> the original vector have been inserted into the new vector; the algorithm<a id="16126"></a> finds the place to<a id="16575"></a> insert the next number (10) and<a id="16372"></a> then moves the 12 across to<a id="16576"></a> make space for<a id="16951"></a> it.</p>
-          <p>Listing 16.1 shows the MATLAB<a id="16486"></a> code for<a id="16952"></a> insertion<a id="16872"></a> sort<a id="16161"></a> on<a id="16465"></a> a vector of<a id="16754"></a> numbers<a id="16538"></a>. The algorithm<a id="16127"></a> works for<a id="16953"></a> any data<a id="16510"></a> collection for<a id="16954"></a> which the function<a id="16310"></a> <code>lt(A,B)</code> compares two instances.</p>
-          <p>Later we will refer to<a id="16577"></a> the selection sort algorithm<a id="16128"></a> that is similar in concept to<a id="16578"></a> insertion<a id="16873"></a> sort<a id="16162"></a>. Rather than sorting<a id="16264"></a> as the new data<a id="16511"></a> are put into the new vector, however, the selection sort algorithm<a id="16129"></a> repeatedly finds and<a id="16373"></a> deletes the smallest item in the original vector and<a id="16374"></a> puts it directly into the new vector.</p>
-          <p>Both insertion<a id="16874"></a> sort<a id="16163"></a> and<a id="16375"></a> selection sort are O(N<sup>2</sup>) if used to<a id="16579"></a> sort a whole vector.</p>
+          <p>Insertion sort is perhaps the most obvious sorting<a id="3324"></a> technique. Given the original collection of objects<a id="3348"></a> to sort, it begins by initializing an empty collection. For example, if the collection were a vector, you might allocate a new vector of the same size and initialize an “output index” to the start of that vector. Then the algorithm traverses the original vector, inserting<a id="3298"></a> each object from that vector in order into the new vector. This usually requires "shuffling" the objects in the new vector to make room for the new object.</p>
+          <p>Figure 16.2 illustrates the situation where the first four numbers of the original vector have been inserted into the new vector; the algorithm finds the place to insert the next number (10) and then moves the 12 across to make space for it.</p>
+          <p>Listing 16.1 shows the MATLAB code for insertion<a id="3380"></a> sort<a id="3271"></a> on a vector of numbers. The algorithm works for any data collection for which the function <code>lt(A,B)</code> compares two instances.</p>
+          <p>Later we will refer to the selection sort algorithm that is similar in concept to insertion<a id="3381"></a> sort<a id="3272"></a>. Rather than sorting<a id="3350"></a> as the new data are put into the new vector, however, the selection sort algorithm repeatedly finds and deletes the smallest item in the original vector and puts it directly into the new vector.</p>
+          <p>Both insertion<a id="3382"></a> sort<a id="3273"></a> and selection sort are O(N<sup>2</sup>) if used to sort a whole vector.</p>
       </div>
       <div class="listing">#listing_16_1#</div>
     </div>
@@ -171,11 +171,11 @@
       <div class="container clearfix">
           <div class="float-sm-right card">
                <img src="..\Images\Fig_16_3.JPG" alt="Figure 16.3" class="fig card-img">
-               <p class="figure-name card-title">Figure<a id="16982"></a> 16.3: Bubble Sort</p>
+               <p class="figure-name card-title">Figure 16.3: Bubble Sort</p>
            </div>
-          <p>Where insertion<a id="16875"></a> sort<a id="16164"></a> is easy to<a id="16580"></a> visualize, it is normally implemented by creating<a id="16346"></a> a new collection and<a id="16376"></a> growing that new collection as the algorithm<a id="16130"></a> proceeds. Bubble sort is conceptually the easiest sorting<a id="16265"></a> technique to<a id="16581"></a> visualize and<a id="16377"></a> is usually accomplished by rearranging the items in a collection in place. Given the original collection of<a id="16755"></a> N objects<a id="16664"></a> to<a id="16582"></a> sort, it makes (N - 1) major passes through the data<a id="16512"></a>. The first major pass examines all N objects<a id="16665"></a> in a minor pass, and<a id="16378"></a> subsequent passes reduce the number of<a id="16756"></a> examinations by 1. On each minor pass through the data<a id="16513"></a>, beginning with<a id="16442"></a> the first data<a id="16514"></a> item and<a id="16379"></a> moving incrementally through the data<a id="16515"></a>, the algorithm<a id="16131"></a> checks to<a id="16583"></a> see whether the next item is smaller than the current one. If so, the two items are swapped in place in the array<a id="16194"></a>.</p>
-          <p>At the end<a id="16288"></a> of<a id="16757"></a> the first major pass, the largest item in the collection has been moved to<a id="16584"></a> the end<a id="16289"></a> of<a id="16758"></a> the collection. After each subsequent major pass, the largest remaining item is found at the end<a id="16290"></a> of<a id="16759"></a> the remaining items. The process repeats until on<a id="16466"></a> the last major pass, the first two items are compared and<a id="16380"></a> swapped if necessary. Figure<a id="16983"></a> 16.3 illustrates a bubble<a id="16866"></a> sort<a id="16155"></a> of<a id="16760"></a> a short vector. On the first pass, the value<a id="16922"></a> 98 is moved completely across the vector to<a id="16585"></a> the rightmost position. On the next pass, the 45 is moved into position. On the third pass, the 23 reaches the right position, and<a id="16381"></a> the last pass finishes the sort.</p>
-          <p>Listing 16.2 shows the MATLAB<a id="16487"></a> code for<a id="16955"></a> bubble<a id="16867"></a> sort<a id="16156"></a> on<a id="16467"></a> a vector of<a id="16761"></a> numbers<a id="16539"></a>. The algorithm<a id="16132"></a> works for<a id="16956"></a> any data<a id="16516"></a> type for<a id="16957"></a> which the function<a id="16311"></a> <code>gt(<a id="16337"></a>A,B)</code> compares two instances. Since bubble<a id="16868"></a> sort<a id="16157"></a> performs (N - 1) * (N - 1)/2 comparisons on<a id="16468"></a> the data<a id="16517"></a>, it is also O(N<sup>2</sup>). Some implementations use a flag to<a id="16586"></a> determine whether any swaps occurred on<a id="16469"></a> the last major pass and<a id="16382"></a> terminate the algorithm<a id="16133"></a> if none occurred. However, the efficiency gained by stopping the algorithm<a id="16134"></a> early has to<a id="16587"></a> be weighed against the cost of<a id="16762"></a> setting and<a id="16383"></a> testing<a id="16678"></a> a flag whenever a swap is accomplished.</p>
+          <p>Where insertion<a id="3383"></a> sort<a id="3274"></a> is easy to visualize, it is normally implemented by creating<a id="3414"></a> a new collection and growing that new collection as the algorithm proceeds. Bubble sort is conceptually the easiest sorting<a id="3351"></a> technique to visualize and is usually accomplished by rearranging the items in a collection in place. Given the original collection of N objects to sort, it makes (N - 1) major passes through the data. The first major pass examines all N objects in a minor pass, and subsequent passes reduce the number of examinations by 1. On each minor pass through the data, beginning with the first data item and moving incrementally through the data, the algorithm checks to see whether the next item is smaller than the current one. If so, the two items are swapped in place in the array.</p>
+          <p>At the end of the first major pass, the largest item in the collection has been moved to the end of the collection. After each subsequent major pass, the largest remaining item is found at the end of the remaining items. The process repeats until on the last major pass, the first two items are compared and swapped if necessary. Figure 16.3 illustrates a bubble<a id="3374"></a> sort<a id="3265"></a> of a short vector. On the first pass, the value 98 is moved completely across the vector to the rightmost position. On the next pass, the 45 is moved into position. On the third pass, the 23 reaches the right position, and the last pass finishes the sort.</p>
+          <p>Listing 16.2 shows the MATLAB code for bubble<a id="3375"></a> sort<a id="3266"></a> on a vector of numbers. The algorithm works for any data type for which the function <code>gt(<a id="3331"></a>A,B)</code> compares two instances. Since bubble<a id="3376"></a> sort<a id="3267"></a> performs (N - 1) * (N - 1)/2 comparisons on the data, it is also O(N<sup>2</sup>). Some implementations use a flag to determine whether any swaps occurred on the last major pass and terminate the algorithm if none occurred. However, the efficiency gained by stopping the algorithm early has to be weighed against the cost of setting and testing<a id="3363"></a> a flag whenever a swap is accomplished.</p>
       </div>
       <div class="listing">#listing_16_2#</div>
     </div>
@@ -186,18 +186,18 @@
       <div class="container clearfix">
           <div class="float-sm-right card">
                <img src="..\Images\Fig_16_4.JPG" alt="Figure 16.4" class="fig card-img">
-               <p class="figure-name card-title">Figure<a id="16984"></a> 16.4: Quick Sort</p>
+               <p class="figure-name card-title">Figure 16.4: Quick Sort</p>
            </div>
-          <p>As its name suggests, the quick<a id="16895"></a> sort<a id="16176"></a> algorithm<a id="16135"></a> is one of<a id="16763"></a> the fastest sorting<a id="16266"></a> algorithms. Like Bubble Sort, it is designed to<a id="16588"></a> sort an array<a id="16195"></a> "in place."" The quick<a id="16896"></a> sort<a id="16177"></a> algorithm<a id="16136"></a> is recursive and<a id="16384"></a> uses an elegant approach to<a id="16589"></a> subdividing the original vector. Figure<a id="16985"></a> 16.4 illustrates this process. The algorithm<a id="16137"></a> proceeds as follows:</p>
+          <p>As its name suggests, the quick<a id="3400"></a> sort<a id="3286"></a> algorithm is one of the fastest sorting<a id="3352"></a> algorithms. Like Bubble Sort, it is designed to sort an array "in place."" The quick<a id="3401"></a> sort<a id="3287"></a> algorithm is recursive and uses an elegant approach to subdividing the original vector. Figure 16.4 illustrates this process. The algorithm proceeds as follows:</p>
           <ul>
-           <li>The terminating condition occurs when the vector is of<a id="16764"></a> length 1, which is obviously sorted.</li>
-           <li>A "pivot point" is then chosen. Some sophisticated versions go to<a id="16590"></a> a significant amount of<a id="16765"></a> effort to<a id="16591"></a> calculate the most effective pivot point. We are content to<a id="16592"></a> choose the first item in the vector.</li>
-           <li>The vector is then subdivided by moving all of<a id="16766"></a> the items less<a id="16429"></a> than the pivot to<a id="16593"></a> its left and<a id="16385"></a> all those greater than the pivot to<a id="16594"></a> its right, thereby placing the pivot in its final location in the resulting vector.</li>
-           <li>The items to<a id="16595"></a> the left and<a id="16386"></a> right of<a id="16767"></a> the pivot are then recursively sorted by the same algorithm<a id="16138"></a>.</li>
-           <li>The algorithm<a id="16139"></a> always converges because these two halves are always shorter than the original vector.</li>
+           <li>The terminating condition occurs when the vector is of length 1, which is obviously sorted.</li>
+           <li>A "pivot point" is then chosen. Some sophisticated versions go to a significant amount of effort to calculate the most effective pivot point. We are content to choose the first item in the vector.</li>
+           <li>The vector is then subdivided by moving all of the items less<a id="3341"></a> than the pivot to its left and all those greater than the pivot to its right, thereby placing the pivot in its final location in the resulting vector.</li>
+           <li>The items to the left and right of the pivot are then recursively sorted by the same algorithm.</li>
+           <li>The algorithm always converges because these two halves are always shorter than the original vector.</li>
           </ul>
-          <p>Listing  16.3  shows  the  code  for<a id="16958"></a>  the  quick<a id="16897"></a>  sort  algorithm<a id="16140"></a>.  The partitioning algorithm<a id="16141"></a> looks a little messy, but it is just performing the array<a id="16196"></a> adjustments. It starts with<a id="16443"></a> <code>i</code> and<a id="16387"></a> <code>j</code> outside the vector to<a id="16596"></a> the left and<a id="16388"></a> right. Then it keeps moving each toward the middle as long as the values at <code>i</code> and<a id="16389"></a> <code>j</code> are on<a id="16470"></a> the proper side of<a id="16768"></a> the pivot. When this process stops, <code>i</code> and<a id="16390"></a> <code>j</code> are the indices of<a id="16769"></a> data<a id="16518"></a> items that are out of<a id="16770"></a> order. They are swapped, and<a id="16391"></a> the process is repeated until <code>i</code> crosses past <code>j</code>. Quick sort is O(N log N). As with<a id="16444"></a> the previous techniques, this algorithm<a id="16142"></a> applies to<a id="16597"></a> collections<a id="16253"></a> of<a id="16771"></a> any data<a id="16519"></a> type for<a id="16959"></a> which the functions<a id="16920"></a> <code>lt(A,B</code> and<a id="16392"></a> <code>gt(<a id="16338"></a>A,B)</code> compare two instances.</p>
-          <p>There is one performance caution about quick<a id="16898"></a> sort<a id="16178"></a>. Its speed depends on<a id="16471"></a> the randomness of<a id="16772"></a> the data<a id="16520"></a>. If the data<a id="16521"></a> are mostly sorted, its performance reduces to<a id="16598"></a> O(N<sup>2</sup>).</p>
+          <p>Listing  16.3  shows  the  code  for  the  quick<a id="3402"></a>  sort  algorithm.  The partitioning algorithm looks a little messy, but it is just performing the array adjustments. It starts with <code>i</code> and <code>j</code> outside the vector to the left and right. Then it keeps moving each toward the middle as long as the values at <code>i</code> and <code>j</code> are on the proper side of the pivot. When this process stops, <code>i</code> and <code>j</code> are the indices of data items that are out of order. They are swapped, and the process is repeated until <code>i</code> crosses past <code>j</code>. Quick sort is O(N log N). As with the previous techniques, this algorithm applies to collections of any data type for which the functions <code>lt(A,B</code> and <code>gt(<a id="3332"></a>A,B)</code> compare two instances.</p>
+          <p>There is one performance caution about quick<a id="3403"></a> sort<a id="3288"></a>. Its speed depends on the randomness of the data. If the data are mostly sorted, its performance reduces to O(N<sup>2</sup>).</p>
       </div>
       <div class="listing">#listing_16_3#</div>
     </div>
@@ -208,16 +208,16 @@
       <div class="container">
           <div class="float-sm-right card">
                <img src="..\Images\Fig_16_5.JPG" alt="Figure 16.5" class="fig card-img">
-               <p class="figure-name card-title">Figure<a id="16986"></a> 16.5: Merge Sort</p>
+               <p class="figure-name card-title">Figure 16.5: Merge Sort</p>
            </div>
-          <p>Merge sort is another O(N log N) algorithm<a id="16143"></a> that achieves speed by dividing the original vector into two "equal<a id="16299"></a>" halves. It is difficult at best to<a id="16599"></a> perform a merge<a id="16882"></a> sort<a id="16168"></a> in place in a collection. Equality, of<a id="16773"></a> course, is not possible when there is an odd number of<a id="16774"></a> objects<a id="16666"></a> to<a id="16600"></a> be sorted, in which case<a id="16245"></a> the length of<a id="16775"></a> the "halves" will differ by at most 1. The heart of<a id="16776"></a> the merge<a id="16883"></a> sort<a id="16169"></a> algorithm<a id="16144"></a> is the technique used to<a id="16601"></a> reunite two smaller sorted vectors. This function<a id="16312"></a> is called "merge<a id="16884"></a>." Its objective is to<a id="16602"></a> merge<a id="16885"></a> two vectors that have been previously sorted. Since the two vectors are sorted, the smallest object can only be at the front of<a id="16777"></a> one of<a id="16778"></a> these two vectors. The smallest item is removed from<a id="16328"></a> its place and<a id="16393"></a> added to<a id="16603"></a> the result vector. This merge<a id="16886"></a> process continues until one of<a id="16779"></a> the two halves is empty<a id="16287"></a>, in which case<a id="16246"></a> the remaining half (whose values all exceed those in the result vector) is copied into the result.</p>
-          <p>The merge<a id="16887"></a> sort<a id="16170"></a> algorithm<a id="16145"></a> is shown in Figure<a id="16987"></a> 16.5 and<a id="16394"></a> proceeds as follows:</p>
+          <p>Merge sort is another O(N log N) algorithm that achieves speed by dividing the original vector into two "equal" halves. It is difficult at best to perform a merge<a id="3390"></a> sort<a id="3278"></a> in place in a collection. Equality, of course, is not possible when there is an odd number of objects to be sorted, in which case the length of the "halves" will differ by at most 1. The heart of the merge<a id="3391"></a> sort<a id="3279"></a> algorithm is the technique used to reunite two smaller sorted vectors. This function is called "merge<a id="3392"></a>." Its objective is to merge<a id="3393"></a> two vectors that have been previously sorted. Since the two vectors are sorted, the smallest object can only be at the front of one of these two vectors. The smallest item is removed from its place and added to the result vector. This merge<a id="3394"></a> process continues until one of the two halves is empty, in which case the remaining half (whose values all exceed those in the result vector) is copied into the result.</p>
+          <p>The merge<a id="3395"></a> sort<a id="3280"></a> algorithm is shown in Figure 16.5 and proceeds as follows:</p>
           <ul>
-           <li>The terminating condition is a vector with<a id="16445"></a> length less<a id="16430"></a> than 2, which is, obviously, in order</li>
-           <li>The recursive part invokes the merge<a id="16888"></a> function<a id="16313"></a> on<a id="16472"></a> the recursive call to<a id="16604"></a> merge<a id="16889"></a> the two halves of<a id="16780"></a> the vector</li>
+           <li>The terminating condition is a vector with length less<a id="3342"></a> than 2, which is, obviously, in order</li>
+           <li>The recursive part invokes the merge<a id="3396"></a> function on the recursive call to merge<a id="3397"></a> the two halves of the vector</li>
            <li>The process converges because the halves are always smaller than the original vector</li>
           </ul>
-          <p>The code for<a id="16960"></a> merge<a id="16890"></a> sort<a id="16171"></a> is shown in Listing 16.4.</p>
+          <p>The code for merge<a id="3398"></a> sort<a id="3281"></a> is shown in Listing 16.4.</p>
       </div>
       <div class="listing">#listing_16_4#</div>
     </div>
@@ -228,14 +228,14 @@
       <div class="container clearfix">
           <div class="float-sm-right card">
                <img src="..\Images\Fig_16_6.JPG" alt="Figure 16.6" class="fig card-img">
-               <p class="figure-name card-title">Figure<a id="16988"></a> 16.6: Radix Sort</p>
+               <p class="figure-name card-title">Figure 16.6: Radix Sort</p>
            </div>
-          <p>A discussion of<a id="16781"></a> sorting<a id="16267"></a> techniques would not be complete without discussing radix<a id="16906"></a> sort<a id="16185"></a>, commonly referred to<a id="16605"></a> as bucket sort. This is also an O(N log N) algorithm<a id="16146"></a> whose most obvious application is for<a id="16961"></a> sorting<a id="16268"></a> physical<a id="16296"></a> piles of<a id="16782"></a> papers, such as students' test papers. However, the same principle can be applied to<a id="16606"></a> sorting<a id="16269"></a> successively on<a id="16473"></a> the units, tens and<a id="16395"></a> hundreds digit of<a id="16783"></a> numbers<a id="16540"></a> (hence, the term radix<a id="16907"></a> sort<a id="16186"></a>). The process begins with<a id="16446"></a> a stack<a id="16911"></a> of<a id="16784"></a> unsorted papers, each with<a id="16447"></a> an identifier consisting of<a id="16785"></a> a number or a unique name. One pass is made through the stack<a id="16912"></a> separating the papers into piles based on<a id="16474"></a> the first digit or character<a id="16483"></a> of<a id="16786"></a> the identifier. Subsequent passes sort each of<a id="16787"></a> these piles by subsequent characters or digits until all the piles have a small number of<a id="16788"></a> papers that can be sorted by insertion<a id="16876"></a> or selection sorts. The piles can then be reassembled in order. Figure<a id="16989"></a> 16.6 illustrates the situation at the end<a id="16291"></a> of<a id="16789"></a> the second sorting<a id="16270"></a> pass when piles for<a id="16962"></a> the first digit have also been separated by the second digit.</p>
-          <p>There are a number of<a id="16790"></a> reasons why this technique is popular for<a id="16963"></a> sorting<a id="16271"></a>:</p>
+          <p>A discussion of sorting<a id="3353"></a> techniques would not be complete without discussing radix<a id="3409"></a> sort<a id="3295"></a>, commonly referred to as bucket sort. This is also an O(N log N) algorithm whose most obvious application is for sorting<a id="3354"></a> physical<a id="3325"></a> piles of papers, such as students' test papers. However, the same principle can be applied to sorting<a id="3355"></a> successively on the units, tens and hundreds digit of numbers (hence, the term radix<a id="3410"></a> sort<a id="3296"></a>). The process begins with a stack of unsorted papers, each with an identifier consisting of a number or a unique name. One pass is made through the stack separating the papers into piles based on the first digit or character of the identifier. Subsequent passes sort each of these piles by subsequent characters or digits until all the piles have a small number of papers that can be sorted by insertion<a id="3384"></a> or selection sorts. The piles can then be reassembled in order. Figure 16.6 illustrates the situation at the end of the second sorting<a id="3356"></a> pass when piles for the first digit have also been separated by the second digit.</p>
+          <p>There are a number of reasons why this technique is popular for sorting<a id="3357"></a>:</p>
           <ul>
-           <li>There is a minimal amount of<a id="16791"></a> "paper shuffling" or bookkeeping</li>
-           <li>The base of<a id="16792"></a> the logarithm in the O(N log N) is either 10 (numerical identifier) or 26 (alphabetic identifier), thereby providing a "constant multiplier" speed advantage</li>
-           <li>Once the first sorting<a id="16272"></a> pass is complete, one can use multi-processing<a id="16350"></a> (in the form of<a id="16793"></a> extra people) to<a id="16607"></a> perform the remaining passes in parallel, thereby reducing the effective performance to<a id="16608"></a> O(N) (given sufficient parallel resources)</li>
+           <li>There is a minimal amount of "paper shuffling" or bookkeeping</li>
+           <li>The base of the logarithm in the O(N log N) is either 10 (numerical identifier) or 26 (alphabetic identifier), thereby providing a "constant multiplier" speed advantage</li>
+           <li>Once the first sorting<a id="3358"></a> pass is complete, one can use multi-processing (in the form of extra people) to perform the remaining passes in parallel, thereby reducing the effective performance to O(N) (given sufficient parallel resources)</li>
           </ul>
       </div>
     </div>
@@ -245,36 +245,36 @@
      <!-- Performance Analysis -->
     <h2 id="16_3">16.3 Performance Analysis</h2>
     <div class="container clearfix">
-        <p>In order to<a id="16609"></a> perform a comparison of<a id="16794"></a> the performance of<a id="16795"></a> different algorithms, a script was written to<a id="16610"></a> perform each sort on<a id="16475"></a> a vector of<a id="16796"></a> increasing length containing random numbers<a id="16541"></a>. The script started with<a id="16448"></a> a length of<a id="16797"></a> 4 and<a id="16396"></a> continued doubling the length until it reached 262,144 (2<sup>18</sup>). To obtain precise timing measurements, each sort technique was repeated a sufficient number of<a id="16798"></a> times to<a id="16611"></a> obtain moderately accurate timing measurements with<a id="16449"></a> the internal millisecond clock. In order to<a id="16612"></a> eliminate common computation costs, it was necessary to<a id="16613"></a> measure the overhead cost of<a id="16799"></a> the loops themselves and<a id="16397"></a> subtract that time from<a id="16329"></a> the times of<a id="16800"></a> each sort algorithm<a id="16147"></a>. Note that in order to<a id="16614"></a> show the results of<a id="16801"></a> the system internal sort on<a id="16476"></a> the same chart, its execution<a id="16300"></a> time was multiplied by 1,000.</p>
+        <p>In order to perform a comparison of the performance of different algorithms, a script was written to perform each sort on a vector of increasing length containing random numbers. The script started with a length of 4 and continued doubling the length until it reached 262,144 (2<sup>18</sup>). To obtain precise timing measurements, each sort technique was repeated a sufficient number of times to obtain moderately accurate timing measurements with the internal millisecond clock. In order to eliminate common computation costs, it was necessary to measure the overhead cost of the loops themselves and subtract that time from the times of each sort algorithm. Note that in order to show the results of the system internal sort on the same chart, its execution time was multiplied by 1,000.</p>
         <div class="float-sm-right card">
              <img src="..\Images\Fig_16_7.PNG" alt="Figure 16.7" class="fig-wide card-img">
-             <p class="figure-name card-title">Figure<a id="16990"></a> 16.7: Sort Study Results</p>
+             <p class="figure-name card-title">Figure 16.7: Sort Study Results</p>
          </div>
-        <p>Figure<a id="16991"></a> 16.7 shows a typical plot of<a id="16802"></a> the results of<a id="16803"></a> this analysis, illustrating the relative power of<a id="16804"></a> O(N log N) algorithms versus O(N<sup>2</sup>) algorithms. The plot on<a id="16477"></a> a log-log scale<a id="16854"></a> shows the relative time taken by the selection sort, insertion<a id="16877"></a> sort<a id="16165"></a>, bubble<a id="16869"></a> sort<a id="16158"></a>, merge<a id="16891"></a> sort<a id="16172"></a>, quick<a id="16899"></a> sort<a id="16179"></a>, and<a id="16398"></a> quick<a id="16900"></a> sort<a id="16180"></a> in place algorithms, together with<a id="16450"></a> the internal sort function<a id="16314"></a>. Also on<a id="16478"></a> the chart are plotted trend lines for<a id="16964"></a> O(N<sup>2</sup>) and<a id="16399"></a> O(N log N) processes. We can make the following observations from<a id="16330"></a> this chart:</p>
+        <p>Figure 16.7 shows a typical plot of the results of this analysis, illustrating the relative power of O(N log N) algorithms versus O(N<sup>2</sup>) algorithms. The plot on a log-log scale shows the relative time taken by the selection sort, insertion<a id="3385"></a> sort<a id="3275"></a>, bubble<a id="3377"></a> sort<a id="3268"></a>, merge<a id="3399"></a> sort<a id="3282"></a>, quick<a id="3404"></a> sort<a id="3289"></a>, and quick<a id="3405"></a> sort<a id="3290"></a> in place algorithms, together with the internal sort function. Also on the chart are plotted trend lines for O(N<sup>2</sup>) and O(N log N) processes. We can make the following observations from this chart:</p>
         <ul>
-         <li>Since the scales are each logarithmic, it is tempting to<a id="16615"></a> claim that there is "not much difference" between O(N<sup>2</sup>) and<a id="16400"></a> O(N log N) algorithms. Looking closer, however, it is clear<a id="16249"></a> that for<a id="16965"></a> around 200,000 items, the O(N<sup>2</sup>) sorts are around 100,000 times slower than the O(N log N) algorithms.</li>
-         <li>The performance of<a id="16805"></a> most of<a id="16806"></a> the algorithms is extremely erratic below 100 items. If you are sorting<a id="16273"></a> small amounts of<a id="16807"></a> data<a id="16522"></a>, the algorithm<a id="16148"></a> does not matter.</li>
-         <li>The selection sort, bubble<a id="16870"></a> sort<a id="16159"></a>, and<a id="16401"></a> insertion<a id="16878"></a> sort<a id="16166"></a> algorithms clearly demonstrate O(N<sup>2</sup>) behavior.</li>
-         <li>The merge<a id="16892"></a> sort<a id="16173"></a> and<a id="16402"></a> quick<a id="16901"></a> sort<a id="16181"></a> algorithms seem to<a id="16616"></a> demonstrate O(N log N). Notice, however, that the performance of<a id="16808"></a> quick<a id="16902"></a> sort<a id="16182"></a> is slightly better than O(N log N). This slight improvement is due to<a id="16617"></a> the fact that once the pivot has been moved, it is in the right place and<a id="16403"></a> is eliminated from<a id="16331"></a> further sorting<a id="16274"></a> passes.</li>
-         <li>Clearly, the internal sort function<a id="16315"></a>, in addition to<a id="16618"></a> being 1,000 times faster than any of<a id="16809"></a> the coded algorithms, is closely tracking the O(N log N) performance curve<a id="16660"></a>, indicating that it is programmed with<a id="16451"></a> one of<a id="16810"></a> the many algorithms that use divide-and<a id="16404"></a>-conquer to<a id="16619"></a> sort the data<a id="16523"></a> as efficiently as possible.</li>
+         <li>Since the scales are each logarithmic, it is tempting to claim that there is "not much difference" between O(N<sup>2</sup>) and O(N log N) algorithms. Looking closer, however, it is clear<a id="3314"></a> that for around 200,000 items, the O(N<sup>2</sup>) sorts are around 100,000 times slower than the O(N log N) algorithms.</li>
+         <li>The performance of most of the algorithms is extremely erratic below 100 items. If you are sorting<a id="3359"></a> small amounts of data, the algorithm does not matter.</li>
+         <li>The selection sort, bubble<a id="3378"></a> sort<a id="3269"></a>, and insertion<a id="3386"></a> sort<a id="3276"></a> algorithms clearly demonstrate O(N<sup>2</sup>) behavior.</li>
+         <li>The merge sort<a id="3283"></a> and quick<a id="3406"></a> sort<a id="3291"></a> algorithms seem to demonstrate O(N log N). Notice, however, that the performance of quick<a id="3407"></a> sort<a id="3292"></a> is slightly better than O(N log N). This slight improvement is due to the fact that once the pivot has been moved, it is in the right place and is eliminated from further sorting<a id="3360"></a> passes.</li>
+         <li>Clearly, the internal sort function, in addition to being 1,000 times faster than any of the coded algorithms, is closely tracking the O(N log N) performance curve, indicating that it is programmed with one of the many algorithms that use divide-and-conquer to sort the data as efficiently as possible.</li>
         </ul>
     </div>
   </div>
 
   <div class="chp-section" data-sect-num="4" data-sect-name="Applications of Sorting Algorithms">
      <!-- Applications of Sorting Algorithms -->
-    <h2 id="16_4">16.4 Applications of<a id="16811"></a> Sorting Algorithms</h2>
+    <h2 id="16_4">16.4 Applications of Sorting Algorithms</h2>
     <div class="container">
-        <p>This section discusses the circumstances under which you might choose to<a id="16620"></a> use one or another of<a id="16812"></a> the sorting<a id="16275"></a> algorithms presented above. We assert here without proof that the theoretical lower bound of<a id="16813"></a> sorting<a id="16276"></a> is O(N log N). Consequently, we should not be looking for<a id="16966"></a> a generalized sorting<a id="16277"></a> algorithm<a id="16149"></a> that improves on<a id="16479"></a> this performance. However, within those constraints, there are circumstances under which each of<a id="16814"></a> the sorting<a id="16278"></a> techniques performs best. As we saw in the analysis above, the internal sort function<a id="16316"></a> is blindingly fast and<a id="16405"></a> should be used whenever possible. The subsequent paragraphs show the applicability and<a id="16406"></a> limitations of<a id="16815"></a> the other sort algorithms if you cannot use <code>sort(<a id="16339"></a>...)</code>.</p>
+        <p>This section discusses the circumstances under which you might choose to use one or another of the sorting<a id="3361"></a> algorithms presented above. We assert here without proof that the theoretical lower bound of sorting<a id="3365"></a> is O(N log N). Consequently, we should not be looking for a generalized sorting<a id="3366"></a> algorithm that improves on this performance. However, within those constraints, there are circumstances under which each of the sorting<a id="3367"></a> techniques performs best. As we saw in the analysis above, the internal sort function is blindingly fast and should be used whenever possible. The subsequent paragraphs show the applicability and limitations of the other sort algorithms if you cannot use <code>sort(<a id="3333"></a>...)</code>.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Using sort(...)">
        <!-- Using sort -->
-      <h3 id="16_4_1">16.4.1	Using sort(<a id="16340"></a>. . .)</h3>
+      <h3 id="16_4_1">16.4.1	Using sort(<a id="3334"></a>. . .)</h3>
       <div class="container">
-          <p>The first and<a id="16407"></a> most obvious question is why one would not always use the built-in <code>sort(<a id="16341"></a>...)</code> function<a id="16317"></a>. Clearly, whenever that function<a id="16318"></a> works, you should use it. Its applicability might seem at first glance to<a id="16621"></a> be limited to<a id="16622"></a> sorting<a id="16279"></a> numbers<a id="16542"></a> in an array<a id="16197"></a>, and<a id="16408"></a> you will come across circumstances when you need to<a id="16623"></a> sort more complex items. You might, for<a id="16967"></a> example<a id="16863"></a>, have a structure<a id="16913"></a> array<a id="16198"></a> of<a id="16816"></a> addresses and<a id="16409"></a> telephone numbers<a id="16543"></a> that you wish to<a id="16624"></a> sort by last name, first name, or telephone number. In this case<a id="16247"></a>, it seems that the internal sort program does not help<a id="16354"></a>, and<a id="16410"></a> you have to<a id="16625"></a> create your own sort.</p>
-          <p><b>Extracting and<a id="16411"></a> Sorting Vectors and<a id="16412"></a> Cell Arrays</b> However, a closer examination of<a id="16817"></a> the specification of<a id="16818"></a> the sort function<a id="16319"></a> allows us to<a id="16626"></a> generalize the application of<a id="16819"></a> <code>sort(<a id="16342"></a>...)</code> significantly. When you call <code>sort(<a id="16343"></a>v)</code>, it actually offers you a second result that contains the indices used to<a id="16627"></a> sort <code>v</code>. So in the case<a id="16248"></a> where you have a cell<a id="16208"></a> array<a id="16199"></a> or a structure<a id="16914"></a> array<a id="16200"></a> and<a id="16413"></a> your sort criteria can be extracted into a vector, you can sort that vector and<a id="16414"></a> use the second result, the indexing<a id="16925"></a> order, to<a id="16628"></a> sort the original array<a id="16201"></a>. Furthermore, if you can extract character<a id="16484"></a> string data<a id="16524"></a> into a cell<a id="16209"></a> array<a id="16202"></a> of<a id="16820"></a> strings, the internal sort function<a id="16320"></a> will sort that cell<a id="16210"></a> array<a id="16203"></a> alphabetically.</p>
-          <p>For example<a id="16864"></a>, consider again the CD collection from<a id="16332"></a> Chapter 10. We might want to<a id="16629"></a> find the most expensive CD in our collection and<a id="16415"></a> then make a list of<a id="16821"></a> artists and<a id="16416"></a> titles ordered alphabetically by artist. We leave the details of<a id="16822"></a> this as an exercise for<a id="16968"></a> the reader.</p>
+          <p>The first and most obvious question is why one would not always use the built-in <code>sort(<a id="3335"></a>...)</code> function. Clearly, whenever that function works, you should use it. Its applicability might seem at first glance to be limited to sorting<a id="3368"></a> numbers in an array, and you will come across circumstances when you need to sort more complex items. You might, for example, have a structure array of addresses and telephone numbers that you wish to sort by last name, first name, or telephone number. In this case, it seems that the internal sort program does not help, and you have to create your own sort.</p>
+          <p><b>Extracting and Sorting Vectors and Cell Arrays</b> However, a closer examination of the specification of the sort function allows us to generalize the application of <code>sort(<a id="3336"></a>...)</code> significantly. When you call <code>sort(<a id="3337"></a>v)</code>, it actually offers you a second result that contains the indices used to sort <code>v</code>. So in the case where you have a cell array or a structure array and your sort criteria can be extracted into a vector, you can sort that vector and use the second result, the indexing order, to sort the original array. Furthermore, if you can extract character string data into a cell array of strings, the internal sort function will sort that cell array alphabetically.</p>
+          <p>For example, consider again the CD collection from Chapter 10. We might want to find the most expensive CD in our collection and then make a list of artists and titles ordered alphabetically by artist. We leave the details of this as an exercise for the reader.</p>
       </div>
     </div>
 
@@ -290,7 +290,7 @@
        <!-- Bubble sort -->
       <h3 id="16_4_3">16.4.3	Bubble Sort</h3>
       <div class="container">
-          <p>Bubble sort is the simplest in-place sort to<a id="16630"></a> program and<a id="16417"></a> is fine for<a id="16969"></a> small amounts of<a id="16823"></a> data<a id="16525"></a>. The major advantage of<a id="16824"></a> bubble<a id="16871"></a> sort<a id="16160"></a> is that in a fine-grained multi-processor environment, if you have N/2 processors available with<a id="16452"></a> access to<a id="16631"></a> the original data<a id="16526"></a>, you can reduce the Big<a id="16232"></a> O to<a id="16632"></a> O(N).</p>
+          <p>Bubble sort is the simplest in-place sort to program and is fine for small amounts of data. The major advantage of bubble<a id="3379"></a> sort<a id="3270"></a> is that in a fine-grained multi-processor environment, if you have N/2 processors available with access to the original data, you can reduce the Big O to O(N).</p>
       </div>
     </div>
 
@@ -298,7 +298,7 @@
        <!-- Quick Sort -->
       <h3 id="16_4_4">16.4.4	Quick Sort</h3>
       <div class="container">
-          <p>As its name suggests, this is the quickest of<a id="16825"></a> the sorting<a id="16280"></a> algorithms and<a id="16418"></a> should normally be used for<a id="16970"></a> a full sort. However, it has one significant disadvantage: its performance depends on<a id="16480"></a> a fairly high level of<a id="16826"></a> randomness in the distribution of<a id="16827"></a> the data<a id="16527"></a> in the original array<a id="16204"></a>. If there is a significant probability that your original data<a id="16528"></a> might be already sorted, or partially sorted, your quick<a id="16903"></a> sort<a id="16183"></a> is not going to<a id="16633"></a> be quick<a id="16904"></a>. You should use merge<a id="16893"></a> sort<a id="16174"></a>.</p>
+          <p>As its name suggests, this is the quickest of the sorting<a id="3369"></a> algorithms and should normally be used for a full sort. However, it has one significant disadvantage: its performance depends on a fairly high level of randomness in the distribution of the data in the original array. If there is a significant probability that your original data might be already sorted, or partially sorted, your quick<a id="3408"></a> sort<a id="3293"></a> is not going to be quick. You should use merge sort<a id="3284"></a>.</p>
       </div>
     </div>
 
@@ -306,7 +306,7 @@
        <!-- Merge Sort -->
       <h3 id="16_4_5">16.4.5	Merge Sort</h3>
       <div class="container">
-          <p>Since its algorithm<a id="16150"></a> does not depend on<a id="16481"></a> any specific characteristics of<a id="16828"></a> the data<a id="16529"></a>, merge<a id="16894"></a> sort<a id="16175"></a> will always turn in a solid O(N log N) performance. You should use it whenever you suspect that quick<a id="16905"></a> sort<a id="16184"></a> might get in trouble.</p>
+          <p>Since its algorithm does not depend on any specific characteristics of the data, merge sort<a id="3285"></a> will always turn in a solid O(N log N) performance. You should use it whenever you suspect that quick sort<a id="3294"></a> might get in trouble.</p>
       </div>
     </div>
 
@@ -314,41 +314,41 @@
        <!-- Radix Sort -->
       <h3 id="16_4_6">16.4.6	Radix Sort</h3>
       <div class="container">
-          <p>It is theoretically possible to<a id="16634"></a> write the radix<a id="16908"></a> sort<a id="16187"></a> algorithm<a id="16151"></a> to<a id="16635"></a> attempt to<a id="16636"></a> take advantage of<a id="16829"></a> its apparent performance improvements over the more conventional algorithms shown above. However, some practical problems arise:</p>
+          <p>It is theoretically possible to write the radix<a id="3411"></a> sort<a id="3297"></a> algorithm to attempt to take advantage of its apparent performance improvements over the more conventional algorithms shown above. However, some practical problems arise:</p>
           <ul>
-           <li>In practice, the manipulation<a id="16916"></a> of<a id="16830"></a> the arrays of<a id="16831"></a> arrays necessary to<a id="16637"></a> sort by this technique is quite complex</li>
-           <li>The performance gained for<a id="16971"></a> manual sorts by "parallel processing<a id="16351"></a>" stacks using multiple people cannot be realized</li>
-           <li>The logic<a id="16457"></a> for<a id="16972"></a> extracting the character<a id="16485"></a> or digit for<a id="16973"></a> sorting<a id="16281"></a> is going to<a id="16638"></a> detract from<a id="16333"></a> the overall performance</li>
+           <li>In practice, the manipulation<a id="3413"></a> of the arrays of arrays necessary to sort by this technique is quite complex</li>
+           <li>The performance gained for manual sorts by "parallel processing" stacks using multiple people cannot be realized</li>
+           <li>The logic for extracting the character or digit for sorting<a id="3370"></a> is going to detract from the overall performance</li>
           </ul>
-          <p>Therefore, absent some serious parallel processing<a id="16352"></a> machines, we recommend that the use of<a id="16832"></a> bucket sort be confined to<a id="16639"></a> manually<a id="16675"></a> sorting<a id="16282"></a> large numbers<a id="16544"></a> of<a id="16833"></a> physical<a id="16297"></a> objects<a id="16667"></a>.</p>
+          <p>Therefore, absent some serious parallel processing machines, we recommend that the use of bucket sort be confined to manually<a id="3362"></a> sorting<a id="3371"></a> large numbers of physical<a id="3326"></a> objects.</p>
       </div>
     </div>
   </div>
 
   <div class="chp-section" data-sect-num="5" data-sect-name="Engineering Example - A Selection of Countries">
      <!-- Engineering Example -->
-    <h2 id="16_5">16.5	Engineering Example - A Selection of<a id="16834"></a> Countries</h2>
+    <h2 id="16_5">16.5	Engineering Example - A Selection of Countries</h2>
     <div class="container clearfix">
-        <p>In the Engineering Application problem in Section 10.5, we attempted to<a id="16640"></a> find the best country for<a id="16974"></a> a business expansion based on<a id="16482"></a> the rate of<a id="16835"></a> growth of<a id="16836"></a> the GNP for<a id="16975"></a> that country versus its population growth. The initial version of<a id="16837"></a> the program returned the suggestion that the company should move to<a id="16641"></a> Equatorial Guinea. However, when this was presented to<a id="16642"></a> the Board of<a id="16838"></a> Directors, it was turned down, and<a id="16419"></a> you were asked to<a id="16643"></a> bring them a list of<a id="16839"></a> the best 20 places to<a id="16644"></a> give them a good range of<a id="16840"></a> selection.</p>
+        <p>In the Engineering Application problem in Section 10.5, we attempted to find the best country for a business expansion based on the rate of growth of the GNP for that country versus its population growth. The initial version of the program returned the suggestion that the company should move to Equatorial Guinea. However, when this was presented to the Board of Directors, it was turned down, and you were asked to bring them a list of the best 20 places to give them a good range of selection.</p>
         <div class="card float-sm-right common-pitfalls">
             <p class="card-title">Common Pitfalls 16.1</p>
-            <p class="card-text">A deceptively simple question arises: Should you expect the <code>worldData</code> in the <code>findBestn</code> function<a id="16321"></a> to<a id="16645"></a> contain the field<a id="16306"></a> growth? Actually, it will not. Although it appears that the function<a id="16322"></a> <code>findBestn</code> adds this field<a id="16307"></a> to<a id="16646"></a> worldData , it is working with<a id="16453"></a> a copy of<a id="16841"></a> the <code>worldData</code> structure<a id="16915"></a> array<a id="16205"></a> that is not returned to<a id="16647"></a> the calling script.</p>
+            <p class="card-text">A deceptively simple question arises: Should you expect the <code>worldData</code> in the <code>findBestn</code> function to contain the field growth? Actually, it will not. Although it appears that the function <code>findBestn</code> adds this field to worldData , it is working with a copy of the <code>worldData</code> structure array that is not returned to the calling script.</p>
         </div>
-        <p>We should make two changes to<a id="16648"></a> the algorithm<a id="16152"></a>:</p>
+        <p>We should make two changes to the algorithm:</p>
         <ul>
-        <li>Originally, we used a crude approximation to<a id="16649"></a> determine the slope of<a id="16842"></a> the population and<a id="16420"></a> GNP curves. However, now we know that <code>polyfit</code> can perform this slope computation accurately, and<a id="16421"></a> we will substitute that computation.</li>
-        <li>We will use the internal sort function<a id="16323"></a> to<a id="16650"></a> find the 20 best countries.</li>
+        <li>Originally, we used a crude approximation to determine the slope of the population and GNP curves. However, now we know that <code>polyfit</code> can perform this slope computation accurately, and we will substitute that computation.</li>
+        <li>We will use the internal sort function to find the 20 best countries.</li>
         </ul>
-        <p>The code to<a id="16651"></a> accomplish this, a major revision of<a id="16843"></a> the code in Chapter 10, is shown in Listing 16.5.</p>
-        <p>The results from<a id="16334"></a> running<a id="16865"></a> this version are shown in Table 16.2. This seems to<a id="16652"></a> be an acceptable list of<a id="16844"></a> possibilities to<a id="16653"></a> take back to<a id="16654"></a> the Board of<a id="16845"></a> Directors.</p>
+        <p>The code to accomplish this, a major revision of the code in Chapter 10, is shown in Listing 16.5.</p>
+        <p>The results from running<a id="3364"></a> this version are shown in Table 16.2. This seems to be an acceptable list of possibilities to take back to the Board of Directors.</p>
         <div class="listing">#listing_16_5#</div>
         <table class="table">
-            <caption>Table 16.2: Updated world data<a id="16530"></a> results</caption>
+            <caption>Table 16.2: Updated world data results</caption>
             <tbody>
                 <tr>
                     <td>Estonia</td>
                     <td>Lebanon</td>
-                    <td>St. Kitts &<a id="16674"></a> Nevis</td>
+                    <td>St. Kitts & Nevis</td>
                     <td>Malta</td>
                 </tr>
                 <tr>
@@ -361,7 +361,7 @@
                     <td>Croatia</td>
                     <td>Taiwan</td>
                     <td>Kazakhstan</td>
-                    <td>Korea, Republic of<a id="16846"></a></td>
+                    <td>Korea, Republic of</td>
                 </tr>
                 <tr>
                     <td>Azerbaijan</td>
@@ -385,39 +385,39 @@
   <div class="container">
       <p>This chapter discussed:</p>
       <ul>
-          <li>A technique for<a id="16976"></a> comparing the performance of<a id="16847"></a> algorithms</li>
-          <li>A range of<a id="16848"></a> useful algorithms for<a id="16977"></a> sorting<a id="16283"></a> a collection of<a id="16849"></a> data<a id="16531"></a></li>
+          <li>A technique for comparing the performance of algorithms</li>
+          <li>A range of useful algorithms for sorting<a id="3372"></a> a collection of data</li>
           <li>Application areas in which these algorithms are most appropriate</li>
       </ul>
   </div>
 <h2>Self Test</h2>
 <div class="container">
 
-Use the following questions to<a id="16655"></a> check your understanding of<a id="16850"></a> the material in this
+Use the following questions to check your understanding of the material in this
 chapter:
 <h3>True or False</h3>
 <ol>
-<li>When computing the Big<a id="16233"></a> O of<a id="16851"></a> sequential operations<a id="16670"></a>, you retain only
-the term that grows fastest with<a id="16454"></a> N.</li>
+<li>When computing the Big O of sequential operations, you retain only
+the term that grows fastest with N.</li>
           <li>All search algorithms have O(N).</li>
-          <li>No sort algorithm<a id="16153"></a> can perform better than O(NlogN).</li>
-          <li>All sorting<a id="16284"></a> algorithms with<a id="16455"></a> O(N<sup>2</sup>) traverse the complete data<a id="16532"></a>
+          <li>No sort algorithm can perform better than O(NlogN).</li>
+          <li>All sorting<a id="3373"></a> algorithms with O(N<sup>2</sup>) traverse the complete data
 collection N times.</li>
           <li>Quick sort in reality should be listed as O(N<sup>2</sup>).</li>
 </ol>
 <h3>Fill in the Blanks</h3>
 <ol>
-<li>________________ is an algebra that permits us to<a id="16656"></a> express how the
-amount of<a id="16852"></a> ___________ done in solving a problem relates to<a id="16657"></a> the
-amount ____________ of<a id="16853"></a> being processed.</li>
-          <li>Any algorithm<a id="16154"></a> that traverses, maps, folds, or filters a collection is
+<li>________________ is an algebra that permits us to express how the
+amount of ___________ done in solving a problem relates to the
+amount ____________ of being processed.</li>
+          <li>Any algorithm that traverses, maps, folds, or filters a collection is
 O(__________).</li>
-          <li> _________ sort and<a id="16422"></a> _____________ sort perform with<a id="16456"></a> O(NlogN).</li>
-          <li>_________ sort and<a id="16423"></a> _____________ sort are designed to<a id="16658"></a> sort the
-data<a id="16533"></a> in place.</li>
-          <li>The system internal sort(<a id="16344"></a>...) returns the ___________ and<a id="16424"></a> a(n)
-___________ that allow you to<a id="16659"></a> sort any collection from<a id="16335"></a> whose
-elements<a id="16924"></a> one can derive a(n) ___________ or ______________________.</li>
+          <li> _________ sort and _____________ sort perform with O(NlogN).</li>
+          <li>_________ sort and _____________ sort are designed to sort the
+data in place.</li>
+          <li>The system internal sort(<a id="3338"></a>...) returns the ___________ and a(n)
+___________ that allow you to sort any collection from whose
+elements one can derive a(n) ___________ or ______________________.</li>
 </ol>
 
 </div>
