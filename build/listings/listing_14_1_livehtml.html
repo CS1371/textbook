@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S1 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Listing 14.1: Playing with sound, exercises with sound</span></h3><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(14, 0, 255);">function </span><span>main</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(14, 0, 255);">global </span><span>Fs</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	hear = true;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% 1. playing back sound</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">%       - read "give a damn" speech</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">%       - play it</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">%       - change amplitude</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">%       - change frequency    % 2. slicing sounds</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">%       - construct "frankly, Bond, I don't give a damn - beam me up"</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    fprintf(</span><span style="color: rgb(170, 4, 249);">'read and play a sound\n'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    [give, Fs] = audioread(</span><span style="color: rgb(170, 4, 249);">'../Text/sp_givdamn2.wav'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    t = (1:length(give)) ./ Fs;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    plot(t, give)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    title(</span><span style="color: rgb(170, 4, 249);">'Plot of Rhett speech'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    xlabel(</span><span style="color: rgb(170, 4, 249);">'time(sec)'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    ylabel(</span><span style="color: rgb(170, 4, 249);">'amplitude'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    give = give./4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(14, 0, 255);">if </span><span>hear</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>		sound(give, Fs)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>		pause(length(give) ./ Fs)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(14, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    fprintf(</span><span style="color: rgb(170, 4, 249);">'play louder - increase amplitude\n'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(14, 0, 255);">if </span><span>hear</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    sound(give.*2, Fs)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    pause(length(give) ./ Fs)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(14, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    fprintf(</span><span style="color: rgb(170, 4, 249);">'play softer - decrease amplitude\n'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(14, 0, 255);">if </span><span>hear</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    sound(give./2, Fs)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    pause(length(give) ./ Fs) </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(14, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    fprintf(</span><span style="color: rgb(170, 4, 249);">'play faster - drop half the data\n'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(14, 0, 255);">if </span><span>hear</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    sound(give(1:2:end) , Fs)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    pause(length(give).* 0.5 ./ Fs) </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(14, 0, 255);">end</span><span>	</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    fprintf(</span><span style="color: rgb(170, 4, 249);">'play slower - reduce playback frequency\n'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(14, 0, 255);">if </span><span>hear</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    sound(give , Fs/1.5)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    pause(length(give).* 1.5 ./ Fs)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(14, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    fprintf(</span><span style="color: rgb(170, 4, 249);">'pasting together speech pieces\n'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	give = give .* 4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    frankly = give(1:5500);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    damn = give(11500:end);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    [bond, bFs] = audioread(</span><span style="color: rgb(170, 4, 249);">'../Text/sp_bond.wav'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    bond = bond(1000:6000);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    [beam, bmFs] = audioread(</span><span style="color: rgb(170, 4, 249);">'../Text/sp_beam.wav'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    beam = beam.*2;  </span><span style="color: rgb(2, 128, 9);">% make beam louder</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    speech = [frankly</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        zeros(2000, 1)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        bond</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        zeros(2000, 1)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        damn</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        zeros(2000, 1)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        beam];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>	</span><span style="color: rgb(14, 0, 255);">if </span><span>hear</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    sound(speech, Fs);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    pause(length(speech) ./ Fs)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(14, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    audiowrite(</span><span style="color: rgb(170, 4, 249);">'../Text/speech.wav'</span><span>, speech, Fs)</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span style="color: rgb(14, 0, 255);">end</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+function main
+% Listing 14.1: Playing with sound, exercises with sound
+    global Fs
+	hear = true;
+    % 1. playing back sound
+    %       - read "give a damn" speech
+    %       - play it
+    %       - change amplitude
+    %       - change frequency    % 2. slicing sounds
+    %       - construct "frankly, Bond, I don't give a damn - beam me up"
+    fprintf('read and play a sound\n')
+    [give, Fs] = audioread('../Text/sp_givdamn2.wav');
+    t = (1:length(give)) ./ Fs;
+    plot(t, give)
+    title('Plot of Rhett speech')
+    xlabel('time(sec)')
+    ylabel('amplitude')
+    give = give./4;
+	if hear
+		sound(give, Fs)
+		pause(length(give) ./ Fs)
+	end
+    fprintf('play louder - increase amplitude\n')
+	if hear
+    sound(give.*2, Fs)
+    pause(length(give) ./ Fs)
+	end
+    fprintf('play softer - decrease amplitude\n')
+	if hear
+    sound(give./2, Fs)
+    pause(length(give) ./ Fs) 
+	end
+    fprintf('play faster - drop half the data\n')
+	if hear
+    sound(give(1:2:end) , Fs)
+    pause(length(give).* 0.5 ./ Fs) 
+	end	
+    fprintf('play slower - reduce playback frequency\n')
+	if hear
+    sound(give , Fs/1.5)
+    pause(length(give).* 1.5 ./ Fs)
+	end
+    fprintf('pasting together speech pieces\n')
+	give = give .* 4;
+    frankly = give(1:5500);
+    damn = give(11500:end);
+    [bond, bFs] = audioread('../Text/sp_bond.wav');
+    bond = bond(1000:6000);
+    [beam, bmFs] = audioread('../Text/sp_beam.wav');
+    beam = beam.*2;  % make beam louder
+    speech = [frankly
+        zeros(2000, 1)
+        bond
+        zeros(2000, 1)
+        damn
+        zeros(2000, 1)
+        beam];
+	if hear
+    sound(speech, Fs);
+    pause(length(speech) ./ Fs)
+    end
+    audiowrite('../Text/speech.wav', speech, Fs)
+end
+##### SOURCE END #####
+--></body></html>

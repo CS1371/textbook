@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: normal; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S1 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h3  class = 'S0'><span>Listing 13.4: Rotating a globe</span></h3><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S1'><span style="white-space: normal;"><span style="color: rgb(2, 128, 9);">% Rotating a globe</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span style="color: rgb(14, 0, 255);">function </span><span>main</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Reads the JPEG image</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    WM = imread(</span><span style="color: rgb(170, 4, 249);">'../Text/earthmap_s.jpg'</span><span>); </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Enables good closure at the image edge by copying the first column of</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% the map beyond the last column</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    WM(:,end+1,:) = WM(:,1,:);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Computes the mean image intensity of the snow on the top edge of the</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% image. This will be used to fill the circles at the north and south</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% poles.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    snow = mean( mean(WM(1,:,:)));</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Fetches the size of the map</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    [WMr, WMc, clr] = size(WM);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% To calculate the size of the circles at the poles, we assume that the</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% map takes us to +/- 85 degrees of latitude, so we need the equivalent</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% of 5 degrees at the top and bottom of the map. This line calculates</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% how many rows represent 1 degree of latitude. </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    rowsperdeglat = WMr/170</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Shows the number of rows to add to the map</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    add = floor(rowsperdeglat * 5)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Computes the values of a single color layer by making an array with</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% ones(...) using the number of rows to add and the number of map</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% columns, and multiplying by the snow intensity.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    addlayer = uint8(ones(add, WMc) * snow);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Build the strips to add to the globe map by copying this layer to the</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% red, green, and blue layers of a new image array.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    toAdd(:,:,1) = addlayer;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    toAdd(:,:,2) = addlayer;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    toAdd(:,:,3) = addlayer;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Prepares the complete map by concatenating this image to the top and</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% bottom of the map.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    worldMap = [toAdd; WM; toAdd];</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Retrieves the size of the map</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    [nlat nlong clr] = size(worldMap)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Prepare the vectors defining the plaid by spreading the map</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% dimensions across pi radians in latitude and 2*pi radians in</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% longitude.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    lat = double(0:nlat-1) * pi / nlat;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    long = double(0:nlong-1) * 2 * pi / (nlong-1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Prepare the sphere</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    [th phi] = meshgrid(long, lat);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    radius = 10;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    zz = radius * cos(phi);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    xx = radius * sin(phi) .* cos(th);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    yy = radius * sin(phi) .* sin(th);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Scale the image to double values between 0 and 1 as required by</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% surf(...)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    wM = double(worldMap) / 256;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Draw the surface as usual, using the image as the color distribution.</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    surf(xx, yy, zz, wM);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    shading </span><span style="color: rgb(170, 4, 249);">interp</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    axis </span><span style="color: rgb(170, 4, 249);">equal</span><span>, axis </span><span style="color: rgb(170, 4, 249);">off</span><span>, axis </span><span style="color: rgb(170, 4, 249);">tight</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% Special preparation of the surface luminosity and light</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% characteristics to prevent glare spots</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    material </span><span style="color: rgb(170, 4, 249);">dull</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    th = 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    handle = light(</span><span style="color: rgb(170, 4, 249);">'Color'</span><span>,[1,1,1]); </span><span style="color: rgb(2, 128, 9);">% a custom light source</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% The perpetual rotation with the angle th moving backward one degree</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(2, 128, 9);">% at a time</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(14, 0, 255);">for </span><span>frame = 1:300</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        th = th - 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        view([th 20]);</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(2, 128, 9);">% Keeps the light in the same position relative to the observer</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        lightangle(handle, th+50, 20) </span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(2, 128, 9);">% The usual pause to allow the drawing to take place for each</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        </span><span style="color: rgb(2, 128, 9);">% iteration</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>        pause(.03)</span></span></div></div><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: normal;"><span>    </span><span style="color: rgb(14, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: normal;"><span style="color: rgb(14, 0, 255);">end</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+% Listing 13.4: Rotating a globe
+
+% Rotating a globe
+function main
+    % Reads the JPEG image
+    WM = imread('../Text/earthmap_s.jpg'); 
+    
+    % Enables good closure at the image edge by copying the first column of
+    % the map beyond the last column
+    WM(:,end+1,:) = WM(:,1,:);
+    
+    % Computes the mean image intensity of the snow on the top edge of the
+    % image. This will be used to fill the circles at the north and south
+    % poles.
+    snow = mean( mean(WM(1,:,:)));
+    
+    % Fetches the size of the map
+    [WMr, WMc, clr] = size(WM);
+    
+    % To calculate the size of the circles at the poles, we assume that the
+    % map takes us to +/- 85 degrees of latitude, so we need the equivalent
+    % of 5 degrees at the top and bottom of the map. This line calculates
+    % how many rows represent 1 degree of latitude. 
+    rowsperdeglat = WMr/170
+    
+    % Shows the number of rows to add to the map
+    add = floor(rowsperdeglat * 5)
+    
+    % Computes the values of a single color layer by making an array with
+    % ones(...) using the number of rows to add and the number of map
+    % columns, and multiplying by the snow intensity.
+    addlayer = uint8(ones(add, WMc) * snow);
+    
+    % Build the strips to add to the globe map by copying this layer to the
+    % red, green, and blue layers of a new image array.
+    toAdd(:,:,1) = addlayer;
+    toAdd(:,:,2) = addlayer;
+    toAdd(:,:,3) = addlayer;
+    
+    % Prepares the complete map by concatenating this image to the top and
+    % bottom of the map.
+    worldMap = [toAdd; WM; toAdd];
+    
+    % Retrieves the size of the map
+    [nlat nlong clr] = size(worldMap)
+    
+    % Prepare the vectors defining the plaid by spreading the map
+    % dimensions across pi radians in latitude and 2*pi radians in
+    % longitude.
+    lat = double(0:nlat-1) * pi / nlat;
+    long = double(0:nlong-1) * 2 * pi / (nlong-1);
+    
+    % Prepare the sphere
+    [th phi] = meshgrid(long, lat);
+    radius = 10;
+    zz = radius * cos(phi);
+    xx = radius * sin(phi) .* cos(th);
+    yy = radius * sin(phi) .* sin(th);
+    
+    % Scale the image to double values between 0 and 1 as required by
+    % surf(...)
+    wM = double(worldMap) / 256;
+    
+    % Draw the surface as usual, using the image as the color distribution.
+    surf(xx, yy, zz, wM);
+    shading interp
+    axis equal, axis off, axis tight
+    
+    % Special preparation of the surface luminosity and light
+    % characteristics to prevent glare spots
+    material dull
+    th = 0;
+    handle = light('Color',[1,1,1]); % a custom light source
+    
+    % The perpetual rotation with the angle th moving backward one degree
+    % at a time
+    for frame = 1:300
+        th = th - 1;
+        view([th 20]);
+        % Keeps the light in the same position relative to the observer
+        lightangle(handle, th+50, 20) 
+        % The usual pause to allow the drawing to take place for each
+        % iteration
+        pause(.03)
+    end
+end
+##### SOURCE END #####
+--></body></html>

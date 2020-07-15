@@ -171,7 +171,7 @@
            <img src="..\Images\Fig_11_3a.JPG" alt="Figure 11.3a" class="fig card-img">
            <p class="figure-name card-title">Figure 11.3a: Rotating 2-D Plots</p>
       </div>
-      <p>Before attacking the details of plotting in three dimensions, it should be noted that even 2-D plots are actually 3-D plots. Consider the picture shown in Figure 11.3a, which was generated originally as the 2-D plot in Figure 11.3. By selecting the Rotate 3-D icon on the tool bar and moving the mouse on your figure, it becomes apparent that what appeared to be a 2-D plot in the x-y plane is really a 3-D plot in the x-y-z plane “suspended in space” at z = 0.</p>
+      <p>Before attacking the details of plotting in three dimensions, it should be noted that even 2-D plots are actually 3-D plots. Consider the picture shown in Figure 11.3a, which was generated originally as the 2-D plot in Figure 11.3. By selecting the Rotate 3-D icon on the tool bar and moving the mouse on your figure, it becomes apparent that what appeared to be a 2-D plot in the x-y plane is really a 3-D plot in the x-y-z plane "suspended in space" at z = 0.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Linear 3-D Plots">
@@ -263,7 +263,7 @@
              <p class="figure-name card-title">Figure 11.8: A Parabolic Dish</p>
         </div>
         <p><b>A Simple Parabolic Dish</b>:  The simplest surface plots are obtained by defining a z value for each point on an x-y plaid. We will continue with a simple example illustrating the use of <code>meshgrid(...)</code> to define the plaid. Consider
-        how we might plot the data shown in Figure 11.8 . Before we look at the code, consider what the picture represents. The independent variables are <code>x</code> and <code>y</code>, each covering the range from −3 to 3, each having seven discrete
+        how we might plot the data shown in Figure 11.8 . Before we look at the code, consider what the picture represents. The independent variables are <code>x</code> and <code>y</code>, each covering the range from -3 to 3, each having seven discrete
         values. As the title indicates, the <code>z</code> values are calculated as the sum of <code>x<sup>2</sup></code> and
         <code>y<sup>2</sup></code>. However, we don't need 14 <code>z</code> values as the range of <code>x</code> and <code>y</code> values might suggest, but <code>49</code>! In order to plot the 3-D shape of our parabolic bowl, we must have a <code>z</code> value for every point on the <code>x-y</code> surface. Each of these points has values of <code>x</code> and <code>y</code> corresponding to the intersections of the <code>x</code> and <code>y</code> vectors. Therefore, the process of creating this plot has three parts:</p>
         <ol>
@@ -284,7 +284,7 @@
              <img src="..\Images\Fig_11_9.JPG" alt="Figure 11.9" class="fig card-img">
              <p class="figure-name card-title">Figure 11.9: A Cylinder</p>
         </div>
-        <p><strong>Cylinder</strong>: Consider first the construction of a cylinder. One could consider this as a sheet of paper rolled up in a cylindrical shape. We could visualize that piece of paper as a plaid of values, not of <code>x-y</code>, but perhaps <code>x−&theta;</code> where the range of <code>x</code> would be from 0 to the length of the cylinder, and the range of <code>&theta;</code> would be <code>0</code> to <code>360°</code>.  To plot this, one would then merely need to create a plaid in <code>x</code> and <code>&theta;</code>, and then decide on the mapping from <code>x-&theta;</code> to the <code>y</code> and <code>z</code> values of the cylinder.</p>
+        <p><strong>Cylinder</strong>: Consider first the construction of a cylinder. One could consider this as a sheet of paper rolled up in a cylindrical shape. We could visualize that piece of paper as a plaid of values, not of <code>x-y</code>, but perhaps <code>x-&theta;</code> where the range of <code>x</code> would be from 0 to the length of the cylinder, and the range of <code>&theta;</code> would be <code>0</code> to <code>360<sup>o</sup></code>.  To plot this, one would then merely need to create a plaid in <code>x</code> and <code>&theta;</code>, and then decide on the mapping from <code>x-&theta;</code> to the <code>y</code> and <code>z</code> values of the cylinder.</p>
         <p>Fortunately for us, however, the Matlab folks have provided a function named <code>cylinder</code> that takes two parameters: a vector or radius values along the length of the cylinder and the number of points around the circumference. We will see later how to generalize this, but for now, we use it in one line of code to compute the <code>xx</code>, <code>yy</code> and <code>zz</code> values that will draw a cylinder.</p>
         <p>The resulting picture is shown in Figure 11.9, and the code is shown in Listing 11.8.</p>
       </div>
@@ -294,7 +294,7 @@
              <img src="..\Images\Fig_11_10.JPG" alt="Figure 11.10" class="fig card-img">
              <p class="figure-name card-title">Figure 11.10: A Simple Sphere</p>
         </div>
-        <p><strong>Sphere</strong>: Now, we construct a sphere as shown in Figure 11.10. Conceptually, we could start with a cylinder but instead of using a constant radius in the x direction, we will calculate the radius in that direction by rotating a second angle from 0 to 180°. Again, however, the Mathworks folks have taken all the fun and math out of this by providing the <code>sphere(N)</code> function where the parameter determines the number of facets around the face of the sphere.</p>
+        <p><strong>Sphere</strong>: Now, we construct a sphere as shown in Figure 11.10. Conceptually, we could start with a cylinder but instead of using a constant radius in the x direction, we will calculate the radius in that direction by rotating a second angle from 0 to 180<sup>o</sup>. Again, however, the Mathworks folks have taken all the fun and math out of this by providing the <code>sphere(N)</code> function where the parameter determines the number of facets around the face of the sphere.</p>
         <p>The code for drawing this sphere is shown in Listing 11.9.</p>
       </div>
       <div class="listing">#listing_11_9#</div>
@@ -312,7 +312,7 @@
              <img src="..\Images\Fig_11_12.JPG" alt="Figure 11.12" class="fig card-img">
              <p class="figure-name card-title">Figure 11.12: Rotate a Function about X Axis</p>
         </div>
-        <p>The cylinder and sphere drawn in the above section are special cases of a more general form of 3-D body. Bodies of rotation are created in general by rotating a function <code>v = f(u)</code> defined over a range of <code>u</code> values about the <code>x</code>, <code>y</code> or <code>z</code> axes.  In general, we make no claims about the nature of <code>f(u)</code>. It could be a rational function, or merely a “lookup table” specifying a value of <code>f(u)</code> for every <code>u</code>.  First, we consider rotating a continuous function <code>v = f(u)</code> about the x axis.</p>
+        <p>The cylinder and sphere drawn in the above section are special cases of a more general form of 3-D body. Bodies of rotation are created in general by rotating a function <code>v = f(u)</code> defined over a range of <code>u</code> values about the <code>x</code>, <code>y</code> or <code>z</code> axes.  In general, we make no claims about the nature of <code>f(u)</code>. It could be a rational function, or merely a "lookup table" specifying a value of <code>f(u)</code> for every <code>u</code>.  First, we consider rotating a continuous function <code>v = f(u)</code> about the x axis.</p>
         <p><strong>Using the <b><code>cylinder(...)</code></b> function</strong>: To rotate <code>v = f(u)</code> about the x-axis, we could consider this equation as <code>r = f(x)</code>. Figure 11.11 shows the logic of this rotation. The independent variable is x, and the values of y and z are computed as the usual polar-to-Cartesian conversion:</p>
         <p><code>y = r cos(u)</code> and <br>
         <code>z = r sin(u)</code>.</p>

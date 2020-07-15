@@ -38,7 +38,7 @@
       <p class="figure-name card-title">Figure 8.1: Paper Tape I/O</p>
     </div>
     <p>This chapter discusses files that contain workspace variables, spreadsheet data, and text. Subsequent chapters will discuss image files and sound files that have their own unique file access. MATLAB has the ability to process the many file formats currently in use. For information on the other file formats, consult the MATLAB help documentation for details of their usage.</p>
-    <p>We frequently refer to the process of reading and writing data files as Input/Output (I/O). We have already seen and used examples of file I/O to store and retrieve data and programs. Your script and function files are stored in your current directory and could be invoked from there by name from the Command window. To understand fully the concept of serial I/O, consider Figure 8.1. This figure takes us back to the early days of computing when paper tape was the only available storage medium. After the leader containing only the small holes used to move the tape forward, each row of the paper tape represents the value of one character as 8 bits of data.  The 8 bits represent the ASCII value in binary form with a hole punched where a bit is set. These tapes were prepared on a tape punching machine, and were fed through a tape reader to recover all the characters. This illustrates the meaning of "serial" processing - in this case, the data are actually stored sequentially on the paper tape. In principle, while the storage techniques have evolved beyond recognition and continue to evolve, to a user's program, any computer file system saves and retrieves data as a sequential stream of characters.</p>
+    <p>We frequently refer to the process of reading and writing data files as Input/Output (I/O). We have already seen and used examples of file I/O to store and retrieve data and programs. Your script and function files are stored in your current directory and could be invoked from there by name from the Command window. To understand fully the concept of serial I/O, consider Figure 8.1. This figure takes us back to the early days of computing when paper tape was the only available storage medium. After the leader containing only the small holes used to move the tape forward, each row of the paper tape represents the value of one character as 8 bits of data.  The 8 bits represent the ASCII value in binary form with a hole punched where a bit is set. These tapes were prepared on a tape punching machine, and were fed through a tape reader to recover all the characters. This illustrates the meaning of "serial" processing &mdash; in this case, the data are actually stored sequentially on the paper tape. In principle, while the storage techniques have evolved beyond recognition and continue to evolve, to a user's program, any computer file system saves and retrieves data as a sequential stream of characters.</p>
   </div>
 
   <div class="chp-section" data-sect-num="1" data-sect-name="Concept: Serial Input and Output (I/O)">
@@ -214,7 +214,7 @@
         <li>move the paper up so that the next character will type below the previous line (LF, ASCII 10).</li>
       </ul></p>
       <p>In the modern era, of course, there may be no printing carriage to move to the left or paper to move up, but initially, the CR/LF sequence was still required to begin the next line of text.  However, at some point, somebody said to themselves that it was wasting storage space to use two characters where only one action is required. Some people decided to leave off the CR, and some decided to leave off the LF, and so we are now blessed with three different possible end-of-line indicators: CR, LF, or CR/LF.  This dilemma is usually hidden from the user, but can occasionally cause issues when moving text files from an Apple computer to a Windows machine or a Unix machine.</p>
-      <p>In general, when reading a file, the file must be opened to return a value to be used by subsequent functions to identify its data stream. We usually refer to this identifier as the “file handle.” After the file contents have been manipulated, the file must be closed to complete the activity.</p>
+      <p>In general, when reading a file, the file must be opened to return a value to be used by subsequent functions to identify its data stream. We usually refer to this identifier as the "file handle." After the file contents have been manipulated, the file must be closed to complete the activity.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Opening and Closing Files">
@@ -222,7 +222,7 @@
       <h3 id="8_4_1">8.4.1	Opening and Closing Files</h3>
       <div class="container">
         <p>To open a file for reading or writing, use <code>fh = fopen( &lt;file_name&gt;, &lt;purpose&gt;)</code>
-        where <code>fh</code> is a file handle used in subsequent function calls to identify this particular input stream, <code>&lt;file_name&gt;</code> is the name of the file, and <code>&lt;purpose&gt;</code> is a string specifying the purpose for opening the file. The most common purposes are <code>'r'</code> to read the file, <code>'w'</code> to write it, or <code>'a'</code> to append to an existing file. See the help files for more complex situations. If the purpose is <code>'r'</code>, the file must already exist; if <code>'w'</code> and the file already exists, it will be overwritten; if <code>'a'</code> and the file already exists, the new data will be appended to the end. The consequence of failure to open the file is indicated by returning a file handle of –1 rather than a positive number. It is good practice to check the file handle upon return from a file open command.</p>
+        where <code>fh</code> is a file handle used in subsequent function calls to identify this particular input stream, <code>&lt;file_name&gt;</code> is the name of the file, and <code>&lt;purpose&gt;</code> is a string specifying the purpose for opening the file. The most common purposes are <code>'r'</code> to read the file, <code>'w'</code> to write it, or <code>'a'</code> to append to an existing file. See the help files for more complex situations. If the purpose is <code>'r'</code>, the file must already exist; if <code>'w'</code> and the file already exists, it will be overwritten; if <code>'a'</code> and the file already exists, the new data will be appended to the end. The consequence of failure to open the file is indicated by returning a file handle of -1 rather than a positive number. It is good practice to check the file handle upon return from a file open command.</p>
         <p>To close the file, call <code>fclose( fh )</code>.
       </div>
     </div>
@@ -253,7 +253,7 @@
       <!-- Writing Text Files -->
       <h3 id="8_4_3">8.4.3	Writing Text Files</h3>
       <div class="container">
-        <p>Once a file has been opened for writing, the <code>fprintf(...)</code>function can be used to write to the file by including its file handle as the first parameter. For example, Listing 8.3 is a minor alteration to Listing 8.1, copying a text file instead of listing it in the Command window.</p>
+        <p>Once a file has been opened for writing, the <code>fprintf(...)</code> function can be used to write to the file by including its file handle as the first parameter. For example, Listing 8.3 is a minor alteration to Listing 8.1, copying a text file instead of listing it in the Command window.</p>
         <div class="listing">#listing_08_3#</div>
       </div>
     </div>
@@ -271,7 +271,7 @@
       <p>The other concern is that there are a different number of connections on each row of the sheet. Our solution to the beams problem requires the connections to be placed in a cell array. When a connection is present, it is a string. When it is not present, we can see from the behavior of the raw data that the contents of empty cells appear as a cell containing <code>missiong</code>.</p>
       <p>We need a function that will read this spread sheet and produce the same model of the structure used in Chapter 7. Such a function is shown in Listing 8.4.</p>
       <div class="listing">#listing_08_4#</div>
-      <p>To test this function, replace the structure array construction in lines 1–22 of Listing 7.6 in Chapter 7 with the following line:<br>
+      <p>To test this function, replace the structure array construction in lines 1-22 of Listing 7.6 in Chapter 7 with the following line:<br>
       <code>data = readStruct('beams.xlsx');</code><br>
       The script should then produce the same results as before.</p>
     </div>

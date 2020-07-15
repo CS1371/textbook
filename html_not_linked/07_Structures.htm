@@ -118,7 +118,7 @@
           <li>When we extract the contents of multiple cells using, for example,<code> A{1:2}</code>, this results in multiple assignments being made. </li>
           <li>These multiple assignments must go to separate variables. This is the fundamental mechanism behind returning multiple results from a function.</li>
           <li>These multiple assignments cannot be made to a single variable; sufficient storage must be provided either as a collection of variables or explicitly as a vector.</li>
-          <li>Cell arrays can be “sliced” with normal vector indexing assignments as long as the sizes match on the left and right sides of the assignment. Any unassigned array elements are filled with an empty vector.</li>
+          <li>Cell arrays can be "sliced" with normal vector indexing assignments as long as the sizes match on the left and right sides of the assignment. Any unassigned array elements are filled with an empty vector.</li>
           <li>The assignment <code>B{[1 3]} = A{[1 2]}</code> that produced an error needs some thought. Since <code>A{[1 2]}</code> produces two separate assignments, MATLAB will not assign the answers, even to the right number of places in another cell array.</li>
           <li> The <code>deal(...)</code> function is provided to capture these multiple results in different variables. Notice the difference between using <code>A{:}</code> and <code>A</code> as a parameter to <code>deal(...)</code>. When <code>deal(...)</code> is provided with a parameter other than a collection of cells, it merely copies that parameter to each variable.</li>
           <li>Assignments work normally if cell arrays are treated as vectors and the extraction of items can be indexed — <code>s</code> is a vector of the sums of the elements in <code>A</code>.</li>
@@ -184,7 +184,7 @@
         &gt;&gt; A.item2 = 42<br>A =<br>
         &nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcde'<br>
         &nbsp;&nbsp;&nbsp;&nbsp;item2: 42<br></code></p>
-        <p>Notice that MATLAB displays the elements of an emerging structure by name. Fields in a structure are accessed in the same way — by using the dot notation.<br>
+        <p>Notice that MATLAB displays the elements of an emerging structure by name. Fields in a structure are accessed in the same way &mdash; by using the dot notation.<br>
         <code>&gt;&gt; A.item2 = A.item2 ./ 2<br>
         A =<br>
         &nbsp;&nbsp;&nbsp;&nbsp;item1: 'abcde'<br>
@@ -194,7 +194,7 @@
         <code>>> names = fieldnames(A)<br>
         names = <br>
         &nbsp;&nbsp;&nbsp;&nbsp;'item1' 'item2'<br></code></p>
-        <p>Fields can also be accessed “indirectly” by setting a variable to the name of the field, and then by using parentheses to indicate that the variable contents should be used as the field name:<br>
+        <p>Fields can also be accessed "indirectly" by setting a variable to the name of the field, and then by using parentheses to indicate that the variable contents should be used as the field name:<br>
         <code>>> fn = names{1};<br>
         >> A.(fn) = [A.(fn) 'fg']<br>
         A =<br>
@@ -214,7 +214,7 @@
       <!-- Constructor Functions -->
       <h3 id="7_3_2">7.3.2	Constructor Functions</h3>
       <div class="container">
-        <p>This section discusses functions that assign their parameters to the fields of a structure and then return that structure. You do this, as opposed to “manually” entering data into structures, for the following reasons:
+        <p>This section discusses functions that assign their parameters to the fields of a structure and then return that structure. You do this, as opposed to "manually" entering data into structures, for the following reasons:
         <ul>
            <li>Manual entry can result in strange behavior due to typographical errors or having fields in the wrong order</li>
            <li>The resulting code is generally more compact and easier to understand</li>
@@ -233,7 +233,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;phone: '(123) 555-1212'<br>
         &nbsp;&nbsp;&nbsp;&nbsp;birth: [1x1 struct]<br>
         </code> <br>
-        <p><b>Custom Constructor:</b>The <code>struct(...)</code> constructor is useful in general to create structures, but the need to repeat the field names makes this general-purpose approach a little annoying. We can create a special-purpose function that “knows” the necessary field names to create multiple structures in an organized way.  Listing 7.3 shows the code for a function that consumes parameters that describe a CD and assembles a structure containing those attributes by name.</p>
+        <p><b>Custom Constructor:</b>The <code>struct(...)</code> constructor is useful in general to create structures, but the need to repeat the field names makes this general-purpose approach a little annoying. We can create a special-purpose function that "knows" the necessary field names to create multiple structures in an organized way.  Listing 7.3 shows the code for a function that consumes parameters that describe a CD and assembles a structure containing those attributes by name.</p>
         <div class="listing">#listing_07_3#</div>
         <p>In Exercise 7.3, you can try your hand at using this function to construct a CD structure and then verify the structure contents.</p>
         <div class="exercise">#exercise_7_3#</div>
@@ -252,7 +252,7 @@
        <!-- Constructing Structure Arrays -->
       <h3 id="7_4_1">7.4.1	Constructing Structure Arrays</h3>
       <div class="container">
-        <p>Structure arrays can be created either by using MATLAB’s <code>struct(...)</code> function to build the whole structure array, or by using a custom function to create each individual structure.</p>
+        <p>Structure arrays can be created either by using MATLAB's <code>struct(...)</code> function to build the whole structure array, or by using a custom function to create each individual structure.</p>
         <p>Built-in Constructor:</b> Listing 7.4 illustrates these concepts by implementing a collection of CDs as a structure array using the function <code>struct(...)</code> from Listing 7.3.</p>
         <div class="listing">#listing_07_4#</div>
         <p>When using the built-in <code>struct(...)</code> function to create a structure array, the form of the function call is identical to that used in Para 7.3.2. The only difference is the usage of the second parameter of each field_name/value pair. If the value is a cell array, the structure to be created becomes a structure array whose size (in the general sense) is the size of that cell array. Then, each field of the structure array receives the corresponding value from the cell array. If the field content is anything other than a cell array, the content of each structure array field becomes a copy of that item.  It is possible that the first field may not have a cell array as its value such as, for example, a last_name field. The first field whose value is a cell array will define the size of the structure array.  Subsequent fields may have the same size, but it is illegal for any subsequent fields to have cell array of a different size.</p>
@@ -471,7 +471,8 @@
   <p>This chapter covered the nature, implementation, and behavior of two heterogeneous collections:
   <ul>
     <li>Cell arrays are vectors of containers; their elements can be manipulated either as vectors of containers, or individually by inserting or extracting the contents of the container using braces in place of parentheses</li>
-    <li>The elements of a structure are accessed by name rather than by indexing, using the dot operator, ‘.’, to specify the field name to be used</li>
+    <li>The elements of a structure are accessed directly by name rather than by indexing, using the dot operator, '.', to specify the field name to be used</li>
+    <li>The elements of a structure can also be accessed indirectly using the contents of a variable as the field name. If we have a structure array <code>sa</code> and the variable <code>my_field</code> contains <code>'fn'</code>, we access the field 'fn' in sa with 'sa.(my_field)'.</li>
     <li>Structures can be collected into structure arrays whose elements are structures all with the same field names. These elements can then be indexed and manipulated in the same manner as the cells in a cell array</li>
   </ul></p>
 <h2>Self Test</h2>

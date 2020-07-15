@@ -19,22 +19,22 @@
 	<!-- Chapter Objectives -->
 	<h2>Chapter Objectives</h2>
 	<div class="container">
-		<p>This chapter discusses the nature<a id="1106"></a>, implementation<a id="1144"></a>, and behavior of user-defined<a id="1089"></a> functions in MATLAB:</p>
+		<p>This chapter discusses the <a id="1311"></a><a id="1365"></a>nature, <a id="1364"></a>implementation, and behavior of user-<a id="1295"></a>defined functions in MATLAB:</p>
 		<ul>
-			<li>How to define a function<a id="1048"></a></li>
-			<li>How data are passed into a function<a id="1049"></a></li>
-			<li>How to return data,<a id="1137"></a> including multiple results</li>
-			<li>How to include other functions not needed except as helpers to your own function<a id="1050"></a></li>
+			<li>How to define a <a id="1240"></a><a id="1248"></a>function</li>
+			<li>How data are passed into a <a id="1241"></a><a id="1249"></a>function</li>
+			<li>How to return <a id="1357"></a>data, including multiple results</li>
+			<li>How to include other functions not needed except as helpers to your own <a id="1242"></a><a id="1250"></a>function</li>
 		</ul>
-		<p>Writing a user-defined<a id="1090"></a> function<a id="1051"></a> allows you to isolate and package together a code block, so that you can apply that code block to different sets of input data. We have already made use of some built-in functions like <code>sin(...)</code> and <code>plot(<a id="1082"></a>...)</code> by calling them; this chapter will deal with creating<a id="1088"></a> and using your own functions.</p>
+		<p>Writing a user-<a id="1296"></a>defined <a id="1243"></a><a id="1251"></a>function allows you to isolate and package together a code block, so that you can apply that code block to different sets of input data. We have already made use of some built-in functions like <code>sin(...)</code> and <code><a id="1280"></a><a id="1356"></a>plot(...)</code> by calling them; this chapter will deal with <a id="1294"></a><a id="1417"></a>creating and using your own functions.</p>
 	</div>
 
   <div class="chp-section" data-sect-num="1" data-sect-name="Concepts: Abstraction and Encapsulation">
 		<!-- Abstraction and Encapsulation -->
 		<h2 id="3_1">3.1	Concepts: Abstraction and Encapsulation</h2>
 		<div class="container">
-			<p>A function<a id="1052"></a> is an implementation of procedural abstraction<a id="1141"></a> and encapsulation<a id="1033"></a>. Procedural abstraction is the concept that permits a code block that solves a particular sub-problem to be packaged and applied to different data inputs. This is exactly analogous to the concept of data abstraction<a id="1028"></a> we discussed in Chapter 3 where individual data items are gathered to form a collection. We have already used a number of built-in procedural abstractions in the form of functions. All the mathematical functions that compute, for example<a id="1153"></a>, the sine of a collection of angles or the maximum value of a vector<a id="1177"></a> are examples<a id="1095"></a> of procedural abstraction<a id="1142"></a>. They allow us to apply a code block about which we know nothing to data sets that we provide. To make use of a built-in function<a id="1053"></a>, all we have to do is provide data in the form the function<a id="1054"></a> expects and interpret the results according to the function<a id="1055"></a>'s specification.</p>
-			<p>Encapsulation is the concept of putting a wrapper around a collection that you wish to protect from outside influence. Functions encapsulate the code they contain in two ways: the variables declared within the function<a id="1056"></a> are not visible from elsewhere, and the function<a id="1057"></a>'s ability to change the values of variables (otherwise known as causing side effects) is restricted to its own code body.</p>
+			<p>A <a id="1244"></a><a id="1252"></a>function is an implementation of <a id="1361"></a>procedural abstraction and <a id="1225"></a><a id="1261"></a>encapsulation. Procedural abstraction is the concept that permits a code block that solves a particular sub-problem to be packaged and applied to different data inputs. This is exactly analogous to the concept of <a id="1220"></a>data abstraction we discussed in Chapter 3 where individual data items are gathered to form a collection. We have already used a number of built-in procedural abstractions in the form of functions. All the mathematical functions that compute, for example, the sine of a collection of angles or the maximum value of a <a id="1405"></a>vector are <a id="1301"></a>examples of <a id="1362"></a>procedural abstraction. They allow us to apply a code block about which we know nothing to data sets that we provide. To make use of a built-in <a id="1245"></a><a id="1253"></a>function, all we have to do is provide data in the form the <a id="1246"></a><a id="1254"></a>function expects and interpret the results according to the <a id="1247"></a><a id="1255"></a>function's specification.</p>
+			<p>Encapsulation is the concept of putting a wrapper around a collection that you wish to protect from outside influence. Functions encapsulate the code they contain in two ways: the variables declared within the function are not visible from elsewhere, and the function's ability to change the values of variables (otherwise known as causing side effects) is restricted to its own code body.</p>
 		</div>
 	</div>
 
@@ -46,13 +46,13 @@
 					 <img src="..\Images\Fig_3_1.JPG" alt="Figure 3.1" class="fig card-img">
 					 <p class="figure-name card-title">Fig 3.1 Black Box View of a Function</p>
 			</div>
-			<p>The most abstract view of a function<a id="1058"></a> can be seen in Figure 3.1. It consists of two parts: the definition of the interface by which the user passes data items to and from the function<a id="1059"></a>, and the code block that produces the results required by that interface. A function<a id="1060"></a> definition consists of the following components:</p>
+			<p>The most abstract view of a function can be seen in Figure 3.1. It consists of two parts: the definition of the interface by which the user passes data items to and from the function, and the code block that produces the results required by that interface. A function definition consists of the following components:</p>
 			<ul>
 				<li>A name that follows the same syntactic rules as a variable name</li>
-				<li>A set of 0 or more parameters<a id="1159"></a> provided to the function<a id="1061"></a></li>
-				<li>Zero or more results to be returned to the caller of the function<a id="1062"></a></li>
+				<li>A set of 0 or more <a id="1378"></a>parameters provided to the function</li>
+				<li>Zero or more results to be returned to the caller of the function</li>
 			</ul>
-			<p>The basic operation<a id="1107"></a> of a function<a id="1063"></a> begins before execution<a id="1036"></a> of the function<a id="1064"></a> actually starts. If the function<a id="1065"></a> definition requires n parameters<a id="1160"></a>, the calling instructions first prepare n items of data from its workspace to be provided to the function<a id="1066"></a>. These data are then passed to the function<a id="1067"></a>, the code body is executed, and the results are returned to the caller.</p>
+			<p>The basic <a id="1312"></a><a id="1329"></a><a id="1346"></a>operation of a function begins before <a id="1228"></a>execution of the function actually starts. If the function definition requires n <a id="1379"></a>parameters, the calling instructions first prepare n items of data from its workspace to be provided to the function. These data are then passed to the function, the code body is executed, and the results are returned to the caller.</p>
 		</div>
 	</div>
 
@@ -60,7 +60,7 @@
 		<!-- MATLAB Implementation -->
 		<h2 id="3_3">3.3  MATLAB Implementation</h2>
 		<div class="container">
-			<p>In this section, first we consider the general template<a id="1096"></a> for implementing functions and then the MATLAB implementation of that template<a id="1097"></a>.</p>
+			<p>In this section, first we consider the general template for implementing functions and then the MATLAB implementation of that template.</p>
 		</div>
 
 		<div class="chp-subsection" data-sub-num="1" data-sub-name="General Template">
@@ -68,12 +68,12 @@
 			<h3 id="3_3_1">3.3.1	General Template</h3>
 			<div class="container">
 				<p>The general layout of a function definition is shown in Template 3.1.<p>
-				<div class="template">#template<a id="1098"></a>_3_1#</div>
-				<p>The <code>&lt;return info&gt;</code> section for most functions involves providing the name(s) of the results returned followed by an = sign. If more than one result is to be returned, they are defined<a id="1091"></a> in a bracketed container. If nothing is to be returned from this function, both the result list and the = sign are omitted. The <code>&lt;function name&gt;</code> is a name with the same syntactic rules as a variable name and will be used to invoke the code body. The <code>&lt;parameters<a id="1161"></a>&gt;</code> section is a comma-separated list of the names of the items to be provided to the function. The <code>&lt;documentation<a id="1030"></a>&gt;</code> section is one or more lines of comments<a id="1021"></a> that describe what the function does and how to call it. These lines will appear in two situations:</p>
+				<div class="template">#template_3_1#</div>
+				<p>The <code>&lt;return info&gt;</code> section for most functions involves providing the name(s) of the results returned followed by an = sign. If more than one result is to be returned, they are <a id="1297"></a>defined in a bracketed container. If nothing is to be returned from this function, both the result list and the = sign are omitted. The <code>&lt;function name&gt;</code> is a name with the same syntactic rules as a variable name and will be used to invoke the code body. The <code>&lt;<a id="1380"></a>parameters&gt;</code> section is a comma-separated list of the names of the items to be provided to the function. The <code>&lt;<a id="1222"></a>documentation&gt;</code> section is one or more lines of <a id="1213"></a>comments that describe what the function does and how to call it. These lines will appear in two situations:</p>
 				<ul>
-					<li>All the documentation<a id="1031"></a> lines up to the first non-document line are printed in the Command window when you type the following:<br>
-					<code>>> help<a id="1099"></a> &lt;function_name&gt;</code></li>
-					<li>The first line can be displayed in the Current Directory<a id="1024"></a> Window</li>
+					<li>All the <a id="1223"></a>documentation lines up to the first non-document line are printed in the Command window when you type the following:<br>
+					<code>>> <a id="1302"></a>help &lt;function_name&gt;</code></li>
+					<li>The first line can be displayed in the <a id="1216"></a>Current Directory Window</li>
 				</ul>
 			</div>
 		</div>
@@ -82,18 +82,18 @@
 			<!-- Function Definition -->
 			<h3 id="3_3_2">3.3.2	Function Definition</h3>
 			<div class="container">
-				<p>In the MATLAB language, functions must be stored in a separate file located in a directory accessible to any script or function that calls it. The definition of a function named, for example<a id="1154"></a>, <code>function_name</code> <b>must</b> be
-				stored in a file called <code>function_name.m</code>. For the general user, the Current Directory<a id="1025"></a> is the normal place to store it. Listing 3.1 illustrates a typical MATLAB function called <code>my_cylinder</code> that consumes two parameters<a id="1162"></a>, the <code>height</code> and <code>radius</code> of a cylinder, and produces the return variable <code>volume</code>.</p>
+				<p>In the MATLAB language, functions must be stored in a separate file located in a directory accessible to any script or function that calls it. The definition of a function named, for example, <code>function_name</code> <b>must</b> be
+				stored in a file called <code>function_name.m</code>. For the general user, the <a id="1217"></a>Current Directory is the normal place to store it. Listing 3.1 illustrates a typical MATLAB function called <code>my_cylinder</code> that consumes two <a id="1381"></a>parameters, the <code>height</code> and <code>radius</code> of a cylinder, and produces the return variable <code>volume</code>.</p>
 				<div class="listing">#listing_03_1#</div>
 				<p><b>Important Notes</b>:
 				<ol>
-					<li>It is a good idea to include in the comments<a id="1022"></a> a usage statement showing a copy of the function header line, sometimes referred to as the Application Programmer Interface (API), to remind a user exactly how to use this function.</li>
-					<li>Although encapsulation<a id="1034"></a> rules forbid external access to the caller's variables, the code body still has access to all built-in MATLAB variables and functions (e.g., pi, as used here).</li>
-					<li>You probably noticed the apparently weird affectation that called the function <code>my_cylinder</code> and not just <code>cylinder</code>.  This is perhaps the most annoying feature of interpreted<a id="1116"></a> languages: the library functions and system variables are defined<a id="1092"></a> and used in the same "name space" as your scripts<a id="1146"></a> and functions.  For example<a id="1155"></a>, we have already seen the function <code>cos(...)</code> and the value <code>pi</code> in the previous chapter - some of the many trigonometry features of Matlab.  If you were unwise enough to write and run your own <code>cos(...)</code> function, it would replace the library <code>cos(...)</code> function for any commands, scripts<a id="1147"></a> or functions that you use with your <code>cos(...)</code> function in the current directory!</li>
+					<li>It is a good idea to include in the <a id="1214"></a>comments a usage statement showing a copy of the function header line, sometimes referred to as the Application Programmer Interface (API), to remind a user exactly how to use this function.</li>
+					<li>Although <a id="1226"></a><a id="1262"></a>encapsulation rules forbid external access to the caller's variables, the code body still has access to all built-in MATLAB variables and functions (e.g., pi, as used here).</li>
+					<li>You probably noticed the apparently weird affectation that called the function <code>my_cylinder</code> and not just <code>cylinder</code>.  This is perhaps the most annoying feature of <a id="1321"></a>interpreted languages: the library functions and system variables are <a id="1298"></a>defined and used in the same "name space" as your <a id="1367"></a>scripts and functions.  For example, we have already seen the function <code>cos(...)</code> and the value <code>pi</code> in the previous chapter - some of the many trigonometry features of Matlab.  If you were unwise enough to write and run your own <code>cos(...)</code> function, it would replace the library <code>cos(...)</code> function for any commands, <a id="1368"></a>scripts or functions that you use with your <code>cos(...)</code> function in the current directory!</li>
 				</ol></p>
-				<p><b>Moral of the story</b>: when choosing function names, check to see if that name already exists in Matlab by typing:<code>&gt;&gt; help<a id="1100"></a> &lt;whatever&gt;</code> in the command window.</p>
-				<p>In general, when you ask for help<a id="1101"></a> on a function you wrote, Matlab shows you all the comments<a id="1023"></a> after the function header, and shows you just the first line if requested in the Current Directory<a id="1026"></a> (see Fig 2.4)</p>
-				<p>Try saving and testing<a id="1145"></a> the cylinder function in Exercise 3.1</p>
+				<p><b>Moral of the story</b>: when choosing function names, check to see if that name already exists in Matlab by typing:<code>&gt;&gt; <a id="1303"></a>help &lt;whatever&gt;</code> in the command window.</p>
+				<p>In general, when you ask for <a id="1304"></a>help on a function you wrote, Matlab shows you all the <a id="1215"></a>comments after the function header, and shows you just the first line if requested in the <a id="1218"></a>Current Directory (see Fig 2.4)</p>
+				<p>Try saving and <a id="1366"></a>testing the cylinder function in Exercise 3.1</p>
 				<div class="exercise">#exercise_3_1#</div>
 			</div>
 		</div>
@@ -102,7 +102,7 @@
 		<!-- Storing and Using Functions -->
 			<h3 id="3_3_3">3.3.3	Storing and Using Functions</h3>
 			<div class="container">
-				<p>All user-defined<a id="1093"></a> MATLAB functions must be created like scripts<a id="1148"></a> in an m-file. When the file is first created, it must be saved in an m-file with the same file name as the function. For example<a id="1156"></a>, the function in Listing 3.1 named <code>my_cylinder</code> must be saved in a file named <code>my_cylinder.m</code>. Once the file has been saved, you may invoke the function by entering its name and parameters<a id="1163"></a> of the right type and number in the Command window, in a script, or in other function definitions. If you do not specify an assignment<a id="1012"></a> for the result of the function call, it will be assigned to the variable <code>ans</code>.</p>
+				<p>All user-<a id="1299"></a>defined MATLAB functions must be created like <a id="1369"></a>scripts in an m-file. When the file is first created, it must be saved in an m-file with the same file name as the function. For example, the function in Listing 3.1 named <code>my_cylinder</code> must be saved in a file named <code>my_cylinder.m</code>. Once the file has been saved, you may invoke the function by entering its name and <a id="1382"></a>parameters of the right type and number in the Command window, in a script, or in other function definitions. If you do not specify an <a id="1204"></a>assignment for the result of the function call, it will be assigned to the variable <code>ans</code>.</p>
 			</div>
 		</div>
 
@@ -110,7 +110,7 @@
 			<!-- Calling Functions -->
 			<h3 id="3_3_4">3.3.4	Calling Functions</h3>
 			<div class="container clearfix">
-				<p>When a function is defined<a id="1094"></a>, the user provides a list of the names of each data item expected to be provided by the caller. These are called the <strong>formal<a id="1043"></a> parameters<a id="1164"></a></strong>. When this function is called, the caller must provide the same number of data values expected by the function definition. These are the <strong>actual parameters<a id="998"></a></strong> and can be generated in the following ways:</p>
+				<p>When a function is <a id="1300"></a>defined, the user provides a list of the names of each data item expected to be provided by the caller. These are called the <strong><a id="1235"></a>formal <a id="1383"></a>parameters</strong>. When this function is called, the caller must provide the same number of data values expected by the function definition. These are the <strong><a id="1189"></a>actual <a id="1384"></a>parameters</strong> and can be generated in the following ways:</p>
 				<ul>
 					<li>Constants</li>
 					<li>Variables that have been defined</li>
@@ -120,21 +120,21 @@
 				<div class="card float-sm-right style-points">
 						<p class="card-title">Style Points 3.1: Parameter Passing</p>
 						<p class="card-text">
-								Some languages provide an alternative technique, <b>passing by reference<a id="1134"></a></b>, whereby the memory location for the parameters<a id="1165"></a> is passed to the function while the values remain in the caller's workspace. Syntactically, this is usually a bad thing, allowing deliberate or accidental assignments to reach back into the scope of the calling code and thereby perhaps causing undesirable side effects. However, restricting parameter access to passing by value can result in poor program performance. When a function needs access to large sets of data,<a id="1138"></a> consider improving the efficiency by using global<a id="1068"></a> variables.
+								Some languages provide an alternative technique, <b><a id="1353"></a>passing by reference</b>, whereby the memory location for the <a id="1385"></a>parameters is passed to the function while the values remain in the caller's workspace. Syntactically, this is usually a bad thing, allowing deliberate or accidental assignments to reach back into the scope of the calling code and thereby perhaps causing undesirable side effects. However, restricting parameter access to passing by value can result in poor program performance. When a function needs access to large sets of <a id="1358"></a>data, consider improving the efficiency by using <a id="1265"></a><a id="1286"></a><a id="1393"></a>global variables.
 						</p>
 				</div>
-				<p>When the actual parameters<a id="999"></a> have been computed, copies of their values are assigned as the values of the formal<a id="1044"></a> parameters<a id="1166"></a> the function is expecting.</p>
-				<p>Values are assigned to parameters<a id="1167"></a> by position in the calling statement and function definition. The process of copying the actual parameters<a id="1000"></a> into the formal<a id="1045"></a> parameters<a id="1168"></a> is referred to as <b>passing by value</b>, the only technique defined in the MATLAB language for passing data into a function.</p>
-				<p>Once the parameter names have been defined in the function's workspace,<a id="1198"></a> the function's code body is executed, beginning with the first instruction. If return variables have been defined for the function, every exit from the code body must assign valid values for the results.</p>
+				<p>When the <a id="1190"></a>actual <a id="1386"></a>parameters have been computed, copies of their values are assigned as the values of the <a id="1236"></a>formal <a id="1387"></a>parameters the function is expecting.</p>
+				<p>Values are assigned to <a id="1388"></a>parameters by position in the calling statement and function definition. The process of copying the <a id="1191"></a>actual <a id="1389"></a>parameters into the <a id="1237"></a>formal parameters is referred to as <b>passing by value</b>, the only technique defined in the MATLAB language for passing data into a function.</p>
+				<p>Once the parameter names have been defined in the function's <a id="1421"></a>workspace, the function's code body is executed, beginning with the first instruction. If return variables have been defined for the function, every exit from the code body must assign valid values for the results.</p>
 			</div>
 		</div>
 
 		<div class="chp-subsection" data-sub-num="5" data-sub-name="Variable Number of Parameters">
 			<!-- Variable Number of Parameters -->
-			<h3 id="3_3_5">3.3.5	Variable<a id="1171"></a> Numbers of Parameters</h3>
+			<h3 id="3_3_5">3.3.5	<a id="1390"></a>Variable Numbers of Parameters</h3>
 			<div class-"container">
-				<p>Although the number of parameters<a id="1169"></a> is usually fixed, most languages, including MATLAB, provide the ability to deal with a variable number of parameters<a id="1170"></a>, both incoming and returning<a id="1083"></a>. The built-in function <code>nargin<a id="1122"></a></code> computes the actual number of parameters provided by the user in the current function call. If the function is designed to make use of <code>nargin<a id="1123"></a></code>, the parameter <code>varargin</code> must be the last parameter.  It collects all subsequent input parameters as a Cell Array of values.</p>
-				<p>Similarly, the function <code>nargout<a id="1124"></a></code> computes the number of storage variables actually provided by the user. So if one or more of the results requires extensive computation or user interaction and the caller has not asked for that data,<a id="1139"></a> that computation can be omitted.</p>
+				<p>Although the number of parameters is usually fixed, most languages, including MATLAB, provide the ability to deal with a <a id="1404"></a>variable number of parameters, both incoming and <a id="1281"></a>returning. The built-in function <code><a id="1336"></a>nargin</code> computes the actual number of parameters provided by the user in the current function call. If the function is designed to make use of <code><a id="1337"></a>nargin</code>, the parameter <code>varargin</code> must be the last parameter.  It collects all subsequent input parameters as a Cell Array of values.</p>
+				<p>Similarly, the function <code><a id="1338"></a>nargout</code> computes the number of storage variables actually provided by the user. So if one or more of the results requires extensive computation or user interaction and the caller has not asked for that <a id="1359"></a>data, that computation can be omitted.</p>
 			</div>
 		</div>
 
@@ -142,9 +142,9 @@
 			<!-- Returning Multiple Results -->
 			<h3 id="3_3_6">3.3.6	Returning Multiple Results</h3>
 			<div class="container">
-				<p>The MATLAB language is unique among programming languages<a id="1143"></a> in providing the ability to return more than one result from a function by name. The multiple results are specified as a "vector<a id="1178"></a>" (see the next chapter for details) of variable names, for example<a id="1157"></a>, [area, volume], as shown in Listing 3.2. Assignments must be made to each of the result variables. However, the calling program is not required to make use of all the return values.</p>
+				<p>The MATLAB language is unique among <a id="1363"></a>programming languages in providing the ability to return more than one result from a function by name. The multiple results are specified as a "<a id="1406"></a>vector" (see the next chapter for details) of variable names, for example, [area, volume], as shown in Listing 3.2. Assignments must be made to each of the result variables. However, the calling program is not required to make use of all the return values.</p>
 				<div class="listing">#listing_03_2#</div>
-				<p>Exercise 3.2 shows how to invoke a function that can return multiple results. Notice that the normal method to access the multiple answers is to put the names of the variable to receive the results in a vector<a id="1179"></a>. The names may be any legal variable name, and the values are returned in the order of the results defined. If you choose less<a id="1118"></a> than the full number of results (or none at all), the answers that are specified are allocated from left to right from the available results. As with parameter assignment<a id="1013"></a>, the results are allocated by position in these vectors. Although we called the variable <code>v</code> in the last test, it still receives the value of the first result, <code>area</code>. If you really only want the second result value, you must put either a <code>'~'</code> marker or a dummy variable name like <code>'junk'</code> in the place of any variable you wish to ignore.</p>
+				<p>Exercise 3.2 shows how to invoke a function that can return multiple results. Notice that the normal method to access the multiple answers is to put the names of the variable to receive the results in a <a id="1407"></a>vector. The names may be any legal variable name, and the values are returned in the order of the results defined. If you choose <a id="1323"></a><a id="1325"></a>less than the full number of results (or none at all), the answers that are specified are allocated from left to right from the available results. As with parameter <a id="1205"></a>assignment, the results are allocated by position in these vectors. Although we called the variable <code>v</code> in the last test, it still receives the value of the first result, <code>area</code>. If you really only want the second result value, you must put either a <code>'~'</code> marker or a dummy variable name like <code>'junk'</code> in the place of any variable you wish to ignore.</p>
 				<div class="exercise">#exercise_3_2#</div>
 			</div>
 		</div>
@@ -153,8 +153,8 @@
 			<!-- Auxiliary Local Functions -->
 			<h3 id="3_3_7">3.3.7	Auxiliary Local Functions</h3>
 			<div class="container">
-				<p>Since the MATLAB language uses the name of the file to identify a function, every function should normally be saved in its own m-file. However, there are times when auxiliary<a id="1014"></a> functions (sometimes called <b>helper<a id="1105"></a> functions</b>) are needed to implement the algorithm<a id="1001"></a> contained in the main function in a file. If this auxiliary<a id="1015"></a> function is only used in the main function or its helpers, it can be written in the same file as its calling function after the definition of the main function. By convention, some people append the word local_ to the name of local functions.</p>
-				<p>Scripts or functions that use the code in an m-file can reach only the first function. Other functions in the m-file, the auxiliary<a id="1016"></a> functions, can only be called from the first function or other auxiliary<a id="1017"></a> functions in the same file.</p>
+				<p>Since the MATLAB language uses the name of the file to identify a function, every function should normally be saved in its own m-file. However, there are times when <a id="1206"></a><a id="1256"></a>auxiliary functions (sometimes called <b><a id="1308"></a>helper functions</b>) are needed to implement the <a id="1192"></a><a id="1374"></a>algorithm contained in the main function in a file. If this <a id="1207"></a><a id="1257"></a>auxiliary function is only used in the main function or its helpers, it can be written in the same file as its calling function after the definition of the main function. By convention, some people append the word local_ to the name of local functions.</p>
+				<p>Scripts or functions that use the code in an m-file can reach only the first function. Other functions in the m-file, the <a id="1208"></a><a id="1258"></a>auxiliary functions, can only be called from the first function or other <a id="1209"></a><a id="1259"></a>auxiliary functions in the same file.</p>
 			</div>
 		</div>
 
@@ -166,14 +166,14 @@
 						<p class="card-title">Style Points 3.2</p>
 						<p class="card-text">
 							<ol>
-								<li>Before you include a function in a complex algorithm<a id="1152"></a>, you should always test its behavior in isolation in a script. This test script should validate not only the normal operation<a id="1108"></a> of the function, but also its response to erroneous input data it might receive.</li>
-								<li>Although any legal MATLAB instruction is permitted within the code body of a function, it is considered bad form (except temporarily for debugging<a id="1149"></a> purposes) to display values in the Command window.</li>
-								<li>We also actively discourage the use of the input(<a id="1077"></a>...) function within the code body. If you need to input some values to test a function, do so from the Command window or a test script.</li>
+								<li>Before you include a function in a complex algorithm, you should always test its behavior in isolation in a script. This test script should validate not only the normal <a id="1313"></a><a id="1330"></a><a id="1347"></a>operation of the function, but also its response to erroneous input data it might receive.</li>
+								<li>Although any legal MATLAB instruction is permitted within the code body of a function, it is considered bad form (except temporarily for <a id="1370"></a>debugging purposes) to display values in the Command window.</li>
+								<li>We also actively discourage the use of the <a id="1275"></a>input(...) function within the code body. If you need to input some values to test a function, do so from the Command window or a test script.</li>
 							</ol>
 						</p>
 				</div>
-				<p>Encapsulation is accomplished in most modern languages, including MATLAB, by implementing the concept of variable scoping<a id="1174"></a>. In practice, this is achieved by allocating a separate workspace to each function. When MATLAB is first started, a default workspace is created in which variables created in the Command window or by running<a id="1150"></a> scripts are stored. When a function is called, a fresh workspace is created (see Section 9.1.2 for details), and the actual parameter values are copied into the formal<a id="1046"></a> parameter names in that new workspace. When the function finishes, this operation<a id="1109"></a> is reversed. The returning<a id="1084"></a> parameters are copied into the variables provided by the caller in the previous workspace,<a id="1199"></a> and the function's workspace is released. The Variables window always shows you the contents of the current workspace.</p>
-				<p>Variable<a id="1172"></a> scoping<a id="1175"></a> defines the places within your Command window, MATLAB system, and m-files to which instructions have access. It is related to the Variables window, which shows you your current workspace. When using the Command window or running<a id="1151"></a> a script and you access the value of a variable, the system will reach into your current workspace and then into the MATLAB system libraries to find its current value. This is referred to as Global Scope. When you run a function, its local variables, including the internal names of its parameters, are not included in your current workspace,<a id="1200"></a> and it does not look into your current workspace for values of variables it needs. This is referred to as Local Scope<a id="1120"></a>, wherein the variables within a function are not visible from outside and the function is unable to cause side effects by making assignments to variables in other workspaces except by returning<a id="1085"></a> results. To illustrate variable scoping<a id="1176"></a>, do Exercise 3.3.</p>
+				<p>Encapsulation is accomplished in most modern languages, including MATLAB, by implementing the concept of variable <a id="1401"></a>scoping. In practice, this is achieved by allocating a separate workspace to each function. When MATLAB is first started, a default workspace is created in which variables created in the Command window or by <a id="1371"></a>running scripts are stored. When a function is called, a fresh workspace is created (see Section 9.1.2 for details), and the actual parameter values are copied into the <a id="1238"></a>formal parameter names in that new workspace. When the function finishes, this <a id="1314"></a><a id="1331"></a><a id="1348"></a>operation is reversed. The <a id="1282"></a>returning parameters are copied into the variables provided by the caller in the previous <a id="1422"></a>workspace, and the function's workspace is released. The Variables window always shows you the contents of the current workspace.</p>
+				<p><a id="1391"></a>Variable <a id="1402"></a>scoping defines the places within your Command window, MATLAB system, and m-files to which instructions have access. It is related to the Variables window, which shows you your current workspace. When using the Command window or <a id="1372"></a>running a script and you access the value of a variable, the system will reach into your current workspace and then into the MATLAB system libraries to find its current value. This is referred to as Global Scope. When you run a function, its local variables, including the internal names of its parameters, are not included in your current <a id="1423"></a>workspace, and it does not look into your current workspace for values of variables it needs. This is referred to as <a id="1327"></a>Local Scope, wherein the variables within a function are not visible from outside and the function is unable to cause side effects by making assignments to variables in other workspaces except by <a id="1283"></a>returning results. To illustrate variable <a id="1403"></a>scoping, do Exercise 3.3.</p>
 			</div>
 			<div class="exercise">#exercise_3_3#</div>
 		</div>
@@ -182,9 +182,9 @@
 			<!-- Global Variables -->
 			<h3 id="3_3_9">3.3.9	Global Variables</h3>
 			<div class="container">
-				<p>Because MATLAB always copies the input data into the function's workspace,<a id="1201"></a> there are occasions when it is very inefficient to pass large data sets into and out of a function. To avoid passing large amounts of data,<a id="1140"></a> we can use global<a id="1069"></a> variables. Global variables must be defined in both the calling script and the function using the key word global<a id="1070"></a>. For example<a id="1188"></a>, suppose we collect a large volume of data in a variable buffer and do not want to copy the whole buffer into and out of a function that processes that data. In this case<a id="1020"></a>, we declare the variable to be global<a id="1071"></a> in both the calling space and the called function by placing the following line of code before the variable is first used in both places:</p>
-				<p><code>global<a id="1072"></a> buffer</code></p>
-				<p>The function will then be able to access and modify the values in buffer without having to pass it in and out as a parameter. This feature must be used with caution, however, because any function with global<a id="1073"></a> access to data is empowered to change that data. In other words, the use of global<a id="1074"></a> data circumvents the natural MATLAB language's encapsulation<a id="1035"></a> mechanisms.</p>
+				<p>Because MATLAB always copies the input data into the function's <a id="1424"></a>workspace, there are occasions when it is very inefficient to pass large data sets into and out of a function. To avoid passing large amounts of <a id="1360"></a>data, we can use <a id="1266"></a><a id="1287"></a><a id="1394"></a>global variables. Global variables must be defined in both the calling script and the function using the key word <a id="1267"></a><a id="1288"></a><a id="1395"></a>global. For example, suppose we collect a large volume of data in a variable buffer and do not want to copy the whole buffer into and out of a function that processes that data. In this <a id="1212"></a>case, we declare the variable to be <a id="1268"></a><a id="1289"></a><a id="1396"></a>global in both the calling space and the called function by placing the following line of code before the variable is first used in both places:</p>
+				<p><code><a id="1269"></a><a id="1290"></a><a id="1397"></a>global buffer</code></p>
+				<p>The function will then be able to access and modify the values in buffer without having to pass it in and out as a parameter. This feature must be used with caution, however, because any function with <a id="1270"></a><a id="1291"></a><a id="1398"></a>global access to data is empowered to change that data. In other words, the use of <a id="1271"></a><a id="1292"></a><a id="1399"></a>global data circumvents the natural MATLAB language's <a id="1227"></a><a id="1263"></a>encapsulation mechanisms.</p>
 			</div>
 		</div>
 	</div>
@@ -198,7 +198,7 @@
 				<p class="figure-name card-title">Figure 3.2: A Flange</p>
 			</div>
 			<p><b>Problem:</b></p>
-			<p>Consider the disk shown in Figure 3.2 commonly referred to as a "flange". Flanges are used in many systems where a pipe must be separated for ease of assembly or maintenance. A flange is welded to each part of the pipe and nuts and bolts then hold<a id="1076"></a> the two parts of the pipe securely. For example<a id="1189"></a>, pipes carry fuel through the body from one wing to the other of an aircraft.  Since the wings are manufactured individually and then attached to the body of the aircraft, all pipes between the wing and body need flanges.</p>
+			<p>Consider the disk shown in Figure 3.2 commonly referred to as a "flange". Flanges are used in many systems where a pipe must be separated for ease of assembly or maintenance. A flange is welded to each part of the pipe and nuts and bolts then <a id="1273"></a><a id="1274"></a><a id="1309"></a><a id="1310"></a>hold the two parts of the pipe securely. For example, pipes carry fuel through the body from one wing to the other of an aircraft.  Since the wings are manufactured individually and then attached to the body of the aircraft, all pipes between the wing and body need flanges.</p>
 			<p>Our flange has a radius <code>R</code>, height <code>h</code>, one central hole with radius <code>cr</code> and eight cylindrical holes each of radius <code>hr</code> bored in it. During the process of designing an aircraft, we need to know the weight of this flange including the amount of paint required to finish it. The weight and the amount of paint for the machine is the sum of the values for each component. Since the weight of our disk is proportional to its volume and the amount of paint is proportional to its "wetted area", we need the volume and area of this flange.</p>
 			<p>Write a script to compute the volume of the flange and its wetted area.</p>
 			<p><b>Solution:</b></p>
@@ -223,11 +223,11 @@
 			<li>Functions are defined in a file of the same name using the key word
 			function to distinguish them from scripts</li>
 			<li>Parameters are copied in sequence into the function and given the
-			names of the formal<a id="1047"></a> parameters</li>
-			<li>Results are returned to the caller by assigning<a id="1173"></a> value(<a id="1158"></a>s) to the return
+			names of the <a id="1239"></a>formal parameters</li>
+			<li>Results are returned to the caller by <a id="1392"></a>assigning <a id="1377"></a>value(s) to the return
 			variable(s)</li>
 			<li>Variables within the function can be accessed only in the function's
-			code block unless they are declared global<a id="1075"></a></li>
+			code block unless they are declared <a id="1272"></a><a id="1293"></a><a id="1400"></a>global</li>
 			<li>Helper functions accessible only to functions within the same file
 			may be added below the main function and otherwise obey the
 			same rules as the main function</li>
@@ -242,10 +242,10 @@ chapter:
 <ol>
 <li>All data used by a function must be passed in as parameters to the function.</li>
 <li>The name of the first function in an m-file must match the name of the file containing its definition.</li>
-<li>The first documentation<a id="1032"></a> line appears in the Current Directory<a id="1027"></a> listing.</li>
+<li>The first <a id="1224"></a>documentation line appears in the <a id="1219"></a>Current Directory listing.</li>
 <li>Functions must consume at least one parameter.</li>
 <li>The calling code must provide assignments for every result returned from a function.</li>
-<li>The names of auxiliary<a id="1018"></a> functions must begin with local_.</li>
+<li>The names of <a id="1210"></a><a id="1260"></a>auxiliary functions must begin with local_.</li>
 </ol>
 <h3>Fill in the Blanks</h3>
 <ol>
@@ -260,55 +260,55 @@ Other functions in the m-file can only be called from the __________________ or	
 
 <h3>Programming Projects</h3>
 <ol>
-<li>Write a function called checkFactor that takes in two numbers<a id="1125"></a> and checks if they are divisible, that is, if the first is divisible by the second. You may assume that both numbers<a id="1126"></a> are positive. Your function should return a logical<a id="1133"></a><a id=<a id="1121"></a>"1009"></a> value, true<a id="1110"></a> or false<a id="1037"></a>.<br>
-For example<a id="1190"></a>:<br>
+<li>Write a function called checkFactor that takes in two <a id="1339"></a>numbers and checks if they are divisible, that is, if the first is divisible by the second. You may assume that both <a id="1340"></a>numbers are positive. Your function should return a <a id="1201"></a><a id="1328"></a><a id="1350"></a><a id="1418"></a>logical value, <a id="1315"></a>true or <a id="1229"></a>false.<br>
+For example:<br>
  
-checkFactor(25,6) should return false<a id="1038"></a><br>
-checkFactor (9,3) should return true<a id="1111"></a>.<br>
- checkFactor (3,9) should return false<a id="1039"></a>.</li>
-<li>Write and test the code for the function mysteryFunction that consumes a vector<a id="1180"></a>, V, and produces a new vector<a id="1181"></a>, W, of the same length where each element of W is the sum of the corresponding element in V and the previous element of V. Consider the previous element of V(1) to be 0.<br>
-For example<a id="1191"></a>:<br>
+checkFactor(25,6) should return <a id="1230"></a>false<br>
+checkFactor (9,3) should return <a id="1316"></a>true.<br>
+ checkFactor (3,9) should return <a id="1231"></a>false.</li>
+<li>Write and test the code for the function mysteryFunction that consumes a <a id="1408"></a>vector, V, and produces a new <a id="1409"></a>vector, W, of the same length where each element of W is the sum of the corresponding element in V and the previous element of V. Consider the previous element of V(1) to be 0.<br>
+For example:<br>
 
 mysteryFunction( 1:8 ) should return [1 3 5 7 9 11 13 15]<br>
 mysteryFunction([1:6].^2) should return [1 5 13 25 41 61]</li>
-<li>Coming off a respectable 7–6 record last year, your football team is looking to improve on that this season. They have contacted you and asked for your help<a id="1102"></a> projecting some of the scenarios for their
-win–loss record. They want you to write a function called teamRecord that takes in two parameters—wins, and losses, and returns two values—season and wPercentage. Season should be a logical<a id="1010"></a> result that is true<a id="1112"></a> for a winning season. wPercentage is the percentage of games won (ranging from 0 to 100).<br>
-For example<a id="1192"></a>:<br>
-[season wPercentage] = teamRecord(3, 9) should return season = false<a id="1040"></a>, wPercentage = 25<br>
-[season wPercentage] = teamRecord(10, 2) should return season = true<a id="1113"></a>, wPercentage = 83.3</li>
-<li>Write a function called classAverage that takes in an array<a id="1003"></a> of numbers<a id="1127"></a> and, after normalizing the grades in such a way that the highest corresponds to 100, returns the letter grade of the class average. The grade ranges are as follows:<br>
+<li>Coming off a respectable 7–6 record last year, your football team is looking to improve on that this season. They have contacted you and asked for your <a id="1305"></a>help projecting some of the scenarios for their
+win–loss record. They want you to write a function called teamRecord that takes in two parameters—wins, and losses, and returns two values—season and wPercentage. Season should be a <a id="1202"></a><a id="1351"></a><a id="1419"></a>logical result that is <a id="1317"></a>true for a winning season. wPercentage is the percentage of games won (ranging from 0 to 100).<br>
+For example:<br>
+[season wPercentage] = teamRecord(3, 9) should return season = <a id="1232"></a>false, wPercentage = 25<br>
+[season wPercentage] = teamRecord(10, 2) should return season = <a id="1318"></a>true, wPercentage = 83.3</li>
+<li>Write a function called classAverage that takes in an <a id="1194"></a>array of <a id="1341"></a>numbers and, after normalizing the grades in such a way that the highest corresponds to 100, returns the letter grade of the class average. The grade ranges are as follows:<br>
 average>90 => A<br>
 80<=average<90 => B<br>
 70<=average<80 => C<br>
 60<=average<70 => D<br>
 average<60	=> F<br>
-For example<a id="1193"></a>:<br>
+For example:<br>
 classAverage( [70 87 95 80 80 78 85 90 66
 89 89 100] ) should return B<br>
 classAverage( [50 90 61 82 75 92 81 76 87 41
 31 98] ) should return C<br>
 classAverage( [10 10 11 32 53 12 34 74 31 30
 26 22] ) should return F</li>
-<li>Write a function called myMin4 that will take in four numbers<a id="1128"></a> and returns the minimum value and an index showing which parameter it was. You may not use the built-in min(<a id="1081"></a>) function.<br>
-For example<a id="1194"></a>:<br>
+<li>Write a function called myMin4 that will take in four <a id="1342"></a>numbers and returns the minimum value and an index showing which parameter it was. You may not use the built-in <a id="1279"></a><a id="1335"></a>min() function.<br>
+For example:<br>
 myMin4(1,3,5,7) should return 1 and 1<br>
 myMin4(8,9,2,4) should return 2 and 3</li>
-<li>Write the function meansAndMedian that takes in a vector<a id="1182"></a> of numbers<a id="1129"></a> and returns the arithmetic<a id="1002"></a> and geometric means, as well as the median.<br>
-You may not use the built-in functions mean(<a id="1078"></a>), median(), or geomean().<br>
+<li>Write the function meansAndMedian that takes in a <a id="1410"></a>vector of <a id="1343"></a>numbers and returns the <a id="1193"></a><a id="1200"></a><a id="1416"></a>arithmetic and geometric means, as well as the median.<br>
+You may not use the built-in functions <a id="1276"></a><a id="1332"></a>mean(), median(), or geomean().<br>
  
-Hints: The built-in function sort(<a id="1086"></a>) might help<a id="1103"></a> to compute the median of the vector<a id="1183"></a>.<br>
-You could type "help<a id="1104"></a> geomean" to familiarize yourself with computing the geometric mean of a group of numbers<a id="1130"></a>.</li>
-<li>Given an array<a id="1004"></a> of numbers<a id="1131"></a> that could be negative, write a function posavg(a) to calculate and return the average (mean) of the non- negative numbers in the single dimensional array<a id="1005"></a>, a. One such solution is mean(<a id="1079"></a>a(find(a>0))). In order to test your understanding
-of class concepts, re-implement the posavg(a) function using iteration<a id="1117"></a>.<br>
-You may not use the built-in functions sum(<a id="1087"></a>...), find(<a id="1042"></a>...), or mean(<a id="1080"></a>...) in your solution.</li>
-<li>Write a function called sumAndAverage. It should take in an array<a id="1006"></a> of numbers and return the sum and average of the array<a id="1007"></a> in that order.<br>
-For example<a id="1195"></a>:<br>
+Hints: The built-in function <a id="1284"></a><a id="1373"></a>sort() might <a id="1306"></a>help to compute the median of the <a id="1411"></a>vector.<br>
+You could type "<a id="1307"></a>help geomean" to familiarize yourself with computing the geometric mean of a group of <a id="1344"></a>numbers.</li>
+<li>Given an <a id="1195"></a>array of <a id="1345"></a>numbers that could be negative, write a function posavg(a) to calculate and return the average (mean) of the non- negative numbers in the single dimensional <a id="1196"></a>array, a. One such solution is <a id="1277"></a><a id="1333"></a>mean(a(find(a>0))). In order to test your understanding
+of class concepts, re-implement the posavg(a) function using <a id="1322"></a>iteration.<br>
+You may not use the built-in functions <a id="1285"></a><a id="1375"></a>sum(...), <a id="1234"></a><a id="1264"></a>find(...), or <a id="1278"></a><a id="1334"></a>mean(...) in your solution.</li>
+<li>Write a function called sumAndAverage. It should take in an <a id="1197"></a>array of numbers and return the sum and average of the <a id="1198"></a>array in that order.<br>
+For example:<br>
 
 sumAndAverage([3 2 3 2]) should return 10 and 2.5<br>
 sumAndAverage([5 -5 2 8 0]) should return 10 and 2<br>
 sumAndAverage([]) should return 0 and 0</li>
-<li>You are already familiar with the logical<a id="1011"></a> operators<a id="1132"></a> &<a id="1135"></a>&<a id="1136"></a> (and) and || (or), as well as the unary negation operator ~(not). In a
-weakly typed language such as MATLAB, the binary<a id="1019"></a> states true<a id="1114"></a> and false<a id="1041"></a> could be equivalently expressed as a 1 or a 0, respectively. Let us now consider a ternary number system, consisting of the states true(1), maybe(2), and false(0). The truth table for such a system is shown below. Implement the truth table by writing<a id="1115"></a> the functions f=tnot(x), f=tand(x,y), and f=tor(x,y). You may not assume that only valid input numbers will be entered.<br>
+<li>You are already familiar with the <a id="1203"></a><a id="1352"></a><a id="1420"></a>logical <a id="1349"></a>operators <a id="1354"></a>&<a id="1355"></a>& (and) and || (or), as well as the unary negation operator ~(not). In a
+weakly typed language such as MATLAB, the <a id="1211"></a>binary states <a id="1319"></a>true and <a id="1233"></a>false could be equivalently expressed as a 1 or a 0, respectively. Let us now consider a ternary number system, consisting of the states true(1), maybe(2), and false(0). The truth table for such a system is shown below. Implement the truth table by <a id="1320"></a><a id="1376"></a>writing the functions f=tnot(x), f=tand(x,y), and f=tor(x,y). You may not assume that only valid input numbers will be entered.<br>
 <table>
 <tr><th>  x  </th><th>  y  </th><th>tnot(x)</th><th>tand(x,y)</th><th>tor(x,y)</th></tr>
 <tr><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
@@ -322,10 +322,10 @@ weakly typed language such as MATLAB, the binary<a id="1019"></a> states true<a 
 <tr><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
 </table>
 </li>
-<li>Write a function called multiSum(A). This particular function should take in a N x M array<a id="1008"></a>, A, and return four results:<br>
-A 1 x M vector<a id="1184"></a> with the sum of the columns, A N x 1 vector<a id="1185"></a> with the sum of the rows, and
-Two numbers containing the sums of the two diagonals, the major diagonal<a id="1029"></a> first.<br>
-For example<a id="1196"></a>:<br>
+<li>Write a function called multiSum(A). This particular function should take in a N x M <a id="1199"></a>array, A, and return four results:<br>
+A 1 x M <a id="1412"></a>vector with the sum of the columns, A N x 1 <a id="1413"></a>vector with the sum of the rows, and
+Two numbers containing the sums of the two diagonals, the major <a id="1221"></a>diagonal first.<br>
+For example:<br>
 
 columnSum([1 2 3; 4 5 6; 7 8 9]) should return
 [12 15 18], [6 15 24]', 15 and 15<br>
@@ -333,12 +333,12 @@ columnSum([0 2 3; 4 0 6; 7 8 0]) should return
 [11 10 9], [5 10 15]', 0 and 10<br>
 columnSum(eye[5,5]) should return [1 1 1 1 1], [1 1 1 1 1]', 5 and 1<br>
 columnSum([]) should return [], [], 0 and 0</li>
-<li>You are playing a game where you roll a die 10 times. If you roll a 5 or 6 seven or more times, you win 2 dollars; four or more times, you win 1 dollar; and if you roll a 5 or 6 three or less<a id="1119"></a> times, you win no money. Write a function called diceGame that takes in a vector<a id="1186"></a> representing the die values and returns the amount of money won.<br>
-For example<a id="1197"></a>:<br>
+<li>You are playing a game where you roll a die 10 times. If you roll a 5 or 6 seven or more times, you win 2 dollars; four or more times, you win 1 dollar; and if you roll a 5 or 6 three or <a id="1324"></a><a id="1326"></a>less times, you win no money. Write a function called diceGame that takes in a <a id="1414"></a>vector representing the die values and returns the amount of money won.<br>
+For example:<br>
 diceGame([5 1 4 6 5 5 6 6 5 2]) should return 2<br>
 diceGame([2 4 1 3 6 6 6 4 5 3]) should return 1<br>
 diceGame([1 4 3 2 5 3 4 2 6 5]) should return 0<br>
-Note: This function should work for any length vector<a id="1187"></a>.</li>
+Note: This function should work for any length <a id="1415"></a>vector.</li>
  
 </ol>
 </div>

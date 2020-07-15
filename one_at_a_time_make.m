@@ -43,6 +43,7 @@ function one_at_a_time
         fprintf('23_text_index.htm\n')
         fprintf('99_Quit\n');
         fprintf('last choice was %d\n', choice);
+        beep
         choice = input('Choose your action: ');    
         if choice ~= 99
             doit(choice)
@@ -221,11 +222,11 @@ function file = findToConvert(file, info, name, type)
     end
     try 
         matlab.internal.liveeditor.openAndConvert(which(name), newname);
+        delete(which(name));
     catch ME
         ME
         error('error at openAndConvert') ;
     end
-    delete(which(name));
     listing = fileread(newname);
     listing = strrep(listing, ': nowrap;', ': normal;');
     listing = strrep(listing, ': pre;', ': normal;');

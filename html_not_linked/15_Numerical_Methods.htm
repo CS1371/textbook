@@ -82,7 +82,7 @@
           <p>The MATLAB language allows us to provide a fourth parameter to the interp1(...) function that must be a string that modifies its behavior. The choices are as follows:</p>
           <ul style="list-style-type:none">
               <li><code>'nearest'</code> nearest neighbor interpolation </li>
-              <li><code>'1inear'</code> linear interpolation—the default</li>
+              <li><code>'1inear'</code> linear interpolation &mdash; the default</li>
               <li><code>'spline'</code> piecewise cubic spline interpolation (see Section 15.1.2)</li>
               <li><code>'pchip'</code> shape-preserving piecewise cubic interpolation</li>
               <li><code>'cubic'</code> same as <code>'pchip'</code></li>
@@ -97,7 +97,8 @@
       <h3 id="15_1_2">15.1.2	Cubic Spline Interpolation</h3>
       <div class="container clearfix">
           <p>A <b>cubic spline</b> is a smooth curve constructed to go through a set of points. The curve between each pair of  points is a third-degree polynomial that has the general form:</p>
-          $$ {x = a_{x0}{t^3} + a_{x1}{t^2} + a_{x2}{t} + a_{x3}} and {y = a_{y0}{t^3} + a_{y1}{t^2} + a_{y2}{t} + a_{y3}} $$
+          $$ {x = a_{x0}{t^3} + a_{x1}{t^2} + a_{x2}{t} + a_{x3}} $$ <br>
+		  $$ {y = a_{y0}{t^3} + a_{y1}{t^2} + a_{y2}{t} + a_{y3}} $$
           <p>where <code>t</code> is a parameter ranging from 0 to 1 between each pair of points. The coefficients are computed so that this provides a smooth curve between pairs of points and a smooth transition between the adjacent curves. Figure 15.4 shows a cubic spline smoothly connecting six points using a total of five different cubic equations.</p>
           <p>The function that performs linear interpolation is as follows:</p>
           <p><code>new_y = spline(x, y, new_x);</code></p>
@@ -117,7 +118,7 @@
                           <li>Use symbols to plot data points that are real values with no associated information connecting them.</li>
                           <li>Draw lines between data points only when there is an analytic relationship that connects the data points.</li>
                       </ul>
-                      <p>Here, we use a circle symbol for the raw data to emphasize the original source of the information, and a smooth line for the spline curve to indicate that we are assuming a possibly erroneous but continous relationship between data points.</p>
+                      <p>Here, we use a circle symbol for the raw data to emphasize the original source of the information, and a smooth line for the spline curve to indicate that we are assuming a possibly erroneous but continuous relationship between data points.</p>
                   </p>
               </div>
           </div>
@@ -405,7 +406,7 @@ as the original vector.</li>
 </ol>
 <h3>Fill in the Blanks</h3>
 <ol>
-<li>___________ is the technique by which we estimate a variable’s
+<li>___________ is the technique by which we estimate a variable's
 value between known values.</li>
           <li>Nth-order polynomial regression determines the ____________ of
 order n that minimize the ______________ between the line and the

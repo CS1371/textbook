@@ -152,7 +152,7 @@
     <!-- Graphs -->
     <h2 id="17_4">17.4 Graphs</h2>
     <div class="container">
-        <p> This chapter focuses on processing a graph — the most general form of dynamic data structure, an arbitrary collection of nodes connected by edges. The edges may be directional to indicate that the graph can be traversed along that edge in only one direction (like a one-way street). The edges may also have a value associated with them to indicate, for example, the cost of traversing that edge. We refer to this as a weighted graph. For a street map, this cost could either be the distance, or in a more sophisticated system, the travel time—a function of the distance, the speed limit, and the traffic congestion. Graphs are not required to be completely connected, and they may contain cycles - closed loops in which the unwary algorithm could become trapped. Graphs also have no obvious starting and stopping points. Finally, a path on a graph is a connected list of edges that is the result of traversing a graph.</p>
+        <p> This chapter focuses on processing a graph &mdash; the most general form of dynamic data structure, an arbitrary collection of nodes connected by edges. The edges may be directional to indicate that the graph can be traversed along that edge in only one direction (like a one-way street). The edges may also have a value associated with them to indicate, for example, the cost of traversing that edge. We refer to this as a weighted graph. For a street map, this cost could either be the distance, or in a more sophisticated system, the travel time &mdash; a function of the distance, the speed limit, and the traffic congestion. Graphs are not required to be completely connected, and they may contain cycles &mdash; closed loops in which the unwary algorithm could become trapped. Graphs also have no obvious starting and stopping points. Finally, a path on a graph is a connected list of edges that is the result of traversing a graph.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Graph Examples">
@@ -163,7 +163,7 @@
               <img src="..\Images\Fig_17_5.JPG" alt="Figure 17.5" class="fig card-image">
               <p class="figure-name card-title">Figure 17.5: A Simple Graph</p>
           </div>
-          <p>A simple graph is shown in Figure 17.5. In the figure, the connection points 0 ... 10 are the nodes and the edges are the interconnecting lines, which in this example are not directional but are weighted. Graphs occur frequently in everyday life, as illustrated by the street map shown in Figure 17.1. Street maps can be conveniently represented as graphs where intersections are the nodes and streets are the edges. Streets can be directional (one-way), and they may have weights associated with them - either the transit time (a function of the length of the street and its speed limit) or, with access to real-time traffic information, a more complex estimate of the transit time.</p>
+          <p>A simple graph is shown in Figure 17.5. In the figure, the connection points 0 ... 10 are the nodes and the edges are the interconnecting lines, which in this example are not directional but are weighted. Graphs occur frequently in everyday life, as illustrated by the street map shown in Figure 17.1. Street maps can be conveniently represented as graphs where intersections are the nodes and streets are the edges. Streets can be directional (one-way), and they may have weights associated with them &mdash; either the transit time (a function of the length of the street and its speed limit) or, with access to real-time traffic information, a more complex estimate of the transit time.</p>
       </div>
     </div>
 
@@ -174,7 +174,7 @@
         <p>In designing algorithms that operate on graphs in general, we need to consider the following constraints:</p>
         <ul>
             <li>With cycles permitted in the data, there is no natural starting point like the beginning of a cell array. Consequently, the user must always specify a place on the graph to start as well as the place to stop.</li>
-            <li>There are no natural “leaf nodes” where a search might have to stop and back up. Consequently, an algorithm processing a graph must have a means of determining that being at a given node is the “end of the line.” Typically, this is accomplished by maintaining a collection of visited nodes as it progresses around the graph. Each time a node is considered, the algorithm must check to see whether that node is already in the visited collection. If so, it refuses to return to that node. The algorithm must backtrack if it reaches a node from which there is no edge to a node that has not already been visited.</li>
+            <li>There are no natural "leaf nodes" where a search might have to stop and back up. Consequently, an algorithm processing a graph must have a means of determining that being at a given node is the "end of the line." Typically, this is accomplished by maintaining a collection of visited nodes as it progresses around the graph. Each time a node is considered, the algorithm must check to see whether that node is already in the visited collection. If so, it refuses to return to that node. The algorithm must backtrack if it reaches a node from which there is no edge to a node that has not already been visited.</li>
             <li>Whereas on a cell array there is only one feasible path from one node to another, there may be many possible paths between two nodes on a graph. The best algorithms that search for paths must take into account a comparison between paths to determine the best one.  For a simple, consistent example, consider the graph shown in Figure 17.5. We will use this simple example to demonstrate minimum spanning trees (MSTs) and finding paths through the graph.</li>
         </ul>
       </div>
@@ -195,7 +195,7 @@
           <p class="figure-name card-title">Fig 17.6: Animation of Prims MST Algorithm</p>
         </div>
         <p>Since they are both very similar in concept and produce the correct answer, we will only consider one: Prims algorithm.</p>
-        <p>Prims algorithm finds the subset of the edges of the graph that connect every node exactly once whose total cost is not greater than that of any other spanning tree. The algorithm continuously increases the size of a tree, one edge at a time, starting with a tree consisting of a single node, until it spans all the nodes. Specifically, given a graph as defined in Figure 17.5, Prim’s algorithm proceeds as shown in Listing 17.2.</p>
+        <p>Prims algorithm finds the subset of the edges of the graph that connect every node exactly once whose total cost is not greater than that of any other spanning tree. The algorithm continuously increases the size of a tree, one edge at a time, starting with a tree consisting of a single node, until it spans all the nodes. Specifically, given a graph as defined in Figure 17.5, Prims algorithm proceeds as shown in Listing 17.2.</p>
         <p>Figure 17.6 is a pair of animations of Prims algorithm applied to a small graph and then a larger, but still manageable graph.</p>
     </div>
     <div class="listing">#listing_17_2#</div>
@@ -251,9 +251,9 @@
               </div>
               <div class="col-sm-5 card">
                   <div class="fig-long">
-                      <img src="..\Images\BFS.JPG" alt="Figure 17.10" class="fig card-image">
+                      <img src="..\Images\BFS.jpg" alt="Figure 17.10" class="fig card-image">
                   </div>
-                  <p class="figure-name card-title">Fig 17.10: Queue after the first BFS search</p>
+                  <p class="figure-name card-title">Figure 17.10: Queue after the first BFS search</p>
               </div>
           </div>
       </div>
@@ -324,7 +324,6 @@
       </div>
     </div>
   </div>
-Summary
   <div class="chp-section" data-sect-num="7" data-sect-name="Engineering Applications">
     <!-- Engineering Applications -->
     <h2 id="17_7">17.7	Engineering Applications</h2>

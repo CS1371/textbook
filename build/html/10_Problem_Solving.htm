@@ -1,0 +1,475 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>10_Problem_Solving</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="styles/styles.css" />
+<script async src="./javascript/index.js"></script>
+</style>
+</head>
+<body>
+  <div><nav class="navbar navbar-expand-lg fixed-top top-nav navbar-light bg-light"><a class="navbar-brand" href="#"><img src="../Images/1371.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbspEngineering Computation Using MATLAB</a></nav></div>
+  <div class="nav-obj"><nav class="nav sidenav nav-scroll navbar-dark bg-dark"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="..\..\index.html">Home</a></li><li class="nav-item"><a class="nav-link" href="Preface.htm">Preface</a></li><li class="nav-item"><div class="nav-link"><a href="01_Introduction.htm#1">1 Introduction&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_1"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_1">1.1 Background</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_2">1.2 History of Computer Architectures&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_1_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_1_2"><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_2_1">1.2.1 Babbage's Difference Engine</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_2_2">1.2.2 Colossus</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_2_3">1.2.3 The von Neumann Architecture</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_3">1.3 Modern Computer Software&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_1_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_1_3"><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_1">1.3.1 Operating Systems</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_2">1.3.2 Software Tools</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_3">1.3.3 Programming Languages</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_4">1.3.4 Running a Computer Program</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_5">1.3.5 Running an Interpreted Program</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_4">1.4 Anticipated Outcomes&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_1_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_1_4"><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_4_1">1.4.1 Introduction to MATLAB</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_4_2">1.4.2 Learning Programming Concepts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_4_3">1.4.3 Problem-Solving Skills</a></div></li></ul></li></ul></li><li class="nav-item"><div class="nav-link"><a href="02_Basics.htm#2">2 Basics&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_2"><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_1">2.1 Programming Language Background&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_1"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_1_1">2.1.1 Abstraction</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_1_2">2.1.2 Algorithms</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_1_3">2.1.3 Programming Paradigms</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_2">2.2 Basic Data Manipulation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_2"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_1">2.2.1 Starting and Stopping MATLAB</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_2">2.2.2 Assigning Values to Variables</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_3">2.2.3 Data Typing</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_4">2.2.4 Classes and Objects</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_3">2.3 MATLAB User Interface&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_3"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_1">2.3.1 Command Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_2">2.3.2 Command History</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_3">2.3.3 Workspace Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_4">2.3.4 Current Folder Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_5">2.3.5 Variable Editor</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_6">2.3.6 Figure Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_7">2.3.7 Editor Window</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_4">2.4 Scripts&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_4"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_1">2.4.1 Text Files</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_2">2.4.2 Creating Scripts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_3">2.4.3 The Current Directory</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_4">2.4.4 Running Scripts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_5">2.4.5 Punctuating Scripts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_6">2.4.6 Debugging Scripts</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_5">2.5 Engineering Example - Spacecraft Launch</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="03_Functions.htm#3">3 Functions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_3"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_1">3.1 Concepts: Abstraction and Encapsulation</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_2">3.2 Black Box View of a Function</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_3">3.3 MATLAB Implementation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_3_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_3_3"><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_1">3.3.1 General Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_2">3.3.1 Function Definition</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_3">3.3.3 Storing and Using Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_4">3.3.4 Calling Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_5">3.3.5 Variable Number of Parameters</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_6">3.3.6 Returning Multiple Results</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_7">3.3.7 Auxiliary Local Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_8">3.3.8 Encapsulation in MATLAB Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_9">3.3.9 Global Variables</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_4">3.4 Engineering Example: Measuring a Solid Object</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="04_Vectors.htm#4">4 Vectors&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_4"><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_1">4.1 Concept: Data Collection&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_4_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_4_1"><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_1_1">4.1.1 Data Abstraction</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_1_2">4.1.2 Homogeneous Collections</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_2">4.2 Vectors&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_4_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_4_2"><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_1">4.2.2 Creating a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_2">4.2.2 Size of a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_3">4.2.3 Indexing a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_4">4.2.4 Shortening a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_5">4.2.5 Operating on Vectors</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_3">4.3 Engineering Example - Forces and Moments</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_4">4.4 Arrays&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_4_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_4_4"><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_1">4.4.1 Properties of an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_2">4.4.2 Creating an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_3">4.4.3 Accessing Elements of an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_4">4.4.4 Removing Elements of an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_5">4.4.5 Operating on Arrays</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_5">4.5 Engineering Example - Computing Soil Volume</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="05_Execution.htm#5">5 Execution&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_5"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_1">5.1 Concept: Code Blocks</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_2">5.2 Conditional Execution in General</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_3">5.3 if Statements&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_3"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_3_1">5.3.1 General Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_3_2">5.3.2 MATLAB Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_3_3">5.3.3 Important Ideas</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_4">5.4 switch Statements&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_4"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_4_1">5.4.1 General Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_4_2">5.4.2 MATLAB Implementation</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_5">5.5 Iteration in General</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_6">5.6 for Loops&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_6"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_1">5.6.1 General for Loop Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_2">5.6.2 MATLAB Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_3">5.6.3 Indexing Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_4">5.6.4 Breaking out of a for Loop</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_7">5.7 while Loops&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_7" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_7"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_1">5.7.1 General while Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_2">5.7.2 MATLAB while Loop Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_3">5.7.3 Loop-and-a-Half Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_4">5.7.4 Breaking a while Loop</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_8">5.8 Engineering Example - Computing Liquid Levels</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="06_Strings.htm#6">6 Strings&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_6"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_1">6.1 Character String Concepts: Mapping, Casting, Tokens, and Delimiting</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_2">6.2 MATLAB Implementation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_6_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_6_2"><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_2_1">6.2.1 Slicing and Concatenating Strings</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_2_2">6.2.2 Arithmetic and Logical Operations</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_2_3">6.2.3 Useful Functions</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_3">6.3 Format Conversion Functions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_6_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_6_3"><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_3_1">6.3.1 Conversion from Numbers to Strings</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_3_2">6.3.2 Conversion from Strings to Numbers and Other Stuff</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_4">6.4 Character String Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_6_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_6_4"><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_4_1">6.4.1 Simple Data Output: The disp(...) Function</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_4_2">6.4.2 Complex Output</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_4_3">6.4.3 Comparing Strings</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_5">6.5 Arrays of Strings</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_6">6.6 Engineering Example - Encryption</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="07_Structures.htm#7">7 Structures&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_7" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_7"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_1">7.1 Concept: Collecting Dissimilar Objects</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_2">7.2 Cell Arrays&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_7_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_7_2"><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_1">7.2.1 Creating Cell Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_2">7.2.2 Accessing Cell Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_3">7.2.3 Using Cell Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_4">7.2.4 Processing Cell Arrays</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_3">7.3 Structures&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_7_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_7_3"><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_3_1">7.3.1 Constructing and Accessing One Structure</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_3_2">7.3.2 Constructor Functions</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_4">7.4 Structure Arrays&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_7_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_7_4"><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_4_1">7.4.1 Constructing Structure Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_4_2">7.4.2 Accessing Structure Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_4_3">7.4.3 Manipulating Structures</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_5">7.5 Comparing Cell Arrays to Structure Arrays</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_6">7.6 Engineering Example: Assembling a Physical Structure</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="08_File_I_O.htm#8">8 File I O&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_8" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_8"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_1">8.1 Concept: Serial Input and Output (I/O)</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_2">8.2 Workspace I/O</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3">8.3 High-Level I/O Functions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_8_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_8_3"><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3_1">8.3.1 Exploration</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3_2">8.3.2 Spreadsheets</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3_3">8.3.3 Delimited Text Files</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4">8.4 Lower-Level File I/O&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_8_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_8_4"><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4_1">8.4.1 Opening and Closing Files</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4_2">8.4.2 Reading Text Files</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4_3">8.4.3 Writing Text Files</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_5">8.5 Engineering Example - Spreadsheet Data</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="09_Recursion.htm#9">9 Recursion&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_9" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_9"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_1">9.1 Concept: The Activation Stack&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_9_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_9_1"><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_1_1">9.1.1 A Stack</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_1_2">9.1.2 Activation Stack</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_1_3">9.1.3 Function Instances</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_2">9.2 Recursion Defined</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_3">9.3 Implementing a Recursive Function</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_4">9.4 Exceptions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_9_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_9_4"><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_4_1">9.4.1 Historical Approaches</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_4_2">9.4.2 Generic Exception Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_4_3">9.4.3 MATLAB Implementation</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_5">9.5 Wrapper Functions</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_6">9.6 Examples of Recursion&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_9_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_9_6"><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_6_1">9.6.1 Detecting Palindromes</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_6_2">9.6.2 Fibonacci Series</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_6_3">9.6.3 Zeros of a Function</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_7">9.7 Engineering Example - Robot Arm Motion</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="10_Problem_Solving.htm#10">10 Problem Solving&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_10" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_10"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_1">10.1 Solving Simple Problems</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_2">10.2 Assembling Solution Steps</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3">10.3 Summary of Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_10_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_10_3"><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_1">10.3.1 Basic Arithmetic Operations</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_2">10.3.2 Inserting into a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_3">10.3.3 Traversing a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_4">10.3.4 Building a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_5">10.3.5 Mapping a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_6">10.3.6 Filtering a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_7">10.3.7 Folding a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_8">10.3.8 Searching a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_9">10.3.9 Sorting a Collection</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_4">10.4 Solving Larger Problems</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_5">10.5 Engineering Example - Processing Geopolitical Data</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="11_Plotting.htm#11">11 Plotting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_11" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_11"><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_1">11.1 Plotting in General&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_1"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_1">11.1.1 A Figure - The Plot Container</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_2">11.1.2 Simple Functions for Enhancing Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_3">11.1.3 Multiple Plots on One Figure - Subplots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_4">11.1.4 Manually Editing Plots</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_2">11.2 2-D Plotting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_2"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_1">11.2.1 Simple Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_2">11.2.2 Plot Options</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_3">11.2.3 Parametric Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_4">11.2.4 Other 2-D Plot Capabilities</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_3">11.3 3-D Plotting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_3"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_3_1">11.3.1 Linear 3-D Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_3_2">11.3.2 Linear Parametric 3-D Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_3_3">11.3.3 Other 3-D Plot Capabilities</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_4">11.4 Surface Plots&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_4"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_1">11.4.1 Basic Capabilities</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_2">11.4.2 Simple Exercises</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_3">11.4.3 3-D Parametric Surfaces</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_4">11.4.4 Bodies of Rotation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_5">11.4.5 Other 3-D Surface Plot Capabilities</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_6">11.4.6 Assembling Compound Surfaces</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_5">11.5 Manipulating Plotted Data</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_6">11.6 Engineering Example - Visualizing Geographic Data&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_6"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_6_1">11.6.1 Analyzing the Data</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_6_2">11.6.2 Displaying the Data</a></div></li></ul></li></ul></li><li class="nav-item"><div class="nav-link"><a href="12_Matrices.htm#12">12 Matrices&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_12" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_12"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_1">12.1 Concept: Behavioral Abstraction</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_2">12.2 Matrix Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_2"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_2_1">12.2.1 Matrix Multiplication</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_2_2">12.2.2 Matrix Division</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_2_3">12.2.3 Matrix Exponentiation</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_3">12.3 Implementation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_3"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_3_1">12.3.1 Matrix Multiplication</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_3_2">12.3.2 Matrix Division</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_4">12.4 Rotating Coordinates&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_4"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_4_1">12.4.1 2-D Rotation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_4_2">12.4.2 3-D Rotation</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_5">12.5 Solving Simultaneous Linear Equations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_5"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_5_1">12.5.1 Intersecting Lines</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_6">12.2 Engineering Examples&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_6"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_6_1">12.2.1 Ceramic Composition</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_6_2">12.2.2 Analyzing an Electrical Circuit</a></div></li></ul></li></ul></li><li class="nav-item"><div class="nav-link"><a href="13_Images.htm#13">13 Images&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_13" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_13"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_1">13.1 Nature of an Image</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_2">13.2 Image Types&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_13_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_13_2"><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_1">13.2.1 True Color Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_2">13.2.2 Gray Scale Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_3">13.2.3 Color Mapped Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_4">13.2.4 Preferred Image Format</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_3">13.3 Reading, Displaying, and Writing Images</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_4">13.4 Operating on Images&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_13_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_13_4"><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_1">13.4.1 Stretching or Shrinking Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_2">13.4.2 Color Masking</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_3">13.4.3 Creating a Kaleidoscope</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_4">13.4.4 Images on a Surface</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_5">13.5 Engineering Example - Detecting Edges</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="14_Sounds.htm#14">14 Sounds&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_14" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_14"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_1">14.1 The Physics of Sound</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_2">14.2 Recording and Playback</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_3">14.3 Implementation</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_4">14.4 Time Domain Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_14_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_14_4"><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_4_1">14.4.2 Slicing and Concatenating Sounds</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_4_2">14.4.2 Musical Background</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_4_3">14.4.3 Changing Sound Frequency</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_5">14.5 The Fast Fourier Transform&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_14_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_14_5"><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_5_1">14.5.1 Background</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_5_2">14.5.2 Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_5_3">14.5.3 Simple Spectral Analysis</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_6">14.6 Frequency Domain Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_14_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_14_6"><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_6_1">14.6.1 Details of the Spectral Data</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_6_2">14.6.2 Notes fading with time</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_7">14.7 Engineering Example - Music Synthesizer</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="15_Numerical_Methods.htm#15">15 Numerical Methods&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_15" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_15"><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1">15.1 Interpolation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_1"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1_1">15.1.1 Linear Interpolation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1_2">15.1.2 Cubic Spline Interpolation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1_3">15.1.3 Extrapolation</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2">15.2 Curve Fitting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_2"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2_1">15.2.1 Linear Regression</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2_2">15.2.2 Polynomial Regression</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2_3">15.2.3 Practical Application</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_3">15.3 Numerical Integration&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_3"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_3_1">15.3.1 Determination of the Complete Integral</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_3_2">15.3.2 Continuous Integration Problems</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_4">15.4 Numerical Differentiation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_4"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_4_1">15.4.1 Difference Expressions</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_5">15.5 Analytical Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_5"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_5_1">15.5.1 Analytical Integration</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_5_2">15.5.2 Analytical Differentiation</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_6">15.6 Implementation</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_7">15.7 Engineering Example - Shaping the Synthesizer Notes</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="16_Sorting.htm#16">16 Sorting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_16" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_16"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_1">16.1 Measuring Algorithm Cost</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_2">16.2 Algorithms for Sorting Data&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_16_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_16_2"><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_1">16.2.1 Insertion Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_2">16.2.2 Bubble Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_3">16.2.3 Quick Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_4">16.2.4 Merge Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_5">16.2.5 Radix Sort</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_3">16.3 Performance Analysis</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_4">16.4 Applications of Sorting Algorithms&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_16_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_16_4"><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_1">16.4.1 Using sort(...)</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_2">16.4.2 Insertion Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_3">16.4.3 Bubble Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_4">16.4.4 Quick Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_5">16.4.5 Merge Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_6">16.4.6 Radix Sort</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_5">16.5 Engineering Example - A Selection of Countries</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="17_Graphs.htm#17">17 Graphs&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_17" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_17"><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_1">17.1 Stacks&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_1"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_1_1">17.1.1 The Nature of a Stack</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_1_2">17.1.2 Implementing Stacks</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_2">17.2 Queues&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_2"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_2_1">17.2.1 The Nature of a Queue</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_2_2">17.2.2 Implementing Queues</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_2_3">17.2.3 Priority Queues</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#">17.3 Testing Stacks and Queues</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_4">17.4 Graphs&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_4"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_4_1">17.4.1 Graph Examples</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_4_2">17.4.2 Processing Graphs</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_5">17.5 Minimum Spanning Trees</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_6">17.6 Finding Paths through a Graph&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_6"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_1">17.6.1 Depth-First Search</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_2">17.6.2 Breadth-First Search</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_3">17.6.3 Dijkstras Algorithm</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_4">17.6.4 An Approximation Algorithm</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_5">17.6.5 Serious Path Finding Algorithms</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_7">17.7 Engineering Applications&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_7" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_7"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_7_1">17.7.1 Simple Applications</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_7_2">17.7.2 Complex Extensions</a></div></li></ul></li></ul></li><li class="nav-item"><a class="nav-link" href="Appendix_A.htm">Appendix A</a></li><li class="nav-item"><a class="nav-link" href="Appendix_B.htm">Appendix B</a></li><li class="nav-item"><a class="nav-link" href="Appendix_C.htm">Appendix C</a></li><li class="nav-item"><a class="nav-link" href="Appendix_D.htm">Appendix D</a></li><li class="nav-item"><a class="nav-link" href="text_index.htm">Index</a></li></ul></nav></div>
+
+
+<div class="content">
+  <h1 id="10" align="center">Chapter 10: Problem Solving</h1>
+
+  <!-- Chapter Objectives -->
+  <h1>Chapter Objectives</h1>
+  <div class="container">
+    <p>This chapter presents an <a id="2989"></a>overview of framing the solutions to problems:</p>
+    <ul>
+      <li>We begin with simple problems that can be solved in a single step</li>
+      <li>We continue to strategies for solving more complex problems involving data collections by dividing the solution into the following fundamental operations that can be performed on any collection of data:<ol>
+      <li>Basic Computations</li>
+      <li>Inserting</li>
+      <li>Traversing</li>
+      <li>Building </li>
+      <li>Mapping</li>
+      <li>Filtering</li>
+      <li>Folding</li>
+      <li>Searching</li>
+      <li>Sorting</li>
+    </ul>
+    <p>Then we will briefly discuss how to combine these fundamental tools to solve more complex <a id="2956"></a>data <a id="3007"></a><a id="3010"></a>manipulation problems.</p>
+  </div>
+
+  <!-- Introduction -->
+  <h1>Introduction</h1>
+  <div class="container">
+    <p>Programming is really all about applying the computer as a tool to solve problems. One of the most difficult tasks facing novice programmers is the blank sheet of paper. Faced with a problem you have never seen before, how do you start to solve it? The <a id="2987"></a>problem-solving style recommended in this text is first to identify the basic character of the data and the basic operation(s) we are asked to perform. If these two ideas are <a id="2900"></a>clear, we can create a template or outline of the solution and begin to fill in the blanks.  As we gain more experience with the language, we have more computing tools to apply, and we can attack larger, more complex problems. We now have sufficient tools available to consider a more principled approach to <a id="2957"></a>data <a id="3008"></a><a id="3011"></a>manipulation and <a id="2959"></a>problem solving. We will begin with the typical plan for solving simple problems in one step and then continue to consider assembling multiple steps to solve more complex problems.</p>
+  </div>
+
+  <div class="chp-section" data-sect-num="1" data-sect-name="Solving Simple Problems">
+    <!-- Solving Simple Problems -->
+    <h2 id="10_1">10.1	Solving Simple Problems</h2>
+    <div class="container clearfix">
+      <div class="float-sm-right card style-points">
+        <p class="card-title">Style Points 10.1</p>
+        <p class="card-text">You might question the necessity of putting a "simple" bit of code through a rigorous analysis. However, the time when you first write a module and start using it is the time of closest scrutiny of that module.  It is amazing how quickly three things happen:
+          <ol>
+            <li>You trust that module implicitly to do the right thing</li>
+            <li>You use it in circumstances for which it was not intended</li>
+            <li>You wish you had paid more attention to defining error conditions in it.
+            </li>
+          </ol>
+        </p>
+      </div>
+
+      <p>In Chapter 2 we saw the basic plan for solving simple problems:</p>
+      <ul>
+        <li>Define the input data</li>
+        <li>Define the output data</li>
+        <li>Discover the underlying equations to solve the problem</li>
+        <li>Implement the solution</li>
+        <li>Test the results</li>
+        <li>Repair the code until it conforms to the specifications</li>
+      </ul>
+      <p>This plan works whenever the problem is simple enough that you are able to visualize the complete solution. Typically, however, problems are more complex and require a number of steps to be assembled.</p>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="2" data-sect-name="Assembling Solution Steps">
+    <!-- Assembling Solution Steps -->
+    <h2 id="10_2">10.2	Assembling Solution Steps</h2>
+    <div class="container">
+      <p>Problem complexity frequently comes in the form of data collections that need to be transformed into other collections or summarized as intermediate results. Identifying the operation(s) that will create the output from the input requires some experience. The rest of this chapter provides some guidelines for identifying elementary steps whose solutions can be combined to create solutions to many complex problems.</p>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="3" data-sect-name="Summary of Operations">
+    <!-- Summary of Operations -->
+    <h2 id="10_3">10.3	Summary of Operations</h2>
+    <div class="container">
+      <p>First, we document the operations we expect to be able to perform on collections. Table 10.1 lists the generic operations, a brief description of each, and a discussion of the consequences.</p>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>Table 10.1: Summary of Operations</tr>
+          <tr>
+            <th>Operation</th>
+            <th>Description</th>
+            <th>Consequence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Basic Step</td>
+            <td>Perform elementary operation(s)</td>
+            <td>Resulting <a id="3018"></a>value(s)</td>
+          </tr>
+          <tr>
+            <td>Insert</td>
+            <td>Inserts one item into a collection</td>
+            <td>Collection with one more item</td>
+          </tr>
+          <tr>
+            <td>Build</td>
+            <td>Creates a collection from a data source (external file or <a id="2983"></a>traversing another collection); usually accomplished by starting with an empty collection and <a id="2891"></a><a id="2906"></a><a id="2947"></a><a id="2968"></a><a id="3003"></a><a id="3019"></a>inserting one item at a time</td>
+            <td>A new collection of data</td>
+          </tr>
+          <tr>
+            <td>Traverse</td>
+            <td>Touches each item of data in the collection - frequently used to display or copy a collection</td>
+            <td>The collection is unchanged</td>
+          </tr>
+          <tr>
+            <td>Map</td>
+            <td>Changes the content of some or all of the items in the collection</td>
+            <td>A new collection of the same length, but the content of some or all items is changed</td>
+          </tr>
+          <tr>
+            <td>Filter</td>
+            <td>Removes some items from the collection</td>
+            <td>A new collection with reduced length, but the content of the items remains unchanged</td>
+          </tr>
+          <tr>
+            <td>Fold</td>
+            <td> Traverses the collection, <a id="2980"></a>summarizing the contents with a single result (e.g., sum, max, or mean)</td><td>A single result <a id="2981"></a>summarizing the collection in some way; the collection is unchanged</td>
+          </tr>
+          <tr>
+            <td>Search</td>
+            <td>Traverses the collection until an item matches a given search criterion and then stops, returning the result</td>
+            <td>A single result or the indication that the desired match was not achieved; the collection is unchanged</td>
+          </tr>
+          <tr>
+            <td>Sort</td>
+            <td>Puts the collection in order by some specific criterion</td>
+            <td>A new collection of the same length</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Basic Arithmetic Operations">
+      <!-- Arithmetic Operations -->
+      <h3 id="10_3_1">10.3.1	Basic Arithmetic Operations</h3>
+      <div class="container">
+        <p>The simple problem solution described in Section 10.1 frequently needs to be used as part of a larger problem solution. We include that activity in this list for completeness.</p>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Inserting into a Collection">
+       <!-- Inserting into a Collection -->
+      <h3 id="10_3_2">10.3.2	Inserting into a Collection</h3>
+      <div class="container clearfix">
+        <p>Inserting an item into a collection is a process usually used to build or maintain a collection of information. In this text, we have seen four basic data collection types to which <a id="2995"></a>insertion applies: vectors, arrays, cell arrays, and structure arrays. We will discuss the peculiarities of each collection and then the common processing algorithm that can be used to insert a new entry into the collection.</p>
+        <ul>
+          <li>Vectors and arrays are very flexible collections in the MATLAB language, and suffer only from the obvious limitations that one can add only numbers to a vector data, that data must be inserted a row or column at a time, and that the size of the item inserted must match the existing array rows or columns</li>
+          <li>Cell arrays can be indexed like numerical arrays and can contain any object; however, to compare one element to another usually requires a special-purpose comparison function</li>
+          <li>Structure arrays as a collection behave like cell arrays, except that any structure inserted must have the same fields as those in the existing structure</li>
+        </ul>
+        <p>In general, <a id="2892"></a><a id="2907"></a><a id="2948"></a><a id="2969"></a><a id="3004"></a><a id="3020"></a>inserting into any of these collections involves <a id="2996"></a>insertion into the front of the collection, the back of the collection, or at some position in the middle in order to keep the collection in order by a specific comparison method.</p>
+        <p><b>Inserting at the front</b> is accomplished by <a id="3000"></a>concatenating the new element before the existing collection.</p>
+        <p><b>Inserting at the back</b> is accomplished by <a id="3001"></a>concatenating the new element after the existing collection.</p>
+        <p><b>Inserting in order</b> is usually accomplished using a while loop. If we are <a id="2893"></a><a id="2908"></a><a id="2949"></a><a id="2970"></a><a id="3005"></a><a id="3021"></a>inserting item into a collection <code>C</code>, we will use a while loop to find the index of the <a id="2997"></a>insertion point, <code>ins</code>, and then concatenate the three parts of the new collection. Figure 10.1 shows the flowchart that applies here.</p>
+        <div class="card-deck">
+          <div class="col-sm-8">
+            <div class="exercise"><iframe src="..\exercises\exercise_10_1html.html"></iframe></div>
+          </div>
+          <div class="col-sm-4 card">
+            <img src="..\Images\Fig_10_1.JPG" alt="Figure 10.1" class="fig card-img">
+            <p class="figure-name card-title">Figure 10.1: Insert in Order</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="Traversing a Collection">
+      <!-- Traversing a Collection -->
+      <h3 id="10_3_3">10.3.3	Traversing a Collection</h3>
+      <div class="container clearfix">
+        <p>Traversal involves moving across all elements of a collection and performing some step (not necessarily the same step) on each element without changing that element. Figure 10.2 illustrate the flowchart for <a id="2984"></a>traversing a collection. They assume that you are doing something like writing a file that needs to be initialized and finalized. These two steps may not always be required.</p>
+        <div class="card-deck">
+          <div class="col-sm-8">
+            <div class="exercise"><iframe src="..\exercises\exercise_10_2html.html"></iframe></div>
+          </div>
+          <div class="col-sm-4 card">
+              <img src="..\Images\Fig_10_2.JPG" alt="Figure 10.2" class="fig-long card-img">
+              <p class="figure-name card-title">Figure 10.2: Traversing a Collection</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="4" data-sub-name="Building a Collection">
+      <!-- Building a Collection -->
+      <h3 id="10_3_4">10.3.4	Building a Collection</h3>
+      <div class="container clearfix">
+        <p>In practice, frequently we combine <a id="2925"></a><a id="3013"></a>traversal of one collection and <a id="2895"></a><a id="2901"></a><a id="2945"></a><a id="2963"></a>building of another to copy data from one collection into another. Building a collection is the process of beginning with an empty collection and assembling data elements by <a id="2894"></a><a id="2909"></a><a id="2950"></a><a id="2971"></a><a id="3006"></a><a id="3022"></a>inserting them one at a time into the new collection. The size of the collection increases continually until the process is finished. Figure 10.3 illustrates the algorithm for <a id="2896"></a><a id="2902"></a><a id="2946"></a><a id="2964"></a>building a collection.</p>
+        <div class="card-deck">
+          <div class="col-sm-8">
+            <div class="exercise"><iframe src="..\exercises\exercise_10_3html.html"></iframe></div>
+          </div>
+          <div class="col-sm-4 card">
+              <img src="..\Images\Fig_10_3.JPG" alt="Figure 10.3" class="fig-long card-img">
+              <p class="figure-name card-title">Figure 10.3: Building a Collection</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="5" data-sub-name="Mapping a Collection">
+      <!-- Mapping a Collection -->
+      <h3 id="10_3_5">10.3.5	Mapping a Collection</h3>
+      <div class="container clearfix">
+        <p>The purpose of <a id="2897"></a><a id="2910"></a><a id="2953"></a><a id="2972"></a>mapping is to transform a collection by changing the data in some or all of its elements according to some functional description without changing its length. It is distinct from <a id="2926"></a><a id="3014"></a>traversal because its intent is to change the data elements. While many languages permit collections to be modified in place, the MATLAB language usually requires you to create a new collection. However, this is still considered <a id="2898"></a><a id="2911"></a><a id="2954"></a><a id="2973"></a>mapping. The scalar mathematical and logical operations on vectors are good examples of <a id="2899"></a><a id="2912"></a><a id="2955"></a><a id="2974"></a>mapping. Figure 10.4 illustrates the basic algorithm for mapping.</p>
+        <div class="card-deck">
+          <div class="col-sm-8">
+            <div class="exercise"><iframe src="..\exercises\exercise_10_4html.html"></iframe></div>
+          </div>
+          <div class="col-sm-4 card">
+              <img src="..\Images\Fig_10_4.JPG" alt="Figure 10.4" class="fig-long card-img">
+              <p class="figure-name card-title">Figure 10.4: Mapping a Collection</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="6" data-sub-name="Filtering a Collection">
+      <!-- Filtering a Collection -->
+      <h3 id="10_3_6">10.3.6	Filtering a Collection</h3>
+      <div class="container clearfix">
+        <p>Filtering involves removing items from a collection according to specified selection criteria. The data contents of the remaining items in the collection should not be changed, and the collection will usually be shorter than before.  Filtering always requires that a new collection be built on the filtered items. Figure 10.5 illustrates the general algorithm for <a id="2903"></a><a id="2931"></a><a id="2965"></a>filtering a collection.</p>
+        <div class="card-deck">
+          <div class="col-sm-8">
+            <div class="exercise"><iframe src="..\exercises\exercise_10_5html.html"></iframe></div>
+          </div>
+          <div class="col-sm-4 card">
+              <img src="..\Images\Fig_10_5.JPG" alt="Figure 10.5" class="fig-long card-img">
+              <p class="figure-name card-title">Figure 10.5: Filtering a Collection</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="7" data-sub-name="Folding a Collection">
+      <!-- Folding a Collection -->
+      <h3 id="10_3_7">10.3.7	Folding a Collection</h3>
+      <div class="container clearfix">
+        <p>Folding is the name given to <a id="2982"></a>summarizing a collection. It is a special case of <a id="2927"></a><a id="3015"></a>traversal where all of the items in the collection are summarized as a single result. The collection is not altered in size or values by the operation. Totaling, averaging, and finding the largest element in a vector are typical examples of <a id="2918"></a><a id="2934"></a>folding.Figure 10.6 shows the basic algorithm for <a id="2919"></a><a id="2935"></a>folding a collection. The general form of a fold should be to initialize the summary value and then traverse the whole collection, updating the summary when necessary. There is an interesting problem in determining the starting value for a fold. If that value is not chosen well, there may be no relevant results in the collection.  A good approach is to initialize the state with the value of the first entry in the collection. This raises another issue to make sure that you deal with an empty input collection.</p>
+        <div class="card-deck">
+          <div class="col-sm-8">
+            <div class="exercise"><iframe src="..\exercises\exercise_10_6html.html"></iframe></div>
+          </div>
+          <div class="col-sm-4 card">
+              <img src="..\Images\Fig_10_6.JPG" alt="Figure 10.6" class="fig-long card-img">
+              <p class="figure-name card-title">Figure 10.6: Folding a Collection</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="8" data-sub-name="Searching a Collection">
+      <h3 id="10_3_8">10.3.8	Searching a Collection</h3>
+      <div class="container clearfix">
+        <p>Searching is the process of <a id="2985"></a>traversing the collection and applying a specified test to each element in turn, terminating the process as soon as the test is satisfied. This is superficially similar to <a id="2904"></a><a id="2932"></a><a id="2966"></a>filtering, except that it is not necessary to touch all the elements of the collection; the search stops as soon as one element of the collection matches the search criteria. If the criteria are extremely complex, it is sometimes advisable to perform a mapping or <a id="2920"></a><a id="2936"></a>folding before the search is performed. Figure 10.7 illustrates one way to implement <a id="2913"></a><a id="2975"></a><a id="2990"></a>searching a collection using a for loop with a break exit. There are always two exit criteria from a search — finding what you seek and failing to find it. Searching can also be implemented with a while loop, but the multiple exit criteria make the code generally more complex.</p>
+        <div class="card-deck">
+          <div class="col-sm-8">
+            <div class="exercise"><iframe src="..\exercises\exercise_10_7html.html"></iframe></div>
+          </div>
+          <div class="col-sm-4 card">
+              <img src="..\Images\Fig_10_7.JPG" alt="Figure 10.7" class="fig-long card-img">
+              <p class="figure-name card-title">Figure 10.7: Searching a Collection</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="9" data-sub-name="Sorting a Collection">
+      <h3 id="10_3_9">10.3.9	Sorting a Collection</h3>
+      <div class="container">
+        <p>Sorting involves reordering the elements in a collection according to a specified ranking function that defines which item "comes before" another. Sorting is computationally expensive. However, if a large collection of data is stable &mdash; items are added or removed infrequently &mdash; but is frequently searched for specific items, keeping the data sorted can greatly improve the efficiency of the searches. Chapter 16 is devoted to the details of <a id="2915"></a><a id="2977"></a><a id="2992"></a>sorting algorithms, but the concept is included here to complete the list of operations we can perform on a collection.  In general, the built-in sort function can sort either a vector (of numbers, of course) or a cell array with either one row or one column containing strings.  Cell arrays are sorted alphabetically.  In either case, it returns not only the sorted values but also the order in which the original data were used to produce the sort.</p>
+        <div class="exercise"><iframe src="..\exercises\exercise_10_8html.html"></iframe></div>
+        <p><b>Notes:</b></p>
+        <ul>
+          <li>Since the sort was sensitive to case, 'In' was ranked before 'a'.</li>
+          <li>Repeated words were retained, indicating that the word 'a' was the 10th and 17th words in the original sentence</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="4" data-sect-name="Solving Larger Problems">
+    <!-- Solving Larger Problems -->
+    <h2 id="10_4">10.4 Solving Larger Problems</h2>
+    <div class="container clearfix">
+      <div class="float-sm-right">
+        <div class="card">
+            <img src="..\Images\Fig_10_8a.JPG" alt="Figure 10.8a" class="fig card-img">
+            <p class="figure-name card-title">Fig 10.8a: Baseball Player Problem</p>
+        </div>
+        <div class="card">
+            <img src="..\Images\Fig_10_8b.JPG" alt="Figure 10.8b" class="fig card-img">
+            <p class="figure-name card-title">Fig 10.8b: The Last Step</p>
+        </div>
+        <div class="card">
+            <img src="..\Images\Fig_10_8c.JPG" alt="Figure 10.8c" class="fig card-img">
+            <p class="figure-name card-title">Fig 10.8c: The Last But One Step</p>
+        </div>
+        <div class="card">
+            <img src="..\Images\Fig_10_8d.JPG" alt="Figure 10.8d" class="fig card-img">
+            <p class="figure-name card-title">Fig 10.8d: The First Step</p>
+        </div>
+      </div>
+      <p>Problem statements are rarely simple enough to be able to seize one of the above steps and solve the whole problem. Usually, the solution involves choosing a number of known operations and performing those operations in order to solve the complete problem. Solution steps are combined in one of two ways &mdash; in sequence or nested. When considering the overall strategy for solving a problem, one might identify steps A and B as contributing to the solution. Your logical statement might say either "do A and then B" sequential steps &mdash; or "for each part of A, do B" &mdash; nested steps.  For example, consider the baseball card problem originally proposed in Chapter 1. You have collected over the years a huge number of baseball cards, and you wish to find the names of the 10 "qualified" players with the highest lifetime batting average.</p>
+      <p>To qualify, the players must have been in the league at least five years, had at least 100 plate appearances per year, and made <a id="2951"></a><a id="2952"></a>less than 10 errors per year.  The first step is to build a collection containing the relevant information on the cards for each player, and the use of a structure array seems a good choice. Next, we need to operate on this collection to solve the problem. Consider again the overall problem situation, as shown in Figure 10.8a. The original data are the structure array containing all the player data. The final result is a list of 10 names of the qualified players with the highest batting averages. There may be more than one sequence of operations to solve this problem, and some may be more efficient than others.  First, we consider the operations that could be performed on the original data. Since the end result is a collection, it is unlikely that the first step would reduce the collection to one answer. This eliminates <a id="2921"></a><a id="2937"></a>folding and <a id="2914"></a><a id="2976"></a><a id="2991"></a>searching. Since the collection is already built, we do not need to insert or build, leaving four possible operations to consider—<a id="2928"></a><a id="3016"></a>traversal, mapping, <a id="2905"></a><a id="2933"></a><a id="2967"></a>filtering, and <a id="2916"></a><a id="2978"></a><a id="2993"></a>sorting.  Now, consider the last operation—it seems reasonable that the last thing to do is a mapping—taking the 10 selected structures and extracting the names.  Now, we must think about how to find these 10 structures. If we had a collection of qualified players sorted by their batting average, we could accomplish this with a special filter taking the first 10 from these sorted, qualified players (Fig 10.8b).</p>
+      <p>Backing up one more step, we can see that the sorted collection we need is just a sort of the qualified players, and we can chain these steps together to solve the whole problem. (Figures 10.8c and 10.8d)</p>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="5" data-sect-name="Engineering Example - Processing Geopolitical Data">
+    <!-- Engineering Example -->
+    <h2 id="10_5">10.5  Engineering Example - Processing Geopolitical Data</h2>
+    <div class="container clearfix">
+      <p>Imagine that you have decided to move your prosperous business overseas to the country with the most business-friendly environment. After considerable study, you decide that the best measure of friendliness would be to compute the rate of growth of the gross domestic product for candidate countries, subtract their rate of population growth, and use this measure to choose the best country. An Internet search provides an interesting source of data. Figure 10.9 shows an excerpt from a spreadsheet containing historical data for 154 countries from Penn World Table Version 9.1. described in detail in this paper: Feenstra, Robert C., Robert Inklaar and Marcel P. Timmer (2015), "The Next Generation of the Penn World Table" American Economic Review, 105(10), 3150-3182, found at <a style="color:black;" href="https://www.rug.nl/ggdc/">www.ggdc.net</a></p>
+      <div class="card">
+          <img src="..\Images\Fig_10_9.JPG" alt="Figure 10.9" class="fig fig-wide card-img">
+          <p class="figure-name card-title">Fig 10.9: World Data Example</p>
+      </div>
+      <p>The data columns of interest to us contain the following information:
+      <ul>
+        <li><code>contrycode</code>: a TLA for each country (col A)</li>
+        <li><code>country</code>: name of the country (col B)</li>
+        <li><code>year</code>: year for which values are quoted (col C)</li>
+        <li><code>rgdpe</code>: Expenditure-side real GDP at chained PPPs (in mil. 2011US$) (col E)</li>
+        <li><code>pop</code>: Population in millions (col G)</li>
+      </ul>
+      <p>Figure 10.9 also illustrates one of the weaknesses of <a id="3002"></a>spreadsheets: they are inherently two dimensional, and the data in this case are three dimensional; each country has several sets of data as functions of the year when the information was recorded. Therefore, the data must be massaged into a  form more useful to us. A careful examination of the data also reveals the following challenges:</p>
+      <ul>
+        <li>The years in which the data were available vary from country to country—most have data from 1950 to 2017</li>
+        <li>There are some places within the numerical data where the values are not available, signified by the blank cells at those locations.</li>
+      </ul>
+      <p>Our algorithm must take into account the variable number of years and the potential presence of strings within the data. Fortunately, the Matlab <code><a id="2944"></a><a id="3023"></a>xlsread(...)</code> function discussed earlier recognizes this situation and inserts <code><a id="2962"></a>NaN</code> in the numerical data fields. To ensure clarity and reliability in our solution, we need a careful design for this data processing task as follows.</p>
+      <ul>
+        <li>Looking at the end result desired, eventually we need to fold a collection of data about each country and choose the friendliest one.</li>
+        <li>The information describing each country must include not only its name, but also vectors of the population and CGDP as a function of the year. It seems that a structure array by country would be an appropriate form for the data.</li>
+        <li>Therefore, before actually solving the problem, we have to build this structure.</li>
+        <li>Having built the structure, the <a id="2922"></a><a id="2938"></a>folding operation to find the friendliest country follows the <a id="2923"></a><a id="2939"></a>folding template shown in Section 10.3.7.</li>
+      </ul>
+      <p>Listing 10.1 shows the script that accomplishes this analysis, although most of the work is actually done in the following functions. When we run this program, we see the following result:</p>
+      <div class="listing"><iframe src="..\listings\listing_10_1_livehtml.html"></iframe></div>
+      <p><code>>>best country is Bosnia and Herzegovina</code></p>
+      <p>This may not be exactly the result we were hoping for. In Chapter 16 we will revisit this example with some better tools that will allow us to apply additional criteria to selecting countries.</p>
+    </div>
+  </div>
+
+  <!-- Chapter Summary -->
+  <h2>Chapter Summary</h2>
+  <div class="container">
+    <p>This chapter presented the fundamental operations that can be applied to <a id="2960"></a>problem solving:</p>
+    <ul>
+      <li>Using normal arithmetic operations with specific input and output values</li>
+      <li>Inserting new elements in a collection</li>
+      <li>Traversing a collection</li>
+      <li>Building a collection by repetitive <a id="2998"></a>insertion</li>
+      <li>Mapping a collection - changing the values of the data items in the
+      collection, but not the number of them</li>
+      <li>Filtering a collection - reducing the number of entries, but not
+      changing the data contents of the collection</li>
+      <li>Folding the values in a collection into a single quantity</li>
+      <li>Searching for a specific match in a collection</li>
+      <li>Sorting a collection</li>
+    </ul>
+    <p>Then we briefly discussed how to combine these fundamental tools to solve more complex <a id="2958"></a>data <a id="3009"></a><a id="3012"></a>manipulation problems.</p>
+  </div>
+<h2>Self Test</h2>
+<div class="container">
+
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>Copying the elements of a structure array into a cell array is a
+combination of <a id="2929"></a><a id="3017"></a>traversal and <a id="2999"></a>insertion.</li>
+      <li>If you map a collection, you must change at least one of its elements.</li>
+      <li>When you filter a collection, at least one data element is changed.</li>
+      <li>The function <a id="2942"></a><a id="2961"></a>max(...) is not <a id="2924"></a><a id="2940"></a>folding because it returns two values.</li>
+      <li>You can use a for loop to search a collection even if you need to
+stop the search when you find the answer.</li>
+      <li>Sorting must involve putting the items in a collection in numerical
+order (ascending or descending).</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>The <a id="2988"></a>problem-solving style recommended in this text is to identify
+the ___________and the _____________.</li>
+      <li>Building is usually the process of ____________ and ___________
+_______________.</li>
+      <li>Mapping may involve combining _____________ of the same length.</li>
+      <li>We _______________ vectors by applying built-in logical operations
+and then indexing with the results to produce new, shorter arrays.</li>
+      <li>Totaling, averaging, and finding the smallest element in a vector are
+typical examples of _____________.</li>
+      <li>There are almost always two exit criteria for a search: ___________
+_______________ or ________________.</li>
+      <li>To save a collection to a text file, you ____________ the collection
+____________ it to the file.</li>
+</ol>
+
+<h3>Programming Projects</h3>
+<ol><p>
+<li>The purpose of this problem is to write a set of functions that
+calculate the volume of a slant cylinder with an irregular pentagonal
+cross section shown in Figure 10.10. </p>
+      <div class="card">
+          <img src="..\Images\Fig_10_10.JPG" alt="Figure 10.10" class="fig card-img">
+          <p class="figure-name card-title">Fig 10.10: The Problem</p>
+      </div>
+<p>You will be given two vectors, x and y, containing the coordinates of
+the corners of the pentagon, and the value h , the vertical height of
+the cylinder. We will need to break this problem apart, writing
+functions to solve each part:
+<ul>
+<li>The volume of the cylinder is the area of the pentagon multiplied by
+the vertical height; write a function <a id="2943"></a><a id="2986"></a>polyval(x, y, h) to solve this.</li>
+      <li>The area of the pentagon is the sum of the areas of three
+triangles shown in Figure 10.11. </p>
+      <div class="card">
+          <img src="..\Images\Fig_10_11.JPG" alt="Figure 10.11" class="fig card-img">
+          <p class="figure-name card-title">Fig 10.11: The Base</p>
+      </div>
+<p>So we need to write a function
+pent_area(x, y) that asks for the area of the three triangles and
+adds them together.</li>
+      <li>Given the coordinates of the corners of a triangle, we need a
+function tri_area(x, y) to calculate the area of the triangle—see
+Figure 10.12. </p>
+      <div class="card">
+          <img src="..\Images\Fig_10_12.JPG" alt="Figure 10.12" class="fig card-img">
+          <p class="figure-name card-title">Fig 10.12: Area of a Triangle</p>
+      </div>
+<p>To compute the area of the triangle, we need the
+values of a, b, and c . So if we had the lengths of the lines, the area
+of the triangle is given by Heron's formula:<br>
+A = ( s(s-a)(s-b)(s-c) )<br>
+where s is half the sum of a, b, and c.</li>
+      <li>So we need a function tri_side(x, y) that computes the length
+of a line when given its end points.</li>
+      <li>Then, we can put the pieces back together by calling the functions
+with the right parameters, and then build and test polyvol using
+the test cases provided.</li>
+</ul>
+      <li>This problem is about processing structure arrays. Write a function
+named structSort that sorts a structure array based on a given field
+that contains numerical values. Your function should take in a
+structure array and a string that should correspond to one of the
+field names of the structure array and return the original structure array
+sorted on the given field. It should check to be sure that the
+specified field name is in fact one of the fields of the structure array,
+and call the <a id="2930"></a><a id="2941"></a>error(...) function if it is not.
+Test your function by using the buildCDs script from Chapter 7,
+using the input function to specify the <a id="2917"></a><a id="2979"></a><a id="2994"></a>sorting field.</li>
+ 
+</ol>
+</div>
+</div>
+
+
+</body>
+</html>
+

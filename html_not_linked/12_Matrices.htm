@@ -108,9 +108,9 @@
           <p>Matrix division is the logical process of reversing the effects of a matrix multiplication. The goal is as follows: given <code>A<sub>nxn</sub></code>, <code>B<sub>nxp</sub></code>, and <code>C<sub>nxp</sub></code>, where <code>C = A * B</code>, we wish to define the mathematical equivalent of <code>C/A</code> that will result in <code>B</code>.</p>
           <p>Since <code>C = A * B</code>, we are actually searching for some matrix Kn3n by which we can multiply each side of the above equation:</p>
           <p><code>K * C = K * A * B</code></p>
-          <p>This multiplication would accomplish the division we desire if <code>K * A</code> were to result in <code>I<sub>n</sub></code>, the identity matrix. If this were the case, pre-multiplying <code>C</code> by <code></code> would result in <code>I<sub>n</sub> * B</code>, or simply <code>B</code> by the definition of <code>In</code> above. The matrix <code>K</code> is referred to as the inverse of <code>A</code>, or <code>A<sup>-1</sup></code>. The algebra for computing this inverse is messy but well defined. In fact, Gaussian Elimination to solve linear simultaneous equations accomplishes the same thing. The MATLAB language defines both functions (<code>inv(A)</code>) and operators (“back divide,” \) that accomplish this. However, two things should be noted:</p>
+          <p>This multiplication would accomplish the division we desire if <code>K * A</code> were to result in <code>I<sub>n</sub></code>, the identity matrix. If this were the case, pre-multiplying <code>C</code> by <code></code> would result in <code>I<sub>n</sub> * B</code>, or simply <code>B</code> by the definition of <code>In</code> above. The matrix <code>K</code> is referred to as the inverse of <code>A</code>, or <code>A<sup>-1</sup></code>. The algebra for computing this inverse is messy but well defined. In fact, Gaussian Elimination to solve linear simultaneous equations accomplishes the same thing. The MATLAB language defines both functions (<code>inv(A)</code>) and operators ("back divide," \) that accomplish this. However, two things should be noted:</p>
           <ul>
-              <li>This inverse does not exist for all matrices—if any two rows or columns of a matrix are linearly related, the matrix is <b><em>singular</em></b> and does not have an inverse</li>
+              <li>This inverse does not exist for all matrices &mdash; if any two rows or columns of a matrix are linearly related, the matrix is <b><em>singular</em></b> and does not have an inverse</li>
               <li>Only non-singular, square matrices have an inverse (just as a set of linear equations is soluble only if there are as many equations as there are unknown variables)</li>
           </ul>
       </div>
@@ -120,7 +120,7 @@
       <!-- Matrix Exponentiation -->
       <h3 id="12_2_3">12.2.3	Matrix  Exponentiation</h3>
       <div class="container">
-          <p>For completeness, we mention here that matrix operations include exponentiation. However, this does not suggest that one would encounter <code>A<sub>nxn</sub><sup>B<sub>nxn</sub></sup></code> in the scope of our applications. Rather, our usage of matrix exponentiation will be confined to <code>A<sup>k</sup></code> where <code>k</code> is any non-zero integer value. The result for positive <code>k</code> is accomplished by multiplying <code>A</code> by itself <code>k</code> times (using matrix multiplication). The result for negative <code>k</code> is accomplished by inverting <code>A<sup>-k</sup></code>. (There is, in fact, meaning in matrix exponentials with non- scalar exponents, but this involves advanced concepts with eigen values and eigenvectors and is beyond the scope of this text.)</p>
+          <p>For completeness, we mention here that matrix operations include exponentiation. However, this does not suggest that one would encounter <code>A<sub>nxn</sub><sup>B<sub>nxn</sub></sup></code> in the scope of our applications. Rather, our usage of matrix exponentiation will be confined to <code>A<sup>k</sup></code> where <code>k</code> is any non-zero integer value. The result for positive <code>k</code> is accomplished by multiplying <code>A</code> by itself <code>k</code> times (using matrix multiplication). The result for negative <code>k</code> is accomplished by inverting <code>A<sup>-k</sup></code>. (There is, in fact, meaning in matrix exponentials with non-scalar exponents, but this involves advanced concepts with Eigen values and Eigenvectors and is beyond the scope of this text.)</p>
       </div>
     </div>
   </div>
@@ -136,7 +136,7 @@
       <!-- Matrix Multiplication -->
       <h3 id="12_3_1">12.3.1	Matrix Multiplication</h3>
       <div class="container">
-          <p>Matrix multiplication is accomplished by using the “normal” multiplication symbol, as illustrated in Exercise 12.1.</p>
+          <p>Matrix multiplication is accomplished by using the "normal" multiplication symbol, as illustrated in Exercise 12.1.</p>
           <div class="exercise">#exercise_12_1#</div>
       </div>
     </div>
@@ -147,9 +147,9 @@
       <div class="container">
           <p>Matrix division is accomplished in a number of ways, all of which appear to work, but some give the wrong answer. Returning to the division problem described in Section 12.2.2, we know that <code>A</code> is a square matrix of side <code>n</code>, and <code>B</code> and <code>C</code> have <code>n</code> rows, and <code>C = A * B</code>. If we are actually given the matrices <code>A</code> and <code>B</code>, we can compute <code>B</code> in one of the following ways:</p>
           <ul>
-              <li><code>B = inv(A) * C</code> — using the MATLAB <code>inv(...)</code> function to compute the inverse of <code>B</code></li>
-              <li><code>B = A \ C</code> — "back dividing" <code>B</code> into <code>C</code> to produce the same result</li>
-              <li><code>B = C / A</code> — apparently performing the same operation, but <em>giving different answers</em></li>
+              <li><code>B = inv(A) * C</code> &mdash; using the MATLAB <code>inv(...)</code> function to compute the inverse of <code>B</code></li>
+              <li><code>B = A \ C</code> &mdash; "back dividing" <code>B</code> into <code>C</code> to produce the same result</li>
+              <li><code>B = C / A</code> &mdash apparently performing the same operation, but <em>giving different answers</em></li>
           </ul>
           <p>The order in which the matrix multiply is done affects the value of the result; therefore, care must be taken to ensure that the appropriate inversion or division is used. Study the results of Exercise 12.2 carefully.</p>
           <div class="exercise">#exercise_12_2#</div>
@@ -173,15 +173,15 @@
               <p class="figure-name card-title">Figure 12.4: Rotating Cartesian Coordinates</p>
           </div>
           <p>The mathematics implementing rotation in two dimensions is relatively straightforward, as shown in Figure 12.4. If the original point location P is (x, y) and you wish to find the point P* (x*, y*) that is the result of rotating P by the angle &theta; about the origin of coordinates, the mathematics are as follows:</p>
-          <p><code>x* = x cos&theta;  − y sin&theta;</code><br>
+          <p><code>x* = x cos&theta;  &minus; y sin&theta;</code><br>
           <code>y* = x sin&theta;  + y cos&theta;</code></p>
           <p>which can be expressed as the matrix equation:</p>
           <p><code>P* = A * P</code></p>
           <p>where A is found by:</p>
-          <p>A = [cos&theta; −sin&theta;; sin&theta; cos&theta;]</p>
+          <p>A = [cos&theta; &minus;sin&theta;; sin&theta; cos&theta;]</p>
           <p>To rotate the x-y coordinates of a graphic object in the x-y plane about some point, P, other than the origin, you would do as follows:</p>
           <ol>
-              <li>Translate the object so that P is at the origin by subtracting P from all the object’s coordinates</li>
+              <li>Translate the object so that P is at the origin by subtracting P from all the object's coordinates</li>
               <li>Perform the rotation by multiplying each coordinate by the rotation matrix shown above</li>
               <li>Translate the rotated object back to P by adding P to all the rotated coordinates</li>
           </ol>
@@ -238,7 +238,7 @@
         <p> ... </p>
         <p><code>A<sub>N1</sub>x<sub>1</sub> + A<sub>N2</sub>x<sub>2</sub> + ... + A<sub>NN</sub>x<sub>N</sub> = c<sub>N</sub></code></p>
         <p>In matrix form, they can be expressed as follows:</p>
-        <p><code>A<sub>N x N</sub> = X<sub>N x 1</sub> = C<sub>N x 1</sub></code></p>
+        <p><code>A<sub>N x N</sub> * X<sub>N x 1</sub> = C<sub>N x 1</sub></code></p>
         <p>from which, since all of the values in A and C are constants, we can immediately solve for the column vector X by back division:</p>
         <p><code>X = A\C</code></p>
         <p>or by using the matrix inverse function:</p>
@@ -322,7 +322,7 @@
           <p><code>C = A * W</code></p>
           <p>where C is the required composition of the resulting mix, A is a 4 x 4 matrix showing the results of analyzing the four raw materials, and W is the proportions in which should we mix the raw material to produce the desired result. We find the appropriate amounts of the raw material by solving these equations:</p>
           <p><code>W = A\B</code></p>
-          <p>A script that works this problem is shown in Listing 12.6.</p>
+          <p>A script that works this problem is shown in 
           <div class="listing">Listing 12.6</div>
       </div>
     </div>
@@ -331,14 +331,14 @@
       <!-- Analyzing an Electrical Circuit -->
       <h3 id="12_6_2">12.6.2 Analyzing an Electrical Circuit</h3>
       <div class="container clearfix">
-          <p>Figure 12.9 illustrates a typical electrical circuit with two voltage sources connected to five resistors with three closed loops. The voltages and resistances are given. We are asked to determine the voltage drop across R1. Solution techniques apply Ohm’s Law to the voltage drops around each closed circuit. When this technique is applied, the equations are as follows:</p>
+          <p>Figure 12.9 illustrates a typical electrical circuit with two voltage sources connected to five resistors with three closed loops. The voltages and resistances are given. We are asked to determine the voltage drop across R1. Solution techniques apply Ohm's Law to the voltage drops around each closed circuit. When this technique is applied, the equations are as follows:</p>
           <div class="float-sm-right card">
               <img src="..\Images\Fig_12_9.JPG" alt="Figure 12.9" class="fig card-img">
               <p class="figure-name card-title">Figure 12.9: Typical electrical circuit</p>
           </div>
-          <p><code>V<sub>1</sub> = i<sub>1</sub> * R<sub>1</sub> + (i<sub>1</sub> – i<sub>2</sub>) * R<sub>4</sub>
-          <br>0 = i<sub>2</sub> * R<sub>2</sub> + (i<sub>2</sub> – i<sub>3</sub>) * R<sub>5</sub> + (i<sub>2</sub> – i<sub>1</sub>) * R<sub>4</sub>
-          <br>–V<sub>2</sub> = i<sub>3</sub> * R<sub>3</sub> + (i<sub>3</sub> – i<sub>2</sub>) * R<sub>5</sub></code></p>
+          <p><code>V<sub>1</sub> = i<sub>1</sub> * R<sub>1</sub> + (i<sub>1</sub> &minus; i<sub>2</sub>) * R<sub>4</sub>
+          <br>0 = i<sub>2</sub> * R<sub>2</sub> + (i<sub>2</sub> &minus; i<sub>3</sub>) * R<sub>5</sub> + (i<sub>2</sub> &minus; i<sub>1</sub>) * R<sub>4</sub>
+          <br>&minus;V<sub>2</sub> = i<sub>3</sub> * R<sub>3</sub> + (i<sub>3</sub> &minus; i<sub>2</sub>) * R<sub>5</sub></code></p>
           <p>When these three equations are manipulated to isolate the three currents, we have the following matrix equation:</p>
           <p><code>V = A * I</code></p>
           <p>which can be solved as usual by:</p>

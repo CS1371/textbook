@@ -1,0 +1,548 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>15_Numerical_Methods</title>
+        <!-- include bootstrap -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- include stylesheets -->
+        <link rel="stylesheet" href="styles/styles.css" />
+        <link rel="stylesheet" href="styles/num-methods-styles.css" />
+        <!-- include math -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+
+<body>
+<div><nav class="navbar navbar-expand-lg fixed-top top-nav navbar-light bg-light"><a class="navbar-brand" href="#"><img src="../Images/1371.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbspEngineering Computation Using MATLAB</a></nav></div>
+<div class="nav-obj"><nav class="nav sidenav nav-scroll navbar-dark bg-dark"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="..\..\index.html">Home</a></li><li class="nav-item"><a class="nav-link" href="Preface.htm">Preface</a></li><li class="nav-item"><div class="nav-link"><a href="01_Introduction.htm#1">1 Introduction&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_1"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_1">1.1 Background</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_2">1.2 History of Computer Architectures&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_1_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_1_2"><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_2_1">1.2.1 Babbage's Difference Engine</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_2_2">1.2.2 Colossus</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_2_3">1.2.3 The von Neumann Architecture</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_3">1.3 Modern Computer Software&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_1_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_1_3"><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_1">1.3.1 Operating Systems</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_2">1.3.2 Software Tools</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_3">1.3.3 Programming Languages</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_4">1.3.4 Running a Computer Program</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_3_5">1.3.5 Running an Interpreted Program</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="01_Introduction.htm#1_4">1.4 Anticipated Outcomes&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_1_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_1_4"><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_4_1">1.4.1 Introduction to MATLAB</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_4_2">1.4.2 Learning Programming Concepts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="01_Introduction.htm#1_4_3">1.4.3 Problem-Solving Skills</a></div></li></ul></li></ul></li><li class="nav-item"><div class="nav-link"><a href="02_Basics.htm#2">2 Basics&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_2"><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_1">2.1 Programming Language Background&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_1"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_1_1">2.1.1 Abstraction</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_1_2">2.1.2 Algorithms</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_1_3">2.1.3 Programming Paradigms</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_2">2.2 Basic Data Manipulation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_2"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_1">2.2.1 Starting and Stopping MATLAB</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_2">2.2.2 Assigning Values to Variables</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_3">2.2.3 Data Typing</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_2_4">2.2.4 Classes and Objects</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_3">2.3 MATLAB User Interface&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_3"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_1">2.3.1 Command Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_2">2.3.2 Command History</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_3">2.3.3 Workspace Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_4">2.3.4 Current Folder Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_5">2.3.5 Variable Editor</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_6">2.3.6 Figure Window</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_3_7">2.3.7 Editor Window</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_4">2.4 Scripts&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_2_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_2_4"><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_1">2.4.1 Text Files</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_2">2.4.2 Creating Scripts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_3">2.4.3 The Current Directory</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_4">2.4.4 Running Scripts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_5">2.4.5 Punctuating Scripts</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="02_Basics.htm#2_4_6">2.4.6 Debugging Scripts</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="02_Basics.htm#2_5">2.5 Engineering Example - Spacecraft Launch</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="03_Functions.htm#3">3 Functions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_3"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_1">3.1 Concepts: Abstraction and Encapsulation</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_2">3.2 Black Box View of a Function</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_3">3.3 MATLAB Implementation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_3_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_3_3"><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_1">3.3.1 General Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_2">3.3.1 Function Definition</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_3">3.3.3 Storing and Using Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_4">3.3.4 Calling Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_5">3.3.5 Variable Number of Parameters</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_6">3.3.6 Returning Multiple Results</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_7">3.3.7 Auxiliary Local Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_8">3.3.8 Encapsulation in MATLAB Functions</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="03_Functions.htm#3_3_9">3.3.9 Global Variables</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="03_Functions.htm#3_4">3.4 Engineering Example: Measuring a Solid Object</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="04_Vectors.htm#4">4 Vectors&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_4"><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_1">4.1 Concept: Data Collection&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_4_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_4_1"><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_1_1">4.1.1 Data Abstraction</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_1_2">4.1.2 Homogeneous Collections</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_2">4.2 Vectors&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_4_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_4_2"><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_1">4.2.2 Creating a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_2">4.2.2 Size of a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_3">4.2.3 Indexing a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_4">4.2.4 Shortening a Vector</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_2_5">4.2.5 Operating on Vectors</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_3">4.3 Engineering Example - Forces and Moments</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_4">4.4 Arrays&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_4_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_4_4"><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_1">4.4.1 Properties of an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_2">4.4.2 Creating an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_3">4.4.3 Accessing Elements of an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_4">4.4.4 Removing Elements of an Array</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="04_Vectors.htm#4_4_5">4.4.5 Operating on Arrays</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="04_Vectors.htm#4_5">4.5 Engineering Example - Computing Soil Volume</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="05_Execution.htm#5">5 Execution&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_5"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_1">5.1 Concept: Code Blocks</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_2">5.2 Conditional Execution in General</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_3">5.3 if Statements&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_3"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_3_1">5.3.1 General Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_3_2">5.3.2 MATLAB Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_3_3">5.3.3 Important Ideas</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_4">5.4 switch Statements&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_4"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_4_1">5.4.1 General Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_4_2">5.4.2 MATLAB Implementation</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_5">5.5 Iteration in General</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_6">5.6 for Loops&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_6"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_1">5.6.1 General for Loop Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_2">5.6.2 MATLAB Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_3">5.6.3 Indexing Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_6_4">5.6.4 Breaking out of a for Loop</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_7">5.7 while Loops&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_5_7" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_5_7"><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_1">5.7.1 General while Template</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_2">5.7.2 MATLAB while Loop Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_3">5.7.3 Loop-and-a-Half Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="05_Execution.htm#5_7_4">5.7.4 Breaking a while Loop</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="05_Execution.htm#5_8">5.8 Engineering Example - Computing Liquid Levels</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="06_Strings.htm#6">6 Strings&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_6"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_1">6.1 Character String Concepts: Mapping, Casting, Tokens, and Delimiting</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_2">6.2 MATLAB Implementation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_6_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_6_2"><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_2_1">6.2.1 Slicing and Concatenating Strings</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_2_2">6.2.2 Arithmetic and Logical Operations</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_2_3">6.2.3 Useful Functions</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_3">6.3 Format Conversion Functions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_6_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_6_3"><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_3_1">6.3.1 Conversion from Numbers to Strings</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_3_2">6.3.2 Conversion from Strings to Numbers and Other Stuff</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_4">6.4 Character String Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_6_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_6_4"><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_4_1">6.4.1 Simple Data Output: The disp(...) Function</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_4_2">6.4.2 Complex Output</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="06_Strings.htm#6_4_3">6.4.3 Comparing Strings</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_5">6.5 Arrays of Strings</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="06_Strings.htm#6_6">6.6 Engineering Example - Encryption</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="07_Structures.htm#7">7 Structures&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_7" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_7"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_1">7.1 Concept: Collecting Dissimilar Objects</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_2">7.2 Cell Arrays&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_7_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_7_2"><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_1">7.2.1 Creating Cell Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_2">7.2.2 Accessing Cell Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_3">7.2.3 Using Cell Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_2_4">7.2.4 Processing Cell Arrays</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_3">7.3 Structures&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_7_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_7_3"><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_3_1">7.3.1 Constructing and Accessing One Structure</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_3_2">7.3.2 Constructor Functions</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_4">7.4 Structure Arrays&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_7_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_7_4"><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_4_1">7.4.1 Constructing Structure Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_4_2">7.4.2 Accessing Structure Arrays</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="07_Structures.htm#7_4_3">7.4.3 Manipulating Structures</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_5">7.5 Comparing Cell Arrays to Structure Arrays</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="07_Structures.htm#7_6">7.6 Engineering Example: Assembling a Physical Structure</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="08_File_I_O.htm#8">8 File I O&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_8" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_8"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_1">8.1 Concept: Serial Input and Output (I/O)</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_2">8.2 Workspace I/O</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3">8.3 High-Level I/O Functions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_8_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_8_3"><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3_1">8.3.1 Exploration</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3_2">8.3.2 Spreadsheets</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_3_3">8.3.3 Delimited Text Files</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4">8.4 Lower-Level File I/O&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_8_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_8_4"><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4_1">8.4.1 Opening and Closing Files</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4_2">8.4.2 Reading Text Files</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="08_File_I_O.htm#8_4_3">8.4.3 Writing Text Files</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="08_File_I_O.htm#8_5">8.5 Engineering Example - Spreadsheet Data</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="09_Recursion.htm#9">9 Recursion&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_9" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_9"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_1">9.1 Concept: The Activation Stack&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_9_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_9_1"><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_1_1">9.1.1 A Stack</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_1_2">9.1.2 Activation Stack</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_1_3">9.1.3 Function Instances</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_2">9.2 Recursion Defined</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_3">9.3 Implementing a Recursive Function</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_4">9.4 Exceptions&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_9_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_9_4"><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_4_1">9.4.1 Historical Approaches</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_4_2">9.4.2 Generic Exception Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_4_3">9.4.3 MATLAB Implementation</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_5">9.5 Wrapper Functions</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_6">9.6 Examples of Recursion&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_9_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_9_6"><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_6_1">9.6.1 Detecting Palindromes</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_6_2">9.6.2 Fibonacci Series</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="09_Recursion.htm#9_6_3">9.6.3 Zeros of a Function</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="09_Recursion.htm#9_7">9.7 Engineering Example - Robot Arm Motion</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="10_Problem_Solving.htm#10">10 Problem Solving&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_10" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_10"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_1">10.1 Solving Simple Problems</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_2">10.2 Assembling Solution Steps</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3">10.3 Summary of Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_10_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_10_3"><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_1">10.3.1 Basic Arithmetic Operations</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_2">10.3.2 Inserting into a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_3">10.3.3 Traversing a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_4">10.3.4 Building a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_5">10.3.5 Mapping a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_6">10.3.6 Filtering a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_7">10.3.7 Folding a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_8">10.3.8 Searching a Collection</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_3_9">10.3.9 Sorting a Collection</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_4">10.4 Solving Larger Problems</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="10_Problem_Solving.htm#10_5">10.5 Engineering Example - Processing Geopolitical Data</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="11_Plotting.htm#11">11 Plotting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_11" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_11"><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_1">11.1 Plotting in General&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_1"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_1">11.1.1 A Figure - The Plot Container</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_2">11.1.2 Simple Functions for Enhancing Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_3">11.1.3 Multiple Plots on One Figure - Subplots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_1_4">11.1.4 Manually Editing Plots</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_2">11.2 2-D Plotting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_2"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_1">11.2.1 Simple Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_2">11.2.2 Plot Options</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_3">11.2.3 Parametric Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_2_4">11.2.4 Other 2-D Plot Capabilities</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_3">11.3 3-D Plotting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_3"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_3_1">11.3.1 Linear 3-D Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_3_2">11.3.2 Linear Parametric 3-D Plots</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_3_3">11.3.3 Other 3-D Plot Capabilities</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_4">11.4 Surface Plots&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_4"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_1">11.4.1 Basic Capabilities</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_2">11.4.2 Simple Exercises</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_3">11.4.3 3-D Parametric Surfaces</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_4">11.4.4 Bodies of Rotation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_5">11.4.5 Other 3-D Surface Plot Capabilities</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_4_6">11.4.6 Assembling Compound Surfaces</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_5">11.5 Manipulating Plotted Data</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="11_Plotting.htm#11_6">11.6 Engineering Example - Visualizing Geographic Data&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_11_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_11_6"><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_6_1">11.6.1 Analyzing the Data</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="11_Plotting.htm#11_6_2">11.6.2 Displaying the Data</a></div></li></ul></li></ul></li><li class="nav-item"><div class="nav-link"><a href="12_Matrices.htm#12">12 Matrices&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_12" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_12"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_1">12.1 Concept: Behavioral Abstraction</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_2">12.2 Matrix Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_2"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_2_1">12.2.1 Matrix Multiplication</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_2_2">12.2.2 Matrix Division</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_2_3">12.2.3 Matrix Exponentiation</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_3">12.3 Implementation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_3"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_3_1">12.3.1 Matrix Multiplication</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_3_2">12.3.2 Matrix Division</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_4">12.4 Rotating Coordinates&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_4"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_4_1">12.4.1 2-D Rotation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_4_2">12.4.2 3-D Rotation</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_5">12.5 Solving Simultaneous Linear Equations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_5"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_5_1">12.5.1 Intersecting Lines</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="12_Matrices.htm#12_6">12.2 Engineering Examples&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_12_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_12_6"><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_6_1">12.2.1 Ceramic Composition</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="12_Matrices.htm#12_6_2">12.2.2 Analyzing an Electrical Circuit</a></div></li></ul></li></ul></li><li class="nav-item"><div class="nav-link"><a href="13_Images.htm#13">13 Images&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_13" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_13"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_1">13.1 Nature of an Image</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_2">13.2 Image Types&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_13_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_13_2"><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_1">13.2.1 True Color Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_2">13.2.2 Gray Scale Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_3">13.2.3 Color Mapped Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_2_4">13.2.4 Preferred Image Format</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_3">13.3 Reading, Displaying, and Writing Images</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_4">13.4 Operating on Images&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_13_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_13_4"><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_1">13.4.1 Stretching or Shrinking Images</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_2">13.4.2 Color Masking</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_3">13.4.3 Creating a Kaleidoscope</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="13_Images.htm#13_4_4">13.4.4 Images on a Surface</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="13_Images.htm#13_5">13.5 Engineering Example - Detecting Edges</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="14_Sounds.htm#14">14 Sounds&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_14" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_14"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_1">14.1 The Physics of Sound</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_2">14.2 Recording and Playback</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_3">14.3 Implementation</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_4">14.4 Time Domain Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_14_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_14_4"><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_4_1">14.4.2 Slicing and Concatenating Sounds</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_4_2">14.4.2 Musical Background</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_4_3">14.4.3 Changing Sound Frequency</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_5">14.5 The Fast Fourier Transform&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_14_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_14_5"><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_5_1">14.5.1 Background</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_5_2">14.5.2 Implementation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_5_3">14.5.3 Simple Spectral Analysis</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_6">14.6 Frequency Domain Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_14_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_14_6"><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_6_1">14.6.1 Details of the Spectral Data</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="14_Sounds.htm#14_6_2">14.6.2 Notes fading with time</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="14_Sounds.htm#14_7">14.7 Engineering Example - Music Synthesizer</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="15_Numerical_Methods.htm#15">15 Numerical Methods&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_15" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_15"><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1">15.1 Interpolation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_1"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1_1">15.1.1 Linear Interpolation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1_2">15.1.2 Cubic Spline Interpolation</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_1_3">15.1.3 Extrapolation</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2">15.2 Curve Fitting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_2"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2_1">15.2.1 Linear Regression</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2_2">15.2.2 Polynomial Regression</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_2_3">15.2.3 Practical Application</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_3">15.3 Numerical Integration&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_3" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_3"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_3_1">15.3.1 Determination of the Complete Integral</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_3_2">15.3.2 Continuous Integration Problems</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_4">15.4 Numerical Differentiation&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_4"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_4_1">15.4.1 Difference Expressions</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_5">15.5 Analytical Operations&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_15_5" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_15_5"><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_5_1">15.5.1 Analytical Integration</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_5_2">15.5.2 Analytical Differentiation</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_6">15.6 Implementation</a></div></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="15_Numerical_Methods.htm#15_7">15.7 Engineering Example - Shaping the Synthesizer Notes</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="16_Sorting.htm#16">16 Sorting&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_16" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_16"><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_1">16.1 Measuring Algorithm Cost</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_2">16.2 Algorithms for Sorting Data&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_16_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_16_2"><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_1">16.2.1 Insertion Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_2">16.2.2 Bubble Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_3">16.2.3 Quick Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_4">16.2.4 Merge Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_2_5">16.2.5 Radix Sort</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_3">16.3 Performance Analysis</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_4">16.4 Applications of Sorting Algorithms&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_16_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_16_4"><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_1">16.4.1 Using sort(...)</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_2">16.4.2 Insertion Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_3">16.4.3 Bubble Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_4">16.4.4 Quick Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_5">16.4.5 Merge Sort</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="16_Sorting.htm#16_4_6">16.4.6 Radix Sort</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="16_Sorting.htm#16_5">16.5 Engineering Example - A Selection of Countries</a></div></li></ul></li><li class="nav-item"><div class="nav-link"><a href="17_Graphs.htm#17">17 Graphs&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sec_17" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sec_17"><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_1">17.1 Stacks&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_1" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_1"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_1_1">17.1.1 The Nature of a Stack</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_1_2">17.1.2 Implementing Stacks</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_2">17.2 Queues&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_2" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_2"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_2_1">17.2.1 The Nature of a Queue</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_2_2">17.2.2 Implementing Queues</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_2_3">17.2.3 Priority Queues</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#">17.3 Testing Stacks and Queues</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_4">17.4 Graphs&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_4" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_4"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_4_1">17.4.1 Graph Examples</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_4_2">17.4.2 Processing Graphs</a></div></li></ul></li><li class="nav-item secnav"><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_5">17.5 Minimum Spanning Trees</a></div></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_6">17.6 Finding Paths through a Graph&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_6" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_6"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_1">17.6.1 Depth-First Search</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_2">17.6.2 Breadth-First Search</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_3">17.6.3 Dijkstras Algorithm</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_4">17.6.4 An Approximation Algorithm</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_6_5">17.6.5 Serious Path Finding Algorithms</a></div></li></ul></li><li class="nav-item secnav"><div class="nav-link"><a href="17_Graphs.htm#17_7">17.7 Engineering Applications&nbsp;&nbsp;</a><span class="dropdown-toggle" data-target="#sub_17_7" data-toggle="collapse"></span></div><ul class="list-unstyled collapse" id="sub_17_7"><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_7_1">17.7.1 Simple Applications</a></div></li><li class="nav-item subnav"><div class="nav-link"><a href="17_Graphs.htm#17_7_2">17.7.2 Complex Extensions</a></div></li></ul></li></ul></li><li class="nav-item"><a class="nav-link" href="Appendix_A.htm">Appendix A</a></li><li class="nav-item"><a class="nav-link" href="Appendix_B.htm">Appendix B</a></li><li class="nav-item"><a class="nav-link" href="Appendix_C.htm">Appendix C</a></li><li class="nav-item"><a class="nav-link" href="Appendix_D.htm">Appendix D</a></li><li class="nav-item"><a class="nav-link" href="text_index.htm">Index</a></li></ul></nav></div>
+
+<div class="content">
+  <h1 id="15" align="center">Chapter 15: <a id="4050"></a>Numerical Methods</h1>
+
+  <!-- Chapter Objectives -->
+  <h1>Chapter Objectives</h1>
+  <div class="container">
+      <p>This chapter discusses the implementations of four common numerical techniques:</p>
+      <ul>
+          <li>Interpolating data</li>
+          <li>Fitting <a id="3915"></a><a id="4081"></a>polynomial curves to data</li>
+          <li>Numerical <a id="4006"></a><a id="4058"></a>integration</li>
+          <li>Numerical <a id="3932"></a><a id="4054"></a>differentiation</li>
+      </ul>
+  </div>
+
+  <!-- Introduction -->
+  <h1>Introduction</h1>
+  <div class="container">
+      <p>Real-world data are rarely in such a form that you can use it immediately. Frequently, the data must be manipulated according to the user's actual needs:</p>
+      <ul>
+          <li>If the data samples have correct values but are not <a id="3895"></a>close enough together to be used directly, we can use <a id="4021"></a><a id="4064"></a>interpolation to compute data points between the samples provided.</li>
+          <li>There are occasions where the data-gathering facilities add some amount of noise to the data. To minimize the effects of the noise, we can compute the coefficients of a <a id="3916"></a><a id="4082"></a>polynomial function that best matches the data.</li>
+          <li>There are also times when the data must be integrated or differentiated to derive the quantities of interest.</li>
+      </ul>
+  </div>
+
+  <div class="chp-section" data-sect-num="1" data-sect-name="Interpolation">
+    <!-- Interpolation -->
+    <h2 id="15_1">15.1  Interpolation</h2>
+    <div class="container clearfix">
+      <div class="float-sm-right card">
+          <img src="..\Images\Fig_15_1.JPG" alt="Figure 15.1" class="fig card-image">
+          <p class="figure-name card-title">Figure 15.1: The Interpolation Problem</p>
+      </div>
+      <p>If our data samples have correct values but are not close enough to be used directly, we can use either linear or <a id="3896"></a><a id="4032"></a>cubic <a id="4022"></a><a id="4065"></a>interpolation to compute data points between the samples provided. For example, plotting functions use linear <a id="4023"></a><a id="4066"></a>interpolation to draw the lines between data points. In general, <a id="4024"></a><a id="4067"></a>interpolation is a technique by which we estimate a variable's value between known values. In this section, we present the two most common types of <a id="4025"></a><a id="4068"></a>interpolation: <b>linear <a id="4026"></a><a id="4069"></a>interpolation</b> and <b><a id="3897"></a><a id="4033"></a>cubic spline <a id="4027"></a><a id="4070"></a>interpolation</b>. In both techniques, we assume that we have a set of data points that represents x-y coordinates for which \(y\) is a function of \(x\); that is,</p>
+      $$ y = f(x) $$
+      <p>We then have a value of \(x\) that is not part of the data set for which we want to find the \(y\) value. Figure 15.1 illustrates the definition of the <a id="4028"></a><a id="4071"></a>interpolation problem.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Linear Interpolation">
+      <!-- Linear Interpolation -->
+      <h3 id="15_1_1">15.1.1 Linear Interpolation</h3>
+      <div class="container">
+          <p>Linear <a id="4029"></a><a id="4072"></a>interpolation is one of the most common techniques for estimating data values between two given data points. With this technique, we assume that the function between the points can be represented by a straight line drawn between the points, as shown in Figure 15.2.</p>
+          <p>Since we can find the equation of a straight line defined by the two known points, we can find \(y\) for any value of \(x\). The closer the points are to each other, the more accurate our approximation is likely to be. Of course, we could use this equation to extrapolate points past our collected data. This is rarely wise, however, and often leads to significant errors. The function that performs linear <a id="4030"></a><a id="4073"></a>interpolation is as follows:</p>
+          <p><code>new_y = <a id="3983"></a><a id="4012"></a>interp1(x, y, new_x)</code></p>
+          <p>where the vectors <code>x</code> and <code>y</code> contain the original data values and the vector <code>new_x</code> contains the point(s) for which we want to compute interpolated <code>new_y</code> values. The <code>x</code> values should be in ascending order, and the <code>new_x</code> values should be within the range of the original <code>x</code> values. Note that the last character in the name <code>interp1</code> is the numeric 1 (one), not a lowercase L.</p>
+          <div class="card-deck">
+              <div class="card">
+                  <img src="..\Images\Fig_15_2.JPG" alt="Figure 15.2" class="fig card-image">
+                  <p class="figure-name card-title">Figure 15.2: Interpolation Raw Data</p>
+              </div>
+              <div class="card">
+                  <img src="..\Images\Fig_15_3.JPG" alt="Figure 15.3" class="fig card-image">
+                  <p class = "figure-name card-title">Figure 15.3: Linear Interpolation</p>
+              </div>
+          </div>
+          <p>The use of <code><a id="3984"></a><a id="4013"></a>interp1(...)</code> is demonstrated in Listing 15.1.</p>
+          <div id="listing_15_1" class="listing"><iframe src="..\listings\listing_15_1_livehtml.html"></iframe></div>
+          <p>The MATLAB language allows us to provide a fourth parameter to the <a id="3985"></a><a id="4014"></a>interp1(...) function that must be a string that modifies its behavior. The choices are as follows:</p>
+          <ul style="list-style-type:none">
+              <li><code>'nearest'</code> nearest neighbor <a id="4031"></a><a id="4074"></a>interpolation </li>
+              <li><code>'1inear'</code> linear interpolation &mdash; the default</li>
+              <li><code>'spline'</code> piecewise <a id="3898"></a><a id="4034"></a>cubic spline interpolation (see Section 15.1.2)</li>
+              <li><code>'pchip'</code> shape-preserving piecewise <a id="3899"></a><a id="4035"></a>cubic interpolation</li>
+              <li><code>'<a id="3900"></a><a id="4036"></a>cubic'</code> same as <code>'pchip'</code></li>
+              <li><code>'v5<a id="3901"></a><a id="4037"></a>cubic'</code> <a id="3902"></a><a id="4038"></a>cubic interpolation that does not extrapolate, and uses <code>'spline'</code> if <code>x</code> is not equally spaced </li>
+          </ul>
+          <p>The MATLAB language also provides for two-dimensional (<code><a id="3988"></a><a id="4017"></a>interp2(...)</code>) and three-dimensional (<code><a id="3990"></a><a id="4019"></a>interp3(...)</code>) interpolation functions, which are not discussed here.</p>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Cubic Spline Interpolation">
+      <!-- Cubic Spline Interpolation -->
+      <h3 id="15_1_2">15.1.2	Cubic Spline Interpolation</h3>
+      <div class="container clearfix">
+          <p>A <b><a id="3903"></a><a id="4039"></a>cubic spline</b> is a smooth <a id="4053"></a>curve constructed to go through a set of points. The curve between each pair of  points is a third-degree <a id="3917"></a><a id="4083"></a>polynomial that has the general form:</p>
+          $$ {x = a_{x0}{t^3} + a_{x1}{t^2} + a_{x2}{t} + a_{x3}} $$ <br>
+		  $$ {y = a_{y0}{t^3} + a_{y1}{t^2} + a_{y2}{t} + a_{y3}} $$
+          <p>where <code>t</code> is a parameter ranging from 0 to 1 between each pair of points. The coefficients are computed so that this provides a smooth curve between pairs of points and a smooth transition between the adjacent curves. Figure 15.4 shows a <a id="3904"></a><a id="4040"></a>cubic spline smoothly connecting six points using a total of five different cubic equations.</p>
+          <p>The function that performs linear interpolation is as follows:</p>
+          <p><code>new_y = <a id="4000"></a><a id="4102"></a>spline(x, y, new_x);</code></p>
+          <p>where the vectors <code>x</code> and <code>y</code> contain the original data values, and the vector <code>x_new</code> contains the point(s) for which we want to compute interpolated <code>y_new</code> values. The <code>x</code> values should be in ascending order, and while the <code>x_new</code> values should be within the range of the <code>x</code> values, this function will attempt to extrapolate outside that range.</p>
+          <p>The curve in Figure 15.4 was created using the code shown in Listing 15.2.</p>
+          <div class="card-deck">
+              <div class="card col-sm-6">
+                  <img src="..\Images\Fig_15_4.PNG" alt="Figure 15.4" class="fig card-image">
+                  <p class="figure-name card-title">Figure 15.4: Cubic Spline Interpolation</p>
+              </div>
+                <!-- Style Points -->
+                <div class="card col-sm-6 style-points style-points-col">
+                  <p class="card-title">Style Points 15.1</p>
+                  <p class="card-text">
+                      <p>A good convention to adopt is shown in Figure 15.4:</p>
+                      <ul>
+                          <li>Use symbols to plot data points that are real values with no associated information connecting them.</li>
+                          <li>Draw lines between data points only when there is an analytic relationship that connects the data points.</li>
+                      </ul>
+                      <p>Here, we use a circle symbol for the raw data to emphasize the original source of the information, and a smooth line for the spline curve to indicate that we are assuming a possibly erroneous but continuous relationship between data points.</p>
+                  </p>
+              </div>
+          </div>
+          <div id="listing_15_2" class="listing"><iframe src="..\listings\listing_15_2_livehtml.html"></iframe></div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="Extrapolation">
+      <!-- Extrapolation -->
+      <h3 id="15_1_3">15.1.3	Extrapolation</h3>
+      <div class="container">
+        <p>A note of caution about <a id="3940"></a><a id="4041"></a>extrapolation - attempting to infer the values of data points outside the range of data provided is problematic at best and usually gives misleading results. Although logically your code may allow you to, you should never do it. The <a id="3986"></a><a id="4015"></a>interp1(...) and <a id="4001"></a><a id="4103"></a>spline(...) functions behave differently in this respect. As we saw previously, the <a id="3987"></a><a id="4016"></a>interp1(...) function refuses to supply results outside the range of the original <code>x</code> data. If you try, for every <code>new_x</code> value outside the range of the original <code>x</code> values, it will return <code><a id="4047"></a>NaN</code> - not a number.</p>
+        <p>This is actually quite nice because if you accidentally request interpolated data like this, the plot programs ignore <code><a id="4048"></a>NaN</code> values. The spline function, however, has no such scruples and allows you to request any <code>x</code> values you want, using the equation of the closest line segment. So considering Figure 15.4, if you asked for the value at <code>x = -3</code>, it would use the segment between 0 and 1, which has a violent upswing at the lower end (see Exercise 15.1).</p>
+        <p>This might be what you want, but it looks odd! Chances are the data are not as accurate as you thought, and you probably need to fit a curve to the data, as explained in the following section.</p>
+        <div class="exercise"><iframe src="..\exercises\exercise_15_1html.html"></iframe></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="2" data-sect-name="Curve Fitting">
+    <!-- Curve Fitting -->
+    <h2 id="15_2">15.2 Curve Fitting</h2>
+    <div class="container">
+        <p>There are occasions where the data acquisition facilities add some amount of noise to the data. To minimize the effects of the noise, we can smooth the data by computing the coefficients of a <a id="3918"></a><a id="4084"></a>polynomial function that best match the data. The choice of the order of the <a id="3919"></a><a id="4085"></a>polynomial must be made by the users, depending upon their understanding of the underlying <a id="4100"></a>physics that generated the data.</p>
+        <p>For example, assume that we have a set of data points collected from an experiment. After plotting the data points, we find that they generally fall in a straight line. However, if we were to try to draw a straight line through the points, probably only a couple of the points would fall exactly on the line. A least squares <a id="3912"></a>curve fitting method could be used to find the straight line that is the closest to the points, by minimizing the distance from each point to the straight line. Although this line can be considered a "best fit" to the data points, it is possible that none of the points would actually fall on the line of best fit. (Note that this method is different from interpolation, because the lines used in interpolation actually fall on all of the original data points.)</p>
+        <p>In the following section, we will discuss fitting a straight line to a set of data points, and then we will discuss fitting a <a id="3920"></a><a id="4086"></a>polynomial of higher order.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Linear Regression">
+      <!-- Linear Regression -->
+      <h3 id="15_2_1">15.2.1 Linear Regression</h3>
+      <div class="container clearfix">
+          <div class="float-sm-right">
+              <div class="card">
+                  <img src="..\Images\Fig_15_5.PNG" alt="Figure 15.5" class="fig card-image">
+                  <p class="figure-name card-title">Figure 15.5: An eyeball estimate of a linear fit</p>
+              </div>
+              <div class="card">
+                  <img src="..\Images\Fig_15_6.PNG" alt="Figure 15.6" class="fig card-image">
+                  <p class="figure-name card-title">Figure 15.6: Linear Curve Fit</p>
+              </div>
+          </div>
+          <p>Linear regression is the process that determines the linear equation that is the best fit to a set of data points in terms of minimizing the sum of the squared distances between the line and the data points. To understand this process, first we consider the same set of data values used previously and attempt to "eyeball" a straight line through the data. Assume, for example, that \(y = 20x\) is a good estimate of the curve. Listing 15.3 shows the code to plot the points and this estimate.</p>
+          <p>Looking at the results in Figure 15.5, it appears that \(y = 20x\) is a reasonable estimate of a line through the points.</p>
+          <p>We really need the ability to compare the quality of the fit of this line to other possible estimates, so we compute the difference between the actual y value and the value calculated from the estimate:</p>
+          <p><code>>> dy = [0, 0, 20, 8, -3, 10]</code></p>
+          <p>It turns out that the best way to make this comparison is by the <b>least squares technique</b>, whereby the measure of the quality of the fit is the sum of the squared differences between the actual data points and the linear estimates. This sum can be computed with the following command:</p>
+          <p><code>>> sum_sq = <a id="4004"></a><a id="4106"></a>sum(dy.^2)</code></p>
+          <p>For the above set of data, the value of <code>sum_sq</code> is <code>573</code>. As we will see, MATLAB can automatically produce the best linear fit shown in Figure 15.6 whose sum of squares is <code>356.82</code>, a significant improvement over our original guess. This result was achieved by <a id="4093"></a>running Exercise 15.2.</p>
+        </div>
+        <div id="listing_15_3" class="listing"><iframe src="..\listings\listing_15_3_livehtml.html"></iframe></div>
+        <div class="exercise"><iframe src="..\exercises\exercise_15_2html.html"></iframe></div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Polynomial Regression">
+      <!-- Polynomial Regression -->
+      <h3 id="15_2_2">15.2.2	Polynomial Regression</h3>
+      <div class="container">
+          <p>Linear regression is a special case of the <a id="3921"></a><a id="4087"></a>polynomial regression technique. Recall that a <a id="3922"></a><a id="4088"></a>polynomial with one variable can be written by using the following formula:</p>
+          $$ f(x) = a_0{x^n} + a_1{x^{n-1}} + a_2{x^{n-2}} + a_3{x^{n-3}} + ... a_{n-1}x + a_n $$
+          <p>The degree of a <a id="3923"></a><a id="4089"></a>polynomial is equal to the largest value used as an exponent. MATLAB provides a pair of functions to compute the coefficients of the best fit to a set of data and then interpolate on those coefficients to produce the data to plot:</p>
+          <ul>
+              <li><code>coef = <a id="3995"></a><a id="4078"></a>polyfit(x, y, n)</code> computes the coefficients of the <a id="3924"></a><a id="4090"></a>polynomial of degree <code>n</code> that best matches the given <code>x</code> and <code>y</code> values. The function returns the coefficients, <code>coef</code>, in descending powers of <code>x</code>. For the least squares calculation to work, the length of <code>x</code> should be greater than <code>n - 1</code>. If this is not the case, the coefficients are still computed, but the curve passes through all the data points.</li>
+              <li><code>new_y = <a id="3998"></a><a id="4091"></a>polyval(coef, new_x)</code> can then be used to interpolate the polynomial defined by these coefficients for the <code>new_y</code> <a id="4114"></a>value(s) corresponding to any <code>new_x</code> <a id="4115"></a>value(s).</li>
+          </ul>
+          <p>Note that there is nothing to prevent you from using these coefficients for <a id="3941"></a><a id="4042"></a>extrapolation.</p>
+          <p>Exercise 15.2 illustrates fitting the best straight line to the data used in Section 15.1.1, indicating that the first-order polynomial that best fits our data is as follows:</p>
+          $$ f(x) = 20.8286x + 3.7169 $$
+          <p>We could interpolate the values of new_x with: <code>new_y = coef(1) * new_x + coef(2)</code> or we could use the function polyval: <code>new_y = <a id="3996"></a><a id="4079"></a>polyfit(coef, new_x)</code> </p>
+          <p>We can use our new understanding of the <code>polyfit</code> and <code>polyval</code> functions to write a program to study the improvement in the curve fit as <code>n</code> increases, as shown in Listing 15.4.</p>
+          <div id="listing_15_4" class="listing"><iframe src="..\listings\listing_15_4_livehtml.html"></iframe></div>
+          <p>The results are shown in Figure 15.7. Notice that with six points, the fifth-order fit goes through all the data points.</p>
+          <div class="card">
+              <img src="..\Images\Fig_15_7.PNG" alt="Figure 15.7" class="fig-wide card-image">
+              <p class="figure-name card-title">Figure 15.7: Higher-order polynomial fits</p>
+          </div>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="3" data-sub-name="Practical Application">
+      <!-- Practical Application -->
+      <h3 id="15_2_3">15.2.3 Practical Application</h3>
+      <div class="container">
+          <p>We return briefly to the problem of replacing the blue sky in Chapter 13. The sky we used to replace the <a id="4005"></a>gray skies of Vienna has a power line we need to remove. We can use polynomial <a id="3913"></a>curve fitting to create an artificial sky with exactly the same color characteristics as the blue sky in the cottage picture, but without the wire. This is possible because each row of the image has so much data that define its color profile that the presence of the wire is a minor amount of "noise." We merely need to process each row of the sky, fit a second-order curve to it, interpolate a new sky row from the parameters, and replace the row in the sky. The code to perform this is shown in Listing 15.5.</p>
+          <div id="listing_15_5" class="listing"><iframe src="..\listings\listing_15_5_livehtml.html"></iframe></div>
+          <div class="card-deck">
+              <div class="card">
+                  <img src="..\Images\sky.jpg" alt="Figure 15.8" class="fig card-image">
+                  <p class="figure-name card-title">Figure 15.8: Updated Sky</p>
+              </div>
+              <div class="card">
+                  <img src="..\Images\newnewVienna.jpg" alt="Figure 15.9" class="fig card-image">
+                  <p class="figure-name card-title">Figure 15.9: Updated Picture</p>
+              </div>
+          </div>
+          <p>Figure 15.8 shows the cottage picture updated with a smooth sky. Notice that the chimneys have been smeared off, but this does not affect the part of the sky needed for the Vienna picture. This synthetic sky is ready to be used in the script to replace the original sky (see Listing 13.1). Figure 15.9 shows the Vienna picture with a <a id="3894"></a>clear blue synthetic sky.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="3" data-sect-name="Numerical Integration">
+    <!-- Numerical Integration -->
+    <h2 id="15_3">15.3 Numerical Integration</h2>
+    <div class="container clearfix">
+        <div class="card float-right">
+          <img src="..\Images\Fig_15_10.JPG" alt="Figure 15.10" class="fig card-image">
+          <p class="figure-name card-title">Figure 15.10: Integration of \(f(x)\)</p>
+        </div>
+        <p>The <a id="3971"></a>integral of a function \(f(x)\) over the interval \([a, b]\) is defined to be the area under the curve of \(f(x)\) between \(a\) and \(b\), as shown in Figure 15.10. If the value of this <a id="3972"></a>integral is \(K\), the notation to represent the <a id="3973"></a>integral of \(f(x)\) between \(a\) and \(b\) is as follows:</p>
+        $$ K = \int\limits_a^b f(x) dx $$
+        <p>For many functions, this <a id="3974"></a>integral can be computed analytically. However, for a number of functions, this is not possible, and we require a numerical technique to estimate its value. We look at two different scenarios:</p>
+        <ul>
+            <li>Two different techniques for computing the complete <a id="3975"></a>integral with various degrees of accuracy</li>
+            <li>A technique for evaluating the continuous <a id="3976"></a>integral of \(f(x)\)</li>
+        </ul>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Determination of the Complete Integral">
+      <!-- Determination of the Complete Integral -->
+      <h3 id="15_3_1">15.3.1 Determination of the Complete Integral</h3>
+      <div class="container clearfix">
+          <div class="card float-right">
+              <img src="..\Images\Fig_15_11.PNG" alt="Figure 15.11" class="fig card-image">
+              <p class="figure-name card-title">Figure 15.11: Discrete Integration</p>
+          </div>
+          <p>Two of the most common numerical <a id="4007"></a><a id="4059"></a>integration techniques estimate \(f(x)\) either with a set of piecewise linear functions or with a set of piecewise <a id="4075"></a><a id="4107"></a>parabolic functions. If we use piecewise linear functions, we can compute the area of the trapezoids that compose the area under the piecewise linear function. This technique is called the <b><a id="4108"></a>trapezoidal rule</b>. If we use piecewise quadratic functions, we can compute and add the areas of these components. This technique is called <b><a id="4094"></a>Simpsons rule</b>.</p>
+      </div>
+      <!-- Trapezoidal -->
+          <p><b>The Trapezoidal Rule</b> If we represent the area under a curve by trapezoids, as illustrated in Figure 15.11, and if the interval \([a, b]\) is divided into \(n\) equal sections, then the area can be approximated by the following formula:</p>
+          $$ K_t = {\frac{b - a}{2n}}{(f(x_0) + 2f(x_1) + 2f(x_2) + ... + 2f(x_{n-1} + f(x_n))} $$
+          <p>where the \(x_i\) values  represent  the  end  points  of  the  trapezoids  and where \(x_0 = a\) and \(x_n = b\). Listing 15.6 shows a function that computes this <a id="3977"></a>integral.</p>
+          <div id="listing_15_6" class="listing"><iframe src="..\listings\listing_15_6_livehtml.html"></iframe></div>
+      <!-- Simpsons -->
+          <p><b><a id="4095"></a>Simpsons Rule</b> If the area under a curve is represented by areas under quadratic sections of a curve, and if the interval \([a, b]\) is divided into \(2n\) equal sections, then the area can be approximated by the formula (Simpsons rule):
+          $$ K_s={\frac{h}{3}}{(f(x_0)+4f(x_1)+2f(x_2)+4f(x_3)+...+2f(x_{2n-2})+4f(x_{2n-1})+f(x_{2n}))} $$
+          <br>where the \(x_i\) values represent the end points of the sections, \(x_0 = a\) and \(x_{2n} = b\), and \(h = (b-a) / (2n)\). Listing 15.7 shows a function to integrate using <a id="4096"></a>Simpsons rule.</p>
+          <div id="listing_15_7" class="listing"><iframe src="..\listings\listing_15_7_livehtml.html"></iframe></div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Continuous Integration Problems">
+      <!-- Continuous Integration Problems -->
+      <h3 id="15_3_2">15.3.2 Continuous Integration Problems</h3>
+      <div class="container">
+          <p>We now consider a slightly different scenario. If \(f(t)\) is the rate of change of \(F(t)\) defined as \(f(t) = dF(t)/dt\), then given \(f(t)\), we can find the indefinite <a id="3978"></a>integral \(F(t)\) according to the following formula:</p>
+          $$ F(t) = \int\limits_{t_0}^t f(x) dt $$
+          <p>For example, we might be given data that represent the velocity of a sounding rocket, such as is plotted in Figure 15.12. We need to approximate the altitude of the rocket over time by integrating this data.</p>
+          <p>To perform this kind of <a id="3979"></a>integral, the MATLAB language provides the function <code>F = <a id="3905"></a><a id="3946"></a>cumsum(f)</code> that computes the cumulative sum of the vector <code>f</code>. The result, <code>F</code>, is a vector of the same length as <code>f</code> where <code>F(i)</code> is the sum of <code>f(1:i)</code>. If the data values, <code>f</code>, are regularly sampled at a rate <code>&Delta;t</code>, the <a id="3980"></a>integral is found by multiplying <code><a id="3906"></a><a id="3947"></a>cumsum(f)</code> by the time interval, <code>&Delta;t</code>. If they are not regularly sampled, you have to compute the <code><a id="3907"></a><a id="3948"></a>cumsum(...)</code> of the scalar product of <code>f</code> and the vector of time differences.</p>
+          <p>To compute a more accurate <a id="3981"></a>integral, especially if the samples are not regularly spaced along the independent axis, MATLAB also provides the function <code><a id="3910"></a><a id="3951"></a>cumtrapz(t, f)</code> where <code>t</code> is the independent parameter and <code>f</code> the dependent parameter. The function uses <a id="4109"></a>trapezoidal <a id="4008"></a><a id="4060"></a>integration to calculate the indefinite <a id="3982"></a>integral <code>F(t)</code>.</p>
+          <div class="card-deck">
+              <div class="card">
+                  <img src="..\Images\Fig_15_12.PNG" alt="Figure 15.12" class="fig card-image">
+                  <p class="figure-name card-title">Figure 15.12: Velocity of a rocket</p>
+              </div>
+              <div class="card">
+                  <img src="..\Images\Fig_15_13.PNG" alt="Figure 15.13" class="fig card-image">
+                  <p class="figure-name card-title">Figure 15.13: Rocket velocity and amplitude</p>
+              </div>
+          </div>
+          <p>Listing 15.8 shows the function that computes this continuous integral, making use of <code><a id="3908"></a><a id="3949"></a>cumsum(...)</code>.</p>
+          <p>Figure 15.13 shows the resulting plot. The results displayed in the Command window are:</p>
+          <p><code>cumsum height: 1848.5 <br><a id="4110"></a>trapezoidal height: 1811.85 <br><a id="4097"></a>Simpsons Rule height: 1811.14</code></p>
+          <p>The continuous <a id="4009"></a><a id="4061"></a>integration produces results within 2% of the "accurate" <a id="4010"></a><a id="4062"></a>integration techniques.</p>
+          <div id="listing_15_8" class="listing"><iframe src="..\listings\listing_15_8_livehtml.html"></iframe></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="4" data-sect-name="Numerical Differentiation">
+    <!-- Numerical Differentiation -->
+    <h2 id="15_4">15.4  Numerical Differentiation</h2>
+    <div class="container">
+        <p>The <a id="3953"></a>derivative of a function \(f(x)\) is defined to be a function \(f'(x)\) that is equal to the rate of change of \(f(x)\) with respect to \(x\). The <a id="3954"></a>derivative can be expressed as a ratio, with the change in \(f(x)\) indicated by \(df(x)\) and the change in \(x\) indicated by \(dx\), giving us the following:</p>
+        $$ f'(x) = \frac{df(x)}{dx} $$
+        <p>There are many <a id="3937"></a>physical processes for which we want to measure the rate of change of a variable. For example, velocity is the rate of change of position (as in meters per second), and acceleration is the rate of change of velocity (as in meters per second squared).</p> <p>The <a id="3955"></a>derivative \(f'(x)\) can be described graphically as the slope of the function \(f(x)\), which is defined to be the slope of the tangent line to the function at the specified point. Thus, the value of \(f'(x)\) at the point \(a\) is \(f'(a)\), and it is equal to the slope of the tangent line at the point \(a\).</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Difference Expressions">
+      <!-- Difference Expressions -->
+      <h3 id="15_4_1">15.4.1	Difference Expressions</h3>
+      <div class="container">
+          <p>In general, numerical <a id="3933"></a><a id="4055"></a>differentiation techniques estimate the <a id="3956"></a>derivative of a function at a point \(x_k\) by approximating the slope of the tangent line at \(x_k\) using values of the function at points near \(x_k\). The approximation of the slope of the tangent line can be done in several ways, as shown in Figure 15.14.</p>
+          <ul>
+              <li><i>Backward Difference:</i> Figure 15.14(a) assumes that the <a id="3957"></a>derivative at \(x_k\) is estimated by computing the slope of the line between \(f(k_{x - 1})\) and \(f(x_k)\)</li>
+              <li><i>Forward Difference:</i> Figure 15.14(b) assumes that the <a id="3958"></a>derivative at \(x_k\) is estimated by computing the slope of the line between \(f(x_k\) and \(f(x_{k + 1}\)</li>
+              <li><i>Central Difference:</i> Figure 15.14(c) assumes that the <a id="3959"></a>derivative at \(x_k\) is estimated by computing the slope of the line between \(f(x_{k-1})\) and \(f(x_{k+1})\)</li>
+          </ul>
+          <p>The quality of all of these types of <a id="3960"></a>derivative computations depends on the distance between the points used to estimate the <a id="3961"></a>derivative; the estimate of the <a id="3962"></a>derivative improves as the distance between the two points decreases.</p>
+          <div class="card">
+            <img src="..\Images\Fig_15_14.PNG" alt="Figure 15.14" class="fig-wide card-image">
+            <p class="figure-name card-title">Figure 15.14: Difference Techniques</p>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="5" data-sect-name="Analytical Operations">
+    <!-- Analytical Operations -->
+    <h2 id="15_5">15.5 Analytical Operations</h2>
+    <div class="container">
+        <p>We return to the discussion of fitting a polynomial to some raw data in Section 15.2.2. We approximated a polynomial fit with the following expression:</p>
+        $$ f(x) = a_0{x^n} + a_1{x^{n-1}} + a_2{x^{n-2}} + a_3{x^{n-3}} + ... + a_{n-1}{x} + a_n $$
+        <p>Since this is an <a id="4051"></a>analytical expression, even if some or all of the coefficients are complex, we can integrate it to estimate the integral of the raw data and differentiate it to estimate the slope of the raw data.</p>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="1" data-sub-name="Analytical Integration">
+      <!-- Analytical Integration -->
+      <h3 id="15_5_1">15.5.1	Analytical  Integration</h3>
+      <div class="container">
+          <p>The expression for F(x), the integral of f(x) with respect to x, is given by:</p>
+          $$ F(x) = a_0{x^{n+1}}/{n+1} + a_1{x^n}/n + a_2{x^{n-1}}/{n-1} + a_3{x^{n-2}}/{n-2} + ... + a_{n-1}{x^2}/2 + a_n{x} + K $$
+          <p>Note that an arbitrary constant, K, is always required for <a id="4052"></a>analytical <a id="4011"></a><a id="4063"></a>integration representing the starting value F(0).</p>
+      </div>
+    </div>
+
+    <div class="chp-subsection" data-sub-num="2" data-sub-name="Analytical Differentiation">
+      <!-- Analytical Differentiation -->
+      <h3 id="15_5_2">15.5.2	Analytical Differentiation</h3>
+      <div class="container">
+          <p>The expression for f’(x), the integral of f(x) with respect to x, is given by:</p>
+          $$ f'(x) = na_0{x^{n-1}} + (n-1)a_1{x^{n-2}} + (n-2)a_2{x^{n-3}} + (n-3)a_3{x^{n-4}} + a_{n-1} $$
+      </div>
+    </div>
+  </div>
+
+  <div class="chp-section" data-sect-num="6" data-sect-name="Implementation">
+    <!-- Implementation -->
+    <h2 id="15_6">15.6  Implementation</h2>
+    <div class="container clearfix">
+        <div class="float-sm-right card">
+            <img src="..\Images\Fig_15_15.PNG" alt="Figure 15.15" class="fig card-image">
+            <p class="figure-name card-title">Figure 15.15: Differentiation</p>
+        </div>
+        <p>To facilitate <a id="3934"></a><a id="4056"></a>differentiation, the MATLAB language defines the <code><a id="3926"></a><a id="3965"></a>diff(...)</code> function, which computes differences between adjacent values in a vector, generating a new vector with one less value than the original:</p>
+        <p><code>dv = <a id="3927"></a><a id="3966"></a>diff(V) returns [V(2)-V(1), V(3)-V(2), ..., V(n)-V(n-1)]</code></p>
+        <p>An approximate <a id="3963"></a>derivative \(dy/dx\) can be computed by using <code><a id="3928"></a><a id="3967"></a>diff(y)./ <a id="3929"></a><a id="3968"></a>diff(x)</code>. Depending on the application, this can be used to compute the <a id="3943"></a>forward, backward, or <a id="3893"></a>central difference approximation. The solution to the <a id="3944"></a>forward difference is shown in Listing 15.9.</p>
+        <p>The results are shown in Figure 15.15. Since the original data were generated from a series of coefficients, we could also plot the exact value of the slope using the result of Section 15.5.2.</p>
+    </div>
+    <div id="listing_15_9" class="listing"><iframe src="..\listings\listing_15_9_livehtml.html"></iframe></div>
+  </div>
+
+  <div class="chp-section" data-sect-num="7" data-sect-name="Engineering Example - Shaping the Synthesizer Notes">
+    <!-- Engineering Example -->
+    <h2 id="15_7">15.7  Engineering Example - Shaping the Synthesizer Notes</h2>
+    <div class="container clearfix">
+        <div class="card float-sm-right">
+          <img src="..\Images\Fig_15_16.PNG" alt="Figure 15.16" class="fig card-image">
+          <p class="figure-name card-title">Figure 15.16: Piano note time history</p>
+        </div>
+        <p>As discussed in Chapter 14, we can synthesize the frequency content of an instrument by selecting an appropriate number of coefficients from the energy spectrum, multiplying each by an appropriate sine or cosine wave and summing the results. This gives a time trace with constant amplitude, which is fine for an instrument like a trumpet, but notes played on other instruments like a piano have a very non-linear time profile as shown in Figure 15.16. That same figure has two overlays indicating how to develop the decay profile typical of a piano note. First, we choose a modest number of samples that describe the envelope of the sound (marked by red * symbols). Then, we perform a high-order curve fit on that data and check its accuracy by plotting it as the solid line on the same figure.</p>
+        <p>To demonstrate the essence of this capability, we begin with Listing 14.6 from Chapter 14, reading the file 'instr_piano.<a id="4116"></a>wav' instead of 'instr_tpt.<a id="4117"></a>wav.' Now, we insert the code in Listing 15.10 in place of the last two lines of Listing 14.6.</p>
+    </div>
+        <div id="listing_15_10" class="listing"><iframe src="..\listings\listing_15_10_livehtml.html"></iframe></div>
+        <p>In conclusion, with these two engineering examples, we have shown how the essence of the sound of a <a id="4099"></a>musical instrument can be derived from the actual sound of an instrument and captured as a small set of complex amplitudes with their frequency value and an even smaller set of real coefficients of the function that multiplies the amplitude over time.</p>
+        <p>To construct from these data a real <a id="3936"></a>music <a id="3938"></a>synthesizer, one need only to detect that a keyboard note has been pressed, determine the required <a id="3945"></a>frequency, and play the synthesized note until the key is released. If the <a id="3939"></a>synthesizer is equipped to specify that the sustain pedal is depressed, the piano sound should not be cut off, but allowed to fade into silence.</p>
+  </div>
+
+  <!-- Chapter Summary -->
+  <h2 id="15_Chapter_Summary">Chapter Summary</h2>
+  <div class="container">
+      <p><i>In this chapter, we saw the implementations of four common numerical techniques:</i></p>
+      <ul>
+          <li>We can estimate data points between given data values using linear <code>(interp1(...)/<a id="3989"></a><a id="4018"></a>interp2(...)/<a id="3991"></a><a id="4020"></a>interp3(...))</code> or <a id="4002"></a><a id="4104"></a>spline(...) interpolation</li>
+          <li>We can smooth noisy data by fitting polynomial curves of suitable order to the raw data</li>
+          <li>Given, for example, the velocity of an object over time, we can determine its position by integrating using <code><a id="3911"></a><a id="3952"></a>cumtrapz(...)</code> or <code><a id="3909"></a><a id="3950"></a>cumsum(...)</code></li>
+          <li>We can differentiate to generate its acceleration</li>
+      </ul>
+  </div>
+<h2>Self Test</h2>
+<div class="container">
+
+Use the following questions to check your understanding of the material in this
+chapter:
+<h3>True or False</h3>
+<ol>
+<li>All MATLAB functions permit <a id="3942"></a><a id="4043"></a>extrapolation beyond the limits of
+the original independent variable.</li>
+          <li>The cubic spline is a series of <a id="4076"></a>parametric curves.</li>
+          <li>You cannot extrapolate the equations generated by <a id="3914"></a>curve fitting.</li>
+          <li>You should always match the order of a <a id="4077"></a>parametric curve fit to the
+underlying <a id="4101"></a>physics of the data.</li>
+          <li><a id="4098"></a>Simpsons rule is more accurate than the <a id="4111"></a>trapezoidal rule for
+integrating a function.</li>
+          <li>Numerical <a id="3935"></a><a id="4057"></a>differentiation produces a vector that is the same length
+as the original vector.</li>
+</ol>
+<h3>Fill in the Blanks</h3>
+<ol>
+<li>___________ is the technique by which we estimate a variable's
+value between known values.</li>
+          <li>Nth-order polynomial regression determines the ____________ of
+order n that minimize the ______________ between the line and the
+data points.</li>
+          <li>The ___________________makes the slope at x(k) the ______________
+of the line between x(k-1) and x(k+1).</li>
+          <li>To compute the continuous integral of a data set that is not regularly
+sampled, you have to compute the _________________ of the
+_______________ of ________________ and __________________.</li>
+          <li>If a(n) ____________ is defined by its polynomial coefficients, you
+can integrate or differentiate it by _______________ the vector of
+coefficients.</li>
+</ol>
+
+<h3>Programming Projects</h3>
+<ol>
+<li>Do the following basic exercises with numerical methods.
+<ol type="a">
+<li>Define two vectors xi and yi of the same length where the xi
+values are monotonically increasing and the yi values are
+somehow related to the xi values. Then define a new vector x
+with closer spacing than xi and extending below and above the
+range of xi . Find the y values corresponding to the x values in xi
+by linear interpolation. On the same figure, plot the original yi
+vs. xi as red circles, and y vs. x as a black line. What do you
+observe about the visible range of the x values?</li>
+          <li>Repeat the exercise in part a using the <a id="4003"></a><a id="4105"></a>spline(...) function to
+interpolate. Explain the difference in the range of the resulting y
+vs. x plot.</li>
+          <li>Use <a id="3997"></a><a id="4080"></a>polyfit(...) to find the coefficients of the third-order
+polynomial that best fits the points represented by vectors xi and
+yi and then use <a id="3999"></a><a id="4092"></a>polyval(...) to evaluate that curve at the x points.
+As before, plot yi vs. xi as red circles and y vs. x as a black line.</li>
+          <li>Approximate the <a id="3925"></a><a id="3964"></a>derivative, dxy = dy/dx, for the vectors xi and
+yi using the <a id="3930"></a><a id="3969"></a>diff(...) function and plot yi vs. xi . Since
+<a id="3931"></a><a id="3970"></a>diff(...) reduces the length of the vector by one, you will have
+to plot dxy vs. either xi(1:end-1), xi(2:end) or compute xm , the
+mid-points of xi.</li>
+          <li>Find yp, the cumulative sum of the elements in dxy, and add this
+to the plot of part d. With the exception of a constant offset, this
+curve ought to track the original plot of yi vs. xi.</li>
+          <li>Use cumtrapz to find the area under the curve represented by yp
+vs. xi with the <a id="4112"></a>trapezoidal method of approximation. Compare
+this result to the ending value of the yp curve.</li>
+</ol>
+          <li>Write a function, bestFit, that takes in a vector of x-coordinates and
+a vector of y-coordinates. Your function should fit a polynomial
+curve to the data. The degree of the polynomial should be the
+smallest degree polynomial with an average error (the average of
+the absolute value of the difference between the new y-coordinates
+and the original y-coordinates) less than 2. Your function should
+return:
+<ol type="a">
+<li>the vector of coefficients of your polynomial</li>
+          <li>the vector of new y-coordinates, which is the polynomial
+evaluated at the original x-coordinates, and</li>
+          <li>the vector of the error magnitudes of your polynomial.
+		  </ol>
+Write a test program to provide reasonable data to your function
+and plot the original data (in blue), the curve-fitted data (in green),
+and the error (in red) on one figure. Title your plot and label your
+axes accordingly, including a legend.</li>
+          <li>You have been approached by the Rambling Wreck club to test the
+performance of the Rambling Wreck. You are provided with the test
+results of the car for 10 trial runs in the form of a vector d that
+contains the displacement of the car from the origin at that second.
+The first element is the displacement at the 0th second, the second
+element is the displacement at the 1st second, and so on. Write a
+script called testWreck that displays a plot of the speed of the
+Rambling Wreck over time during the test run. You could test your
+script using:
+d = [0 20 35 50 60 55 30 25 15 5];.</li>
+          <li>Engineers often use tabulated data for various calculations. An
+important method that any good engineer should be able to apply
+to tabulated data is interpolation. In thermodynamics, the properties
+of a gas can be known when two of its properties have been fixed.
+You are required to come up with a continuous function being given
+the tabulated data below measured where the pressure is 0.10 MPa:
+<table>
+<tr><th>Temperature (deg C)</th><th>Specific Volume (cu meters/Kg)</th></tr>
+<tr><td>99.63</td><td>1.694</td></tr>
+<tr><td>100</td><td>1.696</td></tr>
+<tr><td>120</td><td>1.793</td></tr>
+<tr><td>160</td><td>1.984</td></tr>
+<tr><td>200</td><td>2.172</td></tr>
+<tr><td>240</td><td>2.359</td></tr>
+<tr><td>280</td><td>2.546</td></tr>
+<tr><td>320</td><td>2.732</td></tr>
+<tr><td>360</td><td>2.917</td></tr>
+<tr><td>400</td><td>3.103</td></tr>
+<tr><td>440</td><td>3.288</td></tr>
+<tr><td>500</td><td>3.565</td></tr>
+</table>
+Write a function called lookup that consumes three parameters: the
+above table in an array, a number value, and a logical control value
+getTemp. If getTemp is true, the function interpolates the value as a
+specific volume and returns the corresponding temperature.
+Otherwise, it interpolates the value as a temperature and returns the
+corresponding specific volume.<br>
+Your function must not extrapolate the data (i.e., it should return <a id="4049"></a>NaN 
+if the user tries to obtain values
+outside the range of the table values).</li>
+          <li>Mathematically speaking, a critical point occurs when the derivative
+of a function equals zero. It is possible that a local minimum or a
+local maximum occurs at a critical point. A local minimum is a point
+where the function's value to the left and right of it is larger, and a
+local maximum is a point where the function's value to the left and
+right of it is smaller. You are going to write a function that finds the
+local minimum and maximum points of a set of data. Call the
+function find_points . It should take in vectors of x and y values and
+return two vectors. The first vector should contain the x values
+where the minimum points occur, while the second vector should
+contain the x values where the maximum points occur.<br>
+For example:<br>
+If x=<a id="3992"></a><a id="4044"></a>linspace(-8,2,1000) and y=x.^2+6*x+3;<br>
+[min_p max_p]=find_points(x,y) should return<br>
+min_p = -3, max_p = []<br>
+If x=<a id="3993"></a><a id="4045"></a>linspace(-5,5,1000) and y=x.^3-12*x;<br>
+[min_p max_p]=find_points(x,y) should return:<br>
+min_p = 2, max_p = -2<br>
+You should plot x and y to confirm the answers..</li>
+          <li>Now that we used the derivative it only makes sense that you are
+going to write a function that finds integrals. Call your function
+find_integral . Your function should take in a vector of x and y
+values as Problem 15.5 does and should plot the integral and also
+return the total area under the function. You are to use the
+<a id="4113"></a>trapezoidal rule to find the integrals.<br>
+For example:<br>
+If x=<a id="3994"></a><a id="4046"></a>linspace(0,5,1000); and y=2*x+5;<br>
+find_integral(x,y) should return 50.0000<br>
+ 
+</ol>
+</div>
+</div>
+
+
+</body>
+</html>
+

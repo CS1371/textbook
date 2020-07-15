@@ -159,7 +159,7 @@
           <p>We will leave as an exercise for the reader the question of playing a tune by changing the playback frequency of each note, which is really never a practical thing to do, and concentrate on playing all the notes of a tune with the same playback frequency. This allows the different notes to be copied into a single sound file and saved to be played back on any digital sound system.</p>
           <p>In order to change the perceived note frequency without changing the playback frequency, we have to change the number of data samples in the original data file much as we stretched or shrunk an image in Section 13.4.1.</p>
           <p><b>Play a Scale</b> Listing 14.2 shows a script that uses this capability to play the C Major scale (all white notes) on the piano. It repeatedly shortens the vector to increase the frequency of the note played.</p>
-          <p><b>Play a Simple Tune</b> We now write a script to build a playable <code>.wav</code> file using the note shrinking technique, also shown in Listing 14.2. It reads in the script <code>ramblinWreck</code> to define the tune in which the first column of each cell array specifies the relative pitch (the note on teh scale) and the second the duration in "beats".</p>
+          <p><b>Play a Simple Tune</b> We now write a script to build a playable <code>.wav</code> file using the note shrinking technique, also shown in Listing 14.2. It reads in the script <code>ramblinWreck</code> to define the tune in which the first column of each cell array specifies the relative pitch (the note on the scale) and the second the duration in "beats".</p>
           <p>The goal is to put the notes into a single sound array called <code>wreck</code>, as illustrated in Figure 14.4, rather than playing the notes "on the fly." For each part, or instrument, this is accomplished as follows:</p>
           <ul>
            <li>In the <code>play_part</code> function, create an empty array, <code>part</code>, of the appropriate length (the length of the original note plus the total number of beats in the song)</li>
@@ -266,11 +266,11 @@
           </div>
           <p>Listing 14.3 illustrates a script that creates 10 seconds of an 8 Hz sine wave, plots the first second of it, performs the FFT, and plots the real and imaginary parts of the spectrum. Notice the following:</p>
           <ul>
-           <li>A sine wave in the time domain transforms to a line in the frequency domain because all its energy is concentrated at that frequency—8 Hz in this example.</li>
+           <li>A sine wave in the time domain transforms to a line in the frequency domain because all its energy is concentrated at that frequency &mdash; 8 Hz in this example.</li>
            <li>Since the FFT is a linear process, multiple sine or cosine waves added together at different frequencies have additive effects in the spectrum.</li>
            <li>The resulting spectrum is complex (with real and imaginary parts) and symmetrical about its center, the point of maximum frequency. On the plot, of course, one cannot make the frequency axis labels reduce from the center to the end.</li>
            <li>The real part of the spectrum is mirrored about the center; the imaginary part is mirrored and inverted (the complex conjugate of the original data).</li>
-           <li>The phase of the complex spectrum retains the position of the sine wave in the time domain—it would be totally real for a cosine wave symmetrically placed in time and totally imaginary for a sine wave in the same relationship.</li>
+           <li>The phase of the complex spectrum retains the position of the sine wave in the time domain &mdash; it would be totally real for a cosine wave symmetrically placed in time and totally imaginary for a sine wave in the same relationship.</li>
           </ul>
           <p>The script in Listing 14.3 creates three sub-plots: the original sine wave and then the amplitude and phase of the spectrum.</p>
           <p>Figure 14.7 shows the result from running this script. It confirms the earlier statement that the real part of the spectrum is mirrored about the center frequency, and the imaginary part is mirrored and inverted.</p>
@@ -310,7 +310,7 @@
           <ul>
             <li>None of the instruments produce a pure tone. The lowest frequency at which there is energy is usually called the fundamental frequency, and successive peaks to the right at multiples of the fundamental frequency are referred to, for example, as the first, second, and third harmonics.</li>
             <li>Several instruments have much more energy in the harmonics than in the fundamental frequency.</li>
-            <li>"Families" of instruments have similar spectral shapes—the strings, for example, have strong fundamental and second harmonic energy. In principle, these characteristic spectral "signatures" can be used to synthesize the sound of instruments, and even to identify individual instruments when played in groups.</li>
+            <li>"Families" of instruments have similar spectral shapes &mdash; the strings, for example, have strong fundamental and second harmonic energy. In principle, these characteristic spectral "signatures" can be used to synthesize the sound of instruments, and even to identify individual instruments when played in groups.</li>
           </ul>
       </div>
       <div class="listing">#listing_14_4#</div>
@@ -396,8 +396,8 @@
   <div class="container">
       <p>This chapter presented the following:</p>
       <ul>
-          <li>Sounds are read with specific readers that provide a time history and sampling frequency</p>
-          <li>Sounds can be played through the computer’s sound system and saved to disk as a sound file ready for playing on any digital player</li>
+          <li>Sounds are read with specific readers that provide a time history and sampling frequency
+          <li>Sounds can be played through the computer's sound system and saved to disk as a sound file ready for playing on any digital player</li>
           <li>We can slice and concatenate sounds to edit speeches and change the frequency of the sound to change its pitch</li>
           <li>We can analyze the frequency content of sound using the Fast Fourier Transform (FFT)</li>
           <li>We can modify the spectra by adding, deleting, or changing the sound levels at chosen frequencies under certain controlled conditions</li>

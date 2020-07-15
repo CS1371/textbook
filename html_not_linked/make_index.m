@@ -187,55 +187,26 @@ end
 
 
 
-% % 
-% % insert_link
-% % 
-function [entry plug_sz] = insert_link(word, at, file_name, entry)
-    global file_str
-    global current_ID
-    global target
-    global tg_sz
-    
-    refs = entry.ref;
-    if length(refs) < 12
-        current_ID = current_ID + 1;
-        plug = sprintf('<a id="%d"></a>', current_ID);
-        file_str = [file_str(1:at-1) plug file_str(at:end)];
-        % add the reference in entry
-        word = entry.first;
-        if length(word) > tg_sz && all(word(1:tg_sz) == target)
-            ook = 0;
-        end
-        str = sprintf('#%d', current_ID);
-        new_ref = [file_name str];
-        entry.ref = [entry.ref {new_ref}];
-        plug_sz = length(plug);
-    else
-        plug_sz = 0;
-    end
-end
-
-
-
 
 % % 
 % % find_whole_word
 % % 
 function entry = find_whole_word(name, entry)
     global file_str
+    global current_ID
     
     found = false;
     word = entry.first;
     if length(word) > 5 && all(word(end-4:end) == '(...)')
         word = word(1:end-4);
     end
-    catchit = 'format_control';
-    get_name = '06_Strings.htm';
+    catchit = 'Figure';
+    get_ID = 980;
     n = length(catchit);
     if length(word) < n
         n = length(word);
     end
-    if strcmp(word(1:n), catchit) && strcmp(get_name, name)
+    if strcmp(word(1:n), catchit) && current_ID == 980
         ookk = true;
     end
     [first_token first_rest] = strtok(word, '_');
@@ -253,33 +224,83 @@ function entry = find_whole_word(name, entry)
             front_OK = wh == 1 || is_word_end(file_str(wh-1));
             at = wh + length(word);
             str = file_str(at:at+6);
-            initial = ~strcmp(str,'<a id="');
-            if initial
-                back_OK = file_str(at-1) == '(' ...
-                    || at > length(file_str) ...
-                    || is_word_end(file_str(at));
-                found = front_OK && back_OK;
+%             initial = ~strcmp(str,'<a id="');
+%             if initial
+            back_OK = file_str(at-1) == '(' ...
+                || at > length(file_str) ...
+                || is_word_end(file_str(at));
+            found = front_OK && back_OK;
+            if found
+                rest = first_rest;
+                token = first_token;
+                wh = wh + length(token);
+                while found && ~isempty(token)   %% <<<<<<<<<<<<<<<<
+                    [token rest] = strtok(rest, '_');
+                    if ~isempty(token)
+                        [nxt wh] = get_next_word(wh);
+                        found = strcmp(token, nxt);
+                    end
+                end
                 if found
-                    rest = first_rest;
-                    token = first_token;
-                    wh = wh + length(token);
-                    while found && ~isempty(token)   %% <<<<<<<<<<<<<<<<
-                        [token rest] = strtok(rest, '_');
-                        if ~isempty(token)
-                            [nxt wh] = get_next_word(wh);
-                            found = strcmp(token, nxt);
-                        end
+                    if strcmp(word, 'Figure_window')
+                        oo = 1;
                     end
-                    if found
-                        [entry, plug_sz] = insert_link(word, at, name, entry);
-                        where = where + plug_sz;
-                    end
+                    [entry, plug_sz] = insert_link(word, at-length(word), name, entry);
+                    where = where + plug_sz;
                 end
             end
         end
+%         end
     end
 end
 
+
+
+
+% % 
+% % insert_link
+% % 
+function [entry plug_sz] = insert_link(word, at, file_name, entry)
+    global file_str
+    global current_ID
+    global target
+    global tg_sz
+    
+    refs = entry.ref;
+    plug_sz = 0;
+    make_anchor = true;
+    if length(refs) < 12
+        % check for existing label
+        where = find(word == '_');
+        % if it's there, anchor will be at at + where(1)
+        if ~isempty(where)
+            anch_at = at + where;
+            is_anchor = strcmp(file_str(anch_at:anch_at+6),'<a id="');
+            if is_anchor
+                nst = anch_at + 7;
+                where = find(file_str(nst:nst+10) == '"');
+                to = nst + where;
+                ref_ID = str2double(file_str(nst:to));
+                make_anchor = false;
+            end                
+        end
+        if make_anchor
+            current_ID = current_ID + 1;
+            plug = sprintf('<a id="%d"></a>', current_ID);
+            plug_sz = length(plug);
+            file_str = [file_str(1:at-1) plug file_str(at:end)];
+            ref_ID = current_ID;
+        end
+        % add the reference in entry
+        try
+            str = sprintf('#%d', ref_ID);
+        catch
+            oo = 0;
+        end
+        new_ref = [file_name str];
+        entry.ref = [entry.ref {new_ref}];
+    end
+end
 
 
 

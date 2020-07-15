@@ -24,12 +24,12 @@
   <div class="container">
       <p>This chapter demonstrates two algorithms that solve two problems that frequently occur in engineering:</p>
       <ul>
-          <li>finding the minimum spanning tree<a id="3510"></a> for a graph and</li>
+          <li>finding the <a id="4439"></a>minimum spanning tree for a graph and</li>
           <li>finding the best path through a graph.</li>
       </ul>
       <p>However, before we can approach these algorithms, we need to understand the following:</p>
       <ul>
-          <li>How to construct and use three special forms of data collection: stacks, queues and priority<a id="3525"></a> queues<li>How to build a model of a graph, and</li>
+          <li>How to construct and use three special forms of data collection: stacks, queues and <a id="4474"></a><a id="4498"></a>priority queues<li>How to build a model of a graph, and</li>
           <li>How to traverse and search a graph.</li>
       </ul>
   </div>
@@ -41,14 +41,14 @@
         <img src="..\Images\Fig_17_1.JPG" alt="Figure 17.1" class="fig card-image">
         <p class="figure-name card-title">Figure 17.1: Street Map of Atlanta</p>
       </div>
-      <p>We first consider the nature of a graph by considering Figure 17.1, a simplified street map of the city of Atlanta taken with permission from the OpenStreetMap project. The data storage tools we have considered so far - vectors, arrays, structure arrays, and cell arrays - have essentially been collections whose elements are linearly related to each other by being organized in rows and columns. However, practical engineering frequently meets data that are not organized so easily. Graphs are one such data set. The ultimate goal of this chapter is to discuss this most general form of data structure. We need first to resolve the semantic problem of the name "graph." We typically think of a graph as a plot. However, in computer science, a graph is a collection of nodes<a id="3482"></a> connected by edges<a id="3455"></a>. A street map might be a useful mental model of a graph where the streets are the edges<a id="3456"></a> and the intersections are the nodes<a id="3483"></a>. To process graphs<a id="3464"></a> effectively, we must first consider three simpler concepts: stacks, queues in general and priority<a id="3526"></a> queues in particular.</p>
+      <p>We first consider the nature of a graph by considering Figure 17.1, a simplified street map of the city of Atlanta taken with permission from the OpenStreetMap project. The data storage tools we have considered so far - vectors, arrays, structure arrays, and cell arrays - have essentially been collections whose elements are linearly related to each other by being organized in rows and columns. However, practical engineering frequently meets data that are not organized so easily. Graphs are one such data set. The ultimate goal of this chapter is to discuss this most general form of data structure. We need first to resolve the semantic problem of the name "graph." We typically think of a graph as a plot. However, in computer science, a graph is a collection of <a id="4412"></a>nodes connected by <a id="4360"></a>edges. A street map might be a useful mental model of a graph where the streets are the <a id="4361"></a>edges and the intersections are the <a id="4413"></a>nodes. To process <a id="4369"></a><a id="4393"></a>graphs effectively, we must first consider three simpler concepts: stacks, queues in general and <a id="4475"></a><a id="4499"></a>priority queues in particular.</p>
   </div>
 
   <div class="chp-section" data-sect-num="1" data-sect-name="Stacks">
     <!-- Stacks -->
     <h2 id="17_1">17.1  Stacks</h2>
     <div class="container">
-        <p>We briefly discussed the concept of stacks in Chapter 9 where a specific kind of stack, the Activation Stack, is used to manage the workspace of each function currently active in Matlab. We first consider the general nature and implementation of stacks as special collections that enable us to process graphs<a id="3465"></a> efficiently. We experience the concept of a stack every day of our lives. We reproduce here the illustration from Chapter 9 of the plates in the cafeteria.</p>
+        <p>We briefly discussed the concept of stacks in Chapter 9 where a specific kind of stack, the Activation Stack, is used to manage the workspace of each function currently active in Matlab. We first consider the general nature and implementation of stacks as special collections that enable us to process <a id="4370"></a><a id="4394"></a>graphs efficiently. We experience the concept of a stack every day of our lives. We reproduce here the illustration from Chapter 9 of the plates in the cafeteria.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="The Nature of a Stack">
@@ -73,12 +73,12 @@
       <!-- Implementing Stacks -->
       <h3 id="17_1_2">17.1.2	Implementing Stacks</h3>
       <div class="container">
-          <p>Although there are many ways to implement a stack, a cell array is a good choice because it is a linear<a id="3507"></a> collection of objects that may be of any type and can be extended or shortened without any apparent effort. If we establish a stack using a cell array, the implementation of the above behavior is almost trivial. One rather strange characteristic is the need to return the modified stack to the user. The Matlab tools are:</p>
+          <p>Although there are many ways to implement a stack, a cell array is a good choice because it is a linear collection of objects that may be of any type and can be extended or shortened without any apparent effort. If we establish a stack using a cell array, the implementation of the above behavior is almost trivial. One rather strange characteristic is the need to return the modified stack to the user. The Matlab tools are:</p>
           <ul>
               <li><code>stk = push(stk, item)</code> concatenates data at the end of the cell array returning the new stack to the user</li>
               <li><code>[stk, item] = pop(stk)</code>: removes the item from the end of the cell array and returns that item and the modified stack to the user</li>
-              <li><code>item = peek(<a id="3480"></a>stk)</code>: merely returns the end item in the cell array not returning the stack because it doesn't changed</li>
-              <li><code>res = isempty(<a id="3478"></a>stk)</code>: is the standard MATLAB test for the empty vector.</li>
+              <li><code>item = <a id="4390"></a><a id="4465"></a>peek(stk)</code>: merely returns the end item in the cell array not returning the stack because it doesn't changed</li>
+              <li><code>res = <a id="4388"></a><a id="4437"></a>isempty(stk)</code>: is the standard MATLAB test for the empty vector.</li>
           </ul>
           <p>Clearly, because all the cell array operations are also accessible to the programmer, nothing prevents an unscrupulous programmer from using other operations on the stack — for example, adding an item elsewhere that the top of the stack. There are computer tools in Object-Oriented Programming that completely encapsulate the data and only permit the specified functions, but the author recommends that a computer language other than Matlab would be more appropriate if you must have this kind of security in your data.</p>
       </div>
@@ -89,7 +89,7 @@
     <!-- Queues -->
     <h2 id="17_2">17.2  Queues</h2>
     <div class="container">
-        <p>We first consider the nature and implementation of queue<a id="3537"></a> that, like a stack, provides special collections that enable us to process graphs<a id="3466"></a> efficiently. We experience the concept of a queue<a id="3538"></a> every day of our lives. A line of cars waiting for the light to turn green is a queue<a id="3539"></a>; when we stand in line at a store or send a print job to a printer, we experience typical queue<a id="3540"></a> behavior. In general, the first object entering a queue<a id="3541"></a> is the first one to exit the other end.</p>
+        <p>We first consider the nature and implementation of <a id="4486"></a>queue that, like a stack, provides special collections that enable us to process <a id="4371"></a><a id="4395"></a>graphs efficiently. We experience the concept of a <a id="4487"></a>queue every day of our lives. A line of cars waiting for the light to turn green is a <a id="4488"></a>queue; when we stand in line at a store or send a print job to a printer, we experience typical <a id="4489"></a>queue behavior. In general, the first object entering a <a id="4490"></a>queue is the first one to exit the other end.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="The Nature of a Queue">
@@ -100,12 +100,12 @@
             <img src="..\Images\Fig_17_3.JPG" alt="Figure 17.3" class="fig card-image">
             <p class="figure-name card-title">Figure 17.3: A Typical Queue - Rabbits at Starbucks</p>
           </div>
-          <p>Formally, we refer to a queue<a id="3542"></a> as a first in/first out (FIFO) collection, as illustrated in Figure 17.3. As with stacks, the most general form of a queue<a id="3543"></a> is permitted to contain any kind of object. Typically, operations on a queue<a id="3544"></a> are restricted to the following:</p>
+          <p>Formally, we refer to a <a id="4491"></a>queue as a first in/first out (FIFO) collection, as illustrated in Figure 17.3. As with stacks, the most general form of a <a id="4492"></a>queue is permitted to contain any kind of object. Typically, operations on a <a id="4493"></a>queue are restricted to the following:</p>
           <ul>
-              <li><b>enqueue</b> puts an object onto the queue<a id="3545"></a></li>
-              <li><b>dequeue</b> removes an object from the queue<a id="3546"></a></li>
-              <li><b>peek</b> copies the first object out of the queue<a id="3547"></a> without removing it, and</li>
-              <li><b>isempty</b> determine whether the queue<a id="3548"></a> is empty.</li>
+              <li><b>enqueue</b> puts an object onto the <a id="4494"></a>queue</li>
+              <li><b>dequeue</b> removes an object from the <a id="4495"></a>queue</li>
+              <li><b>peek</b> copies the first object out of the <a id="4496"></a>queue without removing it, and</li>
+              <li><b>isempty</b> determine whether the <a id="4497"></a>queue is empty.</li>
           </ul>
       </div>
     </div>
@@ -114,12 +114,12 @@
       <!-- Implementing Queues -->
       <h3 id="17_2_2">17.2.2	Implementing Queues</h3>
       <div class="container">
-          <p>As with stacks, a cell array is a good choice upon which to build a queue because it is a linear<a id="3508"></a> collection of objects that may be of any type and can be extended or shortened without any apparent effort. If we establish a queue using a cell array, the implementation of the above behavior is trivial:</p>
+          <p>As with stacks, a cell array is a good choice upon which to build a queue because it is a linear collection of objects that may be of any type and can be extended or shortened without any apparent effort. If we establish a queue using a cell array, the implementation of the above behavior is trivial:</p>
           </ul>
-              <li><code>q = enqueue(<a id="3474"></a>q, item)</code> concatenates data at the end of the cell array</li>
-              <li><code>[q item] = dequeue(<a id="3450"></a>q)</code> removes the item from the front of the cell array and returns that item to the user</li>
-              <li><code> item = peek(<a id="3481"></a>q)</code> merely accesses the first item in the cell array</li>
-              <li><code> res = isempty(<a id="3479"></a>q)</code> is the standard MATLAB test for the empty vector</li>
+              <li><code>q = <a id="4379"></a><a id="4385"></a>enqueue(q, item)</code> concatenates data at the end of the cell array</li>
+              <li><code>[q item] = <a id="4348"></a><a id="4383"></a>dequeue(q)</code> removes the item from the front of the cell array and returns that item to the user</li>
+              <li><code> item = <a id="4391"></a><a id="4466"></a>peek(q)</code> merely accesses the first item in the cell array</li>
+              <li><code> res = <a id="4389"></a><a id="4438"></a>isempty(q)</code> is the standard MATLAB test for the empty vector</li>
           </ul>
           <p>As with stacks, in a real application, you might want to implement your queue with a tool set that protects the integrity of the data, and as with stacks, Matlab is physically incapable of providing this service.</p>
       </div>
@@ -133,8 +133,8 @@
             <img src="..\Images\Fig_17_4.JPG" alt="Figure 17.4" class="fig card-image">
             <p class="figure-name card-title">Figure 17.4: A Priority Queue</p>
           </div>
-          <p>There are times when we wish ordinary queues were priority<a id="3527"></a> queues. For example, at the printer where you wait an hour for one page while someone prints large sections of an encyclopedia and you wonder why the print queue can’t put really small jobs ahead of really large jobs.  The only difference between an ordinary queue and a priority<a id="3528"></a> queue is that the objects on the queue emerge in a specified order. The rabbits in Figure 14.4 are sorted  by the expected time to prepare the drink they want. This sorting<a id="3552"></a> may be accomplished either as the items are enqueued as illustrated below, or by searching<a id="3444"></a> for the "best" item when performing a dequeue operation<a id="3513"></a>.  The efficiency will be the same.</p>
-          <p>In our mechanization of a priority<a id="3529"></a> queue, the enqueue function involves adding the new item in order to the queue. For this to happen, there must be a means of comparing two objects. Here, we use the function <code>is_before</code> that generally should be able to compare any two objects.  In this implementation, it is sufficient to be able to compare numbers, strings or structures that contain either the <code>fields</code> key or NaN<a id="3512"></a>. Clearly, this function can be extended as necessary to compare any two objects.</p>
+          <p>There are times when we wish ordinary queues were <a id="4476"></a><a id="4500"></a>priority queues. For example, at the printer where you wait an hour for one page while someone prints large sections of an encyclopedia and you wonder why the print queue can’t put really small jobs ahead of really large jobs.  The only difference between an ordinary queue and a <a id="4477"></a><a id="4501"></a>priority queue is that the objects on the queue emerge in a specified order. The rabbits in Figure 14.4 are sorted  by the expected time to prepare the drink they want. This sorting may be accomplished either as the items are enqueued as illustrated below, or by <a id="4342"></a><a id="4444"></a><a id="4510"></a>searching for the "best" item when performing a dequeue operation.  The efficiency will be the same.</p>
+          <p>In our mechanization of a <a id="4478"></a><a id="4502"></a>priority queue, the enqueue function involves adding the new item in order to the queue. For this to happen, there must be a means of comparing two objects. Here, we use the function <code>is_before</code> that generally should be able to compare any two objects.  In this implementation, it is sufficient to be able to compare numbers, strings or structures that contain either the <code>fields</code> key or <a id="4441"></a>NaN. Clearly, this function can be extended as necessary to compare any two objects.</p>
       </div>
     </div>
   </div>
@@ -143,7 +143,7 @@
     <!-- Testing Stacks and Queues -->
     <h3 id="17_3">17.3 Testing Stacks and Queues</h3>
     <div class="container">
-        <p>It is always advisable to test utility functions thoroughly before using them in complex algorithms. Listing 17.1 shows a script that tests a stack, a queue and a priority<a id="3530"></a> queue.  Following that script as helper<a id="3504"></a> functions are the simple functions that implement all the necessary tools.</p>
+        <p>It is always advisable to test utility functions thoroughly before using them in complex algorithms. Listing 17.1 shows a script that tests a stack, a queue and a <a id="4479"></a><a id="4503"></a>priority queue.  Following that script as <a id="4434"></a>helper functions are the simple functions that implement all the necessary tools.</p>
         <div class="listing">#listing_17_1#</div>
     </div>
   </div>
@@ -152,7 +152,7 @@
     <!-- Graphs -->
     <h2 id="17_4">17.4 Graphs</h2>
     <div class="container">
-        <p> This chapter focuses on processing a graph — the most general form of dynamic data structure, an arbitrary collection of nodes<a id="3484"></a> connected by edges<a id="3457"></a>. The edges<a id="3458"></a> may be directional<a id="3452"></a> to indicate that the graph can be traversed along that edge in only one direction (like a one-way street). The edges<a id="3459"></a> may also have a value associated with them to indicate, for example, the cost of traversing<a id="3514"></a> that edge. We refer to this as a weighted<a id="3553"></a> graph. For a street map, this cost could either be the distance, or in a more sophisticated system, the travel time—a function of the distance, the speed limit, and the traffic congestion. Graphs are not required to be completely connected, and they may contain cycles<a id="3446"></a> - closed loops in which the unwary algorithm could become trapped. Graphs also have no obvious starting and stopping points. Finally, a path on a graph is a connected list of edges<a id="3460"></a> that is the result of traversing<a id="3515"></a> a graph.</p>
+        <p> This chapter focuses on processing a graph &mdash; the most general form of dynamic data structure, an arbitrary collection of <a id="4414"></a>nodes connected by <a id="4362"></a>edges. The <a id="4363"></a>edges may be <a id="4357"></a>directional to indicate that the graph can be traversed along that edge in only one direction (like a one-way street). The <a id="4364"></a>edges may also have a value associated with them to indicate, for example, the cost of <a id="4445"></a>traversing that edge. We refer to this as a <a id="4516"></a>weighted graph. For a street map, this cost could either be the distance, or in a more sophisticated system, the travel time &mdash; a function of the distance, the speed limit, and the traffic congestion. Graphs are not required to be completely connected, and they may contain <a id="4344"></a><a id="4401"></a>cycles &mdash; closed loops in which the unwary algorithm could become trapped. Graphs also have no obvious starting and stopping points. Finally, a path on a graph is a connected list of <a id="4365"></a>edges that is the result of <a id="4446"></a>traversing a graph.</p>
     </div>
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Graph Examples">
@@ -163,7 +163,7 @@
               <img src="..\Images\Fig_17_5.JPG" alt="Figure 17.5" class="fig card-image">
               <p class="figure-name card-title">Figure 17.5: A Simple Graph</p>
           </div>
-          <p>A simple graph is shown in Figure 17.5. In the figure, the connection points 0 ... 10 are the nodes<a id="3485"></a> and the edges<a id="3461"></a> are the interconnecting lines, which in this example are not directional<a id="3453"></a> but are weighted<a id="3554"></a>. Graphs occur frequently in everyday life, as illustrated by the street map shown in Figure 17.1. Street maps can be conveniently represented as graphs<a id="3467"></a> where intersections are the nodes<a id="3486"></a> and streets are the edges<a id="3462"></a>. Streets can be directional<a id="3454"></a> (one-way), and they may have weights associated with them - either the transit time (a function of the length of the street and its speed limit) or, with access to real-time traffic information, a more complex estimate of the transit time.</p>
+          <p>A simple graph is shown in Figure 17.5. In the figure, the connection points 0 ... 10 are the <a id="4415"></a>nodes and the <a id="4366"></a>edges are the interconnecting lines, which in this example are not <a id="4358"></a>directional but are <a id="4517"></a>weighted. Graphs occur frequently in everyday life, as illustrated by the street map shown in Figure 17.1. Street maps can be conveniently represented as <a id="4372"></a><a id="4396"></a>graphs where intersections are the <a id="4416"></a>nodes and streets are the <a id="4367"></a>edges. Streets can be <a id="4359"></a>directional (one-way), and they may have weights associated with them &mdash; either the transit time (a function of the length of the street and its speed limit) or, with access to real-time traffic information, a more complex estimate of the transit time.</p>
       </div>
     </div>
 
@@ -171,11 +171,11 @@
       <!-- Processing Graphs -->
       <h3 id="17_4_2">17.4.2	Processing Graphs</h3>
       <div class="container">
-        <p>In designing algorithms that operate on graphs<a id="3468"></a> in general, we need to consider the following constraints:</p>
+        <p>In designing algorithms that operate on <a id="4373"></a><a id="4397"></a>graphs in general, we need to consider the following constraints:</p>
         <ul>
-            <li>With cycles<a id="3447"></a> permitted in the data, there is no natural starting point like the beginning of a cell array. Consequently, the user must always specify a place on the graph to start as well as the place to stop.</li>
-            <li>There are no natural “leaf nodes<a id="3487"></a>” where a search might have to stop and back up. Consequently, an algorithm processing a graph must have a means of determining that being at a given node is the “end of the line.” Typically, this is accomplished by maintaining a collection of visited nodes<a id="3488"></a> as it progresses around the graph. Each time a node is considered, the algorithm must check to see whether that node is already in the visited collection. If so, it refuses to return to that node. The algorithm must backtrack if it reaches a node from which there is no edge to a node that has not already been visited.</li>
-            <li>Whereas on a cell array there is only one feasible path from one node to another, there may be many possible paths<a id="3493"></a> between two nodes<a id="3489"></a> on a graph. The best algorithms that search for paths<a id="3494"></a> must take into account a comparison between paths<a id="3495"></a> to determine the best one.  For a simple, consistent example, consider the graph shown in Figure 17.5. We will use this simple example to demonstrate minimum spanning trees (MSTs) and finding paths<a id="3496"></a> through the graph.</li>
+            <li>With <a id="4345"></a><a id="4402"></a>cycles permitted in the data, there is no natural starting point like the beginning of a cell array. Consequently, the user must always specify a place on the graph to start as well as the place to stop.</li>
+            <li>There are no natural "leaf <a id="4417"></a>nodes" where a search might have to stop and back up. Consequently, an algorithm processing a graph must have a means of determining that being at a given node is the "end of the line." Typically, this is accomplished by maintaining a collection of visited <a id="4418"></a>nodes as it progresses around the graph. Each time a node is considered, the algorithm must check to see whether that node is already in the visited collection. If so, it refuses to return to that node. The algorithm must backtrack if it reaches a node from which there is no edge to a node that has not already been visited.</li>
+            <li>Whereas on a cell array there is only one feasible path from one node to another, there may be many possible <a id="4423"></a>paths between two <a id="4419"></a>nodes on a graph. The best algorithms that search for <a id="4424"></a>paths must take into account a comparison between <a id="4425"></a>paths to determine the best one.  For a simple, consistent example, consider the graph shown in Figure 17.5. We will use this simple example to demonstrate minimum spanning trees (MSTs) and finding <a id="4426"></a>paths through the graph.</li>
         </ul>
       </div>
     </div>
@@ -185,18 +185,18 @@
     <!-- Minimum Spanning Trees -->
     <h2 id="17_5">17.5 Minimum Spanning Trees</h2>
     <div class="container clearfix">
-        <p>A Spanning Tree (MST) is a set of edges identified for a graph that touches all of the nodes<a id="3490"></a> of the graph. For example, on a circuit board, power must be distributed to all of the chips on the board. The routing of a power trace to all the power pins would be a spanning tree. More often that not, it is important to have a spanning tree whose length is as short as possible. Finding the shortest spanning tree is referred to as the Minimum Spanning Tree (MST) problem. There may well be multiple spanning trees with the same overall cost and any one of those would satisfy the requirement. There are two practical algorithms commonly used to solve the MST problem:</p>
+        <p>A Spanning Tree (MST) is a set of edges identified for a graph that touches all of the <a id="4420"></a>nodes of the graph. For example, on a circuit board, power must be distributed to all of the chips on the board. The routing of a power trace to all the power pins would be a spanning tree. More often that not, it is important to have a spanning tree whose length is as short as possible. Finding the shortest spanning tree is referred to as the Minimum Spanning Tree (MST) problem. There may well be multiple spanning trees with the same overall cost and any one of those would satisfy the requirement. There are two practical algorithms commonly used to solve the MST problem:</p>
         <ul>
             <li> Kruscals algorithm
-            <li> Prims<a id="3424"></a> algorithm
+            <li> <a id="4318"></a><a id="4467"></a>Prims algorithm
         </ul>
         <div class="float-sm-right card">
-          <video controls class="card-image"><source src="..\Images\MST.mp4" type="video/mp4">Fig 17.6 Animation of Prims<a id="3425"></a> MST Algorithm</video>
-          <p class="figure-name card-title">Fig 17.6: Animation of Prims<a id="3426"></a> MST Algorithm</p>
+          <video controls class="card-image"><source src="..\Images\MST.mp4" type="video/mp4">Fig 17.6 Animation of <a id="4319"></a><a id="4468"></a>Prims MST Algorithm</video>
+          <p class="figure-name card-title">Fig 17.6: Animation of <a id="4320"></a><a id="4469"></a>Prims MST Algorithm</p>
         </div>
-        <p>Since they are both very similar in concept and produce the correct answer, we will only consider one: Prims<a id="3427"></a> algorithm.</p>
-        <p>Prims<a id="3428"></a> algorithm finds the subset of the edges of the graph that connect every node exactly once whose total cost is not greater than that of any other spanning tree. The algorithm continuously increases the size of a tree, one edge at a time, starting with a tree consisting of a single node, until it spans all the nodes<a id="3491"></a>. Specifically, given a graph as defined in Figure 17.5, Prim’s algorithm proceeds as shown in Listing 17.2.</p>
-        <p>Figure 17.6 is a pair of animations of Prims<a id="3429"></a> algorithm applied to a small graph and then a larger, but still manageable graph.</p>
+        <p>Since they are both very similar in concept and produce the correct answer, we will only consider one: <a id="4321"></a><a id="4470"></a>Prims algorithm.</p>
+        <p><a id="4322"></a><a id="4471"></a>Prims algorithm finds the subset of the edges of the graph that connect every node exactly once whose total cost is not greater than that of any other spanning tree. The algorithm continuously increases the size of a tree, one edge at a time, starting with a tree consisting of a single node, until it spans all the <a id="4421"></a>nodes. Specifically, given a graph as defined in Figure 17.5, <a id="4323"></a><a id="4472"></a>Prims algorithm proceeds as shown in Listing 17.2.</p>
+        <p>Figure 17.6 is a pair of animations of <a id="4324"></a><a id="4473"></a>Prims algorithm applied to a small graph and then a larger, but still manageable graph.</p>
     </div>
     <div class="listing">#listing_17_2#</div>
 </div>
@@ -205,13 +205,13 @@
     <!-- Finding Paths through a Graph -->
     <h2 id="17_6">17.6 Finding Paths through a Graph</h2>
     <div class="container">
-        <p>This section discusses four algorithms for finding a path from one node on the graph to another. The first three algorithms exhaustively search the graph to find the absolute best path between node pairs by different criteria. These differences of behavior are created by selecting a stack, a queue or a priority<a id="3531"></a> queue as the dynamic container for interim solutions.  The fourth is one of many approximation algorithms typically used to compute a good enough route in circumstances where an exact solution is not feasible.</p>
-        <p>Listing 17.3 shows a template for<a id="3555"></a> the three exact algorithms.</p>
+        <p>This section discusses four algorithms for finding a path from one node on the graph to another. The first three algorithms exhaustively search the graph to find the absolute best path between node pairs by different criteria. These differences of behavior are created by selecting a stack, a queue or a <a id="4480"></a><a id="4504"></a>priority queue as the dynamic container for interim solutions.  The fourth is one of many approximation algorithms typically used to compute a good enough route in circumstances where an exact solution is not feasible.</p>
+        <p>Listing 17.3 shows a template for the three exact algorithms.</p>
         <div class="listing">#listing_17_3#</div>
-        <p>In this listing, we will use a generic <code>&lt;collection&gt;</code> to substitute for the specific collections used in the detailed algorithms to follow. We will also use the generic operations <code>&lt;add(...)&gt;</code> and <code>&lt;remove(...)&gt;</code> as surrogates for the actual operations on the chosen <code>&lt;collection&gt;</code>. Our objective will be to return a <code>&lt;path&gt;</code> consisting of a sequence of 1 or more nodes<a id="3492"></a>.  We will also need the concept of <code>&lt;children&gt;</code> which is a collection of edges [u,v] where u is the end of the path and v is not on the current path to prevent cycles<a id="3448"></a> in the path. When choosing which child node to process first, we need a consistent rule. Since our nodes are all numbered, it makes sense to process the child nodes in increasing numerical order. This will be the rule for all the specific examples to follow.</p>
+        <p>In this listing, we will use a generic <code>&lt;collection&gt;</code> to substitute for the specific collections used in the detailed algorithms to follow. We will also use the generic operations <code>&lt;add(...)&gt;</code> and <code>&lt;remove(...)&gt;</code> as surrogates for the actual operations on the chosen <code>&lt;collection&gt;</code>. Our objective will be to return a <code>&lt;path&gt;</code> consisting of a sequence of 1 or more <a id="4422"></a>nodes.  We will also need the concept of <code>&lt;children&gt;</code> which is a collection of edges [u,v] where u is the end of the path and v is not on the current path to prevent <a id="4346"></a><a id="4403"></a>cycles in the path. When choosing which child node to process first, we need a consistent rule. Since our nodes are all numbered, it makes sense to process the child nodes in increasing numerical order. This will be the rule for all the specific examples to follow.</p>
         <p>For the following three algorithms, we will see two artifacts:</p>
         <ul>
-            <li> animations on two graphs<a id="3469"></a> showing how the algorithm works.  The algorithms on first, small graph will always start at node 1 and stop at node 7. On the larger graph, they start at node 121 and stop at node 1. Comparing these animations will illustrate the relative computational cost of each algorithm. However, as we will see in section 17.6.4, none of these algorithms are fast enough to handle a graph of any serious size.</li>
+            <li> animations on two <a id="4374"></a><a id="4398"></a>graphs showing how the algorithm works.  The algorithms on first, small graph will always start at node 1 and stop at node 7. On the larger graph, they start at node 121 and stop at node 1. Comparing these animations will illustrate the relative computational cost of each algorithm. However, as we will see in section 17.6.4, none of these algorithms are fast enough to handle a graph of any serious size.</li>
             <li> the contents of the collection at the end of each of the algorithms in the simple case.</li>
         </ul>
         <p>A serious student will want to trace through the template in Listing 17.3 referring to the animations in order to construct the contents of each collection.</p>
@@ -219,10 +219,10 @@
 
     <div class="chp-subsection" data-sub-num="1" data-sub-name="Depth-First Search">
       <!-- Depth-First Search -->
-      <h3 id="17_6_1">17.6.1	Depth-First<a id="3524"></a> Search (DFS)</h3>
+      <h3 id="17_6_1">17.6.1	<a id="4457"></a>Depth-First Search (DFS)</h3>
       <div class="container">
           <p>The depth-first path search algorithm uses a stack for the <code>&lt;collection&gt;</code> and <code>&lt;push(...)&gt;</code> and <code>&lt;pop(...)&gt;</code> as the functions to add and remove a path from the stack. As we observe the behavior of the DFS algorithm, it is clearly the fastest of the three algorithms, but makes no claim at all about the efficiency of the resulting path. As long as there is any connectivity between the starting and ending nodes, this will find a path.</p>
-          <p>As you study the small graph, you would be right to "ask why bother with the stack at all?" since at every cycle through the template, the algorithm always takes the last element pushed onto the stack. As you will see on a careful study of the DFS algorithm on the larger graph, the stack is there to resolve the problem of cul-de-sacs. As in real streets that have no outlet, a cul-de-sac can be a physical<a id="3470"></a> constraint. However, there can also be logical cul-de-sacs where a street closes a loop and has no other outlet. The rule to eliminate cycles<a id="3449"></a> will also see this geometry as a virtual cul-de-sac.  In either case, the paths<a id="3497"></a> on the stack can be popped off until the algorithm reaches a node with an alternative path to proceed. The logic of template in Listing 17.3 will exit from the while loop if there are no more feasible paths<a id="3498"></a> on the stack.</p>
+          <p>As you study the small graph, you would be right to "ask why bother with the stack at all?" since at every cycle through the template, the algorithm always takes the last element pushed onto the stack. As you will see on a careful study of the DFS algorithm on the larger graph, the stack is there to resolve the problem of cul-de-sacs. As in real streets that have no outlet, a cul-de-sac can be a <a id="4375"></a>physical constraint. However, there can also be logical cul-de-sacs where a street closes a loop and has no other outlet. The rule to eliminate <a id="4347"></a><a id="4404"></a>cycles will also see this geometry as a virtual cul-de-sac.  In either case, the <a id="4427"></a>paths on the stack can be popped off until the algorithm reaches a node with an alternative path to proceed. The logic of template in Listing 17.3 will exit from the while loop if there are no more feasible <a id="4428"></a>paths on the stack.</p>
           <div class="card-deck">
               <div class="col-sm-7 card">
                   <video controls class="card-image"><source src="..\Images\DFS.mp4" type="video/mp4">Fig 17.7 Animation of DFS Algorithm</video>
@@ -240,20 +240,20 @@
 
     <div class="chp-subsection" data-sub-num="2" data-sub-name="Breadth-First Search">
       <!-- Breadth-First Search -->
-      <h3 id="17_6_2">17.6.2	Breadth-First<a id="3415"></a> Search (BFS)</h3>
+      <h3 id="17_6_2">17.6.2	<a id="4309"></a><a id="4337"></a><a id="4399"></a><a id="4455"></a>Breadth-First Search (BFS)</h3>
       <div class="container clearfix">
-          <p>Frequently, we actually need the path with the smallest number of nodes between the starting and ending nodes. For example, because changing trains involves walking and waiting, the best path on an urban transit system map is that with the fewest changes, even if the resulting path is longer. To search for the path with the least nodes, we need an algorithm that performs a Breadth-First<a id="3416"></a> Search (BFS) on a graph. We will use the template in Listing 17.3 where the <code>&lt;collection&gt;</code> is a <code>&lt;queue&gt;</code>, the <code>&lt;add&gt;</code> method is <code>&lt;enqueue(<a id="3475"></a>...)&gt;</code> and the &lt;remove(...)&gt; method is <code>&lt;dequeue(<a id="3451"></a>...)&gt;</code>.</p>
-          <p>As you observe the animations in Figure 17.9, especially the larger graph, you will see a characteristic rotating search mimicking the ripples on a pond when a pebble is dropped in. This behavior is caused by using the <code>&lt;queue(...)&gt;</code> and will result in the path with the least number of nodes although it may not be the shortest one.  In fact, on the small graph animation, while there is a path with lower cost that uses one more node, the BFS<a id="3432"></a> algorithm can't find it. Figure 17.9 shows animations of the same two problems using the BFS<a id="3433"></a> algorithm - a better approach in that it computes the path with the least number of nodes, but does not guarantee the best cost.  In fact, neither DFS nor BFS<a id="3434"></a> take cost into account, but merely use it as an observer.  Figure 17.10 shows to state of the queue at the end of the first animation.</p>
+          <p>Frequently, we actually need the path with the smallest number of nodes between the starting and ending nodes. For example, because changing trains involves walking and waiting, the best path on an urban transit system map is that with the fewest changes, even if the resulting path is longer. To search for the path with the least nodes, we need an algorithm that performs a <a id="4310"></a><a id="4338"></a><a id="4400"></a><a id="4456"></a>Breadth-First Search (BFS) on a graph. We will use the template in Listing 17.3 where the <code>&lt;collection&gt;</code> is a <code>&lt;queue&gt;</code>, the <code>&lt;add&gt;</code> method is <code>&lt;<a id="4380"></a><a id="4386"></a>enqueue(...)&gt;</code> and the &lt;remove(...)&gt; method is <code>&lt;<a id="4349"></a><a id="4384"></a>dequeue(...)&gt;</code>.</p>
+          <p>As you observe the animations in Figure 17.9, especially the larger graph, you will see a characteristic rotating search mimicking the ripples on a pond when a pebble is dropped in. This behavior is caused by using the <code>&lt;queue(...)&gt;</code> and will result in the path with the least number of nodes although it may not be the shortest one.  In fact, on the small graph animation, while there is a path with lower cost that uses one more node, the <a id="4327"></a>BFS algorithm can't find it. Figure 17.9 shows animations of the same two problems using the <a id="4328"></a>BFS algorithm - a better approach in that it computes the path with the least number of nodes, but does not guarantee the best cost.  In fact, neither DFS nor <a id="4329"></a>BFS take cost into account, but merely use it as an observer.  Figure 17.10 shows to state of the queue at the end of the first animation.</p>
           <div class="card-deck">
               <div class="col-sm-7 card">
-                  <video controls class="card-image"><source src="..\Images\BFS.mp4" type="video/mp4">Fig 17.9: Animation of the BFS<a id="3435"></a> Algorithm</video>
-                  <p class="figure-name card-title">Fig 17.9: Animation of the BFS<a id="3436"></a> Algorithm</p>
+                  <video controls class="card-image"><source src="..\Images\BFS.mp4" type="video/mp4">Fig 17.9: Animation of the <a id="4330"></a>BFS Algorithm</video>
+                  <p class="figure-name card-title">Fig 17.9: Animation of the <a id="4331"></a>BFS Algorithm</p>
               </div>
               <div class="col-sm-5 card">
                   <div class="fig-long">
-                      <img src="..\Images\BFS.JPG" alt="Figure 17.10" class="fig card-image">
+                      <img src="..\Images\BFS.jpg" alt="Figure 17.10" class="fig card-image">
                   </div>
-                  <p class="figure-name card-title">Fig 17.10: Queue after the first BFS<a id="3437"></a> search</p>
+                  <p class="figure-name card-title">Figure 17.10: Queue after the first <a id="4332"></a>BFS search</p>
               </div>
           </div>
       </div>
@@ -261,19 +261,19 @@
 
     <div class="chp-subsection" data-sub-num="3" data-sub-name="Dijkstras Algorithm">
       <!-- Dijkstras Algorithm -->
-      <h3 id="17_6_3">17.6.3	Dijkstras<a id="3417"></a> Algorithm</h3>
+      <h3 id="17_6_3">17.6.3	<a id="4311"></a><a id="4350"></a><a id="4405"></a><a id="4458"></a>Dijkstras Algorithm</h3>
       <div class="container">
-          <p>Although the minimal number of nodes is sometimes the right answer, frequently there is a path that uses more nodes but has a smaller overall cost. This is evident from a quick glance at Figure 17.5: the path 1-0-5-6-7 has a lower cost than the path 1-0-4-7 found by the BFS<a id="3438"></a> algorithm, which actually ignores the edge weights. Many algorithms exist for finding the optimal path through a graph. Here we illustrate the algorithm attributed to the Dutch computer scientist Dr. Edsger Dijkstra. Perhaps it is not the most efficient algorithm; but for our purposes, this approach has the virtue of being a minor extension to the while loop algorithm described in Listing 17.3.  The major differences arise from the use of a priority<a id="3532"></a> queue in place of the normal queue used in the BFS<a id="3439"></a> algorithm.</p>
+          <p>Although the minimal number of nodes is sometimes the right answer, frequently there is a path that uses more nodes but has a smaller overall cost. This is evident from a quick glance at Figure 17.5: the path 1-0-5-6-7 has a lower cost than the path 1-0-4-7 found by the <a id="4333"></a>BFS algorithm, which actually ignores the edge weights. Many algorithms exist for finding the optimal path through a graph. Here we illustrate the algorithm attributed to the Dutch computer scientist Dr. Edsger Dijkstra. Perhaps it is not the most efficient algorithm; but for our purposes, this approach has the virtue of being a minor extension to the while loop algorithm described in Listing 17.3.  The major differences arise from the use of a <a id="4481"></a><a id="4505"></a>priority queue in place of the normal queue used in the <a id="4334"></a>BFS algorithm.</p>
           <ul>
-              <li> As previously noted, priority<a id="3533"></a> queues differ from basic queues only to the extent that the <code>&lt;enqueue(<a id="3476"></a>...)&gt;</code> method puts the data in order, rather than at the tail of the queue. The ordering criterion required by the algorithm is to place the paths<a id="3499"></a> in increasing order of path cost. While we have not explicitly dealt with the Big O of these algorithms, it is clear<a id="3442"></a> in the micro sense that inserting<a id="3430"></a> at the end of a queue is O(1) while inserting<a id="3431"></a> in order in a priority<a id="3534"></a> queue is O(N) where N is the worst case of queue length.</li>
-              <li>The objects contained in the priority<a id="3535"></a> queue need to contain not only the path, but also the total path weight.</li>
-              <li> we have to change the exit strategy in the template shown in Listing 17.2.  For DFS and BFS<a id="3440"></a>, once a path has been added to their collections, there is no possibility of a "better" path being inserted ahead of that result. Hence, it is fine to perform the exit test when inserting<a id="3443"></a> each child node.  However, this is not the case for Dijkstras<a id="3418"></a> algorithm; better paths<a id="3500"></a> can be inserted before any of the paths<a id="3501"></a> entered. In a formal<a id="3477"></a> sense, it is safe to perform the exit test when a path is dequeued. However, when preparing the somewhat intimidating view of the priority<a id="3536"></a> view when the algorithm completed, we shortened that queue by realizing that the algorithm may be stopped when a path of cost N to the end is enqueued if it is logically impossible for the next step on any of the surviving shorter paths<a id="3502"></a> to reach the ending node with a cost less<a id="3505"></a> than N.</li>
+              <li> As previously noted, <a id="4482"></a><a id="4506"></a>priority queues differ from basic queues only to the extent that the <code>&lt;<a id="4381"></a><a id="4387"></a>enqueue(...)&gt;</code> method puts the data in order, rather than at the tail of the queue. The ordering criterion required by the algorithm is to place the <a id="4429"></a>paths in increasing order of path cost. While we have not explicitly dealt with the Big O of these algorithms, it is <a id="4339"></a>clear in the micro sense that <a id="4325"></a><a id="4340"></a><a id="4435"></a><a id="4442"></a><a id="4511"></a><a id="4514"></a>inserting at the end of a queue is O(1) while <a id="4326"></a><a id="4341"></a><a id="4436"></a><a id="4443"></a><a id="4512"></a><a id="4515"></a>inserting in order in a <a id="4483"></a><a id="4507"></a>priority queue is O(N) where N is the worst case of queue length.</li>
+              <li>The objects contained in the <a id="4484"></a><a id="4508"></a>priority queue need to contain not only the path, but also the total path weight.</li>
+              <li> we have to change the exit strategy in the template shown in Listing 17.2.  For DFS and <a id="4335"></a>BFS, once a path has been added to their collections, there is no possibility of a "better" path being inserted ahead of that result. Hence, it is fine to perform the exit test when inserting each child node.  However, this is not the case for <a id="4312"></a><a id="4351"></a><a id="4406"></a><a id="4459"></a>Dijkstras algorithm; better <a id="4430"></a>paths can be inserted before any of the <a id="4431"></a>paths entered. In a <a id="4382"></a>formal sense, it is safe to perform the exit test when a path is dequeued. However, when preparing the somewhat intimidating view of the <a id="4485"></a><a id="4509"></a>priority view when the algorithm completed, we shortened that queue by realizing that the algorithm may be stopped when a path of cost N to the end is enqueued if it is logically impossible for the next step on any of the surviving shorter <a id="4432"></a>paths to reach the ending node with a cost less than N.</li>
           </ul>
-          <p>Figures 17.11 and 17.12 show the animations for the same two problems and the resulting priority<a id="3549"></a> queue for the smaller case. While this algorithm does compute the path with the lowest cost, it does so at considerable extra computation cost, as is evident from the run time of the second animation, the increased Big O if the enqueue method and the enormous amount of extra stuff packed into the priority<a id="3550"></a> queue in Figure 17.12.</p>
+          <p>Figures 17.11 and 17.12 show the animations for the same two problems and the resulting priority queue for the smaller case. While this algorithm does compute the path with the lowest cost, it does so at considerable extra computation cost, as is evident from the run time of the second animation, the increased Big O if the enqueue method and the enormous amount of extra stuff packed into the priority queue in Figure 17.12.</p>
           <div class="card-deck">
               <div class="col-sm-7 card">
-                  <video controls class="card-image"><source src="..\Images\Optimal.mp4" type="video/mp4">Fig 17.11: Animation of Dijkstras<a id="3419"></a> Algorithm</video>
-                  <p class="figure-name card-title">Fig 17.11: Animation of Dijkstras<a id="3420"></a> Algorithm</p>
+                  <video controls class="card-image"><source src="..\Images\Optimal.mp4" type="video/mp4">Fig 17.11: Animation of <a id="4313"></a><a id="4352"></a><a id="4407"></a><a id="4460"></a>Dijkstras Algorithm</video>
+                  <p class="figure-name card-title">Fig 17.11: Animation of <a id="4314"></a><a id="4353"></a><a id="4408"></a><a id="4461"></a>Dijkstras Algorithm</p>
               </div>
               <div class="col-sm-5 card">
                   <div class="fig-long">
@@ -289,7 +289,7 @@
       <!-- An Approximation Algorithm -->
       <h3 id="17_6_4">17.6.4	An Approximation Algorithm</h3>
       <div class="container clearfix">
-          <p>As we progressed from DFS to BFS<a id="3441"></a> to Dijkstras<a id="3421"></a> algorithm, the answers became more precise, but the computational cost was increasing.  Even for a really small proportion of the streets in the Atlanta metropolitan area, the solution became unpleasantly slow. Yet, the Satellite Navigation system on any car  can compute the route from somewhere in the Atlanta, Georgia area to the suburbs of Los Angeles, California in a second or less<a id="3506"></a>. To understand how this can work, we need to look at a fundamental change in the path computation algorithm and then, in Section 17.6.5 examine some additions to that algorithm to improve the efficiency and remove some occasional strange behavior.</p>
+          <p>As we progressed from DFS to <a id="4336"></a>BFS to <a id="4315"></a><a id="4354"></a><a id="4409"></a><a id="4462"></a>Dijkstras algorithm, the answers became more precise, but the computational cost was increasing.  Even for a really small proportion of the streets in the Atlanta metropolitan area, the solution became unpleasantly slow. Yet, the Satellite Navigation system on any car  can compute the route from somewhere in the Atlanta, Georgia area to the suburbs of Los Angeles, California in a second or less. To understand how this can work, we need to look at a fundamental change in the path computation algorithm and then, in Section 17.6.5 examine some additions to that algorithm to improve the efficiency and remove some occasional strange behavior.</p>
           <div class="float-sm-right">
               <div class="card">
                   <video controls class="card-image"><source src="..\Images\Greedy.mp4" type="video/mp4">Fig 17.13: Animation of a Greedy Algorithm</video>
@@ -300,13 +300,13 @@
                   <p class="figure-name card-title">Figure 17.14: Greedy Algorithm at Work</p>
               </div>
           </div>
-          <p>First, we change the fundamental algorithm - we will give up the desire for an exact solution and settle for a strategy that gives us a good enough answer most of the time.  There are many such algorithms that are collectively referred to as "Greedy" algorithms. A greedy<a id="3516"></a> algorithm will produce a solution as long as the graph has sufficient continuity, but is not guaranteed to produce the best. In addition to the cost of each edge, it also requires that each node be aware of its geographic<a id="3463"></a> location. Figure 17.13 shows the usual animations using a crude greedy<a id="3517"></a> algorithm.  Don't blink - you might miss it all.</p>
+          <p>First, we change the fundamental algorithm - we will give up the desire for an exact solution and settle for a strategy that gives us a good enough answer most of the time.  There are many such algorithms that are collectively referred to as "Greedy" algorithms. A <a id="4447"></a>greedy algorithm will produce a solution as long as the graph has sufficient continuity, but is not guaranteed to produce the best. In addition to the cost of each edge, it also requires that each node be aware of its <a id="4368"></a><a id="4392"></a>geographic location. Figure 17.13 shows the usual animations using a crude <a id="4448"></a>greedy algorithm.  Don't blink - you might miss it all.</p>
           <p>The algorithm is quite simple:</p>
           <ol>
-              <li>Beginning at the starting node, it evaluates the result of traveling along each of the feasible edges to a child node eliminating cyclic paths<a id="3503"></a>. The evaluation takes the form of summing the cost of that edge and an estimate of the cost from that node to the destination. On a street map, for example, the estimated cost of each step would be the length of the edge and the straight-line distance from the new node to the destination.</li>
-              <li>It selects the step with the least cost, adds the node reached to the path, and repeats step 1 until the destination is reached, only back-tracking when it hits a physical<a id="3471"></a> or logical cul-de-sac.</li>
-              <li>Back-tracking is sometimes necessary if a node is reached from which there are no feasible paths, such as driving into a physical<a id="3472"></a> or logical cul-de-sac.</li>
-              <li>Complete failure is possible, as it is for the other algorithms, if no physical<a id="3473"></a> path exists between the origin and destination nodes.</li>
+              <li>Beginning at the starting node, it evaluates the result of traveling along each of the feasible edges to a child node eliminating cyclic <a id="4433"></a>paths. The evaluation takes the form of summing the cost of that edge and an estimate of the cost from that node to the destination. On a street map, for example, the estimated cost of each step would be the length of the edge and the straight-line distance from the new node to the destination.</li>
+              <li>It selects the step with the least cost, adds the node reached to the path, and repeats step 1 until the destination is reached, only back-tracking when it hits a <a id="4376"></a>physical or logical cul-de-sac.</li>
+              <li>Back-tracking is sometimes necessary if a node is reached from which there are no feasible paths, such as driving into a <a id="4377"></a>physical or logical cul-de-sac.</li>
+              <li>Complete failure is possible, as it is for the other algorithms, if no <a id="4378"></a>physical path exists between the origin and destination nodes.</li>
               <li> it is also possible to produce a really silly answer. For example, consider the local street situation shown in Figure 17.14. This is a caricature of my first experiment on the first car I bought that had GPS. Suppose I were to ask for a route from my home to some destination to the South. The path would start with A - D, and it would try and reject B and C when they reached their respective cul-de-sacs. To choose between the remaining children E and J, it would choose E because with any destination to the South, D - E plus E to the destination is shorter. But what about a destination to the North? D - J is then better than D - E, so on my first test of my new Nav system, the stupid thing wants me to go around the loop D - J - K - L - F ...!</li>
           </ol>
       </div>
@@ -318,13 +318,12 @@
       <div class="container">
           <p>We have seen earlier that theoretical algorithms are OK for small problems, but for commercial algorithms that process large quantities of data, much care must be taken to ensure that the algorithm is fast enough and covers the nasty cases that make algorithms look foolish.</p>
           <ul>
-              <li><b>"Layering" the problem</b>: Returning to the Sat Nav problem of finding a path from a house in Atlanta to a house in Los Angeles, if you were personally planning that route, you would not need to consider all the surface streets across the country. Rather, you would probably use a greedy<a id="3518"></a> algorithm to compute the route from the starting place to the nearest expressway on ramp, and from the destination to the nearest off ramp. The remains of the trip would be taken care of with a greedy<a id="3519"></a> algorithm on expressways only from the selected on ramp to the selected off ramp, and then stitch the three paths together.</li>
-              <li><b>Informed Search</b>: A number of researchers have enhanced the basic greedy<a id="3520"></a> algorithm to avoid the silly solutions.  A* is one such algorithm. It uses heuristics to maintain a small number of competing paths until they either became too costly or merged to a point where the best can be selected. One aspect of the algorithm design is choosing how many paths to maintain. This becomes a trade-off between computational speed and the need to avoid ridiculous behavior.  A normal greedy<a id="3521"></a> algorithm is the fast end of that spectrum and algorithms like Dijkstras<a id="3422"></a> is the slow end.</li>
+              <li><b>"Layering" the problem</b>: Returning to the Sat Nav problem of finding a path from a house in Atlanta to a house in Los Angeles, if you were personally planning that route, you would not need to consider all the surface streets across the country. Rather, you would probably use a <a id="4449"></a>greedy algorithm to compute the route from the starting place to the nearest expressway on ramp, and from the destination to the nearest off ramp. The remains of the trip would be taken care of with a <a id="4450"></a>greedy algorithm on expressways only from the selected on ramp to the selected off ramp, and then stitch the three paths together.</li>
+              <li><b>Informed Search</b>: A number of researchers have enhanced the basic <a id="4451"></a>greedy algorithm to avoid the silly solutions.  A* is one such algorithm. It uses heuristics to maintain a small number of competing paths until they either became too costly or merged to a point where the best can be selected. One aspect of the algorithm design is choosing how many paths to maintain. This becomes a trade-off between computational speed and the need to avoid ridiculous behavior.  A normal <a id="4452"></a>greedy algorithm is the fast end of that spectrum and algorithms like <a id="4316"></a><a id="4355"></a><a id="4410"></a><a id="4463"></a>Dijkstras is the slow end.</li>
           </ul>
       </div>
     </div>
   </div>
-Summary
   <div class="chp-section" data-sect-num="7" data-sect-name="Engineering Applications">
     <!-- Engineering Applications -->
     <h2 id="17_7">17.7	Engineering Applications</h2>
@@ -336,7 +335,7 @@ Summary
        <!-- Simple Applications -->
       <h3 id="17_7_1">17.7.1	Simple Applications</h3>
       <div class="container">
-          <p>MSTs are used by utility companies to find the least amount of cable that must be used to wire a subdivision.  Approximate path finding is used, for example, in navigation systems that use GPS to find the current position of the vehicle and an approximate, greedy<a id="3522"></a> algorithm to determine the route to a destination.  Exact path finding is used to optimize the flight profile of commercial aircraft outside FAA-managed air space and can save as much as 10% of the fuel burned on every flight.</p>
+          <p>MSTs are used by utility companies to find the least amount of cable that must be used to wire a subdivision.  Approximate path finding is used, for example, in navigation systems that use GPS to find the current position of the vehicle and an approximate, <a id="4453"></a>greedy algorithm to determine the route to a destination.  Exact path finding is used to optimize the flight profile of commercial aircraft outside FAA-managed air space and can save as much as 10% of the fuel burned on every flight.</p>
       </div>
     </div>
 
@@ -348,7 +347,7 @@ Summary
           <ul>
               <li>designing printed circuit boards is a complex extension of path finding</li>
               <li>stresses in a redundant structure like an aircraft wing seek a path that is in some sense optimal, and</li>
-              <li>the 'traveling salesperson problem" is an unpleasant extension of path finding in which the objective is to find the shorted linear<a id="3509"></a> path that connects all of the nodes of a graph visiting each exactly once. For example, designing routes for garbage collection or school buses.</li>
+              <li>the 'traveling salesperson problem" is an unpleasant extension of path finding in which the objective is to find the shorted linear path that connects all of the nodes of a graph visiting each exactly once. For example, designing routes for garbage collection or school buses.</li>
           </ul>
           <p>Each of these belongs to a large class of problems called N-P Complete problems, a continued topic of research in many industrial engineering communities.</p>
       </div>
@@ -359,11 +358,11 @@ Summary
   <h2>Chapter Summary</h2>
   <p>This chapter demonstrated effective algorithms for finding good paths through a graph, and included the following:</p>
   <ul>
-      <li>How to construct and use queues and priority<a id="3551"></a> queues as the underlying mechanism for graph traversal<a id="3445"></a></li>
-      <li>Prim's algorithm for finding the minimum spanning tree<a id="3511"></a> of a graph</li>
-      <li>Depth-first, Breadth-first and Dijkstras<a id="3423"></a> algorithms for finding exact paths
+      <li>How to construct and use queues and priority queues as the underlying mechanism for graph <a id="4343"></a><a id="4513"></a>traversal</li>
+      <li>Prim's algorithm for finding the <a id="4440"></a>minimum spanning tree of a graph</li>
+      <li>Depth-first, Breadth-first and <a id="4317"></a><a id="4356"></a><a id="4411"></a><a id="4464"></a>Dijkstras algorithms for finding exact paths
       through a graph</li>
-      <li>A greedy<a id="3523"></a> algorithm for finding approximate paths that are "good enough."</li>
+      <li>A <a id="4454"></a>greedy algorithm for finding approximate paths that are "good enough."</li>
   </ul>
 
   <!-- Programming Project -->
